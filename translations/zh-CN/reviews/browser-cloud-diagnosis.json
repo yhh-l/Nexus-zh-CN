@@ -1,0 +1,27 @@
+{
+  "run": 39776787939,
+  "baselineCommit": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "localizedCommit": "634513d62602ef2478d2f2f00fe0ade0c3af4bc1",
+  "scenarios": {
+    "baseline": {
+      "pass": 1,
+      "fail": 0,
+      "chrome": "Google Chrome 155.0.8059.39",
+      "pttEvidence": [
+        "Stream PTT held through a lapse of the state (ms after the press: pointerdown 0, pttHold 0 0, pttHold 1 101, pttHold 2 200, pttHold 3 300, pttHold 4 403, pttHold 5 500, pttHold 6 601, pttHold 7 700, pttHold 8 800, pttHold 9 900, pttHold 10 1001, pttHold 11 1100, pttHold 12 1200, stale 1242, pttHold 13 1301, fresh 1396, pttHold 14 1400, pttHold 15 1500, pointerup 1502, pttRelease 16 1502; the station got pttHold 0, pttHold 1, pttHold 2, pttHold 3, pttHold 4, pttHold 5, pttHold 6, pttHold 7, pttHold 8, pttHold 9, pttHold 10, pttHold 11, pttHold 12, pttHold 13, pttHold 14, pttHold 15, pttRelease 16)",
+        "Stream PTT held by Space through a lapse of the state (ms after the press: keydown PTT 0, pttHold 0 0, pttHold 1 101, pttHold 2 201, pttHold 3 301, pttHold 4 401, pttHold 5 501, pttHold 6 601, pttHold 7 701, pttHold 8 801, pttHold 9 901, pttHold 10 1001, pttHold 11 1101, pttHold 12 1201, stale 1242, pttHold 13 1301, fresh 1395, pttHold 14 1401, pttHold 15 1501, keyup PTT 1502, pttRelease 16 1502; the station got pttHold 0, pttHold 1, pttHold 2, pttHold 3, pttHold 4, pttHold 5, pttHold 6, pttHold 7, pttHold 8, pttHold 9, pttHold 10, pttHold 11, pttHold 12, pttHold 13, pttHold 14, pttHold 15, pttRelease 16)",
+        "Stream PTT kept its focus through a lapse (stale, greyed aria-disabled=true, fresh, lit aria-disabled=null), and Space on it held once lit (ms after the press: stale -8, greyed -7, fresh -2, lit -1, keydown PTT 0, pttHold 0 0, pttHold 1 100, pttHold 2 200, pttHold 3 300, pttHold 4 400, keyup PTT 451, pttRelease 5 451; the station got pttHold 0, pttHold 1, pttHold 2, pttHold 3, pttHold 4, pttRelease 5)"
+      ]
+    },
+    "localized": {
+      "pass": 1,
+      "fail": 0,
+      "chrome": "Google Chrome 155.0.8059.39",
+      "pttEvidence": [
+        "Stream PTT held through a lapse of the state (ms after the press: pointerdown 0, pttHold 0 0, pttHold 1 100, pttHold 2 200, pttHold 3 300, pttHold 4 400, pttHold 5 500, pttHold 6 600, pttHold 7 700, pttHold 8 800, pttHold 9 900, pttHold 10 1000, pttHold 11 1100, pttHold 12 1200, stale 1247, pttHold 13 1300, pttHold 14 1400, pttHold 15 1500, pointerup 1501, pttRelease 16 1501, greyed 1501; the station got pttHold 0, pttHold 1, pttHold 2, pttHold 3, pttHold 4, pttHold 5, pttHold 6, pttHold 7, pttHold 8, pttHold 9, pttHold 10, pttHold 11, pttHold 12, pttHold 13, pttHold 14, pttHold 15, pttRelease 16)",
+        "Stream PTT held by Space through a lapse of the state (ms after the press: fresh -2, lit -1, keydown PTT 0, pttHold 0 0, pttHold 1 100, pttHold 2 200, pttHold 3 300, pttHold 4 400, pttHold 5 500, pttHold 6 600, pttHold 7 700, pttHold 8 800, stale 846, pttHold 9 900, fresh 998, pttHold 10 1000, pttHold 11 1100, pttHold 12 1200, pttHold 13 1300, pttHold 14 1400, pttHold 15 1500, keyup PTT 1501, pttRelease 16 1501; the station got pttHold 0, pttHold 1, pttHold 2, pttHold 3, pttHold 4, pttHold 5, pttHold 6, pttHold 7, pttHold 8, pttHold 9, pttHold 10, pttHold 11, pttHold 12, pttHold 13, pttHold 14, pttHold 15, pttRelease 16)",
+        "Stream PTT kept its focus through a lapse (stale, greyed aria-disabled=true, fresh, lit aria-disabled=null), and Space on it held once lit (ms after the press: keydown PTT 0, pttHold 0 0, pttHold 1 100, pttHold 2 200, pttHold 3 300, pttHold 4 400, keyup PTT 451, pttRelease 5 452; the station got pttHold 0, pttHold 1, pttHold 2, pttHold 3, pttHold 4, pttRelease 5)"
+      ]
+    }
+  }
+}

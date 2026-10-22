@@ -18,7 +18,6 @@
     "splash": 5,
     "problems": 0
   },
-  "liteBundleVerificationExit": 0,
   "actionlintExit": 0,
   "browserProbe": {
     "phone": "passed: 1 of 2 scenarios",
@@ -26,20 +25,19 @@
     "noMatchControl": "exit 2 as expected"
   },
   "performanceScope": "Three runs per build, LAN frontend in Chrome on same Mac, 4x CPU throttle; not Windows process or DSP measurements. See startup-*.json.",
-  "windows": "Cloud compile, installation and startup still pending.",
+  "windows": "Superseded zhcn.1 installer compiled and started. Final full-language zhcn.2 installer is still building; Windows Chinese locale validation pending.",
   "cloudRun": {
     "id": 39762056571,
     "url": "https://github.com/yhh-l/Nexus-zh-CN/actions/runs/39762056571",
     "commit": "dee1197b641b76f50adcf93e555d68c4bb80907a",
-    "status": "in_progress",
+    "status": "completed_with_failure",
     "confirmed": [
-      "Full translation verification",
-      "Windows FFTW and modem executable cross-build",
-      "Upstream UI gates and real Chrome desktop stream probe"
+      "Windows NSIS installer generated (superseded language-reduced build only)",
+      "Upstream UI gates and initial Chrome desktop stream probe",
+      "Installed native window shown; no audio input on hosted runner"
     ],
     "pending": [
-      "Windows NSIS installer",
-      "Windows installation and native UI smoke test"
+      "Superseded build is not the final deliverable"
     ]
   },
   "supersededBuildNote": "Initial cloud run used Chinese/English-only bundle; it is not the final user deliverable. Full language catalogs restored per user request.",
@@ -60,5 +58,48 @@
       "passed": 44
     },
     "hardwareSpecificDefaults": false
+  },
+  "finalFullFeatureRun": {
+    "id": 39768534272,
+    "url": "https://github.com/yhh-l/Nexus-zh-CN/actions/runs/39768534272",
+    "commit": "957daaeff",
+    "status": "cancelled_superseded_by_startup_fix",
+    "uiGates": "passed",
+    "allOfflineLanguages": "passed",
+    "chromeProbe": "failed: PTT timer gap approximately 254 ms; unchanged scenario passed on both baseline and localized diagnostic rerun",
+    "windowsInstaller": "Cancelled before artifact upload: real startup race reproduced in installed previous build; replacement build contains the fix.",
+    "nativeChineseVerification": "pending"
+  },
+  "browserDiagnostic": {
+    "id": 39776787939,
+    "url": "https://github.com/yhh-l/Nexus-zh-CN/actions/runs/39776787939",
+    "baseline": "passed",
+    "localized": "passed",
+    "scope": "One unchanged compiled hosted browser stream scenario each; does not rule out intermittent scheduling or runtime defects. No timing assertion or app PTT code changed."
+  },
+  "windowsDebugDiagnostic": {
+    "rootCauseReference": "https://github.com/MicrosoftEdge/WebView2Feedback/issues/5640",
+    "run": 39777068650,
+    "elevated": true,
+    "machinePolicyEnabledCdp": true,
+    "nextFailure": "Port access fixed. Strict main-page check exposed actual upstream startup race: main.url() returned about:blank before blank.html committed. Installed app logged no app address beside about:blank and remained on splash.",
+    "nextRun": 39777499314,
+    "failureEvidenceRun": 39777499314
+  },
+  "startupFix": {
+    "commit": "b0e1397e8abbbded0ee7c14e4edb10e10351d248",
+    "rootCause": "Startup derived an app URL from the transient about:blank before initial WebView2 navigation committed.",
+    "change": "Wait for the configured page after logbook attachment, on the launch thread, with a 30-second bound. Preserve all launch/TX ordering.",
+    "tests": "Production startup helper compiled with the same url::Url type re-exported by Tauri: 4 passed, 0 failed. This is not a substitute for native app compilation/startup.",
+    "run": 39779254282,
+    "version": "1.19.0-zhcn.3",
+    "status": "in_progress",
+    "priorRun": 39778841720,
+    "priorRunResult": "rustfmt rejected a tuple layout in the new test; corrected in a formatting-only commit before Windows build began.",
+    "formatRevision": "123a40b23b1ad25df2e97fd48d99923d7fa2dc14",
+    "formatExit": 0,
+    "unitTestPassed": 4,
+    "unitTestFailed": 0,
+    "job": 119826155158
   }
 }

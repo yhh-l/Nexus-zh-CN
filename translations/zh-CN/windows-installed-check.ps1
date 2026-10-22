@@ -5,14 +5,9 @@ $exe = Get-ChildItem "$env:LOCALAPPDATA" -Recurse -Depth 3 -Filter 'Nexus.exe' -
 if (-not $exe) { throw 'Nexus.exe not found after installation' }
 $testRoot = Join-Path $env:RUNNER_TEMP 'nexus-zh-smoke'
 New-Item -ItemType Directory -Force -Path $testRoot | Out-Null
-$env:WEBVIEW2_USER_DATA_FOLDER = Join-Path $testRoot 'webview'
-# Microsoft's per-application registry override is an alternative to the environment override.
-# Scope it to this test executable on the disposable runner and remove it after the check.
-$debugPolicy = 'HKCU:\Software\Policies\Microsoft\Edge\WebView2\AdditionalBrowserArguments'
-if ((Get-ItemProperty -Path $debugPolicy -Name 'Nexus.exe' -ErrorAction SilentlyContinue)) { throw 'Unexpected existing app debug override' }
-New-Item -Path $debugPolicy -Force | Out-Null
-New-ItemProperty -Path $debugPolicy -Name 'Nexus.exe' -Value '--remote-debugging-address=127.0.0.1 --remote-debugging-port=9222' -PropertyType String -Force | Out-Null
-Remove-Item Env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS -ErrorAction SilentlyContinue
+# Use the browser-arguments override alone: the disposable runner already has an isolated profile.
+Remove-Item Env:WEBVIEW2_USER_DATA_FOLDER -ErrorAction SilentlyContinue
+$env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS = '--remote-debugging-port=9222'
 $env:APPDATA = Join-Path $testRoot 'roaming'
 New-Item -ItemType Directory -Force -Path $env:APPDATA | Out-Null
 $started = Get-Date
@@ -57,5 +52,4 @@ try {
     $graphics.Dispose(); $bitmap.Dispose()
   } catch { $_.ToString() | Set-Content "$out/screenshot-error.txt" }
   if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force }
-  Remove-ItemProperty -Path $debugPolicy -Name 'Nexus.exe' -ErrorAction SilentlyContinue
 }

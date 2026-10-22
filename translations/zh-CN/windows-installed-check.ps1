@@ -20,6 +20,15 @@ try {
   if ($checkExit -ne 0) { throw 'Installed Windows UI check failed' }
 } finally {
   $p.Refresh()
+  # Diagnose the actual loader/runtime in the installed process before changing the app or test route.
+  try {
+    $p.Modules | Where-Object { $_.ModuleName -match 'WebView|EmbeddedBrowser' } | ForEach-Object {
+      @{ name=$_.ModuleName; path=$_.FileName; version=$_.FileVersionInfo.FileVersion; sha256=(Get-FileHash $_.FileName -Algorithm SHA256).Hash }
+    } | ConvertTo-Json -Depth 3 | Set-Content "$out/webview-modules.json"
+    Get-ChildItem $exe.DirectoryName -Filter '*WebView*' -Recurse | ForEach-Object {
+      @{ name=$_.Name; path=$_.FullName; version=$_.VersionInfo.FileVersion; sha256=(Get-FileHash $_.FullName -Algorithm SHA256).Hash }
+    } | ConvertTo-Json -Depth 3 | Set-Content "$out/bundled-webview-files.json"
+  } catch { $_.ToString() | Set-Content "$out/module-inspection-error.txt" }
   @{ executable=$exe.FullName; pid=$p.Id; exited=$p.HasExited; exitCode=$(if($p.HasExited){$p.ExitCode}else{$null}) } | ConvertTo-Json | Set-Content "$out/process.json"
   try {
     Add-Type -AssemblyName UIAutomationClient

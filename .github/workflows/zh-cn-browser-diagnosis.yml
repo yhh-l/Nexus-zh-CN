@@ -1,0 +1,49 @@
+# Compare the same unchanged PTT scenario on the fixed baseline and localized app.
+# Diagnostics only: no radio, release, deployment, or relaxed timing assertion.
+name: Diagnose Chinese browser regression
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+jobs:
+  compare:
+    strategy:
+      fail-fast: false
+      matrix:
+        revision: [baseline, localized]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ matrix.revision == 'baseline' && 'ad8d95fa80e2bfa9be8e1719595b058929eb092d' || github.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Build the actual hosted browser artifacts
+        run: |
+          set -euo pipefail
+          npm --prefix ui ci
+          npm --prefix remote ci
+          npm --prefix ui run build:remote
+          WRANGLER_SEND_METRICS=false npm --prefix remote run build
+      - name: Run the unchanged PTT scenario and retain evidence
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+          NEXUS_BROWSER_SHARDS: 1
+          NEXUS_BROWSER_SHARD: 0
+        run: |
+          set -euo pipefail
+          mkdir -p diagnosis
+          git rev-parse HEAD > diagnosis/revision.txt
+          google-chrome --version > diagnosis/chrome.txt
+          node --version > diagnosis/node.txt
+          node --test --test-reporter=tap --test-name-pattern='compiled hosted browser stream' remote/test/browser.test.mjs 2>&1 | tee diagnosis/browser.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: browser-diagnosis-${{ matrix.revision }}
+          path: diagnosis/*
+          if-no-files-found: warn
+          retention-days: 14

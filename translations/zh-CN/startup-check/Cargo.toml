@@ -1,0 +1,13 @@
+[package]
+name = "nexus-startup-navigation-check"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[workspace]
+
+[lib]
+path = "lib.rs"
+
+[dependencies]
+url = "=2.5.8"

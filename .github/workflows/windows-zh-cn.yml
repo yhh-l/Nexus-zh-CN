@@ -13,6 +13,22 @@ env:
   MODEL_SHA: a7b3b4aa2610d3e88b8c7d4420eceee31be2d0ae595b3413264334f3ffb1eab5
   MODEL_JSON_SHA: b4342157b90229ee7380e165f3d8036179b80d1e6ae02f2557388b7fcd558c01
 jobs:
+  startup-navigation:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          components: rustfmt
+      - name: Check native formatting and startup navigation regression
+        run: |
+          set -euo pipefail
+          cargo fmt --manifest-path src-tauri/Cargo.toml --check
+          cargo test --manifest-path translations/zh-CN/startup-check/Cargo.toml
   ui:
     runs-on: ubuntu-24.04
     timeout-minutes: 60
@@ -37,6 +53,7 @@ jobs:
         run: scripts/browser-probe --scenario "compiled hosted browser stream"
   windows:
     name: Windows (NSIS installer)
+    needs: startup-navigation
     runs-on: ubuntu-24.04
     timeout-minutes: 150
     steps:
@@ -46,7 +63,7 @@ jobs:
 
       - name: Stamp a local Chinese test version
         run: |
-          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));c.version=c.version.split('-')[0]+'-zhcn.2';fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
+          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));c.version=c.version.split('-')[0]+'-zhcn.3';fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
 
       - name: Stage the DeepCW model (not committed — AGPL-3.0 (c) e04)
         env:
@@ -60,8 +77,11 @@ jobs:
 
       - name: Install MinGW-w64 cross toolchain + NSIS
         run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends \
+          # The hosted Azure mirror stalled for 41 minutes on the previous run.
+          # Use Ubuntu's official archive and bound individual downloads/retries.
+          sudo sed -i 's/azure.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list.d/ubuntu.sources
+          sudo apt-get -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Acquire::Retries=2 update
+          sudo apt-get -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Acquire::Retries=2 install -y --no-install-recommends \
             gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 gfortran-mingw-w64-x86-64 \
             binutils-mingw-w64-x86-64 \
             libboost-dev cmake ninja-build build-essential nsis nasm

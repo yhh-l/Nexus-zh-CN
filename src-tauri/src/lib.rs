@@ -117,6 +117,8 @@ mod shipped_without_the_road_switch;
 /// two files, and when they drifted every gallery preview silently went blank.
 #[cfg(test)]
 mod sstv_scope_test;
+/// The initial WebView2 navigation can still be pending when launch attaches the logbook.
+mod startup_navigation;
 /// The optional street map's packs: sizing, download, removal, and the byte reads its renderer
 /// makes. Thin glue over `crates/street-map`.
 mod street_map;
@@ -4280,7 +4282,9 @@ mod logbook_startup_tests {
         ] {
             let waiting = tauri::Url::parse(waiting).expect("url");
             assert_eq!(
-                app_address(&waiting).map(|u| u.to_string()).as_deref(),
+                startup_navigation::app_address(&waiting)
+                    .map(|u| u.to_string())
+                    .as_deref(),
                 Some(app),
                 "from {waiting}"
             );
@@ -37935,18 +37939,21 @@ fn send_main_window_to_the_app<R: tauri::Runtime>(
     let main = handle
         .get_webview_window("main")
         .ok_or("there is no main window")?;
-    let waiting = main.url().map_err(|e| e.to_string())?;
-    let app = app_address(&waiting).ok_or_else(|| format!("no app address beside {waiting}"))?;
+    // WebView2 may not have committed blank.html yet. Wait on this launch thread,
+    // after logbook attachment, instead of deriving an address from about:blank.
+    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(30);
+    let app = startup_navigation::wait_for_app_address(
+        || main.url().map_err(|e| e.to_string()),
+        || {
+            if std::time::Instant::now() >= deadline {
+                return false;
+            }
+            std::thread::sleep(std::time::Duration::from_millis(20));
+            true
+        },
+    )?;
     main.navigate(app).map_err(|e| e.to_string())?;
     Ok(main)
-}
-
-/// The app's address, from the address of the page the main window waits on: the root beside it.
-/// That is where Tauri itself loads a window whose page is `index.html` — it drops the file name,
-/// and its asset server answers the root with `index.html` — in a build and under the dev server
-/// alike.
-fn app_address(waiting: &tauri::Url) -> Option<tauri::Url> {
-    waiting.join("./").ok()
 }
 
 /// What the splash says while the launch converts the logbook, as `nexusSplash.show` in

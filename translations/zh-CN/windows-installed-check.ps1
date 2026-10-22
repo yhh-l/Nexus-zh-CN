@@ -20,6 +20,22 @@ try {
 } finally {
   $p.Refresh()
   @{ executable=$exe.FullName; pid=$p.Id; exited=$p.HasExited; exitCode=$(if($p.HasExited){$p.ExitCode}else{$null}) } | ConvertTo-Json | Set-Content "$out/process.json"
+  try {
+    Add-Type -AssemblyName UIAutomationClient
+    Add-Type -AssemblyName UIAutomationTypes
+    $root = [System.Windows.Automation.AutomationElement]::RootElement
+    $condition = New-Object System.Windows.Automation.PropertyCondition ([System.Windows.Automation.AutomationElement]::ProcessIdProperty),$p.Id
+    $window = $root.FindFirst([System.Windows.Automation.TreeScope]::Children,$condition)
+    if ($window) {
+      $window.FindAll([System.Windows.Automation.TreeScope]::Descendants,[System.Windows.Automation.Condition]::TrueCondition) | ForEach-Object {
+        @{name=$_.Current.Name;type=$_.Current.ControlType.ProgrammaticName;id=$_.Current.AutomationId}
+      } | ConvertTo-Json -Depth 3 | Set-Content "$out/accessibility.json"
+    }
+  } catch { $_.ToString() | Set-Content "$out/accessibility-error.txt" }
+  @{browserArguments=$env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS;userDataFolder=$env:WEBVIEW2_USER_DATA_FOLDER} | ConvertTo-Json | Set-Content "$out/test-environment.json"
+  foreach ($key in @('HKLM:\SOFTWARE\Policies\Microsoft\Edge','HKLM:\SOFTWARE\Policies\Microsoft\Edge\WebView2','HKCU:\SOFTWARE\Policies\Microsoft\Edge\WebView2')) {
+    if (Test-Path $key) { Get-ItemProperty $key | Select-Object RemoteDebuggingAllowed,AdditionalBrowserArguments | ConvertTo-Json | Add-Content "$out/debug-policy.json" }
+  }
   Get-CimInstance Win32_Process | Where-Object { $_.Name -match 'Nexus|msedgewebview2' } | Select-Object Name,ProcessId,ParentProcessId,CommandLine | ConvertTo-Json -Depth 3 | Set-Content "$out/webview-processes.json"
   try { Invoke-RestMethod 'http://127.0.0.1:9222/json/list' | ConvertTo-Json -Depth 6 | Set-Content "$out/cdp-targets.json" } catch { $_.ToString() | Set-Content "$out/cdp-error.txt" }
   Get-ChildItem $env:APPDATA,$env:LOCALAPPDATA -Recurse -Depth 4 -Filter 'nexus-diag.log' -ErrorAction SilentlyContinue | ForEach-Object { Get-Content $_.FullName | Add-Content "$out/nexus-diag.txt" }

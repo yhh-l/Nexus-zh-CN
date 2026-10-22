@@ -1,0 +1,30 @@
+{
+  "baseline": "1.19.0",
+  "baselineCommit": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "date": "2026-10-22",
+  "uiTests": {
+    "files": 1186,
+    "passed": 17511,
+    "skipped": 3
+  },
+  "focusedTests": {
+    "files": 25,
+    "passed": 621
+  },
+  "productionBuildExit": 0,
+  "translationVerification": {
+    "rows": 8360,
+    "keys": 8227,
+    "splash": 5,
+    "problems": 0
+  },
+  "liteBundleVerificationExit": 0,
+  "actionlintExit": 0,
+  "browserProbe": {
+    "phone": "passed: 1 of 2 scenarios",
+    "desktop": "failed on modified and unmodified baseline on macOS; simulated station context lost after Escape; speculative key-code changes reverted",
+    "noMatchControl": "exit 2 as expected"
+  },
+  "performanceScope": "Three runs per build, LAN frontend in Chrome on same Mac, 4x CPU throttle; not Windows process or DSP measurements. See startup-*.json.",
+  "windows": "Cloud compile, installation and startup still pending."
+}

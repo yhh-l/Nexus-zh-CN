@@ -82,7 +82,9 @@ jobs:
           sudo python3 - <<'PY'
           from pathlib import Path
           source_dir = Path('/etc/apt/sources.list.d')
-          paths = [Path('/etc/apt/sources.list'), *source_dir.glob('*.list'), *source_dir.glob('*.sources')]
+          # This runner's sources use mirror+file:/etc/apt/apt-mirrors.txt;
+          # changing only .list/.sources leaves that actual Azure mirror unchanged.
+          paths = [Path('/etc/apt/sources.list'), Path('/etc/apt/apt-mirrors.txt'), *source_dir.glob('*.list'), *source_dir.glob('*.sources')]
           for path in paths:
               if not path.is_file():
                   continue

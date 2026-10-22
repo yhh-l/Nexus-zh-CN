@@ -1,0 +1,1789 @@
+{
+  "batch": 13,
+  "range": [
+    2401,
+    2600
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 177,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 18,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/WatchlistPanel.tsx",
+    "ui/src/components/RoamPanel.tsx",
+    "ui/src/components/PotaSotaView.tsx",
+    "ui/src/components/PotaSotaView.activationState.test.tsx"
+  ],
+  "rows": [
+    {
+      "id": "watchlist.item.cqOnly",
+      "english": "CQ only",
+      "chinese": "仅限 CQ 呼叫",
+      "previous": "仅显示CQ",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "仅显示CQ"
+        }
+      ]
+    },
+    {
+      "id": "watchlist.item.remove.title",
+      "english": "Remove from watch list",
+      "chinese": "从关注列表中移除",
+      "previous": "从监视列表中删除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.item.remove.aria",
+      "english": "Remove {{value}}",
+      "chinese": "移除 {{value}}",
+      "previous": "删除{{value}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.item.notes.aria",
+      "english": "Notes for {{value}}",
+      "chinese": "{{value}} 的备注",
+      "previous": "说明{{value}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.item.notes.placeholder",
+      "english": "Add a note",
+      "chinese": "添加备注",
+      "previous": "添加注释",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.kind.aria",
+      "english": "Watch kind",
+      "chinese": "关注类型",
+      "previous": "观察善良",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.kind.call",
+      "english": "Call / prefix",
+      "chinese": "呼号／前缀",
+      "previous": "调用/ 前缀",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.kind.dxcc",
+      "english": "DXCC entity",
+      "chinese": "DXCC 实体",
+      "previous": "DXCC实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.kind.grid",
+      "english": "Grid square",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.value.aria",
+      "english": "Watch value",
+      "chinese": "关注目标",
+      "previous": "监视值",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.value.placeholder.call",
+      "english": "e.g. {{first}}  or  {{second}}",
+      "chinese": "例如 {{first}} 或 {{second}}",
+      "previous": "譬如说.{{first}}或{{second}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.value.placeholder.grid",
+      "english": "e.g. {{first}}  or  {{second}}",
+      "chinese": "例如 {{first}} 或 {{second}}",
+      "previous": "譬如说.{{first}}或{{second}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.value.placeholder.dxcc",
+      "english": "e.g. {{entity}}",
+      "chinese": "例如 {{entity}}",
+      "previous": "譬如说.{{entity}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.cqOnly.label",
+      "english": "CQ only",
+      "chinese": "仅限 CQ 呼叫",
+      "previous": "仅显示CQ",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "仅显示CQ"
+        }
+      ]
+    },
+    {
+      "id": "watchlist.add.cqOnly.title",
+      "english": "Only alert on a CQ call",
+      "chinese": "仅在目标呼叫 CQ 时提醒",
+      "previous": "只有CQ呼叫时发出警报",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.notes.aria",
+      "english": "Notes for the new entry",
+      "chinese": "新关注项的备注",
+      "previous": "新条目的说明",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.notes.placeholder",
+      "english": "Notes (optional): why, and until when",
+      "chinese": "备注（可选）：关注原因及截止时间",
+      "previous": "注(可选):为什么,直到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.notes.title",
+      "english": "Your own note on this entry: why it is on the list, and when it can come off. It changes nothing about what alerts.",
+      "chinese": "你对此关注项的私人备注，可记录关注原因及何时移除；不会改变提醒条件。",
+      "previous": "你在本条目上的笔记:为什么在列表中,以及何时可以脱落. 它不会改变什么警报。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.add.submit",
+      "english": "Add",
+      "chinese": "添加",
+      "previous": "添加",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        }
+      ]
+    },
+    {
+      "id": "watchlist.tile.label",
+      "english": "WATCH",
+      "chinese": "关注",
+      "previous": "观察",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.tile.title",
+      "english": "On your watch list: {{what}}",
+      "chinese": "在你的关注列表中：{{what}}",
+      "previous": "在你的观察名单上:{{what}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.folded::one",
+      "english": "Added {{entries}} to your watch list from the old “Wanted watch list” setting, which is now retired. Change it any time in Settings ▸ Spots & Alerts.",
+      "chinese": "已将旧版“待通联关注列表”设置中的 {{entries}} 加入关注列表。旧设置现已停用，可随时在“设置 ▸ 通报与提醒”中修改。",
+      "previous": "已添加{{entries}}到您从旧的“自愿观察清单”中的观察清单,该清单现已退役。 在 QQ Spots 设置中随时更改它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "watchlist.folded::other",
+      "english": "Added {{count}} entries to your watch list from the old “Wanted watch list” setting, which is now retired: {{entries}}. Change them any time in Settings ▸ Spots & Alerts.",
+      "chinese": "已将旧版“待通联关注列表”设置中的 {{count}} 项加入关注列表：{{entries}}。旧设置现已停用，可随时在“设置 ▸ 通报与提醒”中修改。",
+      "previous": "已添加{{count}}从旧的“Wanted监视列表”中录入您的监视列表,该监视列表现已退役:{{entries}}。在设置 & QQ点和提醒中随时修改它们。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCalls.chip.label",
+      "english": "Hide calls",
+      "chinese": "隐藏呼号",
+      "previous": "隐藏呼叫",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCalls.chip.title",
+      "english": "Hide callsigns (or VP8*-style prefixes) from this pane — a display filter only; decoding, logging, alerts and the auto-responder are untouched",
+      "chinese": "从此面板隐藏指定呼号或 VP8* 形式的前缀；仅影响显示，不改变解码、日志记录、提醒或自动应答。",
+      "previous": "从此面板中隐藏调用符号( 或 VP8* 风格的前缀) —— 仅显示过滤器; 解码、 记录、 提醒和自动通讯器未受影响",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCalls.head",
+      "english": "Hide these callsigns",
+      "chinese": "隐藏以下呼号",
+      "previous": "隐藏这些调用符号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCalls.placeholder",
+      "english": "e.g. {{examples}}",
+      "chinese": "例如 {{examples}}",
+      "previous": "譬如说.{{examples}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCalls.note",
+      "english": "Space-separated. A trailing <code>*</code> is a prefix (\"VP8*\" hides every VP8). A view filter only — the stations you are working and those calling you always show. To stop your auto-CQ from answering a call, Alt-double-click it instead.",
+      "chinese": "用空格分隔。末尾的 <code>*</code> 表示前缀匹配，例如 VP8* 会隐藏所有以 VP8 开头的呼号。此设置仅影响显示；正在与本台通联或呼叫本台的电台始终显示。如需让自动 CQ 不再应答某个呼号，请按住 Alt 双击该呼号。",
+      "previous": "空间分离。 尾声<code>页:1</code>是前缀(\"VP8*\"隐藏每个VP8). 仅是一个视图过滤器——你正在工作的台站和那些打电话总是显示的台站. 为了阻止你的自动CQ接电话,Alt-double点击它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.chip.label",
+      "english": "Countries",
+      "chinese": "国家或地区",
+      "previous": "国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.chip.paused",
+      "english": "paused",
+      "chinese": "已暂停",
+      "previous": "暂停",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.chip.title",
+      "english": "Hide chosen countries from this pane (a display filter — decoding, logging and alerts are untouched)",
+      "chinese": "从此面板隐藏选定国家或地区；仅影响显示，不改变解码、日志记录或提醒。",
+      "previous": "从此窗格中隐藏选中的国家( 显示过滤器 —— 解码、 记录和提醒没有被激活 )",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.head",
+      "english": "Hide these countries",
+      "chinese": "隐藏以下国家或地区",
+      "previous": "隐藏这些国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.pause",
+      "english": "Pause (keep my ticks, show everything)",
+      "chinese": "暂停筛选（保留勾选，显示全部）",
+      "previous": "暂停(保持我的滴答,显示一切)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.other.head",
+      "english": "Other country…",
+      "chinese": "其他国家或地区…",
+      "previous": "其他国家...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.continents.head",
+      "english": "Hide whole continents",
+      "chinese": "隐藏整个大洲",
+      "previous": "隐藏整个大陆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.continent.na",
+      "english": "North America",
+      "chinese": "北美洲",
+      "previous": "北美洲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "北美洲"
+        }
+      ]
+    },
+    {
+      "id": "hideCountries.continent.sa",
+      "english": "South America",
+      "chinese": "南美洲",
+      "previous": "南美洲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "南美洲"
+        }
+      ]
+    },
+    {
+      "id": "hideCountries.continent.eu",
+      "english": "Europe",
+      "chinese": "欧洲",
+      "previous": "欧洲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "欧洲"
+        }
+      ]
+    },
+    {
+      "id": "hideCountries.continent.af",
+      "english": "Africa",
+      "chinese": "非洲",
+      "previous": "非洲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "非洲"
+        }
+      ]
+    },
+    {
+      "id": "hideCountries.continent.as",
+      "english": "Asia",
+      "chinese": "亚洲",
+      "previous": "亚洲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "亚洲"
+        }
+      ]
+    },
+    {
+      "id": "hideCountries.continent.oc",
+      "english": "Oceania",
+      "chinese": "大洋洲",
+      "previous": "大洋洲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "大洋洲"
+        }
+      ]
+    },
+    {
+      "id": "hideCountries.hiddenContinents::one",
+      "english": "{{count}} continent hidden",
+      "chinese": "已隐藏 {{count}} 个大洲",
+      "previous": "{{count}}隐藏大陆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.hiddenContinents::other",
+      "english": "{{count}} continents hidden",
+      "chinese": "已隐藏 {{count}} 个大洲",
+      "previous": "{{count}}隐藏大陆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.search.placeholder",
+      "english": "search all entities…",
+      "chinese": "搜索全部实体…",
+      "previous": "搜索所有实体...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.note",
+      "english": "A view filter only — decoding, logging and alerts are untouched. Stations calling you, the one you are working, and new entities or band slots still show.",
+      "chinese": "仅影响显示，不改变解码、日志记录或提醒。呼叫本台的电台、正在通联的电台，以及新实体或尚缺频段项目的目标仍会显示。",
+      "previous": "仅一个视图过滤器——解码,记录和提醒都未受影响. 电台打电话给你,你正在工作, 新的实体或乐队插槽仍然显示。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.hidden::one",
+      "english": "{{count}} country hidden",
+      "chinese": "已隐藏 {{count}} 个国家或地区",
+      "previous": "{{count}}隐藏的国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.hidden::other",
+      "english": "{{count}} countries hidden",
+      "chinese": "已隐藏 {{count}} 个国家或地区",
+      "previous": "{{count}}隐藏的国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.clear.label",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "hideCountries.clear.aria",
+      "english": "Clear country filter",
+      "chinese": "清除国家或地区筛选",
+      "previous": "清除国家过滤器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "hideCountries.clear.title",
+      "english": "Show every country again",
+      "chinese": "重新显示所有国家或地区",
+      "previous": "再次显示每个国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.title",
+      "english": "Coordinated QSY · Roam",
+      "chinese": "协同切频（QSY）· 漫游",
+      "previous": "坐标:QSY ^ Roam",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.subtitle",
+      "english": "move together off QRM & casual listeners",
+      "chinese": "两台同步切频，避开干扰及停留在原频率的普通监听者",
+      "previous": "关闭 QRM 临时收听器( R)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.disclaimer",
+      "english": "<b>Not private — announced in the clear.</b> Coordinated QSY steps you and one other station to a new channel together, with the move sent as plain text (FCC Part 97 forbids encryption / obscured meaning, and your callsign IDs every 10 min). It shakes a <em>casual</em> scanner parked on the old frequency — it does <em>not</em> hide you from anyone with a wideband receiver, who can follow. Use it for anti-QRM and modest obscurity, never for secrecy.",
+      "chinese": "<b>不具备私密性，切频信息以明文公告。</b>协同 QSY 让本台与另一电台一起切换到新信道，切频安排以明文发送（FCC Part 97 禁止加密或掩盖通信含义，并且每 10 分钟发送一次本台呼号标识）。这可以甩开停留在原频率上的<em>普通</em>扫描监听者，但<em>不能</em>阻止使用宽带接收机的人跟随监听。此功能用于避开干扰、减少随意监听，不可用于保密通信。",
+      "previous": "<b>不是私人的——在明确宣布。</b>协调了 QSY 步骤您和另一个站台到新频道, 以及作为纯文本发送的移动( FCC Part 97 禁止加密 / 模糊含义, 您的呼号ID 每 10 分钟 ) 。 它会摇动<em>临时</em>扫描仪停在旧频率上——确实<em>没有</em>把你藏起来 别让有宽频接收器的人跟踪你 用于反QRM和谦虚的模糊,永远不为秘密.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.enable.title",
+      "english": "Coordinated QSY",
+      "chinese": "协同切频（QSY）",
+      "previous": "坐标 QSY",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.enable.sub.on",
+      "english": "Enabled — separate from your normal Chat/QSO modes.",
+      "chinese": "已启用，与常规聊天／QSO 模式相互独立。",
+      "previous": "已启用 — 与正常聊天/ 分离QSO模式。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.enable.sub.off",
+      "english": "Off by default.",
+      "chinese": "默认关闭。",
+      "previous": "默认关闭。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.enable.on",
+      "english": "Enabled",
+      "chinese": "已启用",
+      "previous": "已启用",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.enable.off",
+      "english": "Enable",
+      "chinese": "启用",
+      "previous": "启用",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Astro",
+          "chinese": "启用"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "启用"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "启用"
+        }
+      ]
+    },
+    {
+      "id": "roam.partner.title",
+      "english": "Roaming partner",
+      "chinese": "协同切频伙伴",
+      "previous": "漫游伙伴",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.partner.line",
+      "english": "<b>{{partner}}</b> · you are the <b>{{role}}</b>",
+      "chinese": "<b>{{partner}}</b> · 本台角色：<b>{{role}}</b>",
+      "previous": "<b>{{partner}}</b>* 你是一个<b>{{role}}</b>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.partner.none",
+      "english": "Select a station in the roster — you move together with that peer.",
+      "chinese": "请在电台列表中选择一台电台，与其同步切频。",
+      "previous": "在名册中选择一个站点——你和那个对等点一起移动。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.role.unpaired",
+      "english": "unpaired",
+      "chinese": "未配对",
+      "previous": "未付费",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.channels.legend",
+      "english": "Channel set",
+      "chinese": "信道集合",
+      "previous": "频道集",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.channels.hint",
+      "english": "The initiator round-robins through these (skipping the current one). Pick at least two. Announced QSY is legal on every band.",
+      "chinese": "发起方依次轮换这些信道，并跳过当前信道。请至少选择两个。各频段均允许以明文公告方式进行 QSY。",
+      "previous": "启动者通过这些旋转( 切换当前一个) 。 至少选两个 宣布的QSY在每个乐队都是合法的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.channel.title",
+      "english": "{{label}} — {{freq}} MHz {{mode}}",
+      "chinese": "{{label}} — {{freq}} MHz {{mode}}",
+      "previous": "{{label}}. . . . . . .{{freq}} MHz {{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.cadence.legend",
+      "english": "Hop cadence",
+      "chinese": "切频间隔",
+      "previous": "跳跃节奏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.cadence.aria",
+      "english": "Hop cadence",
+      "chinese": "切频间隔",
+      "previous": "跳跃节奏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.cadence.hint",
+      "english": "How often the initiator announces a move. Conservative by default (never per-over) so it reads as a normal QSY.",
+      "chinese": "设置发起方每隔多久公告一次切频。默认采用较保守的间隔，不会每轮发射都切频，使其保持普通 QSY 的形式。",
+      "previous": "发起人多久宣布一次行动. 默认的保守(从不重复),所以它读作普通的QSY.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.cadence.option",
+      "english": "{{count}} overs",
+      "chinese": "{{count}} 轮发射",
+      "previous": "{{count}}超过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.controls.legend",
+      "english": "Controls",
+      "chinese": "操作",
+      "previous": "控件列",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "控件列"
+        }
+      ]
+    },
+    {
+      "id": "roam.moveNow.label",
+      "english": "Move now",
+      "chinese": "立即切频",
+      "previous": "快点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.moveNow.title",
+      "english": "Announce a move on your next over (initiator only)",
+      "chinese": "在本台下一轮发射时公告切频（仅发起方可用）",
+      "previous": "宣布下一步的动作( 只有启动者)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.pause.label",
+      "english": "Pause",
+      "chinese": "暂停",
+      "previous": "暂停",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.resume.label",
+      "english": "Resume",
+      "chinese": "继续",
+      "previous": "继续",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.pause.title",
+      "english": "Hold on the current channel",
+      "chinese": "保持当前信道",
+      "previous": "抓住当前频道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.stop.label",
+      "english": "Stop → home",
+      "chinese": "停止 → 起始信道",
+      "previous": "停下来 回家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.stop.title",
+      "english": "Stop and return to the home channel",
+      "chinese": "停止协同切频并返回起始信道",
+      "previous": "停车返回主频道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.failed.configure",
+      "english": "Could not update QSY set",
+      "chinese": "无法更新 QSY 信道集合",
+      "previous": "无法更新 QSY 集",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.failed.enable",
+      "english": "Could not toggle coordinated QSY",
+      "chinese": "无法切换协同 QSY 的启用状态",
+      "previous": "无法切换协调的 QSY",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.failed.moveNow",
+      "english": "Could not request a move",
+      "chinese": "无法请求切频",
+      "previous": "无法请求移动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.failed.pause",
+      "english": "Could not toggle pause",
+      "chinese": "无法切换暂停状态",
+      "previous": "无法切换暂停",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.failed.stop",
+      "english": "Could not stop coordinated QSY",
+      "chinese": "无法停止协同 QSY",
+      "previous": "无法停止协调的 QSY",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "roam.status.paused",
+      "english": "Paused · holding {{channel}}",
+      "chinese": "已暂停 · 保持在 {{channel}}",
+      "previous": "暂停 · 持有{{channel}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.lostSync",
+      "english": "Lost sync → returning to {{home}}",
+      "chinese": "同步丢失 → 正在返回 {{home}}",
+      "previous": "失去同步 ~ 返回到{{home}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.next",
+      "english": "Next: {{channel}}",
+      "chinese": "下一个信道：{{channel}}",
+      "previous": "下一个:{{channel}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.nextSlot",
+      "english": "Next: {{channel}} @ slot {{slot}}",
+      "chinese": "下一个信道：{{channel}}，时隙 {{slot}}",
+      "previous": "下一个:{{channel}}@ 时间档{{slot}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.auto",
+      "english": "Auto · on {{channel}} · hopping every {{count}} overs",
+      "chinese": "自动 · 当前 {{channel}} · 每 {{count}} 轮发射切频一次",
+      "previous": "自动 ・ 打开{{channel}}· 购物{{count}}超过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.following",
+      "english": "Following {{partner}} · on {{channel}}",
+      "chinese": "跟随 {{partner}} · 当前 {{channel}}",
+      "previous": "跟踪{{partner}}• 上{{channel}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.idle",
+      "english": "Select a station to roam with",
+      "chinese": "请选择一起切频的电台",
+      "previous": "选择要漫游的站点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.home",
+      "english": "home",
+      "chinese": "起始信道",
+      "previous": "家为",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.status.partner",
+      "english": "partner",
+      "chinese": "伙伴",
+      "previous": "合作伙伴",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.title",
+      "english": "Roam — coordinated QSY: you and your partner move channels together, announced in the clear (never private). Click to enable/disable.",
+      "chinese": "漫游 — 协同 QSY：本台与伙伴同步切换信道，切频信息以明文公告，不具备私密性。点击可启用或禁用。",
+      "previous": "Roam — 协调的QSY:你和你的搭档一起移动频道,在清晰(从不私下)中宣布. 点击可启用/ 禁用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.launch.on",
+      "english": "Roam on",
+      "chinese": "漫游已开启",
+      "previous": "打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.launch.on.status",
+      "english": "Roam on · {{status}}",
+      "chinese": "漫游已开启 · {{status}}",
+      "previous": "打开...{{status}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.launch.off",
+      "english": "Roam off",
+      "chinese": "漫游已关闭",
+      "previous": "滚开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.label",
+      "english": "Roam",
+      "chinese": "漫游",
+      "previous": "罗姆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.label.on",
+      "english": "Roam · on",
+      "chinese": "漫游 · 已开启",
+      "previous": "开始",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.label.status",
+      "english": "Roam · {{status}}",
+      "chinese": "漫游 · {{status}}",
+      "previous": "- 罗姆 -{{status}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.settings.label",
+      "english": "⚙ Roam settings",
+      "chinese": "⚙ 漫游设置",
+      "previous": "roam 设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.settings.title",
+      "english": "Roam settings — channel set, hop cadence, move/pause/stop",
+      "chinese": "漫游设置 — 信道集合、切频间隔、切频／暂停／停止",
+      "previous": "Roam 设置 - 频道设置、 hop cadence、 移动/暂停/停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roam.chip.settings.aria",
+      "english": "Roam settings",
+      "chinese": "漫游设置",
+      "previous": "Roam 设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.where",
+      "english": " — {{entity}}",
+      "chinese": " — {{entity}}",
+      "previous": ". . . . . . .{{entity}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.station",
+      "english": "station",
+      "chinese": "电台",
+      "previous": "车站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.watch",
+      "english": "⭐ Watch {{what}}: {{call}}{{where}}",
+      "chinese": "⭐ 关注目标 {{what}}：{{call}}{{where}}",
+      "previous": "观察{{what}}数字 :{{call}}{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.newDxcc",
+      "english": "🎯 NEW DXCC: {{call}}{{where}}",
+      "chinese": "🎯 新 DXCC 实体：{{call}}{{where}}",
+      "previous": "🎯新DXCC数字 :{{call}}{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.myCall",
+      "english": "📢 {{call}} is calling you",
+      "chinese": "📢 {{call}} 正在呼叫本台",
+      "previous": "📢{{call}}打电话给你",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.newGrid",
+      "english": "New grid: {{call}}{{where}}",
+      "chinese": "新网格：{{call}}{{where}}",
+      "previous": "新建网格 :{{call}}{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.rareGrid",
+      "english": "💎 {{tier}} grid{{grid}}: {{call}}{{where}}",
+      "chinese": "💎 {{tier}}网格{{grid}}：{{call}}{{where}}",
+      "previous": "💎{{tier}}网格{{grid}}数字 :{{call}}{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.tier.rare",
+      "english": "RARE",
+      "chinese": "稀有",
+      "previous": "区域",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.tier.ultraRare",
+      "english": "ULTRA-RARE",
+      "chinese": "极稀有",
+      "previous": "乌拉圭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.action.work",
+      "english": "Work",
+      "chinese": "通联",
+      "previous": "工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.action.answer",
+      "english": "Answer",
+      "chinese": "应答",
+      "previous": "应答",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.cq",
+      "english": "CQ from {{call}}{{where}}",
+      "chinese": "{{call}}{{where}} 正在呼叫 CQ",
+      "previous": "来自{{call}}{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.batch.decodes::one",
+      "english": "{{count}} new decode.",
+      "chinese": "新增 {{count}} 条解码结果。",
+      "previous": "{{count}}新解码器。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.batch.decodes::other",
+      "english": "{{count}} new decodes.",
+      "chinese": "新增 {{count}} 条解码结果。",
+      "previous": "{{count}}新解码器。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "alerts.batch.cq",
+      "english": " CQ from {{calls}}.",
+      "chinese": " {{calls}} 正在呼叫 CQ。",
+      "previous": "来自{{calls}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.pounce.legend",
+      "english": "Pounce — new-one alert",
+      "chinese": "即时追踪 — 新目标提醒",
+      "previous": "弹跳——新一号警报",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.pounce.note",
+      "english": "Interrupts you the INSTANT a needed station appears on the cluster or RBN, rather than waiting for the spot board to refresh. A loud tone plays whether or not Nexus is the window you are looking at, and a banner offers one-click Work. Off until you switch it on. How rare \"rare\" is depends on your own totals: if you are chasing your first hundred entities then almost every DX spot is a new one and this would never stop talking. Start with <em>New DXCC entity only</em> once your log is far enough along that a new one is genuinely an event. Each station alerts once per band and mode.",
+      "chinese": "集群或 RBN 一出现待通联目标就立即提醒，不必等待通报面板刷新。无论 Nexus 是否为当前窗口，都会播放响亮提示音，并显示可一键通联的横幅。默认关闭，需手动启用。“稀有”与否取决于本台已有的通联成果：如果还在积累最初的 100 个实体，几乎每条 DX 通报都是新目标，提醒可能响个不停。建议等日志积累到新实体确实少见时，再从<em>仅限新 DXCC 实体</em>开始使用。每个电台在每个频段和模式上只提醒一次。",
+      "previous": "干扰您 INSTANT 在集群或 RBN 上出现一个所需的站点, 而不是等待点板刷新 。 一个响亮的音调播放Nexus是否是您所看到的窗口,一个横幅提供一击Work. 直到你打开它。 难得的“稀有”取决于你自己的总数:如果你在追逐你的第一个100个实体,那么几乎每个DX点都是一个新的,这永远不会停止说话。 开始<em>新设DXCC仅指实体</em>一旦你的日志足够远了 新的就是真正的事件 每个车站每个带和模式都会发出一次警报.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.pounce.threshold.label",
+      "english": "Alert me for",
+      "chinese": "提醒目标",
+      "previous": "告发我",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.pounce.threshold.off",
+      "english": "Off (default)",
+      "chinese": "关闭（默认）",
+      "previous": "关闭( 默认)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.pounce.threshold.atno",
+      "english": "New DXCC entity only",
+      "chinese": "仅限新 DXCC 实体",
+      "previous": "新设DXCC仅指实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.pounce.threshold.atnoOrZone",
+      "english": "New entity or CQ zone",
+      "chinese": "新实体或 CQ 分区",
+      "previous": "新实体或CQ区",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.pounce.threshold.atnoZoneOrState",
+      "english": "New entity, zone, or US state",
+      "chinese": "新实体、分区或美国州",
+      "previous": "新实体、区域或美国州",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.legend",
+      "english": "Alerts",
+      "chinese": "提醒",
+      "previous": "警报",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "警报"
+        }
+      ]
+    },
+    {
+      "id": "settings.alerts.popups.label",
+      "english": "Pop-up notifications",
+      "chinese": "弹出通知",
+      "previous": "弹出通知",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.popups.hint",
+      "english": "The messages in the bottom-right corner. Turned off, confirmations such as Logged QSO and alerts such as a new DXCC, a station calling you, a band opening or space weather stop popping up. Sounds are not affected. Errors, notices about transmitting, the radio or the log, and any message with a button, such as Stop alarm, still pop up.",
+      "chinese": "控制右下角的弹出消息。关闭后，记录 QSO 成功等操作确认，以及新 DXCC 实体、电台呼叫本台、频段传播开通、空间天气等提醒不再弹出，声音不受影响。错误、有关发射／电台／日志的通知，以及带操作按钮的消息（例如“停止提醒”）仍会弹出。",
+      "previous": "右下角的讯息 已关闭, 日志等确认QSO和警告,如新的DXCC一个电台给你打电话 一个乐队的开场或者空间天气停止出现 声音没有受到影响。 错误,发送通知,收音机或日志,以及任何带有按钮的信件,如停止提醒,仍然会弹出.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.myCall.label",
+      "english": "My call",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.myCall.hint",
+      "english": "Beep + flash when someone directs a call at you.",
+      "chinese": "有电台定向呼叫本台时，播放提示音并闪烁。",
+      "previous": "当有人给你打电话时,铃声+闪光。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.confirmTier.label",
+      "english": "Confirmation opportunities",
+      "chinese": "确认机会",
+      "previous": "确认机会",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.confirmTier.hint",
+      "english": "Show worked-but-unconfirmed award slots — LoTW confirmation chances — on the Needed board and as chips on decodes. Turn off to chase only new contacts.",
+      "chinese": "在待通联面板和解码标签中显示已通联但尚未确认的奖项项目，即可能获得 LoTW 确认的目标。关闭后仅追踪新的通联目标。",
+      "previous": "显示工作但未获确认的奖项档位——LoTW证实机会——在需要的板上和作为芯片在解码上. 关机只追寻新的联系人.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.cq.label",
+      "english": "CQ calls",
+      "chinese": "CQ 呼叫",
+      "previous": "CQ电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.cq.hint",
+      "english": "Alert on any decoded CQ. Off by default — CQs are constant.",
+      "chinese": "解码出任意 CQ 呼叫时提醒。由于 CQ 呼叫很频繁，此项默认关闭。",
+      "previous": "通知任何解码的CQ 默认关闭——CQ是恒定的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.potaNewActivation.label",
+      "english": "New POTA activation",
+      "chinese": "新的 POTA 活动",
+      "previous": "新设POTA激活",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.potaNewActivation.hint",
+      "english": "Beep when a park is freshly spotted on the air (the map's Parks on the air layer). Off by default.",
+      "chinese": "新收到公园活动电台通报时播放提示音，对应地图的“公园通联活动”图层。默认关闭。",
+      "previous": "当一个公园在空中被新发现时鸣叫(地图的公园在空中层). 默认关闭。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.scope.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "settings.alerts.scope.hf",
+      "english": "HF only",
+      "chinese": "仅 HF",
+      "previous": "仅高频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.scope.vhf",
+      "english": "VHF+ (6 m and up)",
+      "chinese": "VHF+（6 米及更高频段）",
+      "previous": "甚高频+(6米及以上)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.scope.all",
+      "english": "All bands",
+      "chinese": "全部频段",
+      "previous": "全部频段",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.newAlerts.label",
+      "english": "New DXCC and grid alerts",
+      "chinese": "新 DXCC 实体与网格提醒",
+      "previous": "新设DXCC和网格提示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.newAlerts.hint",
+      "english": "The sound and the pop-up when you decode a new DXCC, a new grid or a rare grid 💎 on a band its menu allows. Off silences them and changes nothing else: the Needed boards and the NEW ONE and GRID icons keep following the three menus.",
+      "chinese": "在各菜单允许的频段解码出新 DXCC 实体、新网格或稀有网格 💎 时，播放声音并弹出提醒。关闭此项仅关闭这些声光提醒，其他行为不变：待通联面板及“新实体”“网格”图标仍遵循三个菜单的设置。",
+      "previous": "解码时的声音和弹出DXCC,新的网格或稀有网格 QQ在它的菜单允许。 关闭它们而改变其他任何事物: 需要的棋盘和新的 one 和 GRID 图标继续遵循三个菜单。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.dxcc.label",
+      "english": "New DXCC",
+      "chinese": "新 DXCC 实体",
+      "previous": "新DXCC",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "ColorHighlighting",
+          "chinese": "新DXCC"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "DecodeHighlightingModel",
+          "chinese": "新DXCC"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "新DXCC"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "新DXCC"
+        }
+      ]
+    },
+    {
+      "id": "settings.alerts.dxcc.aria",
+      "english": "New DXCC bands",
+      "chinese": "新 DXCC 实体适用频段",
+      "previous": "新设DXCC带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.dxcc.hint",
+      "english": "The bands where a new DXCC entity — a “new one” — counts: the Needed boards, the NEW ONE icon and its loud alert all follow this choice. Off takes NEW ONE off every board.",
+      "chinese": "选择在哪些频段将尚未通联的 DXCC 实体视为新实体。待通联面板、“新实体”图标及其响亮提醒均遵循此设置。选择“关闭”后，所有面板都不再显示“新实体”标记。",
+      "previous": "新的乐队DXCC实体——一个“新实体”——很重要:需要的板、新的一个图标及其响亮的警报都遵循这一选择。 每块板子上都有一个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.grid.label",
+      "english": "New grid",
+      "chinese": "新网格",
+      "previous": "新网格",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.grid.aria",
+      "english": "New grid bands",
+      "chinese": "新网格适用频段",
+      "previous": "新建网格带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.grid.hint",
+      "english": "The bands where a grid you haven't worked counts: the Needed boards, the GRID icon on the roster and the decode rows, and its quiet toast all follow this choice. Default VHF+ only — grid awards (VUCC/FFMA) start at 6 m; on HF nearly every decode is an unworked grid.",
+      "chinese": "选择在哪些频段将尚未通联的网格计为目标。待通联面板、电台列表及解码行上的“网格”图标，以及轻量弹出提醒均遵循此设置。默认仅 VHF+；网格奖项（VUCC/FFMA）从 6 米频段起算，而在 HF 上几乎每条解码结果都是尚未通联的网格。",
+      "previous": "你没有工作网格的乐队数: 需要的棋盘、名册上的GRID图标和解码行, 以及它安静的吐司都遵循这个选择。 默认甚高频+只——网格奖励(VUCC/FFMA)从6米开始;在HF上,几乎每个解码都是一个未工作的网格.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.rareGrid.label",
+      "english": "Rare grid 💎",
+      "chinese": "稀有网格 💎",
+      "previous": "稀有网格QQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.rareGrid.aria",
+      "english": "Rare grid bands",
+      "chinese": "稀有网格适用频段",
+      "previous": "稀有网格带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.rareGrid.hint",
+      "english": "The bands where a rare or water-only grid (rovers, maritime, DXpeditions) counts: the Needed boards, its GRID icon and the loud 💎 alert all follow this choice. Separate from plain grids, so silencing HF chatter keeps the gems.",
+      "chinese": "选择在哪些频段将稀有网格或纯海域网格（巡回操作、海上移动、DX 远征）计为目标。待通联面板、“网格”图标及响亮的 💎 提醒均遵循此设置。此项独立于普通网格设置，因此可关闭 HF 普通网格的频繁提醒，同时保留稀有目标提醒。",
+      "previous": "稀有或只带水的网格(旅行器、海洋、DXpeditions)的波段:需要的板、其GRID图标和响亮的QQ提醒都遵循这个选择。 与平原网格隔开,所以静音的HF聊天会保存宝石.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.geo.label",
+      "english": "Alert only about these continents",
+      "chinese": "仅提醒以下大洲的目标",
+      "previous": "只警告这些大陆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.geo.hint",
+      "english": "Leave every box clear to be alerted about the whole world — that is the default and what this panel has always done. Tick one or more and the new-one, new-grid and CQ alerts are kept to those continents. Someone calling YOU, and anything on your watch list, always alerts wherever they are.",
+      "chinese": "不勾选任何项时，默认对全球目标提醒，与此面板以往的行为相同。勾选一个或多个大洲后，新实体、新网格和 CQ 提醒仅限这些大洲。呼叫本台的电台及关注列表中的目标不受此限制，无论位于何处都会提醒。",
+      "previous": "让每个盒子都清晰地提醒大家注意整个世界——这就是默认和这个小组一贯做的事情。 选中一个或一个以上,新一个,新网格和CQ的警报会保存到这些大陆. 有人打电话给你, 以及你监视名单上的任何东西, 总是提醒无论他们在哪里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.geo.entities.label",
+      "english": "Add a country",
+      "chinese": "添加国家或地区",
+      "previous": "添加一个国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.geo.entities.placeholder",
+      "english": "type to search, e.g. France",
+      "chinese": "输入以搜索，例如 France",
+      "previous": "类型搜索,例如法国",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.geo.entities.aria",
+      "english": "Matching DXCC entities",
+      "chinese": "匹配的 DXCC 实体",
+      "previous": "匹配DXCC实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.geo.entities.hint",
+      "english": "Countries added here alert as well as the continents ticked above, so you can follow all of Europe plus Japan. Untick one to drop it. Names are the DXCC list’s own, so Germany appears as Fed. Rep. of Germany.",
+      "chinese": "这里添加的国家或地区与上方勾选的大洲均会触发提醒，例如可同时关注整个欧洲和日本。取消勾选即可移除。名称沿用 DXCC 实体列表，例如德国显示为 Fed. Rep. of Germany。",
+      "previous": "这里加入的国家以及上面的大陆, 你可以跟随所有欧洲加日本。 解脱一者. 名称是DXCC列表本身,所以德国作为联邦德国共和国出现。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.alerts.watchlist.label",
+      "english": "Watch list",
+      "chinese": "关注列表",
+      "previous": "观察列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.subtitle",
+      "english": "Hunt activators on the air now",
+      "chinese": "寻找当前正在操作的活动电台",
+      "previous": "猎杀者现在直播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.popOut.title",
+      "english": "Open the POTA/SOTA board in its own window (a POTA board beside a SOTA board)",
+      "chinese": "在独立窗口中打开 POTA/SOTA 面板，便于并排查看 POTA 和 SOTA 面板",
+      "previous": "打开 POTA/SOTA 在自己的窗口(a) POTA 旁边的板子 SOTA 董事会)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.popOut.label",
+      "english": "⧉ Pop out",
+      "chinese": "⧉ 独立窗口",
+      "previous": "弹出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.program.aria",
+      "english": "Program",
+      "chinese": "活动计划",
+      "previous": "程序",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.program.both",
+      "english": "Both",
+      "chinese": "两者",
+      "previous": "双声道",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "双声道"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "双声道"
+        }
+      ]
+    },
+    {
+      "id": "ota.programs.both",
+      "english": "POTA or SOTA",
+      "chinese": "POTA 或 SOTA",
+      "previous": "POTA或SOTA",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.banner",
+      "english": "Hunting <b>{{reference}}</b> · <b>{{call}}</b><note> — next logged QSO with this call gets the park tagged</note>",
+      "chinese": "追踪通联 <b>{{reference}}</b> · <b>{{call}}</b><note> — 下一条与此呼号的 QSO 记录将自动添加公园标签</note>",
+      "previous": "狩猎<b>{{reference}}</b>* 妇女<b>{{call}}</b><note>——下次登录QSO接到这个电话后 公园就会被贴上标签</note>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.clear",
+      "english": "Clear hunt target",
+      "chinese": "清除追踪通联目标",
+      "previous": "清除猎杀目标",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.cleared",
+      "english": "Hunt cleared",
+      "chinese": "已清除追踪通联目标",
+      "previous": "狩猎结束",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.clearFailed",
+      "english": "Could not clear hunt target",
+      "chinese": "无法清除追踪通联目标",
+      "previous": "无法清除猎物目标",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.setFailed",
+      "english": "Could not set hunt target for {{call}}",
+      "chinese": "无法将 {{call}} 设为追踪通联目标",
+      "previous": "无法设定狩猎目标{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.label",
+      "english": "HUNT",
+      "chinese": "追踪通联",
+      "previous": "狩猎",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.button.title",
+      "english": "Hunt {{call}} on {{reference}} — QSY to {{freq}} and tag next QSO",
+      "chinese": "追踪通联 {{reference}} 的 {{call}}；切换至 {{freq}}，并为下一条 QSO 添加标签",
+      "previous": "韩特{{call}}打开{{reference}}QSY改为{{freq}}下一个标签QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunt.button.aria",
+      "english": "Hunt {{call}}",
+      "chinese": "追踪通联 {{call}}",
+      "previous": "韩特{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.label",
+      "english": "I'm activating:",
+      "chinese": "本台开展活动：",
+      "previous": "我启动:",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.start",
+      "english": "Start",
+      "chinese": "开始",
+      "previous": "开始",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "开始"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "开始"
+        }
+      ]
+    },
+    {
+      "id": "ota.activation.started",
+      "english": "Activating {{program}} {{reference}} — QSOs will be park-tagged",
+      "chinese": "本台正在开展 {{program}} {{reference}} 活动，交信记录将自动添加公园标签",
+      "previous": "激活 {{program}} {{reference}} . . . . . . . QSOs 将会被标记为公园",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.startFailed",
+      "english": "Could not start activation",
+      "chinese": "无法开始活动",
+      "previous": "无法启动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.active",
+      "english": "📻 Activating <b>{{program}} {{reference}}</b><note> · {{count}} logged — QSOs get your park tagged</note>",
+      "chinese": "📻 本台正在开展 <b>{{program}} {{reference}}</b> 活动<note> · 已记录 {{count}} 条交信，记录中会自动添加本台公园标签</note>",
+      "previous": "启动 <b>{{program}} {{reference}}</b><note> * 妇女 {{count}} 登录 -- -- QSOs 把你的公园贴上标签</note>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.stop.label",
+      "english": "Stop",
+      "chinese": "结束",
+      "previous": "停下来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.stop.title",
+      "english": "End activation",
+      "chinese": "结束活动",
+      "previous": "结束激活",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.ended",
+      "english": "Activation ended",
+      "chinese": "活动已结束",
+      "previous": "激活结束",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.stopFailed",
+      "english": "Could not stop activation",
+      "chinese": "无法结束活动",
+      "previous": "无法停止激活",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.state.ask",
+      "english": "On a state line. Which state are you in?",
+      "chinese": "活动地点跨州界，本台实际位于哪个州？",
+      "previous": "在州线上 你在哪个州?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.state.mine",
+      "english": "Your state: {{state}}",
+      "chinese": "本台所在州：{{state}}",
+      "previous": "你的状态:{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.state.lotw",
+      "english": "Your contacts carry this state as MY_STATE. LoTW credits the state of the TQSL Station Location you sign with, so sign them with a location in this state.",
+      "chinese": "交信记录会将此州写入 MY_STATE。LoTW 按签名所用的 TQSL 电台地点配置（Station Location）认可州归属，因此请使用位于该州的地点配置签名。",
+      "previous": "您的联系人将此状态作为 My STATE 。LoTW记入您所签名的 TQSL 站点状态, 因此在此状态下签名 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.activation.state.failed",
+      "english": "Could not set your state",
+      "chinese": "无法设置本台所在州",
+      "previous": "无法设置状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.button",
+      "english": "Spot me",
+      "chinese": "发布本台通报",
+      "previous": "盯着我",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.confirm.title",
+      "english": "Spot yourself on pota.app and the DX cluster?",
+      "chinese": "向 pota.app 和 DX 集群通报本台？",
+      "previous": "注意Pata.app和DX组?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.confirm.body",
+      "english": "{{reference}} on {{freq}} MHz, from your own call. Everyone on pota.app and the DX cluster sees it.",
+      "chinese": "以本台呼号通报 {{reference}}，频率为 {{freq}} MHz。pota.app 和 DX 集群上的所有人都能看到。",
+      "previous": "{{reference}}打开{{freq}} MHz从你自己的电话。 每个人在pana.app和DX集群看到它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.confirm.post",
+      "english": "Post spot",
+      "chinese": "发布通报",
+      "previous": "邮点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.both",
+      "english": "Spotted on pota.app and the DX cluster",
+      "chinese": "已向 pota.app 和 DX 集群发布通报",
+      "previous": "在 pana.app 和 DX 集群上出现",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.pota.posted",
+      "english": "Spotted on pota.app",
+      "chinese": "已向 pota.app 发布通报",
+      "previous": "在pana.app上出现",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.pota.loginRequired",
+      "english": "pota.app refused (login now required), so Nexus won’t post there again until it restarts",
+      "chinese": "pota.app 拒绝了通报（现已要求登录）；重启 Nexus 前不会再次向该站发布。",
+      "previous": "pana.app拒绝了(现在需要登入),因此Nexus在重启之前不会再发布到那里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.pota.failed",
+      "english": "pota.app didn’t take the spot. Check the internet connection and try again.",
+      "chinese": "pota.app 未接受此次通报，请检查网络连接后重试。",
+      "previous": "Pana. 检查一下网络连接 再试一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.pota.throttled",
+      "english": "Not sent to pota.app again: it already has this spot from the last minute",
+      "chinese": "未重复发送至 pota.app：过去一分钟内已发送过相同通报",
+      "previous": "不再发送到 pana. app : 从最后一刻起它已经有这个位置了 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.pota.notPark",
+      "english": "Not sent to pota.app: it only takes park activations",
+      "chinese": "未发送至 pota.app：该站仅接受公园活动通报",
+      "previous": "未发送到 pana. app : 它只需要公园激活",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.pota.unknownMode",
+      "english": "Not sent to pota.app: it doesn’t list the mode you’re on",
+      "chinese": "未发送至 pota.app：该站不支持本台当前模式",
+      "previous": "未发送到 pana. app : 它没有列出您使用的模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.pota.invalid",
+      "english": "Not sent to pota.app: check your callsign, park reference and frequency",
+      "chinese": "未发送至 pota.app：请检查本台呼号、公园参考编号和频率",
+      "previous": "未发送到 pana. app : 请检查您的呼号、 公园引用和频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.cluster.queued",
+      "english": "Spotted on the DX cluster",
+      "chinese": "已向 DX 集群发布通报",
+      "previous": "对 DX 组进行了监视",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.cluster.unavailable",
+      "english": "Not spotted on the DX cluster: none is connected",
+      "chinese": "未向 DX 集群发布通报：尚未连接任何集群",
+      "previous": "DX 集群上未发现: 无连接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.cluster.failed",
+      "english": "The DX cluster spot didn’t go out",
+      "chinese": "DX 集群通报未能发出",
+      "previous": "DX 集群点没有出局",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.cluster.throttled",
+      "english": "Not sent to the DX cluster again: it already has this spot from the last minute",
+      "chinese": "未重复发送至 DX 集群：过去一分钟内已发送过相同通报",
+      "previous": "不再发送到 DX 集群 : 它已经从最后一刻开始有这个位置 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

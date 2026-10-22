@@ -1,0 +1,1666 @@
+{
+  "batch": 10,
+  "range": [
+    1801,
+    2000
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 152,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 5,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/MapView.tsx",
+    "ui/src/components/StreetDownloadSheet.tsx",
+    "ui/src/types.ts",
+    "crates/propagation/src/engine.rs"
+  ],
+  "rows": [
+    {
+      "id": "map.street.noWebgl2",
+      "english": "The street map needs WebGL2, which this computer's graphics cannot provide.",
+      "chinese": "街道地图需要 WebGL2，但本机显卡不支持。",
+      "previous": "街道地图需要WebGL2,这台计算机的图形无法提供.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.paused",
+      "english": "Street map paused",
+      "chinese": "街道地图已暂停",
+      "previous": "街道地图已暂停",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.reload",
+      "english": "Reload",
+      "chinese": "重新加载",
+      "previous": "重新加载",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.unreadable",
+      "english": "This street map could not be read.",
+      "chinese": "无法读取此街道地图。",
+      "previous": "此街道地图无法读取 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.worldScale",
+      "english": "Drawn at the scale of the planet: no detail at street zoom",
+      "chinese": "此地图按全球尺度绘制，放大至街道级别时没有更多细节",
+      "previous": "按地球尺度绘制: 在街道缩放时没有细节",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.street.label",
+      "english": "Street",
+      "chinese": "街道",
+      "previous": "街道",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.street.title",
+      "english": "A street-level map of your area, downloaded once and kept on this computer",
+      "chinese": "本地区的街道级地图，下载一次即可保存在本机使用",
+      "previous": "您所在区域街道的地图, 下载一次并保存在这个计算机上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.street.download",
+      "english": "Street: download a street map of your area first",
+      "chinese": "街道：请先下载本地区的街道地图",
+      "previous": "街道: 先下载您所在区域的街道地图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.chip",
+      "english": "{{pct}}%",
+      "chinese": "{{pct}}%",
+      "previous": "{{pct}}百分比(%)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.standIn.noPack",
+      "english": "No street map is downloaded: showing Flat",
+      "chinese": "尚未下载街道地图，当前显示平面地图",
+      "previous": "没有下载街道地图:显示平面",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.standIn.noWebgl2",
+      "english": "This computer cannot draw the street map: showing Flat",
+      "chinese": "本机无法绘制街道地图，当前显示平面地图",
+      "previous": "此计算机无法绘制街道地图: 显示平面",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.standIn.hidden",
+      "english": "The street map is not available here: showing Flat",
+      "chinese": "此处无法使用街道地图，当前显示平面地图",
+      "previous": "这里没有街道地图: 显示平面",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.title",
+      "english": "Download a street map",
+      "chinese": "下载街道地图",
+      "previous": "下载街道地图",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.desc",
+      "english": "A street-level map of one area, kept on this computer. Nothing is downloaded until you press Download.",
+      "chinese": "下载一个区域的街道级地图并保存在本机。只有点击“下载”后才会开始下载。",
+      "previous": "一个区域的街道地图,保存在这个电脑上。 在您按下下载前, 没有下载 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.where",
+      "english": "Where",
+      "chinese": "下载区域",
+      "previous": "何处",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.where.station",
+      "english": "Around my station",
+      "chinese": "本台周边",
+      "previous": "在我车站附近",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.where.centre",
+      "english": "Around the map's centre",
+      "chinese": "地图中心周边",
+      "previous": "在地图中心周围",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.where.noGrid",
+      "english": "Set your grid square in Settings ▸ Station to download around your station.",
+      "chinese": "请先在“设置 ▸ 电台”中填写本台网格定位，才能下载本台周边的地图。",
+      "previous": "设置您的网格方块在 Sets QQ 站, 以下载您的站周围 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.size",
+      "english": "How big",
+      "chinese": "区域大小",
+      "previous": "这么大",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.size.hint",
+      "english": "A square this far across.",
+      "chinese": "下载区域为正方形，所选距离为其边长。",
+      "previous": "这么远的广场",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.detail",
+      "english": "Detail",
+      "chinese": "详细程度",
+      "previous": "细节",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.detail.streets",
+      "english": "All streets",
+      "chinese": "所有街道",
+      "previous": "所有街道",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.detail.roads",
+      "english": "Main roads",
+      "chinese": "主要道路",
+      "previous": "主要道路",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.measure.running",
+      "english": "Measuring the exact size…",
+      "chinese": "正在计算准确的下载大小…",
+      "previous": "测量精确的大小...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.measure.size",
+      "english": "Download: {{size}}",
+      "chinese": "下载大小：{{size}}",
+      "previous": "下载 :{{size}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.measure.sizeAssets",
+      "english": "Download: {{size}}, plus {{assets}} of fonts and icons, once",
+      "chinese": "下载大小：{{size}}，另需一次性下载 {{assets}} 的字体和图标",
+      "previous": "下载 :{{size}}附加时{{assets}}字体和图标,一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.measure.free",
+      "english": "{{free}} free on this computer",
+      "chinese": "本机可用空间：{{free}}",
+      "previous": "{{free}}免费使用此计算机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.measure.resume",
+      "english": "{{done}} is already downloaded, and the download resumes from there.",
+      "chinese": "已下载 {{done}}，将从断点继续下载。",
+      "previous": "{{done}}已下载,然后从那里恢复下载。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.measure.installed",
+      "english": "This map is already on this computer.",
+      "chinese": "本机已保存此地图。",
+      "previous": "这张地图已经在电脑上了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.measure.noSpace",
+      "english": "Not enough free space: this needs {{need}} free, twice the download, and {{free}} is free.",
+      "chinese": "可用空间不足：需要 {{need}}（下载大小的两倍），当前可用 {{free}}。",
+      "previous": "没有足够的空闲空间: 这需要{{need}}免费,下载的两倍,和{{free}}是免费的。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.credit",
+      "english": "<osm>{{osm}}</osm> contributors. The map data is under the Open Database Licence (ODbL).",
+      "chinese": "<osm>{{osm}}</osm> 贡献者。地图数据采用开放数据库许可证（ODbL）。",
+      "previous": "<osm>{{osm}}</osm>贡献者。 地图数据在开放数据库许可证(ODbL)下.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.download",
+      "english": "Download",
+      "chinese": "下载",
+      "previous": "下载",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "map.street.sheet.close",
+      "english": "Close",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "关闭"
+        }
+      ]
+    },
+    {
+      "id": "map.street.sheet.stop",
+      "english": "Cancel download",
+      "chinese": "取消下载",
+      "previous": "取消下载",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.retry",
+      "english": "Retry",
+      "chinese": "重试",
+      "previous": "重试",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.resume",
+      "english": "Resume",
+      "chinese": "继续",
+      "previous": "继续",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.discard",
+      "english": "Discard",
+      "chinese": "放弃",
+      "previous": "放弃",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "丢弃"
+        }
+      ]
+    },
+    {
+      "id": "map.street.sheet.unfinished",
+      "english": "An unfinished download: {{name}}, {{done}} of {{total}}.",
+      "chinese": "未完成的下载：{{name}}，已下载 {{done}} / {{total}}。",
+      "previous": "未完成下载 :{{name}}, (中文).{{done}}页:1{{total}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.progress.aria",
+      "english": "Street map download",
+      "chinese": "街道地图下载",
+      "previous": "街道地图下载",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.running.starting",
+      "english": "Starting…",
+      "chinese": "正在启动…",
+      "previous": "正在启动…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.running.assets",
+      "english": "Fonts and icons: {{done}} of {{total}}",
+      "chinese": "字体和图标：{{done}} / {{total}}",
+      "previous": "字体和图标 :{{done}}页:1{{total}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.running.tiles",
+      "english": "{{done}} of {{total}}",
+      "chinese": "{{done}} / {{total}}",
+      "previous": "{{done}}页:1{{total}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.running.tilesEta",
+      "english": "{{done}} of {{total}}, {{speed}} a second, about {{mins}} min left",
+      "chinese": "{{done}} / {{total}}，每秒 {{speed}}，约剩 {{mins}} 分钟",
+      "previous": "{{done}}页:1{{total}}, (中文).{{speed}}一秒钟左右{{mins}}左边的分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.running.retrying",
+      "english": "The connection dropped. Trying again in {{secs}} s (attempt {{n}}).",
+      "chinese": "连接已中断，将在 {{secs}} 秒后重试（第 {{n}} 次尝试）。",
+      "previous": "连接下降。 再来一次{{secs}}s(尝试){{n}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.running.verifying",
+      "english": "Checking the map…",
+      "chinese": "正在校验地图…",
+      "previous": "正在检查地图...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.running.background",
+      "english": "You can close this: the download carries on, and the map picker shows how far it has got.",
+      "chinese": "可以关闭此窗口，下载将在后台继续。地图选择器会显示下载进度。",
+      "previous": "您可以关闭它: 下载继续, 地图采集器显示它有多远 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.sheet.stopped",
+      "english": "The download stopped: {{reason}}",
+      "chinese": "下载已停止：{{reason}}",
+      "previous": "下载停止 :{{reason}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.invalidArea",
+      "english": "That area cannot be cut from the map.",
+      "chinese": "无法从地图中裁出所选区域。",
+      "previous": "该地区不能从地图上切割。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.badRequest",
+      "english": "Nexus made a request the street map does not accept. Please report this.",
+      "chinese": "Nexus 发出的请求不被街道地图服务接受，请反馈此问题。",
+      "previous": "Nexus提出了街道地图不接受的请求. 请报此.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.unknownPack",
+      "english": "That street map is not on this computer.",
+      "chinese": "本机没有此街道地图。",
+      "previous": "这条街地图不在电脑上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.notFound",
+      "english": "A file the street map needs is missing.",
+      "chinese": "缺少街道地图所需的文件 。",
+      "previous": "缺少街道地图所需的文件 。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.busy",
+      "english": "Another street map is downloading. Wait for it, or cancel it.",
+      "chinese": "另一个街道地图正在下载，请等待其完成或先取消下载。",
+      "previous": "另一条街道地图正在下载. 等待它,或取消它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.diskSpace",
+      "english": "There is not enough free space on this computer.",
+      "chinese": "本机可用存储空间不足。",
+      "previous": "这台电脑没有足够的空闲空间。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.network",
+      "english": "The street map host could not be reached. Check the internet connection.",
+      "chinese": "无法连接街道地图服务器，请检查网络连接。",
+      "previous": "无法到达街道地图主机 。 检查一下互联网连接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.server",
+      "english": "The street map host answered with an error.",
+      "chinese": "街道地图服务器返回了错误。",
+      "previous": "街道地图主机答错.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.paused",
+      "english": "The connection kept failing, so the download paused.",
+      "chinese": "连接反复失败，下载已暂停。",
+      "previous": "连接持续失败, 所以下载暂停 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.cancelled",
+      "english": "The download was cancelled.",
+      "chinese": "下载已取消。",
+      "previous": "下载被取消.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.buildGone",
+      "english": "The map data was updated on the host during the download. Download again to get the new one.",
+      "chinese": "下载期间，服务器上的地图数据已更新。请重新下载以获取新版。",
+      "previous": "地图数据在下载期间在主机上更新. 再次下载以获取新版本 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.rangeIgnored",
+      "english": "Something between this computer and the host sent the whole map file instead of the part asked for (a proxy?), so the download stopped.",
+      "chinese": "本机与服务器之间的某个环节（可能是代理）返回了整个地图文件，而非请求的部分，因此下载已停止。",
+      "previous": "在这个计算机和主机之间有些东西发送了整个地图文件而不是要求的部分(一个代理文件?),所以下载停止了.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.invalidManifest",
+      "english": "The street map host's index could not be read.",
+      "chinese": "无法读取街道地图服务器的索引。",
+      "previous": "无法读取街道地图主机的索引 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.invalidArchive",
+      "english": "A street map file failed its check.",
+      "chinese": "街道地图文件未通过校验。",
+      "previous": "街道地图文件检查失败 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.error.io",
+      "english": "A file on this computer could not be read or written.",
+      "chinese": "无法读取或写入本机文件。",
+      "previous": "此计算机上的文件无法读取或写入 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.label",
+      "english": "Street maps",
+      "chinese": "街道地图",
+      "previous": "街道地图",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.none",
+      "english": "No street map is downloaded yet.",
+      "chinese": "尚未下载街道地图。",
+      "previous": "尚未下载街道地图 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.pack",
+      "english": "{{detail}}, {{size}}, map data of {{date}}",
+      "chinese": "{{detail}}，{{size}}，地图数据日期：{{date}}",
+      "previous": "{{detail}}, (中文).{{size}},地图数据{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.remove",
+      "english": "Remove",
+      "chinese": "移除",
+      "previous": "移除",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.remove.title",
+      "english": "Remove the street map {{name}}?",
+      "chinese": "删除街道地图 {{name}}？",
+      "previous": "删除街道地图{{name}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.remove.body",
+      "english": "This frees {{size}}. The map choice stays, and Street offers a download again.",
+      "chinese": "将释放 {{size}} 空间。地图视图选项会保留，再次选择“街道”时可重新下载。",
+      "previous": "这个是免费的{{size}}. 地图选择保留,街再次提供下载。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.remove.confirm",
+      "english": "Remove street map",
+      "chinese": "删除街道地图",
+      "previous": "删除街道地图",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.removed",
+      "english": "Removed {{name}}: {{size}} freed.",
+      "chinese": "已删除 {{name}}，释放了 {{size}} 空间。",
+      "previous": "删除{{name}}数字 :{{size}}解脱.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.updates.check",
+      "english": "Check for updates",
+      "chinese": "检查更新",
+      "previous": "检查更新",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.updates.checking",
+      "english": "Checking…",
+      "chinese": "正在检查…",
+      "previous": "正在检查…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.updates.none",
+      "english": "Every street map is up to date.",
+      "chinese": "所有街道地图均为最新版本。",
+      "previous": "每条街道地图都是最新的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.update",
+      "english": "Update to {{date}}",
+      "chinese": "更新至 {{date}} 版",
+      "previous": "更新至{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.updated",
+      "english": "Updated {{name}} to map data of {{date}}.",
+      "chinese": "已将 {{name}} 更新为 {{date}} 的地图数据。",
+      "previous": "更新{{name}}以映射{{date}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.another",
+      "english": "Download another area",
+      "chinese": "下载另一个区域",
+      "previous": "下载另一个区域",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.download",
+      "english": "Download a street map",
+      "chinese": "下载街道地图",
+      "previous": "下载街道地图",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.downloading",
+      "english": "Downloading {{name}}: {{pct}}%",
+      "chinese": "正在下载 {{name}}：{{pct}}%",
+      "previous": "下载{{name}}数字 :{{pct}}百分比(%)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.folder",
+      "english": "Kept in <path>{{folder}}</path>, outside your data folder. Uninstalling Nexus leaves it: delete it by hand to free the space.",
+      "chinese": "保存在数据文件夹之外的 <path>{{folder}}</path>。卸载 Nexus 后这些文件仍会保留，需要手动删除才能释放空间。",
+      "previous": "固定在<path>{{folder}}</path>,位于数据文件夹外。 解禁Nexus留下它:用手删除以释放空间.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.bench.install",
+      "english": "Install a street map file…",
+      "chinese": "安装街道地图文件…",
+      "previous": "安装街道地图文件...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.bench.hint",
+      "english": "Bench only (NEXUS_STREET_MAP=1): a .pmtiles map file, or the fonts and icons archive (.tar.gz).",
+      "chinese": "仅供开发调试（NEXUS_STREET_MAP=1）：可安装 .pmtiles 地图文件，或字体和图标压缩包（.tar.gz）。",
+      "previous": "只列(NEXUS STREET MAP=1):一个pmtiles映射文件,或字体和图标存档(.tar.gz).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.bench.installed.pack",
+      "english": "Installed {{name}}.",
+      "chinese": "已安装 {{name}}。",
+      "previous": "已安装{{name}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.streetMaps.bench.installed.assets",
+      "english": "Installed the fonts and icons.",
+      "chinese": "已安装字体和图标。",
+      "previous": "安装了字体和图标。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.zoom.aria",
+      "english": "Zoom",
+      "chinese": "缩放",
+      "previous": "缩放",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.zoom.in",
+      "english": "Zoom in",
+      "chinese": "放大",
+      "previous": "放大",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.zoom.out",
+      "english": "Zoom out",
+      "chinese": "缩小",
+      "previous": "缩小",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.colorBy.aria",
+      "english": "Color spots by",
+      "chinese": "通报点着色依据",
+      "previous": "颜色点由",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.colorBy.need.label",
+      "english": "Need",
+      "chinese": "通联需求",
+      "previous": "需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.colorBy.need.title",
+      "english": "Color spots by what you still need",
+      "chinese": "根据尚缺的通联项目为通报点着色",
+      "previous": "颜色点, 以您仍然需要的为单位",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.colorBy.snr.label",
+      "english": "Signal",
+      "chinese": "信号",
+      "previous": "信号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.colorBy.snr.title",
+      "english": "Color spots by signal strength",
+      "chinese": "按信号强度为通报点着色",
+      "previous": "按信号强度排列的颜色",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.prov.live",
+      "english": "LIVE",
+      "chinese": "实时",
+      "previous": "活着",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.prov.partial",
+      "english": "PARTIAL",
+      "chinese": "部分实时",
+      "previous": "部分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.prov.cached",
+      "english": "CACHED",
+      "chinese": "缓存",
+      "previous": "已获得",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.prov.none",
+      "english": "NO LIVE DATA",
+      "chinese": "无实时数据",
+      "previous": "无生活数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.reset.label",
+      "english": "Reset",
+      "chinese": "重置",
+      "previous": "重置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "重置"
+        }
+      ]
+    },
+    {
+      "id": "map.reset.title",
+      "english": "Reset view + layers",
+      "chinese": "重置视图和图层",
+      "previous": "重置视图 + 层",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.full.enter.label",
+      "english": "Full screen",
+      "chinese": "全屏",
+      "previous": "全屏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.full.enter.title",
+      "english": "Fill the window with the map — hide the panels",
+      "chinese": "让地图铺满窗口并隐藏其他面板",
+      "previous": "用地图填充窗口——隐藏面板",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.full.exit.label",
+      "english": "Exit full screen",
+      "chinese": "退出全屏",
+      "previous": "退出全屏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.full.exit.title",
+      "english": "Bring the panels back (Esc)",
+      "chinese": "恢复显示其他面板（Esc）",
+      "previous": "把面板拿回来(埃斯科)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.path.aria",
+      "english": "Path",
+      "chinese": "传播路径",
+      "previous": "路径",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.path.short.title",
+      "english": "Short path",
+      "chinese": "短路径传播",
+      "previous": "短路径",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.path.long.title",
+      "english": "Long path",
+      "chinese": "长路径传播",
+      "previous": "长路径",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.path.figure",
+      "english": "{{brg}}° · {{dist}}",
+      "chinese": "{{brg}}° · {{dist}}",
+      "previous": "{{brg}}° ・{{dist}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.emptyHint",
+      "english": "No located stations yet — decoded stations with a grid appear here, centered on {{grid}}, colored by what you still need.",
+      "chinese": "尚无可定位的电台。解码结果中带网格定位的电台会显示在这里；地图以 {{grid}} 为中心，并根据尚缺的通联项目着色。",
+      "previous": "还没有定位的车站——有网格的解码车站在这里出现,以{{grid}}颜色的你还需要什么。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.sats.allHidden",
+      "english": "None of your ★ birds are in the current elements — the ★ filter is hiding all {{count}} satellites (Layers ▸ Satellites ▸ All).",
+      "chinese": "当前轨道根数中没有你标记 ★ 的卫星，★ 筛选因此隐藏了全部 {{count}} 颗卫星。可在“图层 ▸ 卫星 ▸ 全部”中切换。",
+      "previous": "你们的鸟类没有一个在目前的元素中,{{count}}卫星(Layers QQ卫星)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.sats.filter.aria",
+      "english": "Filter satellites to ★ birds",
+      "chinese": "仅显示标记 ★ 的卫星",
+      "previous": "过滤卫星到...鸟类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.sats.filter.on.title",
+      "english": "Showing your ★ birds (Passes pane + globe follow) — click to show all satellites",
+      "chinese": "正在显示标记 ★ 的卫星（与过境面板及地球视图同步）；点击可显示全部卫星。",
+      "previous": "显示您的鸟类( Passes pane + global follow) — 点击显示所有卫星",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.sats.filter.off.title",
+      "english": "Showing all satellites — click to show only your ★ birds (Passes pane + globe follow)",
+      "chinese": "正在显示全部卫星；点击可仅显示标记 ★ 的卫星（与过境面板及地球视图同步）。",
+      "previous": "显示所有卫星——点击只显示您的鸟类( Passes pane + global follow)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.sats.filter.none.title",
+      "english": "No ★ birds yet, so this shows the satellites you can work (linear, FM, digital), not the beacon-only ones (globe follows) — click to show all satellites",
+      "chinese": "尚未标记 ★ 卫星，因此当前仅显示可用于交信的卫星（线性转发器、FM、数字模式），不含仅发送信标的卫星；地球视图同步显示。点击可显示全部卫星。",
+      "previous": "尚未发现鸟类,因此显示您可以工作的卫星(线性、调频、数字),而不是只显示信标的卫星(globe)——点击显示所有卫星",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.sats.filter.all",
+      "english": "All",
+      "chinese": "全部",
+      "previous": "全部",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "IARURegions",
+          "chinese": "全部"
+        }
+      ]
+    },
+    {
+      "id": "map.pca.chip",
+      "english": "☢ Proton event · S{{scale}} · polar caps absorbing ~{{db}} dB @30 MHz (day) — high-lat paths degraded",
+      "chinese": "☢ 质子事件 · S{{scale}} · 极盖区吸收约 {{db}} dB（30 MHz，白天）— 高纬度传播路径受损",
+      "previous": "质子活动 · S{{scale}}* 极顶吸收~{{db}}dB @ 30 (韩语)MHz(日)——高纬度路径退化.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.chip",
+      "english": "☀️ {{cls}} flare · R{{r}} · HF ≤{{haf}} MHz absorbed on dayside",
+      "chinese": "☀️ {{cls}} 级耀斑 · R{{r}} · 日照区 ≤{{haf}} MHz 的 HF 信号受到吸收",
+      "previous": "☀️{{cls}}照明弹-R{{r}}• 高频{{haf}} MHz日间吸收",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.phase.rising",
+      "english": " · rising",
+      "chinese": " · 正在增强",
+      "previous": "不断上升;",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.phase.recovering",
+      "english": " · recovering",
+      "chinese": " · 正在恢复",
+      "previous": "恢复",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.phase.recoveringIn",
+      "english": " · recovering (~{{mins}} min)",
+      "chinese": " · 正在恢复（约 {{mins}} 分钟）",
+      "previous": "恢复(~){{mins}}分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.phase.fade",
+      "english": " · fade (~{{mins}} min)",
+      "chinese": " · 衰减时间约 {{mins}} 分钟",
+      "previous": "· 消失(~){{mins}}分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.phase.preview",
+      "english": " · PREVIEW",
+      "chinese": " · 模拟预览",
+      "previous": "· 序言",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.preview.title",
+      "english": "Simulate an X2 flare on the map for 60 s — visual preview only (no alerts). The layer otherwise draws nothing until a real M-class flare.",
+      "chinese": "在地图上模拟一次 X2 级耀斑，持续 60 秒；仅供效果预览，不触发警报。正常情况下，只有实际出现 M 级或更强耀斑时，此图层才会显示内容。",
+      "previous": "模拟地图上60s的X2耀斑——只进行视觉预览(无警报). 在真正的M级照明弹之前 层层没有画出来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.preview.stop",
+      "english": "■ stop",
+      "chinese": "■ 停止",
+      "previous": "{\\fn华文楷体\\fs16\\1cHE0E0E0}停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.flare.preview.start",
+      "english": "☀ preview",
+      "chinese": "☀ 预览",
+      "previous": "QQ 预览",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layers.head",
+      "english": "Layers",
+      "chinese": "图层",
+      "previous": "图层",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layers.toggle.title",
+      "english": "Show or hide the Layers panel",
+      "chinese": "显示或隐藏图层面板",
+      "previous": "显示或隐藏图层面板",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layers.collapse",
+      "english": "Collapse Layers",
+      "chinese": "折叠图层",
+      "previous": "折叠图层",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layers.expand.title",
+      "english": "Show the Layers panel",
+      "chinese": "显示图层面板",
+      "previous": "显示图层面板",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.opacity.aria",
+      "english": "{{layer}} opacity",
+      "chinese": "{{layer}}不透明度",
+      "previous": "{{layer}}透明度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.daynight.label",
+      "english": "Day / night (greyline)",
+      "chinese": "昼夜分界（灰线）",
+      "previous": "日/夜( 灰线)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.sunMoon.label",
+      "english": "Sun and moon",
+      "chinese": "太阳与月亮",
+      "previous": "太阳与月亮",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.relief.label",
+      "english": "Relief (World view)",
+      "chinese": "地形晕渲（世界地图）",
+      "previous": "救济(世界观)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.muf.label",
+      "english": "Ionosonde MUF",
+      "chinese": "电离层测高仪 MUF",
+      "previous": "离子体聚氨酯",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.aurora.label",
+      "english": "Aurora oval",
+      "chinese": "极光椭圆带",
+      "previous": "奥罗拉·奥瓦尔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.flare.label",
+      "english": "Flare blackout (D-RAP)",
+      "chinese": "耀斑导致的短波中断（D-RAP）",
+      "previous": "火焰断电( D- RAP)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.pca.label",
+      "english": "Proton polar cap (PCA)",
+      "chinese": "质子事件极盖吸收（PCA）",
+      "previous": "质子极顶( PCA)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.coast.label",
+      "english": "Coastlines",
+      "chinese": "海岸线",
+      "previous": "海岸线",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.states.label",
+      "english": "US states",
+      "chinese": "美国各州",
+      "previous": "美国各州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.grid.label",
+      "english": "Grid (20°×10°)",
+      "chinese": "网格（20°×10°）",
+      "previous": "网格( 20°×10°)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.gridLabels.label",
+      "english": "Grid labels (AA…RR)",
+      "chinese": "网格标识（AA…RR）",
+      "previous": "网格标签( AA... RR)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.cqzones.label",
+      "english": "CQ zones",
+      "chinese": "CQ 分区",
+      "previous": "CQ 分区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.coverage.label",
+      "english": "My coverage (worked)",
+      "chinese": "本台已通联区域",
+      "previous": "我的报道(工作)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.sats.label",
+      "english": "Satellites (amateur)",
+      "chinese": "业余无线电卫星",
+      "previous": "卫星(业余)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.aprs.label",
+      "english": "APRS stations",
+      "chinese": "APRS 电台",
+      "previous": "APRS站点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.rings.label",
+      "english": "Range rings",
+      "chinese": "等距圈",
+      "previous": "距离圈",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.heat.label",
+      "english": "Band heat (openings)",
+      "chinese": "频段活动热度（传播开通）",
+      "previous": "带热(开口)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.openings.label",
+      "english": "Opening sectors (mode)",
+      "chinese": "传播开通扇区（按模式）",
+      "previous": "开放部门(模式)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.liveSpots.label",
+      "english": "Live spots (cluster/RBN)",
+      "chinese": "实时通报（集群／RBN）",
+      "previous": "活斑(组群/RBN)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.stations.label",
+      "english": "My decodes",
+      "chinese": "本台解码结果",
+      "previous": "我的解码器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.paths.label",
+      "english": "Selected path",
+      "chinese": "所选传播路径",
+      "previous": "选中路径",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.txPaths.label",
+      "english": "Heard-you paths (TX)",
+      "chinese": "收到本台信号的路径（TX）",
+      "previous": "听觉路径( TX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.rxPaths.label",
+      "english": "Heard-by-you paths (RX)",
+      "chinese": "本台收到信号的路径（RX）",
+      "previous": "逐条路(RX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.dxped.label",
+      "english": "DXpeditions",
+      "chinese": "DX 远征",
+      "previous": "DX 远征",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.layer.ota.label",
+      "english": "Parks on the air",
+      "chinese": "公园通联活动",
+      "previous": "公园开播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.newDxcc",
+      "english": "new DXCC",
+      "chinese": "新 DXCC 实体",
+      "previous": "新设DXCC",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.newBand",
+      "english": "new band",
+      "chinese": "新频段",
+      "previous": "新带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.zoneMode",
+      "english": "zone/mode",
+      "chinese": "分区／模式",
+      "previous": "区/模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.confirm",
+      "english": "confirm",
+      "chinese": "待确认",
+      "previous": "确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.worked",
+      "english": "worked",
+      "chinese": "已通联",
+      "previous": "工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.txPath",
+      "english": "heard you",
+      "chinese": "对方收到本台",
+      "previous": "听见了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.rxPath",
+      "english": "you heard",
+      "chinese": "本台收到对方",
+      "previous": "你听说了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.opening",
+      "english": "opening",
+      "chinese": "传播开通",
+      "previous": "打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.heat.label",
+      "english": "heat = band activity",
+      "chinese": "热度＝频段活动量",
+      "previous": "热=波段活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.heat.title",
+      "english": "Colored auras = live spot density per band; pulsing = a detected opening",
+      "chinese": "彩色光晕表示各频段的实时通报密度；脉动表示检测到传播开通。",
+      "previous": "彩色气压 = 每个波段的活斑密度; 脉冲 = 检测到的开口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.legend.muf.title",
+      "english": "Ionosonde MUF → band",
+      "chinese": "电离层测高仪 MUF → 频段",
+      "previous": "Iononsonde MUF − 乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.coverage.dim.aria",
+      "english": "Coverage dimension",
+      "chinese": "通联区域统计维度",
+      "previous": "覆盖面",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.coverage.dim.title",
+      "english": "What to color: your worked grid squares (VUCC) or CQ zones (WAZ)",
+      "chinese": "选择着色依据：已通联的网格（VUCC）或 CQ 分区（WAZ）",
+      "previous": "颜色: 您工作过的网格方块( VUCC) 或 CQ 区块( WAZ)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.coverage.dim.grids",
+      "english": "Grids",
+      "chinese": "网格",
+      "previous": "网格",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.coverage.dim.zones",
+      "english": "CQ zones",
+      "chinese": "CQ 分区",
+      "previous": "CQ 分区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.workHint",
+      "english": " — double-click to work",
+      "chinese": " — 双击通联",
+      "previous": "——双击工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.liveConfirmed",
+      "english": " · live-confirmed",
+      "chinese": " · 传播已获实时通报印证",
+      "previous": "• 现场确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.dxped",
+      "english": "{{call}} · {{entity}}{{az}} · {{need}} on {{band}} · {{likelihood}}",
+      "chinese": "{{call}} · {{entity}}{{az}} · {{band}} 上{{need}} · {{likelihood}}",
+      "previous": "{{call}}* 妇女{{entity}}{{az}}* 妇女{{need}}打开{{band}}* 妇女{{likelihood}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.ota",
+      "english": "{{activator}} · {{reference}}{{name}} · {{freq}} MHz {{mode}}{{badge}}{{approx}}",
+      "chinese": "{{activator}} · {{reference}}{{name}} · {{freq}} MHz {{mode}}{{badge}}{{approx}}",
+      "previous": "{{activator}}* 妇女{{reference}}{{name}}* 妇女{{freq}} MHz {{mode}}{{badge}}{{approx}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.ota.new",
+      "english": " · NEW PARK",
+      "chinese": " · 新公园",
+      "previous": "新公园",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.ota.approx",
+      "english": " · approx",
+      "chinese": " · 近似位置",
+      "previous": "大约",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.muf",
+      "english": "Ionosonde · measured MUF {{muf}} MHz here (KC2G) — a data point, not a station",
+      "chinese": "电离层测高仪 · 此处实测 MUF 为 {{muf}} MHz（KC2G）— 这是观测数据点，不是电台。",
+      "previous": "Iononsonde 测量的聚氟乙烯{{muf}} MHz这里( KC2G) —— 一个数据点, 不是站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs",
+      "english": "{{call}}{{what}} · {{how}} {{when}}{{via}}{{moving}}{{note}}",
+      "chinese": "{{call}}{{what}} · {{how}} {{when}}{{via}}{{moving}}{{note}}",
+      "previous": "{{call}}{{what}}* 妇女{{how}} {{when}}{{via}}{{moving}}{{note}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs.how.rf",
+      "english": "heard on RF",
+      "chinese": "经射频收到",
+      "previous": "在RF上听到的声音",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs.how.inet",
+      "english": "reported by APRS-IS",
+      "chinese": "由 APRS-IS 上报",
+      "previous": "报告APRS-对",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs.how.both",
+      "english": "heard on RF + APRS-IS",
+      "chinese": "经射频及 APRS-IS 收到",
+      "previous": "听到的关于RF +APRS-对",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs.ageSecs",
+      "english": "{{secs}}s ago",
+      "chinese": "{{secs}} 秒前",
+      "previous": "{{secs}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs.ageMins",
+      "english": "{{mins}}m ago",
+      "chinese": "{{mins}} 分钟前",
+      "previous": "{{mins}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs.via",
+      "english": " · via {{path}}",
+      "chinese": " · 经由 {{path}}",
+      "previous": "通过{{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.hover.aprs.direct",
+      "english": " · direct",
+      "chinese": " · 直达",
+      "previous": "• 直接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.collapsed.title",
+      "english": "Show propagation insights",
+      "chinese": "显示传播分析",
+      "previous": "显示传播洞察力",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.pill",
+      "english": "Propagation",
+      "chinese": "传播",
+      "previous": "传播",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.aria",
+      "english": "Propagation insights",
+      "chinese": "传播分析",
+      "previous": "宣传见解",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.title",
+      "english": "Propagation",
+      "chinese": "传播",
+      "previous": "传播",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.collapse.title",
+      "english": "Collapse",
+      "chinese": "折叠",
+      "previous": "折叠",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.muf.title",
+      "english": "Maximum Usable Frequency — the modelled DX ceiling right now; bands below it are open",
+      "chinese": "最高可用频率：模型估算的当前 DX 传播频率上限；低于此值的频段在模型中视为开通。",
+      "previous": "最大可用频率——目前模拟的DX天花板;其下方的波段打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.muf.value",
+      "english": "{{muf}} MHz",
+      "chinese": "{{muf}} MHz",
+      "previous": "{{muf}} MHz",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.muf.aria.rising",
+      "english": "MUF rising",
+      "chinese": "最高可用频率正在上升",
+      "previous": "微额供资增加额",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.muf.aria.falling",
+      "english": "MUF falling",
+      "chinese": "最高可用频率正在下降",
+      "previous": "多边基金的下降",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.muf.aria.steady",
+      "english": "MUF steady",
+      "chinese": "最高可用频率保持稳定",
+      "previous": "稳定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.bands.head",
+      "english": "Band conditions",
+      "chinese": "频段传播状况",
+      "previous": "频段传播状况",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.outlook.head",
+      "english": "Outlook",
+      "chinese": "传播预测",
+      "previous": "展望",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.insights.heatmap.head",
+      "english": "Modelled band × hour",
+      "chinese": "模型预测：频段 × 小时",
+      "previous": "模拟波段x小时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "globe.unsupported",
+      "english": "This machine's graphics can't run the 3-D globe. Pick Globe, Flat or Beam — they work everywhere.",
+      "chinese": "本机显卡无法运行三维地球。请选择“地球仪”“平面”或“方位图”，这些视图均可使用。",
+      "previous": "这台机器的图形不能运行三维地球. 选\"环球\",\"平\"或\"彬\"——他们到处工作.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "globe.failed",
+      "english": "The 3-D globe stopped working. Pick Globe, Flat or Beam — they work everywhere.",
+      "chinese": "三维地球已停止运行。请选择“地球仪”“平面”或“方位图”，这些视图均可使用。",
+      "previous": "三维地球停止工作。 选\"环球\",\"平\"或\"彬\"——他们到处工作.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.globe3d.standIn",
+      "english": "The 3-D globe can't draw on this computer right now, so the map shows Globe. Your 3D pick is kept.",
+      "chinese": "本机目前无法绘制三维地球，暂时显示“地球仪”视图；你选择的三维视图设置会保留。",
+      "previous": "三维地球现在无法从这台计算机上画出来,所以地图上显示的是环球. 你的3D选择被保留。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "globe.paused.text",
+      "english": "3D view paused",
+      "chinese": "三维视图已暂停",
+      "previous": "三维视图已暂停",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

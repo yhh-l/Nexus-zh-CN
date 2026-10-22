@@ -1,0 +1,1651 @@
+{
+  "batch": 21,
+  "range": [
+    4001,
+    4200
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 178,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 3,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/RadioProgView.tsx",
+    "ui/src/components/RecallPanel.tsx",
+    "ui/src/components/prop/BandTiles.tsx",
+    "ui/src/components/BandPicker.tsx",
+    "ui/src/components/FrequencyReadout.tsx",
+    "ui/src/components/DashboardBar.tsx"
+  ],
+  "rows": [
+    {
+      "id": "program.filters.fm.title",
+      "english": "FM repeaters only — what v1 programs",
+      "chinese": "仅显示 FM 中继台，当前 v1 版本仅支持为此类中继台生成写频数据",
+      "previous": "仅调频中继器——什么v1程序",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.digital.label",
+      "english": "+Digital",
+      "chinese": "＋数字中继",
+      "previous": "+数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.digital.title",
+      "english": "Also list DMR / D-STAR / Fusion machines (badged; programming them comes later)",
+      "chinese": "同时列出 DMR／D-STAR／Fusion 中继台并标注类型，写频支持将在后续版本提供",
+      "previous": "还列出 DMR / D- STAR / Fusion 机组( 已损坏; 编程后出现)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.onAir.label",
+      "english": "On-air only",
+      "chinese": "仅运行中",
+      "previous": "仅在空中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.onAir.title",
+      "english": "Hide machines the directory marks off-air",
+      "chinese": "隐藏目录中标为停用的中继台",
+      "previous": "隐藏目录标记的机器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.search.placeholder",
+      "english": "Filter: call or MHz",
+      "chinese": "筛选：呼号或 MHz",
+      "previous": "过滤器:呼叫或MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.search.clear",
+      "english": "Clear the filter",
+      "chinese": "清除筛选条件",
+      "previous": "清除过滤器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.place.offer",
+      "english": "Search near “{{place}}” instead?",
+      "chinese": "改为搜索“{{place}}”附近？",
+      "previous": "接近搜索“{{place}}“相反?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.bands.label",
+      "english": "Bands",
+      "chinese": "频段",
+      "previous": "带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.show.label",
+      "english": "Show",
+      "chinese": "显示",
+      "previous": "显示",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.search.aria",
+      "english": "Filter results",
+      "chinese": "筛选结果",
+      "previous": "过滤结果",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.filters.search.title",
+      "english": "Filters this list by callsign or town. A frequency in MHz (147.18, 438.5125) shows every repeater on it, whatever the filters. To search near another place, use Near.",
+      "chinese": "按呼号或城镇筛选此列表。输入频率（MHz，如 147.18、438.5125）会显示该频率上的全部中继台，不受其他筛选条件限制。如需搜索另一地点附近，请使用“附近地点”。",
+      "previous": "按呼号或城镇过滤此列表 。 一个频率在MHz(147.18, 438.5125)显示上面的每一个中继器,无论过滤器是什么. 要在另一处附近搜索,请使用Near.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count",
+      "english": "{{shown}} of {{total}} shown · nearest first",
+      "chinese": "显示 {{shown}}／{{total}} 项 · 距离近的优先",
+      "previous": "{{shown}}页:1{{total}}ưμ㼯A",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.freq",
+      "english": "{{shown}} on {{freq}} MHz (±{{tol}} kHz), filters not applied · nearest first",
+      "chinese": "{{freq}} MHz（±{{tol}} kHz）上有 {{shown}} 项，未应用筛选条件 · 距离近的优先",
+      "previous": "{{shown}}打开{{freq}} MHz(±{{tol}} kHz),未应用过滤器 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.route",
+      "english": "{{shown}} of {{total}} shown · in order along the route",
+      "chinese": "显示 {{shown}}／{{total}} 项 · 按沿途经过顺序排列",
+      "previous": "{{shown}}页:1{{total}}沿路线显示 ^",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.hidden::one",
+      "english": "— {{count}} hidden by {{why}}",
+      "chinese": "— 已隐藏 {{count}} 项（{{why}}）",
+      "previous": ". . . . . . .{{count}}隐藏于{{why}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.hidden::other",
+      "english": "— {{count}} hidden by {{why}}",
+      "chinese": "— 已隐藏 {{count}} 项（{{why}}）",
+      "previous": ". . . . . . .{{count}}隐藏于{{why}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.why.bands",
+      "english": "{{bands}} only",
+      "chinese": "仅显示 {{bands}}",
+      "previous": "{{bands}}仅限",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.why.fm",
+      "english": "FM only",
+      "chinese": "仅显示 FM",
+      "previous": "仅调频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.why.text",
+      "english": "the filter “{{text}}”",
+      "chinese": "筛选条件“{{text}}”",
+      "previous": "过滤器“{{text}}“",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.showAll",
+      "english": "Show all",
+      "chinese": "全部显示",
+      "previous": "全部显示",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.count.freq.route",
+      "english": "{{shown}} on {{freq}} MHz (±{{tol}} kHz), filters not applied · in order along the route",
+      "chinese": "{{freq}} MHz（±{{tol}} kHz）上有 {{shown}} 项，未应用筛选条件 · 按沿途经过顺序排列",
+      "previous": "{{shown}}打开{{freq}} MHz(±{{tol}} kHz),未应用过滤器,以沿路线排列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.aria::one",
+      "english": "Map of {{count}} repeater",
+      "chinese": "{{count}} 座中继台的分布地图",
+      "previous": "地图{{count}}中继器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.aria::other",
+      "english": "Map of {{count}} repeaters",
+      "chinese": "{{count}} 座中继台的分布地图",
+      "previous": "地图{{count}}中继器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.shows::one",
+      "english": "On the map: {{count}} machine, as {{hearham}} lists it and where it places it.",
+      "chinese": "地图显示 {{count}} 座中继台，资料和位置均来自 {{hearham}}。",
+      "previous": "在地图上:{{count}}机器,作为{{hearham}}列出它及其位置。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.shows::other",
+      "english": "On the map: {{count}} machines, as {{hearham}} lists them and where it places them.",
+      "chinese": "地图显示 {{count}} 座中继台，资料和位置均来自 {{hearham}}。",
+      "previous": "在地图上:{{count}}机器,作为{{hearham}}列出它们和它们的位置。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.rb::one",
+      "english": "Not on the map: {{count}} machine only {{rb}} lists. Its terms do not allow its listings on a map.",
+      "chinese": "有 {{count}} 座中继台仅由 {{rb}} 收录，未在地图上显示，其使用条款禁止在地图上展示这些数据。",
+      "previous": "不在地图上 :{{count}}仅限机器{{rb}}列表。 其条款不允许在地图上列名。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.rb::other",
+      "english": "Not on the map: {{count}} machines only {{rb}} lists. Its terms do not allow its listings on a map.",
+      "chinese": "有 {{count}} 座中继台仅由 {{rb}} 收录，未在地图上显示，其使用条款禁止在地图上展示这些数据。",
+      "previous": "不在地图上 :{{count}}仅限机器{{rb}}列表。 其条款不允许在地图上列名。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.rb.none",
+      "english": "{{rb}}'s listings are never mapped (its terms do not allow it). Every machine shown is one {{hearham}} lists too.",
+      "chinese": "{{rb}} 的数据不会用于地图展示（其使用条款不允许）。地图上的每座中继台均同时被 {{hearham}} 收录。",
+      "previous": "{{rb}}'列表从未被映射( 其术语不允许它) 。 每个显示的机器都是一台{{hearham}}列表。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.rsgb::one",
+      "english": "Not on the map for now: {{count}} machine only the {{rsgb}} list has.",
+      "chinese": "有 {{count}} 座中继台仅在 {{rsgb}} 列表中，暂未显示在地图上。",
+      "previous": "现在不在地图上 :{{count}}只有机器{{rsgb}}列表已经。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.rsgb::other",
+      "english": "Not on the map for now: {{count}} machines only the {{rsgb}} list has.",
+      "chinese": "有 {{count}} 座中继台仅在 {{rsgb}} 列表中，暂未显示在地图上。",
+      "previous": "现在不在地图上 :{{count}}只有机械{{rsgb}}列表已经。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.rsgb.none",
+      "english": "The {{rsgb}} list is not mapped for now. Every machine shown is one {{hearham}} lists too.",
+      "chinese": "{{rsgb}} 列表暂未用于地图展示。地图上的每座中继台均同时被 {{hearham}} 收录。",
+      "previous": "那个{{rsgb}}列表目前没有映射。 每个显示的机器都是一台{{hearham}}列表。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.hint",
+      "english": "A filled dot is in your channel list. Point at a dot to find its row; click one to save the machine to Memories or add it.",
+      "chinese": "实心圆点表示已加入信道列表。将指针移到圆点上可定位对应行；点击可将中继台保存到存储信道或加入信道列表。",
+      "previous": "您的频道列表中包含一个填充点 。 点点可以找到其行;点击一键可以将机器保存到记忆中或者添加.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.map.card.close",
+      "english": "Close",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "关闭"
+        }
+      ]
+    },
+    {
+      "id": "program.addAll.label",
+      "english": "Add all to channel list",
+      "chinese": "全部加入信道列表",
+      "previous": "将全部添加到频道列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.addAll.confirm.title",
+      "english": "Add {{count}} channels?",
+      "chinese": "添加 {{count}} 个信道？",
+      "previous": "添加{{count}}频道?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.addAll.confirm.ok",
+      "english": "Add channels",
+      "chinese": "添加信道",
+      "previous": "添加频道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveAll.label",
+      "english": "Save all to Memories",
+      "chinese": "全部保存到存储信道",
+      "previous": "全部保存为记忆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveAll.title",
+      "english": "Save every FM repeater shown to Memories, once each: the ones already there are left as they are",
+      "chinese": "将当前显示的所有 FM 中继台保存到存储信道，每座仅存一次；已有项目保持原样",
+      "previous": "保存向记忆显示的每个调频中继器, 每一个调频中继器: 已经存在的调频中继器已经留下了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveAll.confirm.title",
+      "english": "Save {{count}} repeaters to Memories?",
+      "chinese": "将 {{count}} 座中继台保存到存储信道？",
+      "previous": "保存{{count}}重复到记忆?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveAll.confirm.ok",
+      "english": "Save them",
+      "chinese": "保存",
+      "previous": "救救他们",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.aria",
+      "english": "Repeaters",
+      "chinese": "中继台",
+      "previous": "中继台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.prompt",
+      "english": "Pick a location and press <b>Fetch repeaters</b> — results land here; ADD the machines you want on your radio.",
+      "chinese": "选择地点后点击<b>获取中继台</b>，结果将显示在此处；将需要写入电台的中继台加入信道列表。",
+      "previous": "选择一个位置并按下<b>获取中继器</b>——结果落到这里;ADD你想要的收音机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.none",
+      "english": "No repeaters within {{radius}}.",
+      "chinese": "{{radius}} 范围内没有中继台。",
+      "previous": "内部没有中继器{{radius}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.none.fm",
+      "english": "No FM repeaters within {{radius}}.",
+      "chinese": "{{radius}} 范围内没有 FM 中继台。",
+      "previous": "没有调频中继器{{radius}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.none.freq",
+      "english": "No repeater on {{freq}} MHz (±{{tol}} kHz) within {{radius}}.",
+      "chinese": "{{radius}} 范围内，{{freq}} MHz（±{{tol}} kHz）上没有中继台。",
+      "previous": "没有中继器{{freq}} MHz(±{{tol}} kHz内{{radius}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.prompt.route",
+      "english": "Pick both ends of the route and press <b>Fetch repeaters</b> — the machines along it land here in order; ADD the ones you want on your radio.",
+      "chinese": "选择路线起点和终点后点击<b>获取中继台</b>，沿途中继台将按经过顺序显示；将需要写入电台的项目加入信道列表。",
+      "previous": "选择路线的两端并按<b>获取中继器</b>机器沿着它降落在这里,你想要的ADD。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.none.route",
+      "english": "No repeaters within {{radius}} of the route.",
+      "chinese": "路线两侧 {{radius}} 范围内没有中继台。",
+      "previous": "内部没有中继器{{radius}}路线。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.none.fm.route",
+      "english": "No FM repeaters within {{radius}} of the route.",
+      "chinese": "路线两侧 {{radius}} 范围内没有 FM 中继台。",
+      "previous": "没有调频中继器{{radius}}路线。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.none.freq.route",
+      "english": "No repeater on {{freq}} MHz (±{{tol}} kHz) within {{radius}} of the route.",
+      "chinese": "路线两侧 {{radius}} 范围内，{{freq}} MHz（±{{tol}} kHz）上没有中继台。",
+      "previous": "没有中继器{{freq}} MHz(±{{tol}} kHz内{{radius}}路线。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.route.title",
+      "english": "{{along}} along the route, {{off}} {{dir}} of it",
+      "chinese": "沿路线前进 {{along}}，位于路线 {{dir}} 方向 {{off}} 处",
+      "previous": "{{along}}沿着这条路{{off}} {{dir}}内容",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.route.off",
+      "english": "{{off}} {{dir}} of the route",
+      "chinese": "距路线 {{off}}，方向 {{dir}}",
+      "previous": "{{off}} {{dir}}路线",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.tryWider",
+      "english": "Try {{radius}}",
+      "chinese": "试用 {{radius}} 范围",
+      "previous": "尝试{{radius}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.results.showDigital",
+      "english": "Show digital",
+      "chinese": "显示数字中继台",
+      "previous": "显示数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.offAir",
+      "english": "OFF-AIR",
+      "chinese": "已停用",
+      "previous": "空关",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.source.updated",
+      "english": "{{sources}} · updated {{date}}",
+      "chinese": "{{sources}} · 更新于 {{date}}",
+      "previous": "{{sources}}· 更新{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.source.noDate",
+      "english": "{{sources}} · no date · fetched {{age}}",
+      "chinese": "{{sources}} · 未注明日期 · 获取于 {{age}}",
+      "previous": "{{sources}}没有日期 \\\\ 已获取{{age}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.links.title",
+      "english": "How this repeater links beyond its own coverage, as its directory lists it: AllStar, IRLP and DMR ID numbers, and its DMR color code (CC).",
+      "chinese": "目录中列出的中继台外部互联信息：AllStar、IRLP 和 DMR ID，以及 DMR 色码（CC）。",
+      "previous": "这个中继器如何在自身覆盖范围之外链接,因为它的目录列出了它:AllStar,IRLP和DMR ID号码,以及它的DMR颜色代码(CC).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.link.node",
+      "english": "node {{node}}",
+      "chinese": "节点 {{node}}",
+      "previous": "节点{{node}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.differ.label",
+      "english": "Sources differ",
+      "chinese": "数据源不一致",
+      "previous": "来源不同",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.differ.title",
+      "english": "The directories disagree about this machine. The row programs the first value shown; check the others before you rely on it.",
+      "chinese": "各目录对这座中继台的记录不一致。生成写频数据时采用显示的第一个值，请在使用前核查其他来源。",
+      "previous": "目录对此机器有异议. 显示的第一个值的行程序; 在您依赖它之前检查其它的 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.differ.tone",
+      "english": "Tone {{used}} is programmed (also listed: {{others}})",
+      "chinese": "写频采用亚音 {{used}}（其他来源：{{others}}）",
+      "previous": "调音{{used}}已编程(也列出:{{others}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.differ.input",
+      "english": "Input {{used}} is programmed (also listed: {{others}})",
+      "chinese": "写频采用中继台接收频率 {{used}}（其他来源：{{others}}）",
+      "previous": "投入{{used}}已编程(也列出:{{others}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.differ.mode",
+      "english": "Mode {{used}} is programmed (also listed: {{others}})",
+      "chinese": "写频采用模式 {{used}}（其他来源：{{others}}）",
+      "previous": "模式{{used}}已编程(也列出:{{others}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.differ.colorCode",
+      "english": "Color code {{used}} is programmed (also listed: {{others}})",
+      "chinese": "写频采用色码 {{used}}（其他来源：{{others}}）",
+      "previous": "颜色代码{{used}}已编程(也列出:{{others}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.save.label",
+      "english": "Save to Memories",
+      "chinese": "保存到存储信道",
+      "previous": "保存为记忆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.save.title",
+      "english": "Save this repeater to Memories: frequency, offset, tone or DCS, callsign, town and links. Not starred, so it stays off the cockpit strip",
+      "chinese": "将此中继台保存到存储信道，包括频率、收发频差、亚音或 DCS、呼号、城镇及互联信息。默认不设星标，因此不会显示在操作界面快捷栏",
+      "previous": "将此中继器保存到记忆中:频率,偏移,语气或DCS,调用符号,城镇和链接. 不是主演的,所以它留在驾驶舱外",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.saved.label",
+      "english": "In Memories",
+      "chinese": "已存储",
+      "previous": "在记忆中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.saved.title",
+      "english": "In Memories as {{name}}. Star it there to put it on the cockpit strip",
+      "chinese": "已保存为存储信道 {{name}}。在存储信道页面设为星标，即可显示在操作界面快捷栏",
+      "previous": "在回忆中{{name}}盯着它放在驾驶舱里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.tune.label",
+      "english": "Tune",
+      "chinese": "调谐",
+      "previous": "调谐",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "调谐"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "调谐"
+        }
+      ]
+    },
+    {
+      "id": "program.row.tune.title",
+      "english": "Tune your CAT rig to this repeater now (FM + shift + offset + tone)",
+      "chinese": "立即通过 CAT 将电台调至此中继台（FM 模式、频差方向、频差值和亚音）",
+      "previous": "{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}给你的CAT安装到此中继器( FM + 移位 + 偏移 + 调值)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.add.label",
+      "english": "Add to channel list",
+      "chinese": "加入信道列表",
+      "previous": "添加到频道列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.added.label",
+      "english": "In channel list",
+      "chinese": "已在信道列表中",
+      "previous": "在频道列表中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.add.title",
+      "english": "Add to the channel list, to program a radio (CHIRP or CSV)",
+      "chinese": "加入信道列表，以便生成电台写频数据（CHIRP 或 CSV）",
+      "previous": "在频道列表中添加, 用于播放收音机( CHIRP 或 CSV)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.remove.title",
+      "english": "Remove from the channel list",
+      "chinese": "从信道列表移除",
+      "previous": "从频道列表中删除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.row.add.digital.title",
+      "english": "Digital repeater — programming DMR/D-STAR/Fusion comes in a later version",
+      "chinese": "数字中继台，DMR／D-STAR／Fusion 写频支持将在后续版本提供",
+      "previous": "数字中继器——编程 DMR/D-STAR/Fusion的后期版本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.builder.title",
+      "english": "Channel list",
+      "chinese": "信道列表",
+      "previous": "频道列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.builder.sub",
+      "english": "for programming a radio: CHIRP or CSV",
+      "chinese": "用于电台写频：CHIRP 或 CSV",
+      "previous": "用于广播节目:CHIRP或CSV",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.builder.nameCap.label",
+      "english": "Max name",
+      "chinese": "名称长度上限",
+      "previous": "最大名称",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.builder.nameCap.title",
+      "english": "Your radio's channel-name length — auto names re-derive to fit (hand-edited names are kept)",
+      "chinese": "电台支持的信道名称长度。自动名称会按长度重新生成，手动修改的名称则保留",
+      "previous": "您的收音机的频道名称长度 —— 自动名称重新调整以适应( 手版名称保存)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.builder.startAt.label",
+      "english": "Start at",
+      "chinese": "起始编号",
+      "previous": "开始于",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.builder.startAt.title",
+      "english": "First memory slot number (keep your existing channels)",
+      "chinese": "首个存储信道编号（可避开已有信道）",
+      "previous": "第一个内存槽号( 保留您的已有频道)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.builder.empty",
+      "english": "No channels yet — fetch repeaters on the left and ADD the ones you want on your radio.",
+      "chinese": "尚无信道。请先在左侧获取中继台，再将需要写入电台的项目加入列表。",
+      "previous": "还没有频道 —— 获取左边的中继器和您想要的收音机上的 ADD 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chan.name.aria",
+      "english": "Channel {{n}} name",
+      "chinese": "信道 {{n}} 的名称",
+      "previous": "频道{{n}}名称",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chan.dup.title",
+      "english": "Duplicate name — the radio will show two identical channels",
+      "chinese": "名称重复，电台上将显示两个同名信道",
+      "previous": "复制名称——电台将显示两个相同的频道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chan.over.title",
+      "english": "Longer than {{cap}} — exports as \"{{name}}\"",
+      "chinese": "长度超过 {{cap}}，将以“{{name}}”导出",
+      "previous": "长于{{cap}}- 出口为 \"{{name}}\" (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chan.moveUp.aria",
+      "english": "Move up",
+      "chinese": "向上移动",
+      "previous": "向上移动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chan.moveDown.aria",
+      "english": "Move down",
+      "chinese": "向下移动",
+      "previous": "向下移动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chan.remove.aria",
+      "english": "Remove",
+      "chinese": "移除",
+      "previous": "移除",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.byHand.label",
+      "english": "Add by hand…",
+      "chinese": "手动添加...",
+      "previous": "手动添加...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.byHand.title",
+      "english": "Type in a repeater or simplex channel the directory doesn't have (or has wrong)",
+      "chinese": "手动输入目录中未收录或记录有误的中继台或单工直通信道",
+      "previous": "在中继器或简单X通道中输入目录没有(或错误)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.import.label",
+      "english": "Import CHIRP CSV…",
+      "chinese": "导入 CHIRP CSV...",
+      "previous": "导入 CHIRP CSV...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.import.title",
+      "english": "Import a CHIRP CSV — the same format Export for CHIRP writes, and what CHIRP itself saves",
+      "chinese": "导入 CHIRP CSV，与“导出供 CHIRP 使用”生成的格式及 CHIRP 自身保存的格式相同",
+      "previous": "导入一个 CHIRP CSV — 用于 CHIRP 的 Export 格式, 以及 CHIRP 本身保存的内容",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.exportChirp.label",
+      "english": "Export for CHIRP…",
+      "chinese": "导出供 CHIRP 使用…",
+      "previous": "导出为 CHIRP...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.exportChirp.title",
+      "english": "Save a CHIRP-ready CSV — CHIRP (free) flashes nearly every radio from it",
+      "chinese": "保存可供 CHIRP 使用的 CSV，免费软件 CHIRP 可据此为绝大多数电台写频",
+      "previous": "保存一个CHIRP备妥的CSV——CHIRP(免费)几乎从中闪出所有收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.exportCsv.label",
+      "english": "Export CSV",
+      "chinese": "导出 CSV",
+      "previous": "导出 CSV",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.exportCsv.title",
+      "english": "Plain CSV — spreadsheets, Anytone CPS, RT Systems",
+      "chinese": "普通 CSV，适用于电子表格、Anytone CPS、RT Systems",
+      "previous": "普通 CSV — 电子表格、 Anytone CPS、 RT 系统",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.saveBank.label",
+      "english": "Save list to Memories",
+      "chinese": "将列表保存到存储信道",
+      "previous": "将列表保存为记忆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.saveBank.title",
+      "english": "Save these channels into Nexus's Memories (the Phone cockpit's MEMORY recall list) — recall retunes the rig with shift + tone",
+      "chinese": "将这些信道保存到 Nexus 存储信道（话音操作界面的 MEMORY 调用列表）。调用时会按收发频差和亚音设置调整电台",
+      "previous": "将这些频道保存到Nexus的回忆录(电话驾驶舱的回忆录列表) ——召回重制调用换乘+调子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.deliver.clear.label",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "program.clear.confirm.title",
+      "english": "Clear the whole channel list?",
+      "chinese": "清空整个信道列表？",
+      "previous": "清除整个频道列表吗 ?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.clear.confirm.ok",
+      "english": "Clear list",
+      "chinese": "清除列表",
+      "previous": "清除列表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.manual.freq",
+      "english": "Frequency (MHz), e.g. {{example}}",
+      "chinese": "频率（MHz），例如 {{example}}",
+      "previous": "频率(MHz例如,{{example}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.manual.name",
+      "english": "Name (blank = frequency)",
+      "chinese": "名称( 空白 = 频率)",
+      "previous": "名称( 空白 = 频率)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.manual.offset",
+      "english": "Offset: + / - / blank for simplex",
+      "chinese": "频差方向：+／-，留空为同频单工",
+      "previous": "偏移: + / - / sparex 空白",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.manual.tone",
+      "english": "CTCSS tone Hz (blank = none)",
+      "chinese": "CTCSS 亚音 Hz（留空为不使用）",
+      "previous": "CTCSS 语气Hz(空白=无)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.import.notChirp",
+      "english": "Not a CHIRP CSV — need a header row with Frequency and Mode",
+      "chinese": "不是 CHIRP CSV，需要包含 Frequency 和 Mode 的标题行",
+      "previous": "不需要CHIRP CSV——需要一个带有频率和模式的页眉行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.import.done",
+      "english": "Imported {{count}} channels from CHIRP CSV",
+      "chinese": "已从 CHIRP CSV 导入 {{count}} 个信道",
+      "previous": "已导入{{count}}来自CHIRP CSV的频道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.export.noFm",
+      "english": "No FM channels in the list — digital channels export in a later version",
+      "chinese": "列表中没有 FM 信道，数字信道导出将在后续版本提供",
+      "previous": "列表中没有调频频道——数字频道后期导出.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.export.saved",
+      "english": "Saved {{path}}",
+      "chinese": "已保存 {{path}}",
+      "previous": "已保存{{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.export.saved.chirp",
+      "english": "Saved {{path}} — open CHIRP ▸ File ▸ Import, then upload to your radio",
+      "chinese": "已保存 {{path}}。在 CHIRP 中选择 File ▸ Import 导入，然后写入电台",
+      "previous": "已保存{{path}}— 打开 CHIRP QQ 文件导入, 然后上传到您的收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.tune.done",
+      "english": "Tuned {{freq}} {{mode}} — {{shift}}{{tone}}",
+      "chinese": "已调至 {{freq}} {{mode}} — {{shift}}{{tone}}",
+      "previous": "训练{{freq}} {{mode}}. . . . . . .{{shift}}{{tone}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.tune.simplex",
+      "english": "simplex",
+      "chinese": "同频单工",
+      "previous": "简单x",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.tune.tone",
+      "english": " · tone {{hz}}",
+      "chinese": " · 亚音 {{hz}}",
+      "previous": "语气{{hz}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.save.done",
+      "english": "{{name}} saved to Memories",
+      "chinese": "{{name}} 已保存到存储信道",
+      "previous": "{{name}}保存到记忆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveBank.done::one",
+      "english": "{{count}} channel saved to Memories{{dupes}} — star ★ the ones you want on the cockpit MEM strip",
+      "chinese": "已保存 {{count}} 个信道{{dupes}}。将需要在操作界面 MEM 快捷栏显示的信道设为星标 ★",
+      "previous": "{{count}}频道保存到记忆{{dupes}}- 明星,你想要的 驾驶舱MEM条",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveBank.done::other",
+      "english": "{{count}} channels saved to Memories{{dupes}} — star ★ the ones you want on the cockpit MEM strip",
+      "chinese": "已保存 {{count}} 个信道{{dupes}}。将需要在操作界面 MEM 快捷栏显示的信道设为星标 ★",
+      "previous": "{{count}}保存到记忆的频道{{dupes}}- 明星,你想要的 驾驶舱MEM条",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveBank.dupes",
+      "english": " ({{count}} already there)",
+      "chinese": "（{{count}} 个已存在）",
+      "previous": "(单位:千美元){{count}}已经在那里)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveBank.allDupes",
+      "english": "All of these are already in Memories",
+      "chinese": "这些信道均已存储",
+      "previous": "这些都已经在记忆里了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.saveBank.noFm",
+      "english": "No FM channels to save",
+      "chinese": "没有可保存的 FM 信道",
+      "previous": "无调频频道可保存",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.title",
+      "english": "Flash with CHIRP",
+      "chinese": "使用 CHIRP 写频",
+      "previous": "与CHIRP闪光",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.description",
+      "english": "Nexus builds the list; CHIRP drives the cable. One list, every radio you own.",
+      "chinese": "Nexus 生成列表，CHIRP 通过写频线写入电台。同一份列表可供你的各台电台使用。",
+      "previous": "Nexus构建列表;CHIRP驱动电缆. 一张单子,每个收音机。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.step.save",
+      "english": "Nexus saves a CHIRP-ready CSV to your Downloads.",
+      "chinese": "Nexus 会将可供 CHIRP 使用的 CSV 保存到“下载”文件夹。",
+      "previous": "Nexus将一个已准备好的CHIRP CSV保存到您的下载中.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.step.import",
+      "english": "Open CHIRP (free, ~1,000 radios) → <b>File ▸ Import</b> and pick the file.",
+      "chinese": "打开 CHIRP（免费，支持约 1000 种电台），选择 <b>File ▸ Import</b>，然后选取文件。",
+      "previous": "打开 CHIRP（免费，支持约 1000 种电台），选择 <b>File ▸ Import</b>，然后选取文件。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.step.upload",
+      "english": "Connect your programming cable → <b>Radio ▸ Upload To Radio</b>.",
+      "chinese": "连接写频线 → 选择 <b>Radio ▸ Upload To Radio</b>。",
+      "previous": "连接您的编程电缆 ~<b>电台 QQ 上传到电台</b>。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.link",
+      "english": "Get CHIRP ↗",
+      "chinese": "获取 CHIRP ↗",
+      "previous": "得到CHIRP ↗",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.dontShow",
+      "english": "Don't show this again — just save the file",
+      "chinese": "不再显示此提示，直接保存文件",
+      "previous": "别再看这个了,只要保存文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "program.chirp.save",
+      "english": "Save the CSV",
+      "chinese": "保存 CSV",
+      "previous": "保存 CSV",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.log.comment.readAria",
+      "english": "Comment — open it in the row",
+      "chinese": "附言：在该行中打开",
+      "previous": "注释 – 在行中打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.qrz.title",
+      "english": "Open {{call}} on QRZ (browser)",
+      "chinese": "在浏览器中打开 {{call}} 的 QRZ 页面",
+      "previous": "打开{{call}}打开QRZ(浏览器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.qrz.error",
+      "english": "Could not open {{call}} on QRZ",
+      "chinese": "无法在 QRZ 打开 {{call}} 的页面",
+      "previous": "无法打开{{call}}打开QRZ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.where.empty",
+      "english": "Tab or press Lookup for name / QTH",
+      "chinese": "按 Tab 或点击查询，获取姓名／QTH",
+      "previous": "标签或按下查找名称 /QTH",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.geo.title",
+      "english": "Great-circle distance · true bearing from your QTH ({{to}})",
+      "chinese": "大圆距离 · 从本台 QTH 出发的真方位角（{{to}}）",
+      "previous": "与您的真实关系QTH(单位:千美元){{to}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.geo.title.approx",
+      "english": "Great-circle distance · true bearing from your QTH ({{to}}) — approximate: computed from the center of {{squares}}",
+      "chinese": "大圆距离 · 从本台 QTH 出发的真方位角（{{to}}）。仅为估算，按 {{squares}} 的中心计算",
+      "previous": "与您的真实关系QTH(单位:千美元){{to}}—— 大约:{{squares}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.geo.approx.mine",
+      "english": "your {{grid}} square (set a 6-character grid in Settings to sharpen it)",
+      "chinese": "本台 {{grid}} 网格（在设置中填写 6 位网格可提高精度）",
+      "previous": "ưμ㼯A{{grid}}平方形( 在设置中设置一个 6 字符格以磨亮)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.geo.approx.theirs",
+      "english": "their {{grid}} square",
+      "chinese": "对方 {{grid}} 网格",
+      "previous": "他们的{{grid}}平方圆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.geo.approx.both",
+      "english": "{{mine}} and {{theirs}}",
+      "chinese": "{{mine}} 和 {{theirs}}",
+      "previous": "{{mine}}和{{theirs}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.calling.label",
+      "english": "Calling {{call}}",
+      "chinese": "正在呼叫 {{call}}",
+      "previous": "通话{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.calling.title",
+      "english": "Show {{call}}'s card — the station this one is calling",
+      "chinese": "显示 {{call}} 的资料卡，即当前电台正在呼叫的对象",
+      "previous": "显示{{call}}这张卡 - 这个站正在呼叫",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.dupe.label",
+      "english": "Dupe {{band}}",
+      "chinese": "{{band}} 重复交信",
+      "previous": "达普{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.contestDupe.label",
+      "english": "Contest dupe",
+      "chinese": "竞赛重复交信",
+      "previous": "比赛哑弹",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.contestDupe.title",
+      "english": "Already in the contest log on {{band}} — logging this again will be refused as a dupe.",
+      "chinese": "竞赛日志中已有与对方在 {{band}} 的交信，再次记录会因重复而被拒绝。",
+      "previous": "已经在比赛日志中{{band}}——再次登录这个会被作为哑弹拒绝.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.contestDupe.titleLogged",
+      "english": "Already in the contest log on {{band}} — work and log it anyway: this contest keeps duplicates and scores them zero. Leaving it out costs the other station its credit.",
+      "chinese": "竞赛日志中已有与对方在 {{band}} 的交信，仍应通联并记录：此比赛保留重复交信，但计零分。不记录会使对方失去该次交信的有效成绩。",
+      "previous": "已经在比赛日志中{{band}}——工作并登录它反正:这场比赛保持了重复并给它们打零分. 离开它 花费了另一个站的功劳。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.contestDupe.titleAnyBand",
+      "english": "Already in the contest log — this contest counts a station once regardless of band, so logging this again will be refused as a dupe.",
+      "chinese": "竞赛日志中已有与对方的交信，此比赛不分频段，每台只计一次，再次记录会因重复而被拒绝。",
+      "previous": "已经出现在比赛日志中——这次比赛一次计算一个站台,不管乐队多少,因此再次记录这个会被作为哑弹拒绝.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.contestDupe.titleLoggedAnyBand",
+      "english": "Already in the contest log — this contest counts a station once regardless of band. Work and log it anyway: it keeps duplicates and scores them zero. Leaving it out costs the other station its credit.",
+      "chinese": "竞赛日志中已有与对方的交信，此比赛不分频段，每台只计一次。仍应通联并记录：重复交信会保留，但计零分。不记录会使对方失去该次交信的有效成绩。",
+      "previous": "已经在比赛日志中——无论乐队多少,这次比赛都算一个站. 工作并登录它。 它保持复制和评分为零。 离开它会让另一个站失去信用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.clubDupe.label",
+      "english": "Club dupe",
+      "chinese": "俱乐部重复交信",
+      "previous": "俱乐部dupe",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.clubDupe.title",
+      "english": "Another position already worked them on {{band}} — logging is allowed but adds no points.",
+      "chinese": "其他操作席位已在 {{band}} 与对方通联。允许记录，但不增加分数。",
+      "previous": "另外一个职位已经为他们工作了{{band}}——允许采伐,但不增加点数.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.dupe.title",
+      "english": "Already worked on {{band}} — logging now would be a dupe. Counts any mode on the band unless Settings’ “match mode too” is on.",
+      "chinese": "已在 {{band}} 与对方通联，现在记录将属于重复交信。除非在设置中开启“同时匹配模式”，否则此频段的所有模式均纳入判断。",
+      "previous": "已经做了{{band}}- 伐木现在是骗局 除非设置的“ 匹配模式” 也打开, 否则在带中计算任意模式 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.confirmed.title",
+      "english": "{{confirmed}} of {{count}} prior QSOs confirmed",
+      "chinese": "此前 {{count}} 次交信中已有 {{confirmed}} 次确认",
+      "previous": "{{confirmed}} 页:1 {{count}} 先前 QSOs 确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.need.entity",
+      "english": "New DXCC!",
+      "chinese": "新 DXCC 实体！",
+      "previous": "新设DXCC来啊!",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.need.band",
+      "english": "New band-slot",
+      "chinese": "新频段项目",
+      "previous": "新建频段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.need.mode",
+      "english": "New mode-slot",
+      "chinese": "新模式项目",
+      "previous": "新建模式槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.need.title",
+      "english": "Worth working — a new one for your log",
+      "chinese": "值得通联，可为日志补上新项目",
+      "previous": "值得一试 新的日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.note.title",
+      "english": "Your most recent note on this station",
+      "chinese": "你对这座电台最近一次填写的备注",
+      "previous": "你最近关于本站的笔记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.log.head",
+      "english": "Previous contacts",
+      "chinese": "既往交信",
+      "previous": "以前的联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.log.aria",
+      "english": "Previous contacts with {{call}}",
+      "chinese": "与 {{call}} 的既往交信",
+      "previous": "以前与{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recall.log.row.title",
+      "english": "Show {{call}} in the Logbook",
+      "chinese": "在日志中显示 {{call}}",
+      "previous": "显示{{call}}在日志中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandPicker.select.title",
+      "english": "Band — your last frequency on this band in this mode this session, else the start of your licensed segment",
+      "chinese": "选择频段：优先使用本次运行中该频段、该模式下最后使用的频率，否则使用许可频率范围的起点",
+      "previous": "频段 —— 您在这个模式中在这个频段的最后一个频率, 否则是您的许可段的开始",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandPicker.txLock.label",
+      "english": "🔒 TX locked",
+      "chinese": "🔒 发射已锁定",
+      "previous": "QQ TX 锁定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandPicker.menu.aria",
+      "english": "Band: {{band}}",
+      "chinese": "频段：{{band}}",
+      "previous": "带:{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.menu.aria",
+      "english": "Band channel preset: {{channel}}",
+      "chinese": "频段信道预设：{{channel}}",
+      "previous": "乐队频道预设 :{{channel}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandMenu.condition.unknown",
+      "english": "No data",
+      "chinese": "无数据",
+      "previous": "无数据",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandMenu.condition.unknown.title",
+      "english": "No current band-condition data for this band",
+      "chinese": "此频段暂无当前传播状况数据",
+      "previous": "此频段没有当前带状条件数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.aria",
+      "english": "Bands for you: one tile per band",
+      "chinese": "各频段状况，每个方块代表一个频段",
+      "previous": "带给你:每带一瓦",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.state",
+      "english": "{{band}}: {{word}}",
+      "chinese": "{{band}}：{{word}}",
+      "previous": "{{band}}数字 :{{word}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.opening",
+      "english": "{{mode}} opening seen on this band",
+      "chinese": "此频段已观测到 {{mode}} 传播开通",
+      "previous": "{{mode}}这个乐队的开场演出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.heard",
+      "english": "{{hearYou}} hear you · you hear {{youHear}}",
+      "chinese": "{{hearYou}} 个电台收到本台 · 本台收到 {{youHear}} 个电台",
+      "previous": "{{hearYou}}听见了吗?{{youHear}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.region",
+      "english": "Best toward {{region}} ({{octant}}, {{bearing}}°)",
+      "chinese": "通往 {{region}} 的条件最佳（{{octant}}，{{bearing}}°）",
+      "previous": "最好的走向{{region}}(单位:千美元){{octant}}, (中文).{{bearing}}°] (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.modelled",
+      "english": "{{timing}} (modelled)",
+      "chinese": "{{timing}}（模型预测）",
+      "previous": "{{timing}}(型号)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.best",
+      "english": "The Band Advisor’s best band right now",
+      "chinese": "频段建议当前推荐的最佳频段",
+      "previous": "乐队顾问现在最好的乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.rig",
+      "english": "Your radio is on this band",
+      "chinese": "电台当前使用此频段",
+      "previous": "你的无线电在乐队里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandTiles.title.focus",
+      "english": "Click to show this band on the map, and again to clear it",
+      "chinese": "点击在地图上显示此频段，再次点击取消",
+      "previous": "点击在地图上显示此带, 并再次清除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandPicker.txLock.splitTitle",
+      "english": "TX locked — your split transmit frequency, {{tx}} MHz, is outside your license privileges. Receiving on {{rx}} MHz is fine.",
+      "chinese": "发射已锁定：异频发射频率 {{tx}} MHz 超出执照许可范围；仍可在 {{rx}} MHz 接收。",
+      "previous": "TX锁定——你的分裂传输频率,{{tx}} MHz,不在您的许可权限之内。 接收时间{{rx}} MHz没事了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandPicker.txLock.title",
+      "english": "This frequency/mode is outside your license privileges — transmit is blocked. Pick a band above, or change your license class in Settings.",
+      "chinese": "此频率／模式超出执照许可范围，已禁止发射。请在上方选择频段，或在设置中更改执照等级。",
+      "previous": "此频率/ 模式不在您的许可权限范围 —— 传输被屏蔽 。 在上面选择一个乐队,或者在设置中更改您的驾照类 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandPicker.txLock.usbOnlyTitle",
+      "english": "60 m allows only USB phone — transmit is blocked. Pick USB or AUTO.",
+      "chinese": "60 米频段的话音仅允许使用 USB，已禁止发射。请选择 USB 或 AUTO。",
+      "previous": "60 m只允许USB手机——传输被屏蔽. 选择USB或AUTO.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.control.aria",
+      "english": "Frequency control",
+      "chinese": "频率控制",
+      "previous": "频率控制",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.label",
+      "english": "Band / Channel",
+      "chinese": "频段／信道",
+      "previous": "带/ 频道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.aria",
+      "english": "Band channel preset",
+      "chinese": "频段信道预设",
+      "previous": "乐队频道预设",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.title",
+      "english": "Pick a band-plan channel",
+      "chinese": "选择频段规划中的信道",
+      "previous": "选一个带子计划频道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.presets",
+      "english": "— Presets —",
+      "chinese": "— 预设 —",
+      "previous": "——预设.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tv.readonly",
+      "english": "read-only",
+      "chinese": "只读",
+      "previous": "只读",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tv.noLink",
+      "english": "no link to Nexus",
+      "chinese": "未连接到 Nexus",
+      "previous": "没有与 Nexus 的链接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tv.stale",
+      "english": "data {{min}} min old",
+      "chinese": "数据距今 {{min}} 分钟",
+      "previous": "数据{{min}}分钟旧",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tv.waiting",
+      "english": "Waiting for the first propagation picture from Nexus…",
+      "chinese": "正在等待 Nexus 首次传来传播状况数据…",
+      "previous": "等待着Nexus的第一张照片...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dash.bar.aria",
+      "english": "Clock and space weather",
+      "chinese": "时钟和空间气象",
+      "previous": "时钟和空间气象",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dash.index.sw.title",
+      "english": "Solar wind speed, km/s",
+      "chinese": "太阳风速度，km/s",
+      "previous": "太阳风速,公里/秒",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dash.behind.label",
+      "english": "Stay behind",
+      "chinese": "保持置底",
+      "previous": "留下来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dash.behind.title",
+      "english": "Keep this window behind your other windows, even when you click on it, so it can fill the screen behind Nexus",
+      "chinese": "将此窗口保持在其他窗口后方，即使点击也不会置前，可铺满屏幕作为 Nexus 后方的显示背景",
+      "previous": "将这个窗口保留在您其他窗口后面, 即使您点击它, 这样它可以填补 Nexus 后面的屏幕",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dash.behind.failed",
+      "english": "Could not change whether this window stays behind",
+      "chinese": "无法更改此窗口的置底状态",
+      "previous": "无法更改此窗口是否留在后面",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.rxOnly",
+      "english": "receive only",
+      "chinese": "仅接收",
+      "previous": "仅接收",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.rxOnly.title",
+      "english": "Your licence class has no transmit privileges on this band. You can tune here and listen; transmitting will be refused.",
+      "chinese": "当前执照等级不允许在此频段发射。可以调至此处收听，但发射会被拒绝。",
+      "previous": "您的执照课在这个乐队没有传输权限 。 您可以在这里调音并听; 传输会被拒绝 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.channel.custom",
+      "english": "{{band}} (custom)",
+      "chinese": "{{band}}（自定义）",
+      "previous": "{{band}}(海关)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.dial.label",
+      "english": "Dial (MHz)",
+      "chinese": "调谐频率（MHz）",
+      "previous": "拨号( N)MHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.band.title",
+      "english": "Current band",
+      "chinese": "当前频段",
+      "previous": "当前频段",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.mode.aria",
+      "english": "Phone mode",
+      "chinese": "话音模式",
+      "previous": "电话模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.readout.dial.label",
+      "english": "Dial frequency (MHz)",
+      "chinese": "调谐频率（MHz）",
+      "previous": "拨号频率( E)MHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.readout.title.editable",
+      "english": "Click to enter a frequency (MHz)",
+      "chinese": "点击输入频率（MHz）",
+      "previous": "单击以输入频率( E)MHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.readout.title.digitTune",
+      "english": "Scroll a digit to tune it (100 Hz … 10 MHz) · ←/→ pick a digit, ↑/↓ spin it · click to type a frequency (MHz)",
+      "chinese": "在某一数位上滚动以调频（100 Hz 至 10 MHz）；←／→ 选择数位，↑／↓ 调整数值；点击可直接输入频率（MHz）",
+      "previous": "滚动一个数字来调制( 100)Hz. 10个MHz++++ 选择一个数字,++++ 旋转它 + 点击键入一个频率(MHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.readout.announce.dial",
+      "english": "{{dial}} megahertz",
+      "chinese": "{{dial}} 兆赫兹",
+      "previous": "{{dial}}兆赫兹",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "freq.readout.announce.digit",
+      "english": "{{step}} digit",
+      "chinese": "{{step}} 位",
+      "previous": "{{step}}数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

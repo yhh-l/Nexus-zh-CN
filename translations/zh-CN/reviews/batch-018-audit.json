@@ -1,0 +1,1636 @@
+{
+  "batch": 18,
+  "range": [
+    3401,
+    3600
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 183,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 2,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/SatellitesView.tsx",
+    "ui/src/components/prop/SatPassesPane.tsx",
+    "ui/src/features/satHealth.ts",
+    "ui/src/features/issAutoArm.ts",
+    "ui/src/features/satLane.ts",
+    "ui/src/features/elementBands.ts"
+  ],
+  "rows": [
+    {
+      "id": "settings.connectWeb.url.label",
+      "english": "Open this on the TV",
+      "chinese": "在电视上打开此地址",
+      "previous": "在电视上打开这个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.url.copy",
+      "english": "Copy",
+      "chinese": "复制",
+      "previous": "复制",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.url.pending",
+      "english": "Starting…",
+      "chinese": "正在启动…",
+      "previous": "正在启动…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.label",
+      "english": "Spectator scoreboard",
+      "chinese": "观众记分板",
+      "previous": "观察者记分牌",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.hint",
+      "english": "Serves a read-only scoreboard page for a TV or projector on this network — nothing to install on the TV, and viewers can only look. The first enable may pop a Windows Firewall prompt; allow it or viewers see nothing.",
+      "chinese": "为同一网络内的电视或投影仪提供只读记分板页面。电视无需安装软件，观众只能查看。首次启用时可能出现 Windows 防火墙提示，请允许访问，否则观众无法看到页面。",
+      "previous": "为这个网络上的电视或投影机提供只读的记分板页面——在电视上没有安装,观众只能看. 第一个启用可能弹出一个 Windows 防火墙提示;允许它或查看者看到什么也没有.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.aria.enable",
+      "english": "Enable the spectator scoreboard",
+      "chinese": "启用观众计分板",
+      "previous": "启用观众计分板",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.aria.disable",
+      "english": "Disable the spectator scoreboard",
+      "chinese": "禁用观众计分板",
+      "previous": "禁用观众计分板",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.port.label",
+      "english": "Board port",
+      "chinese": "记分板端口",
+      "previous": "棋盘端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.port.hint",
+      "english": "TCP port the scoreboard page is served on (default 7373).",
+      "chinese": "提供记分板页面的 TCP 端口（默认 7373）。",
+      "previous": "TCP端口 记分牌页面服务于( 默认 7373 ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.url.label",
+      "english": "On the TV, open",
+      "chinese": "在电视上打开",
+      "previous": "在电视上,打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.url.copy",
+      "english": "Copy",
+      "chinese": "复制",
+      "previous": "复制",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.url.pending",
+      "english": "Starting up — save settings, then this row shows the address.",
+      "chinese": "正在启动。保存设置后，此处会显示访问地址。",
+      "previous": "开始——保存设置,然后此行显示地址.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdBoard.notHosting",
+      "english": "When this station is a position, its TV shows the board of the host it joined, so the host needs Spectator scoreboard on too, on the same port. With no club at all, the TV says so and what to do.",
+      "chinese": "如果本电台作为操作席位加入俱乐部，电视会显示所加入主机的记分板，因此主机也须启用观众记分板，并使用相同端口。如果尚未加入或建立俱乐部，电视页面会说明情况并提示操作方法。",
+      "previous": "当这个电台是一个位置时,它的电视会显示它加入的主持人的董事会,所以主持人也需要Spectator计分板也在同一端口上. 没有俱乐部,电视上都这么说 怎么办?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.silent.label",
+      "english": "silent",
+      "chinese": "无业余信号",
+      "previous": "无声",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.silent.title",
+      "english": "In orbit, but the catalog lists no live amateur transmitter — the pass geometry is real, there is nothing to work on it.",
+      "chinese": "卫星仍在轨，但目录中没有列出仍在工作的业余无线电发射机。过境轨迹仍可计算，但无法利用它进行通联。",
+      "previous": "在轨道上,但目录列出了没有活的业余发射机——通过几何学是真实的,没有任何工作可做.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.dead.label",
+      "english": "dead",
+      "chinese": "已停用",
+      "previous": "已经死亡",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.dead.title",
+      "english": "SatNOGS reports this bird silent. Its passes are still computed from real elements; working it is not expected.",
+      "chinese": "SatNOGS 报告这颗卫星已无信号。仍根据实际轨道根数计算过境，但预计无法通联。",
+      "previous": "SatNOGS报告这只鸟沉默不语. 通行证仍然根据实际因素计算;预计不会起作用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.reentered.label",
+      "english": "re-entered",
+      "chinese": "已再入大气层",
+      "previous": "重新输入",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.reentered.title",
+      "english": "SatNOGS reports this bird has re-entered — it is gone. Any pass shown is modelled from the last elements on file.",
+      "chinese": "SatNOGS 报告这颗卫星已再入大气层，不再在轨。若仍显示过境信息，那是根据最后保存的轨道根数推算的。",
+      "previous": "SatNOGS报告这只鸟重新进入——它已经消失. 所显示的任何传球都是以文件上的最后元素为模型的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.preLaunch.label",
+      "english": "pre-launch",
+      "chinese": "尚未发射",
+      "previous": "发射前",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.preLaunch.title",
+      "english": "SatNOGS has this bird on record but not yet deployed — nothing to work until it launches.",
+      "chinese": "SatNOGS 已收录这颗卫星，但尚未部署。发射前无法通联。",
+      "previous": "SatNOGS有这种鸟的纪录,但尚未部署——在它发射之前没有任何工作.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.unknown.title",
+      "english": "SatNOGS reports this bird's status as \"{{status}}\".",
+      "chinese": "SatNOGS 报告这颗卫星的状态为“{{status}}”。",
+      "previous": "SatNOGS报告这只鸟的地位是\"{{status}}\" ..",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.noElements.label",
+      "english": "no elements",
+      "chinese": "无轨道根数",
+      "previous": "无元素",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.noElements.title",
+      "english": "No source carries orbital elements for this bird right now, so its passes cannot be computed. It stays starred; rows return when elements do.",
+      "chinese": "目前各数据源均未提供这颗卫星的轨道根数，无法计算过境。其星标会保留，取得轨道根数后会重新显示。",
+      "previous": "现在没有任何来源为这只鸟携带轨道元件,所以它的通过无法计算. 它保持视星等; 元素出现时行会返回.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.staleElements.label",
+      "english": "stale elements",
+      "chinese": "轨道根数过期",
+      "previous": "陈旧元素",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.staleElements.title",
+      "english": "The newest elements on file are past the 30-day ceiling where SGP4 accuracy is gone. Refresh elements, or wait for the next automatic refresh.",
+      "chinese": "最新保存的轨道根数已超过 30 天，超出 SGP4 可可靠预测的期限。请刷新轨道根数，或等待下次自动刷新。",
+      "previous": "文件中最新的元素已经超过30天的上限,而SGP4的精确度已经消失. 刷新元素, 或者等待下一次自动刷新 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.noPosition.label",
+      "english": "no position",
+      "chinese": "无法计算位置",
+      "previous": "无职位",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.health.noPosition.title",
+      "english": "Current elements, but the propagator refused a position for them — a decaying orbit does this. Nothing is being hidden; there is genuinely no place to draw.",
+      "chinese": "轨道根数尚在有效期内，但轨道预测程序无法据此计算位置，轨道衰减时可能出现这种情况。这颗卫星并未被隐藏，而是确实没有可绘制的位置。",
+      "previous": "目前的元素,但传播者拒绝了它们的位置——一个衰变的轨道这样做. 没有什么是隐藏的;确实没有地方可以画。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.pastLine",
+      "english": "{{past}} of {{total}} past 14 d",
+      "chinese": "{{total}} 颗卫星中有 {{past}} 颗的根数超过 14 天",
+      "previous": "{{past}}页:1{{total}}过去14 d",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.parts.aging",
+      "english": "{{count}} past 14 d",
+      "chinese": "{{count}} 颗卫星的根数超过 14 天",
+      "previous": "{{count}}过去14 d",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.parts.heldBack::one",
+      "english": "{{count}} sits out past 30 d",
+      "chinese": "{{count}} 颗卫星的根数超过 30 天，暂停使用",
+      "previous": "{{count}}坐在30多岁的时候",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.parts.heldBack::other",
+      "english": "{{count}} sit out past 30 d",
+      "chinese": "{{count}} 颗卫星的根数超过 30 天，暂停使用",
+      "previous": "{{count}}三十多岁时坐出来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.summary.birds",
+      "english": "{{count}} birds",
+      "chinese": "{{count}} 颗卫星",
+      "previous": "{{count}}鸟类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.sentence.aging::one",
+      "english": "{{count}} bird is past the 14-day line and drifting.",
+      "chinese": "{{count}} 颗卫星的轨道根数已超过 14 天，预测偏差正在增大。",
+      "previous": "{{count}}鸟儿已经过了14天的线和漂流。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.sentence.aging::other",
+      "english": "{{count}} birds are past the 14-day line and drifting.",
+      "chinese": "{{count}} 颗卫星的轨道根数已超过 14 天，预测偏差正在增大。",
+      "previous": "{{count}}鸟儿们已经过了14天的线和漂流。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.sentence.heldBack::one",
+      "english": "{{count}} bird is past 30 days and sits out until fresh elements arrive.",
+      "chinese": "{{count}} 颗卫星的轨道根数已超过 30 天，暂停预测，等待更新。",
+      "previous": "{{count}}鸟儿已经过了30天 然后坐到新鲜元素到达",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.elements.sentence.heldBack::other",
+      "english": "{{count}} birds are past 30 days and sit out until fresh elements arrive.",
+      "chinese": "{{count}} 颗卫星的轨道根数已超过 30 天，暂停预测，等待更新。",
+      "previous": "{{count}}鸟儿已经过了30天了 呆着等新鲜元素到来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.blocked.message",
+      "english": "Sat: Celestrak blocked",
+      "chinese": "卫星：Celestrak 拒绝访问",
+      "previous": "塞莱斯特拉克被封锁了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.blocked.detail",
+      "english": "Celestrak refused direct element fetches (HTTP 403/404) — direct attempts are stopped for 24 h. The hamradiotools.io mirror keeps retrying; elements may age until it lands.",
+      "chinese": "Celestrak 拒绝直接获取轨道根数（HTTP 403/404），已暂停直接请求 24 小时。仍会重试 hamradiotools.io 镜像；成功获取前，轨道根数可能逐渐过期。",
+      "previous": "Celestrak拒绝直接元素采集(HTTP 403/404)——24小时停止直接尝试. 仓radi凳. io镜像不断重试;元素可能会老化直到落地.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.unusable.message",
+      "english": "Sat: elements unusable",
+      "chinese": "卫星：轨道根数不可用",
+      "previous": "Sat: 无法使用的元素",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.unusable.detail",
+      "english": "Every cached element set is over 30 days old — satellite surfaces refuse to point or tune on them. Refresh in Settings ▸ Radio ▸ Orbital elements, or import a fresh file.",
+      "chinese": "缓存的所有轨道根数均已超过 30 天，卫星相关界面不会再据此控制天线指向或调频。请在“设置 ▸ 电台 ▸ 轨道根数”中刷新，或导入较新的文件。",
+      "previous": "每个缓存的元件集已有30多天的历史——卫星表面拒绝指向或调谐它们. 在设置 QQ Radio 轨道元素中刷新, 或者导入新文件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.stale.message",
+      "english": "Sat: elements {{days}} d old",
+      "chinese": "卫星：轨道根数已使用 {{days}} 天",
+      "previous": "Sat: 要素{{days}}d 旧",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.stale.detail",
+      "english": "Orbital elements are past the 14-day stale line — pass times, pointing and Doppler drift with age. Refresh from the Satellites section or Settings ▸ Radio ▸ Orbital elements.",
+      "chinese": "轨道根数已超过 14 天的更新提醒期限，过境时间、天线指向和多普勒补偿的误差会随之增大。请在卫星页面或“设置 ▸ 电台 ▸ 轨道根数”中刷新。",
+      "previous": "轨道元素经过14天的悬浮线——通过时间,指向和多普勒随年龄漂移. 从卫星部分或设置中刷新 QQ射线 轨道元件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.mostlyStale.message",
+      "english": "Sat: {{label}}",
+      "chinese": "卫星：{{label}}",
+      "previous": "座位:{{label}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.lane.mostlyStale.detail",
+      "english": "Most of the element sets you hold are past the 14-day stale line — {{label}}. The typical bird is still current, so the age reads calm; the rest of the catalog's pass times, pointing and Doppler are drifting. Refresh from the Satellites section or Settings ▸ Radio ▸ Orbital elements.",
+      "chinese": "现有轨道根数大多已超过 14 天的更新提醒期限：{{label}}。代表性卫星的根数仍较新，因此显示的时间看似正常；但目录中其余卫星的过境时间、天线指向和多普勒补偿已有偏差。请在卫星页面或“设置 ▸ 电台 ▸ 轨道根数”中刷新。",
+      "previous": "你持有的元素集大多经过14天的坚固线——{{label}}. 典型的鸟类仍然流畅,因此年龄读作平静;其余目录的通过时间,指向和多普勒漂流. 从卫星部分或设置中刷新 QQ射线 轨道元件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.vfoMap.off",
+      "english": "Not set — downlink only",
+      "chinese": "未设置，仅下行接收",
+      "previous": "未设置——仅下行链路",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.vfoMap.downlinkOnly",
+      "english": "Downlink only (receive)",
+      "chinese": "仅下行（接收）",
+      "previous": "仅下行链路( 收到)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.vfoMap.uplinkOnly",
+      "english": "Uplink only (transmit)",
+      "chinese": "仅上行（发射）",
+      "previous": "只上行( 发送)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.vfoMap.aDownBUp",
+      "english": "VFO A = downlink, VFO B = uplink",
+      "chinese": "VFO A = 下行，VFO B = 上行",
+      "previous": "VFO A=下行链路, VFO B=上行链路",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.vfoMap.aUpBDown",
+      "english": "VFO A = uplink, VFO B = downlink",
+      "chinese": "VFO A = 上行，VFO B = 下行",
+      "previous": "VFO A=上连线, VFO B=下行链路",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.vfoMap.mainDownSubUp",
+      "english": "Main = downlink, Sub = uplink (IC-9700 full duplex)",
+      "chinese": "主通道 = 下行，副通道 = 上行（IC-9700 全双工）",
+      "previous": "主 = 下行链路,Sub = 上行链路(IC-9700全双联)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.vfoMap.mainUpSubDown",
+      "english": "Main = uplink, Sub = downlink",
+      "chinese": "主通道 = 上行，副通道 = 下行",
+      "previous": "主 = 上行链路,子 = 下行链路",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.alarm.up",
+      "english": "⏰ {{name}} is UP now (LOS {{los}}) · max {{maxEl}}°",
+      "chinese": "⏰ {{name}} 正在过境（LOS {{los}}）· 最大仰角 {{maxEl}}°",
+      "previous": "⏰{{name}}现在起床了(LOS){{los}}• 最大值{{maxEl}}°",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.alarm.rises",
+      "english": "⏰ {{name}} rises {{aos}} (~{{mins}} min) · max {{maxEl}}°",
+      "chinese": "⏰ {{name}} 将于 {{aos}} 升起（约 {{mins}} 分钟后）· 最大仰角 {{maxEl}}°",
+      "previous": "⏰{{name}}上升数{{aos}}(~~) (中文(简体) ).{{mins}}分钟) 最大值{{maxEl}}°",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.alarm.stop",
+      "english": "Stop alarm",
+      "chinese": "停止报警",
+      "previous": "停止报警",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.iss.optOut",
+      "english": "ISS auto-arm off — SSTV disarmed, dial restored",
+      "chinese": "ISS 自动接收已关闭，SSTV 已停止待收，已恢复原频率",
+      "previous": "关闭国际空间站自动武器SSTV解除武装,恢复拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.iss.los",
+      "english": "ISS LOS — SSTV disarmed, dial restored",
+      "chinese": "ISS 已落下（LOS），SSTV 已停止待收，已恢复原频率",
+      "previous": "(b) 海洋事务——SSTV解除武装,恢复拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.iss.armed",
+      "english": "ISS overhead — tuned {{dial}} {{mode}}, SSTV armed",
+      "chinese": "ISS 正在过境，已调至 {{dial}} {{mode}}，SSTV 已进入待收状态",
+      "previous": "国际空间站间接费用——调制{{dial}} {{mode}}, (中文).SSTV武装",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.iss.overhead",
+      "english": "ISS overhead — SSTV on {{dial}} {{mode}}. Open SSTV to receive it; your radio was not retuned.",
+      "chinese": "ISS 正在过境，SSTV 使用 {{dial}} {{mode}}。打开 SSTV 页面即可接收；尚未调整电台频率。",
+      "previous": "基础设施的间接费用——SSTV打开{{dial}} {{mode}}打开SSTV您的收音机没有调整。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.iss.overhead.onSstv",
+      "english": "ISS overhead: SSTV on {{dial}} {{mode}}. A satellite pass has the radio, so it was not retuned.",
+      "chinese": "ISS 正在过境：SSTV 使用 {{dial}} {{mode}}。当前卫星过境任务正在控制电台，因此未调整频率。",
+      "previous": "基础设施服务间接费用:SSTV打开{{dial}} {{mode}}卫星通道有收音机,所以没有重新调整。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.iss.cannotReceive",
+      "english": "ISS overhead — your radio can't receive {{dial}} MHz, so ISS SSTV auto-arm can't use it. You can turn the auto-arm off in Settings ▸ Digital ▸ SSTV.",
+      "chinese": "ISS 正在过境，但电台无法接收 {{dial}} MHz，因而无法使用 ISS SSTV 自动接收。可在“设置 ▸ 数字模式 ▸ SSTV”中关闭自动接收。",
+      "previous": "国际空间站高架 - 您的无线电无法接收{{dial}} MHz因此,国际空间站SSTV自动臂不能使用它。 您可以在 QQ 数字化设置中关闭自动臂SSTV。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.refresh.mirrorDown",
+      "english": "Mirror unreachable — fetched from Celestrak: {{count}} birds",
+      "chinese": "镜像无法访问，已从 Celestrak 获取 {{count}} 颗卫星的数据",
+      "previous": "镜像无法接触到——从塞莱斯特拉克获得:{{count}}鸟类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.refresh.ok",
+      "english": "Orbital elements updated — {{count}} birds ({{source}})",
+      "chinese": "轨道根数已更新，共 {{count}} 颗卫星（{{source}}）",
+      "previous": "轨道要素更新 -{{count}}鸟类({{source}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.refresh.blocked",
+      "english": "Celestrak refused direct element fetches — direct attempts are stopped for 24 h; the mirror keeps retrying.",
+      "chinese": "Celestrak 拒绝直接获取轨道根数，已暂停直接请求 24 小时；仍会重试镜像。",
+      "previous": "Celestrak拒绝直接元素获取——24小时停止直接尝试;镜像持续重试.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.refresh.mirrorUnreachableCurrent",
+      "english": "The element mirror isn't reachable (it goes live with the next release); your elements are {{age}} d old — current.",
+      "chinese": "轨道根数镜像暂时无法访问（将随下一版本启用）；现有根数已使用 {{age}} 天，仍在有效期内。",
+      "previous": "元素镜是无法达到的( 它与下一个发布一起运行); 您的元素是{{age}}d 旧——现。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.refresh.mirrorUnreachableStale",
+      "english": "The element mirror is unreachable and your elements are {{days}} d old — import a fresh element file or retry later.",
+      "chinese": "轨道根数镜像无法访问，现有根数已使用 {{days}} 天。请导入较新的轨道根数文件，或稍后重试。",
+      "previous": "元素镜是无法接触的,您的元素是{{days}}d 旧的 - 导入新元素文件或稍后重试。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.refresh.mirrorUnreachableEmpty",
+      "english": "The element mirror is unreachable and no usable elements are cached — import an element file to get the satellite surfaces running.",
+      "chinese": "轨道根数镜像无法访问，且未缓存可用根数。请导入轨道根数文件，以启用卫星相关功能。",
+      "previous": "元素镜是无法接触到的,没有可用的元素被缓存——导入元素文件让卫星表面运行.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.refresh.failed",
+      "english": "Element update failed — no source delivered a usable set; retry shortly or import an element file.",
+      "chinese": "轨道根数更新失败，所有数据源均未返回可用数据。请稍后重试，或导入轨道根数文件。",
+      "previous": "元素更新失败 —— 没有源发送可用的集; 很快重试或导入元素文件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.rotorLost",
+      "english": "🛰 {{name}}: the rotator stopped answering — point it yourself. The pass, the transponder and Doppler keep running.",
+      "chinese": "🛰 {{name}}：天线旋转器已停止响应，请手动调整指向。过境跟踪、转发器设置和多普勒补偿仍在运行。",
+      "previous": "🛰{{name}}:转子停止回答——自己指. 通行证,转发器和多普勒继续运行.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.inProgress",
+      "english": "🛰 {{name}} pass in progress — {{mins}} min left, max el {{maxEl}}°",
+      "chinese": "🛰 {{name}} 正在过境，还剩 {{mins}} 分钟，最大仰角 {{maxEl}}°",
+      "previous": "🛰{{name}}正在通过{{mins}}左边的分钟,最大 el{{maxEl}}°",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.aos",
+      "english": "🛰 AOS {{name}} — point {{az}}°, max el {{maxEl}}°, {{mins}} min pass",
+      "chinese": "🛰 {{name}} 已升起（AOS），请将天线指向 {{az}}°，最大仰角 {{maxEl}}°，本次过境持续 {{mins}} 分钟",
+      "previous": "======================================================================================================================================{{name}}- 点{{az}}°,最大值 el{{maxEl}}°,{{mins}}分钟通过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.los",
+      "english": "🛰 {{name}} pass complete — LOS.",
+      "chinese": "🛰 {{name}} 过境结束，已落下（LOS）。",
+      "previous": "🛰{{name}}传球完成——LOS.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.los.dial",
+      "english": "Dial handed back.",
+      "chinese": "已交还调频控制权。",
+      "previous": "拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.los.split",
+      "english": "Uplink split released.",
+      "chinese": "已解除上行异频设置。",
+      "previous": "向上链接拆分已发布 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.los.rotorPark",
+      "english": "Rotor parking.",
+      "chinese": "天线旋转器正在归位。",
+      "previous": "烂车停车场",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passAlert.los.rotorReady",
+      "english": "Rotor moving to the ready position.",
+      "chinese": "天线旋转器正在转向待命位置。",
+      "previous": "转轮至正位.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.noElements",
+      "english": "No orbital elements yet — satellite data loads once online.",
+      "chinese": "尚无轨道根数，联网后会加载卫星数据。",
+      "previous": "目前还没有轨道元件——卫星数据载荷一度上线.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.noPasses",
+      "english": "No passes over your QTH in the next 24 h (set your grid in Settings?).",
+      "chinese": "未来 24 小时内没有卫星经过本台 QTH 上空。是否已在设置中填写网格定位？",
+      "previous": "不准过关QTH下24 h( 设置时设置您的网格 ?) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.line",
+      "english": "Next: {{name}} {{when}}, max {{maxEl}}° {{aos}}→{{los}}.",
+      "chinese": "下次：{{name}}，{{when}}，最大仰角 {{maxEl}}°，{{aos}}→{{los}}。",
+      "previous": "下一个:{{name}} {{when}}最大数{{maxEl}}°{{aos}}→{{los}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.now",
+      "english": "now",
+      "chinese": "现在",
+      "previous": "现在",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.inMins",
+      "english": "in {{mins}} min",
+      "chinese": "{{mins}} 分钟后",
+      "previous": "输入{{mins}}分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.favFilter.aria",
+      "english": "Filter to ★ birds",
+      "chinese": "仅显示 ★ 星标卫星",
+      "previous": "过滤到 Q 鸟类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.favFilter.on",
+      "english": "Showing your ★ birds (map + globe follow) — click to show all satellites",
+      "chinese": "当前显示 ★ 星标卫星（地图和地球视图同步筛选），点击显示全部卫星",
+      "previous": "显示您的鸟类( 地图+ 地球跟随) —— 点击显示所有卫星",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.favFilter.off",
+      "english": "Showing all satellites — click to show only your ★ birds (map + globe follow)",
+      "chinese": "当前显示全部卫星，点击仅显示 ★ 星标卫星（地图和地球视图同步筛选）",
+      "previous": "显示所有卫星——单击仅显示您的鸟类(地图+地球跟踪)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.favFilter.all",
+      "english": "All",
+      "chinese": "全部",
+      "previous": "全部",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "IARURegions",
+          "chinese": "全部"
+        }
+      ]
+    },
+    {
+      "id": "sat.passesPane.stale.title",
+      "english": "Orbital elements decay; pass times drift as they age",
+      "chinese": "轨道根数会随时间失准，过境时间的预测偏差也会增大",
+      "previous": "轨道元素衰变; 过往漂移",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.stale",
+      "english": "stale elements ({{days}} d) — times are approximate",
+      "chinese": "轨道根数已过期（{{days}} 天），时间仅供参考",
+      "previous": "陈旧元素{{days}}(d) 时间大致",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.mostlyStale.title",
+      "english": "The typical bird in your catalog is still current, so the times below are good for it — but most of the set is past the 14-day line, or held back past 30 days. Refresh elements from the Satellites section.",
+      "chinese": "目录中代表性卫星的轨道根数仍较新，因此下方时间对它仍然准确；但大多数根数已超过 14 天，或因超过 30 天而暂停使用。请在卫星页面刷新轨道根数。",
+      "previous": "你目录中的典型鸟类仍然流传着,所以下面的时间对它有好处——但是大部分的集是经过14天的线,或者在超过30天后被挡住. 卫星部分的更新元素。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.mostlyStale",
+      "english": "{{label}} — most times are approximate",
+      "chinese": "{{label}}，多数过境时间仅供参考",
+      "previous": "{{label}}- 大部分时间是大概的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.favEmpty",
+      "english": "No passes for your ★ birds in the next 24 h.",
+      "chinese": "未来 24 小时内，★ 星标卫星均无过境。",
+      "previous": "接下来24小时,你的鸟没有通行证",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.chase.on",
+      "english": "Chasing — sorts first, footprint ring on the map. Click to stop.",
+      "chinese": "已设为追踪目标：优先排列，并在地图上显示覆盖圈。点击取消。",
+      "previous": "追逐——排序第一,地图上的脚印戒指. 点击停止 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.chase.off",
+      "english": "Chase this bird — sort its passes first + draw its footprint on the map",
+      "chinese": "追踪此卫星：优先排列其过境，并在地图上绘制覆盖范围",
+      "previous": "追这只鸟——先按下它的行经 + 在地图上划出它的足迹",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.peakEl.title",
+      "english": "Peak elevation {{el}}° — higher = longer, stronger pass",
+      "chinese": "最大仰角 {{el}}°，仰角越高，过境时间越长、信号越强",
+      "previous": "峰高点{{el}}°- 较高 = 更长,更强的通过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.arc.title",
+      "english": "Rise → set compass directions",
+      "chinese": "升起 → 落下的罗盘方位",
+      "previous": "升起 ~ 设定指南针方向",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passesPane.duration",
+      "english": "{{mins}} min",
+      "chinese": "{{mins}}分钟",
+      "previous": "{{mins}}分钟",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.title",
+      "english": "Satellites",
+      "chinese": "卫星",
+      "previous": "卫星",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.sub",
+      "english": "passes over your grid",
+      "chinese": "经过本台网格上空的卫星",
+      "previous": "通过你的网格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.bands.title",
+      "english": "Elements past the 14-day line still fly the pass, with drifting times; elements past 30 days are not used at all — each of those birds is listed, with its reason, in the Birds list.",
+      "chinese": "超过 14 天的轨道根数仍用于过境预测，但时间会有偏差；超过 30 天的根数则完全停用。受影响的卫星及原因会逐一列在卫星列表中。",
+      "previous": "超过14天线的元素仍然在飞过,有漂移的时间;过去30天的元素根本没有被使用——这些鸟中的每一只都有其原因被列入鸟类列表.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.stale.title",
+      "english": "Orbital elements are {{days}} days old — pass times and Doppler drift with element age. Click to refresh now; they also refresh automatically every 6 h when the network allows.",
+      "chinese": "轨道根数已使用 {{days}} 天，过境时间和多普勒补偿的误差会随之增大。点击立即刷新；网络可用时也会每 6 小时自动刷新。",
+      "previous": "轨道元素是{{days}}日子——通过时间和多普勒随元素年龄漂移. 现在点击以刷新; 当网络允许时, 它们也会自动刷新 6 h 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.stale.chip",
+      "english": "TLE {{days}} days — STALE",
+      "chinese": "TLE 已使用 {{days}} 天，已过期",
+      "previous": "电话{{days}}天数——STALE",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.stale.refreshing",
+      "english": "· refreshing…",
+      "chinese": "· 正在刷新…",
+      "previous": "正在刷新...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.stale.refresh",
+      "english": "· refresh",
+      "chinese": "· 刷新",
+      "previous": "刷新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.quiet.title",
+      "english": "Orbital elements are {{days}} days old (the median of the {{sets}} sets in use). They refresh automatically every 6 h when the network allows; click to refresh now.",
+      "chinese": "轨道根数已使用 {{days}} 天（正在使用的 {{sets}} 组根数的中位数）。网络可用时每 6 小时自动刷新，也可点击立即刷新。",
+      "previous": "轨道元素是{{days}}天数({{sets}}正在使用). 当网络允许时, 它们会自动刷新每6小时; 点击现在刷新 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.quiet.titleEmpty",
+      "english": "No usable orbital elements are cached. Click to fetch them now; you can also import a file under Settings ▸ Radio ▸ Orbital elements.",
+      "chinese": "尚未缓存可用的轨道根数。点击立即获取，也可在“设置 ▸ 电台 ▸ 轨道根数”中导入文件。",
+      "previous": "没有可用的轨道元件被缓存. 点击以获取它们; 您也可以在 Sets QQ Radio 轨道元素下导入一个文件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.quiet.refreshing",
+      "english": "⟳ refreshing…",
+      "chinese": "⟳ 正在刷新…",
+      "previous": "正在刷新...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.quiet.refresh",
+      "english": "⟳ refresh elements",
+      "chinese": "⟳ 刷新轨道根数",
+      "previous": "QQ 刷新元素",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.popOut.title",
+      "english": "Open in its own window",
+      "chinese": "在独立窗口中打开",
+      "previous": "在自己的窗口打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.seed.notice",
+      "english": "Starred {{count}} active birds to get you started — change them any time with the ★ beside any bird.",
+      "chinese": "已为你将 {{count}} 颗仍在工作的卫星设为星标，方便开始使用。随时可点击卫星旁的 ★ 更改。",
+      "previous": "导演{{count}}活跃的鸟儿让你开始... 随时随地改变它们...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.seed.dismiss.aria",
+      "english": "Dismiss the starred-birds notice",
+      "chinese": "关闭星标卫星提示",
+      "previous": "解除星鸟的注意",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.head.seed.dismiss.title",
+      "english": "Dismiss — your ★ birds stay exactly as they are",
+      "chinese": "关闭提示，保留现有 ★ 星标卫星",
+      "previous": "解散吧 你的鸟类保持原样",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.quality.overhead",
+      "english": "overhead pass",
+      "chinese": "近天顶过境",
+      "previous": "高额通行证",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.quality.high",
+      "english": "high pass",
+      "chinese": "高仰角过境",
+      "previous": "高传",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.quality.workable",
+      "english": "workable pass",
+      "chinese": "适合通联的过境",
+      "previous": "可行的通行证",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.quality.low",
+      "english": "low horizon pass",
+      "chinese": "低仰角过境",
+      "previous": "低地平线通过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.countdown.now",
+      "english": "NOW",
+      "chinese": "现在",
+      "previous": "现在",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.countdown.mins",
+      "english": "in {{mins}} min",
+      "chinese": "{{mins}} 分钟后",
+      "previous": "输入{{mins}}分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.countdown.hours",
+      "english": "in {{hours}} h",
+      "chinese": "{{hours}} 小时后",
+      "previous": "输入{{hours}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.state.inPass",
+      "english": "IN PASS — {{mins}} min to LOS",
+      "chinese": "正在过境，距落下（LOS）还有 {{mins}} 分钟",
+      "previous": "在巴基斯坦境内{{mins}}分钟到LOS",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.state.prepositioning",
+      "english": "slewing to the AOS azimuth",
+      "chinese": "正在转向升起点（AOS）的方位",
+      "previous": "杀死到 AOS 方位角",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.why",
+      "english": "{{when}} — {{el}}° {{quality}}, {{dur}} min, {{aos}}→{{los}}{{status}}",
+      "chinese": "{{when}}，{{el}}° {{quality}}，{{dur}} 分钟，{{aos}}→{{los}}{{status}}",
+      "previous": "{{when}}. . . . . . .{{el}}°{{quality}}, (中文).{{dur}}分钟{{aos}}→{{los}}{{status}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.why.alreadyUp",
+      "english": "already up",
+      "chinese": "已升起",
+      "previous": "已经起来了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.why.alive",
+      "english": " · reported alive (SatNOGS)",
+      "chinese": " · 据 SatNOGS 报告仍在工作",
+      "previous": "* 据报还活着(SatNOGS)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.why.reported",
+      "english": " · reported {{status}} (SatNOGS)",
+      "chinese": " · SatNOGS 报告状态为 {{status}}",
+      "previous": "报告{{status}}(卫星)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.earn.entities.title::one",
+      "english": "{{count}} never-worked entity reachable through this pass's footprint: {{names}}{{more}}",
+      "chinese": "本次过境覆盖范围内有 {{count}} 个尚未通联的实体：{{names}}{{more}}",
+      "previous": "{{count}}从未工作过的实体 通过此路径的足迹:{{names}}{{more}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.earn.entities.title::other",
+      "english": "{{count}} never-worked entities reachable through this pass's footprint: {{names}}{{more}}",
+      "chinese": "本次过境覆盖范围内有 {{count}} 个尚未通联的实体：{{names}}{{more}}",
+      "previous": "{{count}}从未工作过的实体 通过这个通行证的足迹:{{names}}{{more}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.earn.grids.title::one",
+      "english": "{{count}} new Satellite VUCC grid reachable through this pass's footprint: {{grids}}{{more}}",
+      "chinese": "本次过境覆盖范围内有 {{count}} 个可新增的卫星 VUCC 网格：{{grids}}{{more}}",
+      "previous": "{{count}}新的卫星 VUCC 网格可以通过此通道的足迹到达:{{grids}}{{more}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.earn.grids.title::other",
+      "english": "{{count}} new Satellite VUCC grids reachable through this pass's footprint: {{grids}}{{more}}",
+      "chinese": "本次过境覆盖范围内有 {{count}} 个可新增的卫星 VUCC 网格：{{grids}}{{more}}",
+      "previous": "{{count}}新的卫星VUCC电网可通过此通道的足迹到达:{{grids}}{{more}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.earn.more",
+      "english": " +{{count}} more",
+      "chinese": "，另有 {{count}} 个",
+      "previous": "+ 键{{count}}更多",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.aria.bird",
+      "english": "Sky dome for {{name}}, north up. Satellite at azimuth {{az}} degrees, elevation {{el}} degrees.",
+      "chinese": "{{name}} 的天空视图，北方朝上。卫星方位角 {{az}} 度，仰角 {{el}} 度。",
+      "previous": "天穹为{{name}}北边 方位角卫星{{az}}度, 高点{{el}}学位。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.aria.track",
+      "english": "Sky dome for {{name}}, north up. Pass track from azimuth {{aos}} to {{los}} degrees, maximum elevation {{maxEl}} degrees.",
+      "chinese": "{{name}} 的天空视图，北方朝上。过境轨迹从方位角 {{aos}} 度到 {{los}} 度，最大仰角 {{maxEl}} 度。",
+      "previous": "天穹为{{name}}北边 从方位角通过音轨{{aos}}改为:{{los}}度,最大高度{{maxEl}}学位。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.aos.title",
+      "english": "AOS — rises at {{az}} ({{wind}}) {{time}}",
+      "chinese": "AOS：{{time}} 升起，方位 {{az}}（{{wind}}）",
+      "previous": "AOS — 上升至{{az}}(单位:千美元){{wind}}) (中文(中国大陆){{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.los.title",
+      "english": "LOS — sets at {{az}} ({{wind}}) {{time}}",
+      "chinese": "LOS：{{time}} 落下，方位 {{az}}（{{wind}}）",
+      "previous": "(单位:千美元){{az}}(单位:千美元){{wind}}) (中文(中国大陆){{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.ghost.title",
+      "english": "Antenna: commanded az/el (not a rotator read-back)",
+      "chinese": "天线：已下达的方位角／仰角指令（并非旋转器反馈值）",
+      "previous": "天线:命令az/el(不是转子读回)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.ghost.azOnly.title",
+      "english": "Antenna: azimuth {{az}} commanded — az-only rotator, no elevation sent",
+      "chinese": "天线：已下达方位角 {{az}} 的指令。旋转器仅支持方位角，未发送仰角指令",
+      "previous": "天线: 方位角{{az}}命令——只使用 az 转子,没有发送升降器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.bird.title",
+      "english": "{{name}} — az {{az}} el {{el}}",
+      "chinese": "{{name}}，方位角 {{az}}，仰角 {{el}}",
+      "previous": "{{name}}——阿兹{{az}}尔{{el}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.azEl",
+      "english": "az {{az}} el {{el}}",
+      "chinese": "方位角 {{az}}，仰角 {{el}}",
+      "previous": "az 数字{{az}}尔{{el}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.antenna.noCommand",
+      "english": "armed — no rotor command sent yet",
+      "chinese": "已就绪，尚未发送旋转器指令",
+      "previous": "武装——尚未发出转子命令",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.antenna.azOnly",
+      "english": "az {{az}} · elevation not commanded (az-only rotator)",
+      "chinese": "方位角 {{az}} · 未发送仰角指令（旋转器仅支持方位角）",
+      "previous": "az 数字{{az}}没有命令的高度(只有角旋转器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.satellite",
+      "english": "Satellite",
+      "chinese": "卫星",
+      "previous": "卫星",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "卫星"
+        }
+      ]
+    },
+    {
+      "id": "sat.dome.readout.range",
+      "english": "Range",
+      "chinese": "斜距",
+      "previous": "范围",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.range.title",
+      "english": "Slant range — how far the bird is FROM YOU.",
+      "chinese": "斜距：本台到卫星的直线距离。",
+      "previous": "倾斜范围——鸟离你有多远.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.rangeRate",
+      "english": " · {{speed}} {{trend}}",
+      "chinese": " · {{speed}} {{trend}}",
+      "previous": "* 妇女{{speed}} {{trend}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.closing",
+      "english": "closing",
+      "chinese": "接近中",
+      "previous": "结束",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.opening",
+      "english": "opening",
+      "chinese": "远离中",
+      "previous": "打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.altitude",
+      "english": "Altitude",
+      "chinese": "轨道高度",
+      "previous": "高度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.altitude.title",
+      "english": "Altitude — how far above the earth the bird is. Not range (its distance from you).",
+      "chinese": "轨道高度：卫星距地表的高度，并非它与本台之间的斜距。",
+      "previous": "海拔高度——鸟儿在地球上方有多远. 没有范围(它与你的距离).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.antenna",
+      "english": "Antenna",
+      "chinese": "天线",
+      "previous": "天线",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.antenna.title",
+      "english": "What the rotator was COMMANDED — not a read-back. Δ is the true angular gap to the bird.",
+      "chinese": "显示发送给旋转器的指令值，并非反馈值。Δ 表示与卫星方向的实际角度差。",
+      "previous": "转子是指挥的——不是回转. 对鸟来说是真正的角隙",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.dome.readout.riseSet",
+      "english": "Rise / set",
+      "chinese": "升起／落下",
+      "previous": "升起/ 设定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.timeline.aos",
+      "english": "AOS {{time}}",
+      "chinese": "AOS {{time}}",
+      "previous": "助理{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.timeline.los",
+      "english": "LOS {{time}}",
+      "chinese": "LOS {{time}}",
+      "previous": "海洋法{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.timeline.peak",
+      "english": "{{tca}}max {{maxEl}}°",
+      "chinese": "{{tca}}最大仰角 {{maxEl}}°",
+      "previous": "{{tca}}最大数{{maxEl}}°",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.timeline.tca",
+      "english": "TCA {{time}} · ",
+      "chinese": "TCA {{time}} · ",
+      "previous": "特克斯和凯科斯群岛{{time}}* 妇女",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.timeline.nextPass",
+      "english": "next pass {{countdown}}",
+      "chinese": "下次过境 {{countdown}}",
+      "previous": "下次通过{{countdown}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.head",
+      "english": "Doppler",
+      "chinese": "多普勒补偿",
+      "previous": "多普勒语Name",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.none.off",
+      "english": "Doppler is off — nothing is being tuned (Settings ▸ Radio ▸ Satellite Doppler).",
+      "chinese": "多普勒补偿已关闭，未自动调整任何频率（设置 ▸ 电台 ▸ 卫星多普勒补偿）。",
+      "previous": "多普勒停播了——没有任何内容被调音(Settings QQ Radio QQ卫星多普勒).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.none.pickConfirm",
+      "english": "No transponder selected — pick one beside this; once your mapping is confirmed for this radio, Doppler tunes your uplink and the dial stays yours.",
+      "chinese": "尚未选择转发器，请在旁边选择。确认这台电台的上下行分配后，多普勒补偿将调整上行频率，主调谐频率仍由你控制。",
+      "previous": "没有选择转发器 —— 在此旁选择一个。 一旦您的绘图被确认为这个收音机, 多普勒会调谐您的上行链路, 拨号会保留您的。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.none.pickUplink",
+      "english": "No transponder selected — pick one beside this and Doppler tunes your uplink; the dial stays yours.",
+      "chinese": "尚未选择转发器，请在旁边选择。多普勒补偿将调整上行频率，主调谐频率仍由你控制。",
+      "previous": "没有选择转发器 —— 在此旁边选择一个, 多普勒调制您的上行链路; 拨号会保留您的上行链路 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.none.pick",
+      "english": "No transponder selected — pick one beside this to put the dial under Doppler.",
+      "chinese": "尚未选择转发器，请在旁边选择，以启用主调谐频率的多普勒补偿。",
+      "previous": "没有选择转发器 —— 在此旁选择一个将拨号置于多普勒下.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.none.unconfirmed",
+      "english": "Your uplink-only mapping is not confirmed for this radio — nothing is being tuned.",
+      "chinese": "尚未为这台电台确认“仅上行”分配，未自动调整任何频率。",
+      "previous": "您的仅连接绘图对于这台收音机来说没有得到确认——没有任何内容被调制.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.none.beforeAos",
+      "english": "Doppler corrects from AOS — nothing to correct until the bird is up.",
+      "chinese": "多普勒补偿从卫星升起（AOS）时开始，升起前不作补偿。",
+      "previous": "多普勒从AOS中校正——在鸟儿升起之前,没有什么可以改正的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.none.noTuning",
+      "english": "Doppler has not reported a tuning for this pass yet.",
+      "chinese": "多普勒补偿尚未报告本次过境的调频结果。",
+      "previous": "多普勒还没有报告这段通行证的调试情况.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.uplinkOnly.noLeg",
+      "english": "Your uplink-only mapping has nothing to drive here — this bird has no separate uplink. Nothing is being tuned.",
+      "chinese": "这颗卫星没有独立的上行通道，“仅上行”分配无法控制频率，因此未作任何自动调频。",
+      "previous": "您的上行链路地图在这里没有驱动功能——这只鸟没有独立的上行链路. 什么也没有被调音。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.leg.downlink",
+      "english": "↓ Downlink",
+      "chinese": "↓ 下行",
+      "previous": "下行链路",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.leg.uplink",
+      "english": "↑ Uplink",
+      "chinese": "↑ 上行",
+      "previous": "上行链接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.doppler.txMode.title",
+      "english": "The mode the TX (split) VFO is set to for this pass: {{mode}}. That VFO keeps a mode of its own, apart from the receive dial, so it is set with the Doppler tuning instead of keeping whatever the last pass left there. It can differ from the downlink's — on an inverting transponder the sideband swaps.",
+      "chinese": "本次过境中发射（TX 异频）VFO 的模式：{{mode}}。该 VFO 的模式独立于接收主频率，因此随多普勒调频一同设置，不会沿用上次过境留下的模式。它可能与下行模式不同：反相转发器会将边带互换。",
+      "previous": "TX 模式( 分割)VFO用于此传球:{{mode}}该VFO保持自己的模式,除了接收拨号之外,它被设定为多普勒调音器,而不是保留那里最后的通行证。 它与下行链路不同——在反向转发器上,侧带互换.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.inverting.label",
+      "english": "INVERTING",
+      "chinese": "反相",
+      "previous": "进化",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.inverting.title",
+      "english": "Inverting linear transponder: tune the downlink UP and your uplink goes DOWN, and the sidebands swap (LSB up, USB down).",
+      "chinese": "反相线性转发器：下行频率调高时，上行频率会调低，边带也会互换（上行 LSB，下行 USB）。",
+      "previous": "反向线性转发器:将下行链路向上调和,你的上行链路向下调和,副带互换(LSB上调,USB下调).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.head",
+      "english": "Passband",
+      "chinese": "通带",
+      "previous": "通带",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.inverting",
+      "english": "inverting — tune up, transmit down",
+      "chinese": "反相：接收频率调高，发射频率调低",
+      "previous": "反转——调头,向下传送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.nonInverting",
+      "english": "non-inverting — both legs move the same way",
+      "chinese": "非反相：上下行频率同向变化",
+      "previous": "非颠倒——两条腿都一样移动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.inverting.word",
+      "english": "inverting",
+      "chinese": "反相",
+      "previous": "反转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.nonInverting.word",
+      "english": "non-inverting",
+      "chinese": "非反相",
+      "previous": "非反转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.aria",
+      "english": "Transponder passband, {{mode}}, ±{{half}} kHz either side of centre. Downlink {{down}} from centre, uplink {{up}} from centre.",
+      "chinese": "转发器通带，{{mode}}，以中心为基准 ±{{half}} kHz。下行距中心 {{down}}，上行距中心 {{up}}。",
+      "previous": "传声带,{{mode}}, ±{{half}} kHz中间的两边 下行链路{{down}}从中, 上行链路{{up}}从中心。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.lane.downlink",
+      "english": "Downlink",
+      "chinese": "下行",
+      "previous": "下行链路",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.lane.uplink",
+      "english": "Uplink",
+      "chinese": "上行",
+      "previous": "上行链接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.mark.title",
+      "english": "{{glyph}} {{leg}}{{freq}} — offset {{offset}} from passband centre{{clamped}}",
+      "chinese": "{{glyph}} {{leg}}{{freq}}，相对通带中心偏移 {{offset}}{{clamped}}",
+      "previous": "{{glyph}} {{leg}}{{freq}}页:1{{offset}}从带宽中心{{clamped}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.mark.freq",
+      "english": " — {{hz}} Hz",
+      "chinese": " — {{hz}} Hz",
+      "previous": ". . . . . . .{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.mark.clamped",
+      "english": " (outside the passband — the mark is parked on the edge)",
+      "chinese": "（超出通带，标记显示在边缘）",
+      "previous": "(在通行证外——标记停在边缘)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.axis.title",
+      "english": "kHz from passband centre",
+      "chinese": "相对通带中心的偏移（kHz）",
+      "previous": "kHz从带宽中心",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.noWidth",
+      "english": "No passband to tune inside — this is a single channel, or SatNOGS carries no width for it. There is no axis to draw; the offsets below are still exact.",
+      "chinese": "没有可供调谐的通带：这是单信道，或 SatNOGS 未提供其带宽。因此不绘制坐标轴，下方频率偏移值仍然准确。",
+      "previous": "内部没有发音的通过带——这是单一的信道,或者SatNOGS没有带宽. 没有轴线可画;下面的抵消仍然准确。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.readout.doppler",
+      "english": "Doppler {{shift}}",
+      "chinese": "多普勒频移 {{shift}}",
+      "previous": "多普勒语Name{{shift}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.readout.offset",
+      "english": "offset {{offset}}",
+      "chinese": "偏移 {{offset}}",
+      "previous": "页:1{{offset}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.passband.readout.width",
+      "english": "±{{half}} kHz from centre",
+      "chinese": "距中心 ±{{half}} kHz",
+      "previous": "・{{half}} kHz从中央",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.kind.beacon",
+      "english": "beacon",
+      "chinese": "信标",
+      "previous": "信标",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.kind.linear",
+      "english": "linear",
+      "chinese": "线性",
+      "previous": "线性",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.kind.fmRepeater",
+      "english": "FM repeater",
+      "chinese": "FM 中继",
+      "previous": "调频中继器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.gate.pass",
+      "english": "Pass",
+      "chinese": "过境",
+      "previous": "过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.gate.rotor",
+      "english": "Rotor",
+      "chinese": "旋转器",
+      "previous": "旋转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.gate.transponder",
+      "english": "Transponder",
+      "chinese": "转发器",
+      "previous": "转发器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.gate.doppler",
+      "english": "Doppler",
+      "chinese": "多普勒补偿",
+      "previous": "多普勒语Name",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.gate.elements",
+      "english": "Elements",
+      "chinese": "轨道根数",
+      "previous": "要件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.pass.armedIn",
+      "english": "armed — AOS in {{mins}} min",
+      "chinese": "已就绪，{{mins}} 分钟后升起（AOS）",
+      "previous": "武装——AOS在{{mins}}分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.pass.armed",
+      "english": "armed",
+      "chinese": "已就绪",
+      "previous": "武装",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.stop.title",
+      "english": "Stop this track (rotor halts if it holds one; the dial is handed back)",
+      "chinese": "停止本次跟踪（若由此任务控制旋转器，则令其停止，并交还调频控制权）",
+      "previous": "停止此轨迹( 如果有轨电车, 拨号会被交回)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.rotor.lost",
+      "english": "stopped answering — pointing is yours; the pass, Doppler and your transponder keep running",
+      "chinese": "旋转器已停止响应，请手动调整指向；过境跟踪、多普勒补偿和所选转发器仍继续工作",
+      "previous": "停止回答——指向您; 通行证, 多普勒和您的转发器继续运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.rotor.notInTrack",
+      "english": "not in this track — re-arm to take the rotor",
+      "chinese": "本次跟踪未使用旋转器，请重新启用跟踪以取得旋转器控制权",
+      "previous": "不在此轨迹中——重新武装取转子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.rotor.none",
+      "english": "no rotator configured — Settings ▸ Radio ▸ Rotator",
+      "chinese": "未配置天线旋转器（设置 ▸ 电台 ▸ 天线旋转器）",
+      "previous": "没有配置旋转器 — 设置 QQ 电台 QQ 旋转器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.rotor.tracking",
+      "english": "tracking · cmd az {{az}}{{el}}",
+      "chinese": "正在跟踪 · 指令方位角 {{az}}{{el}}",
+      "previous": "• cmd az{{az}}{{el}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sat.rail.rotor.azOnly",
+      "english": " (az only)",
+      "chinese": "（仅方位角）",
+      "previous": "(只有阿兹语)",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

@@ -1,0 +1,1928 @@
+{
+  "batch": 14,
+  "range": [
+    2601,
+    2800
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 137,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 13,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/PotaSotaView.tsx",
+    "ui/src/components/ContestView.tsx",
+    "ui/src/components/ContestOperators.tsx"
+  ],
+  "rows": [
+    {
+      "id": "ota.selfSpot.cluster.invalid",
+      "english": "Not sent to the DX cluster: check your callsign, and that the dial is in a ham band",
+      "chinese": "未发送至 DX 集群：请检查本台呼号，并确认电台频率位于业余频段内",
+      "previous": "未发送到 DX 集群 : 请检查您的呼号, 且拨号为 火腿带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.moved",
+      "english": "Your park or frequency changed after you pressed Spot me, so nothing was posted",
+      "chinese": "点击“发布本台通报”后，公园或频率已改变，因此没有发布任何通报",
+      "previous": "你按下Spot后,你的公园或频率都变了,所以没有张贴任何信息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.failed",
+      "english": "Couldn’t spot you. Nothing was posted.",
+      "chinese": "无法通报本台，未发布任何内容。",
+      "previous": "无法发现你。 什么也没有发布。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.selfSpot.rfOnly",
+      "english": "Not spotted: the contest you are running allows spots only over amateur RF while it runs.",
+      "chinese": "未发布通报：当前比赛进行期间，仅允许通过业余无线电射频链路传递通报。",
+      "previous": "未发现 : 您正在运行的比赛在运行时只允许在业余 RF 上出现斑点 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.have",
+      "english": "📖 {{formatted}} parks — searchable in the log",
+      "chinese": "📖 本地有 {{formatted}} 个公园，可在日志中搜索",
+      "previous": "📖{{formatted}}公园——可以在日志中查找",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.none",
+      "english": "📖 No local park list yet",
+      "chinese": "📖 尚无本地公园列表",
+      "previous": "还没有本地公园列表 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.download",
+      "english": "Download",
+      "chinese": "下载",
+      "previous": "下载",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.update",
+      "english": "Update",
+      "chinese": "更新",
+      "previous": "更新",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.downloaded",
+      "english": "Downloaded {{formatted}} parks — searchable in the log",
+      "chinese": "已下载 {{formatted}} 个公园，可在日志中搜索",
+      "previous": "已下载{{formatted}}公园——可以在日志中查找",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.downloadFailed",
+      "english": "Park-list download failed",
+      "chinese": "公园列表下载失败",
+      "previous": "公园列表下载失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.import",
+      "english": "Import CSV",
+      "chinese": "导入 CSV",
+      "previous": "导入 CSV",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.imported",
+      "english": "Imported {{formatted}} parks",
+      "chinese": "已导入 {{formatted}} 个公园",
+      "previous": "已导入{{formatted}}公园",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.parks.importFailed",
+      "english": "Import failed: {{detail}}",
+      "chinese": "导入失败：{{detail}}",
+      "previous": "导入失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunted.title",
+      "english": "Import your POTA 'Hunted Parks.CSV' (from your POTA stats page) so worked parks show correctly — the park number isn't in a CW exchange, so your log alone can't know it",
+      "chinese": "导入你的 POTA Hunted Parks.CSV 文件（可从 POTA 统计页面下载），使已通联公园正确显示。CW 交换信息中不含公园编号，仅凭本台日志无法确定该编号。",
+      "previous": "导入您的POTA\"Hunted Parks.CSV\"(来自您的POTA- 公园号码不在CW交换,所以只有你的日志 无法知道它",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunted.import",
+      "english": "Import Hunted Parks",
+      "chinese": "导入已通联公园记录",
+      "previous": "导入狩猎公园",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunted.have",
+      "english": "Hunted ✓ ({{formatted}})",
+      "chinese": "已通联公园 ✓（{{formatted}} 个）",
+      "previous": "被猎杀的{{formatted}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunted.imported",
+      "english": "Imported {{formatted}} hunted parks — new-park flags updated",
+      "chinese": "已导入 {{formatted}} 个已通联公园，新公园标记已更新",
+      "previous": "已导入{{formatted}}狩猎公园——更新新公园旗帜",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.hunted.importFailed",
+      "english": "Hunted-parks import failed: {{detail}}",
+      "chinese": "已通联公园记录导入失败：{{detail}}",
+      "previous": "Hunted-parks 导入失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.spots.failed",
+      "english": "{{program}} spots failed",
+      "chinese": "获取 {{program}} 通报失败",
+      "previous": "{{program}}点失败",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.refresh.label",
+      "english": "Refresh",
+      "chinese": "刷新",
+      "previous": "刷新",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "EqualizationToolsDialog::impl",
+          "chinese": "刷新"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "刷新"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "刷新"
+        }
+      ]
+    },
+    {
+      "id": "ota.refresh.title",
+      "english": "Refresh spots",
+      "chinese": "刷新通报",
+      "previous": "刷新点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.lastUpdated",
+      "english": "Updated {{time}}",
+      "chinese": "更新时间：{{time}}",
+      "previous": "更新{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.filter.band.aria",
+      "english": "Band filter",
+      "chinese": "频段筛选",
+      "previous": "带状过滤器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.filter.band.label",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "ota.filter.mode.aria",
+      "english": "Mode filter",
+      "chinese": "模式筛选",
+      "previous": "模式过滤器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.filter.mode.label",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "ota.filter.all",
+      "english": "All",
+      "chinese": "全部",
+      "previous": "全部",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "IARURegions",
+          "chinese": "全部"
+        }
+      ]
+    },
+    {
+      "id": "ota.filter.toggle.title",
+      "english": "Show or hide the band, mode and sort choices",
+      "chinese": "显示或隐藏频段、模式及排序选项",
+      "previous": "显示或隐藏带、模式和排序选项",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.aria",
+      "english": "Sort spots",
+      "chinese": "通报排序",
+      "previous": "排序点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.label",
+      "english": "Sort",
+      "chinese": "排序",
+      "previous": "排序",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.title",
+      "english": "How the spot list is ordered",
+      "chinese": "通报列表的排序方式",
+      "previous": "点列表的顺序",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.value",
+      "english": "Workable now",
+      "chinese": "当前可通联",
+      "previous": "现在可以工作了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.activator",
+      "english": "Activator",
+      "chinese": "活动电台",
+      "previous": "激活器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.reference",
+      "english": "Reference",
+      "chinese": "活动参考编号",
+      "previous": "参考",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "EqualizationToolsDialog::impl",
+          "chinese": "参考"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "参考"
+        }
+      ]
+    },
+    {
+      "id": "ota.sort.band",
+      "english": "Band / freq",
+      "chinese": "频段／频率",
+      "previous": "带/ Freq",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.mode",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "ota.sort.asc.title",
+      "english": "Ascending — click for descending",
+      "chinese": "升序，点击切换为降序",
+      "previous": "递升——单击递降",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.desc.title",
+      "english": "Descending — click for ascending",
+      "chinese": "降序，点击切换为升序",
+      "previous": "降级——单击升级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.asc.aria",
+      "english": "Sort ascending",
+      "chinese": "按升序排列",
+      "previous": "向上排序",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.sort.desc.aria",
+      "english": "Sort descending",
+      "chinese": "按降序排列",
+      "previous": "排序降级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.loading",
+      "english": "Loading…",
+      "chinese": "正在加载…",
+      "previous": "正在加载…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.empty.filtered",
+      "english": "No activators match the current filters.",
+      "chinese": "没有符合当前筛选条件的活动电台。",
+      "previous": "没有匹配当前过滤器的激活器 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.empty",
+      "english": "No {{program}} activators spotted right now.",
+      "chinese": "当前没有 {{program}} 活动电台的通报。",
+      "previous": "没有{{program}}行动者现在发现。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.spot.spottedBy",
+      "english": "Spotted by {{spotter}}",
+      "chinese": "通报者：{{spotter}}",
+      "previous": "旁观者{{spotter}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.spot.bandOpen.tooltip",
+      "english": "BAND OPEN — your signal is being received on this band right now (workable)",
+      "chinese": "频段传播已开通，本台信号目前在此频段有接收记录，可尝试通联",
+      "previous": "BAND OPEN — 您的信号正在这个乐队接收中( 可行)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.spot.state.in",
+      "english": "In {{state}}",
+      "chinese": "位于{{state}}",
+      "previous": "内{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.spot.state.spans",
+      "english": "Spans {{states}}: the contact counts for the state the activator is actually in",
+      "chinese": "活动地点跨越 {{states}}；交信计入活动电台实际所在的州",
+      "previous": "西班牙语{{states}}: 联系人计算激活器实际处于的状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.spot.state.needed",
+      "english": "{{state}}: a state you still need on {{band}} for Worked All States",
+      "chinese": "{{state}}：在 {{band}} 上尚需通联的州，用于通联全美各州奖项",
+      "previous": "{{state}}: 您仍然需要的状态{{band}}所有国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.spot.state.needed.sr",
+      "english": "{{state}} (needed for Worked All States)",
+      "chinese": "{{state}}（通联全美各州奖项尚缺的州）",
+      "previous": "{{state}}(所有国家需要工作)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.al",
+      "english": "Alabama",
+      "chinese": "阿拉巴马州",
+      "previous": "阿拉巴马州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ak",
+      "english": "Alaska",
+      "chinese": "阿拉斯加州",
+      "previous": "阿拉斯加",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "CountryDat",
+          "chinese": "阿拉斯加"
+        }
+      ]
+    },
+    {
+      "id": "place.us.az",
+      "english": "Arizona",
+      "chinese": "亚利桑那州",
+      "previous": "亚利桑那州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ar",
+      "english": "Arkansas",
+      "chinese": "阿肯色州",
+      "previous": "阿肯色语Name",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ca",
+      "english": "California",
+      "chinese": "加利福尼亚州",
+      "previous": "加利福尼亚州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.co",
+      "english": "Colorado",
+      "chinese": "科罗拉多州",
+      "previous": "科罗拉多州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ct",
+      "english": "Connecticut",
+      "chinese": "康涅狄格州",
+      "previous": "康涅狄格州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.de",
+      "english": "Delaware",
+      "chinese": "特拉华州",
+      "previous": "特拉华州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.fl",
+      "english": "Florida",
+      "chinese": "佛罗里达州",
+      "previous": "佛罗里达州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ga",
+      "english": "Georgia",
+      "chinese": "佐治亚州",
+      "previous": "格鲁吉亚",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "CountryDat",
+          "chinese": "格鲁吉亚"
+        }
+      ]
+    },
+    {
+      "id": "place.us.hi",
+      "english": "Hawaii",
+      "chinese": "夏威夷州",
+      "previous": "夏威夷",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "CountryDat",
+          "chinese": "夏威夷"
+        }
+      ]
+    },
+    {
+      "id": "place.us.id",
+      "english": "Idaho",
+      "chinese": "爱达荷州",
+      "previous": "爱达荷州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.il",
+      "english": "Illinois",
+      "chinese": "伊利诺伊州",
+      "previous": "伊利诺伊州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.in",
+      "english": "Indiana",
+      "chinese": "印第安纳州",
+      "previous": "印第安纳州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ia",
+      "english": "Iowa",
+      "chinese": "艾奥瓦州",
+      "previous": "艾奥瓦州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ks",
+      "english": "Kansas",
+      "chinese": "堪萨斯州",
+      "previous": "堪萨斯州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ky",
+      "english": "Kentucky",
+      "chinese": "肯塔基州",
+      "previous": "肯塔基州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.la",
+      "english": "Louisiana",
+      "chinese": "路易斯安那州",
+      "previous": "路易斯安那州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.me",
+      "english": "Maine",
+      "chinese": "缅因州",
+      "previous": "缅因州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.md",
+      "english": "Maryland",
+      "chinese": "马里兰州",
+      "previous": "马里兰州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ma",
+      "english": "Massachusetts",
+      "chinese": "马萨诸塞州",
+      "previous": "马萨诸塞州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.mi",
+      "english": "Michigan",
+      "chinese": "密歇根州",
+      "previous": "密歇根州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.mn",
+      "english": "Minnesota",
+      "chinese": "明尼苏达州",
+      "previous": "明尼苏达州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ms",
+      "english": "Mississippi",
+      "chinese": "密西西比州",
+      "previous": "密西西比州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.mo",
+      "english": "Missouri",
+      "chinese": "密苏里州",
+      "previous": "密苏里州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.mt",
+      "english": "Montana",
+      "chinese": "蒙大拿州",
+      "previous": "蒙大拿州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ne",
+      "english": "Nebraska",
+      "chinese": "内布拉斯加州",
+      "previous": "内布拉斯加州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.nv",
+      "english": "Nevada",
+      "chinese": "内华达州",
+      "previous": "内华达州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.nh",
+      "english": "New Hampshire",
+      "chinese": "新罕布什尔州",
+      "previous": "新罕布什尔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.nj",
+      "english": "New Jersey",
+      "chinese": "新泽西州",
+      "previous": "新泽西州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.nm",
+      "english": "New Mexico",
+      "chinese": "新墨西哥州",
+      "previous": "新墨西哥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ny",
+      "english": "New York",
+      "chinese": "纽约州",
+      "previous": "纽约",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.nc",
+      "english": "North Carolina",
+      "chinese": "北卡罗莱纳州",
+      "previous": "北卡罗莱纳州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.nd",
+      "english": "North Dakota",
+      "chinese": "北达科他州",
+      "previous": "北达科他州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.oh",
+      "english": "Ohio",
+      "chinese": "俄亥俄州",
+      "previous": "俄亥俄州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ok",
+      "english": "Oklahoma",
+      "chinese": "俄克拉何马州",
+      "previous": "俄克拉何马州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.or",
+      "english": "Oregon",
+      "chinese": "俄勒冈州",
+      "previous": "俄勒冈州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.pa",
+      "english": "Pennsylvania",
+      "chinese": "宾夕法尼亚州",
+      "previous": "宾夕法尼亚州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ri",
+      "english": "Rhode Island",
+      "chinese": "罗得岛州",
+      "previous": "罗德岛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.sc",
+      "english": "South Carolina",
+      "chinese": "南卡罗来纳州",
+      "previous": "南卡罗来纳州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.sd",
+      "english": "South Dakota",
+      "chinese": "南达科他州",
+      "previous": "南达科他州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.tn",
+      "english": "Tennessee",
+      "chinese": "田纳西州",
+      "previous": "田纳西州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.tx",
+      "english": "Texas",
+      "chinese": "得克萨斯州",
+      "previous": "德克萨斯",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.ut",
+      "english": "Utah",
+      "chinese": "犹他州",
+      "previous": "犹他州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.vt",
+      "english": "Vermont",
+      "chinese": "佛蒙特州",
+      "previous": "佛蒙特州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.va",
+      "english": "Virginia",
+      "chinese": "弗吉尼亚州",
+      "previous": "弗吉尼亚州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.wa",
+      "english": "Washington",
+      "chinese": "华盛顿州",
+      "previous": "华盛顿",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.wv",
+      "english": "West Virginia",
+      "chinese": "西弗吉尼亚州",
+      "previous": "西弗吉尼亚州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.wi",
+      "english": "Wisconsin",
+      "chinese": "威斯康星州",
+      "previous": "威斯康星州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.wy",
+      "english": "Wyoming",
+      "chinese": "怀俄明州",
+      "previous": "怀俄明州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.us.dc",
+      "english": "District of Columbia",
+      "chinese": "哥伦比亚特区",
+      "previous": "哥伦比亚特区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.ab",
+      "english": "Alberta",
+      "chinese": "艾伯塔省",
+      "previous": "艾伯塔省",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.bc",
+      "english": "British Columbia",
+      "chinese": "不列颠哥伦比亚省",
+      "previous": "不列颠哥伦比亚",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.mb",
+      "english": "Manitoba",
+      "chinese": "马尼托巴省",
+      "previous": "马尼托巴省",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.nb",
+      "english": "New Brunswick",
+      "chinese": "新不伦瑞克省",
+      "previous": "新不伦瑞克",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.nl",
+      "english": "Newfoundland and Labrador",
+      "chinese": "纽芬兰与拉布拉多省",
+      "previous": "纽芬兰省和拉布拉多省",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.ns",
+      "english": "Nova Scotia",
+      "chinese": "新斯科舍省",
+      "previous": "新斯科舍省",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.nt",
+      "english": "Northwest Territories",
+      "chinese": "西北地区",
+      "previous": "西北地区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.nu",
+      "english": "Nunavut",
+      "chinese": "努纳武特地区",
+      "previous": "努纳武特",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.on",
+      "english": "Ontario",
+      "chinese": "安大略省",
+      "previous": "安大略",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.pe",
+      "english": "Prince Edward Island",
+      "chinese": "爱德华王子岛省",
+      "previous": "爱德华王子岛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.qc",
+      "english": "Quebec",
+      "chinese": "魁北克省",
+      "previous": "魁北克",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.sk",
+      "english": "Saskatchewan",
+      "chinese": "萨斯喀彻温省",
+      "previous": "萨斯喀彻温省",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "place.ca.yt",
+      "english": "Yukon",
+      "chinese": "育空地区",
+      "previous": "育空地区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.badge.newPark",
+      "english": "NEW PARK",
+      "chinese": "新公园",
+      "previous": "新公园",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.badge.newPark.title",
+      "english": "You have never logged this park/summit — a new one",
+      "chinese": "本台从未记录过与此公园／山峰的交信，属于新目标",
+      "previous": "你从没登过这个公园/首脑会议——一个新的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.badge.bandOpen",
+      "english": "BAND OPEN",
+      "chinese": "传播开通",
+      "previous": "打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.badge.bandOpen.title",
+      "english": "Your signal is being received on this band right now — workable",
+      "chinese": "本台信号目前在此频段有接收记录，可尝试通联",
+      "previous": "您的信号正在这个乐队接收中 可行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.filter.hideWorked.label",
+      "english": "Hide worked today",
+      "chinese": "隐藏今日已通联",
+      "previous": "今天隐藏工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.filter.hideWorked.hidden",
+      "english": "Hide worked today · {{count}}",
+      "chinese": "隐藏今日已通联 · {{count}} 个",
+      "previous": "隐藏今天的工作...{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.filter.hideWorked.title",
+      "english": "Hides activators you logged at this park since 0000Z. They come back at 0000Z or at a new park. Only contacts logged with the park count — HUNT adds it for you.",
+      "chinese": "隐藏从 0000Z 起已在此公园记录交信的活动电台。到下一个 0000Z 或该电台转到新公园后会重新显示。只有记录了公园信息的交信才计入；使用“追踪通联”可自动添加该信息。",
+      "previous": "藏起你从000Z开始就在这个公园登机的激活器 他们从零点开始回来 或者在新公园 只有与公园计数的联络人登录——HUNT为您添加.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.badge.workedToday",
+      "english": "WORKED TODAY",
+      "chinese": "今日已通联",
+      "previous": "今天工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.badge.workedToday.title",
+      "english": "You logged this activator at this park since 0000Z — the activation running now is hunted",
+      "chinese": "本台已在 0000Z 之后记录与此公园活动电台的交信，当前活动已完成追踪通联",
+      "previous": "你从000Z开始就在这个公园记录了这个激活器 ——现在的激活运行被猎杀",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.empty.worked::one",
+      "english": "1 activator is hidden: you worked that park today. Turn Hide worked today off to see it.",
+      "chinese": "有 1 个活动电台被隐藏：本台今天已与该公园通联。关闭“隐藏今日已通联”即可查看。",
+      "previous": "一个激活器被隐藏: 你今天在公园工作。 Turn Hide今天工作了看它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.empty.worked::other",
+      "english": "{{count}} activators are hidden: you worked those parks today. Turn Hide worked today off to see them.",
+      "chinese": "有 {{count}} 个活动电台被隐藏：本台今天已与这些公园通联。关闭“隐藏今日已通联”即可查看。",
+      "previous": "{{count}}活动者被隐藏起来:你今天在那些公园工作。 Turn Hide今天去见他们",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "ota.source.hint",
+      "english": "Live from {{source}}. Auto-refreshes every 60 s. Click HUNT to QSY and tag the next logged QSO.",
+      "chinese": "实时来源：{{source}}，每 60 秒自动刷新。点击“追踪通联”可切频（QSY），并为下一条 QSO 记录添加活动标签。",
+      "previous": "现场直播{{source}}。每60秒自动刷新一次。单击 HUNT 到 QSY 并标记下一次登录QSO。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operator.label",
+      "english": "Operator",
+      "chinese": "操作员",
+      "previous": "操作员",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "操作员"
+        }
+      ]
+    },
+    {
+      "id": "fieldDay.operator.placeholder",
+      "english": "operator (call/initials)",
+      "chinese": "操作员（呼号／姓名首字母）",
+      "previous": "运营商(呼叫/初始)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operator.aria",
+      "english": "Operator (call or initials)",
+      "chinese": "操作员（呼号或姓名首字母）",
+      "previous": "接线员(呼叫或首字母)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.popOut.label",
+      "english": "⧉ Pop out",
+      "chinese": "⧉ 独立窗口",
+      "previous": "弹出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.popOut.title",
+      "english": "Pop the scoreboard out to its own window (second monitor)",
+      "chinese": "在独立窗口中打开计分板（便于放到第二台显示器上）",
+      "previous": "将计分板弹出到自己的窗口( 第二监视器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.logger.label",
+      "english": "⧉ Logger window",
+      "chinese": "⧉ 日志录入窗口",
+      "previous": "QQ Logger 窗口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.logger.title",
+      "english": "Open the contest logger: this screen and a log line in a window of their own, for a second person logging at another monitor and keyboard. The log line shares the contact in progress with yours, and nothing in that window transmits.",
+      "chinese": "打开独立的竞赛日志录入窗口，包含此页面和交信录入栏，供另一位操作员在第二台显示器及键盘上录入日志。两个窗口共享当前正在录入的交信，此窗口中的操作不会触发发射。",
+      "previous": "打开比赛日志器:在自己的窗口中打开此屏幕和一个日志行,供第二人称在另一个显示器和键盘上进行登录. 日志行与您共享正在进行中的联系人, 窗口中没有任何信息传输 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.logger.note",
+      "english": "Logger window: nothing here transmits. The contest switch, Running / S&P and scoring are set on the main screen. Esc clears the log line.",
+      "chinese": "日志录入窗口：此处任何操作均不触发发射。竞赛开关、守频呼叫／扫频通联（Running / S&P）及计分设置均在主页面操作。按 Esc 清空交信录入栏。",
+      "previous": "Logger 窗口: 这里没有传输 。 比赛开关,运行/S&P和评分设置在主屏幕上. Esc清除日志线.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.entry.aria",
+      "english": "Contest log line",
+      "chinese": "竞赛交信录入栏",
+      "previous": "竞技日志行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.title",
+      "english": "Contest logger",
+      "chinese": "竞赛日志录入",
+      "previous": "竞技记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.size.label",
+      "english": "Text size: {{pct}}%",
+      "chinese": "文字大小：{{pct}}%",
+      "previous": "文本大小 :{{pct}}百分比(%)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.size.smaller",
+      "english": "Smaller text",
+      "chinese": "缩小文字",
+      "previous": "较小的文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.size.larger",
+      "english": "Larger text",
+      "chinese": "放大文字",
+      "previous": "更大的文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.pin.label",
+      "english": "Keep in front",
+      "chinese": "窗口置顶",
+      "previous": "保持前面的状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.pin.title",
+      "english": "Keep this window in front of Nexus and your other programs, even while you work in another one. Press again to let it stack as an ordinary window.",
+      "chinese": "将此窗口保持在 Nexus 和其他程序之上，即使正在操作其他程序也保持置顶。再次点击可恢复普通窗口显示。",
+      "previous": "把这个窗口放在Nexus和其他程序前 即使你在另一个程序工作 再按一次,让它作为普通窗口堆放.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.pin.failed",
+      "english": "Could not change whether this window stays in front",
+      "chinese": "无法更改窗口置顶状态",
+      "previous": "无法更改此窗口是否留在前面",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.layout.label",
+      "english": "Entry only",
+      "chinese": "仅显示录入栏",
+      "previous": "只有条目",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.layout.title",
+      "english": "Show only the entry in this window: the call, the exchange and the dupe warning, without the last contacts and the contest screen. Press again for the whole window.",
+      "chinese": "此窗口仅显示呼号、交换信息及重复交信警告，不显示最近交信和其余竞赛页面。再次点击可恢复完整窗口。",
+      "previous": "只显示此窗口中的条目:呼叫,交换和dupe警告,没有最后一个联系人和比赛屏幕. 再次按下整个窗口。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.entry.popOut.label",
+      "english": "⧉ Pop out entry",
+      "chinese": "⧉ 独立录入窗口",
+      "previous": "⧉ 出入口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.entry.popOut.title",
+      "english": "Open this entry alone in a window of its own, without the rest of the contest screen. It shares the contact with this entry, and Enter in either logs it once.",
+      "chinese": "仅将此录入栏放入独立窗口，不包含其余竞赛页面。两个录入栏共享同一条交信，在任一处按 Enter 都只记录一次。",
+      "previous": "在自己的窗口中单独打开此条目,没有其他的比赛屏幕. 它与此条目共享联系, 并输入其中任一条目登录一次 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.recent.title",
+      "english": "Last contacts",
+      "chinese": "最近交信",
+      "previous": "上次联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.recent.splitter.label",
+      "english": "last contacts height",
+      "chinese": "最近交信区域高度",
+      "previous": "上次接触高度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestLogger.satellite.note",
+      "english": "{{bird}} is picked on the Satellites screen. Log its pass contacts there: this window logs them as ordinary contacts.",
+      "chinese": "当前已在卫星页面选择 {{bird}}。请在那里记录卫星过境交信；本窗口会将其记录为普通交信。",
+      "previous": "{{bird}}在卫星屏幕上被选中。 记录其通过联系人: 此窗口将它们记录为普通联系人 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.entry.title",
+      "english": "Log a contact",
+      "chinese": "记录一次交信",
+      "previous": "登录联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.popOut.aria",
+      "english": "Pop out the Contest screen",
+      "chinese": "在独立窗口中打开竞赛页面",
+      "previous": "弹出比赛屏幕",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.popOut.title",
+      "english": "Open the Contest screen in its own window, to put on another monitor: the contest switch, the controls, the club board, the score, the sections, the bonuses and the log. While a contest runs, its log line and your last contacts stay here.",
+      "chinese": "在独立窗口中打开竞赛页面，便于放到另一台显示器上。包括竞赛开关、操作控件、俱乐部面板、得分、分区、加分和日志。竞赛进行时，交信录入栏及最近交信仍保留在这里。",
+      "previous": "在自己的窗口打开比赛屏幕,以安装另一个显示器:比赛开关,控制器,俱乐部板,分数,各节,奖金和日志. 当比赛进行时,它的日志线和最后的联系人就在这里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.away.text",
+      "english": "The rest of the Contest screen is in its own window.",
+      "chinese": "竞赛页面的其余内容已在独立窗口中显示。",
+      "previous": "其余的竞技屏幕在自己的窗口.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.away.back",
+      "english": "Bring it back",
+      "chinese": "移回此处",
+      "previous": "拿回来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestScreen.away.title",
+      "english": "Close that window and show it here again",
+      "chinese": "关闭独立窗口并在此处重新显示",
+      "previous": "关上窗子,再在这里展示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.score.qsos",
+      "english": "QSOs",
+      "chinese": "交信数",
+      "previous": "快速行动组织",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.score.sections",
+      "english": "Sections",
+      "chinese": "分区数",
+      "previous": "节",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.score.mults",
+      "english": "Mults",
+      "chinese": "系数",
+      "previous": "木头",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.score.mathMults",
+      "english": "QSO pts <b>{{qsoPts}}</b> × mults <b>{{multCount}}</b> = <total>{{totalScore}}</total>",
+      "chinese": "QSO 分 <b>{{qsoPts}}</b> × 系数 <b>{{multCount}}</b> = <total>{{totalScore}}</total>",
+      "previous": "QSO点<b>{{qsoPts}}</b>×<b>{{multCount}}</b>=<total>{{totalScore}}</total>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.score.wfd",
+      "english": "QSO pts {{points}} · WFD objective multipliers apply at submission (not tracked here)",
+      "chinese": "QSO 分 {{points}} · WFD 目标系数在提交成绩时计入，此处不跟踪",
+      "previous": "QSO点{{points}}* 提交文件时适用世盟的目标乘数(此处不跟踪)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.score.wfdObjectives",
+      "english": "QSO pts <b>{{qsoPts}}</b> × (OM <b>{{om}}</b> + 1) = <total>{{totalScore}}</total>",
+      "chinese": "QSO 分 <b>{{qsoPts}}</b> ×（目标系数 OM <b>{{om}}</b> + 1）= <total>{{totalScore}}</total>",
+      "previous": "QSO点<b>{{qsoPts}}</b>×(OM)<b>{{om}}</b>+1 = (单位:千美元)<total>{{totalScore}}</total>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.score.math",
+      "english": "QSO pts <b>{{qsoPts}}</b> × power ×<b>{{powerMult}}</b> = <b>{{poweredPoints}}</b> + bonuses <b>{{bonusPoints}}</b> = <total>{{totalScore}}</total>",
+      "chinese": "QSO 分 <b>{{qsoPts}}</b> × 功率系数 <b>{{powerMult}}</b> = <b>{{poweredPoints}}</b>，加分 <b>{{bonusPoints}}</b>，总分 = <total>{{totalScore}}</total>",
+      "previous": "QSO点<b>{{qsoPts}}</b>动力<b>{{powerMult}}</b>=<b>{{poweredPoints}}</b>+ 奖金<b>{{bonusPoints}}</b>=<total>{{totalScore}}</total>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.rate.lastN",
+      "english": "Last {{n}}",
+      "chinese": "最近 {{n}} 次",
+      "previous": "最后一个{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.rate.window.title",
+      "english": "Contacts per hour over your last {{n}} contacts, measured up to now — it falls while nothing is logged.",
+      "chinese": "按最近 {{n}} 次交信计算每小时交信速率，统计截至当前时刻；没有新记录时，速率会下降。",
+      "previous": "上次的时速联系人{{n}}联系人,到目前为止衡量的——它下降而没有任何记录。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.rate.window.aria",
+      "english": "Rate over the last {{n}} contacts",
+      "chinese": "最近 {{n}} 次交信的速率",
+      "previous": "上期费率{{n}}联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.rate.hour",
+      "english": "Last 60 min",
+      "chinese": "最近 60 分钟",
+      "previous": "最后60分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.rate.hour.title",
+      "english": "Contacts logged in the last 60 minutes — a rolling hour, not the clock hour.",
+      "chinese": "最近 60 分钟内记录的交信数，采用滚动一小时统计，而非整点小时。",
+      "previous": "过去60分钟里记录了联系人——一个滚动小时,而不是时钟小时。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.rate.hour.aria",
+      "english": "Contacts in the last 60 minutes",
+      "chinese": "最近 60 分钟内的交信数",
+      "previous": "60分钟后联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.opTime.on",
+      "english": "On time",
+      "chinese": "操作时长",
+      "previous": "准时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.opTime.on.title",
+      "english": "Time on the air from the first contact to the last, less the breaks.",
+      "chinese": "从首次到最后一次交信的时长，扣除休息时间。",
+      "previous": "从第一次接触到最后一次接触的播出时间,减去休息时间.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.opTime.on.aria",
+      "english": "On time {{time}}",
+      "chinese": "操作时长 {{time}}",
+      "previous": "准时{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.opTime.off",
+      "english": "Off time",
+      "chinese": "休息时长",
+      "previous": "业余时间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.opTime.off.title",
+      "english": "Breaks of {{minutes}} minutes or more between two contacts, the sponsors’ off-time rule.",
+      "chinese": "两次交信之间不少于 {{minutes}} 分钟的间隔，按主办方规定计为休息时间。",
+      "previous": "中断时间{{minutes}}两个联系人之间的时间间隔为几分钟或更多时间,即提案国的不及时规则。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.opTime.off.aria",
+      "english": "Off time {{time}}",
+      "chinese": "休息时长 {{time}}",
+      "previous": "业余时间{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.heading",
+      "english": "Operators",
+      "chinese": "操作员",
+      "previous": "运算符",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.caption",
+      "english": "Contest statistics per operator",
+      "chinese": "各操作员的竞赛统计",
+      "previous": "每个运营商的竞技统计",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.operator",
+      "english": "Operator",
+      "chinese": "操作员",
+      "previous": "操作员",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "操作员"
+        }
+      ]
+    },
+    {
+      "id": "fieldDay.operators.col.qsos",
+      "english": "QSOs",
+      "chinese": "交信数",
+      "previous": "快速行动组织",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.points",
+      "english": "Points",
+      "chinese": "交信分",
+      "previous": "点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.mults",
+      "english": "New mults",
+      "chinese": "新增系数",
+      "previous": "新建泥浆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.rate10",
+      "english": "Last 10 min /h",
+      "chinese": "最近 10 分钟速率（次／小时）",
+      "previous": "最后10分钟/小时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.rate60",
+      "english": "Last 60 min /h",
+      "chinese": "最近 60 分钟速率（次／小时）",
+      "previous": "最后60分钟/小时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.rate60.short",
+      "english": "60 min",
+      "chinese": "60 分钟",
+      "previous": "60分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.best",
+      "english": "Best hour",
+      "chinese": "最佳一小时",
+      "previous": "最佳时间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.col.band",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "fieldDay.operators.unnamed.title",
+      "english": "Contacts logged with no operator named",
+      "chinese": "未填写操作员的交信记录",
+      "previous": "没有操作员登录的联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.note",
+      "english": "Points are QSO points before multipliers and bonuses. A multiplier counts for the operator who worked it first. Rates are contacts per hour. — marks contacts logged with no operator named.",
+      "chinese": "分数为未乘系数、未加额外加分的 QSO 分。系数计入首次通联该项目的操作员。速率单位为每小时交信次数。— 表示该交信未填写操作员。",
+      "previous": "点是QSO在乘数和奖金之前得分。 乘数算在先操作的操作员身上. 速率是时速联系人 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.atKey",
+      "english": "At the key: <b>{{call}}</b>",
+      "chinese": "当前操作员：<b>{{call}}</b>",
+      "previous": "关键是:<b>{{call}}</b>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.nobody",
+      "english": "Nobody is named at the key.",
+      "chinese": "尚未填写当前操作员。",
+      "previous": "没有人在钥匙上命名。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.operators.none",
+      "english": "No contacts yet.",
+      "chinese": "尚无交信记录。",
+      "previous": "还没有联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.state.title",
+      "english": "Sequencer state",
+      "chinese": "自动通联流程状态",
+      "previous": "序列状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.state.idle",
+      "english": "Idle",
+      "chinese": "空闲",
+      "previous": "空闲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundInput",
+          "chinese": "闲置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundOutput",
+          "chinese": "闲置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundInput",
+          "chinese": "闲置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundOutput",
+          "chinese": "闲置"
+        }
+      ]
+    },
+    {
+      "id": "fieldDay.sections.aria",
+      "english": "Worked sections board",
+      "chinese": "已通联分区面板",
+      "previous": "工作科董事会",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.head",
+      "english": "Sections",
+      "chinese": "分区",
+      "previous": "节",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.count",
+      "english": "{{worked}}/{{total}} sections",
+      "chinese": "{{worked}}/{{total}} 个分区",
+      "previous": "{{worked}}页:1{{total}}节次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.worked.title",
+      "english": "{{code}} — {{name}} ({{division}}) — worked",
+      "chinese": "{{code}} — {{name}}（{{division}}）— 已通联",
+      "previous": "{{code}}. . . . . . .{{name}}(单位:千美元){{division}}()——已工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.notWorked.title",
+      "english": "{{code}} — {{name}} ({{division}}) — not worked yet",
+      "chinese": "{{code}} — {{name}}（{{division}}）— 尚未通联",
+      "previous": "{{code}}. . . . . . .{{name}}(单位:千美元){{division}})——尚未工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.worked.aria",
+      "english": "{{name}}, worked",
+      "chinese": "{{name}}，已通联",
+      "previous": "{{name}},已经工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.notWorked.aria",
+      "english": "{{name}}, not worked",
+      "chinese": "{{name}}，尚未通联",
+      "previous": "{{name}},没有工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.aria",
+      "english": "{{name}} multiplier board",
+      "chinese": "{{name}} 系数面板",
+      "previous": "{{name}}乘数板",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.count",
+      "english": "{{worked}}/{{total}} worked",
+      "chinese": "已通联 {{worked}}/{{total}}",
+      "previous": "{{worked}}页:1{{total}}工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "reviewedAt": "2026-10-22T09:23:49.391Z",
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "catalogSha256": "c67fab1570e13b084d4be8750f99af5ebea01ceeb14e0ea84e6bb2988d69331f",
+  "samplingMethod": "crypto.randomInt Fisher–Yates shuffle; first 30 without replacement",
+  "population": 8360,
+  "sampleSize": 30,
+  "selectionFrozenBeforeReview": true,
+  "independentHumanReview": false,
+  "summary": {
+    "semanticAnomalies": 0,
+    "formatAnomalies": 0,
+    "translationEdits": 0
+  },
+  "contextFiles": [
+    "ui/src/components/connect/paneFormat.ts",
+    "ui/src/components/SatellitesView.tsx",
+    "ui/src/components/OperateDecodes.tsx",
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/Js8Cockpit.tsx",
+    "ui/src/components/Logbook.tsx",
+    "ui/src/components/PotaSotaView.tsx",
+    "ui/src/components/SplitControl.tsx",
+    "crates/tempo-core/src/fieldday.rs"
+  ],
+  "limitations": "模型抽样复核及源码上下文检查；不属于独立第三方人工确认，不保证其余词条无误，未做应用界面或 Windows 运行验证。",
+  "rows": [
+    {
+      "row": 456,
+      "id": "lanWindow.signInHint",
+      "english": "Sign in with the Nexus Remote account your station is linked to, or one its owner invited to operate it. The station is then on this computer, on its network and over the internet, with no code to type.",
+      "chinese": "请使用已关联此电台的 Nexus Remote 账号登录，或使用电台所有者邀请你操作电台的账号登录。登录后，无需输入配对码，即可在此电脑上通过本地网络或互联网连接电台。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "账号归属、受邀操作、本地网络与互联网、无需配对码四项含义保留。"
+    },
+    {
+      "row": 929,
+      "id": "logbook.export.activation.buttonTitle",
+      "english": "Save the selected activation as an ADIF named the way POTA asks. Ignores the date range — an activation is already one park on one UTC day",
+      "chinese": "将所选活动保存为 ADIF 文件，并按 POTA 要求命名。此操作会忽略日期范围，因为一次活动已限定为同一公园的一个 UTC 日期。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "保留按 POTA 命名、忽略日期筛选、同一公园及一个 UTC 日期的限制。"
+    },
+    {
+      "row": 967,
+      "id": "logbook.purge.aria",
+      "english": "Purge logbook",
+      "chinese": "清空交信日志",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "Purge 在日志操作中指清空，未误译为筛选或局部移除。"
+    },
+    {
+      "row": 1336,
+      "id": "logEntry.remove.contactBare",
+      "english": "{{call}} · {{band}} {{mode}} · {{time}}",
+      "chinese": "{{call}} · {{band}} {{mode}} · {{time}}",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "纯动态字段，呼号、频段、模式及时间的顺序与分隔符一致。"
+    },
+    {
+      "row": 1531,
+      "id": "awards.conf.pendingLag::other",
+      "english": "{{count}} recently-worked QSOs still awaiting a confirmation — not a problem, just give it time.",
+      "chinese": "最近完成的 {{count}} 条交信尚待确认；这属于正常情况，请再等等。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "交信待确认与发生故障明确区分，未引入额外 QSO 技术标记。"
+    },
+    {
+      "row": 1559,
+      "id": "needed.filters.modes.aria",
+      "english": "Modes shown",
+      "chinese": "显示的模式",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "模式显示筛选标签准确。"
+    },
+    {
+      "row": 1837,
+      "id": "map.street.sheet.resume",
+      "english": "Resume",
+      "chinese": "继续",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "地图下载断点恢复语境中的 Resume 译为继续，未误译为重置。"
+    },
+    {
+      "row": 2402,
+      "id": "watchlist.item.remove.title",
+      "english": "Remove from watch list",
+      "chinese": "从关注列表中移除",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "关注列表移除，未扩大为删除交信或屏蔽电台。"
+    },
+    {
+      "row": 2551,
+      "id": "settings.alerts.geo.label",
+      "english": "Alert only about these continents",
+      "chinese": "仅提醒以下大洲的目标",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "大洲范围的提醒筛选，与 SettingsPanel 的大洲复选框一致。"
+    },
+    {
+      "row": 2623,
+      "id": "ota.filter.band.aria",
+      "english": "Band filter",
+      "chinese": "频段筛选",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "Band 在此为频段筛选，未误译为带宽。"
+    },
+    {
+      "row": 2645,
+      "id": "ota.spot.bandOpen.tooltip",
+      "english": "BAND OPEN — your signal is being received on this band right now (workable)",
+      "chinese": "频段传播已开通，本台信号目前在此频段有接收记录，可尝试通联",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "明确是他台收到本台信号的记录，可尝试通联未夸大为保证成功。"
+    },
+    {
+      "row": 2941,
+      "id": "contest.clear.label",
+      "english": "Clear test contacts",
+      "chinese": "清除测试交信",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "仅清除测试交信，保留测试数据限定。"
+    },
+    {
+      "row": 3180,
+      "id": "settings.contestPick.transmitter.hint",
+      "english": "How many signals your multi-operator entry puts on the air at once, in the classes this contest's sponsor scores: ONE is one at a time (Multi-One, Multi-Single), TWO is Multi-Two, UNLIMITED is Multi-Multi, and LIMITED is the ARRL VHF contests' Limited Multioperator. It goes on the CATEGORY-TRANSMITTER line of the Cabrillo log, with the OPERATORS line the sponsor needs from a multi-operator entry. Nexus marks every contact as transmitter 0, so add the second transmitter's contacts to a Multi-Two log before you send it.",
+      "chinese": "选择多人参赛电台同时发射的信号数，按主办方组别划分：ONE 表示同一时间仅一个信号（Multi-One／Multi-Single），TWO 为 Multi-Two，UNLIMITED 为 Multi-Multi，LIMITED 为 ARRL VHF 比赛的 Limited Multioperator。此项写入 Cabrillo 的 CATEGORY-TRANSMITTER 行，多人参赛还需填写 OPERATORS 行。Nexus 将每条交信标为发射机 0，因此提交 Multi-Two 日志前，还需合入第二台发射机的交信记录。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "多人组别、同时发射信号数、Cabrillo 字段及第二发射机记录补充限制均保留。"
+    },
+    {
+      "row": 3398,
+      "id": "settings.connectWeb.aria.disable",
+      "english": "Stop serving Conditions on the local network",
+      "chinese": "停止在局域网提供传播状况页面",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "停止局域网页面服务，未误导为停止接收或发射。"
+    },
+    {
+      "row": 3491,
+      "id": "sat.passesPane.chase.on",
+      "english": "Chasing — sorts first, footprint ring on the map. Click to stop.",
+      "chinese": "已设为追踪目标：优先排列，并在地图上显示覆盖圈。点击取消。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "Chasing 按卫星追踪目标表述，保留排序、覆盖圈及取消动作。"
+    },
+    {
+      "row": 3531,
+      "id": "sat.dome.aos.title",
+      "english": "AOS — rises at {{az}} ({{wind}}) {{time}}",
+      "chinese": "AOS：{{time}} 升起，方位 {{az}}（{{wind}}）",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "检查 SatellitesView 插值：时间为时分、az 为方位角、wind 为方位方向，中文组合通顺。"
+    },
+    {
+      "row": 4455,
+      "id": "settings.rigControl.ptt.rts",
+      "english": "Serial RTS",
+      "chinese": "串口 RTS",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "串口 RTS 为技术控制线名称，保持原样。"
+    },
+    {
+      "row": 5131,
+      "id": "settings.cw.macros.role.myCall",
+      "english": "My call",
+      "chinese": "本台呼号",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "My call 明确为本台呼号。"
+    },
+    {
+      "row": 6020,
+      "id": "connect.outlook.none",
+      "english": "No HF band modelled workable to DX right now.",
+      "chinese": "模型预测当前没有适合 DX 通联的高频频段。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "保留模型预测和当前时点，未写成实测断言。"
+    },
+    {
+      "row": 6032,
+      "id": "connect.basic.selection",
+      "english": "{{call}} — {{who}}{{az}}{{band}}.",
+      "chinese": "{{call}} — {{who}}{{az}}{{band}}。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "检查 paneFormat 拼接：实体、方位和频段由带分隔符的片段组成，无缺字或重复标点。"
+    },
+    {
+      "row": 6325,
+      "id": "operate.seam.rosterRail.label",
+      "english": "Call Roster / side rail",
+      "chinese": "呼号列表 / 侧栏",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "界面分隔条的呼号列表和侧栏准确。"
+    },
+    {
+      "row": 6430,
+      "id": "operate.decodes.period.heard.aria",
+      "english": "Period {{time}} UTC, heard on {{band}} {{mode}} before the change",
+      "chinese": "周期 {{time}} UTC，切换前在 {{band}} {{mode}} 收到",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "检查 OperateDecodes 插值：切换前的周期起始时间、频段和模式均正确保留。"
+    },
+    {
+      "row": 6452,
+      "id": "operate.roster.filter.hideWorked",
+      "english": "Hide worked",
+      "chinese": "隐藏已通联",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "worked 是已通联，未误译为已确认或正在工作。"
+    },
+    {
+      "row": 6762,
+      "id": "js8.inbox.empty",
+      "english": "Nothing in the inbox — messages addressed to you, and MSG TO: messages you hold for others, appear here",
+      "chinese": "收件箱为空。发给本台的消息，以及为他台代存的 MSG TO: 消息会显示在此",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "收件箱同时包含本台消息和为他台代存的 MSG TO: 消息，方向准确。"
+    },
+    {
+      "row": 6915,
+      "id": "js8.dock.notArmed.idle",
+      "english": "Not armed: nothing from you for {{min}} min, so the idle watchdog holds it. Your next send, switch, speed choice, or Read or Delete in the Inbox brings it back.",
+      "chinese": "未就绪：已连续 {{min}} 分钟没有操作，空闲超时保护已暂停此功能。下次发送、操作开关、选择速度，或在收件箱中标记已读、删除消息后恢复。",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "未就绪由无操作超时保护导致，恢复动作全部保留，未误译为硬件断电。"
+    },
+    {
+      "row": 6989,
+      "id": "js8.view.sort.snr",
+      "english": "SNR (weakest first)",
+      "chinese": "SNR（较弱优先）",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "SNR 从弱到强排序，方向正确。"
+    },
+    {
+      "row": 7465,
+      "id": "phone.split.higher.title",
+      "english": "TX {{step}} kHz higher",
+      "chinese": "TX 升高 {{step}} kHz",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "提高的是发射频率，数值及 kHz 单位完整。"
+    },
+    {
+      "row": 7952,
+      "id": "palette.preset.gold",
+      "english": "Gold",
+      "chinese": "金色",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "配色名称 Gold 译为金色，自然准确。"
+    },
+    {
+      "row": 8049,
+      "id": "rotor.strip.aria",
+      "english": "Rotator",
+      "chinese": "天线旋转器",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "Rotator 按天线设备译为天线旋转器。"
+    },
+    {
+      "row": 8164,
+      "id": "cockpit.txAlarm.lead.radio",
+      "english": "Transmitter alarm, {{radio}}, {{time}} UTC:",
+      "chinese": "发射警报，{{radio}}，{{time}} UTC：",
+      "result": "未发现明显异常",
+      "formatOk": true,
+      "note": "发射警报包含设备名、UTC 时间，未误译为无线电发射动作。"
+    }
+  ]
+}

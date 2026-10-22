@@ -7,15 +7,20 @@ import { DE } from '../i18n/de'
 import { ES } from '../i18n/es'
 import { FR } from '../i18n/fr'
 import { JA } from '../i18n/ja'
+import { ZH_CN } from '../i18n/zh-CN'
 import { LanApp } from './LanApp'
 import '../styles.css'
 
 // Every shipped language, then the one the window was opened in (the app's own, passed in the
 // address), else this page's stored or the OS one.
-installCatalog('de', DE)
-installCatalog('es', ES)
-installCatalog('fr', FR)
-installCatalog('ja', JA)
+// A Chinese/English build keeps offline catalogs while dropping unused language data.
+if (import.meta.env.VITE_NEXUS_ZH_LITE !== '1') {
+  installCatalog('de', DE)
+  installCatalog('es', ES)
+  installCatalog('fr', FR)
+  installCatalog('ja', JA)
+}
+installCatalog('zh-CN', ZH_CN)
 initLocale()
 const asked = new URLSearchParams(location.search).get('lang')
 if (asked) setLocale(asked)

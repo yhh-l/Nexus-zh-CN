@@ -1,0 +1,1785 @@
+{
+  "batch": 9,
+  "range": [
+    1601,
+    1800
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 161,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 5,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/NeededPanel.tsx",
+    "ui/src/components/JourneyView.tsx",
+    "ui/src/components/StatsView.tsx"
+  ],
+  "rows": [
+    {
+      "id": "needed.phone.spots::other",
+      "english": " · {{count}} SSB spots",
+      "chinese": " · {{count}} 条 SSB 通报",
+      "previous": "* 妇女{{count}}SSB 斑点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.needs::one",
+      "english": " → {{count}} need",
+      "chinese": " → {{count}} 个待通联目标",
+      "previous": "→{{count}}需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.needs::other",
+      "english": " → {{count}} needs",
+      "chinese": " → {{count}} 个待通联目标",
+      "previous": "→{{count}}需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.off.link",
+      "english": "Phone source off — <a>turn on “DX Cluster / RBN spots”</a>",
+      "chinese": "话音通报源未启用 — <a>启用“DX 集群／RBN 通报”</a>",
+      "previous": "电话源关闭...<a>打开“ DX 集群/ RBN 斑点”</a>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.off.plain",
+      "english": "Phone source off — turn on “DX Cluster / RBN spots” in Settings ▸ Integrations & Feeds",
+      "chinese": "话音通报源未启用 — 请在“设置 ▸ 集成与数据源”中启用“DX 集群／RBN 通报”",
+      "previous": "关闭电话源 — 在设置 & feeds 中打开“ DX 集群 / RBN 斑点 ”",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.off.title",
+      "english": "Phone/SSB needs come only from a human DX-cluster node. This shows when the DX Cluster feed is disabled OR no human host is set — turn on “DX Cluster / RBN spots” and add a host (e.g. ve7cc.net:23) in Settings ▸ Integrations & Feeds. RBN carries only CW + digital, never SSB.",
+      "chinese": "话音／SSB 待通联目标只能来自人工上报的 DX 集群节点。禁用 DX 集群数据源或未设置人工通报节点时，会显示此提示。请在“设置 ▸ 集成与数据源”中启用“DX 集群／RBN 通报”，并添加节点地址（例如 ve7cc.net:23）。RBN 仅提供 CW 和数字模式通报，不提供 SSB 通报。",
+      "previous": "电话/SSB的需求只来自人类DX集群节点. 这表明当DX Cluster feed被禁用时或者没有设定人类主机——打开\"DX Cluster / RBN 斑点\",并在设置 & feeds中添加一个主机(例如ve7cc.net:23). RBN 只携带CW+数字化,从不SSB.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.grid.aria",
+      "english": "Needed now — arrow to move, Enter to work or QSY",
+      "chinese": "当前待通联目标 — 方向键移动，按 Enter 通联或切频（QSY）",
+      "previous": "现在需要——箭头移动,输入工作或QSY",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.column.need",
+      "english": "Need",
+      "chinese": "目标类型",
+      "previous": "需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.column.call",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "needed.column.entity",
+      "english": "Entity",
+      "chinese": "实体",
+      "previous": "实体",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.column.band",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "needed.column.freq",
+      "english": "Freq",
+      "chinese": "频率",
+      "previous": "频率",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "频率"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "频率"
+        }
+      ]
+    },
+    {
+      "id": "needed.row.freq.title",
+      "english": "Spotted on {{freq}} MHz",
+      "chinese": "通报频率：{{freq}} MHz",
+      "previous": "发现{{freq}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.freq.none",
+      "english": "No exact frequency — this need is band-level only",
+      "chinese": "没有确切频率，此目标仅有频段信息",
+      "previous": "没有确切的频率——这个需要只有波段级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.column.mode",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "needed.column.zone",
+      "english": "Zone",
+      "chinese": "分区",
+      "previous": "分区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.column.why",
+      "english": "Why",
+      "chinese": "原因",
+      "previous": "原因",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.empty.filtered",
+      "english": "No alerts match the current filters — clear to see all.",
+      "chinese": "没有符合当前筛选条件的提醒；清除筛选可查看全部。",
+      "previous": "没有匹配当前过滤器的提示——可以全部看到.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.empty",
+      "english": "Nothing needed on the air right now — needed stations (new ones, band-slots, modes, grids, POTA/SOTA) appear here as they're heard or spotted.",
+      "chinese": "当前没有在空中的待通联目标。收到信号或通报后，符合需求的电台会显示在这里，包括新实体、新频段、新模式、新网格及 POTA/SOTA 活动电台。",
+      "previous": "现在不需要广播 需要的台站(新台站、频段、模式、网格) POTA/SOTA)在这里,当他们听到或发现。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.work.title",
+      "english": "Work {{call}} — {{mode}} on {{band}}",
+      "chinese": "与 {{call}} 通联 — {{band}} · {{mode}}",
+      "previous": "工作{{call}}. . . . . . .{{mode}}打开{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.work.titleFreq",
+      "english": "Work {{call}} — {{mode}} on {{band}} @ {{freq}} MHz",
+      "chinese": "与 {{call}} 通联 — {{band}} · {{mode}} · {{freq}} MHz",
+      "previous": "工作{{call}}. . . . . . .{{mode}}打开{{band}}页:1{{freq}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.mainWindow.title",
+      "english": "{{call}} ({{mode}}) — open the main window to work this (pop-out only QSYs the band)",
+      "chinese": "{{call}}（{{mode}}）— 请打开主窗口进行通联；独立窗口仅能切换频段。",
+      "previous": "{{call}}(单位:千美元){{mode}}) ——打开主窗口来工作这个(只流行的QSYs乐队).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.qsy.titleFreq",
+      "english": "QSY to {{freq}} MHz and listen for {{call}}",
+      "chinese": "切换至 {{freq}} MHz，收听 {{call}}",
+      "previous": "QSY改为{{freq}} MHz听着{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.qsy.titleBand",
+      "english": "QSY to {{band}} and listen for {{call}}",
+      "chinese": "切换至 {{band}}，收听 {{call}}",
+      "previous": "QSY改为{{band}}听着{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.aria",
+      "english": "{{call}}, {{entity}}, {{band}} {{mode}}, needed {{tags}}",
+      "chinese": "{{call}}，{{entity}}，{{band}} {{mode}}，待通联项目：{{tags}}",
+      "previous": "{{call}}, (中文).{{entity}}, (中文).{{band}} {{mode}}时,需要{{tags}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.ariaAzimuth",
+      "english": "{{call}}, {{entity}}, about {{deg}} degrees, {{band}} {{mode}}, needed {{tags}}",
+      "chinese": "{{call}}，{{entity}}，方位角约 {{deg}} 度，{{band}} {{mode}}，待通联项目：{{tags}}",
+      "previous": "{{call}}, (中文).{{entity}}关于{{deg}}学位,{{band}} {{mode}}时,需要{{tags}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.point.title",
+      "english": "Point the antenna at {{call}}",
+      "chinese": "将天线转向 {{call}}",
+      "previous": "瞄准天线{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.row.mode.title",
+      "english": "Needed on {{mode}}",
+      "chinese": "尚需通联 {{mode}} 模式",
+      "previous": "需要吗?{{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.entity.label",
+      "english": "NEW ONE",
+      "chinese": "新实体",
+      "previous": "新来的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.entity.title",
+      "english": "New DXCC entity — an all-time new one",
+      "chinese": "从未通联过的 DXCC 实体（全新实体）",
+      "previous": "新设DXCC实体——全新实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.zone.label",
+      "english": "ZONE",
+      "chinese": "分区",
+      "previous": "津巴布韦",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.zone.title",
+      "english": "New CQ zone on this band (5BWAZ)",
+      "chinese": "此频段尚未通联的 CQ 分区（5BWAZ）",
+      "previous": "在这个带子上新建 CQ 区域( 5BWAZ)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.band.label",
+      "english": "BAND",
+      "chinese": "频段",
+      "previous": "剑",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.band.title",
+      "english": "New band-slot for this entity",
+      "chinese": "此实体尚未通联的频段项目",
+      "previous": "此实体的新频段槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.mode.label",
+      "english": "MODE",
+      "chinese": "模式",
+      "previous": "民主运动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.mode.title",
+      "english": "New mode for this entity",
+      "chinese": "此实体尚未通联的模式",
+      "previous": "此实体的新模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.grid.label",
+      "english": "GRID",
+      "chinese": "网格",
+      "previous": "全球资源信息数据库",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.grid.title",
+      "english": "New grid square on this band (VUCC is per band)",
+      "chinese": "此频段尚未通联的网格（VUCC 按频段分别统计）",
+      "previous": "此带上的新网格方格( VUCC 是每个带)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.state.label",
+      "english": "STATE",
+      "chinese": "州",
+      "previous": "国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.state.title",
+      "english": "New US state on this band (5BWAS) — a hint from the grid; confirm from the log",
+      "chinese": "此频段尚未通联的美国州（5BWAS）；此处根据网格推测，请以日志核实。",
+      "previous": "这个带子上的新美国状态( 5BWAS) —— 来自网格的提示; 从日志确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.park.label",
+      "english": "PARK",
+      "chinese": "公园",
+      "previous": "朴园",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.park.title",
+      "english": "A park or summit you have not worked in the activation running right now — POTA credits a reference once per activator per UTC day, so the same park tomorrow counts again",
+      "chinese": "本次活动中尚未通联的公园或山峰。POTA 对同一活动电台在同一参考地点的交信，每个 UTC 日计入一次，因此明天再通联同一公园仍可计入。",
+      "previous": "一个公园或高峰 你还没有工作 在激活运行现在 -POTA每名活动者一次参考UTC一天,所以同一个公园 明天再次计算",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.dxped.label",
+      "english": "DXPED",
+      "chinese": "DX 远征",
+      "previous": "发 展",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.dxped.title",
+      "english": "Active DXpedition — limited-time window",
+      "chinese": "正在进行的 DX 远征，通联机会有时间限制",
+      "previous": "活动 DXpedition — 有限时间窗口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.confirm.label",
+      "english": "LoTW",
+      "chinese": "LoTW",
+      "previous": "LoTW",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.confirm.title",
+      "english": "This entity/zone/grid is worked on this band but not yet confirmed — a LoTW match or a paper card would close it (eQSL and QRZ do not count toward awards, so they do not clear this). Not a claim about this callsign: B4 is the worked-this-call chip.",
+      "chinese": "此频段已通联过该实体／分区／网格，但尚未确认；通过 LoTW 匹配或纸质卡片确认后，此提示才会消失（eQSL 和 QRZ 不计入此处奖项统计，因此不会消除此提示）。此提示不表示已通联过这个呼号；是否曾通联该呼号，请看 B4 标签。",
+      "previous": "这个实体/区域/网格在这个波段上工作,但尚未确认——a LoTW 匹配或纸卡将关闭(eQSL和 QRZ 你不要计酬,他们也不阐明这一点。 不是关于这个呼号的声称 B4是工作 -这个呼叫芯片。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.pota.title",
+      "english": "Live POTA activator",
+      "chinese": "正在开展 POTA 活动的电台",
+      "previous": "现场直播POTA活动者",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.sota.title",
+      "english": "Live SOTA activator",
+      "chinese": "正在开展 SOTA 活动的电台",
+      "previous": "现场直播SOTA活动者",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.badge.wanted.title",
+      "english": "On your watch list",
+      "chinese": "在你的关注列表中",
+      "previous": "在你的观察名单上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newEntity.label",
+      "english": "NEW ONE",
+      "chinese": "新实体",
+      "previous": "新来的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newEntity.short",
+      "english": "NEW",
+      "chinese": "新实体",
+      "previous": "新建",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newEntity.title",
+      "english": "All-time-new DXCC entity (ATNO)",
+      "chinese": "从未通联过的 DXCC 实体（ATNO）",
+      "previous": "全新时间DXCC实体(ATNO)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newZone.label",
+      "english": "ZONE",
+      "chinese": "分区",
+      "previous": "津巴布韦",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newZone.short",
+      "english": "ZONE",
+      "chinese": "分区",
+      "previous": "津巴布韦",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newZone.title",
+      "english": "New CQ zone on this band",
+      "chinese": "此频段尚未通联的 CQ 分区",
+      "previous": "此带的新 CQ 区",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newBand.label",
+      "english": "BAND",
+      "chinese": "频段",
+      "previous": "剑",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newBand.short",
+      "english": "BAND",
+      "chinese": "频段",
+      "previous": "剑",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newBand.title",
+      "english": "New band-slot for this entity",
+      "chinese": "此实体尚未通联的频段项目",
+      "previous": "此实体的新频段槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newMode.label",
+      "english": "MODE",
+      "chinese": "模式",
+      "previous": "民主运动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newMode.short",
+      "english": "MODE",
+      "chinese": "模式",
+      "previous": "民主运动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newMode.title",
+      "english": "New mode for this entity",
+      "chinese": "此实体尚未通联的模式",
+      "previous": "此实体的新模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newGrid.label",
+      "english": "GRID",
+      "chinese": "网格",
+      "previous": "全球资源信息数据库",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newGrid.short",
+      "english": "GRID",
+      "chinese": "网格",
+      "previous": "全球资源信息数据库",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newGrid.title",
+      "english": "New grid square on this band",
+      "chinese": "此频段尚未通联的网格",
+      "previous": "在这个带子上新建网格方块",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newState.label",
+      "english": "STATE",
+      "chinese": "州",
+      "previous": "国家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newState.short",
+      "english": "ST",
+      "chinese": "州",
+      "previous": "ST 类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newState.title",
+      "english": "New US state on this band",
+      "chinese": "此频段尚未通联的美国州",
+      "previous": "此带上的新美国状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newState.title.park",
+      "english": "New US state on this band — the state the park or summit is in",
+      "chinese": "此频段尚未通联的美国州；根据公园或山峰所在地确定。",
+      "previous": "这个乐队的新美国州——公园或峰顶所在的州",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newState.title.license",
+      "english": "New US state on this band — from the station's licence",
+      "chinese": "此频段尚未通联的美国州；根据该电台的执照信息确定。",
+      "previous": "这个乐队的新美国州——来自该台的执照",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newState.title.grid",
+      "english": "New US state on this band — a best guess from the station's grid square",
+      "chinese": "此频段尚未通联的美国州；根据该电台的网格位置推测，可能不准确。",
+      "previous": "这个带子上的新美国州——从车站的网格广场上最好的猜测",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newPark.label",
+      "english": "NEW PARK",
+      "chinese": "新公园",
+      "previous": "新公园",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newPark.short",
+      "english": "PARK",
+      "chinese": "公园",
+      "previous": "朴园",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.newPark.title",
+      "english": "A park or summit you have not worked in this activation. An activator comes back to the same reference again and again and each visit is a fresh contact, so this clears when you log them today and returns next time they are out.",
+      "chinese": "本次活动中尚未通联的公园或山峰。活动电台可能多次前往同一参考地点，每次活动都可产生新的交信记录；今天记录与其交信后，此提示会消失，下次活动时会再次出现。",
+      "previous": "公园或峰顶,你没有工作 在这个激活。 一个激活者一次又一次地回到同一个参照物,每次访问都是新的联系人,所以当您今天登录它们,下次它们出来后返回时,这个联系就清除了.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.confirm.label",
+      "english": "LoTW",
+      "chinese": "LoTW",
+      "previous": "LoTW",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.confirm.short",
+      "english": "LoTW",
+      "chinese": "LoTW",
+      "previous": "LoTW",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.confirm.title",
+      "english": "Worked on this band but not yet confirmed — a LoTW match or a paper card closes it; eQSL and QRZ do not count toward awards",
+      "chinese": "此频段已通联但尚未确认；通过 LoTW 匹配或纸质卡片确认后，此提示会消失。eQSL 和 QRZ 不计入此处奖项统计。",
+      "previous": "在乐队工作,但尚未确认——a LoTW 匹配或纸卡关闭; eQSL 和 QRZ 不计奖项",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.dxped.label",
+      "english": "DXPED",
+      "chinese": "DX 远征",
+      "previous": "发 展",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.dxped.short",
+      "english": "DXP",
+      "chinese": "远征",
+      "previous": "DXP 常规",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.dxped.title",
+      "english": "Active announced DXpedition — a limited-time window",
+      "chinese": "已公告且正在进行的 DX 远征，通联机会有时间限制",
+      "previous": "活动宣布的 DXpedition — 有限时间窗口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.pota.title",
+      "english": "Live POTA activator — the row's call is on a park right now",
+      "chinese": "正在开展 POTA 活动的电台；此行呼号对应的电台目前在公园中操作。",
+      "previous": "现场直播POTA活动者——排队的呼声现在在公园里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.sota.title",
+      "english": "Live SOTA activator — the row's call is on a summit right now",
+      "chinese": "正在开展 SOTA 活动的电台；此行呼号对应的电台目前在山峰上操作。",
+      "previous": "现场直播SOTA行动者——排队的呼声现在在峰会上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "need.chip.wanted.title",
+      "english": "On your watch list",
+      "chinese": "在你的关注列表中",
+      "previous": "在你的观察名单上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.newEntity.label",
+      "english": "New entity (ATNO)",
+      "chinese": "全新实体（ATNO）",
+      "previous": "新实体(ATNO)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.newBand.label",
+      "english": "New band",
+      "chinese": "新频段",
+      "previous": "新频段",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.newMode.label",
+      "english": "New mode",
+      "chinese": "新模式",
+      "previous": "新模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.worked.label",
+      "english": "Worked, unconfirmed",
+      "chinese": "已交信，未确认",
+      "previous": "已交信，未确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.confirmed.label",
+      "english": "Confirmed",
+      "chinese": "已确认",
+      "previous": "已确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.dupe.label",
+      "english": "Already worked",
+      "chinese": "已交信",
+      "previous": "已交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.snrStrong.label",
+      "english": "Strong signal",
+      "chinese": "强信号",
+      "previous": "强信号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.snrMarginal.label",
+      "english": "Marginal signal",
+      "chinese": "信号勉强可用",
+      "previous": "临界信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.snrWeak.label",
+      "english": "Weak signal",
+      "chinese": "弱信号",
+      "previous": "弱信号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.tx.label",
+      "english": "Transmitting",
+      "chinese": "正在发射",
+      "previous": "正在发射",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.rx.label",
+      "english": "Receiving",
+      "chinese": "正在接收",
+      "previous": "正在接收",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundInput",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundInput",
+          "chinese": "接收"
+        }
+      ]
+    },
+    {
+      "id": "status.bandOpen.label",
+      "english": "Band open",
+      "chinese": "频段传播已开通",
+      "previous": "频段开通",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.bandMarginal.label",
+      "english": "Band marginal",
+      "chinese": "频段传播勉强可用",
+      "previous": "频段传播临界",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.bandClosed.label",
+      "english": "Band closed",
+      "chinese": "频段传播未开通",
+      "previous": "频段未开通",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.alertCritical.label",
+      "english": "Critical",
+      "chinese": "严重",
+      "previous": "严重",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.alertWarning.label",
+      "english": "Warning",
+      "chinese": "警告",
+      "previous": "警告",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "status.alertInfo.label",
+      "english": "Info",
+      "chinese": "信息",
+      "previous": "信息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.load.failed.title",
+      "english": "Couldn't load your Journey",
+      "chinese": "无法加载通联历程",
+      "previous": "不能装满你的旅程",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.loading.title",
+      "english": "Loading your Journey…",
+      "chinese": "正在加载通联历程…",
+      "previous": "正在装入您的行程...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.loading.detail",
+      "english": "Reading your log.",
+      "chinese": "正在读取本台日志。",
+      "previous": "读你的日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.level",
+      "english": "Level {{level}}",
+      "chinese": "等级 {{level}}",
+      "previous": "职等{{level}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.levelCap",
+      "english": "level",
+      "chinese": "等级",
+      "previous": "职等",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.xpEarned.title",
+      "english": "{{xp}} XP earned",
+      "chinese": "已获得 {{xp}} XP 经验值",
+      "previous": "{{xp}}XP 挣得",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.xpToLevel",
+      "english": "{{into}} / {{forLevel}} XP to level {{next}}",
+      "chinese": "升至等级 {{next}} 的经验进度：{{into}} / {{forLevel}} XP",
+      "previous": "{{into}}页:1{{forLevel}}XP 到级别{{next}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.qsosLogged",
+      "english": "{{qsos}} QSOs logged",
+      "chinese": "已记录 {{qsos}} 条交信",
+      "previous": "{{qsos}} QSOs 登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.streak.title",
+      "english": "Consecutive weeks with at least one contact",
+      "chinese": "每周至少完成一次交信的连续周数",
+      "previous": "连续数周至少联系一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.streak::one",
+      "english": "{{count}} week on the air",
+      "chinese": "连续 {{count}} 周有交信",
+      "previous": "{{count}}每周广播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.streak::other",
+      "english": "{{count}} weeks on the air",
+      "chinese": "连续 {{count}} 周有交信",
+      "previous": "{{count}}播出数周",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.streak.pending",
+      "english": " · this week pending",
+      "chinese": " · 本周尚未交信",
+      "previous": "本周待定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.next.title",
+      "english": "Your most-attainable next milestone",
+      "chinese": "接下来最有希望达成的里程碑",
+      "previous": "你最能达到的下一个里程碑",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.next.cap",
+      "english": "Next milestone",
+      "chinese": "下一个里程碑",
+      "previous": "下一个里程碑",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.next.go",
+      "english": "{{remaining}} to go ({{current}}/{{target}})",
+      "chinese": "还差 {{remaining}}（{{current}}/{{target}}）",
+      "previous": "{{remaining}}将去({{current}}页:1{{target}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.share.label",
+      "english": "⤴ Share",
+      "chinese": "⤴ 分享",
+      "previous": "共享",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.share.title",
+      "english": "Copy a share-card image of your Journey (local render — nothing is uploaded)",
+      "chinese": "复制通联历程分享卡图片（在本地生成，不会上传任何内容）",
+      "previous": "复制您的 Journey 的共享卡图像( 本地渲染- 无内容上传)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.share.feat.title",
+      "english": "Copy a share-card image of this feat (local render — nothing is uploaded)",
+      "chinese": "复制此项成就的分享卡图片（在本地生成，不会上传任何内容）",
+      "previous": "复制此功绩的共享卡图像( 本地渲染- 无内容上传)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.share.anonCall",
+      "english": "MY STATION",
+      "chinese": "本台",
+      "previous": "我的住处",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.share.sub",
+      "english": "{{qsos}} QSOs logged · {{xp}} XP",
+      "chinese": "已记录 {{qsos}} 条交信 · {{xp}} XP 经验值",
+      "previous": "{{qsos}} QSOs 记录 {{xp}} 预算外",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.share.footer",
+      "english": "Journey · Nexus",
+      "chinese": "历程 – Nexus",
+      "previous": "历程 – Nexus",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.share.featFooter",
+      "english": "{{tier}} feat · Journey · Nexus",
+      "chinese": "{{tier}} 成就 · 历程 · Nexus",
+      "previous": "{{tier}}成就 旅程 涅盘",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.marathon.head",
+      "english": "DX Marathon {{year}}",
+      "chinese": "DX 马拉松 {{year}}",
+      "previous": "DX 马拉松{{year}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.marathon.note",
+      "english": "Entities + zones worked this calendar year — resets every Jan 1 (CQ DX Marathon-style, personal).",
+      "chinese": "统计本年度通联的实体数与分区数之和，每年 1 月 1 日重新起算（参照 CQ DX 马拉松计分方式，仅供个人记录）。",
+      "previous": "实体+区在本日历年工作——每1年1月1日重播(CQ DX马拉松风格,个人).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.marathon.score.title",
+      "english": "Entities + zones this year",
+      "chinese": "本年度实体数＋分区数",
+      "previous": "今年的实体+区域",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.marathon.parts",
+      "english": "{{entities}} entities · {{zones}} zones",
+      "chinese": "{{entities}} 个实体 · {{zones}} 个分区",
+      "previous": "{{entities}}* 实体{{zones}}区域",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.marathon.best",
+      "english": "personal best {{score}} ({{year}})",
+      "chinese": "个人最佳 {{score}} 分（{{year}} 年）",
+      "previous": "个人最佳{{score}}(单位:千美元){{year}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.marathon.bestBeaten",
+      "english": "personal best {{score}} ({{year}}) — beaten!",
+      "chinese": "个人最佳 {{score}} 分（{{year}} 年）— 已刷新！",
+      "previous": "个人最佳{{score}}(单位:千美元){{year}}- 被打败了!",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.marathon.bestYear",
+      "english": "your best year yet",
+      "chinese": "迄今成绩最好的一年",
+      "previous": "你最好的年头了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.firsts.head",
+      "english": "Firsts",
+      "chinese": "首次达成",
+      "previous": "首个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.first.locked.title",
+      "english": "Locked — {{meaning}}",
+      "chinese": "尚未解锁 — {{meaning}}",
+      "previous": "锁定...{{meaning}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.ladders.head",
+      "english": "Climb toward the awards",
+      "chinese": "向奖项目标迈进",
+      "previous": "爬上奖项",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.ladders.note",
+      "english": "Sub-award ladders — the official awards are the capstones in the Awards tab.",
+      "chinese": "这里展示达成奖项前的阶段目标；最终的官方奖项目标可在“奖项”标签页查看。",
+      "previous": "亚军阶梯——官方奖项为奖项标签中的封顶石.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.ladder.worked",
+      "english": "worked",
+      "chinese": "已通联",
+      "previous": "工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.ladder.confirmed",
+      "english": "confirmed",
+      "chinese": "已确认",
+      "previous": "已确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.ladder.toGo",
+      "english": "{{count}} to go",
+      "chinese": "还差 {{count}}",
+      "previous": "{{count}}离开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.ladder.complete",
+      "english": "Complete ★",
+      "chinese": "已完成 ★",
+      "previous": "结 论",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.collections.head",
+      "english": "Collections",
+      "chinese": "收集进度",
+      "previous": "收款",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.cell.confirmed.title",
+      "english": "{{label}} — confirmed",
+      "chinese": "{{label}} — 已确认",
+      "previous": "{{label}}- 确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.cell.worked.title",
+      "english": "{{label}} — worked",
+      "chinese": "{{label}} — 已通联",
+      "previous": "{{label}}- 工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.cell.needed.title",
+      "english": "{{label}} — needed",
+      "chinese": "{{label}} — 待通联",
+      "previous": "{{label}}需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.feats.head",
+      "english": "Feats",
+      "chinese": "成就",
+      "previous": "羽毛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.bests.head",
+      "english": "Personal bests",
+      "chinese": "个人最佳",
+      "previous": "个人最佳",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.tier.bronze",
+      "english": "Bronze",
+      "chinese": "铜牌",
+      "previous": "铜",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.tier.silver",
+      "english": "Silver",
+      "chinese": "银牌",
+      "previous": "银",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.tier.gold",
+      "english": "Gold",
+      "chinese": "金牌",
+      "previous": "黄金",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.tier.platinum",
+      "english": "Platinum",
+      "chinese": "铂金",
+      "previous": "铂",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.tier.legendary",
+      "english": "Legendary",
+      "chinese": "传奇",
+      "previous": "传奇",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.unlock.feat",
+      "english": "★ {{title}} unlocked!",
+      "chinese": "★ 已解锁：{{title}}！",
+      "previous": "页:1{{title}}解锁了!",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "journey.unlock.more",
+      "english": "+{{count}} more milestones — open Journey to see them",
+      "chinese": "另有 {{count}} 项里程碑，打开“历程”查看",
+      "previous": "+ 键{{count}}更多的里程碑——开路看看他们",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.title",
+      "english": "Statistics",
+      "chinese": "统计",
+      "previous": "统计",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.failed",
+      "english": "Couldn’t read the logbook — try reopening this view.",
+      "chinese": "无法读取交信日志，请尝试重新打开此页面。",
+      "previous": "无法读取日志, 尝试重新打开此视图 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.loading",
+      "english": "Loading your logbook…",
+      "chinese": "正在加载交信日志…",
+      "previous": "正在加载交信日志…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.empty",
+      "english": "No QSOs logged yet — your stats will fill in here as you work stations.",
+      "chinese": "尚未记录交信；与电台通联并记录后，这里就会显示统计数据。",
+      "previous": "没有 QSOs 已经登录了,你们的工作站会在这里填写数据。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.qsos",
+      "english": "QSOs",
+      "chinese": "交信数",
+      "previous": "快速行动组织",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.uniqueCalls",
+      "english": "unique calls",
+      "chinese": "不同呼号数",
+      "previous": "独家通话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.dxccEntities",
+      "english": "DXCC entities",
+      "chinese": "DXCC 实体数",
+      "previous": "DXCC实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.confirmed",
+      "english": "confirmed",
+      "chinese": "已确认",
+      "previous": "已确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.byBand.head",
+      "english": "By band",
+      "chinese": "按频段统计",
+      "previous": "按乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.byMode.head",
+      "english": "By mode",
+      "chinese": "按模式",
+      "previous": "按模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.byYear.head",
+      "english": "By year",
+      "chinese": "按年份",
+      "previous": "按年份",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.topEntities.head",
+      "english": "Top DXCC entities",
+      "chinese": "交信最多的 DXCC 实体",
+      "previous": "顶DXCC实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.byState.head",
+      "english": "Most-worked states (WAS)",
+      "chinese": "交信最多的州（WAS）",
+      "previous": "工作最多的州(WAS)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.byHour.head",
+      "english": "Activity by hour (UTC)",
+      "chinese": "按小时统计活动（UTC）",
+      "previous": "按小时分列的活动UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.hour.title",
+      "english": "{{hour}}:00 UTC — {{count}} QSOs",
+      "chinese": "{{hour}}:00 UTC — {{count}} 条交信",
+      "previous": "{{hour}}点UTC. . . . . . .{{count}}快速行动组织",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.hoursMissing::one",
+      "english": "{{formatted}} QSO not shown — imported with a date but no time of day.",
+      "chinese": "有 {{formatted}} 条 QSO 未显示：导入记录仅有日期，没有具体时间。",
+      "previous": "{{formatted}} QSO未显示 —— 有日期但无时间导入。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.hoursMissing::other",
+      "english": "{{formatted}} QSOs not shown — imported with a date but no time of day.",
+      "chinese": "有 {{formatted}} 条交信未显示：导入记录仅有日期，没有具体时间。",
+      "previous": "{{formatted}} QSOs 未显示 —— 有日期但无时间导入。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.confirmations.head",
+      "english": "Confirmations",
+      "chinese": "交信确认统计",
+      "previous": "确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.confirmations.awardGrade",
+      "english": "Award-grade",
+      "chinese": "符合奖项要求的确认",
+      "previous": "奖级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.confirmations.paperCard",
+      "english": "Paper card",
+      "chinese": "纸质卡片",
+      "previous": "纸卡",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.byContinent.head",
+      "english": "By continent",
+      "chinese": "按大洲统计",
+      "previous": "按大陆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.continent.entities",
+      "english": "· {{count}} ent",
+      "chinese": "· {{count}} 个实体",
+      "previous": "* 妇女{{count}}数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.byZone.head",
+      "english": "By CQ zone",
+      "chinese": "按 CQ 分区统计",
+      "previous": "按CQ区",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.zone.label",
+      "english": "Zone {{zone}}",
+      "chinese": "第 {{zone}} 分区",
+      "previous": "区{{zone}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.dxSplit.head",
+      "english": "DX vs domestic",
+      "chinese": "DX 与国内交信",
+      "previous": "DX 对国内",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.dxSplit.domestic",
+      "english": "Domestic",
+      "chinese": "国内",
+      "previous": "国内",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.unplaced",
+      "english": "{{unplaced}} of {{total}} QSOs couldn’t be placed by callsign",
+      "chinese": "共 {{total}} 条交信，其中 {{unplaced}} 条无法根据呼号确定位置",
+      "previous": "{{unplaced}} 页:1 {{total}} QSOs 无法通过呼号进行定位",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.head",
+      "english": "Timeline (UTC)",
+      "chinese": "时间趋势（UTC）",
+      "previous": "时间表UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.range.aria",
+      "english": "Timeline range",
+      "chinese": "时间范围",
+      "previous": "时间范围",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.range.pastDay",
+      "english": "Past day",
+      "chinese": "过去 24 小时",
+      "previous": "过去的一天",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.range.past30Days",
+      "english": "Past 30 days",
+      "chinese": "过去 30 天",
+      "previous": "过去30天",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.range.pastYear",
+      "english": "Past year",
+      "chinese": "过去一年",
+      "previous": "上一年",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.other",
+      "english": "Other",
+      "chinese": "其他",
+      "previous": "其他人员",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.empty",
+      "english": "No QSOs logged in this range.",
+      "chinese": "此时间范围内没有交信记录。",
+      "previous": "没有 QSOs 记录在这个范围内。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.chart",
+      "english": "QSOs per mode, {{range}}. The arrow keys step through the points.",
+      "chinese": "{{range}}各模式的交信数。使用方向键逐个查看数据点。",
+      "previous": "QSOs 每个模式, {{range}}。箭头键通过点。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.hint",
+      "english": "Point at the chart, or focus it and use the arrow keys, to read each point.",
+      "chinese": "将指针移到图表上，或先聚焦图表再用方向键，可查看各数据点。",
+      "previous": "指向图表,或将其聚焦并使用箭头键读取每个点.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.table",
+      "english": "QSOs per mode, {{range}}",
+      "chinese": "{{range}}各模式的交信数",
+      "previous": "QSOs 每个模式, {{range}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.col.pastDay",
+      "english": "Hour (UTC)",
+      "chinese": "小时（UTC）",
+      "previous": "小时UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.col.past30Days",
+      "english": "Day (UTC)",
+      "chinese": "日期（UTC）",
+      "previous": "日数UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "stats.timeline.col.pastYear",
+      "english": "Month (UTC)",
+      "chinese": "月份（UTC）",
+      "previous": "月数(UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.empty.title",
+      "english": "Set your grid to see the map",
+      "chinese": "设置本台网格定位后即可查看地图",
+      "previous": "设置显示地图的网格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.empty.detail",
+      "english": "The Beam Map centers on your Maidenhead grid — set it in Settings, then every heading and range ring is measured from your QTH.",
+      "chinese": "方位地图以本台的梅登黑德网格位置为中心。请先在设置中填写网格定位，之后的方位角与等距圈都将以本台台址（QTH）为基准。",
+      "previous": "Beam 地图中心位于您的少女头像网格上——设置在设置中,然后从您的QTH。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.aria",
+      "english": "Map view",
+      "chinese": "地图视图",
+      "previous": "地图视图",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.globe.label",
+      "english": "Globe",
+      "chinese": "地球仪",
+      "previous": "地球仪",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.globe.title",
+      "english": "2-D globe — drag to spin, wheel to zoom",
+      "chinese": "二维地球视图 — 拖动旋转，滚轮缩放",
+      "previous": "2-D Global — 拖动旋转, 轮子缩放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.beam.label",
+      "english": "Beam",
+      "chinese": "方位图",
+      "previous": "贝姆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.beam.title",
+      "english": "Beam map — true headings + range rings from your QTH",
+      "chinese": "方位地图 — 显示以本台台址（QTH）为基准的真方位角和等距圈",
+      "previous": "Beam 映射 — 真实标题 + 范围 环QTH",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.world.label",
+      "english": "Flat",
+      "chinese": "平面",
+      "previous": "平面",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.world.title",
+      "english": "Flat world map with shaded relief",
+      "chinese": "带地形晕渲的平面世界地图",
+      "previous": "平坦的世界地图,带有阴影",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.projection.webgl.title",
+      "english": "WebGL 3D globe — best on higher-end PCs",
+      "chinese": "WebGL 三维地球 — 更适合配置较高的电脑",
+      "previous": "WebGL 3D Global——在高端个人电脑上最好",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "map.street.aria",
+      "english": "Street map",
+      "chinese": "街道地图",
+      "previous": "街道地图",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

@@ -1,0 +1,1379 @@
+{
+  "batch": 42,
+  "range": [
+    8201,
+    8360
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 160,
+  "changed": 118,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 4,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/TopBar.tsx",
+    "ui/src/components/CallStatsPane.tsx",
+    "ui/src/features/registry.ts"
+  ],
+  "rows": [
+    {
+      "id": "topbar.field.on.title",
+      "english": "Field mode is on: larger type, maximum contrast. Click to turn off.",
+      "chinese": "野外模式已开启：增大字体，提高对比度。点击关闭。",
+      "previous": "字段模式在:大类型,最大对比度. 点击可关闭 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.field.off.title",
+      "english": "Field mode for operating outdoors: larger type, maximum contrast",
+      "chinese": "适合户外操作的野外模式：增大字体，提高对比度",
+      "previous": "室外操作的场模式:较大类型,最大对比度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.operator.title",
+      "english": "Operating as {{call}} — click to change who is at the key",
+      "chinese": "当前操作员为 {{call}}，点击可更换当班操作员",
+      "previous": "以{{call}}——单击以改变谁在关键位置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.operator.switch",
+      "english": "Switch to {{call}}",
+      "chinese": "切换到{{call}}",
+      "previous": "切换到{{call}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.operator.single",
+      "english": "Single operator (clear)",
+      "chinese": "单人操作（清除当前操作员）",
+      "previous": "单一运营商( 清晰)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.operator.set",
+      "english": "Set operator",
+      "chinese": "设置操作员",
+      "previous": "设置运算符",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.operator.set.title",
+      "english": "Nobody is set as the operator — click to say who is at the key",
+      "chinese": "尚未指定操作员，点击设置当前当班人员",
+      "previous": "没有人被设定为操作员——点击以表示谁是关键",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.operator.firstSet",
+      "english": "No operators logged yet — set the first one on the Contest screen",
+      "chinese": "尚无操作员记录，请先在竞赛页面设置首位操作员",
+      "previous": "尚未登录操作员——将第一个操作员设置在 Contest 屏幕上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.rigMode.chip",
+      "english": "rig: {{mode}}",
+      "chinese": "电台：{{mode}}",
+      "previous": "钻机 :{{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.rigMode.title",
+      "english": "Your rig is on {{rig}}, but Nexus has {{believed}}. Turn the rig's mode knob (or pick the band in an operating cockpit) to match.",
+      "chinese": "电台当前为 {{rig}}，但 Nexus 记录为 {{believed}}。请转动电台模式旋钮，或在操作页面选择频段，使两者一致。",
+      "previous": "你的钻机开着{{rig}}但Nexus已经{{believed}}。转动钻机模式的把手(或者在运行的驾驶舱中选择带)以匹配。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.rxLevel.label",
+      "english": "RX audio level",
+      "chinese": "接收音频电平",
+      "previous": "接收音频电平",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.rxLevel.title",
+      "english": "RX audio level (aim ~30 dB, like WSJT-X)",
+      "chinese": "接收音频电平，目标约为 30 dB，与 WSJT-X 类似",
+      "previous": "RX 音频级别( aim ~ 30 dB, 如 WSJT- X)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.recording.title",
+      "english": "Recording this QSO to a WAV — click to stop",
+      "chinese": "正在将本次 QSO 录制为 WAV，点击停止",
+      "previous": "记录此QSO到 WAV — 点击停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txControls.aria",
+      "english": "Transmit controls",
+      "chinese": "发射控制",
+      "previous": "传送控件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.holdTx.label",
+      "english": "Hold Tx",
+      "chinese": "保持发射频偏",
+      "previous": "握住 Tx 键",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.holdTx.title",
+      "english": "Hold Tx Freq: keep your TX offset where you put it when you double-click a station to work them. Off, your TX moves onto theirs (WSJT-X's behaviour). A plain waterfall click never moves TX either way.",
+      "chinese": "保持发射频偏（Hold Tx Freq）：双击电台开始通联时，TX 频偏仍保持在本台设定的位置。关闭后，TX 会移到对方频偏，与 WSJT-X 的行为相同。无论此开关状态如何，普通点击瀑布图都不会移动 TX。",
+      "previous": "按住 Tx Freq : 双击一个站台工作时, 将您的 TX 偏移放在位置 。 关闭, 您的 TX 移动到他们的身上( WSJT- X 的行为) 。 平坦的瀑布点击 绝不移动 TX 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.slotClock.title",
+      "english": "Time to next slot",
+      "chinese": "距下一时隙",
+      "previous": "距下一时隙",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.slotClock.label",
+      "english": "next slot",
+      "chinese": "下一时隙",
+      "previous": "下一个槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.utc.title",
+      "english": "UTC time",
+      "chinese": "UTC 时间",
+      "previous": "UTC 时间",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.localClock.label",
+      "english": "Local",
+      "chinese": "本地",
+      "previous": "本地",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.localClock.title",
+      "english": "Local time on this computer",
+      "chinese": "本机本地时间",
+      "previous": "本机本地时间",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.corrected.label",
+      "english": "clock {{offset}} ✓",
+      "chinese": "时钟 {{offset}} ✓",
+      "previous": "时钟{{offset}}✓",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.corrected.title",
+      "english": "Your PC clock is {{offset}} off UTC and Nexus is already correcting for it — transmit and decode windows land on the true UTC grid. Measured {{age}} ago, {{servers}} time servers agreeing.",
+      "chinese": "本机时钟相对 UTC 偏差为 {{offset}}，Nexus 已在内部补偿，使发射和解码窗口对准实际 UTC 时隙。测量于{{age}}前，{{servers}} 台授时服务器的结果一致。",
+      "previous": "你的电脑时钟是 {{offset}} 关 UTC Nexus已经纠正了它 传送和解码窗口在真实的 UTC 网络。 计量 {{age}} 刚才 {{servers}} 时间服务器同意。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.logNote",
+      "english": "Logged QSO times still come from the PC clock, so this one is worth fixing at the machine.",
+      "chinese": "QSO 入志时间仍取自本机时钟，因此建议直接修正计算机时钟。",
+      "previous": "日志QSO所以这台机器值得修理",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.stale.label",
+      "english": "clock unchecked",
+      "chinese": "时钟检查已过期",
+      "previous": "时钟不受限制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.stale.title",
+      "english": "The last UTC measurement was {{age}} ago and has aged out, so Nexus has stopped correcting — slot timing now follows the PC clock directly. It resumes on its own as soon as a time server answers.",
+      "chinese": "上次 UTC 测量在{{age}}前，结果已过期，因此 Nexus 已停止补偿，时隙时序现在直接跟随本机时钟。授时服务器恢复响应后会自动恢复补偿。",
+      "previous": "最后一个UTC测量是{{age}}所以Nexus已经停止纠正了 时间档时间现在直接跟随PC时钟 它在时间服务器回复后立即自行恢复.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.gross.label",
+      "english": "clock {{offset}} ✗",
+      "chinese": "时钟 {{offset}} ✗",
+      "previous": "时钟{{offset}}✗",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.gross.title",
+      "english": "Your PC clock is {{offset}} off UTC — too far for Nexus to correct, and your logged QSO times would be wrong by the same amount. Set the clock on the machine itself (off-grid: GPS).",
+      "chinese": "本机时钟相对 UTC 偏差为 {{offset}}，超出 Nexus 可补偿的范围，QSO 入志时间也会产生相同偏差。请直接修正计算机时钟；无网络时可使用 GPS。",
+      "previous": "你的电脑时钟是{{offset}}关UTC- Nexus无法纠正的太远了,你的记录QSO时间是错的,同样的数额。 在机器本身上设定时钟(off-grid:GPS).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.label",
+      "english": "Repair clock",
+      "chinese": "修复时钟",
+      "previous": "修理时钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.busy",
+      "english": "Repairing…",
+      "chinese": "正在修复...",
+      "previous": "正在修复...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.note",
+      "english": "asks for admin rights",
+      "chinese": "需要管理员权限",
+      "previous": "请求管理权",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.title",
+      "english": "Fix what the clock check found. Windows asks for administrator rights first, and Nexus runs the fix only when you press this.",
+      "chinese": "修复时钟检查发现的问题。Windows 会先请求管理员权限，只有点击此按钮后 Nexus 才会执行修复。",
+      "previous": "修复时钟检查发现的东西. Windows先要求管理员权限,Nexus只在按下此键时才运行固定.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.onAir",
+      "english": "Not while transmitting: a clock repair can move the clock in the middle of an over. Try again when the transmitter is idle.",
+      "chinese": "发射期间不能修复时钟，以免在一轮发射中途调整时间。请等发射机空闲后再试。",
+      "previous": "不在传输时:一个时钟修复可以移动一个时钟的中段. 当发射机闲置时再试一次.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.midMessage",
+      "english": "Not in the middle of a message: a JS8 or Tempo message is still going out, and a clock repair would pause it between two of its overs. Try again when it has finished.",
+      "chinese": "消息发送中不能修复时钟：JS8 或 Tempo 消息尚未发完，修复会使其在两轮发射之间暂停。请等消息发完后再试。",
+      "previous": "不在信息中间:a JS8 或Tempo 消息仍在流出, 和一个钟表修复会暂停 它之间的两个过。 完成后再试一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.running",
+      "english": "A clock repair is already running. Answer the Windows prompt, or wait for it to finish.",
+      "chinese": "时钟修复已在进行。请处理 Windows 提示，或等待修复完成。",
+      "previous": "钟表修复工作已经开始。 回答 Windows 提示, 或者等待它完成 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.nothing",
+      "english": "There is nothing to repair now: the latest clock check found nothing to fix.",
+      "chinese": "当前无需修复，最近一次时钟检查未发现需要修复的问题。",
+      "previous": "现在没有什么可以修复的:最新的时钟检查发现没有任何可以修复的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.done",
+      "english": "Clock repaired. Hover the clock readout to see what changed.",
+      "chinese": "时钟已修复，将鼠标悬停在时钟读数上可查看更改详情。",
+      "previous": "时钟修复. 顺着钟念完 看看有什么变化",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.clock.repair.failed",
+      "english": "The clock was not repaired: the administrator prompt was declined, or Windows refused a step.",
+      "chinese": "时钟未能修复：管理员授权被拒绝，或 Windows 拒绝了某个修复步骤。",
+      "previous": "时钟没有修复:管理员的提示被拒绝,或者Windows拒绝一步.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.sync.ok.label",
+      "english": "Sync",
+      "chinese": "同步",
+      "previous": "同步",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "同步"
+        }
+      ]
+    },
+    {
+      "id": "topbar.sync.bad.label",
+      "english": "No Sync",
+      "chinese": "未同步",
+      "previous": "无同步",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.sync.ok.title",
+      "english": "Time sync OK (from decode timing)",
+      "chinese": "时间同步正常，根据解码时序判断",
+      "previous": "时间同步 OK( 从解码时间)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.sync.bad.title",
+      "english": "Decodes land far off the slot boundary and no NTP measurement has come back yet, so nothing is being corrected. Check the network, or set the PC clock (off-grid: GPS).",
+      "chinese": "解码信号明显偏离时隙边界，且尚无 NTP 测量结果，因此当前未进行补偿。请检查网络或设置本机时钟；无网络时可使用 GPS。",
+      "previous": "解码离槽边界很远的陆地,还没有NTP的测量结果回来,所以没有被纠正. 检查网络,或设置PC时钟(离网:GPS).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.dt.title",
+      "english": "Decode time offset (how far heard signals land from the slot boundary)",
+      "chinese": "解码时间偏差，即收到的信号相对时隙边界的偏移",
+      "previous": "解码时间偏移( 从槽边界听到信号多远)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.aria",
+      "english": "Transmit cycle",
+      "chinese": "发射时隙",
+      "previous": "传送周期",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.auto.title",
+      "english": "Auto-cycle (FT8-style): when you answer a station, transmit on the opposite T/R cycle to theirs",
+      "chinese": "自动选择收发时隙，与 FT8 类似：应答电台时使用与对方相反的收发时隙",
+      "previous": "自动循环FT8-style):当你回答一个站点时,在相反的T/R周期上向它们传送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.auto.idle",
+      "english": "Auto <s>cycle</s>",
+      "chinese": "自动<s>时隙</s>",
+      "previous": "自动<s>周期</s>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.auto.first",
+      "english": "Auto <s>1st</s>",
+      "chinese": "自动<s>第一时隙</s>",
+      "previous": "自动<s>第1届</s>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.auto.second",
+      "english": "Auto <s>2nd</s>",
+      "chinese": "自动<s>第二时隙</s>",
+      "previous": "自动<s>第二届</s>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.first.label",
+      "english": "Tx 1st <s>even</s>",
+      "chinese": "第一时隙<s>偶数</s>",
+      "previous": "第1个<s>连</s>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.first.title",
+      "english": "Lock transmit to the even (1st) T/R slots — the station you work must be Tx 2nd",
+      "chinese": "锁定在偶数（第一）收发时隙发射，对方须使用第二时隙（Tx 2nd）",
+      "previous": "锁定传送到偶数(1st)的 T/R 槽——您工作的站台必须是 Tx 2nd",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.second.label",
+      "english": "Tx 2nd <s>odd</s>",
+      "chinese": "第二时隙<s>奇数</s>",
+      "previous": "Tx 2 号<s>奇数</s>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.txCycle.second.title",
+      "english": "Lock transmit to the odd (2nd) T/R slots — the station you work must be Tx 1st",
+      "chinese": "锁定在奇数（第二）收发时隙发射，对方须使用第一时隙（Tx 1st）",
+      "previous": "锁定传送到奇数( 2nd) T/R 插槽——您工作的站台必须是 Tx 1st",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "toast.action.default",
+      "english": "Work",
+      "chinese": "开始通联",
+      "previous": "工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "toast.dismiss",
+      "english": "Dismiss notification",
+      "chinese": "关闭通知",
+      "previous": "解雇通知",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "link.quality.solid",
+      "english": "Solid {{snr}} dB",
+      "chinese": "稳定 {{snr}} dB",
+      "previous": "固态{{snr}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "link.quality.marginal",
+      "english": "Marginal RV{{rv}}",
+      "chinese": "临界 RV{{rv}}",
+      "previous": "边际房车{{rv}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "link.quality.weak",
+      "english": "Weak {{snr}} dB",
+      "chinese": "较弱 {{snr}} dB",
+      "previous": "弱点{{snr}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "link.dial.label",
+      "english": "Dial",
+      "chinese": "调谐频率",
+      "previous": "拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "link.band.label",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "link.tier.label",
+      "english": "Tier",
+      "chinese": "模式层级",
+      "previous": "级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "link.audioFreq.label",
+      "english": "Audio f",
+      "chinese": "音频频率",
+      "previous": "音频 f",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.category.operate",
+      "english": "Operate",
+      "chinese": "操作",
+      "previous": "操作",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.category.dxAwards",
+      "english": "DX & Awards",
+      "chinese": "DX 与奖项",
+      "previous": "DX 奖项( A)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.category.contesting",
+      "english": "Contesting",
+      "chinese": "竞赛",
+      "previous": "竞赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.category.propagation",
+      "english": "Propagation",
+      "chinese": "传播",
+      "previous": "传播",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.category.logging",
+      "english": "Logging",
+      "chinese": "记录日志",
+      "previous": "记录日志",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "记录日志"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "记录日志"
+        }
+      ]
+    },
+    {
+      "id": "features.category.system",
+      "english": "System",
+      "chinese": "系统",
+      "previous": "系统",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.operate.label",
+      "english": "Operate",
+      "chinese": "操作",
+      "previous": "操作",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.operate.oneLine",
+      "english": "The waterfall-first cockpit — decode, tune, and work stations.",
+      "chinese": "以瀑布图为中心的操作界面，可解码、调谐并与电台通联。",
+      "previous": "瀑布第一驾驶舱——解码,调谐,以及工作站.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.cw.oneLine",
+      "english": "CW operating — keyboard + F-key macros, WPM, spectrum, casual ragchew.",
+      "chinese": "CW 操作：键盘报文、功能键宏、WPM 速度和频谱，适合日常闲聊通联。",
+      "previous": "CW操作——键盘+F键宏,WPM光谱 随便的拉格丘",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.phone.oneLine",
+      "english": "Phone (SSB) operating — PTT, band-aware sideband, RF power, panadapter.",
+      "chinese": "话音（SSB）操作：PTT、按频段选择边带、射频功率和全景频谱。",
+      "previous": "电话(SSB)运营 -PTT带状侧带,RF动力,全美调适器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.rtty.oneLine",
+      "english": "RTTY operating — 45.45 baud Baudot: streaming decode, F-key macros, FSK/AFSK keying.",
+      "chinese": "RTTY 操作：45.45 波特 Baudot 电传，实时解码、功能键宏及 FSK/AFSK 键控。",
+      "previous": "RTTY操作—— 45.45 baud Baudot:流线解码,F键宏,FSK/AFSK键.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.psk.oneLine",
+      "english": "PSK31 — narrow-band keyboard mode: click a trace, read the ragchew (receive).",
+      "chinese": "PSK31：窄带键盘通信模式，点击信号即可接收并阅读闲聊内容。",
+      "previous": "PSK31——窄带键盘模式:点击跟踪,读取ragchew(接收).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.sstv.oneLine",
+      "english": "SSTV — slow-scan images auto-decode into a gallery (Martin/Scottie/Robot/PD).",
+      "chinese": "SSTV：自动解码慢扫描图片并保存到图库，支持 Martin/Scottie/Robot/PD。",
+      "previous": "SSTV——慢扫描图像自动解码成画廊(Martin/Scottie/Robot/PD).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.aprs.oneLine",
+      "english": "APRS — AFSK-1200 packet: decode positions/messages, send a position beacon.",
+      "chinese": "APRS：AFSK-1200 分组通信，解码位置和消息，发送位置信标。",
+      "previous": "APRS——AFSK-1200包:解码位置/消息,发送位置信标.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.js8.oneLine",
+      "english": "JS8 — JS8Call-compatible keyboard chat on FT8’s waveform: heartbeats, directed messages, relay, store-and-forward inbox.",
+      "chinese": "JS8：采用 FT8 波形、兼容 JS8Call 的键盘聊天，支持心跳、定向消息、转发及存储转发收件箱。",
+      "previous": "JS8 - 联署材料8 调用兼容键盘聊天 FT8其波形:心跳,定向消息,中继,存储和转发的收件箱.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.logbook.label",
+      "english": "Logbook",
+      "chinese": "交信日志",
+      "previous": "交信日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.logbook.oneLine",
+      "english": "Your ADIF contacts — the system of record.",
+      "chinese": "保存本台 ADIF 交信记录，是交信数据的正式记录来源。",
+      "previous": "你们ADIF联系人——记录系统。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.settings.label",
+      "english": "Settings",
+      "chinese": "设置",
+      "previous": "设置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "设置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "设置"
+        }
+      ]
+    },
+    {
+      "id": "features.settings.oneLine",
+      "english": "Operator, rig, network, and feature configuration.",
+      "chinese": "配置操作员、电台设备、网络和功能。",
+      "previous": "操作员、钻机、网络和特性配置。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.nowBar.label",
+      "english": "Now Bar",
+      "chinese": "即时状态栏",
+      "previous": "现在栏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.nowBar.oneLine",
+      "english": "The persistent at-a-glance status strip (UTC, band, state, alerts).",
+      "chinese": "常驻状态栏，一眼查看 UTC、频段、状态及警报。",
+      "previous": "持续在玻璃状态条(UTC,乐队,状态,警报。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.chat.label",
+      "english": "Chat",
+      "chinese": "聊天",
+      "previous": "聊天",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.chat.oneLine",
+      "english": "Free-form QSO text (TempoFast/TempoDeep).",
+      "chinese": "自由文本 QSO 对话，使用 TempoFast/TempoDeep。",
+      "previous": "自由形式QSO文本(TempoFast/TempoDep)。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.fieldDay.label",
+      "english": "Contest",
+      "chinese": "竞赛",
+      "previous": "竞赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.fieldDay.oneLine",
+      "english": "Contest rate workspace (exchange, dupes, scoring, Cabrillo).",
+      "chinese": "竞赛效率操作界面，包含交换信息、重复交信检查、计分及 Cabrillo 导出。",
+      "previous": "竞技评分工作空间(交换,dupes,积分,Cabrillo).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.connect.label",
+      "english": "Conditions",
+      "chinese": "传播状况",
+      "previous": "传播状况",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.connect.windowTitle",
+      "english": "Conditions (formerly Connect)",
+      "chinese": "传播状况（原名 Connect）",
+      "previous": "条件( 原连接)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.connect.oneLine",
+      "english": "Situational awareness — the grayline map + live propagation in one view.",
+      "chinese": "在同一视图查看晨昏线地图和实时传播，掌握当前通联条件。",
+      "previous": "情境感知——灰色线地图+现场传播在一个视图中.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.needed.label",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.needed.oneLine",
+      "english": "What you still need that's on the air now — single-click to QSY.",
+      "chinese": "显示当前正在空中的待通联目标，单击即可切换频率。",
+      "previous": "你仍然需要的现在正在播出的——单击QSY.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.spots.label",
+      "english": "Spots",
+      "chinese": "电台通报",
+      "previous": "电台通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.spots.oneLine",
+      "english": "Every cluster/RBN spot on the air — the raw firehose, filter by band/mode.",
+      "chinese": "显示集群／RBN 的全部原始通报，可按频段和模式筛选。",
+      "previous": "空中的每一个集群/RBN点——生火药,通过波段/模度过滤.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.dxped.label",
+      "english": "DXpeditions",
+      "chinese": "DX 远征",
+      "previous": "DX 远征",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.dxped.oneLine",
+      "english": "DXpeditions — active now, the forward calendar, and your needed status.",
+      "chinese": "DX 远征：当前活动、未来日历，以及本台待补项目的状态。",
+      "previous": "DXpeditions——现在活动,前进日历,以及你需要的地位.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.sats.label",
+      "english": "Satellites",
+      "chinese": "卫星",
+      "previous": "卫星",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.sats.oneLine",
+      "english": "Satellite passes over YOUR grid — when to try which bird, favorites first.",
+      "chinese": "查看本台网格上空的卫星过境，了解何时尝试哪颗卫星，收藏优先显示。",
+      "previous": "卫星穿过你的网格——什么时候先试一下哪只鸟,最喜欢的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.memories.label",
+      "english": "Memories",
+      "chinese": "存储信道",
+      "previous": "存储信道",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.memories.oneLine",
+      "english": "Saved channels — repeaters, HF nets, calling freqs: groups, ★ favorites, one-click tune, CHIRP CSV, starter packs + opt-in net reminders.",
+      "chinese": "保存中继台、HF 通联网和呼叫频率，支持分组、★ 收藏、一键调谐、CHIRP CSV、入门信道包及可选的通联网提醒。",
+      "previous": "保存的频道——中继器,HF网,呼叫freqs:组,QQ最爱,单击曲调,CHIRP CSV,启动器包+选入网提醒.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.program.label",
+      "english": "Repeaters",
+      "chinese": "中继台",
+      "previous": "中继台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.program.oneLine",
+      "english": "Program your radios — local repeaters to a channel list: CHIRP CSV, rig memories, or tune-now.",
+      "chinese": "为电台写频，将本地中继台整理成信道列表，可导出 CHIRP CSV、写入电台存储信道或立即调谐。",
+      "previous": "编程您的收音机——本地中继器到频道列表:CHIRP CSV,钻机记忆,或调音-现在.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.awards.label",
+      "english": "Awards",
+      "chinese": "奖状",
+      "previous": "奖状",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.awards.oneLine",
+      "english": "Journey + official awards — firsts, sub-award ladders, DXCC/WAZ/WAS progress.",
+      "chinese": "通联历程与官方奖项，包括首次通联、各子奖项进阶，以及 DXCC/WAZ/WAS 进度。",
+      "previous": "巡回赛+官方颁奖礼——首届,亚军阶梯,DXCC/WAZ/WAS进展.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.stats.label",
+      "english": "Stats",
+      "chinese": "统计",
+      "previous": "统计",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.stats.oneLine",
+      "english": "Your logbook, sliced — QSOs by band, mode, year, hour, entity, and confirmations.",
+      "chinese": "交信日志分类统计，按频段、模式、年份、小时、实体及确认情况查看。",
+      "previous": "你的日志,切片 - QSOs 按乐队,模式,年份,小时,实体,和确认.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.pota.oneLine",
+      "english": "Parks/Summits on the air — who's on now (hunt) + tag your activation.",
+      "chinese": "公园／山顶活动：查找当前活动电台进行追逐通联，并为本台活动添加标记。",
+      "previous": "Parks/Summiters在直播中——谁在播(猎)+标记你的激活.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.gamification.label",
+      "english": "Achievements",
+      "chinese": "成就",
+      "previous": "成绩",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "features.gamification.oneLine",
+      "english": "Celebrate milestone unlocks (toasts + badges).",
+      "chinese": "达成里程碑时显示通知并解锁徽章。",
+      "previous": "庆祝里程碑解锁(土司+徽章).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.starter.label",
+      "english": "Just getting started",
+      "chinese": "入门",
+      "previous": "刚刚开始",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.starter.blurb",
+      "english": "Make some FT8/FT4 contacts. A clean cockpit and a simple log — extras stay out of the way.",
+      "chinese": "先完成一些 FT8/FT4 交信。使用简洁的操作界面和日志，暂时隐藏其他功能。",
+      "previous": "来点 FT8/FT4 联系人。 一个干净的驾驶舱和一个简单的日志——额外人员不要挡路.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.dx.label",
+      "english": "DX chasing & awards",
+      "chinese": "DX 追逐与奖项",
+      "previous": "DX 追逐奖项( A)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.dx.blurb",
+      "english": "Chase new ones: awards (DXCC/Challenge/Honor Roll/WAZ), propagation, the map, and the DXpedition board.",
+      "chinese": "追逐新实体：启用奖项（DXCC/Challenge/Honor Roll/WAZ）、传播、地图及 DX 远征看板。",
+      "previous": "追缴新款:DXCC/Challenge/Honor Roll/WAZ),传播,地图和DX速射板.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.contest.label",
+      "english": "Contesting",
+      "chinese": "竞赛",
+      "previous": "竞赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.contest.blurb",
+      "english": "Run rate: the contest workspace and field log, with awards and prop out of the way.",
+      "chinese": "专注竞赛交信效率，启用竞赛工作区和现场日志，暂时隐藏奖项及传播面板。",
+      "previous": "运行率:比赛工作空间和场日志,有奖和道具出道.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.pota.blurb",
+      "english": "Activate and hunt: the map and a field log for parks-and-peaks operating.",
+      "chinese": "设台活动与追逐通联：使用地图和野外日志，开展公园及山顶通联。",
+      "previous": "激活和狩猎:地图和公园和高峰运行的野外日志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.vhf.label",
+      "english": "6m / VHF & openings",
+      "chinese": "6 米／VHF 与传播开通",
+      "previous": "6米/甚高频和开口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.vhf.blurb",
+      "english": "Catch the band coming alive: Conditions (map + openings), satellite passes, and the DXpedition board.",
+      "chinese": "把握频段传播开通：启用传播状况（地图及开通信息）、卫星过境和 DX 远征看板。",
+      "previous": "抓好带子活过来:条件(图+开口),卫星通过,以及DX速射板.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.everything.label",
+      "english": "Everything (expert)",
+      "chinese": "全部功能（专家）",
+      "previous": "一切(专家)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "profiles.everything.blurb",
+      "english": "Turn the whole console on. Every section and capability enabled.",
+      "chinese": "启用完整控制台的全部操作区域和功能。",
+      "previous": "打开整个控制台 每个科和能力都启用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.pane.title",
+      "english": "Stats",
+      "chinese": "统计",
+      "previous": "统计",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recentQsos.pane.title",
+      "english": "Recent contacts",
+      "chinese": "最近交信",
+      "previous": "最近的联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recentQsos.empty",
+      "english": "No contacts logged yet",
+      "chinese": "尚无交信记录",
+      "previous": "尚无交信记录",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "recentQsos.aria",
+      "english": "The last {{count}} contacts, newest first",
+      "chinese": "最近 {{count}} 次交信，最新在前",
+      "previous": "最后一个{{count}}最先联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.empty",
+      "english": "Type a call in the log entry: its DXCC, WAS and WAZ standing shows here.",
+      "chinese": "在日志输入框中填写呼号，即可查看对应的 DXCC、WAS 和 WAZ 进度。",
+      "previous": "在日志条目中输入呼叫:其DXCC和WAZ站在这里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.emptyPicked",
+      "english": "Pick a station: its DXCC, WAS and WAZ standing shows here.",
+      "chinese": "选择电台，即可查看对应的 DXCC、WAS 和 WAZ 进度。",
+      "previous": "选一个站:它的DXCC和WAZ站在这里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.loading",
+      "english": "Reading the log…",
+      "chinese": "正在读取交信日志…",
+      "previous": "正在读取交信日志…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.failed",
+      "english": "Stats are not available: {{error}}",
+      "chinese": "统计暂不可用：{{error}}",
+      "previous": "没有数据 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.entity.numbered",
+      "english": "{{entity}} · DXCC {{code}}",
+      "chinese": "{{entity}} · DXCC {{code}}",
+      "previous": "{{entity}}* 妇女DXCC {{code}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.entity.none",
+      "english": "{{call}} names no DXCC entity.",
+      "chinese": "无法根据 {{call}} 确定 DXCC 实体。",
+      "previous": "{{call}}名称无DXCC实体。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flags.label",
+      "english": "New for this contact",
+      "chinese": "本次交信可新增的项目",
+      "previous": "新建此联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flag.newOne",
+      "english": "NEW ONE",
+      "chinese": "新实体",
+      "previous": "新来的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flag.newBand",
+      "english": "NEW BAND",
+      "chinese": "新频段",
+      "previous": "新块",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flag.newMode",
+      "english": "NEW MODE",
+      "chinese": "新模式",
+      "previous": "新模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flag.newOne.title",
+      "english": "No contact in your log counts toward this DXCC entity.",
+      "chinese": "日志中尚无可计入此 DXCC 实体的交信。",
+      "previous": "在你的日志里没有联系到这个DXCC实体。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flag.newBand.title",
+      "english": "Worked before, but never on {{band}}.",
+      "chinese": "曾经通联，但尚未在 {{band}} 通联。",
+      "previous": "曾经工作过,但从未工作过{{band}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flag.newMode.title",
+      "english": "Worked before, but never in {{mode}}.",
+      "chinese": "曾经通联，但尚未使用 {{mode}} 模式通联。",
+      "previous": "曾经工作,但从来没有在{{mode}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.flag.no",
+      "english": "no",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.src.caption",
+      "english": "Confirmations your log holds, by service",
+      "chinese": "日志中按服务区分的确认记录",
+      "previous": "通过服务确认您的日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.src.country",
+      "english": "Country",
+      "chinese": "国家／地区",
+      "previous": "国家／地区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.src.call",
+      "english": "This call",
+      "chinese": "此呼号",
+      "previous": "这个电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.src.card",
+      "english": "Card",
+      "chinese": "纸质卡片",
+      "previous": "纸牌",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.src.yes",
+      "english": "held",
+      "chinese": "已有确认",
+      "previous": "举行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.src.no",
+      "english": "none",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.src.ag",
+      "english": "held, Authenticity Guaranteed",
+      "chinese": "已有确认，具备真实性保证（Authenticity Guaranteed）",
+      "previous": "持有, 认证保证d",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.grid.caption",
+      "english": "Band and mode slots for {{call}}",
+      "chinese": "{{call}} 的频段与模式组合项目",
+      "previous": "带和模式槽{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.grid.credit",
+      "english": "Confirmed as each award credits it: DXCC and WAS by LoTW or a QSL card, WAZ also by an Authenticity-Guaranteed eQSL.",
+      "chinese": "按各奖项认可的来源判定确认：DXCC 和 WAS 接受 LoTW 或纸质 QSL 卡片；WAZ 还接受具备真实性保证（Authenticity Guaranteed）的 eQSL。",
+      "previous": "确认每一奖项的贷记额:DXCC而当时LoTW或一个QSLWAZ也通过认证-保证电子QSL。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.slot.unworked",
+      "english": "not worked",
+      "chinese": "未通联",
+      "previous": "没有工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.slot.worked",
+      "english": "worked, not confirmed",
+      "chinese": "已通联，未确认",
+      "previous": "工作,未确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.slot.confirmed",
+      "english": "confirmed",
+      "chinese": "已确认",
+      "previous": "已确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.slot.noCredit",
+      "english": "no DXCC credit on this band",
+      "chinese": "此频段不计入 DXCC",
+      "previous": "无DXCC这个带上的功劳",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.slot.title",
+      "english": "{{award}} {{band}} {{mode}}: {{state}}",
+      "chinese": "{{award}} {{band}} {{mode}}：{{state}}",
+      "previous": "{{award}} {{band}} {{mode}}数字 :{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.was.unknown",
+      "english": "WAS: no state on file for {{call}}.",
+      "chinese": "WAS：尚无 {{call}} 的州信息。",
+      "previous": "是: 文件没有状态{{call}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.was.none",
+      "english": "WAS: {{call}} is not a station in the United States.",
+      "chinese": "WAS：{{call}} 不是美国电台。",
+      "previous": "这是:{{call}}不是美国的一个车站。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "callStats.waz.unknown",
+      "english": "WAZ: no CQ zone for {{call}}.",
+      "chinese": "WAZ：尚无 {{call}} 的 CQ 分区信息。",
+      "previous": "WAZ:无CQ区{{call}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "common.dismiss",
+      "english": "Dismiss",
+      "chinese": "关闭",
+      "previous": "开除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "splashscreen.title",
+      "english": "Moving your logbook into its new database",
+      "chinese": "正在将交信日志迁移至新数据库",
+      "previous": "正在将交信日志迁移至新数据库",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "splashscreen.once",
+      "english": "This happens once. Nexus opens by itself when it is done.",
+      "chinese": "此操作只需执行一次。完成后 Nexus 会自动打开。",
+      "previous": "此操作只需执行一次。完成后 Nexus 会自动打开。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "splashscreen.count",
+      "english": "{{done}} of {{total}} contacts",
+      "chinese": "已处理 {{done}} / {{total}} 条交信记录",
+      "previous": "已处理 {{done}} / {{total}} 条交信记录",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "splashscreen.finishing",
+      "english": "Finishing up…",
+      "chinese": "正在完成…",
+      "previous": "正在完成…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "splashscreen.opening",
+      "english": "Opening Nexus…",
+      "chinese": "正在打开 Nexus…",
+      "previous": "正在打开 Nexus…",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

@@ -1,0 +1,1659 @@
+{
+  "batch": 40,
+  "range": [
+    7801,
+    8000
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 158,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 3,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/NowBar.tsx",
+    "ui/src/components/Waterfall.tsx",
+    "ui/src/components/PhoneScope.tsx",
+    "ui/src/components/panes/ArrangePanes.tsx"
+  ],
+  "rows": [
+    {
+      "id": "nowbar.band.title.plain",
+      "english": "Band activity",
+      "chinese": "频段活动",
+      "previous": "频段活动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.out.label",
+      "english": "Out",
+      "chinese": "本台覆盖",
+      "previous": "出来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.out.hearYou",
+      "english": "{{count}} hear you",
+      "chinese": "{{count}} 台收到本台",
+      "previous": "{{count}}听着",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.out.none",
+      "english": "no spots of you yet",
+      "chinese": "尚无收到本台的通报",
+      "previous": "还没发现你",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.out.title",
+      "english": "{{hear}} station(s) hear you · you hear {{ihear}} (PSK Reporter, {{band}})",
+      "chinese": "{{hear}} 台收到本台 · 本台收到 {{ihear}} 台（PSK Reporter，{{band}}）",
+      "previous": "{{hear}}电台听到你 听到你{{ihear}}(PSK记者,{{band}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.out.title.none",
+      "english": "No propagation data yet",
+      "chinese": "尚无传播数据",
+      "previous": "尚未传播数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.need.label",
+      "english": "Need",
+      "chinese": "待通联",
+      "previous": "需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.need.value",
+      "english": "{{entity}} {{band}} · {{likelihood}}",
+      "chinese": "{{entity}} {{band}} · {{likelihood}}",
+      "previous": "{{entity}} {{band}}* 妇女{{likelihood}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.need.none",
+      "english": "nothing workable now",
+      "chinese": "当前暂无可通联目标",
+      "previous": "现在没有用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.need.where",
+      "english": "{{entity}} {{azimuth}}",
+      "chinese": "{{entity}} {{azimuth}}",
+      "previous": "{{entity}} {{azimuth}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.need.title",
+      "english": "{{call}} ({{where}}) — {{need}} on {{band}}, likelihood {{likelihood}}",
+      "chinese": "{{call}}（{{where}}）— {{band}} 上的待补项目：{{need}}，通联可能性 {{likelihood}}",
+      "previous": "{{call}}(单位:千美元){{where}}) -{{need}}打开{{band}},概率{{likelihood}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.need.title.confirmed",
+      "english": "{{call}} ({{where}}) — {{need}} on {{band}}, likelihood {{likelihood}} (live-confirmed)",
+      "chinese": "{{call}}（{{where}}）— {{band}} 上的待补项目：{{need}}，通联可能性 {{likelihood}}（已有实时通报印证）",
+      "previous": "{{call}}(单位:千美元){{where}}) -{{need}}打开{{band}},概率{{likelihood}}(现场确认)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.need.title.none",
+      "english": "No DXpedition needs workable right now",
+      "chinese": "当前没有可通联的远征待补项目",
+      "previous": "现在不需要DX快递",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.prop.live",
+      "english": "PROP LIVE",
+      "chinese": "实时传播数据",
+      "previous": "提供生活",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.prop.partial",
+      "english": "PROP PARTIAL",
+      "chinese": "传播数据不完整",
+      "previous": "赞成",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.prop.cached",
+      "english": "PROP CACHED",
+      "chinese": "缓存传播数据",
+      "previous": "已启动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.prop.offline",
+      "english": "NO LIVE DATA",
+      "chinese": "暂无实时数据",
+      "previous": "无生活数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.prop.title",
+      "english": "Propagation nowcast data is {{source}} — separate from the Cluster/PSKR connection pills",
+      "chinese": "当前传播评估的数据来源状态：{{source}}。此状态与集群／PSKR 的连接状态分别显示",
+      "previous": "现在播报的数据是{{source}}与集群/PSKR连接药分离",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.rail.on.title",
+      "english": "Hide the dashboard rail beside this cockpit",
+      "chinese": "隐藏操作面板旁的仪表侧栏",
+      "previous": "把仪表板的栏杆藏在这驾驶舱旁边",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.rail.off.title",
+      "english": "Show the dashboard rail beside this cockpit (a column of Conditions panels)",
+      "chinese": "显示操作面板旁的仪表侧栏，其中包含一列传播状况面板",
+      "previous": "在此驾驶舱旁显示仪表板栏( 条件面板的一栏)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.live.value",
+      "english": "live {{age}}",
+      "chinese": "实时 {{age}}",
+      "previous": "现场直播{{age}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.live.value.noAge",
+      "english": "live",
+      "chinese": "实时",
+      "previous": "现场直播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.live.title",
+      "english": "{{name}}: receiving (last {{age}} ago)",
+      "chinese": "{{name}}：正在接收，最近一次在{{age}}前",
+      "previous": "{{name}}: 接收(最后一次){{age}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.connected.value",
+      "english": "connected",
+      "chinese": "已连接",
+      "previous": "连接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.connected.title",
+      "english": "{{name}}: connected — no reports yet (normal until you transmit or the band stirs)",
+      "chinese": "{{name}}：已连接，尚无报告；本台尚未发射或频段尚无活动时属正常情况",
+      "previous": "{{name}}: 连接——还没有报告( 正常情况下直到传输或波段搅动)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.connecting.value",
+      "english": "connecting…",
+      "chinese": "正在连接…",
+      "previous": "连接...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.connecting.title",
+      "english": "{{name}}: trying to reach the server",
+      "chinese": "{{name}}：正在尝试连接服务器",
+      "previous": "{{name}}: 试图到达服务器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.reconnecting.value",
+      "english": "reconnecting…",
+      "chinese": "正在重新连接...",
+      "previous": "正在重新连接...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.reconnecting.title",
+      "english": "{{name}}: connection dropped — retrying",
+      "chinese": "{{name}}：连接已断开，正在重试",
+      "previous": "{{name}}: 连接已丢弃——正在重试",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.reconnecting.title.age",
+      "english": "{{name}}: connection dropped — retrying (last event {{age}} ago)",
+      "chinese": "{{name}}：连接已断开，正在重试；最近一次事件在{{age}}前",
+      "previous": "{{name}}: 连接已丢弃—— 正在重试( 上次事件){{age}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.idle.value",
+      "english": "idle {{age}}",
+      "chinese": "无数据 {{age}}",
+      "previous": "闲置{{age}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.idle.title",
+      "english": "{{name}}: connected, no data for {{age}} (a quiet band is normal)",
+      "chinese": "{{name}}：已连接，已连续 {{age}} 没有数据；频段安静时属正常情况",
+      "previous": "{{name}}: 已连接, 无数据{{age}}(安静的乐队是正常的)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.unknown.title",
+      "english": "{{name}}: {{state}}",
+      "chinese": "{{name}}：{{state}}",
+      "previous": "{{name}}数字 :{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.feed.title.detail",
+      "english": "{{title}} ({{detail}})",
+      "chinese": "{{title}}（{{detail}}）",
+      "previous": "{{title}}(单位:千美元){{detail}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.tier.aria",
+      "english": "Tempo tier",
+      "chinese": "Tempo 模式层级",
+      "previous": "临时等级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.tier.fast.title",
+      "english": "TempoFast — fast conversational tier",
+      "chinese": "TempoFast：快速对话模式",
+      "previous": "Tempo Fast——快速对话层面",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.tier.deep.title",
+      "english": "TempoDeep — robust weak-signal tier (15 s)",
+      "chinese": "TempoDeep：适合弱信号的稳健模式（15 秒）",
+      "previous": "TempoDiep——强弱信号级(15 s)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.power.label",
+      "english": "Pwr",
+      "chinese": "功率",
+      "previous": "功率",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "功率"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "功率"
+        }
+      ]
+    },
+    {
+      "id": "tempo.header.power.title",
+      "english": "TX drive (Pwr) — trim down until your rig's ALC is just zero",
+      "chinese": "发射驱动电平（Pwr）：逐步调低，直到电台的 ALC 刚好归零",
+      "previous": "TX 驱动器( Pwr) —— 裁剪到您的钻机的 ALC 仅为 0",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.aria",
+      "english": "CQ run",
+      "chinese": "连续 CQ 呼叫",
+      "previous": "CQ 运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.off",
+      "english": "📢 Call CQ",
+      "chinese": "📢 呼叫 CQ",
+      "previous": "QQ 调用 CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.off.title",
+      "english": "Start a CQ run — keep calling CQ every idle TX slot until someone answers",
+      "chinese": "开始连续 CQ 呼叫，在每个空闲发射时隙呼叫 CQ，直到有电台应答",
+      "previous": "启动 CQ 运行—— 继续拨打 CQ 每一个闲置的 TX 槽, 直到有人回答",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.paused",
+      "english": "CQ paused ✕",
+      "chinese": "CQ 已暂停 ✕",
+      "previous": "CQ 暂停 QQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.paused.title",
+      "english": "CQ run paused (you are in a conversation) — click to stop the run",
+      "chinese": "正在对话，连续 CQ 呼叫已暂停；点击可停止连续呼叫",
+      "previous": "CQ 运行暂停( 您正在交谈) —— 点击停止运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.on",
+      "english": "📢 Calling CQ… ✕",
+      "chinese": "📢 正在呼叫 CQ… ✕",
+      "previous": "拨打CQ...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.on.title",
+      "english": "Calling CQ every idle TX slot — click to stop",
+      "chinese": "正在每个空闲发射时隙呼叫 CQ，点击可停止",
+      "previous": "调用 CQ 每个闲置的 TX 槽—— 点击停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.resume",
+      "english": "▶ Resume",
+      "chinese": "▶ 恢复",
+      "previous": "继续",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.cqRun.resume.title",
+      "english": "Resume calling CQ now (it auto-resumes after the conversation goes quiet)",
+      "chinese": "立即恢复 CQ 呼叫；对话静默一段时间后也会自动恢复",
+      "previous": "现在继续给CQ打电话(谈话结束后自动续集)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.button",
+      "english": "⊞ Panels",
+      "chinese": "⊞ 面板",
+      "previous": "* 小组讨论",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.button.hidden",
+      "english": "⊞ Panels · {{count}} hidden",
+      "chinese": "⊞ 面板 · {{count}} 个已隐藏",
+      "previous": "* 小组{{count}}隐藏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.button.title",
+      "english": "Show or hide the panels on this screen — untick one and its neighbours expand into the space it leaves",
+      "chinese": "显示或隐藏当前页面的面板；取消勾选后，相邻面板会扩展以填补空出的区域",
+      "previous": "显示或隐藏此屏幕上的面板—— 取消选中一个面板及其邻居扩展到它离开的空间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.popover.aria",
+      "english": "Panels on this screen",
+      "chinese": "此屏幕上的面板",
+      "previous": "此屏幕上的面板",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.tag.popped",
+      "english": "popped out",
+      "chinese": "已在独立窗口打开",
+      "previous": "弹出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.undo",
+      "english": "Undo last change",
+      "chinese": "撤消上次更改",
+      "previous": "撤消上次更改",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.undo.title",
+      "english": "Put the layout back the way it was before the last change",
+      "chinese": "将布局恢复到上次更改之前的状态",
+      "previous": "让布局回到上次改变之前的样子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.reset",
+      "english": "Reset layout",
+      "chinese": "重置布局",
+      "previous": "重置布局",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.reset.title",
+      "english": "Show every panel again (the stock layout)",
+      "chinese": "恢复默认布局，重新显示各面板",
+      "previous": "再次显示每个面板( 股票布局)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.heading",
+      "english": "Arrange",
+      "chinese": "排列",
+      "previous": "排列",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.column.a",
+      "english": "Column 1",
+      "chinese": "第1栏",
+      "previous": "第1栏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.column.b",
+      "english": "Column 2",
+      "chinese": "第2栏",
+      "previous": "第2栏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.column.log",
+      "english": "Log column",
+      "chinese": "日志栏",
+      "previous": "日志栏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.logForm",
+      "english": "The log form stays at the foot of this column.",
+      "chinese": "日志表单位于此列底部。",
+      "previous": "日志表留在本列的脚下。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.pinned",
+      "english": "Stays in its column, so nothing in progress is lost; it moves up and down.",
+      "chinese": "此面板固定在当前列内，以免丢失进行中的内容；仍可上下移动。",
+      "previous": "留于其列,故无进退失;其上下动也.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.narrow",
+      "english": "On a narrower window, column 2 follows column 1.",
+      "chinese": "窗口较窄时，第 2 列显示在第 1 列之后。",
+      "previous": "在较窄的窗口上,第2栏跟随第1栏.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.up.aria",
+      "english": "Move {{pane}} up",
+      "chinese": "将{{pane}}上移",
+      "previous": "移动{{pane}}上来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.down.aria",
+      "english": "Move {{pane}} down",
+      "chinese": "将{{pane}}下移",
+      "previous": "移动{{pane}}下来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.left.aria",
+      "english": "Move {{pane}} to the column on the left",
+      "chinese": "将{{pane}}移到左侧一列",
+      "previous": "移动{{pane}}到左边的列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.right.aria",
+      "english": "Move {{pane}} to the column on the right",
+      "chinese": "将{{pane}}移到右侧一列",
+      "previous": "移动{{pane}}转到右边的栏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.side",
+      "english": "Left side",
+      "chinese": "左侧",
+      "previous": "左侧",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.side.how",
+      "english": "◀ in Column 1 puts {{panes}} here, the full height beside the scope.",
+      "chinese": "点击第 1 列中的 ◀，可将{{panes}}移到这里，沿频谱左侧占满高度。",
+      "previous": "在第一栏中{{panes}}这里,全高 旁边的瞄准镜。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.side.narrow",
+      "english": "Shows on a window about 1280 px wide or wider.",
+      "chinese": "窗口宽度约为 1280 px 或更宽时显示。",
+      "previous": "在窗口上显示大约1280px宽或宽.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.side.kept::one",
+      "english": "{{panes}} stands here on a window about 1280 px wide or wider. On this one it is in its usual column.",
+      "chinese": "窗口宽度约为 1280 px 或更宽时，{{panes}}会显示在这里。当前窗口中仍显示在原列。",
+      "previous": "{{panes}}站在这里的窗户 大约1280px宽或宽。 上面是它的专栏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.side.kept::other",
+      "english": "{{panes}} stand here on a window about 1280 px wide or wider. On this one they are in their usual columns.",
+      "chinese": "窗口宽度约为 1280 px 或更宽时，{{panes}}会显示在这里。当前窗口中仍显示在各自原列。",
+      "previous": "{{panes}}站在一个窗口上 大约1280px宽或宽。 在那部《古兰经》里,他们有一般的柱子。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.side.aBox",
+      "english": "a box",
+      "chinese": "一个信息框",
+      "previous": "一个框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.toSide.aria",
+      "english": "Move {{pane}} to the left side",
+      "chinese": "将{{pane}}移至左侧区域",
+      "previous": "移动{{pane}}左侧",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.arrange.fromSide.aria",
+      "english": "Move {{pane}} from the left side back to its column",
+      "chinese": "将{{pane}}从左侧区域移回原列",
+      "previous": "移动{{pane}}从左侧返回其列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.drag.dropped.above",
+      "english": "{{pane}} moved: {{place}}, above {{next}}",
+      "chinese": "{{pane}}已移动到{{place}}，位于{{next}}上方",
+      "previous": "{{pane}}移动 :{{place}}上层{{next}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.drag.dropped.foot",
+      "english": "{{pane}} moved: {{place}}, at the foot",
+      "chinese": "{{pane}}已移动到{{place}}底部",
+      "previous": "{{pane}}移动 :{{place}}在脚下",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.drag.grip.title",
+      "english": "Drag to move {{pane}}",
+      "chinese": "拖动以移动{{pane}}",
+      "previous": "拖曳移动{{pane}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.add",
+      "english": "+ Add a box",
+      "chinese": "+ 添加信息框",
+      "previous": "+ 添加框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.add.a.aria",
+      "english": "Add a box to column 1",
+      "chinese": "在第 1 列添加信息框",
+      "previous": "在第1栏中添加一个框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.add.b.aria",
+      "english": "Add a box to column 2",
+      "chinese": "在第 2 列添加信息框",
+      "previous": "在第二栏中添加框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.add.log.aria",
+      "english": "Add a box to the log column",
+      "chinese": "在日志列添加信息框",
+      "previous": "向日志列添加一个框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.add.side.aria",
+      "english": "Add a box to the left side",
+      "chinese": "在左侧区域添加信息框",
+      "previous": "在左侧添加一个框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.full",
+      "english": "All six boxes are on this screen.",
+      "chinese": "六个信息框已全部显示在此页面上。",
+      "previous": "六个盒子都在屏幕上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.name",
+      "english": "Box",
+      "chinese": "信息框",
+      "previous": "专栏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.pick.aria",
+      "english": "Choose what the {{title}} box shows",
+      "chinese": "选择“{{title}}”信息框显示的内容",
+      "previous": "选择什么{{title}}框显示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.pick.title",
+      "english": "Choose what this box shows",
+      "chinese": "选择此信息框显示的内容",
+      "previous": "选择此框显示的内容",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "panels.box.pick.onScreen",
+      "english": "{{title}} (on screen)",
+      "chinese": "{{title}}（已显示）",
+      "previous": "{{title}}(在屏幕上)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "pane.popOut.aria",
+      "english": "Open {{title}} in its own window",
+      "chinese": "在独立窗口打开{{title}}",
+      "previous": "打开{{title}}在自己的窗口中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "pane.popOut.title",
+      "english": "Open this pane in its own window (for a second monitor)",
+      "chinese": "在独立窗口打开此面板，适合放到第二台显示器",
+      "previous": "在自己的窗口打开此窗帘( 为第二个显示器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "pane.seam.logWidth.label",
+      "english": "log column width",
+      "chinese": "日志列宽度",
+      "previous": "日志列宽度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "pane.seam.leftWidth.label",
+      "english": "left side width",
+      "chinese": "左侧宽度",
+      "previous": "左侧宽度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "pane.left.label",
+      "english": "Left side",
+      "chinese": "左侧",
+      "previous": "左侧",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "pane.hide.aria",
+      "english": "Hide {{title}}",
+      "chinese": "隐藏{{title}}",
+      "previous": "隐藏{{title}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "pane.hide.title",
+      "english": "Hide this pane (restore it from the ⊞ Panels menu)",
+      "chinese": "隐藏此面板，可从“⊞ 面板”菜单恢复",
+      "previous": "隐藏此面板( 从 XQ 面板菜单中重新保存)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "paneSeam.title",
+      "english": "Drag, or use the arrow keys, to resize ({{label}}). Double-click or press Backspace to reset.",
+      "chinese": "拖动或使用方向键调整{{label}}的大小。双击或按 Backspace 恢复默认大小。",
+      "previous": "拖曳或使用箭头键来调整大小({{label}}。双击或按后空格重置。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.aria",
+      "english": "Theme",
+      "chinese": "主题",
+      "previous": "主题",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.light.label",
+      "english": "Light",
+      "chinese": "浅色",
+      "previous": "浅色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.light.title",
+      "english": "Light (sunlight)",
+      "chinese": "浅色（适合日光环境）",
+      "previous": "光( 太阳光 )",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.light.line",
+      "english": "Pale silver front, white panels, dark scopes and meters",
+      "chinese": "淡银色外观、白色面板、深色频谱和仪表",
+      "previous": "白银正面、白板、暗镜和仪表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.dark.label",
+      "english": "Dark",
+      "chinese": "深色",
+      "previous": "深色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.dark.title",
+      "english": "Dark (shack)",
+      "chinese": "深色（适合电台室）",
+      "previous": "暗( shock)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.dark.line",
+      "english": "Dark panel, lit dials and meters",
+      "chinese": "深色面板、带背光的刻度和仪表",
+      "previous": "暗面板、点亮的拨号和仪表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.system.label",
+      "english": "System",
+      "chinese": "系统",
+      "previous": "系统",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.system.title",
+      "english": "System (follows your computer’s light or dark setting)",
+      "chinese": "跟随系统的浅色或深色设置",
+      "previous": "系统( 遵循您的计算机的光线或黑暗设置)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.system.line",
+      "english": "Follows your computer, light or dark",
+      "chinese": "跟随计算机的浅色或深色设置",
+      "previous": "跟着你的电脑,轻或暗",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.family.rig",
+      "english": "Rig looks",
+      "chinese": "电台风格",
+      "previous": "长相",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.family.modern",
+      "english": "Modern",
+      "chinese": "现代",
+      "previous": "现代",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.amberLcd.label",
+      "english": "Amber LCD",
+      "chinese": "琥珀色 LCD",
+      "previous": "琥珀液晶",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.amberLcd.line",
+      "english": "Black chassis, amber digits, warm-white lit keys",
+      "chinese": "黑色机身、琥珀色数字、暖白色背光按键",
+      "previous": "黑色底盘,琥珀数位,暖白点亮的键",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.greenLcd.label",
+      "english": "Green LCD",
+      "chinese": "绿色 LCD",
+      "previous": "绿色液晶",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.greenLcd.line",
+      "english": "Black chassis, green phosphor digits",
+      "chinese": "黑色机身、绿色荧光数字",
+      "previous": "黑色底盘,绿色磷脂数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.blueVfd.label",
+      "english": "Blue VFD",
+      "chinese": "蓝色 VFD",
+      "previous": "蓝色 VFD",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.blueVfd.line",
+      "english": "Deep navy chassis, blue-white fluorescent digits",
+      "chinese": "深藏蓝色机身、蓝白色荧光数字",
+      "previous": "深海军底盘,蓝白荧光数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.midnight.label",
+      "english": "Midnight",
+      "chinese": "午夜",
+      "previous": "午夜时分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.midnight.line",
+      "english": "True black for OLED and dark rooms, cyan lit",
+      "chinese": "适合 OLED 和暗室的纯黑背景、青色背光",
+      "previous": "纯黑色的OLED和黑暗的房间,青色点燃",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.slate.label",
+      "english": "Slate",
+      "chinese": "石板",
+      "previous": "板块",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.slate.line",
+      "english": "Soft blue-grey editor dark, low glare",
+      "chinese": "柔和蓝灰色的编辑器深色风格，减少眩光",
+      "previous": "软蓝灰色编辑器暗色,低光度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.lagoon.label",
+      "english": "Lagoon",
+      "chinese": "潟湖",
+      "previous": "湖边",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.lagoon.line",
+      "english": "Deep teal dark with soft sea-green inks",
+      "chinese": "深青色背景搭配柔和的海绿色文字",
+      "previous": "深层深暗的海绿墨水",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.ember.label",
+      "english": "Ember",
+      "chinese": "余烬",
+      "previous": "琥珀",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.ember.line",
+      "english": "Warm sepia dark with amber digits and aqua keys",
+      "chinese": "暖棕色深色背景、琥珀色数字和水绿色按键",
+      "previous": "温暖的sepia 黑暗的琥珀数和水键",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.nebula.label",
+      "english": "Nebula",
+      "chinese": "星云",
+      "previous": "星云",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.nebula.line",
+      "english": "Violet-tinted dark with lavender keys and digits",
+      "chinese": "紫调深色背景、淡紫色按键和数字",
+      "previous": "紫丁香深色,有紫金钥匙和数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.paper.label",
+      "english": "Paper",
+      "chinese": "纸张",
+      "previous": "纸张",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.paper.line",
+      "english": "Warm cream page, white panels, ink-blue keys — low glare",
+      "chinese": "暖奶油色背景、白色面板、墨蓝色按键，减少眩光",
+      "previous": "温暖的奶油页,白色的面板,墨蓝色的密钥——低光度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.bright.label",
+      "english": "Bright",
+      "chinese": "明亮",
+      "previous": "亮点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "theme.bright.line",
+      "english": "The earlier Light: cool white panels, bright blue keys",
+      "chinese": "早期的浅色主题：冷白色面板、亮蓝色按键",
+      "previous": "早期的光:凉爽的白色面板,明亮的蓝色键",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.colours.legend",
+      "english": "Colours",
+      "chinese": "颜色",
+      "previous": "颜色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.colours.hint",
+      "english": "A few choices for each colour, every one checked for contrast in both themes and on the dark displays. Transmit red, the alert orange and the Needed colours stay fixed.",
+      "chinese": "每种颜色提供几个选项，均已检查在两种主题和深色显示区中的对比度。发射红色、警报橙色及待通联项目的颜色保持固定。",
+      "previous": "每个颜色的几个选择,每个都检查两个主题和暗显示的对比度. 红色 橙色和需要的颜色保持固定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.colours.reset",
+      "english": "Reset",
+      "chinese": "重置",
+      "previous": "重置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "重置"
+        }
+      ]
+    },
+    {
+      "id": "settings.colours.reset.title",
+      "english": "Back to the standard colour",
+      "chinese": "恢复标准颜色",
+      "previous": "回到标准颜色",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.colours.reset.aria",
+      "english": "Reset {{role}} to its standard colour",
+      "chinese": "将{{role}}恢复为标准颜色",
+      "previous": "重设{{role}}改为其标准颜色",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.accent.label",
+      "english": "Accent",
+      "chinese": "强调色",
+      "previous": "百分点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.accent.hint",
+      "english": "Selected chips, focus rings, your own chat bubbles",
+      "chinese": "选中状态标签、焦点边框及本台聊天气泡",
+      "previous": "选中的芯片、 焦点环、 自己的聊天泡沫",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.readout.label",
+      "english": "Readout",
+      "chinese": "读数",
+      "previous": "读出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.readout.hint",
+      "english": "The frequency digits and other readouts",
+      "chinese": "频率数字及其他读数",
+      "previous": "频率数字和其他读取",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.ok.label",
+      "english": "OK / green",
+      "chinese": "正常／绿色",
+      "previous": "确定/ 绿色",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.ok.hint",
+      "english": "Good signal, RX, confirmed",
+      "chinese": "良好信号、接收及已确认状态",
+      "previous": "信号良好,RX,确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.amber.label",
+      "english": "Amber",
+      "chinese": "琥珀",
+      "previous": "琥珀",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.amber.hint",
+      "english": "Warnings and marginal signal",
+      "chinese": "警告和临界信号",
+      "previous": "警告和边缘信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.cyan.label",
+      "english": "Cyan",
+      "chinese": "青色",
+      "previous": "青色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.cyan.hint",
+      "english": "Information chips",
+      "chinese": "信息标签",
+      "previous": "信息芯片",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.cyan",
+      "english": "Cyan",
+      "chinese": "青色",
+      "previous": "青色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.blue",
+      "english": "Blue",
+      "chinese": "蓝色",
+      "previous": "蓝色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.violet",
+      "english": "Violet",
+      "chinese": "紫罗兰",
+      "previous": "紫罗兰",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.amber",
+      "english": "Amber",
+      "chinese": "琥珀",
+      "previous": "琥珀",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.green",
+      "english": "Green",
+      "chinese": "绿色",
+      "previous": "绿色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.teal",
+      "english": "Teal",
+      "chinese": "蓝绿色",
+      "previous": "提尔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.mint",
+      "english": "Mint",
+      "chinese": "薄荷绿",
+      "previous": "薄荷",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.gold",
+      "english": "Gold",
+      "chinese": "金色",
+      "previous": "黄金",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.yellow",
+      "english": "Yellow",
+      "chinese": "黄色",
+      "previous": "黄色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.sky",
+      "english": "Sky",
+      "chinese": "天蓝色",
+      "previous": "苍天",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "palette.preset.themeOwn",
+      "english": "Theme’s own",
+      "chinese": "主题默认色",
+      "previous": "主题本身",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.palette.aria.scoped",
+      "english": "Waterfall color palette (this mode)",
+      "chinese": "瀑布图配色，适用于当前模式",
+      "previous": "瀑布彩色调色板( 此模式)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.palette.aria.shared",
+      "english": "Waterfall color palette (Phone, CW, RTTY and SSTV — FT has its own)",
+      "chinese": "瀑布图配色，话音、CW、RTTY 和 SSTV 共用；FT 使用独立配色",
+      "previous": "瀑布彩色调色板( Phone,CW, (中文).RTTY和SSTV——FT有自己的).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.palette.title.scoped",
+      "english": "Waterfall color palette — applies to this mode",
+      "chinese": "瀑布图配色，仅应用于当前模式",
+      "previous": "瀑布色调色板 — 适用于此模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.palette.title.shared",
+      "english": "Waterfall color palette — shared by Phone, CW, RTTY and SSTV. The FT waterfall keeps its own.",
+      "chinese": "瀑布图配色，话音、CW、RTTY 和 SSTV 共用。FT 瀑布图使用独立配色。",
+      "previous": "瀑布彩色调色板——由Phone,CW, (中文).RTTY和SSTV. FT瀑布保持它自己的。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.palette.cividis",
+      "english": "Cividis (colour-blind safe)",
+      "chinese": "Cividis（色觉障碍友好）",
+      "previous": "Cividis( 色盲安全)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.title",
+      "english": "Waterfall",
+      "chinese": "瀑布图",
+      "previous": "瀑布图",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "瀑布图"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "频谱图"
+        }
+      ]
+    },
+    {
+      "id": "waterfall.hint",
+      "english": "left = RX · right / Shift = TX · {{mod}} = both",
+      "chinese": "左键 = RX · 右键／Shift = TX · {{mod}} = 同时设置",
+      "previous": "左 = RX = 右 / Shift = TX{{mod}}= 两者",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.zoom.aria",
+      "english": "Waterfall zoom span",
+      "chinese": "瀑布图缩放频宽",
+      "previous": "瀑布图缩放频宽",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.zoom.title",
+      "english": "Waterfall view — Std (0–3 kHz, WSJT-X-like), Full (0–4 kHz), or zoom in around the RX marker",
+      "chinese": "瀑布图视野：标准（Std，0–3 kHz，类似 WSJT-X）、全宽（Full，0–4 kHz），或以 RX 标记为中心放大",
+      "previous": "瀑布视图- Std (0-3)kHz,类似 WSJT-X ),全(0–4)kHz),或者在RX标记周围放大",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.span.aria",
+      "english": "Waterfall span",
+      "chinese": "瀑布图频宽",
+      "previous": "瀑布图频宽",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.span.title",
+      "english": "Show {{hz}} Hz of the passband",
+      "chinese": "显示通带中的 {{hz}} Hz 范围",
+      "previous": "显示{{hz}} Hz横幅",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.gain.title",
+      "english": "Gain — contrast (how punchy strong signals look). Center = auto.",
+      "chinese": "增益：调整对比度，即强信号的突出程度。滑块居中为自动。",
+      "previous": "增益 — 对比度( 强势信号看起来如何 ) 。 中心=自动。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.gain.aria",
+      "english": "Waterfall gain (contrast)",
+      "chinese": "瀑布图增益（对比度）",
+      "previous": "瀑布图增益（对比度）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.zero.title",
+      "english": "Zero — where the black point sits relative to the noise floor. Center = the default (background black); left shows more of the noise, right buries it deeper.",
+      "chinese": "零点：黑色阈值相对底噪的位置。居中为默认值，背景呈黑色；向左显示更多噪声，向右进一步隐藏噪声。",
+      "previous": "0——黑点相对噪音地板坐落的地方. 中心=默认值(背景黑色);左侧显示更多噪音,右侧掩埋更深.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.zero.aria",
+      "english": "Waterfall zero (baseline)",
+      "chinese": "瀑布图零点（基线）",
+      "previous": "瀑布图零点（基线）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.flow.down.label",
+      "english": "Scrolls down",
+      "chinese": "向下滚动",
+      "previous": "向下滚动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.flow.up.label",
+      "english": "Scrolls up",
+      "chinese": "向上滚动",
+      "previous": "向上滚动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.flow.down.title",
+      "english": "Scrolls down — the newest row appears at the TOP and history travels downward. Click for the other way: newest at the bottom, history travelling up (the default).",
+      "chinese": "向下滚动：最新一行显示在顶部，历史向下移动。点击可反转为最新一行在底部、历史向上移动（默认）。",
+      "previous": "向下滚动——最新一行出现在TOP上,历史往下走. 点击其他方式: 最底层最新, 历史上行( 默认) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.flow.down.title.dss",
+      "english": "Scrolls down — the newest row appears at the TOP and history travels downward. Click for the other way: newest at the bottom, history travelling up (the default). The 3D view keeps its own front-to-back perspective either way.",
+      "chinese": "向下滚动：最新一行显示在顶部，历史向下移动。点击可反转为最新一行在底部、历史向上移动（默认）。3D 视图的前后透视方向不受影响。",
+      "previous": "向下滚动——最新一行出现在TOP上,历史往下走. 点击其他方式: 最底层最新, 历史上行( 默认) 。 3D视图无论是哪种方式都保持自己的前向视角.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.flow.up.title",
+      "english": "Scrolls up — the newest row appears at the BOTTOM and history travels upward (the default). Click for the other way: newest at the top, history travelling down.",
+      "chinese": "向上滚动：最新一行显示在底部，历史向上移动（默认）。点击可反转为最新一行在顶部、历史向下移动。",
+      "previous": "向上滚动——最新一行出现在BOTTOM上,历史向上(默认). 点击另一条路:最上层最新,历史往下走.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.flow.up.title.dss",
+      "english": "Scrolls up — the newest row appears at the BOTTOM and history travels upward (the default). Click for the other way: newest at the top, history travelling down. The 3D view keeps its own front-to-back perspective either way.",
+      "chinese": "向上滚动：最新一行显示在底部，历史向上移动（默认）。点击可反转为最新一行在顶部、历史向下移动。3D 视图的前后透视方向不受影响。",
+      "previous": "向上滚动——最新一行出现在BOTTOM上,历史向上(默认). 点击另一条路:最上层最新,历史往下走. 3D视图无论是哪种方式都保持自己的前向视角.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.dss.on.title",
+      "english": "Switch to the flat 2D waterfall",
+      "chinese": "切换至平面 2D 瀑布图",
+      "previous": "切换到平面2D瀑布",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.dss.off.title",
+      "english": "Switch to the 3D stacked-spectrum view (a rolling perspective of the last ~96 rows)",
+      "chinese": "切换至 3D 堆叠频谱视图，以滚动透视方式显示最近约 96 行",
+      "previous": "切换到3D堆叠光谱视图(最后一个~96行的滚动视角)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.pause.title",
+      "english": "Pause the waterfall — then scroll back through history with the mouse wheel",
+      "chinese": "暂停瀑布图，然后可用鼠标滚轮回看历史",
+      "previous": "暂停瀑布——然后用鼠标轮滚动历史",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.pause.resume.title",
+      "english": "Resume the live waterfall (history kept accumulating while paused)",
+      "chinese": "恢复实时瀑布图；暂停期间仍持续积累历史数据",
+      "previous": "恢复活瀑布(历史在停顿时不断积累)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.popOut.title",
+      "english": "Pop the waterfall out into its own window (frees this space; drag to another monitor)",
+      "chinese": "在独立窗口打开瀑布图，释放此处空间，也可拖至另一台显示器",
+      "previous": "将瀑布从窗口跳出( 释放此空间; 拖到另一个监视器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.canvas.title",
+      "english": "Click sets RX (WSJT-X) · Shift+click sets TX · {{mod}}+click sets both",
+      "chinese": "点击设置 RX（与 WSJT-X 相同）· Shift+点击设置 TX · {{mod}}+点击同时设置",
+      "previous": "点击 RX (WSJT- X) → Shift+ 点击 TX 集 →{{mod}}+单击两套",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.legend.title",
+      "english": "Color = signal strength (dB relative to the current strongest signal)",
+      "chinese": "颜色表示信号强度，单位为 dB，以当前最强信号为参考",
+      "previous": "颜色 = 信号强度(dB相对于当前最强信号)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.paused",
+      "english": "⏸ PAUSED",
+      "chinese": "⏸ 已暂停",
+      "previous": "已经通过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.tx.held",
+      "english": "TRANSMITTING — display held",
+      "chinese": "正在发射，显示已冻结",
+      "previous": "传送——展出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.paused.back",
+      "english": "⏸ PAUSED · −{{age}}",
+      "chinese": "⏸ 已暂停 · −{{age}}",
+      "previous": "* 获得通过{{age}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "waterfall.paused.now",
+      "english": "now",
+      "chinese": "现在",
+      "previous": "现在",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ratedWatts.label",
+      "english": "Rated power (W)",
+      "chinese": "额定功率（W）",
+      "previous": "定时功率(W)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ratedWatts.hint",
+      "english": "What this radio puts out at full drive. It sets the top of the transmit power meter’s scale, so a QRP set reads across the whole bar instead of sitting on the first mark. It is the radio’s rating, not your power limit.",
+      "chinese": "此电台在最大驱动下的额定输出功率，用于设置发射功率表的满量程。这样 QRP 电台的读数也能覆盖整个表条，而非挤在第一个刻度附近。此值是电台额定功率，不是本台功率限制。",
+      "previous": "这收音机在全程播放什么 它设定了传输电量表的顶部,因此一个QRP集可以在整个栏杆上读取,而不是坐在第一个标记上. 这是收音机的评分,不是你的功率极限。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.smeter.aria",
+      "english": "S-meter",
+      "chinese": "S 表",
+      "previous": "秒数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.smeter.title",
+      "english": "S-meter {{reading}} ({{db}} dB rel S9, via CAT)",
+      "chinese": "S 表 {{reading}}（相对 S9 为 {{db}} dB，通过 CAT 获取）",
+      "previous": "秒数{{reading}}(单位:千美元){{db}}dB rel S9,通过CAT) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.smeter.title.tx",
+      "english": "S-meter paused during transmit",
+      "chinese": "发射期间暂停更新 S 表",
+      "previous": "传输时暂停的 S 公尺",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.smeter.title.none",
+      "english": "No CAT S-meter reported by this rig",
+      "chinese": "此电台未通过 CAT 报告 S 表读数",
+      "previous": "没有CAT这台钻机报告的S米",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.source.flex.title",
+      "english": "Native FlexRadio panadapter (SmartSDR) — real RF spectrum, not the soundcard FFT",
+      "chinese": "FlexRadio 原生全景频谱（SmartSDR）：实际射频频谱，而非声卡音频 FFT",
+      "previous": "原生 FlexRadio 泛适应器(SmartSDR) – 真实的RF频谱,而不是音卡 FFT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.source.civ.title",
+      "english": "Native Icom CI-V scope — real RF spectrum, not the soundcard FFT",
+      "chinese": "Icom CI-V 原生频谱：实际射频频谱，而非声卡音频 FFT",
+      "previous": "原生Icom CI-V范围——真实的RF频谱,而不是音卡FFT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.dynamic.title",
+      "english": "How far the strongest signal in this view stands above the noise floor. The scope's vertical scale is FIXED at 50 dB above the noise, so a louder signal really does draw a taller spike — use G to widen or tighten that window.",
+      "chinese": "当前视图中最强信号高于底噪的幅度。频谱纵轴固定为底噪以上 50 dB，因此更强的信号会显示为更高的峰。可用 G 控件放宽或收窄显示窗口。",
+      "previous": "这个观点中最强的信号在噪音层上方有多远. 瞄准镜的垂直尺度是FIXED,在噪音上方50 dB,所以一个更响亮的信号真的画出一个更高音尖——用G来拓宽或收紧那个窗口.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.gain.title",
+      "english": "Visual gain — stretch (right) or flatten (left) the color contrast",
+      "chinese": "显示增益：向右增强、向左减弱颜色对比度",
+      "previous": "视觉增益 - 伸展( 右) 或平整( 左) 颜色对比",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.gain.aria",
+      "english": "Scope visual gain",
+      "chinese": "频谱显示增益",
+      "previous": "范围视觉收益",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.zero.title",
+      "english": "Visual zero — raise (right) to darken the noise floor, lower (left) to reveal weak texture",
+      "chinese": "显示零点：向右提高可压暗底噪，向左降低可显示微弱细节",
+      "previous": "视觉0 — 提高( 右) 以暗化噪音地板, 降低( 左) 以揭示弱纹理",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.zero.aria",
+      "english": "Scope visual zero (floor)",
+      "chinese": "频谱显示零点（底噪）",
+      "previous": "范围视觉零(地板)",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

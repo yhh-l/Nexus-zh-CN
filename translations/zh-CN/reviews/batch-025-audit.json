@@ -1,0 +1,1672 @@
+{
+  "batch": 25,
+  "range": [
+    4801,
+    5000
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 176,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 7,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SetupWizard.tsx",
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/TciServerSettings.tsx"
+  ],
+  "rows": [
+    {
+      "id": "setup.rig.sub",
+      "english": "One detect finds everything — USB rigs, FlexRadios on the network and an SDR program's TCI server on this computer. Skippable; Settings ▸ Radio ▸ Rig & CAT has all of this later (including Test CAT).",
+      "chinese": "一次检测即可查找 USB 电台、同一网络内的 FlexRadio，以及本机 SDR 程序的 TCI 服务器。可跳过，稍后在“设置 ▸ 电台 ▸ 电台与 CAT”中配置，也可在那里测试 CAT。",
+      "previous": "一个探测器发现一切——USB钻机,FlexRadios在网络上,一个SDR程序TCI服务器在这个计算机上. 可跳过; 设置 QQ 电台 Rig &CAT后面有所有这些(包括测试)CAT) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.action",
+      "english": "🔍 Detect my radio",
+      "chinese": "🔍 检测本台设备",
+      "previous": "探测我的无线电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.busy",
+      "english": "Detecting…",
+      "chinese": "正在检测…",
+      "previous": "探测...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.failed",
+      "english": "Detection hit an error: {{error}}. You can still pick your rig by hand below, or skip and set it up later.",
+      "chinese": "检测出错：{{error}}。仍可在下方手动选择电台，或跳过并稍后配置。",
+      "previous": "检测出错误 :{{error}}还可以在下面用手取钻机 或跳过然后安装",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.empty",
+      "english": "Nothing found — USB: plug in + power on; Flex: must be on this network; SDR program: turn its TCI server on. Or skip and set it up later.",
+      "chinese": "未找到设备。USB 电台请连接并开机；Flex 须位于同一网络；SDR 程序须开启 TCI 服务器。也可跳过并稍后配置。",
+      "previous": "无发现 – USB: 插上+ power on; Flex: 必须在这个网络上; SDR 程序: 打开它的 TI 服务器. 或跳过后设.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.usbFailed",
+      "english": "USB scan failed: {{error}}",
+      "chinese": "USB 扫描失败：{{error}}",
+      "previous": "USB 扫描失败 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.flexFailed",
+      "english": "Flex network scan failed: {{error}}",
+      "chinese": "Flex 网络扫描失败：{{error}}",
+      "previous": "Flex 网络扫描失败 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.tciFailed",
+      "english": "TCI server search failed: {{error}}",
+      "chinese": "TCI 服务器查找失败：{{error}}",
+      "previous": "TIC 服务器搜索失败 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.flex.row",
+      "english": "<b>{{radio}}</b> on the network ({{ip}})",
+      "chinese": "网络上的 <b>{{radio}}</b>（{{ip}}）",
+      "previous": "<b>{{radio}}</b>网络上{{ip}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.flex.via",
+      "english": " · via SmartSDR CAT",
+      "chinese": " · 通过 SmartSDR CAT",
+      "previous": "* 通过SmartSDR CAT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.rig.row",
+      "english": "<b>{{radio}}</b> on {{port}}",
+      "chinese": "{{port}} 上的 <b>{{radio}}</b>",
+      "previous": "<b>{{radio}}</b>打开{{port}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.tci.row",
+      "english": "<b>{{server}}</b> on this computer (TCI, port {{port}})",
+      "chinese": "本机上的 <b>{{server}}</b>（TCI，端口 {{port}}）",
+      "previous": "<b>{{server}}</b>在此计算机上( TCI, 端口){{port}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.detect.tci.via",
+      "english": " · over its TCI server",
+      "chinese": " · 通过其 TCI 服务器",
+      "previous": "* 在其TCI服务器上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.flexNote.windows",
+      "english": "{{radio}} at {{ip}} — CAT set via SmartSDR CAT (slice A, port 5002; a second slice uses 60001), radio address saved for the native panadapter/DAX. Test CAT below.",
+      "chinese": "{{ip}} 上的 {{radio}}：CAT 已设为通过 SmartSDR CAT 连接（接收切片 A 使用端口 5002，第二个切片使用 60001）。电台地址已保存，供原生频谱／DAX 使用。请在下方测试 CAT。",
+      "previous": "{{radio}}时间{{ip}}. . . . . . .CAT通过 SmartSDR 设置CAT(slice A,端口5002;第二个切片使用60001),为原生泛适应器/DAX保存的无线电地址. 测试CAT见下文。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.flexNote.other",
+      "english": "{{radio}} at {{ip}} — model and radio address saved. SmartSDR CAT is Windows-only: put the address of a Windows PC running it (slice A = its port 5002) in Network Address below, then Test CAT.",
+      "chinese": "{{ip}} 上的 {{radio}}：型号和电台地址已保存。SmartSDR CAT 仅支持 Windows，请在下方“网络地址”中填写运行它的 Windows 电脑地址（接收切片 A 使用端口 5002），再测试 CAT。",
+      "previous": "{{radio}}时间{{ip}}- 模型和无线电地址保存。 智能软件CAT只有 Windows : 将 Windows 个人电脑运行的地址( slice A = 它的端口 5002) 放在下面的网络地址, 然后测试CAT。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.selected",
+      "english": "Selected: {{radio}} on {{port}}{{baud}}",
+      "chinese": "已选择：{{radio}}，端口 {{port}}{{baud}}",
+      "previous": "选中 :{{radio}}打开{{port}}{{baud}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.selected.baud",
+      "english": " @ {{baud}} baud",
+      "chinese": "，{{baud}} 波特",
+      "previous": "页:1{{baud}}鲍德",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.selected.unnamedRadio",
+      "english": "radio",
+      "chinese": "电台",
+      "previous": "电台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.autoTest.action",
+      "english": "🔎 Auto-test my ports",
+      "chinese": "🔎 自动测试端口",
+      "previous": "自动测试我的端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.autoTest.busy",
+      "english": "Testing ports — {{seconds}}s (can take up to a minute)…",
+      "chinese": "正在测试端口，已用 {{seconds}} 秒，最长可能需一分钟…",
+      "previous": "测试端口 -{{seconds}}s(最多一分钟)...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.autoTest.title",
+      "english": "Probes every USB port until a radio answers — read-only, never transmits",
+      "chinese": "逐个探测 USB 端口，直到电台响应；仅作只读查询，不会发射",
+      "previous": "检测每个USB端口直到无线电回答——只读,从不传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.autoTest.failed",
+      "english": "Auto-test failed: {{error}}",
+      "chinese": "自动测试失败：{{error}}",
+      "previous": "自动测试失败 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.model.label",
+      "english": "Which radio is this?",
+      "chinese": "这是哪种电台？",
+      "previous": "这是哪台无线电?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.model.placeholder",
+      "english": "Pick your rig model…",
+      "chinese": "选择电台型号…",
+      "previous": "选你的钻机模型...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.model.unnamed",
+      "english": "Model {{model}}",
+      "chinese": "型号 {{model}}",
+      "previous": "型号{{model}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.model.unknownResponder",
+      "english": "unknown",
+      "chinese": "未知",
+      "previous": "未知",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.model.seeded",
+      "english": "The port answered, but the exact model is a guess ({{radio}} responded). Pick your radio so its real command set is used.",
+      "chinese": "端口已响应，但具体型号仍为推测（{{radio}} 有响应）。请选择实际型号，以使用正确的指令集。",
+      "previous": "端口回答,但准确的模型是一个猜测({{radio}}答复)。 选择你的收音机,所以它的真正命令集被使用.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.model.confirm",
+      "english": "Confirm the exact model — fixed-rate rigs get their baud set automatically.",
+      "chinese": "请确认准确型号，固定速率电台会自动设置波特率。",
+      "previous": "确认准确的型号——固定速率钻机自动装机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.keying.title",
+      "english": "How does your interface key the radio?",
+      "chinese": "接口通过什么方式触发电台发射？",
+      "previous": "你的接口怎么把收音机按键的?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.keying.vox.blurb",
+      "english": "It keys the radio when it hears audio, like a SignaLink.",
+      "chinese": "收到音频时触发电台发射，例如 SignaLink。",
+      "previous": "它听到音频时按下收音机键,就像SignaLink一样.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.keying.rts.blurb",
+      "english": "It keys the radio on the serial port's RTS line, like a Digirig Mobile.",
+      "chinese": "通过串口 RTS 线触发电台发射，例如 Digirig Mobile。",
+      "previous": "它在串行端口的RTS线上按键收音机,就像一个Digirig Mobile.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.keying.dtr.blurb",
+      "english": "It keys the radio on the serial port's DTR line.",
+      "chinese": "通过串口 DTR 线触发电台发射。",
+      "previous": "它为串行端口DTR线上的无线电按键.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.conn.serial.label",
+      "english": "USB / Serial",
+      "chinese": "USB／串口",
+      "previous": "USB / 序列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.conn.serial.blurb",
+      "english": "Most rigs — one cable",
+      "chinese": "适用于多数电台，一根线连接",
+      "previous": "大多数钻机——一台电缆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.conn.network.label",
+      "english": "Network",
+      "chinese": "网络",
+      "previous": "网络",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "TCITransceiver",
+          "chinese": "网络"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "TCITransceiver",
+          "chinese": "网络"
+        }
+      ]
+    },
+    {
+      "id": "setup.rig.conn.network.blurb",
+      "english": "SDR software, or a remote rig",
+      "chinese": "SDR 软件或远程电台",
+      "previous": "特别提款权软件或远程钻机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.conn.tci.label",
+      "english": "SDR program (TCI)",
+      "chinese": "SDR 程序（TCI）",
+      "previous": "特别提款权方案(TCI)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.conn.tci.blurb",
+      "english": "ExpertSDR3, Thetis or piHPSDR, over its TCI server",
+      "chinese": "通过 ExpertSDR3、Thetis 或 piHPSDR 的 TCI 服务器连接",
+      "previous": "专家SDR3, Thetis 或 piHPSDR, 在其 TCI 服务器上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.tci.hint",
+      "english": "Turn the TCI server on in the SDR program first: ExpertSDR3 and Thetis come set to port 50001, piHPSDR to 40001. Beta: Nexus controls the radio and transmits over TCI, and the audio goes over TCI too, with no virtual audio cable.",
+      "chinese": "请先在 SDR 程序中开启 TCI 服务器。ExpertSDR3 和 Thetis 默认端口为 50001，piHPSDR 为 40001。测试版：Nexus 通过 TCI 控制电台并发射，音频也经 TCI 传输，无需虚拟音频线。",
+      "previous": "在 SDR 程序中先打开 TCI 服务器: 专家SDR 3 和 Thetis 设置到 端口 50001 , piHPSDR 设置到 40001 。 Beta:Nexus控制无线电,通过TCI传输,音频也通过TCI传输,没有虚拟音频电缆.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.address.label",
+      "english": "Address",
+      "chinese": "地址",
+      "previous": "地址",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.network.hint",
+      "english": "A found Flex configures the WSJT-X-proven path: CAT through the SmartSDR CAT app on this PC — its default TCP port 5002 drives slice A (per-slice ports: B=60001, C=60002) — and audio through DAX. Other network rigs: pick their model later in Settings ▸ Radio ▸ Rig & CAT.",
+      "chinese": "检测到 Flex 后，会配置已在 WSJT-X 中验证的连接方式：通过本机 SmartSDR CAT 控制 CAT，默认 TCP 5002 对应接收切片 A，其他切片端口为 B=60001、C=60002；音频通过 DAX。其他网络电台可稍后在“设置 ▸ 电台 ▸ 电台与 CAT”中选择型号。",
+      "previous": "找到 Flex 配置 WSJT- X 验证路径 : CAT 通过 SmartSDR CAT app on this PC——它的默认的TCP端口5002驱动切片A(每个切片端口:B=60001,C=60002)——和音频通过DAX. 其他网络钻机:稍后在Stents QQ电台 Rig & CAT。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.dax.title",
+      "english": "SmartSDR's DAX virtual audio devices were detected — pairs them as Nexus's audio in/out",
+      "chinese": "已检测到 SmartSDR 的 DAX 虚拟音频设备，可将其配对为 Nexus 的音频输入／输出",
+      "previous": "SmartSDR 的 DAX 虚拟音频设备被检测到 – 将它们配对为 Nexus 的音频 in/out",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.audioIn.label",
+      "english": "Audio in",
+      "chinese": "音频输入",
+      "previous": "音频输入",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.audioOut.label",
+      "english": "Audio out",
+      "chinese": "音频输出",
+      "previous": "音频输出",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.testCat.action",
+      "english": "⚡ Test CAT",
+      "chinese": "⚡ 测试 CAT",
+      "previous": "测试CAT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.testCat.busy",
+      "english": "Testing…",
+      "chinese": "正在测试…",
+      "previous": "测试...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.testCat.title",
+      "english": "Saves what you've entered so far, then asks the radio for its frequency",
+      "chinese": "保存目前填写的设置，然后读取电台频率",
+      "previous": "保存您已经输入的,然后询问收音机的频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.action",
+      "english": "＋ I have a second radio",
+      "chinese": "＋ 添加第二台电台",
+      "previous": "+ 我有第二个无线电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.title",
+      "english": "Adds a radio profile and probes the remaining USB ports for it",
+      "chinese": "添加电台配置，并在剩余 USB 端口中探测设备",
+      "previous": "添加一个无线电剖面, 并探测剩余的 USB 端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.probing",
+      "english": "Probing the other ports — {{seconds}}s (radio 1’s port is skipped; this can take up to a minute)…",
+      "chinese": "正在探测其他端口，已用 {{seconds}} 秒。跳过第一台电台的端口，最长可能需一分钟…",
+      "previous": "探测其他港口——{{seconds}}s(1号电台的端口被跳过;这需要最多一分钟)...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.saved",
+      "english": "Second radio: {{radio}} on {{port}} — saved to its own profile.",
+      "chinese": "第二台电台：{{radio}}，端口 {{port}}，已保存到独立配置。",
+      "previous": "第二广播:{{radio}}打开{{port}}——保存在自己的档案中.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.addFailed",
+      "english": "Couldn't add the radio: {{error}}",
+      "chinese": "无法添加电台：{{error}}",
+      "previous": "无法添加收音机:{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.model.label",
+      "english": "Which radio is the second one?",
+      "chinese": "第二台是什么电台？",
+      "previous": "哪个电台是第二个?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.model.placeholder",
+      "english": "Pick the model…",
+      "chinese": "选择型号…",
+      "previous": "选模特儿...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.model.seeded",
+      "english": "The port answered but the exact model is a guess — pick the radio so its real command set is used.",
+      "chinese": "端口已响应，但具体型号仍为推测。请选择实际型号，以使用正确的指令集。",
+      "previous": "端口回答,但准确的模型是一个猜测——选择收音机,从而使用其真正的指令集.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.swap",
+      "english": "Both radios use identical USB sound cards, shared out one each. If you later see the <em>wrong</em> rig’s meters move when audio plays, <a>swap them</a>.",
+      "chinese": "两台电台使用相同型号的 USB 声卡，已各分配一套。如果之后播放音频时，发现<em>另一台</em>电台的电平表在动，可<a>交换音频设备分配</a>。",
+      "previous": "两台收音机都使用相同的USB音卡,各共享一张. 如果你后来看到<em>错了</em>声音播放时钻机的仪表移动,<a>换掉</a>。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.second.twoWindows",
+      "english": "To run both radios at the same time, open Nexus twice — each window drives one radio (the launcher asks which).",
+      "chinese": "如需同时操作两台电台，请启动两个 Nexus 窗口。每个窗口控制一台，启动时会询问选择。",
+      "previous": "为了同时运行两台收音机,打开Nexus两次——每个窗口驱动一台收音机(发射机询问哪个).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.title",
+      "english": "Bring in your existing log",
+      "chinese": "导入已有交信日志",
+      "previous": "导入已有交信日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.sub",
+      "english": "Nexus works best when it knows your history. Importing your ADIF log is what powers <b>worked-before</b> flags, the <b>Needed</b> board (new DXCC / states / grids), and your <b>awards</b> progress — without it, the app starts blind and treats every station as new. This is optional and you can import anytime from the Logbook, but it's the single biggest thing that makes the app useful on day one.",
+      "chinese": "导入历史日志可让 Nexus 判断哪些电台已通联。ADIF 日志会为<b>已通联标记</b>、<b>待通联看板</b>（新 DXCC 实体、州和网格）及<b>奖项进度</b>提供依据；未导入时，所有电台都会被视为新电台。此步骤可跳过，稍后随时能在日志中导入，但导入历史记录最能让软件从第一天起发挥作用。",
+      "previous": "当Nexus知道你的历史时,它的工作最好。 正在导入您的ADIF日志是什么样的权力<b>工作过</b>旗帜,<b>需要帮助</b>董事会(新DXCC/状态/网格),以及您的<b>裁决</b>进步——没有它,应用开始盲目,把每个站都当作新台. 这是可选的,你可以随时从日志中导入, 但这是最大的一件事,使应用程序在第一天有用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.import.action",
+      "english": "Import my ADIF log…",
+      "chinese": "导入本台 ADIF 日志…",
+      "previous": "导入我的ADIF日志...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.import.again",
+      "english": "Import another ADIF file",
+      "chinese": "导入另一个 ADIF 文件",
+      "previous": "导入另一个ADIF文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.import.busy",
+      "english": "Importing…",
+      "chinese": "正在导入...",
+      "previous": "正在导入...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.import.failed",
+      "english": "Import failed: {{error}}",
+      "chinese": "导入失败：{{error}}",
+      "previous": "导入失败 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.result.imported::one",
+      "english": "✓ Imported <b>{{count}}</b> QSO{{dupes}}. Your worked-before and Needed board are now seeded.",
+      "chinese": "✓ 已导入 <b>{{count}}</b> 条 QSO{{dupes}}，已通联标记和待通联看板现已有历史数据。",
+      "previous": "已导入<b>{{count}}</b> QSO{{dupes}}你的工作前和需要的董事会 现在种子。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.result.imported::other",
+      "english": "✓ Imported <b>{{count}}</b> QSOs{{dupes}}. Your worked-before and Needed board are now seeded.",
+      "chinese": "✓ 已导入 <b>{{count}}</b> 条交信{{dupes}}，已通联标记和待通联看板现已有历史数据。",
+      "previous": "已导入<b>{{count}}</b>快速行动组织{{dupes}}你的工作前和需要的董事会 现在种子。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.result.dupes",
+      "english": "{{count}} already present",
+      "chinese": "{{count}} 条已存在",
+      "previous": "{{count}}已经存在",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.result.allDupes",
+      "english": "✓ All {{count}} QSOs were already in your log — you're seeded.",
+      "chinese": "✓ 这 {{count}} 条交信均已在日志中，历史数据已就绪。",
+      "previous": "✓全体 {{count}} QSOs 已经在你的日志里了 你被播种了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.result.none",
+      "english": "⚠ No QSOs found in that file — is it a standard ADIF (.adi/.adif) export?",
+      "chinese": "⚠ 文件中未找到交信，请确认是否为标准 ADIF（.adi／.adif）导出文件。",
+      "previous": "没有 QSOs 在该文件中找到——这是标准吗?  ADIF  (.adi) (中文(简体) )./.adif)导出?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.log.sources",
+      "english": "From WSJT-X, N1MM, Log4OM, HRD, QRZ, LoTW, ClubLog — any standard ADIF (.adi/.adif) export. Nothing leaves your computer; duplicates are detected and skipped.",
+      "chinese": "支持 WSJT-X、N1MM、Log4OM、HRD、QRZ、LoTW、ClubLog 等软件或服务导出的标准 ADIF（.adi／.adif）文件。数据仅在本机处理，重复记录会自动识别并跳过。",
+      "previous": "从WSJT-X,N1MM,Log4OM,HRD,QRZ, (中文).LoTW, ClubLog ——任何标准ADIF(.adi/.adif)出口。 没有东西离开你的电脑; 复制被检测和跳过 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.title",
+      "english": "You get everything",
+      "chinese": "设置完成",
+      "previous": "设置完成",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.sub",
+      "english": "Every mode and every section starts ON — FT8/FT4, Phone, CW, RTTY, SSTV, APRS, satellites, the maps, the lot. Nexus is one program instead of six; there’s nothing to unlock. If you ever want a leaner app, trim sections in Settings.",
+      "chinese": "所有模式和页面默认全部开启：FT8/FT4、话音、CW、RTTY、SSTV、APRS、卫星、地图等，无需另外解锁，Nexus 一个程序即可完成这些操作。若希望界面更简洁，可在设置中关闭不需要的页面。",
+      "previous": "每一个模式和每个部分开始于 - FT8/FT4电话 CW, (中文). RTTY, (中文). SSTV, (中文). APRS卫星 地图 地块 Nexus是一个程序而不是六个, 如果您想要更精细的应用程序, 请在设置中修剪部分 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.title",
+      "english": "What’s your license?",
+      "chinese": "本台执照等级是什么？",
+      "previous": "你的驾照是什么?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.sub",
+      "english": "Sets your transmit privileges — the app parks the dial in your licensed band segments and won’t let you transmit outside them. Pick “Outside the US” for no limits.",
+      "chinese": "设置发射权限：软件会将调谐频率置于执照允许的频率范围内，并禁止在范围外发射。选择“美国以外”时，不设此类限制。",
+      "previous": "设置您的传输权限 —— 应用程序将拨号停放在您的有许可证的带段, 并且不允许您在带段之外传输 。 选择“美国以外”为无限制。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.technician",
+      "english": "Technician",
+      "chinese": "Technician（技术级）",
+      "previous": "技术员",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.technician.blurb",
+      "english": "US — limited HF + full VHF/UHF",
+      "chinese": "美国：部分短波权限＋完整 VHF/UHF 权限",
+      "previous": "美国——有限高频+全高频/超高频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.general",
+      "english": "General",
+      "chinese": "General（通用级）",
+      "previous": "常规",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "常规"
+        }
+      ]
+    },
+    {
+      "id": "setup.finish.license.general.blurb",
+      "english": "US — most HF privileges",
+      "chinese": "美国：大多数短波频率权限",
+      "previous": "美国——大多数高频权限",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.extra",
+      "english": "Amateur Extra",
+      "chinese": "Amateur Extra（业余特级）",
+      "previous": "业余外加",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.extra.blurb",
+      "english": "US — full privileges",
+      "chinese": "美国：完整操作权限",
+      "previous": "美国——全部特权",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.open",
+      "english": "Outside the US",
+      "chinese": "美国以外",
+      "previous": "在美国以外",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.license.open.blurb",
+      "english": "No transmit limits",
+      "chinese": "不设置发射限制",
+      "previous": "无传输限制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.packs.title",
+      "english": "Start with some channels?",
+      "chinese": "先添加一些信道？",
+      "previous": "从频道开始?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.packs.sub",
+      "english": "Optional — a ready-made set of common frequencies and nets, added to your Memories. Change or remove any of them later in the Memories section.",
+      "chinese": "可选步骤：将预设的常用频率和通联网络加入存储信道。稍后可在存储信道页面修改或删除。",
+      "previous": "可选的——一套现成的通用频率和网,加入你的记忆. 稍后在记忆部分更改或删除其中的任何一项.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.packs.meta",
+      "english": "{{count}} channels · {{region}}",
+      "chinese": "{{count}} 个信道 · {{region}}",
+      "previous": "{{count}}频道 /{{region}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.guide.title",
+      "english": "Want a walkthrough of what you just set up?",
+      "chinese": "需要了解刚才配置的功能吗？",
+      "previous": "想看看你们刚刚安排的吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.guide.label",
+      "english": "Show me Getting started",
+      "chinese": "显示入门指南",
+      "previous": "显示我开始",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.finish.guide.blurb",
+      "english": "The four things, in order — opens when this closes",
+      "chinese": "按顺序介绍四项操作，关闭此向导后打开",
+      "previous": "这四件事,顺序是... 等这个结束",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.nav.back",
+      "english": "← Back",
+      "chinese": "← 上一步",
+      "previous": "← 上一步",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.nav.skip",
+      "english": "I’ll set it up myself",
+      "chinese": "稍后自行配置",
+      "previous": "我会自己安排的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.nav.next",
+      "english": "Next →",
+      "chinese": "下一步 →",
+      "previous": "下一步 →",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.nav.finish",
+      "english": "Finish — everything on",
+      "chinese": "完成，开启全部功能",
+      "previous": "完结了,一切",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.legend",
+      "english": "Transmit limits & sharing",
+      "chinese": "发射限制与共享",
+      "previous": "传输限制共享( S)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.bandEdgeTones.label",
+      "english": "Band-edge tones",
+      "chinese": "频率边界提示音",
+      "previous": "带状突起",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.bandEdgeTones.hint",
+      "english": "A short audio cue when the dial crosses your license privileges — a rising \"ding\" back in band, a falling \"dong\" past an edge. Applies on every mode.",
+      "chinese": "调谐频率跨越执照许可边界时发出简短提示音：回到许可范围时响升调“叮”，超出边界时响降调“咚”。适用于所有模式。",
+      "previous": "当拨号跨过您的许可证权限时, 一个短的音频提示—— 一个上升的\"叮当\"回到乐队, 一个下降的\"东\"越过边缘. 每个模式都适用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.powerCaps.label",
+      "english": "Max power by mode (safety)",
+      "chinese": "各模式最大功率（保护）",
+      "previous": "最大功率按模式( 安全)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.powerCaps.hint",
+      "english": "A ceiling on RF output per mode — leave blank for full power. FT8/FT4/RTTY run ~100% duty cycle, so capping the Digital modes (e.g. 30%) protects your finals and any amplifier. The rig is brought down to the cap the moment you enter a capped mode, not only when you touch the power slider.",
+      "chinese": "为各模式设置射频输出功率上限，留空则允许全功率。FT8/FT4/RTTY 的占空比接近 100%，限制数字模式功率（如 30%）有助于保护末级功放及外接功放。进入受限模式时，电台功率会立即降至上限，而非等到调整功率滑块时才生效。",
+      "previous": "每个模式的RF输出上限——全功率留空. FT8/FT4/RTTY 运行~100%的值班周期,所以封顶数字模式(例如30%)保护您的决赛和任何放大器。 钻机在进入封顶模式时被降为封顶,不仅仅是在触摸电源滑动器时.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.swrStop.label",
+      "english": "Stop transmitting when SWR is high",
+      "chinese": "驻波比过高时停止发射",
+      "previous": "SWR 高空时停止发送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.swrStop.threshold",
+      "english": "Stop above",
+      "chinese": "超过此值停止",
+      "previous": "停车",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.swrStop.hint",
+      "english": "Two readings in a row above this and Nexus stops transmitting, exactly as Stop TX does, and tells you why. It never starts a transmission and never turns TX back on — you do that once the antenna is sorted out. Off by default; a high reading on one poll is ignored, so a tuner stepping or a keyup transient will not cut you off.",
+      "chinese": "连续两次读数超过此值时，Nexus 会按“停止 TX”相同的方式停止发射，并说明原因。此功能不会启动发射，也不会重新开启 TX；处理好天线后须自行开启。默认关闭，单次读取过高会被忽略，以免天调切换或发射起始瞬态导致误停。",
+      "previous": "上面连续两次读数 Nexus停止了传输 和Stop TX一样 告诉你原因 它从不启动传输,也从不恢复TX——一旦天线被整理出来,你就这样做. 默认关闭;一个民意测验的高读数被忽略,所以调音器脚步或按键瞬间不会切断你.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.swrStop.unverified",
+      "english": "This radio's SWR reading isn't verified yet, so Nexus won't stop your transmission on it. Nexus only trusts the number where it knows the radio's own scale — Icom over native CI-V, and FlexRadio. On other radios the figure can be far out: some show a near-perfect match on their own meter while reporting a fault here.",
+      "chinese": "此电台的驻波比读数尚未验证，Nexus 不会据此停止发射。只有明确了解设备自身读数标度时才采用该值，目前为原生 CI-V 连接的 Icom 和 FlexRadio。其他电台的数字可能严重偏差，例如电台自身仪表显示匹配接近理想，此处却报故障。",
+      "previous": "这台收音机的SWR读数尚未核实,所以Nexus不会停止你的播音. Nexus只信任它知道电台自身规模的号码——Icom凌驾本土CI-V,以及FlexRadio. 在其他的无线电中,数字可能远远超出:有些人在自己仪表上显示一个接近完美的匹配,同时在这里报告一个故障.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.swrStop.noMeterStream",
+      "english": "Nexus is not receiving this Flex's own SWR meter, so this cutoff will not stop anything, however high the SWR goes. That meter comes from the radio's native stream, and it is off. Turn on \"Flex native panadapter (Beta)\" in Settings ▸ Radio ▸ Rig & CAT to start it. Until then this setting has no effect.",
+      "chinese": "Nexus 未收到这台 Flex 自身的驻波比数据，因此无论驻波比多高，此停止功能都不会生效。该数据来自电台原生数据流，而数据流尚未开启。请在“设置 ▸ 电台 ▸ 电台与 CAT”中开启“Flex 原生频谱显示（测试版）”。此前此项设置不起作用。",
+      "previous": "Nexus没有收到这个Flex自己的SWR计数器,所以这个截断点不会停止任何东西,不管SWR去的多高. 那计数器来自无线电的原生溪流,它关闭了。 在 QQ Radio rig & 设置中打开“ Flex 本地全读器 (Beta) ”CAT开始吧 在此之前,此设置没有效果 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.parsecStop.label",
+      "english": "Stop latched transmissions if my Parsec session drops",
+      "chinese": "Parsec 会话断开时停止持续发射",
+      "previous": "如果 Parsec 会话减少, 停止已中断的传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.parsecStop.hint",
+      "english": "For running the shack over Parsec. Nexus watches Parsec's own log on this computer. If the Parsec session that was connected drops, or its log can no longer be read, Nexus stops a latched PTT, continuous RTTY or PSK, and Tune, exactly as their own Stop does, and says why. It never starts a transmission or turns TX back on. FT8/FT4 overs are not touched: they end by themselves, and the TX watchdog still applies. Parsec can take up to a minute to notice a pulled network cable, so this backs up the watchdog rather than replacing it.",
+      "chinese": "用于通过 Parsec 远程操作电台。Nexus 监测本机 Parsec 日志；已连接的会话断开或日志无法读取时，会按各自的停止操作结束锁定的 PTT、连续 RTTY／PSK 发射及调谐，并说明原因。不会启动发射或重新开启 TX。不影响 FT8/FT4 发射轮次，它们会自行结束，TX 看门狗仍然生效。Parsec 识别拔网线可能需要一分钟，因此此功能只是对看门狗的补充，不能替代它。",
+      "previous": "为了在帕尔塞克上空跑出小屋 Nexus看Parsec自己在这台电脑上的日志 如果连接到的 Parsec 会话下降, 或无法读取其日志, Nexus 将停止一个挂断 PTT连续 RTTY 或PSK,和Tune, 正是他们自己的停止,并说为什么。 它从不启动传输 或让TX恢复运行。 FT8/FT4 TX 监视器仍然适用。 Parsec可能要花上一分钟的时间才能注意到一个被拉动的网络电缆,所以这可以支撑监督者而不是替换它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.parsecStop.unavailable",
+      "english": "Available on Windows only, where Nexus can read the Parsec host’s log.",
+      "chinese": "仅在 Windows 上可用，Nexus 需读取 Parsec 主机日志。",
+      "previous": "仅在 Windows 上可用,其中 Nexus 可以读取 Parsec 主机日志 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.parsecStop.status.starting",
+      "english": "Checking Parsec’s log…",
+      "chinese": "正在检查 Parsec 日志...",
+      "previous": "正在检查 Parsec 日志...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.parsecStop.status.connected",
+      "english": "A Parsec session is connected. If it drops, a latched transmission stops.",
+      "chinese": "已有 Parsec 会话连接。若断开，将停止持续发射。",
+      "previous": "一个 Parsec 会话已连接 。 如果它下降, 输电中断。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.parsecStop.status.notConnected",
+      "english": "No Parsec session is connected, so nothing will be stopped.",
+      "chinese": "没有 Parsec 会话连接，因此不会触发停止发射。",
+      "previous": "没有 Parsec 会话连接, 因此不会停止任何活动 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.parsecStop.status.unreadable",
+      "english": "Nexus cannot find or read Parsec’s log (it looks for log.txt in %APPDATA%\\Parsec and %ProgramData%\\Parsec), so nothing will be stopped until it can.",
+      "chinese": "Nexus 无法找到或读取 Parsec 日志（在 %APPDATA%\\Parsec 和 %ProgramData%\\Parsec 中查找 log.txt），读取恢复前不会触发停止发射。",
+      "previous": "Nexus 无法找到或读取 Parsec 的日志( 它在 %APPDATA%\\Parsec 和% ProgramData%\\Parsec 中寻找log.txt), 因此在它无法停止之前不会停止 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStream.label",
+      "english": "Stream this station from my browser",
+      "chinese": "通过浏览器远程操作此电台",
+      "previous": "从我的浏览器流出此站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStream.hint",
+      "english": "A browser you approved for station control, while it holds control, is shown this Nexus window and can operate it as you would here, transmit included. Its clicks and keys reach Nexus only, never anything else on this computer. Only this window is sent: a dialog that opens outside it, such as a file picker, is not, and a minimized window sends nothing. The stream is encrypted end to end. While a browser is connected, every transmission stops within five seconds if its connection drops, and within seven if its picture freezes.",
+      "chinese": "经你批准控制电台的浏览器，在持有控制权时可查看此 Nexus 窗口，并像在本机一样操作，包括发射。鼠标和键盘输入只传给 Nexus，不会影响本机其他程序。仅传送此窗口，文件选择器等窗口外的对话框不会传送，窗口最小化后也不传送画面。音视频流采用端到端加密。浏览器连接期间，若连接断开，所有发射会在五秒内停止；若画面冻结，则在七秒内停止。",
+      "previous": "您批准用于站台控制的浏览器, 当它持有控制时, 显示这个 Nexus 窗口, 并且可以在这里运行它, 包括传输 。 它的点击和密钥只到达Nexus, 在这个计算机上从来没有其他任何东西。 只有此窗口被发送 : 外部打开的对话框, 如文件拾取器, 尚未打开, 而最小化的窗口则不会发送任何信息 。 流经加密端至端. 在浏览器被连接的同时,如果连接下降,每一次传输在5秒内停止,如果图片冻结,则在7秒内停止.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStream.display",
+      "english": "The stream is this window as Windows draws it on this computer, so keep Nexus open, and not minimized, while a browser streams it.",
+      "chinese": "传送的是 Windows 在本机绘制的窗口画面，因此浏览器接收画面期间，请保持 Nexus 打开且不要最小化。",
+      "previous": "当Windows在电脑上绘制时,流就是这个窗口,所以保持Nexus的开放,而不是最小化,而浏览器则流出它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStream.unavailable",
+      "english": "Available on Windows only, for now.",
+      "chinese": "目前仅支持 Windows。",
+      "previous": "仅在Windows上提供,目前为止.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStations.label",
+      "english": "Operate a paired station from this computer",
+      "chinese": "从本机操作已配对电台",
+      "previous": "从此计算机运行一个对齐的站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStations.open",
+      "english": "Remote stations…",
+      "chinese": "远程电台…",
+      "previous": "远程站台...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStations.hint",
+      "english": "Opens the Remote page in a Nexus window of its own. You sign in there and approve it at the station once, as you would a new browser. F11 switches the window to full screen and back, and Esc over the picture still stops transmitting. Links to other sites open in your browser.",
+      "chinese": "在独立 Nexus 窗口中打开 Remote 页面。在其中登录，并像批准新浏览器一样，在电台端批准一次。F11 切换全屏，画面区域内按 Esc 仍可停止发射。其他网站链接会在浏览器中打开。",
+      "previous": "在 Nexus 窗口中打开远程页面。 你在那里签过字,然后在车站批准一次, 因为你会一个新的浏览器。 F11将窗口切换为全屏和回屏,画面上的Esc仍然停止传输. 链接到浏览器中打开的其他站点 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStations.failed",
+      "english": "Nexus could not open the Remote stations window. Check this computer’s internet connection, then try again.",
+      "chinese": "Nexus 无法打开远程电台窗口，请检查本机互联网连接后重试。",
+      "previous": "Nexus 无法打开远程站窗口 。 请检查此计算机的网络连接, 然后再试一次 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.remoteStations.unavailable",
+      "english": "Available on Windows only, for now. Elsewhere, open Remote in your browser.",
+      "chinese": "目前仅支持 Windows。其他系统请在浏览器中打开 Remote。",
+      "previous": "仅在Windows上提供,目前为止. 在其它地方, 在您的浏览器中打开远程 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lanStations.label",
+      "english": "Operate a station on this network from this computer",
+      "chinese": "从本机操作同一网络内的电台",
+      "previous": "从此计算机运行此网络上的站点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lanStations.open",
+      "english": "Stations on this network…",
+      "chinese": "同一网络内的电台…",
+      "previous": "这个网络上的站点...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lanStations.hint",
+      "english": "Opens a Nexus window for stations you pair with over your own network, with no internet needed. Pair each station once with the code it shows under Remote over this network. F11 switches the window to full screen and back, and Esc over the picture still stops transmitting.",
+      "chinese": "为同一网络内已配对的电台打开 Nexus 窗口，无需互联网。每台电台只需配对一次，使用其“通过本网络远程操作”中显示的代码。F11 切换全屏，画面区域内按 Esc 仍可停止发射。",
+      "previous": "打开Nexus窗口,为您搭配的台站打开自己的网络,不需要互联网。 每个车站都有一个代码 显示在这个网络的远程。 F11将窗口切换为全屏和回屏,画面上的Esc仍然停止传输.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lanStations.failed",
+      "english": "Nexus could not open the Stations on this network window. Try again.",
+      "chinese": "Nexus 无法打开同一网络内的电台窗口，请重试。",
+      "previous": "Nexus无法打开这个网络窗口上的站台. 再试一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.note",
+      "english": "Saving applies your rig settings live (no restart). <b>Test CAT</b> saves, launches the bundled <code>rigctld</code> (Hamlib ships with Nexus on Windows — no separate install), and reads your rig's frequency to confirm CAT. For CAT, pick your <em>Rig Model</em> and <em>Serial Port</em>; serial RTS/DTR and VOX need no model.",
+      "chinese": "保存后立即应用电台设置，无需重启。<b>测试 CAT</b>会先保存设置，再启动内置的 <code>rigctld</code>（Windows 版 Nexus 已附带 Hamlib，无需另行安装），并读取电台频率以确认 CAT 连接。使用 CAT 时须选择<em>电台型号</em>和<em>串口</em>；串口 RTS／DTR 与 VOX 无需设置型号。",
+      "previous": "保存应用您的钻机设置为 live( 不重新启动) 。<b>测试CAT</b>保存, 发射捆绑<code>刚性</code>(在Windows上装有Nexus的Hamlib船——没有单独的安装),并读取你的钻机频率以确认CAT用于CAT选择你的<em>硬型号</em>和<em>串行端口</em>;系列RTS/DTR和VOX不需要模型.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.backup.label",
+      "english": "Back up your setup",
+      "chinese": "备份本台设置",
+      "previous": "备份你的设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.backup.action",
+      "english": "Back up",
+      "chinese": "备份",
+      "previous": "备份",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.backup.title",
+      "english": "Save your radios, preferences, memory channels and watchlist to a file",
+      "chinese": "将电台、偏好设置、存储信道和关注列表保存到文件",
+      "previous": "将您的收音机、 首选项、 内存频道和监视列表保存到文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.backup.hint",
+      "english": "Your radios, operating preferences, memory channels, watchlist and chase sets in one file — for a new computer, or before a rebuild. <b>It holds no passwords or API keys</b>: those stay in your operating system's keychain, so a restore asks for them again, and the file is safe to keep on a USB stick. Your contact log is separate — export that from the Logbook. Restoring replaces your current setup.",
+      "chinese": "将电台、操作偏好、存储信道、关注列表和追踪目标集保存在一个文件中，便于迁移电脑或重装前备份。<b>文件不含密码或 API 密钥</b>，这些仍保存在操作系统钥匙串中，恢复后须重新填写，因此备份文件可存放在 U 盘上。交信日志单独保存，请从日志页面导出。恢复备份会替换当前设置。",
+      "previous": "您的收音机,操作偏好,内存通道,监视列表和追逐集在一个文件中——用于新的计算机,或者在重建之前.<b>它没有密码或 API 密钥</b>:那些留在操作系统的键链中,所以一个恢复再次要求它们,文件可以安全地保存在USB棒上. 您的联系人日志是分开的, 从日志簿中导出 。 恢复替换您的当前设置 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.backup.appearance",
+      "english": "It also carries how Nexus looks: the theme, colours, text size, density, Night and waterfall palettes, and a restore puts them back. Field mode and UI scale stay with each computer.",
+      "chinese": "备份也包含 Nexus 外观：主题、颜色、文字大小、界面密度、夜间及瀑布图配色，恢复时一并还原。野外模式和界面缩放仍按每台电脑分别保留。",
+      "previous": "它还带有Nexus的外观:主题,颜色,文本大小,密度,夜幕和瀑布调色板,一个还原器将它们放回. 字段模式和UI缩放与每台计算机同在.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.backup.done",
+      "english": "Settings backed up → {{path}}",
+      "chinese": "设置已备份 → {{path}}",
+      "previous": "设置已备份 ~{{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.backup.failed",
+      "english": "Backup failed",
+      "chinese": "备份失败",
+      "previous": "备份失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.restore.action",
+      "english": "Restore…",
+      "chinese": "还原...",
+      "previous": "还原...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.restore.title",
+      "english": "Replace your current setup with a saved backup",
+      "chinese": "用已保存的备份替换当前设置",
+      "previous": "用保存的备份替换您的当前设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.share.label",
+      "english": "Share this radio with other programs",
+      "chinese": "与其他程序共享此电台",
+      "previous": "与其他程序共享此收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.share.copy.action",
+      "english": "Copy",
+      "chinese": "复制",
+      "previous": "复制",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.share.copy.title",
+      "english": "Copy the address to paste into the other program",
+      "chinese": "复制地址粘贴到其他程序",
+      "previous": "复制地址粘贴到其他程序",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.share.hint.on",
+      "english": "Nexus itself answers at this address, so <b>VarAC</b>, <b>FreeDV</b>, <b>WSJT-X</b>, <b>JS8Call</b> and <b>fldigi</b> can use the radio while Nexus runs — pick the rig <em>Hamlib NET rigctl</em> (VarAC and FreeDV call it a network or rigctld connection), give it the address above, and leave their serial port blank. They stay connected even while Nexus tests or reconfigures the radio link, and they follow whichever radio is active. Only for this computer — the address is not reachable from the network. Takes effect right away. Both programs can command the rig, so expect them to argue if you tune in both at once.",
+      "chinese": "Nexus 自身在此地址提供服务，使 <b>VarAC</b>、<b>FreeDV</b>、<b>WSJT-X</b>、<b>JS8Call</b> 和 <b>fldigi</b> 可在 Nexus 运行时共用电台。请选择型号 <em>Hamlib NET rigctl</em>（VarAC 和 FreeDV 中称为网络或 rigctld 连接），填写上方地址，串口留空。即使 Nexus 测试或重新配置电台连接，它们仍保持连接，并跟随当前使用的电台。仅限本机使用，此地址无法从网络访问。立即生效。两个程序都能控制电台，同时调频时可能互相覆盖。",
+      "previous": "Nexus自己在这个地址回答,所以 <b> VarAC </b>, (中文). <b> FreeDV </b>, (中文). <b> WSJT-X </b>, (中文). <b> JS8Call </b> 和 <b>纤维化</b> 在Nexus运行时可以使用收音机——选择钻机 <em> Hamlib  NET 刚性</em> (单位:千美元) VarAC  和  FreeDV  把它称为网络或刚性连接, 给出上面的地址, 并留下他们的序列端口空白 。 即使Nexus测试或重新配置无线电连线时,它们仍然保持连接,它们也跟随任何活跃的无线电. 只为这台计算机——地址无法从网络中到达. 立即生效。 两个程序都可以指挥钻机,所以希望他们争吵 如果你同时调音两个。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.share.hint.off",
+      "english": "Off — other programs cannot use the radio while Nexus runs. Turn it on and point them at the address that appears here (<em>Hamlib NET rigctl</em>).",
+      "chinese": "已关闭，Nexus 运行时其他程序无法共用电台。开启后，在其他程序中选择 <em>Hamlib NET rigctl</em> 并填写此处显示的地址。",
+      "previous": "关闭——其他节目在Nexus运行时不能使用收音机. 打开然后指向这里的地址<em>Hamlib NET 刚性</em>) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.share.hint.direct",
+      "english": "Driving a specific radio that is <em>not</em> the active one: use its direct address <code>{{address}}</code> (per-radio; this link drops briefly whenever Nexus reconfigures that radio).",
+      "chinese": "若要控制<em>非当前使用</em>的指定电台，请使用其专属地址 <code>{{address}}</code>。此地址按电台独立设置，Nexus 重新配置该电台时连接会短暂中断。",
+      "previous": "驾驶一个特定的收音机,即<em>没有</em>活动地址:使用其直接地址<code>{{address}}</code>(per-radio;每当Nexus重新配置无线电时,这个链接都会短暂下降).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.foreignPtt.label",
+      "english": "Other programs may key transmit",
+      "chinese": "允许其他程序控制发射",
+      "previous": "其他程序可能按键传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.foreignPtt.hint",
+      "english": "On: a shared program (WSJT-X, VarAC) can key the rig, exactly as it could when it owned the CAT cable — every Nexus transmit safeguard still applies. Off: shared programs tune and read but never transmit.",
+      "chinese": "开启后，共享程序（WSJT-X、VarAC）可像直接使用 CAT 线时一样触发电台发射，但 Nexus 的所有发射保护仍然生效。关闭时，共享程序只能调频和读取状态，不能发射。",
+      "previous": "有关:一个共享程序(WSJT-X,VarAC)可以按下钻机的键,正如它拥有钻机时一样。CAT电缆——每个Nexus传输保障仍然适用. 关闭:共享程序调谐并读取,但从不传输.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.label",
+      "english": "Share by TCI",
+      "chinese": "通过 TCI 共享",
+      "previous": "特克斯和凯科斯群岛的份额",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.hint.off",
+      "english": "Off. Turn it on and programs on this computer that speak TCI, such as <b>WSJT-X</b>, <b>JTDX</b>, <b>MSHV</b> and <b>Log4OM</b>, can use the radio through Nexus at the address that appears here.",
+      "chinese": "已关闭。开启后，本机支持 TCI 的程序，如 <b>WSJT-X</b>、<b>JTDX</b>、<b>MSHV</b> 和 <b>Log4OM</b>，可通过此处显示的地址，经 Nexus 使用电台。",
+      "previous": "关. 打开它和这个电脑上的程序 讲TCI,例如<b>WSJT-X 电话</b>, (中文).<b>日德兰</b>, (中文).<b>毛里求斯</b>和<b>日志4OM</b>,可以通过Nexus在此处出现的地址使用收音机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.hint.on",
+      "english": "Programs on this computer connect to this address as they would to an SDR program's TCI server. In WSJT-X and JTDX, pick the rig <em>TCI Client RX1</em> and give it this address as its TCI server. They follow whichever radio is active: they can tune it, switch its sideband and lower its power (never raise it), and they get its receive audio. Only programs on this computer can connect, never another computer and never a web page. Takes effect when you save.",
+      "chinese": "本机程序可像连接 SDR 程序的 TCI 服务器一样连接此地址。在 WSJT-X 和 JTDX 中，选择型号 <em>TCI Client RX1</em>，并填写此 TCI 服务器地址。它们跟随当前使用的电台，可调频、切换边带、降低功率但不能提高，并获取接收音频。仅限本机程序连接，其他电脑和网页均不能连接。保存后生效。",
+      "previous": "这个计算机上的程序连接到这个地址,如同它们连接到一个SDR程序TCI服务器一样. 在WSJT-X和JTDX中,选择钻机<em>TCI 客户端 RX1</em>并将此地址作为TCI服务器。 他们追随任何活跃的收音机:他们可以调谐它,调换它的侧带,降低它的功率(从不提高),他们得到它的接收音频. 只有这个计算机上的程序才能连接,永远不能再有计算机和网页. 保存时生效。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.waiting",
+      "english": "Not listening yet. The address appears here once programs can connect. If you just turned this on, save first.",
+      "chinese": "尚未开始监听，程序可连接后会在此显示地址。若刚开启，请先保存。",
+      "previous": "还没听 一旦程序可以连接,地址就在这里出现. 如果你刚打开这个,先省省吧",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.port.label",
+      "english": "TCI server port",
+      "chinese": "TCI 服务器端口",
+      "previous": "TIC 服务器端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.port.hint",
+      "english": "WSJT-X, JTDX and MSHV look for 40001. A second Nexus window uses the next port, and the address above always shows the one in use. Change it only if another program on this computer already has it.",
+      "chinese": "WSJT-X、JTDX 和 MSHV 默认查找 40001。第二个 Nexus 窗口使用下一端口，上方地址始终显示实际使用值。仅当本机其他程序已占用该端口时才需更改。",
+      "previous": "WSJT-X,JTDX和MSHV寻找40001. 第二个Nexus窗口使用下一个端口,上面的地址总是显示正在使用的端口. 只有计算机上的另一程序已经拥有它时,才能更改它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.tx.label",
+      "english": "Programs on TCI may transmit",
+      "chinese": "允许 TCI 程序发射",
+      "previous": "TCI 上的程序可以传送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.tx.hint",
+      "english": "Off: programs tune and read but never transmit. On: a program may key the radio with its own audio or the radio's microphone while Nexus is on its Phone screen, send CW macros on the CW screen, and Tune. Its own audio goes out only once it has asked for a voice mode (USB, LSB, AM or FM). WSJT-X and JTDX ask for a mode only when it differs from Nexus's, so set to USB while Nexus is already in USB they ask for nothing and are refused. Every Nexus transmit safeguard still applies: TX must be on in Nexus, Stop TX wins and holds, and nothing goes past your licence or your power limits. A program never turns TX on. Set at the station only.",
+      "chinese": "关闭时，程序只能调频和读取状态，不能发射。开启后，Nexus 位于话音页面时，程序可使用自身音频或电台话筒触发发射；位于 CW 页面时可发送 CW 宏，也可执行调谐。程序必须先请求话音模式（USB、LSB、AM 或 FM），其自身音频才会送出。WSJT-X 和 JTDX 仅在模式与 Nexus 不同时才发送请求，因此 Nexus 已为 USB、程序也设为 USB 时，程序不发请求，发射就会被拒绝。Nexus 的全部发射保护仍然生效：必须先在 Nexus 中开启 TX，“停止 TX”优先且保持停止，不能超出执照权限或功率限制。程序本身不会开启 TX。仅可在电台端设置。",
+      "previous": "关闭:程序调谐并读取但从不传输. 当Nexus在手机屏幕上时 程序可以用自己的音频或收音机按键CW宏显示CW和图纳。 其自己的音频仅在要求语音模式(USB,LSB,AM或FM)时才会发出. WSJT-X和JTDX只有在与Nexus不同时才要求模式,所以设定为USB,而Nexus已经在USB中了,他们要求什么也不要求,被拒绝. 每个Nexus传输保障仍然适用:TX必须在Nexus上,停止TX赢得并持有,没有任何东西会超过你的许可证或你的权力限制. 一个程序永远不会打开TX. 仅设于车站.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.tx.slotTimed",
+      "english": "FT8, FT4 and other slot-timed modes may not transmit through TCI yet. Nexus refuses a program's digital transmissions until the delay it adds to their timing has been measured.",
+      "chinese": "FT8、FT4 等按时隙发射的模式暂不支持通过 TCI 发射。测量清楚此通道引入的时序延迟前，Nexus 会拒绝程序的数字模式发射。",
+      "previous": "FT8, (中文).FT4而其他时档模式则可能尚未通过TCI传输. Nexus拒绝一个程序的数字传输,直到它增加了其时间的延迟被测量.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.cw.label",
+      "english": "CW macros from programs",
+      "chinese": "接收程序的 CW 宏",
+      "previous": "CW来自程序的宏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.cw.hint",
+      "english": "A logger's TCI keyer (Log4OM, 5MContest) sends its CW macros through Nexus, on the CW screen only, and only while programs may transmit. Any program can stop the CW.",
+      "chinese": "日志软件的 TCI 键控器（如 Log4OM、5MContest）可通过 Nexus 发送 CW 宏，但仅限 CW 页面，且须允许程序发射。任何程序均可停止 CW 发送。",
+      "previous": "记录器的 TCI 密钥( Log4OM, 5MContest) 发送它CW通过 Nexus 的宏CW只有屏幕,而且只有在程序可以传输时。 任何程序都可以停止CW。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.spots.label",
+      "english": "Spots from programs",
+      "chinese": "接收程序的通报",
+      "previous": "程序点数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.spots.hint",
+      "english": "Spots a program sends show on Nexus's band map and in the Phone and CW screens' band activity. A click on one only tunes Nexus, and a click on a spot in Nexus is passed back to the programs. A spot or a click never transmits.",
+      "chinese": "程序发送的通报会显示在 Nexus 频段图及话音和 CW 页面的频段活动中。点击通报只会让 Nexus 调频；在 Nexus 中点击通报，也会将操作传回程序。通报及点击操作均不会触发发射。",
+      "previous": "在Nexus的乐队地图上 和电话里CW屏幕的乐队活动。 点击一个唯一的调子Nexus,在Nexus的某个点上点击一个调子会传回程序. 点或点击从不传输.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.programs.label",
+      "english": "Programs connected",
+      "chinese": "已连接的程序",
+      "previous": "已连接的程序",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.programs.none",
+      "english": "No program is connected.",
+      "chinese": "当前没有程序连接。",
+      "previous": "没有程序连接 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.program.name",
+      "english": "Connection {{id}}",
+      "chinese": "连接 {{id}}",
+      "previous": "连接{{id}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.program.audio",
+      "english": "Receiving audio",
+      "chinese": "正在接收音频",
+      "previous": "接收音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.program.keyed",
+      "english": "Transmitting",
+      "chinese": "正在发射",
+      "previous": "正在发射",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.program.refused",
+      "english": "Last refused: {{why}}",
+      "chinese": "最近一次拒绝原因：{{why}}",
+      "previous": "最后拒绝 :{{why}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.disconnect.action",
+      "english": "Disconnect",
+      "chinese": "断开连接",
+      "previous": "断开连接",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.disconnect.title",
+      "english": "Close this program's connection. Anything it is transmitting stops first.",
+      "chinese": "关闭此程序的连接。若它正在发射，会先停止发射。",
+      "previous": "关闭此程序的连接 。 任何它发送的先停止。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.transmit.tciServer.disconnect.failed",
+      "english": "Nexus could not disconnect the program",
+      "chinese": "Nexus 无法断开此程序的连接",
+      "previous": "Nexus 无法断开程序",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.legend",
+      "english": "Digital (FT8/FT4)",
+      "chinese": "数字模式（FT8/FT4）",
+      "previous": "数字FT8/FT4) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.logging.title",
+      "english": "Logging Behavior",
+      "chinese": "日志记录方式",
+      "previous": "日志行为",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.autoLog.label",
+      "english": "Auto-log QSOs",
+      "chinese": "自动记录交信",
+      "previous": "自动日志 QSOs",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.autoLog.hint",
+      "english": "Automatically log completed contacts to the ADIF logbook.",
+      "chinese": "将已完成的交信自动写入 ADIF 日志。",
+      "previous": "自动登录已完成的联系人到ADIF日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.promptToLog.label",
+      "english": "Prompt before logging",
+      "chinese": "记录前提示",
+      "previous": "登录前提示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.promptToLog.hint",
+      "english": "Show a confirm-and-edit popup when a QSO completes instead of logging silently (WSJT-X “Prompt me to log QSO”). No effect unless Auto-log is on.",
+      "chinese": "QSO 完成时弹出确认与编辑窗口，而非直接入志（对应 WSJT-X 的“Prompt me to log QSO”）。仅在开启自动记录时生效。",
+      "previous": "当出现时显示确认和编辑QSO完成而非静态记录( WSJT- X ) “ 引导我登录QSO除非自动日志打开,否则无效。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.reportsToComments.label",
+      "english": "dB reports to comments",
+      "chinese": "将 dB 信号报告写入附言",
+      "previous": "dB 提交评论意见的报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.reportsToComments.hint",
+      "english": "Write the exchanged reports into the logged QSO’s comment, e.g. “FT8  Sent: -07  Rcvd: -12” — the same format WSJT-X uses.",
+      "chinese": "将交换的信号报告写入 QSO 的附言，例如“FT8  Sent: -07  Rcvd: -12”，格式与 WSJT-X 一致。",
+      "previous": "将交换的报告写入日志QSO其评论,例如: \"FT8发送: -07 Rcvd: -12\" ——相同的格式为WSJT-X.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.preferRrr.label",
+      "english": "Roger with RRR (not RR73)",
+      "chinese": "使用 RRR 确认（代替 RR73）",
+      "previous": "罗杰与RRR(不是RR73)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.preferRrr.hint",
+      "english": "Acknowledge the final report with a bare RRR (partner still owes a 73) instead of the combined RR73. Off = RR73 (modern FT8 practice).",
+      "chinese": "仅发送 RRR 确认最后收到的报告，对方仍需回复 73；不使用将确认与结束合并的 RR73。关闭时使用 RR73，符合当前 FT8 常用方式。",
+      "previous": "承认最后报告中包含一个赤裸的RRR(合作伙伴仍欠73个伙伴),而不是合并的RR73。 关闭=RR73(现代)FT8(见A/CN.9/WG.III/WP.3,第3段)。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.clearDxAfterLog.label",
+      "english": "Clear DX call after logging",
+      "chinese": "记录后清除 DX 呼号",
+      "previous": "登录后清除 DX 呼叫",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.clearDxAfterLog.hint",
+      "english": "Wipe the DX Call / DX Grid fields once a contact is logged (WSJT-X option, off by default).",
+      "chinese": "交信入志后清空 DX 呼号／DX 网格字段。对应 WSJT-X 选项，默认关闭。",
+      "previous": "一旦一个联系人被登录( WSJT- X 选项, 默认关闭) , 擦除 DX 调用 / DX 网格字段 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.decoder.title",
+      "english": "Decoder",
+      "chinese": "解码器",
+      "previous": "解码器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.decodeDepth.label",
+      "english": "Decode depth",
+      "chinese": "解码深度",
+      "previous": "解码深度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.decodeDepth.fast",
+      "english": "Fast",
+      "chinese": "快速",
+      "previous": "快",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "快速"
+        }
+      ]
+    },
+    {
+      "id": "settings.digital.decodeDepth.normal",
+      "english": "Normal",
+      "chinese": "常规",
+      "previous": "正常",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "正常"
+        }
+      ]
+    },
+    {
+      "id": "settings.digital.decodeDepth.deep",
+      "english": "Deep",
+      "chinese": "深度",
+      "previous": "深度",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "深度"
+        }
+      ]
+    },
+    {
+      "id": "settings.digital.decodeDepth.hint",
+      "english": "Deep finds the most signals (WSJT-X default); Fast saves CPU on old hardware. All Decoder settings drive the native decoder — on a WSJT-X UDP source (companion mode) decodes arrive already made and none of them apply.",
+      "chinese": "深度解码可发现最多信号，为 WSJT-X 默认；快速解码可降低旧设备的 CPU 占用。所有解码器设置仅作用于原生解码器。采用 WSJT-X UDP 来源（配合运行模式）时，收到的已是解码结果，这些设置均不生效。",
+      "previous": "深处找到最多的信号(WSJT-X默认); 在旧硬件上快速保存CPU. 所有解码器设置都会驱动本地解码器——在一个WSJT-X UDP源(company mode)上解码器已经到达,没有一种应用.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.passband.label",
+      "english": "Decoder passband (Hz)",
+      "chinese": "解码通带（Hz）",
+      "previous": "解码器传波段Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.passband.low",
+      "english": "F low",
+      "chinese": "频率下限",
+      "previous": "低级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.passband.low.aria",
+      "english": "Decoder F low (Hz)",
+      "chinese": "解码频率下限（Hz）",
+      "previous": "解码器F低(Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.passband.high",
+      "english": "F high",
+      "chinese": "频率上限",
+      "previous": "高频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.passband.high.aria",
+      "english": "Decoder F high (Hz)",
+      "chinese": "解码频率上限（Hz）",
+      "previous": "解码器F高(Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.passband.hint",
+      "english": "The decoder's search range. Default 200–2900 Hz. Raise F high toward 4000 Hz to decode stations calling above ~2.9 kHz (common on crowded FT8 bands); lower the range to focus on a narrow filter or dodge strong close-in QRM.",
+      "chinese": "解码器搜索的频率范围，默认 200–2900 Hz。将上限提高至接近 4000 Hz，可解码约 2.9 kHz 以上呼叫的电台，在拥挤的 FT8 频段中很常见。缩小范围可配合窄滤波器，或避开附近强信号干扰。",
+      "previous": "解码器的搜索范围. 默认 200 - 2900 Hz将F提升到4000 Hz 以解码调用 ~2.9 以上的站点 kHz (常见于拥挤) FT8 bands); 降低范围以聚焦于一个狭窄的过滤器或躲避强烈的近身QRM.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.apDecode.label",
+      "english": "A-priori (AP) decoding — FT8",
+      "chinese": "先验（AP）解码 — FT8",
+      "previous": "优先(AP)解码——FT8",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.apDecode.hint",
+      "english": "Retry marginal signals against hypotheses built from your call, the DX call and the QSO state (WSJT-X \"Enable AP\", on by default) — including the cross-cycle replay of last cycle's QSOs. FT8 only: FT4's AP is part of its Normal/Deep depth and has no separate switch.",
+      "chinese": "根据本台呼号、对方呼号和 QSO 状态构建假设，重新尝试解码临界弱信号（对应 WSJT-X 的“Enable AP”，默认开启），也包括跨周期重新处理上一周期交信。仅限 FT8；FT4 的 AP 属于常规／深度解码，无独立开关。",
+      "previous": "对照您调用、 DX 调用和  QSO  状态( N) WSJT-X  \"Enable AP\",默认情况下)——包括上一个周期的交叉循环重播. QSOs。 。 。  FT8  仅限:  FT4 'AP 属于它的正常/深度且没有单独的开关.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.apCqOnly.label",
+      "english": "AP: CQ hypothesis only",
+      "chinese": "AP：仅使用 CQ 假设",
+      "previous": "AP:仅CQ假说",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.apCqOnly.hint",
+      "english": "Limit AP to the \"CQ\" guess — no MyCall/DxCall hypotheses (FT8 and FT4). WSJT-X switches to this by itself after 5 minutes without transmitting, as a guard against stale-context false decodes; here it is your explicit choice. Off = full AP, the stock behavior.",
+      "chinese": "仅使用“CQ”假设，不使用 MyCall／DxCall 假设，适用于 FT8 和 FT4。WSJT-X 在 5 分钟未发射后会自动切换至此方式，以防过时上下文导致误解码；此处由你明确选择。关闭时使用完整 AP，为默认行为。",
+      "previous": "将AP限制在\"CQ\"猜想中——没有 MyCall/DxCall假设(FT8和FT4) (中文(简体) ). WSJT-X在5分钟后自行切换,不进行传输,以防范陈旧的文本虚假解码;这里是您的明确选择. 关闭=全AP,股票行为.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.singleDecode.label",
+      "english": "Single decode",
+      "chinese": "单信号解码",
+      "previous": "单独解码",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "单独解码"
+        }
+      ]
+    },
+    {
+      "id": "settings.digital.singleDecode.hint",
+      "english": "Decode only within ±25 Hz of your green RX marker (the same one-station window WSJT-X uses for a double-click re-decode) instead of the whole passband — isolates one weak station and saves CPU. FT8 and FT4 only: 50 Hz is narrower than a single JT65, Q65 or MSK144 signal, so those modes keep the full passband. Applies while the RX marker sits inside the passband above; off = full passband, the stock behavior.",
+      "chinese": "仅解码绿色 RX 标记两侧 ±25 Hz 内的信号，而非整个通带。这与 WSJT-X 双击重新解码的单台窗口相同，可集中解码一个弱电台，并降低 CPU 占用。仅适用于 FT8 和 FT4：50 Hz 比单个 JT65、Q65 或 MSK144 信号还窄，因此这些模式仍解码完整通带。仅当 RX 标记位于上方设置的通带内时生效；关闭则使用完整通带，为默认行为。",
+      "previous": "只在±25内解码 Hz 用于双击重解码的同一个单站窗口 WSJT-X ,而不是整个通过带——隔离一个弱站并保存CPU。 FT8 和 FT4 仅限: 50 Hz 窄于一个单一的JT65,Q65或MSK144信号,因此这些模式保留了全传波段. 应用时RX标记坐在上面的通过带内;关闭=全通过带,股票行为.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.dxpedition.label",
+      "english": "DXpedition mode",
+      "chinese": "远征台模式",
+      "previous": "DX速率模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.dxpedition.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "settings.digital.dxpedition.hint",
+      "english": "Off = normal FT8/FT4 operation. Hound = DXpedition pile-up discipline (calls above 1000 Hz; your report auto-moves to the Fox's frequency).",
+      "chinese": "关闭时按常规 FT8/FT4 方式操作。Hound（猎犬）使用远征台集中呼叫规则：在 1000 Hz 以上呼叫，发送报告时自动移至 Fox（狐狸）频率。",
+      "previous": "关闭=正常 FT8/FT4 操作。 猎犬 = DXpedition 堆积纪律(电话1 000以上) Hz你的报告自动移动到福克斯的频率。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.housekeeping.title",
+      "english": "Station Housekeeping",
+      "chinese": "日常电台管理",
+      "previous": "站房管理",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.journeyStreak.label",
+      "english": "Journey — track a weekly streak",
+      "chinese": "旅程：记录连续活跃周数",
+      "previous": "旅程——每周追踪一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.journeyStreak.hint",
+      "english": "Off by default. A gentle “weeks on the air” counter on the Journey board — never a daily streak, never a penalty for a break.",
+      "chinese": "默认关闭。在旅程看板中温和地记录活跃周数，不要求每天操作，中断也不会有惩罚。",
+      "previous": "默认关闭。 旅行板上一个温和的“播出周”计数器——从来不是每天的节目,也绝不是休息的惩罚。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.beacon.label",
+      "english": "Beacon — announce presence (CQ)",
+      "chinese": "信标呼叫：用 CQ 宣告在线",
+      "previous": "灯塔——宣布存在(CQ)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.beacon.hint",
+      "english": "Off = passive (hunt & pounce): Nexus listens and only transmits when you act. On = periodically calls CQ to announce you're on frequency.",
+      "chinese": "关闭为被动操作（搜寻与追呼）：Nexus 保持收听，只在你操作时发射。开启后，定期呼叫 CQ，表明本台正在此频率上。",
+      "previous": "Off = 被动(hunt & pounce):Nexus听,只在行动时进行传输. On=定期拨打CQ,宣布你进入频率.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.harq.label",
+      "english": "IR-HARQ — combine retransmissions",
+      "chinese": "IR-HARQ：合并重传信号",
+      "previous": "IR-HARQ——结合再发送",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

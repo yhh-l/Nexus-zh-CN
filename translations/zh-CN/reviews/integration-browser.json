@@ -1,0 +1,28 @@
+{
+  "checkedAt": "2026-10-22T10:05:33.209Z",
+  "results": [
+    {
+      "surface": "production LAN",
+      "width": 1024,
+      "height": 768,
+      "heading": "此网络上的电台",
+      "horizontalOverflow": false
+    },
+    {
+      "surface": "production LAN",
+      "width": 1366,
+      "height": 768,
+      "heading": "此网络上的电台",
+      "horizontalOverflow": false
+    },
+    {
+      "surface": "production splash",
+      "count": "已处理 12 / 34 条交信记录"
+    },
+    {
+      "surface": "production LAN",
+      "switchBackToEnglish": true
+    }
+  ],
+  "scope": "Browser frontend only; no native backend or Windows installer validation."
+}

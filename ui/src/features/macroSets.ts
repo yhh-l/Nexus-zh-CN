@@ -135,6 +135,7 @@ export function macroEditShortcut(key: string): string {
  *  `macroSets.test.ts` holds them to: German says "beenden" as often as "stoppen"
  *  ("Mithören beenden" is Stop listening), and Japanese uses 終了 for a Stop. */
 export const STOP_WORDS: Record<string, readonly string[]> = {
+  'zh-CN': ['停止', '取消', '中止', '终止', '结束', '退出'],
   en: ['stop', 'halt', 'abort', 'cancel', 'esc', 'escape'],
   de: ['stopp', 'stoppen', 'halt', 'anhalten', 'abbrechen', 'abbruch', 'beenden'],
   es: ['parar', 'pare', 'parada', 'detener', 'detén', 'abortar', 'anular', 'cancelar', 'dejar de'],

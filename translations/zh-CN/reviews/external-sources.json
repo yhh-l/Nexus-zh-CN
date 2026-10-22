@@ -1,0 +1,46 @@
+{
+  "independentHumanReview": false,
+  "sources": [
+    {
+      "kind": "official-specification",
+      "url": "https://adif.org/314/ADIF_314.htm",
+      "terms": [
+        "COMMENT",
+        "NOTES",
+        "RST_SENT",
+        "RST_RCVD",
+        "MY_SIG_INFO",
+        "SIG_INFO",
+        "SOTA_REF",
+        "CREDIT_GRANTED",
+        "CREDIT_SUBMITTED"
+      ],
+      "bytes": 559788,
+      "sha256": "aec24e955726fe987f1a6e7a6ff31fd790280c9dfa8c9fe9c8e16e0d75e536a2"
+    },
+    {
+      "kind": "official-contest-rules",
+      "url": "https://www.arrl.org/sweepstakes",
+      "terms": [
+        "Precedence",
+        "Check",
+        "Serial Number",
+        "ARRL/RAC Section"
+      ],
+      "bytes": 50262,
+      "sha256": "da0f9c47e55af606fbc9b134cc21b235246e74b81cfdd11ea4aba496b8a055b7"
+    },
+    {
+      "kind": "extracted-upstream-translation",
+      "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+      "bytes": 280110,
+      "sha256": "d41bed224eb82d6ca12e61b5652a00b481ad4886a3aee85e5b5061bef5bc8857"
+    },
+    {
+      "kind": "extracted-upstream-translation",
+      "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+      "bytes": 255836,
+      "sha256": "a41f50183b55212304f18135f4f9ce1303fdd7daa853e63eb0e8024fc45081cd"
+    }
+  ]
+}

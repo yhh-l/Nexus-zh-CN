@@ -1,0 +1,37 @@
+{
+  "label": "all-languages",
+  "checkedAt": "2026-10-22T09:50:01.904Z",
+  "cpuThrottle": 4,
+  "cacheDisabled": true,
+  "samples": [
+    {
+      "heading": "此网络上的电台",
+      "domContentLoadedMs": 160.79999995231628,
+      "jsDecodedBytes": 4986615,
+      "retainedJsHeapBytes": 7467492,
+      "scriptDurationMs": 43.544
+    },
+    {
+      "heading": "此网络上的电台",
+      "domContentLoadedMs": 104.89999997615814,
+      "jsDecodedBytes": 4986615,
+      "retainedJsHeapBytes": 7467452,
+      "scriptDurationMs": 33.308
+    },
+    {
+      "heading": "此网络上的电台",
+      "domContentLoadedMs": 104.70000004768372,
+      "jsDecodedBytes": 4986615,
+      "retainedJsHeapBytes": 7467468,
+      "scriptDurationMs": 31.287000000000003
+    }
+  ],
+  "medians": {
+    "domContentLoadedMs": 104.89999997615814,
+    "jsDecodedBytes": 4986615,
+    "retainedJsHeapBytes": 7467468,
+    "scriptDurationMs": 33.308
+  },
+  "totalBuiltJsBytes": 11880909,
+  "scope": "Chrome production LAN entry on this Mac, three runs, retained JS heap after GC. No Windows, native memory, DSP, or real low-spec PC measurements."
+}

@@ -1,0 +1,1728 @@
+{
+  "batch": 23,
+  "range": [
+    4401,
+    4600
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 176,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 9,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "crates/tempo-app/src/settings.rs"
+  ],
+  "rows": [
+    {
+      "id": "settings.radios.remove.title.blocked",
+      "english": "This is your operating radio — make another radio active first, then remove this one.",
+      "chinese": "这是当前操作的电台。请先将另一台设为当前电台，再移除此台。",
+      "previous": "这是您的操作无线电——先让另一个无线电活动,然后移除这个.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.card.meta",
+      "english": "{{rig}} · CAT {{cat}}{{flex}} · audio {{audio}} · CAT helper port {{port}}",
+      "chinese": "{{rig}} · CAT {{cat}}{{flex}} · 音频 {{audio}} · CAT 辅助服务端口 {{port}}",
+      "previous": "{{rig}}* 妇女CAT {{cat}}{{flex}}• 音频{{audio}}* 妇女CAT帮助端口{{port}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.card.meta.flex",
+      "english": " · Flex radio {{ip}}",
+      "chinese": " · Flex 电台 {{ip}}",
+      "previous": "* 弹性无线电{{ip}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.card.omnirig",
+      "english": "Set up in OmniRig",
+      "chinese": "在 OmniRig 中配置",
+      "previous": "设置于 OmniRig",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.card.noModel",
+      "english": "No rig model set",
+      "chinese": "未设置电台型号",
+      "previous": "没有钻机型号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.card.noAddress",
+      "english": "no address",
+      "chinese": "无地址",
+      "previous": "无地址",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.card.noPort",
+      "english": "no COM port",
+      "chinese": "未设置 COM 端口",
+      "previous": "无COM 端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.card.audioDefault",
+      "english": "default",
+      "chinese": "默认",
+      "previous": "默认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.bands.hint",
+      "english": "Covers bands (for auto band-routing; none = covers all):",
+      "chinese": "覆盖频段（用于自动分派电台；不选表示覆盖全部）：",
+      "previous": "封面带(用于自动带路由;无=覆盖全部):",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.add.action",
+      "english": "+ Add radio",
+      "chinese": "＋ 添加电台",
+      "previous": "+ 添加无线电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.hint.multi",
+      "english": "The Rig / CAT + Audio settings below edit “{{name}}”. Each radio has its OWN CAT + audio — click “Edit” on any radio to configure it WITHOUT changing the one you're operating on; “Make active” swaps your operating radio. These Rig / CAT controls are station-wide instead, so changing one changes every radio: “Interface keys RTS on the CAT port”, “Split operation”, “Follow the radio's split”, “Wheel tuning sensitivity”, and under Advanced, “Sharing port”, “Serial handshake” and “Keying line at startup”.",
+      "chinese": "下方的电台／CAT 与音频设置用于编辑“{{name}}”。每台电台都有独立的 CAT 和音频配置。点击任一电台的“编辑”即可配置，不切换当前操作电台；“设为当前电台”才会切换设备。但以下电台／CAT 控制项属于全局设置，更改后影响所有电台：“接口通过 CAT 端口的 RTS 线控制发射”“异频操作”“跟随电台异频设置”“滚轮调频灵敏度”，以及高级设置中的“共享端口”“串口握手”和“启动时的键控线状态”。",
+      "previous": "规则/CAT+ 编辑下方的音频设置“{{name}}每个电台都有自己的电台。CAT+ 音频- 点击任何收音机的“ 编辑” 来配置, 不改变您正在操作的收音机; “ make active” 互换运行中的收音机 。 这些 Rig /CAT控制是全台的,因此,改变一个会改变每个无线电台:“CAT在Advanced下,“共享端口”、“连续握手”和“启动时的Keying线”。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.hint.single",
+      "english": "Run two rigs at once — e.g. an HF radio plus a VHF/UHF radio on a different antenna? Add a second radio; you can then Edit either one without interrupting the one you are operating on. Newcomers can ignore this.",
+      "chinese": "需要同时使用两台电台，例如短波电台加一台使用另一副天线的 VHF/UHF 电台？添加第二台后，即可分别编辑配置，不中断当前操作的电台。初次使用可忽略此项。",
+      "previous": "一次运行两台钻机——例如,一个高频无线电台和一个不同天线上的甚高频/超高频无线电台? 添加第二个收音机;然后可以在不中断操作时编辑任一收音机。 新人可以忽略这一点。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.simultaneous.aria",
+      "english": "Run both radios at the same time",
+      "chinese": "同时运行两台电台",
+      "previous": "同时运行两个收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.simultaneous.hint",
+      "english": "<b>Run both radios at the same time</b> — launch Nexus and it asks which radio this window drives; open a second window for the other. Both share one logbook. Leave off if you only ever use one radio at a time (you can still switch between them from the top bar).",
+      "chinese": "<b>同时运行两台电台</b>：启动 Nexus 后，会询问此窗口要控制哪台电台；可另开一个窗口控制另一台，两者共用同一本日志。如果每次只使用一台电台，请保持关闭，仍可通过顶部栏切换设备。",
+      "previous": "<b>同时运行两个收音机</b>—— 启动 Nexus 并询问这个窗口驱动的收音机是哪个; 为另一个打开第二个窗口. 两人共用一个日志。 如果每次只使用一台收音机(您仍可以从顶端的栏杆间切换),请离开.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.intro",
+      "english": "<b>Route by band AND mode</b> — band coverage above sends a whole band to one radio. Add rules here when TWO radios share a band and the MODE decides which one: 2 m FT8 to the digital rig, 2 m FM and APRS to the FM rig. Rules are checked top to bottom and the FIRST match wins; anything no rule matches falls back to band coverage, then to the default radio.",
+      "chinese": "<b>按频段和模式分派电台</b>：上方的频段覆盖设置会将整个频段交给一台电台。当两台电台共用某个频段、需按模式选择设备时，可在此添加规则，例如将 2 米 FT8 分派给数字通信电台，将 2 米 FM 和 APRS 分派给 FM 电台。规则自上而下检查，以首条匹配规则为准；没有匹配规则时，先按频段覆盖设置分派，再使用默认电台。",
+      "previous": "<b>按带和模式划分的路线</b> ——上面的乐队报道向一个电台发送整支乐队. 当两台收音机共用一个波段,而MODE决定哪个: 2米时,在此添加规则 FT8 2米调频和 APRS 去调频平台 规则从上到下检查, FIRST 比赛获胜; 任何规则匹配都会回到波段覆盖, 然后是默认的收音机 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.empty",
+      "english": "No rules — routing is by band only (today's behavior).",
+      "chinese": "尚无规则，当前仅按频段分派电台。",
+      "previous": "没有规则——路由只通过乐队(今天的行为).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.mode.aria",
+      "english": "Rule {{n}} mode",
+      "chinese": "规则 {{n}} 的模式",
+      "previous": "规则{{n}}模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.mode.any",
+      "english": "Any mode",
+      "chinese": "任意模式",
+      "previous": "任意模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.satellite",
+      "english": "Satellite",
+      "chinese": "卫星",
+      "previous": "卫星",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "卫星"
+        }
+      ]
+    },
+    {
+      "id": "settings.routing.rule.satellite.title",
+      "english": "Satellite passes only: picking a transponder checks Satellite rules before the mode rules, so the FM & APRS rule can keep terrestrial packet while satellites go to the sat rig. Terrestrial tunes never match this rule.",
+      "chinese": "仅适用于卫星过境：选择转发器时，先检查卫星规则，再检查模式规则。因此 FM 与 APRS 规则仍可用于地面分组通信，卫星通信则交给专用电台。地面通信调频不会匹配此规则。",
+      "previous": "卫星仅通过:在模式规则之前选择转发器检查卫星规则,因此调频 &APRS规则可以保存地面包 当卫星去卫星平台。 地面曲调与这个规则不相符.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.radio.aria",
+      "english": "Rule {{n}} radio",
+      "chinese": "规则 {{n}} 的电台",
+      "previous": "规则{{n}}电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.up.title",
+      "english": "Check this rule earlier (first match wins)",
+      "chinese": "提高此规则的优先级（首条匹配规则生效）",
+      "previous": "早点检查此规则( 第一局获胜)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.up.aria",
+      "english": "Move rule {{n}} up",
+      "chinese": "上移规则 {{n}}",
+      "previous": "移动规则{{n}}上来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.down.title",
+      "english": "Check this rule later",
+      "chinese": "降低此规则的优先级",
+      "previous": "稍后检查此规则",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.down.aria",
+      "english": "Move rule {{n}} down",
+      "chinese": "下移规则 {{n}}",
+      "previous": "移动规则{{n}}下来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.remove.aria",
+      "english": "Remove rule {{n}}",
+      "chinese": "移除规则 {{n}}",
+      "previous": "删除规则{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.summary",
+      "english": "{{bands}} · {{mode}} → {{radio}}",
+      "chinese": "{{bands}} · {{mode}} → {{radio}}",
+      "previous": "{{bands}}* 妇女{{mode}}→{{radio}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.summary.anyBand",
+      "english": "Any band",
+      "chinese": "任意频段",
+      "previous": "任何乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.summary.anyMode",
+      "english": "any mode",
+      "chinese": "任意模式",
+      "previous": "任何模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rule.summary.radio",
+      "english": "Radio {{id}}",
+      "chinese": "电台 {{id}}",
+      "previous": "无线电{{id}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.add.action",
+      "english": "+ Add routing rule",
+      "chinese": "＋ 添加分派规则",
+      "previous": "+ 添加路由规则",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.default.label",
+      "english": "Everything else",
+      "chinese": "其他未匹配情况",
+      "previous": "其他的都一样",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.default.aria",
+      "english": "Default radio",
+      "chinese": "默认电台",
+      "previous": "默认收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.default.stay",
+      "english": "Stay on the current radio",
+      "chinese": "保持使用当前电台",
+      "previous": "保持当前收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.test.label",
+      "english": "Test a band + mode",
+      "chinese": "测试频段与模式组合",
+      "previous": "测试带+模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.test.band.aria",
+      "english": "Test band",
+      "chinese": "测试频段",
+      "previous": "测试带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.test.mode.aria",
+      "english": "Test mode",
+      "chinese": "测试模式",
+      "previous": "测试模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.test.action",
+      "english": "Where would this go?",
+      "chinese": "会分派给哪台？",
+      "previous": "这个会去哪?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.test.result",
+      "english": "{{band}} {{mode}} → <b>{{radio}}</b>",
+      "chinese": "{{band}} {{mode}}→<b>{{radio}}</b>",
+      "previous": "{{band}} {{mode}}→<b>{{radio}}</b>",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.legend",
+      "english": "Profiles",
+      "chinese": "配置方案",
+      "previous": "简介",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.list.label",
+      "english": "Saved profiles",
+      "chinese": "已保存的配置方案",
+      "previous": "已保存配置文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.list.none",
+      "english": "— Select a profile —",
+      "chinese": "— 选择配置方案 —",
+      "previous": "——选择配置文件...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.list.hint",
+      "english": "Switch a whole rig / antenna / CAT / band setup in one move.",
+      "chinese": "一次切换整套电台、天线、CAT 和频段设置。",
+      "previous": "切换整个钻机/天线/CAT乐队设置在一个动作。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.load.action",
+      "english": "Load",
+      "chinese": "加载",
+      "previous": "装入",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.load.title",
+      "english": "Apply this profile — merged onto your current settings. Your callsign, license class, radio roster and sync history never come from a profile, and anything the profile predates keeps its current value.",
+      "chinese": "将此配置方案合并到当前设置。呼号、执照等级、电台列表及同步历史不会从方案导入；方案创建时尚未包含的设置项保留当前值。",
+      "previous": "应用此配置文件 - 合并到您的当前设置上 。 你的呼号,执照课,无线电名册 和同步历史 从来没有来自一个剖面图, 任何剖面图提前保持其当前值。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.delete.action",
+      "english": "Delete",
+      "chinese": "删除",
+      "previous": "删除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "删除"
+        }
+      ]
+    },
+    {
+      "id": "settings.profiles.save.label",
+      "english": "Save current as",
+      "chinese": "将当前设置另存为",
+      "previous": "另存当前为",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.save.placeholder",
+      "english": "e.g. Portable VHF",
+      "chinese": "例如：VHF 便携操作",
+      "previous": "例如,便携式甚高频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.save.action",
+      "english": "Save",
+      "chinese": "保存",
+      "previous": "保存",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        }
+      ]
+    },
+    {
+      "id": "settings.profiles.save.hint",
+      "english": "Snapshots the current settings under a name.",
+      "chinese": "为当前设置命名并保存快照。",
+      "previous": "以名称绘制当前设置。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.legend",
+      "english": "Rig & CAT",
+      "chinese": "电台与 CAT",
+      "previous": "刚性( R)CAT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ptt.label",
+      "english": "PTT Method",
+      "chinese": "PTT 方式",
+      "previous": "PTT 方法",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "PTT 方法"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "PTT 方法"
+        }
+      ]
+    },
+    {
+      "id": "settings.rigControl.ptt.hint",
+      "english": "How transmit is keyed.",
+      "chinese": "控制电台进入发射的方式。",
+      "previous": "如何按键传输 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ptt.cat",
+      "english": "CAT (via rigctld)",
+      "chinese": "CAT（通过 rigctld）",
+      "previous": "CAT(通过刚性)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ptt.rts",
+      "english": "Serial RTS",
+      "chinese": "串口 RTS",
+      "previous": "序列RTS",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ptt.dtr",
+      "english": "Serial DTR",
+      "chinese": "串口 DTR",
+      "previous": "序列 DTR",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ptt.vox",
+      "english": "VOX (no keying)",
+      "chinese": "VOX（不主动键控）",
+      "previous": "VOX( 无键)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.ptt.noCatPtt",
+      "english": "Hamlib has no way to key this radio over CAT. Pick how your interface keys it: VOX if it keys on audio, like a SignaLink, or Serial RTS or Serial DTR if it keys on a serial line.",
+      "chinese": "Hamlib 无法通过 CAT 控制这台电台进入发射。请按接口的触发方式选择：像 SignaLink 这类通过音频触发的接口选 VOX；通过串口控制线触发的接口选“串口 RTS”或“串口 DTR”。",
+      "previous": "Hamlib没有办法把收音机关上CAT。选择您的界面如何按键:VOX如果按键在音频上,如SignaLink,或者序列RTS或序列DTR如果按键在序列线上。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.txAudio.label",
+      "english": "Transmit audio source (CAT PTT)",
+      "chinese": "发射音频来源（CAT PTT）",
+      "previous": "发送音频源( E)CAT PTT) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.txAudio.front",
+      "english": "Front/Mic",
+      "chinese": "前面板／话筒",
+      "previous": "前线/米克",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.txAudio.rear",
+      "english": "Rear/Data",
+      "chinese": "后面板／数据",
+      "previous": "后置/数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.txAudio.hint",
+      "english": "Which of the radio’s audio inputs transmits when Nexus keys it over CAT. <b>Front/Mic</b> is how Nexus has always keyed the radio. <b>Rear/Data</b> keys its data input instead: choose it if your sound card reaches the radio through its rear DATA or ACC jack (where a SignaLink plugs in) or its own USB audio, and the radio sends no audio from Nexus although it does on VOX. The Phone cockpit’s PTT is not affected and keys the radio as it always has. <b>Per radio.</b>",
+      "chinese": "指定 Nexus 通过 CAT 触发发射时，电台采用哪个音频输入。<b>前面板／话筒</b>沿用 Nexus 原有的发射控制方式。<b>后面板／数据</b>改用数据音频输入：如果声卡通过后面板 DATA 或 ACC 插座（如 SignaLink 接入处）或电台内置 USB 音频连接，而且电台使用 VOX 时能发出 Nexus 音频、使用当前方式却没有音频，请选择此项。话音操作界面的 PTT 不受影响，仍按原方式控制发射。<b>按电台分别设置。</b>",
+      "previous": "Nexus 键入时, 收音机的哪些音频输入会传送CAT。 。 。<b>前线/米克</b>Nexus总是对无线电按键<b>后置/数据</b>键入其数据输入:如果您的声音卡通过它的后置DATA或ACC Jack(SignaLink插件在其中)或自己的USB音频到达收音机,选择它,而收音机虽然在VOX上没有发送Nexus的音频. 电话驾驶舱PTT不受影响,并按收音机一直按键。<b>每个电台。</b>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttPort.label",
+      "english": "PTT Serial Port",
+      "chinese": "PTT 串口",
+      "previous": "PTT串行端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttPort.placeholder",
+      "english": "e.g. {{example}} — blank = use the CAT port",
+      "chinese": "例如 {{example}}，留空则使用 CAT 端口",
+      "previous": "譬如说.{{example}}空白 = 使用CAT端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttPort.hint",
+      "english": "COM port your RTS/DTR keying line is on — e.g. an SO2R controller (u2R/MK2R) that routes PTT on its own port, separate from CAT. Leave blank if keying shares the CAT port, which is how a single-cable interface like a Digirig Mobile is wired; CAT keeps working either way. <b>Per radio</b>: each rig on an SO2R box has its own keying port, and this one follows the radio you switch to.",
+      "chinese": "RTS／DTR 键控线所在的 COM 端口。例如 SO2R 控制器（u2R／MK2R）可能使用独立于 CAT 的端口控制 PTT。如果键控与 CAT 共用端口，请留空，Digirig Mobile 等单线接口通常如此连接。无论是否共用端口，CAT 都会继续工作。<b>按电台分别设置</b>：SO2R 控制器上的每台电台都有各自的键控端口，此设置会随当前电台切换。",
+      "previous": "COM 端口您的RTS/DTR 键行在——例如 SO2R 控制器( u2R)/路线(MK2R) PTT 在自己的端口,与 CAT如果按键共享 CAT a. 端口,即像Digirig Mobile这样的单可操作接口的电线; CAT 继续工作 <b>每台无线电</b>: SO2R盒子上的每台钻机都有自己的键入端口,而这一台跟随你切换的收音机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.catRts.label",
+      "english": "Interface keys RTS on the CAT port",
+      "chinese": "接口通过 CAT 端口的 RTS 线控制发射",
+      "previous": "界面密钥 RTS CAT 端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.catRts.hint",
+      "english": "Tick this if your interface keys the radio from the CAT port’s RTS line — a Digirig Mobile and most other one-cable interfaces are wired this way. Nexus then holds RTS down, instead of leaving it up where it puts some rigs into transmit the moment the port opens. <b>If your radio transmits as soon as Nexus starts, this is the setting.</b> Leave it off if a plain serial cable goes straight to the radio: the radio may be using that line for flow control, and taking it away can cost you CAT.",
+      "chinese": "如果接口通过 CAT 端口的 RTS 线触发电台发射，请勾选此项；Digirig Mobile 和大多数其他单线接口采用这种接线。Nexus 会将 RTS 保持在未置位状态，避免端口打开时因 RTS 置位而让某些电台立即发射。<b>如果 Nexus 一启动电台就发射，请检查此设置。</b>若只用普通串口线直连电台，请保持关闭；电台可能将该线用于流量控制，强制改变其状态可能导致 CAT 失效。",
+      "previous": "如果您的界面按下收音机键, 请选中此项CAT端口的RTS线——一个Digirig Mobile和大多数其它的单管接口都用这种方式接线. Nexus然后把RTS拖下水,而不是把它留在它把一些钻机放入传送口打开时的地方.<b>如果Nexus一开始你的无线电就发出,这就是设定.</b>如果有一条普通的连线线直接到无线电台,就别管了:无线电可能用这条线来控制流量,拿走它会花你很多钱CAT。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.label",
+      "english": "Zero-config setup",
+      "chinese": "自动配置",
+      "previous": "零配置设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.action",
+      "english": "Detect my radio",
+      "chinese": "检测本台设备",
+      "previous": "探测我的无线电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.scanning",
+      "english": "Scanning…",
+      "chinese": "正在扫描...",
+      "previous": "正在扫描...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.use",
+      "english": "Use this",
+      "chinese": "使用此设备",
+      "previous": "用这个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.hint",
+      "english": "One scan for everything: USB radios (fills model, port, sound device) AND FlexRadios on the network (fills the SmartSDR CAT config). Review, then Save.",
+      "chinese": "一次扫描 USB 电台和网络上的 FlexRadio：前者填写型号、端口和音频设备，后者填写 SmartSDR CAT 配置。请检查后保存。",
+      "previous": "全部扫描一次:USB收音机(填充模型,端口,声音设备)和网络上的FlexRadio(填充SmartSDR)CAT腾讯网. 检讨,然后保存。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.flex.name",
+      "english": "{{radio}} — network",
+      "chinese": "{{radio}}，网络连接",
+      "previous": "{{radio}}——网络",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.flex.meta",
+      "english": "{{ip}} · via SmartSDR CAT on this PC (slice A, TCP 5002)",
+      "chinese": "{{ip}} · 通过本机 SmartSDR CAT（接收切片 A，TCP 5002）",
+      "previous": "{{ip}} * 通过SmartSDR CAT 在本个人电脑上(Slice A, TCP 5002)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.unknownRadio",
+      "english": "Unknown radio",
+      "chinese": "未知电台",
+      "previous": "未知电台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.civ.isCiv",
+      "english": " · CI-V port — use this one",
+      "chinese": " · CI-V 端口，请使用此端口",
+      "previous": "* CI-V端口——使用这一端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.civ.notCiv",
+      "english": " · second port, not CI-V",
+      "chinese": " · 第二个端口，不支持 CI-V",
+      "previous": "* 第二个港口,而不是CI-V",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.interface",
+      "english": "This is an interface cable, not a radio — pick your rig in <em>Rig Model</em> below. {{note}}",
+      "chinese": "这是接口线，不是电台。请在下方<em>电台型号</em>中选择实际设备。{{note}}",
+      "previous": "这是接口电缆,不是收音机。<em>硬型号</em>见下文。{{note}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.noModel",
+      "english": "⚠ Found the port but not the exact model — normal when the rig sits behind a generic USB bridge chip that reports only its own name (common on Icom, Yaesu, Kenwood, Elecraft, and Xiegu). Pick your rig in <em>Rig Model</em> below, or click <em>Auto-test</em> (it tries the common rigs to find the right port + baud for you).",
+      "chinese": "⚠ 已找到端口，但未识别出具体型号。电台使用通用 USB 桥接芯片时，芯片通常只报告自身名称，因此这种情况很常见，Icom、Yaesu、Kenwood、Elecraft 和 Xiegu 均可能如此。请在下方<em>电台型号</em>中选择设备，或点击<em>自动测试</em>，尝试常见电台以找到正确端口和波特率。",
+      "previous": "QQ找到了端口,但没有找到确切的型号——当钻机坐落在只报告自己名字的通用USB桥芯片(常见于Icom, Yaesu, Kenwood, Elecraft, and Xiegu)后面时是正常的. 捡你的钻井<em>硬型号</em>下面,或单击<em>自动测试</em>(它尝试通用的钻机 寻找正确的端口 + baud for you).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.detect.driverLink",
+      "english": "driver ↗",
+      "chinese": "驱动程序 ↗",
+      "previous": "驱动程序QQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.label",
+      "english": "Rig Model",
+      "chinese": "电台型号",
+      "previous": "硬型号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.filter.placeholder",
+      "english": "Find a rig — type a name or model number",
+      "chinese": "查找电台，输入名称或型号编号",
+      "previous": "找到一个钻机——输入一个名称或型号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.filter.aria",
+      "english": "Filter the rig model list",
+      "chinese": "筛选电台型号列表",
+      "previous": "过滤钻机模型列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.filter.none",
+      "english": "No model matches — clear the box, or enter the model number directly.",
+      "chinese": "没有匹配型号，请清空搜索框，或直接输入型号编号。",
+      "previous": "没有模型匹配——清除框,或者直接输入模型编号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.filter.count::one",
+      "english": "{{count}} model match.",
+      "chinese": "找到 {{count}} 个匹配型号。",
+      "previous": "{{count}}型号匹配。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.filter.count::other",
+      "english": "{{count}} models match.",
+      "chinese": "找到 {{count}} 个匹配型号。",
+      "previous": "{{count}}型号匹配.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.none",
+      "english": "— None —",
+      "chinese": "— 无 —",
+      "previous": "无",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.number.placeholder",
+      "english": "or enter model #",
+      "chinese": "或输入型号编号",
+      "previous": "或输入模式 #",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.number.aria",
+      "english": "Enter a Hamlib rig model number directly",
+      "chinese": "直接输入 Hamlib 电台型号编号",
+      "previous": "直接输入 Hamlib 钻机型号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.showAll.aria",
+      "english": "Show all Hamlib rig models",
+      "chinese": "显示全部 Hamlib 电台型号",
+      "previous": "显示所有 Hamlib 钻机模型",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.showAll.hint",
+      "english": "Show all models{{loading}} — the list above defaults to ~50 curated common rigs; check this for the full Hamlib catalog.",
+      "chinese": "显示所有型号{{loading}}。上方默认列出约 50 种精选常用电台，勾选后显示完整的 Hamlib 目录。",
+      "previous": "显示所有模型{{loading}}——上面的列表默认为~50 曲折的普通钻机;检查此为完整的Hamlib目录.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.showAll.loading",
+      "english": " (loading…)",
+      "chinese": "（正在加载…）",
+      "previous": "(装弹... )",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigModel.hint",
+      "english": "Hamlib rig model. Not listed? Type its model number directly — Hamlib may still support it even without a friendly name here.",
+      "chinese": "Hamlib 电台型号。未列出时可直接输入型号编号；即使此处没有显示易读名称，Hamlib 仍可能支持该设备。",
+      "previous": "哈姆利布钻机模型. 未列出? 直接输入其型号——即使这里没有友好的名字,Hamlib仍然可能支持它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.label",
+      "english": "Connection",
+      "chinese": "连接",
+      "previous": "连接",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.serial",
+      "english": "Serial (USB / COM port)",
+      "chinese": "串口（USB／COM 端口）",
+      "previous": "串行( USB / COM 端口)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.network",
+      "english": "Network (host:port — SDR software, or a remote rig)",
+      "chinese": "网络（主机:端口，用于 SDR 软件或远程电台）",
+      "previous": "网络(主机:港口——特别提款权软件,或远程钻机)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.icomlan",
+      "english": "Icom network (LAN / Wi-Fi) — Beta",
+      "chinese": "Icom 网络（LAN／Wi-Fi），测试版",
+      "previous": "Icom网络(局域网/Wi-Fi)——Beta.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.hint",
+      "english": "<b>Beta: receive and control only.</b> Nexus does not transmit on this connection, and carries no audio over it yet. On the radio: Network Control ON (it takes effect after a restart) and CI-V Transceive ON. The radio takes one network program at a time, so close wfview or RS-BA1 first. LAN and Wi-Fi only: from another network, use a VPN.",
+      "chinese": "<b>测试版：仅接收和控制。</b>Nexus 不会通过此连接发射，目前也不传输音频。请在电台上开启 Network Control（重启后生效）和 CI-V Transceive。电台一次只允许一个网络程序连接，请先关闭 wfview 或 RS-BA1。仅限 LAN 和 Wi-Fi；从其他网络访问时请使用 VPN。",
+      "previous": "<b>Beta:只接收和控制.</b>Nexus不在此连接上传输, 也没有带任何音频。 在收音机上:网络控制ON(在重启后生效)和CI-V Transceive ON. 电台一次取一个网络节目,如此接近wfview或RS-BA1先. 仅局域网和Wi-Fi:来自另一个网络,使用VPN.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.host.label",
+      "english": "Radio address",
+      "chinese": "电台地址",
+      "previous": "无线电地址",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.host.hint",
+      "english": "The radio's own IPv4 address on your network. On an IC-7760 it is <b>IP Address (LAN)</b> in MENU ▸ SET ▸ Network.",
+      "chinese": "电台在当前网络中的 IPv4 地址。IC-7760 上可在 MENU ▸ SET ▸ Network 中查看 <b>IP Address (LAN)</b>。",
+      "previous": "电台自己的IPv4地址 在你的网络。 在一架IC -7760飞机上<b>IP 地址 (局域网)</b>(原始内容存档于2018-09-26). in MENU QQ SET ▸ Network.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.user.label",
+      "english": "Network user",
+      "chinese": "网络用户名",
+      "previous": "网络用户",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.user.hint",
+      "english": "A network user set up on the radio (Network User1 or User2 in its network Remote Settings), 16 characters at most.",
+      "chinese": "电台上设置的网络用户，最多 16 个字符，可在网络 Remote Settings 中的 Network User1 或 User2 设置。",
+      "previous": "无线电上设置的网络用户(网络用户1或用户2在其网络远程设置中),最多16个字符.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.label",
+      "english": "Network password",
+      "chinese": "网络密码",
+      "previous": "网络密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.placeholder",
+      "english": "Type it, then Set",
+      "chinese": "输入后点击设置",
+      "previous": "输入,然后设定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.saved",
+      "english": "A password is saved for this radio.",
+      "chinese": "已为这台电台保存密码。",
+      "previous": "为此收音机保存密码 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.none",
+      "english": "No password is saved for this radio yet.",
+      "chinese": "尚未为这台电台保存密码。",
+      "previous": "此收音机尚未保存密码 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.hint",
+      "english": "It is kept in this computer's keychain, one per radio, never in Settings or a log. The radio's login is scrambled on the wire, not encrypted, so use this connection on your own network.",
+      "chinese": "密码保存在本机系统钥匙串中，每台电台独立存储，不会写入设置或日志。电台登录数据在传输中仅作混淆，并未加密，请在自己的网络内使用此连接。",
+      "previous": "它保存在这个计算机的键盘链上,每个收音机一个,从没有设置或日志. 收音机的登录在电线上被打乱,没有加密,所以在自己的网络上使用这个连接.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.setDone",
+      "english": "Network password saved in the keychain",
+      "chinese": "网络密码已保存到系统钥匙串",
+      "previous": "在密钥链中保存的网络密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.clearDone",
+      "english": "Network password removed from the keychain",
+      "chinese": "网络密码已从系统钥匙串移除",
+      "previous": "从密钥链中删除网络密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.saveFailed",
+      "english": "Couldn't save the network password",
+      "chinese": "无法保存网络密码",
+      "previous": "无法保存网络密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.password.clearFailed",
+      "english": "Couldn't remove the network password",
+      "chinese": "无法移除网络密码",
+      "previous": "无法删除网络密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.port.label",
+      "english": "Control port (UDP)",
+      "chinese": "控制端口( UDP)",
+      "previous": "控制端口( UDP)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomLan.port.hint",
+      "english": "50001 unless you moved it on the radio.",
+      "chinese": "默认 50001，除非已在电台上更改。",
+      "previous": "50001 除非你把它移动到无线电上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomNative.icomlan",
+      "english": "Always on over the Icom network connection: it is how Nexus drives the radio there.",
+      "chinese": "使用 Icom 网络连接时始终开启，Nexus 通过它控制电台。",
+      "previous": "总是通过Icom网络连接:这就是Nexus如何驱动无线电在那里.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.icomLanModel",
+      "english": "The Icom network connection works with the IC-7610, IC-9700, IC-705, IC-905, IC-7760 and IC-7300MK2. Pick one of those, or Serial (USB).",
+      "chinese": "Icom 网络连接支持 IC-7610、IC-9700、IC-705、IC-905、IC-7760 和 IC-7300MK2。请选择其中一种型号，或改用串口（USB）连接。",
+      "previous": "Icom网络连接与IC-7610,IC-9700,IC-705,IC-905,IC-7760和IC-7300MK2. 选其中之一,或Serial(USB).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.icomLanAddress",
+      "english": "Enter the radio's IPv4 address, for example {{example}}.",
+      "chinese": "请输入电台的 IPv4 地址，例如 {{example}}。",
+      "previous": "输入电台的 IPv4 地址, 例如{{example}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.icomLanUser",
+      "english": "No network user is set, so the radio will refuse the login.",
+      "chinese": "未设置网络用户，电台将拒绝登录。",
+      "previous": "没有设置网络用户,因此电台会拒绝登录.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.icomLanPassword",
+      "english": "No network password is saved for this radio yet: type it and press Set.",
+      "chinese": "尚未为这台电台保存网络密码，请输入后点击设置。",
+      "previous": "尚未保存此收音机的网络密码: 输入并按下 Set 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.tci",
+      "english": "TCI (SDR program) — Beta",
+      "chinese": "TCI（SDR 程序），测试版",
+      "previous": "TCI( SDR 程序) – Beta",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.hint",
+      "english": "<b>Beta.</b> Nexus connects to the SDR program's own TCI server, with no rigctld and no virtual COM port. It reads and sets the dial and mode and transmits through the program. With <b>Audio over TCI</b> on, the receive audio and Nexus's own transmit audio go over TCI too. <b>Not ready yet:</b> CW through the program's own keyer (use the Soundcard keyer). Turn the TCI server on in the program first.",
+      "chinese": "<b>测试版。</b>Nexus 直接连接 SDR 程序内置的 TCI 服务器，无需 rigctld 或虚拟 COM 端口，可读取和设置调谐频率、模式，并通过该程序发射。开启<b>通过 TCI 传输音频</b>后，接收音频和 Nexus 的发射音频也会经 TCI 传输。<b>尚不支持：</b>通过程序自带键控器发送 CW，请使用声卡键控器。请先在 SDR 程序中开启 TCI 服务器。",
+      "previous": "<b>贝塔。</b>Nexus连接到SDR程序自己的TCI服务器,没有刚性,也没有虚拟COM端口. 它读取和设置拨号和模式,并通过程序传输. 与<b>TCI 音频</b>接收音频和Nexus的传输音频 也通过TCI<b>尚未准备好 :</b> CW通过程序自己的键器(使用Soundcard键器). 先在程序中打开 TI 服务器 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.host.label",
+      "english": "SDR program address",
+      "chinese": "SDR 程序地址",
+      "previous": "SDR 程序地址",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.host.hint",
+      "english": "The computer the SDR program runs on: <b>127.0.0.1</b> is this one. TCI has no password and no encryption, so reach another computer only on your own network.",
+      "chinese": "运行 SDR 程序的电脑地址，<b>127.0.0.1</b> 表示本机。TCI 无密码保护，也不加密；访问其他电脑时请仅使用自己的网络。",
+      "previous": "特别提款权程序的计算机运行于:<b>127.0.0.1 国家</b>就是这个 TCI没有密码也没有加密,所以只能通过自己的网络访问另一台计算机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.port.label",
+      "english": "TCI port",
+      "chinese": "TCI 端口",
+      "previous": "特克斯和凯科斯群岛端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.port.hint",
+      "english": "The port in the program's TCI settings: 50001 in ExpertSDR3 and Thetis as they come, 40001 in piHPSDR. <b>Find TCI server</b> tries both.",
+      "chinese": "程序 TCI 设置中的端口。ExpertSDR3 和 Thetis 默认使用 50001，piHPSDR 默认使用 40001。<b>查找 TCI 服务器</b>会尝试这两个端口。",
+      "previous": "程序 TCI 设置中的端口: 专家SDR3 和 Thetis 来时的50001, piHPSDR 的 40001.<b>查找 TMI 服务器</b>尝试两个。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.label",
+      "english": "TCI server",
+      "chinese": "TCI 服务器",
+      "previous": "TCI 服务器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.action",
+      "english": "Find TCI server",
+      "chinese": "查找 TCI 服务器",
+      "previous": "查找 TMI 服务器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.busy",
+      "english": "Looking…",
+      "chinese": "正在查找…",
+      "previous": "看着...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.title",
+      "english": "Look for the SDR program's TCI server at this address: this port first, then 50001 and 40001. It only reads what the server says about itself; it never transmits and never changes the radio.",
+      "chinese": "查找此地址上的 SDR 程序 TCI 服务器，先试当前端口，再试 50001 和 40001。仅读取服务器自报信息，不会发射，也不会更改电台设置。",
+      "previous": "在此地址查看SDR程序的TCI服务器:先是这个端口,然后是50001和40001. 它只读到服务器对自己说的话;它从不传输,也从不改变收音机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.searching",
+      "english": "Looking for a TCI server at {{host}}…",
+      "chinese": "正在 {{host}} 查找 TCI 服务器…",
+      "previous": "正在寻找 TCI 服务器{{host}}. .  ....",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.found",
+      "english": "Found a TCI server at {{address}}: {{server}}.",
+      "chinese": "在 {{address}} 找到 TCI 服务器：{{server}}。",
+      "previous": "找到 TCI 服务器{{address}}数字 :{{server}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.unnamed",
+      "english": "it does not give its name",
+      "chinese": "服务器未提供名称",
+      "previous": "它不给名字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.trxCount::one",
+      "english": "It has {{count}} transceiver.",
+      "chinese": "提供 {{count}} 个收发通道。",
+      "previous": "它已经{{count}}收发机。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.trxCount::other",
+      "english": "It has {{count}} transceivers.",
+      "chinese": "提供 {{count}} 个收发通道。",
+      "previous": "它已经{{count}}收发机。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.unknownProgram",
+      "english": "Nexus does not know this program yet, so it treats it as a plain TCI server.",
+      "chinese": "Nexus 尚未识别此程序，将按普通 TCI 服务器处理。",
+      "previous": "Nexus还不知道这个程序,所以把它当作一个普通的TCI服务器.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.portSet",
+      "english": "TCI port is now {{port}}: Save to keep it.",
+      "chinese": "TCI 端口已改为 {{port}}，请保存以保留设置。",
+      "previous": "TCI 端口现在{{port}}:存以存之.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.nexus",
+      "english": "Port {{port}} is Nexus's own TCI server, not an SDR program.",
+      "chinese": "端口 {{port}} 是 Nexus 自身的 TCI 服务器，并非 SDR 程序。",
+      "previous": "端口{{port}}Nexus是自己的TCI服务器,而不是一个SDR程序.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.notTci",
+      "english": "Something answered on port {{port}}, but it is not a TCI server.",
+      "chinese": "端口 {{port}} 有响应，但不是 TCI 服务器。",
+      "previous": "端口有问题{{port}},但它不是一个 TCI 服务器。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.noReady",
+      "english": "Port {{port}} answered but did not finish the TCI handshake.",
+      "chinese": "端口 {{port}} 有响应，但未完成 TCI 握手。",
+      "previous": "端口{{port}}回答,但没有完成TCI握手。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.none",
+      "english": "No TCI server answered at {{host}} (ports tried: {{ports}}). Start the SDR program, turn its TCI server on, and try again.",
+      "chinese": "{{host}} 上没有 TCI 服务器响应，已尝试端口 {{ports}}。请启动 SDR 程序，开启其 TCI 服务器后重试。",
+      "previous": "没有 CCI 服务器在{{host}}(尝试的港口:{{ports}}) (中文(简体) ). 启动 SDR 程序, 打开它的 TCI 服务器, 再试一次 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.badHost",
+      "english": "This computer cannot find {{host}}. Check the SDR program address.",
+      "chinese": "此计算机无法找到{{host}}。检查 SDR 程序地址。",
+      "previous": "此计算机无法找到{{host}}。检查 SDR 程序地址。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.find.failed",
+      "english": "Could not look for a TCI server: {{error}}",
+      "chinese": "无法查找 TCI 服务器：{{error}}",
+      "previous": "无法查找 TI 服务器 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.trx.label",
+      "english": "Transceiver",
+      "chinese": "收发通道",
+      "previous": "收发机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.trx.hint",
+      "english": "Which of the program's transceivers this radio is. 1 is the first; most stations use 1.",
+      "chinese": "这台电台使用程序中的哪个收发通道。1 表示第一个，大多数电台配置使用 1。",
+      "previous": "这台收音机是哪台? 1为第一;大多数车站使用1.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.dialect.label",
+      "english": "SDR program",
+      "chinese": "SDR 程序",
+      "previous": "特别提款权方案",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.dialect.auto",
+      "english": "Automatic (recommended)",
+      "chinese": "自动（推荐）",
+      "previous": "自动( 建议)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.dialect.hint",
+      "english": "Leave it on Automatic: Nexus learns the program from what it does. Name the program only if Nexus reads it wrongly; naming one fills in the port it comes set to.",
+      "chinese": "建议保持自动，Nexus 会根据程序行为识别类型。只有识别错误时才手动指定；选择程序后会填入其默认端口。",
+      "previous": "保留在自动上:Nexus从它的工作中学习程序. 只有当 Nexus 读错时才指定程序名称; 在它设置的端口中指定一个填充 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.audio.label",
+      "english": "Audio over TCI",
+      "chinese": "通过 TCI 传输音频",
+      "previous": "TCI 音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.audio.hint",
+      "english": "Receive audio from the program, and Nexus's transmit audio to it, over TCI instead of a virtual audio cable.",
+      "chinese": "通过 TCI 接收程序的音频，并向程序发送 Nexus 的发射音频，无需虚拟音频线。",
+      "previous": "通过TCI而不是虚拟音频电缆接收程序产生的音频,以及Nexus向它传输音频.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.pan.label",
+      "english": "SDR panadapter in the scope",
+      "chinese": "在频谱视图中显示 SDR 频谱",
+      "previous": "范围中的特别提款权调整器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.pan.hint",
+      "english": "Show the SDR program's own spectrum in Nexus's scope and waterfall.",
+      "chinese": "在 Nexus 的频谱和瀑布图中显示 SDR 程序自身的频谱。",
+      "previous": "在Nexus的范围和瀑布中显示SDR程序自己的频谱.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.spots.label",
+      "english": "Spots on the SDR panadapter",
+      "chinese": "在 SDR 频谱上标记通报",
+      "previous": "特别提款权调整器上的斑点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.tci.spots.hint",
+      "english": "Mark the stations you still need on the program's panadapter, 100 at most. Clicking one there tunes Nexus to it; it never transmits.",
+      "chinese": "在程序频谱上标记本台尚需通联的电台，最多 100 个。在那里点击标记会让 Nexus 调至对应频率，不会发射。",
+      "previous": "标出你仍需要的台站 最多100个 点击这里的一个会调制Nexus对它;它从不传输.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.tciHost",
+      "english": "Enter the SDR program's address on its own, such as {{example}} when it runs on this computer.",
+      "chinese": "请单独填写 SDR 程序地址；如果程序在本机运行，例如 {{example}}。",
+      "previous": "自行输入 SDR 程序的地址, 如{{example}}当它运行在这个计算机上。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.tciPort",
+      "english": "Enter the TCI port, a number from 1 to 65535: {{example}} as ExpertSDR3 and Thetis come.",
+      "chinese": "请输入 1–65535 之间的 TCI 端口号，ExpertSDR3 和 Thetis 默认使用 {{example}}。",
+      "previous": "输入 TCI 端口,数字为 1 至 65535 :{{example}}作为专家SDR3和Thetis来。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.strip.state.connectionNoTx",
+      "english": "No TX on this connection",
+      "chinese": "此连接不支持发射",
+      "previous": "此连接没有 TX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.omnirig",
+      "english": "OmniRig (the radio is set up in OmniRig)",
+      "chinese": "OmniRig（在 OmniRig 中配置电台）",
+      "previous": "OmniRig(电台设置于OmniRig)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.omnirig.unavailable",
+      "english": "OmniRig — Windows only",
+      "chinese": "OmniRig，仅限 Windows",
+      "previous": "OmniRig - 仅限窗口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.hint",
+      "english": "Serial for a rig on a USB/COM port (most rigs, including Xiegu). Network for anything serving CAT over TCP: an SDR program on this PC (Thetis, PowerSDR, SmartSDR CAT, piHPSDR), or a remote rigctld. TCI for an SDR program's own TCI server (ExpertSDR3, Thetis, piHPSDR), with no Rig Model to pick. The <b>Rig Model</b> still picks which CAT dialect is spoken — for an SDR, choose the program you launched, not the board inside the radio. An Icom on its <b>LAN port</b> needs a program in between, because Icom's network protocol is its own: with wfview, turn on its rigctld server and point Nexus at it with Network and Rig Model <b>NET rigctl</b>; with RS-BA1, choose Serial, your Icom's own model and the virtual COM port RS-BA1 creates.",
+      "chinese": "USB／COM 端口连接的电台（包括 Xiegu 在内的大多数电台）请选择串口。通过 TCP 提供 CAT 的设备请选择网络，例如本机 SDR 程序（Thetis、PowerSDR、SmartSDR CAT、piHPSDR）或远程 rigctld。连接 SDR 程序自身的 TCI 服务器（ExpertSDR3、Thetis、piHPSDR）请选择 TCI，无需选择电台型号。其他连接中的 <b>电台型号</b>仍用于确定 CAT 协议：使用 SDR 时，应选择正在运行的程序，而非电台内部的硬件板卡。Icom 的 <b>LAN 端口</b>采用专有网络协议，需要中间程序：使用 wfview 时，开启其 rigctld 服务器，在 Nexus 中选择网络连接，并将型号设为 <b>NET rigctl</b>；使用 RS-BA1 时，选择串口、Icom 实际型号及 RS-BA1 创建的虚拟 COM 端口。",
+      "previous": "USB上的钻机序列/COM端口(包括谢古在内的大多数钻机). 任何服务的网络 CAT TCP: 此PC 上的 SDR 程序( Thetis、 PowerSDR、 SmartSDR) CAT, piHPSDR),或远程刚性. TCI用于一个SDR程序自己的TCI服务器(ExpertSDR3,Thetis,piHPSDR),没有Rig Model可供选择. 那个 <b>硬型号</b> 仍然选择 CAT 说方言——对于一个特别提款权来说,选择你推出的节目,而不是广播内部的板子. 一个Icom上它 <b>局域网端口</b> 在两者之间需要程序,因为Icom的网络协议是它自己的:用wfview,打开它的刚性服务器,用Network和Rig Model指向Nexus <b>NET 刚性</b>;有了RS-BA1,选择序列,你的Icom自己的模型和虚拟COM端口RS-BA1创建.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.omnirig.hint",
+      "english": "<b>OmniRig</b> hands rig control to VE3NEA's OmniRig server, the one most Windows logging and contest programs already use. Set the radio up <em>in OmniRig</em> — rig type, COM port, baud — and Nexus talks to it there, so the Rig Model, Serial Port and Baud above are not used. {{availability}}",
+      "chinese": "<b>OmniRig</b> 将电台控制交给 VE3NEA 的 OmniRig 服务器，许多 Windows 日志和竞赛软件已使用该服务。请<em>在 OmniRig 中</em>设置电台类型、COM 端口和波特率，Nexus 通过它控制电台，因此不使用上方的电台型号、串口和波特率设置。{{availability}}",
+      "previous": "<b>奥姆尼里格</b>VE3NEA的 OmniRig 服务器的手控钻机控制器,这是Windows记录和竞赛程序已经使用最多的一个. 装好收音机<em>在奥姆尼里格</em>——钻机型号,COM端口,baud——和Nexus在那里与之交谈,因此上面的Rig Model,Serial Port和Baud没有被使用.{{availability}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.omnirig.unavailable.why",
+      "english": "It is greyed out here because OmniRig is a Windows program and this is not Windows.",
+      "chinese": "此项不可选，因为 OmniRig 是 Windows 程序，而当前系统不是 Windows。",
+      "previous": "因为OmniRig是一个Windows程序, 这不是Windows。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.conn.omnirig.install",
+      "english": "Install and run OmniRig first; Nexus will not start without it.",
+      "chinese": "请先安装并运行 OmniRig，否则 Nexus 将无法启动。",
+      "previous": "先安装并运行 OmniRig; 没有它 Nexus 将不会开始 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.omnirig.label",
+      "english": "OmniRig radio",
+      "chinese": "OmniRig 电台",
+      "previous": "OmniRig电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.omnirig.aria",
+      "english": "OmniRig rig slot",
+      "chinese": "OmniRig 电台槽位",
+      "previous": "OmniRig 钻机槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.omnirig.hint",
+      "english": "Which of OmniRig's two radios this Nexus radio drives. OmniRig's own window labels them RIG 1 and RIG 2 — pick the one whose rig type matches this radio. A two-radio station can put one on each.",
+      "chinese": "指定此 Nexus 电台使用 OmniRig 的哪台设备。OmniRig 窗口将两台标为 RIG 1 和 RIG 2，请选择电台类型与此设备匹配的一项。双电台配置可分别使用一个槽位。",
+      "previous": "OmniRig的两台收音机中的哪台是Nexus无线电驱动器 OmniRig自己的窗口给它们贴上RIG 1和RIG 2的标签——选一个与这台收音机相匹配的钻机类型. 双射线车站可各加一台.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.netAddr.label",
+      "english": "Network Address",
+      "chinese": "网络地址",
+      "previous": "网络地址",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.dax.action",
+      "english": "⚡ Pair DAX audio ({{device}})",
+      "chinese": "⚡ 配对 DAX 音频（{{device}}）",
+      "previous": "QQ 对等 DAX 音频({{device}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.dax.title",
+      "english": "SmartSDR's DAX virtual audio devices were detected — one click sets them as Nexus's audio in/out (bit-clean digital audio, no sound card)",
+      "chinese": "检测到 SmartSDR 的 DAX 虚拟音频设备，点击即可设为 Nexus 的音频输入／输出，提供不改变数字采样值的音频传输，无需声卡",
+      "previous": "SmartSDR的DAX虚拟音频设备被检测到——一击将其设定为Nexus的音频在/out(bit-clean数字音频,没有音卡)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.dax.paired",
+      "english": "DAX paired: {{input}} → in, {{output}} → out",
+      "chinese": "DAX 已配对：{{input}} → 输入，{{output}} → 输出",
+      "previous": "DAX 对齐 :{{input}}——在,{{output}}出来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.netAddr.hint",
+      "english": "host:port. For a Flex: the WSJT-X-proven path is the SmartSDR CAT app on THIS PC — its DEFAULT TCP port 5002 is directed at slice A, so 127.0.0.1:5002 with the FLEX-6xxx / 8xxx model works out of the box; audio rides DAX. Multi-slice: SmartSDR CAT's per-slice ports are B=60001, C=60002, D=60003 — Nexus drives ONE slice, so enter the port of the slice you run digital on. (Direct-to-radio :4992 needs Hamlib's experimental native model and failed on real hardware.) Other rigs: a remote rigctld's host:port with their normal model.",
+      "chinese": "格式为主机:端口。Flex 可使用已在 WSJT-X 中验证的路径：本机 SmartSDR CAT 程序默认将 TCP 5002 指向接收切片 A，因此使用 127.0.0.1:5002 配合 FLEX-6xxx / 8xxx 型号即可，音频经 DAX 传输。多接收切片时，SmartSDR CAT 对应端口为 B=60001、C=60002、D=60003。Nexus 仅控制一个切片，请填写用于数字通信的切片端口。（直接连接电台 :4992 需要 Hamlib 实验性原生型号，实际硬件测试未成功。）其他电台填写远程 rigctld 的主机:端口，并选择其常规型号。",
+      "previous": "主机:端口. 对于一个Flex:WSJT-X验证的路径是SmartSDR CAT 应用在这个PC上——它的DEFAULT TCP端口5002瞄准切片A,所以127.0.0.1:5002与FLEX-6xxx / 8xx型号在盒子外工作;音频搭载DAX. 多切片: SmartSDR CAT每个切片端口为B=60001,C=60002,D=60003 – Nexus驱动 One切片,所以进入您运行数字化的切片端口. (Direct-to-radio :4992需要Hamlib的实验原生模型,在真正的硬件上失败. ) 其他钻机:一个远程钻机的主机:端口与他们的普通型号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.netAddr.sdrPorts",
+      "english": "Running an SDR program? Read the port out of the program, don't guess it: <b>Thetis</b> → Setup ▸ Serial/Network/Midi CAT ▸ <em>TCP/IP CAT Server</em> (its own box, factory 13013); <b>SmartSDR CAT</b> → 5002; <b>piHPSDR</b> → 19090. Whatever it shows, type that. The <em>TCI Server</em> box beside Thetis's CAT server (factory 50001) is a different protocol: for it, choose Connection ▸ <b>TCI</b> instead.",
+      "chinese": "使用 SDR 程序时，请从程序内读取实际端口，不要猜测：<b>Thetis</b> → Setup ▸ Serial/Network/Midi CAT ▸ <em>TCP/IP CAT Server</em>（独立设置框，出厂默认 13013）；<b>SmartSDR CAT</b> → 5002；<b>piHPSDR</b> → 19090。程序显示什么就填写什么。Thetis 的 CAT 服务器旁的 <em>TCI Server</em>（出厂默认 50001）使用另一种协议，应在连接类型中改选 <b>TCI</b>。",
+      "previous": "运行一个特别提款权程序? 从程序读出端口,不要猜测:<b>希蒂斯语Name</b>· 设置 · 序列/网络/米迪CAT▸<em>TCP/IP 运输CAT服务器</em>(它自己的盒子,13013工厂);<b>智能软件CAT</b>− 5002;<b>piHPSDR (英语).</b>^ 19090 (英语). 不管它显示什么,打这个。 那个<em>TCI 服务器</em>在Thetis旁边的框CAT服务器( factory 50001) 是一个不同的协议: 对于它, 选择连接 QQ<b>特克斯和凯科斯群岛</b>相反。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.label",
+      "english": "Serial Port",
+      "chinese": "串口",
+      "previous": "串行端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.placeholder",
+      "english": "Select or type, e.g. {{example}}",
+      "chinese": "选择或输入，例如 {{example}}",
+      "previous": "选择或类型,例如:{{example}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.refresh.action",
+      "english": "Refresh",
+      "chinese": "刷新",
+      "previous": "刷新",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "EqualizationToolsDialog::impl",
+          "chinese": "刷新"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "刷新"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "刷新"
+        }
+      ]
+    },
+    {
+      "id": "settings.rigControl.serialPort.refresh.title",
+      "english": "Re-scan serial ports",
+      "chinese": "重新扫描串口",
+      "previous": "重新扫描序列端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.autoTest.action",
+      "english": "Auto-test",
+      "chinese": "自动测试",
+      "previous": "自动测试",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.autoTest.title",
+      "english": "Probe each USB port (read-only — never transmits) and auto-select the one that drives your rig",
+      "chinese": "逐个探测 USB 端口，仅进行只读查询、不发射，并自动选择可控制电台的端口",
+      "previous": "测试每个 USB 端口( 只读- 永远不传输) 并自动选择驱动您的钻机的端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.hint.mac",
+      "english": "Serial device (/dev/cu.…) for rig control — or Auto-test to find it.",
+      "chinese": "用于电台控制的串口设备（/dev/cu.…），也可通过自动测试查找。",
+      "previous": "钻机控制的串行装置(/dev/cu....)——或自动测试以找到它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.hint.other",
+      "english": "COM / serial device for rig control — or Auto-test to find it.",
+      "chinese": "用于电台控制的 COM／串口设备，也可通过自动测试查找。",
+      "previous": "COM / 串行装置用于钻机控制——或自动测试以找到它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.xiegu",
+      "english": "<b>Xiegu:</b> the radio makes two serial ports — CAT is on the <b>SERIAL-B</b> one{{note}}.",
+      "chinese": "<b>Xiegu：</b>电台会创建两个串口，CAT 使用其中的 <b>SERIAL-B</b>{{note}}。",
+      "previous": "<b>谢古:</b>无线电使两个连线端口——CAT已经上线了<b>职称B</b>一个{{note}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.xiegu.comNumber",
+      "english": " (often the higher COM number)",
+      "chinese": "（通常是 COM 编号较大的端口）",
+      "previous": "(经常是较高的COM数字)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.icom.mac",
+      "english": "<b>Icom:</b> this radio makes two /dev/cu.* ports and only one speaks CI-V — with the Silicon Labs VCP driver it is usually the first of the pair (plain <b>cu.SLAB_USBtoUART</b>; the dead twin gets a numeric suffix). The other one never answers.",
+      "chinese": "<b>Icom：</b>此电台会创建两个 /dev/cu.* 端口，只有一个支持 CI-V。使用 Silicon Labs VCP 驱动时，通常是其中不带数字后缀的第一个端口 <b>cu.SLAB_USBtoUART</b>，另一个带数字后缀的端口不会响应。",
+      "previous": "<b>Icom: (英语).</b>这台无线电使两个/dev/cu. * 端口只有一个会讲CI-V——配有硅实验室的 VCP 驱动程序,它通常是对中的第一个(平面)<b>Cu.SLAB USBtoUART (中文(简体) ).</b>;死去的双胞胎得到一个数字后缀). 彼人从不答.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialPort.icom.other",
+      "english": "<b>Icom:</b> this radio makes two COM ports and only one speaks CI-V — in Device Manager it is the CP210x port marked <b>Enhanced</b> (Icom's driver: “Serial Port A (CI-V)”). The “Standard” / “Serial Port B” one never answers.",
+      "chinese": "<b>Icom：</b>此电台会创建两个 COM 端口，只有一个支持 CI-V。设备管理器中应选标为 <b>Enhanced</b> 的 CP210x 端口（Icom 驱动中称为“Serial Port A (CI-V)”）。“Standard”／“Serial Port B”端口不会响应。",
+      "previous": "<b>Icom: (英语).</b>这台收音机制造了两个COM端口,只有一个会讲CI-V——在设备管理器中是标有CP210x端口.<b>增强</b>(Icom的司机:“A系列港口(CI-V)”)) “标准”/“系列港口B”从未回答。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.baud.label",
+      "english": "Baud",
+      "chinese": "波特率",
+      "previous": "鲍德",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.baud.hint",
+      "english": "Serial baud rate — match your rig's CAT setting (most modern rigs: 38,400 or 115,200). Native Icom CI-V scope needs 115,200 here <em>and</em> on the rig.",
+      "chinese": "串口波特率应与电台的 CAT 设置一致（多数现代电台为 38 400 或 115 200）。原生 Icom CI-V 频谱功能要求此处<em>和</em>电台均设为 115 200。",
+      "previous": "串口波特率应与电台的 CAT 设置一致（多数现代电台为 38 400 或 115 200）。原生 Icom CI-V 频谱功能要求此处<em>和</em>电台均设为 115 200。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.split.label",
+      "english": "Split operation",
+      "chinese": "异频操作",
+      "previous": "拆分操作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.split.none",
+      "english": "None",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Astro",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        }
+      ]
+    },
+    {
+      "id": "settings.rigControl.split.rig",
+      "english": "Rig",
+      "chinese": "电台",
+      "previous": "电台",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "无线电设备"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "无线电设备"
+        }
+      ]
+    },
+    {
+      "id": "settings.rigControl.split.fakeit",
+      "english": "Fake It",
+      "chinese": "Fake It（模拟异频）",
+      "previous": "假装",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "软件虚拟"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "虚假"
+        }
+      ]
+    },
+    {
+      "id": "settings.rigControl.split.hint",
+      "english": "Keeps your transmitted audio between 1500–2000 Hz by shifting the TX dial in 500 Hz steps, so audio harmonics fall outside the transmit filter — cleaner signal. Rig = uses VFO B split. Fake It = retunes the VFO around each over (works on any CAT rig). None = stock WSJT-X default, transmits at the raw audio offset.",
+      "chinese": "以 500 Hz 为步进调整发射调谐频率，将发射音频保持在 1500–2000 Hz，使音频谐波落在发射滤波器之外，获得更纯净的信号。Rig 使用 VFO B 异频；Fake It 在每轮发射前后重调 VFO，适用于所有支持 CAT 的电台；None 沿用 WSJT-X 默认方式，按原始音频偏移发射。",
+      "previous": "在 1500 - 2000 年间保留您传输的音频 Hz 将TX拨号调到500 Hz 步骤,所以音频谐波器会掉到传输过滤器之外——更清洁的信号. Rig = 用途 VFO B分开 假话 它=重新调整 VFO 环绕各处(工作于任意 CAT 钻机。 无=库存 WSJT-X 默认值,在原始音频偏移时发送.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.splitDetect.label",
+      "english": "Follow the radio's split",
+      "chinese": "跟随电台异频设置",
+      "previous": "跟着收音机的分机走",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.splitDetect.hint",
+      "english": "Nexus reads the radio’s split, so a split you set at the radio is the one it checks your licence privileges against; if the radio says it is split but not where it transmits, Nexus will not transmit. A radio whose split can only be read by moving it is never asked. Off by default.",
+      "chinese": "Nexus 读取电台的异频设置，并据此检查实际发射频率是否在执照许可范围内。如果电台报告已开启异频，但未提供发射频率，Nexus 不会发射。对于必须改变电台状态才能读出异频设置的设备，不进行此查询。默认关闭。",
+      "previous": "Nexus读到收音机的拆分,所以在收音机上设定的拆分就是它检查你的许可权限的拆分;如果收音机说是拆分的,而不是它传输的地方,Nexus不会传输. 收音机的拆分只能通过移动来读取,从不问. 默认关闭。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.wheel.label",
+      "english": "Wheel tuning sensitivity",
+      "chinese": "滚轮调频灵敏度",
+      "previous": "轮调灵敏度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.wheel.aria",
+      "english": "Mouse-wheel tuning sensitivity",
+      "chinese": "鼠标滚轮调频灵敏度",
+      "previous": "鼠轮调谐灵敏度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.wheel.hint",
+      "english": "How far the dial moves per mouse-wheel notch. Lower it if a high-resolution or free-spin mouse tunes too far per flick; raise it to tune faster. Applies to the frequency readout and the Phone/CW scope wheel.",
+      "chinese": "鼠标滚轮每滚动一格时的频率改变量。如果高分辨率或自由滚动鼠标轻拨一下就调过头，请调低；需要更快调频时请调高。适用于频率读数，以及话音／CW 频谱视图的滚轮调频。",
+      "previous": "每个鼠标轮子的拨号有多远? 如果一个高分辨率或自由滑鼠的调值太远, 请降低它; 提高它以更快的调值。 适用于频率读出和电话/CW瞄准盘",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.advanced.title",
+      "english": "Advanced",
+      "chinese": "高级",
+      "previous": "高级",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "高级设置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "高级设置"
+        }
+      ]
+    },
+    {
+      "id": "settings.rigControl.serialHandshake.label",
+      "english": "Serial handshake",
+      "chinese": "串口握手",
+      "previous": "连续握手",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialHandshake.auto",
+      "english": "Auto (recommended)",
+      "chinese": "自动（推荐）",
+      "previous": "自动( 建议)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialHandshake.none",
+      "english": "None — no flow control",
+      "chinese": "无，不使用流量控制",
+      "previous": "无——无流量控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialHandshake.hardware",
+      "english": "Hardware (RTS/CTS)",
+      "chinese": "硬件（RTS/CTS）",
+      "previous": "硬件(RTS/CTS)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.serialHandshake.xonxoff",
+      "english": "XON/XOFF (software)",
+      "chinese": "XON/XOFF（软件）",
+      "previous": "XON/XOFF(软件)",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

@@ -1,0 +1,1685 @@
+{
+  "batch": 38,
+  "range": [
+    7401,
+    7600
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 151,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 6,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/PhoneCockpit.tsx",
+    "ui/src/components/VoiceKeyer.tsx"
+  ],
+  "rows": [
+    {
+      "id": "phone.pane.receiver.title",
+      "english": "Receiver",
+      "chinese": "接收机",
+      "previous": "接收机",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.pane.transmitter.title",
+      "english": "Transmitter",
+      "chinese": "发射机",
+      "previous": "发射机",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.unavail.mark",
+      "english": "not reported",
+      "chinese": "未报告",
+      "previous": "未报告",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.unavail.noCat",
+      "english": "{{plate}} needs CAT control — this radio is set up for VOX or serial PTT only. Add rig control in Settings ▸ Radio to get it.",
+      "chinese": "{{plate}} 需要 CAT 控制，但此电台仅配置了 VOX 或串口 PTT。请在“设置 ▸ 电台设备”中添加电台控制。",
+      "previous": "{{plate}}需求CAT控制器 - 此收音机是为VOX或串行设置的PTT仅此而已。 在设置 QQ 电台中添加钻机控制以获取它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.unavail.notOnMode",
+      "english": "{{plate}} does not apply on {{mode}}.",
+      "chinese": "{{plate}} 不适用于 {{mode}} 模式。",
+      "previous": "{{plate}}不适用于{{mode}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.unavail.noSteps",
+      "english": "{{plate}} is picked from the pads this radio publishes, and it has not published any — Nexus will not command one it might not have. Reconnect rig control in Settings ▸ Radio to ask again.",
+      "chinese": "{{plate}} 的可选挡位取自电台报告，但此电台尚未报告任何挡位。Nexus 不会向电台发送可能不受支持的设置。请在“设置 ▸ 电台设备”中重新连接电台控制，再次获取。",
+      "previous": "{{plate}}从这个电台出版的报纸上挑选出来,它没有出版任何——Nexus不会命令它可能没有的。 在 Sets QQ Radio 中重新连接钻机控制以再次询问 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.noCat",
+      "english": "No rig control on this radio — the receiver and transmitter controls need CAT. Settings ▸ Radio.",
+      "chinese": "此电台未配置设备控制，接收和发射控件需要 CAT。请前往“设置 ▸ 电台设备”。",
+      "previous": "收发机和发射机需要控制CAT. 设置 QQ 电台.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.absent",
+      "english": "Not on this radio: {{plates}}",
+      "chinese": "此电台不提供：{{plates}}",
+      "previous": "不在这个电台:{{plates}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.aria",
+      "english": "Sub receiver",
+      "chinese": "副接收机",
+      "previous": "副接收机",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.dial.unread",
+      "english": "Nexus does not read the sub receiver’s frequency back from the radio.",
+      "chinese": "Nexus 无法从电台读回副接收机的频率。",
+      "previous": "Nexus不从无线电读回子接收器的频率。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.rf.aria",
+      "english": "Sub receiver RF gain",
+      "chinese": "副接收机射频增益",
+      "previous": "次级接收器RF收益",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.rf.title",
+      "english": "RF gain of the sub receiver — its own front end. Set from Nexus; the radio does not report it back.",
+      "chinese": "副接收机自身前端的射频增益。可由 Nexus 设置，但电台不会回报该值。",
+      "previous": "子接收器的RF收益——它自己的前端. 从 Nexus 设定; 无线电不报告它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.af.aria",
+      "english": "Sub receiver AF gain",
+      "chinese": "副接收机音频增益",
+      "previous": "次级接收器AF收益",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.af.title",
+      "english": "AF gain of the sub receiver — how loud it plays. Set from Nexus; the radio does not report it back.",
+      "chinese": "副接收机的音频增益，即播放音量。可由 Nexus 设置，但电台不会回报该值。",
+      "previous": "副接收器的AF增益——其弹奏有多响. 从 Nexus 设定; 无线电不报告它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.sql.aria",
+      "english": "Sub receiver squelch",
+      "chinese": "副接收机静噪",
+      "previous": "子接收器挤压",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.sql.title",
+      "english": "Squelch of the sub receiver. Set from Nexus; the radio does not report it back.",
+      "chinese": "副接收机的静噪。可由 Nexus 设置，但电台不会回报该值。",
+      "previous": "副接收器的挤压。 从 Nexus 设定; 无线电不报告它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.level.unknown",
+      "english": "not known",
+      "chinese": "不详",
+      "previous": "不详",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.unconfirmed",
+      "english": "Not confirmed for the sub receiver: {{plates}}",
+      "chinese": "副接收机的以下设置未经回读确认：{{plates}}",
+      "previous": "未确认子接收器 :{{plates}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.setNotRead",
+      "english": "Set from Nexus — the radio does not report the sub receiver’s levels back.",
+      "chinese": "由 Nexus 设置，电台不会回报副接收机的电平值。",
+      "previous": "从Nexus设定——无线电不报告子接收器的电位。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.sub.failed",
+      "english": "Nexus could not set the sub receiver’s {{plate}}.",
+      "chinese": "Nexus 无法设置副接收机的{{plate}}。",
+      "previous": "Nexus 无法设置子接收器{{plate}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.failed",
+      "english": "Nexus could not set {{plate}}.",
+      "chinese": "Nexus 无法设置{{plate}}。",
+      "previous": "无法设置 Nexus{{plate}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.monitor.failed",
+      "english": "Nexus could not set the monitor level.",
+      "chinese": "Nexus 无法设置监听电平。",
+      "previous": "Nexus 无法设置显示器级别 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.receiver.aria",
+      "english": "Receiver chain — what you are hearing",
+      "chinese": "接收信号链：影响本台收听的设置",
+      "previous": "接收器链——你听到的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.transmitter.aria",
+      "english": "Transmitter chain — how your voice goes out",
+      "chinese": "发射信号链：影响本台话音发出的设置",
+      "previous": "传送链——你的声音如何发出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "phone.chain.att.aria",
+      "english": "Attenuator",
+      "chinese": "衰减器",
+      "previous": "衰减器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.att.title",
+      "english": "The input pad, in decibels — the front-end attenuator this radio publishes. Use it when a strong neighbour is pumping the AGC; it costs you weak signals too.",
+      "chinese": "电台报告的前端输入衰减挡位，单位为分贝。邻频强信号使 AGC 反复动作时可使用，但弱信号也会一并衰减。",
+      "previous": "输入台,以分音节表示——前端减音器本电台出版. 当一个强邻抽动AGC时使用它;它也花费了微弱的信号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.pre.aria",
+      "english": "Preamp",
+      "chinese": "前置放大器",
+      "previous": "前置放大器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.pre.title",
+      "english": "The receive preamp, by the name this radio gives each position — on some rigs they are numbered rather than decibels. Worth it on a quiet band; on a noisy one it lifts the noise with the signal.",
+      "chinese": "接收前置放大器，按电台提供的挡位名称显示；部分电台以编号而非分贝标注。底噪较低的频段可受益，噪声大的频段则会将噪声一并放大。",
+      "previous": "接收前的标记,用这个无线电给每个位置的名称——在某些钻机上,它们被编号而不是解密. 它的价值在于一个安静的乐队;在一个吵闹的乐队上,它用信号来解除噪音。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.mon.aria",
+      "english": "Monitor level",
+      "chinese": "监听电平",
+      "previous": "监听电平",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.chain.mon.title",
+      "english": "How loud the radio plays your own voice back while you are transmitting. It is heard only on transmit, so turning it down can never silence a decoder — that is AF.",
+      "chinese": "发射时，电台回放本台话音的音量。仅在发射时能听到，因此调低监听电平不会使解码器无声；影响接收音量的是 AF。",
+      "previous": "收音机在收音机播放时声音有多响 它只在传输中被听到,所以拒绝它永远无法压制一个解码器——即AF.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.pane.log.title",
+      "english": "Log",
+      "chinese": "日志",
+      "previous": "记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.aria",
+      "english": "Transmit contract — what goes out when you key",
+      "chinese": "实际发射信息：按下发射键后将使用的参数",
+      "previous": "传输合同——当你按键时会发生什么",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.freq.title",
+      "english": "The frequency your next over will actually be emitted on — the engine’s own answer, with any confirmed split and any XIT offset already in it. Under split this is NOT your receive dial.",
+      "chinese": "本台下一轮实际使用的发射频率，来自引擎，已包含确认的异频设置和 XIT 偏移。异频操作时，这不是接收频率。",
+      "previous": "您的下一个频率将实际释放在 — 引擎本身的答案上, 任何确认的拆分和任何XIT的抵消已经在里面了。 在拆分下 这不是你的接收拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.freq.commanded.title",
+      "english": "Nexus worked this frequency out from what it commanded and cannot confirm all of it against the radio — either there is no CAT link, or XIT is in play and the clarifier is write-only, so an offset dialled at the radio would not show here.",
+      "chinese": "Nexus 根据已发出的控制指令计算此频率，但无法完全向电台回读确认：可能没有 CAT 连接，或正在使用只能设置、不能回读的 XIT 微调。因此，在电台上手动调整的偏移不会显示在这里。",
+      "previous": "Nexus从它所指挥的频率中找出了这个频率,无法证实所有频率都来自无线电——或者没有CAT链接,或 XIT 正在播放中,且发音只写,所以在收音机拨号的偏移不会在这里显示。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.noEmission.title",
+      "english": "This station is not reporting a transmit frequency. Nexus will not print your receive dial in its place — under split they are unrelated numbers.",
+      "chinese": "此电台未报告发射频率。Nexus 不会拿接收频率代替；异频操作时，两者是不同的频率。",
+      "previous": "此台未报告传输频率. Nexus不会在它的位置打印你的收件拨号——在拆分下是无关的号码.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.repeaterShift.title",
+      "english": "Nexus cannot state your transmit frequency on FM through a repeater — the shift is applied by the radio and is not in the frequency the engine reports, so printing one here would be your listening frequency wearing a transmit label. Check the shift in Settings ▸ Radio, or read it off the radio.",
+      "chinese": "通过中继台进行 FM 通联时，Nexus 无法确定发射频率：收发频差由电台施加，不包含在引擎报告的频率中。这里若显示该数值，就会把接收频率误标成发射频率。请在“设置 ▸ 电台设备”中检查收发频差，或直接查看电台。",
+      "previous": "Nexus不能通过中继器在调频上表示你的传输频率——该变速器是由无线电应用的,不在引擎报告的频率中,所以在此打印一个是您使用传输标签的监听频率. 请检查date=中的日期值 (帮助) Sets QQ Radio, 或从电台读取.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.mode.title",
+      "english": "The mode your next over goes out in, and where Nexus got it. This is the same read-back the logbook writes, so what you see here and what gets recorded cannot disagree.",
+      "chinese": "下一轮发射使用的模式及其数据来源。日志也使用同一回读结果，因此这里的显示与入志内容保持一致。",
+      "previous": "下一个模式是Nexus得到的 这是同样的 读回 日志写, 所以,你在这里看到什么 和得到记录 无法不同意。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.split.title",
+      "english": "How far your transmit frequency sits from your receive dial (kHz)",
+      "chinese": "发射频率相对接收频率的偏移（kHz）",
+      "previous": "您的传输频率与您的接收拨号相距有多远( Q)kHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.split.commanded.title",
+      "english": "Nexus asked the radio for this split. The snapshot does not carry the radio’s own confirmation, so it is shown as commanded rather than read back — check the radio if the pile-up is not hearing you where you expect.",
+      "chinese": "Nexus 已向电台请求此异频设置，但快照中没有电台自身的确认，因此显示的是指令值而非回读值。如果争叫时对方没有在预期频率收到本台，请检查电台。",
+      "previous": "Nexus要求收音机进行这种分拆. 该快照并不包含电台本身的确认, 因此它显示为命令而不是回读 —— 检查收音机是否堆积不全,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.xit.title",
+      "english": "Transmit incremental tuning — the offset added to your transmit frequency (Hz)",
+      "chinese": "发射频率微调：叠加到发射频率上的偏移量（Hz）",
+      "previous": "传输递增调谐——您传输频率中添加的偏移( )Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.xit.commanded.title",
+      "english": "Nexus cannot read XIT back from any radio, so this is what Nexus commanded — not necessarily where the transmitter is. An offset set on the radio’s own clarifier knob will not appear here.",
+      "chinese": "Nexus 无法从任何电台回读 XIT，因此这里显示 Nexus 发出的指令值，不一定等于实际发射频率的偏移。在电台微调旋钮上设置的偏移不会显示在这里。",
+      "previous": "Nexus无法从任何电台读回XIT,所以这就是Nexus所指挥的——不一定是发射机所在的地方. 这里不会出现收音机自身收音机的缩写符号。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.txContract.power.title",
+      "english": "Your power setting, and the output the radio last actually measured. No mark: the setting is the radio’s read-back when CAT reports one and the last commanded value otherwise, and nothing says which.",
+      "chinese": "本台功率设置，以及电台最近实际测得的输出功率。设置值没有来源标记：CAT 提供回读时采用回读值，否则采用最后发送的指令值，界面不区分两者。",
+      "previous": "您的电源设置, 和输出 无线电实际测量。 无标记: 设置是收音机在CAT报告一个和最后一个指示值 否则,没有说明哪个。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.lastOver",
+      "english": "{{watts}} W on the last over",
+      "chinese": "上一轮发射 {{watts}} W",
+      "previous": "{{watts}}上一个是W",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.repeaterMark",
+      "english": "repeater shift",
+      "chinese": "中继收发频差",
+      "previous": "中继器变换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.voxWarn",
+      "english": "VOX is on — the radio keys itself from the mic. Stop TX cannot unkey a VOX-held transmitter.",
+      "chinese": "VOX 已开启，电台会由话筒声音自行触发发射。“停止发射”无法解除 VOX 持续触发的发射。",
+      "previous": "VOX上线——从麦克风发出的无线电键本身. 停止 TX 无法解密 VOX 持有的发射机 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.truth.rig.mark",
+      "english": "rig",
+      "chinese": "回读",
+      "previous": "钻机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.prov.rig",
+      "english": "Confirmed by the radio.",
+      "chinese": "已由电台回读确认。",
+      "previous": "无线电证实",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.truth.cmd.mark",
+      "english": "cmd",
+      "chinese": "指令",
+      "previous": "(单位:千美元)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.prov.cmd",
+      "english": "As commanded — this radio does not report {{plate}} back over CAT, so this is what Nexus last sent.",
+      "chinese": "指令值：此电台不会通过 CAT 回报{{plate}}，因此显示 Nexus 最近发送的设置。",
+      "previous": "遵命,这个电台不报道{{plate}}回来CAT,所以这是Nexus 上次发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mode.aria",
+      "english": "Phone mode",
+      "chinese": "话音模式",
+      "previous": "电话模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mode.auto.title",
+      "english": "AUTO — sideband by band (now {{sideband}}); a band change re-asserts this",
+      "chinese": "AUTO：按频段自动选择边带，当前为 {{sideband}}；切换频段后重新按此规则设置",
+      "previous": "AUTO——副带(现在){{sideband}}); 乐队更改 重置此选项",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mode.force.title",
+      "english": "Force {{mode}} until you change bands",
+      "chinese": "强制使用 {{mode}}，直到切换频段",
+      "previous": "强制{{mode}}直到您更改带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mode.usbOnly",
+      "english": "60 m allows only USB phone",
+      "chinese": "60 米波段仅允许 USB 话音",
+      "previous": "60米只允许USB电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mode.failed",
+      "english": "Could not set mode",
+      "chinese": "无法设置模式",
+      "previous": "无法设置模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.header.power.label",
+      "english": "Power",
+      "chinese": "功率",
+      "previous": "功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.header.power.title",
+      "english": "RF output power",
+      "chinese": "射频输出功率",
+      "previous": "射频输出功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.micDax.label",
+      "english": "mic off (DAX)",
+      "chinese": "话筒已断开（DAX）",
+      "previous": "麦克风关机(DAX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.micDax.title",
+      "english": "Flex native DAX audio is on, so the radio takes transmit audio from DAX and your microphone is disconnected — on every slice and in every program, SmartSDR included. Turn OFF Flex native DAX audio in Settings ▸ Radio ▸ Rig & CAT to use the mic.",
+      "chinese": "Flex 原生 DAX 音频已开启，电台从 DAX 获取发射音频，话筒被断开。此状态影响所有接收切片和所有程序，包括 SmartSDR。要使用话筒，请在“设置 ▸ 电台设备 ▸ 设备与 CAT”中关闭 Flex 原生 DAX 音频。",
+      "previous": "Flex本地DAX音频开播,因此电台从DAX接收传输音频,你的麦克风断开——在每个片段和每个节目中,包含SmartSDR. 关闭 Flex 设置中的本地 DAX 音频 QQ Radio Rig &CAT用麦克风。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigMismatch.chip",
+      "english": "rig: {{mode}}",
+      "chinese": "电台：{{mode}}",
+      "previous": "钻机 :{{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigMismatch.title",
+      "english": "Your rig is on {{rigMode}}, but Phone is set to {{mode}}. TX uses {{mode}} — turn the rig's mode knob (or re-pick the band) to match.",
+      "chinese": "电台当前为 {{rigMode}}，但话音页面设为 {{mode}}，TX 将使用 {{mode}}。请转动电台的模式旋钮，或重新选择频段，使两者一致。",
+      "previous": "你的钻机开着{{rigMode}},但电话被设定为{{mode}}. TX 用途{{mode}}——转动钻机模式的把手(或重新选择波段)进行匹配.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.split.on.title",
+      "english": "Split ON — TX {{freq}} MHz. Click for simplex.",
+      "chinese": "异频已开启，TX 为 {{freq}} MHz。点击恢复同频。",
+      "previous": "拆分于 - TX{{freq}} MHz。单击以获取简单x。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.split.off.title",
+      "english": "Work split — TX off your RX frequency (e.g. up 5)",
+      "chinese": "异频通联：TX 与 RX 使用不同频率，例如高 5 千赫",
+      "previous": "工作分离——TX从你的RX频率中切换(例如上升5)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.split.lower.title",
+      "english": "TX {{step}} kHz lower",
+      "chinese": "TX 降低 {{step}} kHz",
+      "previous": "主题{{step}} kHz下调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.split.higher.title",
+      "english": "TX {{step}} kHz higher",
+      "chinese": "TX 升高 {{step}} kHz",
+      "previous": "主题{{step}} kHz高点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.split.offset.title",
+      "english": "TX offset from your RX dial (kHz)",
+      "chinese": "TX 相对接收频率的偏移（kHz）",
+      "previous": "从您的 RX 拨号中抵消 TX (kHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.split.setFailed",
+      "english": "Could not set split",
+      "chinese": "无法设置异频",
+      "previous": "无法设置拆分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.split.clearFailed",
+      "english": "Could not clear split",
+      "chinese": "无法取消异频",
+      "previous": "无法清除拆分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.noCat.label",
+      "english": "⚠ no rig control",
+      "chinese": "⚠ 未连接电台控制",
+      "previous": "没有钻机控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.noCat.title",
+      "english": "No CAT link — set a rigctld/CAT rig in Settings so the app can switch the mode and follow the dial. On VOX/RTS-DTR PTT the rig has no command channel.",
+      "chinese": "没有 CAT 连接。请在设置中配置 rigctld/CAT 电台控制，以便软件切换模式并跟随调谐频率。仅使用 VOX 或 RTS-DTR PTT 时，电台没有指令控制通道。",
+      "previous": "没有CAT链接 - 设置刚性/CAT在设置中安装平台,使应用程序可以切换模式并跟随拨号. 在VOX/RTS-DTR时PTT钻机没有指挥通道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mic.label",
+      "english": "Mic",
+      "chinese": "话筒",
+      "previous": "话筒",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mic.aria",
+      "english": "Mic gain",
+      "chinese": "话筒增益",
+      "previous": "话筒增益",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.mic.title",
+      "english": "Microphone gain — raise it until SSB peaks tickle the ALC zone",
+      "chinese": "话筒增益：逐步提高，直到 SSB 话音峰值刚进入 ALC 区域",
+      "previous": "微型手机增益——提升至SSB高峰时痒ALC区.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.af.aria",
+      "english": "AF gain",
+      "chinese": "音频增益",
+      "previous": "音频增益",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.af.title",
+      "english": "AF gain — the radio's own volume. If your soundcard is fed from the rig's speaker or headphone jack, this also sets the level the decoder hears, so turning it right down stops FT8, RTTY and PSK as well as the speaker. A rig with its own USB audio, or a fixed-level ACC/DATA jack, is not affected.",
+      "chinese": "AF 增益，即电台自身音量。若声卡接在电台扬声器或耳机插口，此设置也影响解码器的输入电平；调到最低会同时使扬声器及 FT8、RTTY、PSK 解码器无声。电台自带 USB 音频或固定电平的 ACC/DATA 插口不受影响。",
+      "previous": "AF增益——收音机自己的音量. 如果你的声音卡是从钻机的扬声器或耳机插孔中输入的, 这还设置了解码器听到的关卡, 所以将它关闭FT8, (中文).RTTY和PSK以及扬声器。 装有USB音频的钻机或固定级的ACC/DATA Jack不受影响。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.af.mutesDecode.label",
+      "english": "DECODE?",
+      "chinese": "解码无声？",
+      "previous": "戴科德吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.af.mutesDecode.title",
+      "english": "AF is almost fully down. If the decoder listens through the rig’s speaker or headphone jack it has gone quiet too. Raise AF, or feed the soundcard from the USB codec or the rear ACC/DATA jack, which are not affected by this control.",
+      "chinese": "AF 几乎已调到最低。若解码器通过电台扬声器或耳机插口获取音频，也会没有声音。请提高 AF，或改从不受此控件影响的 USB 音频接口或后部 ACC/DATA 插口连接声卡。",
+      "previous": "AF几乎完全下降. 如果解码器通过钻机的扬声器或耳机插座收听,它也变得安静。 提高AF,或从USB编码器或后置ACC/DATA jake中提供音卡,这些音卡不受此控制的影响.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.rf.aria",
+      "english": "RF gain",
+      "chinese": "射频增益",
+      "previous": "射频增益",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.rf.title",
+      "english": "RF gain — the receiver front end, not transmit power. Back it off on a loud band to lift a signal out of the noise the AGC is riding on.",
+      "chinese": "RF 增益控制接收前端，不是发射功率。信号较强的频段可适当调低，以减轻噪声对 AGC 的影响，让信号更易辨认。",
+      "previous": "RF增益——接收器前端,而非传输功率. 回到一个响亮的乐队里去 从AGC的噪音中发出信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.sql.aria",
+      "english": "Squelch",
+      "chinese": "静噪",
+      "previous": "静噪",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.sql.title",
+      "english": "Squelch — the level a signal must reach before you hear it. Normal on FM; on SSB, CW and the data modes leave it fully open, because a closed squelch mutes the audio the decoder listens to on most radios, including the USB feed.",
+      "chinese": "静噪门限：信号达到该电平后才放出声音。通常用于 FM；SSB、CW 和数据模式应将静噪完全打开，因为多数电台静噪关闭时，也会切断解码器所用的音频，包括 USB 音频。",
+      "previous": "Squelch——在听到信号前,信号必须达到的级别. 调频正常;SSB正常CW而数据模式则让它完全打开,因为一个闭塞的squelch将解码器在包括USB种子在内的大多数收音机上收听的音频哑音.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.sql.mutesDecode.label",
+      "english": "DECODE?",
+      "chinese": "解码无声？",
+      "previous": "戴科德吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.analog.sql.mutesDecode.title",
+      "english": "The squelch is up outside FM. On most radios that mutes the audio the decoder hears as well as the speaker, so nothing will decode until a signal breaks it. Wind it fully down for SSB, CW and the data modes.",
+      "chinese": "当前不是 FM 模式，但静噪门限已提高。多数电台会同时切断扬声器和解码器音频，只有信号超过门限才能解码。SSB、CW 和数据模式请将静噪门限调到最低。",
+      "previous": "声调在调频外 在大多数窃听解码器听到的音频以及扬声器的收音机上,除非有信号中断,否则任何内容都不会解码. 为SSB整风CW和数据模式。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.filter.title",
+      "english": "RX filter / passband width (CAT)",
+      "chinese": "接收滤波器／通带宽度（CAT）",
+      "previous": "RX 滤波器/ 通过带宽度 (CAT) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.filter.narrower.title",
+      "english": "Narrower (−{{step}} Hz)",
+      "chinese": "收窄（−{{step}} Hz）",
+      "previous": "缩小( -{{step}} Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.filter.wider.title",
+      "english": "Wider (+{{step}} Hz)",
+      "chinese": "加宽（+{{step}} Hz）",
+      "previous": "较大(+){{step}} Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.filter.failed",
+      "english": "Could not set filter width",
+      "chinese": "无法设置滤波器带宽",
+      "previous": "无法设置过滤宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.record.start.aria",
+      "english": "Record QSO audio",
+      "chinese": "录制本次 QSO 的音频",
+      "previous": "记录QSO音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.record.stop.aria",
+      "english": "Stop recording this QSO",
+      "chinese": "停止录制本次 QSO",
+      "previous": "别录了QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.record.off.title",
+      "english": "Record the received audio to a WAV in the recordings folder",
+      "chinese": "将接收音频录制为 WAV 文件，存入录音文件夹",
+      "previous": "在录音文件夹中将收到的音频记录到 WAV",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.record.on.title",
+      "english": "Recording — click to stop recording this QSO",
+      "chinese": "正在录音，点击可停止录制本次 QSO",
+      "previous": "录音——点击以停止录音QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.record.startFailed",
+      "english": "Could not start recording",
+      "chinese": "无法开始录制",
+      "previous": "无法开始录制",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.record.stopFailed",
+      "english": "Could not stop recording",
+      "chinese": "无法停止录音",
+      "previous": "无法停止录音",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxMeter.label",
+      "english": "RX audio level",
+      "chinese": "接收音频电平",
+      "previous": "接收音频电平",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.locked",
+      "english": "TX locked — this frequency/mode is outside your license privileges",
+      "chinese": "TX 已锁定：此频率／模式超出你的执照许可范围",
+      "previous": "TX 锁定—— 此频率/ 模式不在您的许可权限之内 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.usbOnly",
+      "english": "TX locked — 60 m allows only USB phone. Pick USB or AUTO.",
+      "chinese": "TX 已锁定：60 米波段仅允许 USB 话音。请选择 USB 或 AUTO。",
+      "previous": "TX锁定——60米只允许USB手机. 选择USB或AUTO.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.turnedBackOn",
+      "english": "TX was off — turned it back on. Press PTT again to talk.",
+      "chinese": "TX 原先已关闭，现已重新开启。请再次按 PTT 开始讲话。",
+      "previous": "TX关机了——又打开了. 新闻PTT再次说话。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.remoteLock",
+      "english": "Lock (hands-free PTT) does not work over Remote. Untick Lock, then hold PTT or the Space bar to talk.",
+      "chinese": "远程连接不支持锁定发射（免按住 PTT）。请取消勾选“锁定”，再按住 PTT 或空格键讲话。",
+      "previous": "锁定( 无手)PTT)不工作于远程。 解锁,然后按住PTT或空间栏说话。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.lock.stillTalking",
+      "english": "Still talking? Lock ends in {{seconds}} s.",
+      "chinese": "还在讲话吗？锁定发射将在 {{seconds}} 秒后结束。",
+      "previous": "还说话? 锁定结束于{{seconds}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.lock.keepTalking",
+      "english": "Keep talking (K)",
+      "chinese": "继续讲话（K）",
+      "previous": "继续说(K)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.tx.clockRepair",
+      "english": "Not keyed: a clock repair is running, and nothing starts transmitting until it finishes (two minutes at most).",
+      "chinese": "未触发发射：正在修复时钟，完成前不会启动任何发射，最多需要两分钟。",
+      "previous": "未按键:一个时钟修复正在运行,在它完成之前没有开始传输(最多2分钟).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.tuneHint",
+      "english": "Scroll here to tune the VFO",
+      "chinese": "在此滚动鼠标滚轮可调谐 VFO",
+      "previous": "在这里滚动以调制VFO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.aria",
+      "english": "Panadapter",
+      "chinese": "全景频谱",
+      "previous": "全景频谱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.span.aria",
+      "english": "Panadapter span (sets the radio)",
+      "chinese": "全景频谱跨度，会设置电台",
+      "previous": "宽度( 设置收音机)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.span.title",
+      "english": "Sweep width on the RADIO — the app draws what it reports back",
+      "chinese": "电台自身频谱的扫描宽度，软件按电台回报的数据绘制",
+      "previous": "搜索RADIO上的宽度——该应用程序提取了它报告的内容",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.pos.aria",
+      "english": "Panadapter position (sets the radio)",
+      "chinese": "全景频谱位置，会设置电台",
+      "previous": "调整器位置( 设置收音机)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.pos.title",
+      "english": "Where the sweep sits. FIX is derived from the band edge — the CAT protocol does not report the radio's own FIX window, so check it against the rig's scale.",
+      "chinese": "频谱扫描范围的位置。FIX 按频段边缘推算；CAT 协议不回报电台自身的 FIX 窗口，请对照电台频谱刻度核实。",
+      "previous": "扫地处坐. FIX来源于波段边缘-CAT协议不报告无线电自己的FIX窗口,所以对照钻机的尺度检查.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.pos.center",
+      "english": "Center",
+      "chinese": "居中",
+      "previous": "居中",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.pos.cursor",
+      "english": "Cursor",
+      "chinese": "光标",
+      "previous": "光标",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.yaesu.pos.fix",
+      "english": "Fix",
+      "chinese": "固定",
+      "previous": "修补",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.nativeRf.label",
+      "english": "RF Panadapter",
+      "chinese": "射频全景频谱",
+      "previous": "射频全景频谱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.nativeRf.title",
+      "english": "Native RF panadapter — the real RF spectrum around your dial, not the demodulated audio passband.",
+      "chinese": "电台原生射频全景频谱，显示当前调谐频率附近的实际射频信号，而非解调后的音频通带。",
+      "previous": "本地的 RF panadapter——你拨号周围的真正的 RF频谱,而不是降级的音频密码带.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.audio.label",
+      "english": "Passband",
+      "chinese": "通带",
+      "previous": "通带",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.audio.title",
+      "english": "Receiver AUDIO spectrum on your rig’s axis: the centre line is your dial, and the passband sits on the side your sideband is on (USB above, LSB below) — the other half is quiet because an SSB receiver only hears one side. Not a band-wide RF panadapter, so a voice fills the passband rather than sliding across it as you tune.",
+      "chinese": "以电台频率为横轴的接收音频频谱：中线为当前调谐频率，通带位于所选边带的一侧，USB 在上侧、LSB 在下侧。SSB 接收机只接收一侧，所以另一半没有信号。这不是宽范围射频全景频谱，话音会充满通带，而不会随调谐横向移动。",
+      "previous": "接收器AUDIO频谱在您的钻机轴上:中线是您的拨号, 传幅坐在您的侧带上方( USB 以上, LSB 下方) —— 另一半是安静的, 因为一个SSB 接收器只听到一边。 没有一个全波段的RF全程调整器, 所以一个声音填满了通过带,而不是在调音时滑过它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.audio.sub",
+      "english": "RX audio",
+      "chinese": "接收音频",
+      "previous": "RX 音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.splitter.label",
+      "english": "scope height",
+      "chinese": "频谱高度",
+      "previous": "范围高度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.span.aria",
+      "english": "Bandscope span",
+      "chinese": "频谱显示跨度",
+      "previous": "带宽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.span.auto.label",
+      "english": "Auto",
+      "chinese": "自动",
+      "previous": "自动",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "自动"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "自动"
+        }
+      ]
+    },
+    {
+      "id": "phone.span.auto.title",
+      "english": "Follows the radio's filter — the scope shows what the rig can pass",
+      "chinese": "跟随电台滤波器，频谱显示电台实际可通过的范围",
+      "previous": "跟踪收音机的过滤器——瞄准镜显示钻机能通过什么",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.span.full.label",
+      "english": "Full",
+      "chinese": "全宽",
+      "previous": "完整",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.span.full.title",
+      "english": "The whole captured passband — {{khz}} kHz of sideband from your dial",
+      "chinese": "显示完整采集通带，即调谐频率起向所选边带延伸 {{khz}} kHz",
+      "previous": "整个抓获的传球...{{khz}} kHz拨号的副带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.span.voice.label",
+      "english": "Voice",
+      "chinese": "语音",
+      "previous": "语音",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.span.voice.title",
+      "english": "Voice energy — {{khz}} kHz of sideband from your dial",
+      "chinese": "显示话音能量范围，即调谐频率起向所选边带延伸 {{khz}} kHz",
+      "previous": "语音能量——{{khz}} kHz拨号的副带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.span.zoom.title",
+      "english": "Zoomed — {{khz}} kHz of sideband from your dial",
+      "chinese": "放大显示，即调谐频率起向所选边带延伸 {{khz}} kHz",
+      "previous": "缩放 -{{khz}} kHz拨号的副带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.span.tight.title",
+      "english": "Tight — {{hz}} Hz of sideband from your dial, for fine tuning",
+      "chinese": "精细显示，即调谐频率起向所选边带延伸 {{hz}} Hz，适合微调",
+      "previous": "紧 -{{hz}} Hz拨号的副带 用于微调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rfZoom.aria",
+      "english": "Panadapter zoom",
+      "chinese": "全景频谱缩放",
+      "previous": "调整器缩放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rfZoom.full.label",
+      "english": "Full",
+      "chinese": "全宽",
+      "previous": "完整",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rfZoom.full.title",
+      "english": "The rig's whole scope sweep (set the width on the radio)",
+      "chinese": "显示电台频谱的完整扫描范围，宽度在电台上设置",
+      "previous": "钻机的整个瞄准镜扫描(在无线电上设置宽度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rfZoom.span.title",
+      "english": "±{{khz}} kHz around your dial",
+      "chinese": "当前调谐频率两侧各 {{khz}} kHz",
+      "previous": "・{{khz}} kHz绕着你的电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigScope.aria",
+      "english": "Rig scope control",
+      "chinese": "电台频谱控制",
+      "previous": "严格范围控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigScope.label",
+      "english": "Rig scope",
+      "chinese": "电台频谱",
+      "previous": "严格范围",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigScope.title",
+      "english": "These command the radio's own scope, not just the on-screen zoom",
+      "chinese": "这些控件会调整电台自身的频谱设置，而非仅缩放软件中的显示",
+      "previous": "这些命令是无线电自己范围, 不只是屏幕放大",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigScope.span.title",
+      "english": "Set the radio's scope span to {{span}}",
+      "chinese": "将电台频谱跨度设为 {{span}}",
+      "previous": "设定收音机的范围范围为{{span}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigScope.ref.title",
+      "english": "Scope reference level — lower to lift weak signals out of the noise",
+      "chinese": "频谱参考电平：降低可使弱信号在显示中更突出",
+      "previous": "范围参考水平——低到从噪音中调出弱信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rigScope.ref.aria",
+      "english": "Scope reference level (dB)",
+      "chinese": "频谱参考电平（dB）",
+      "previous": "范围参考水平 (dB)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.flexPan.aria",
+      "english": "Flex panadapter control",
+      "chinese": "Flex 全景频谱控制",
+      "previous": "Flex 修改器控制器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.flexPan.label",
+      "english": "Flex pan",
+      "chinese": "Flex 全景频谱",
+      "previous": "弹性锅",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.flexPan.title",
+      "english": "These command the FlexRadio's real SmartSDR panadapter, not just the on-screen zoom",
+      "chinese": "这些控件会调整 FlexRadio 实际的 SmartSDR 全景频谱，而非仅缩放软件中的显示",
+      "previous": "这些命令是 FlexRadio 真正的 SmartSDR 修改器, 而不仅仅是屏幕上的缩放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.flexPan.span.title",
+      "english": "Set the Flex panadapter bandwidth to {{span}}",
+      "chinese": "将 Flex 全景频谱带宽设为 {{span}}",
+      "previous": "设定 Flex 泛适应带宽为{{span}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.flexPan.ref.title",
+      "english": "Panadapter reference level (dBm) — lower to lift weak signals out of the noise",
+      "chinese": "全景频谱参考电平（dBm）：降低可使弱信号在显示中更突出",
+      "previous": "Panadapter 参考级 (dBm) – 降低到从噪声中提升弱信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.flexPan.ref.aria",
+      "english": "Flex panadapter reference level (dBm)",
+      "chinese": "Flex 全景频谱参考电平（dBm）",
+      "previous": "Flex 泛读器参考级 (dBm)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.scope.ref.label",
+      "english": "Ref",
+      "chinese": "参考电平",
+      "previous": "参考文献",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.dsp.nb.title",
+      "english": "Noise Blanker — kills impulse/ignition noise (RX)",
+      "chinese": "脉冲噪声抑制（NB）：抑制脉冲及点火噪声，仅影响接收",
+      "previous": "噪音Blanker——杀死冲动/点燃噪音(RX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.dsp.nr.title",
+      "english": "Noise Reduction — pulls voice out of broadband hiss (RX, DSP)",
+      "chinese": "降噪（NR）：从宽带嘶声中提取话音，使用接收 DSP",
+      "previous": "减少噪音——从宽带中调出声音(RX,DSP)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.dsp.notch.title",
+      "english": "Auto-Notch (ANF) — nulls carriers/heterodynes (RX, DSP)",
+      "chinese": "自动陷波（ANF）：抑制载波及差拍啸叫，使用接收 DSP",
+      "previous": "自动通知(ANF)——无载体/热力(RX,DSP)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.dsp.comp.title",
+      "english": "Speech Compressor — more average talk power (TX)",
+      "chinese": "语音压缩：提高平均话音发射功率",
+      "previous": "语音压缩机——更普通的谈话功率(TX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.dsp.manualNotch.title",
+      "english": "Manual notch — the one you place yourself on a whistle, using the notch frequency slider. Distinct from Auto notch, which hunts a carrier automatically.",
+      "chinese": "手动陷波：用陷波频率滑块对准要消除的啸叫频率。与自动寻找载波的自动陷波不同，需要手动定位。",
+      "previous": "手动 Notch——即你用 Notch 频率滑动器吹口哨的那个. 与自动捕获载体的Auto Notch区分开来.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.dsp.vox.title",
+      "english": "Voice-Operated Transmit — hands-free keying (TX)",
+      "chinese": "声控发射（VOX）：用话音触发发射，无需按住发射键",
+      "previous": "语音操作传输——无手键(TX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.dsp.toggleFailed",
+      "english": "Could not toggle {{func}}",
+      "chinese": "无法切换 {{func}}",
+      "previous": "无法切换{{func}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.nr.title",
+      "english": "Noise-reduction depth — raise until the noise floor drops, back off if audio gets watery",
+      "chinese": "降噪深度：逐步提高，直到底噪降低；若音频出现水声般的失真，请适当调低",
+      "previous": "降噪深度——提高,直到噪音下降,如果音频水化则退后",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.nr.aria",
+      "english": "Noise-reduction level",
+      "chinese": "降噪深度",
+      "previous": "降噪深度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.comp.title",
+      "english": "Speech processor depth — how hard the compressor works. Raise it for punch on a weak path; too much sounds harsh and splatters.",
+      "chinese": "语音处理强度，即压缩程度。传播较弱时适当提高可增强话音穿透力；过高会声音刺耳，并造成邻频杂散干扰。",
+      "previous": "语音处理器深度——压缩机工作有多难. 举起它来拳打弱路;太多听起来很严厉和溅射.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.comp.aria",
+      "english": "Speech processor depth",
+      "chinese": "语音处理深度",
+      "previous": "语音处理深度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.notchFreq.title",
+      "english": "Manual notch frequency — slide it onto the whistle you want gone. This is the notch you place yourself, not the automatic one.",
+      "chinese": "手动陷波频率：移动滑块，对准要消除的啸叫频率。此陷波由你手动定位，不会自动寻找。",
+      "previous": "手动调频——把它滑到你想消失的哨子上. 这是你放的,不是自动的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.notchFreq.aria",
+      "english": "Manual notch frequency in hertz",
+      "chinese": "手动陷波频率，单位为赫兹",
+      "previous": "手动标记频率在 hertz 中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.agc.aria",
+      "english": "AGC speed",
+      "chinese": "AGC 速度",
+      "previous": "AGC 速度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.agc.title",
+      "english": "AGC time constant",
+      "chinese": "AGC 时间常数",
+      "previous": "AGC 时间常数",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.agc.auto",
+      "english": "Auto",
+      "chinese": "自动",
+      "previous": "自动",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "自动"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "自动"
+        }
+      ]
+    },
+    {
+      "id": "phone.rxDsp.agc.fast",
+      "english": "Fast",
+      "chinese": "快",
+      "previous": "快",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "快速"
+        }
+      ]
+    },
+    {
+      "id": "phone.rxDsp.agc.mid",
+      "english": "Mid",
+      "chinese": "中",
+      "previous": "中",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.agc.slow",
+      "english": "Slow",
+      "chinese": "慢",
+      "previous": "慢",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.rxDsp.agc.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "phone.keyer.hint",
+      "english": "click a slot or press its F-key to send · Esc stops",
+      "chinese": "点击报文按钮或按对应功能键发送 · Esc 停止",
+      "previous": "单击一个槽或按下它的 F 键发送 。\\ Esc stops",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.hint.mac",
+      "english": "click a slot or press Fn with its F-key to send · Esc stops",
+      "chinese": "点击报文按钮，或按 Fn 加对应功能键发送 · Esc 停止",
+      "previous": "单击一个槽或用 F 键按 Fn 来发送 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.fd.hint",
+      "english": "Contest: record a slot with your exchange <b>“{{exchange}}”</b> for one-key sends.",
+      "chinese": "竞赛：录制包含本台交换信息 <b>“{{exchange}}”</b> 的语音报文，即可一键发送。",
+      "previous": "比赛:用交换机记录一个位置<b>“......{{exchange}}“</b>一键发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.slot.play.title",
+      "english": "Play F{{slot}} ({{label}})",
+      "chinese": "播放 F{{slot}}（{{label}}）",
+      "previous": "玩 F 游戏{{slot}}(单位:千美元){{label}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.slot.record.title",
+      "english": "Record F{{slot}}. Records from your INPUT DEVICE — often the rig's RX audio, not a mic. If it is, record the message elsewhere and use Import (⤓).",
+      "chinese": "录制 F{{slot}}。录音来自所选输入设备，通常是电台接收音频，而非话筒。若是如此，请在其他软件中录好报文，再使用“导入”（⤓）。",
+      "previous": "记录 F{{slot}}. 记录来自您的 INPUT DEVICE —— 经常是钻机的 RX 音频,而不是麦克风. 如果是的话,请在其它地方记录信件并使用导入(QQ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.slot.unnamed",
+      "english": "Slot {{slot}}",
+      "chinese": "报文 {{slot}}",
+      "previous": "槽{{slot}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.slot.state.record",
+      "english": "record",
+      "chinese": "录音",
+      "previous": "记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.import.title",
+      "english": "Import a .wav file",
+      "chinese": "导入 .wav 文件",
+      "previous": "导入 .wav 文件",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.clear.title",
+      "english": "Clear this recording",
+      "chinese": "清除此录音",
+      "previous": "清除此录音",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.empty",
+      "english": "F{{slot}} has no recording yet — record or import one",
+      "chinese": "F{{slot}} 尚无录音，请先录制或导入",
+      "previous": "页:1{{slot}}还没有记录——记录或导入一个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.busyRecording",
+      "english": "Finish the recording first",
+      "chinese": "先录完",
+      "previous": "先录完",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.releasePtt",
+      "english": "Release PTT before sending a voice message",
+      "chinese": "发送语音报文前请松开 PTT",
+      "previous": "发布PTT在发送语音消息前",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.txOff",
+      "english": "TX is off — click PTT once to turn it back on, then play the message",
+      "chinese": "TX 已关闭。先点击一次 PTT 重新开启，再播放报文",
+      "previous": "TX 关闭- 点击PTT一次打开它,然后播放消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.playFailed",
+      "english": "Could not play F{{slot}}",
+      "chinese": "无法播放 F{{slot}}",
+      "previous": "无法播放 F{{slot}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.recordFailed",
+      "english": "Could not start recording",
+      "chinese": "无法开始录制",
+      "previous": "无法开始录制",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.saveFailed",
+      "english": "Could not save recording",
+      "chinese": "无法保存录音",
+      "previous": "无法保存记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.saved",
+      "english": "Saved F{{slot}} ({{label}})",
+      "chinese": "已保存 F{{slot}}（{{label}}）",
+      "previous": "已保存 F{{slot}}(单位:千美元){{label}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.importFailed",
+      "english": "Could not import the WAV",
+      "chinese": "无法导入 WAV",
+      "previous": "无法导入 WAV",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.imported",
+      "english": "Imported F{{slot}} ({{label}})",
+      "chinese": "已导入 F{{slot}}（{{label}}）",
+      "previous": "进口的F{{slot}}(单位:千美元){{label}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.clearFailed",
+      "english": "Could not clear the slot",
+      "chinese": "无法清除此录音",
+      "previous": "无法清除槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.deleted",
+      "english": "Deleted F{{slot}} ({{label}})",
+      "chinese": "已删除 F{{slot}}（{{label}}）",
+      "previous": "删除的F{{slot}}(单位:千美元){{label}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.undo",
+      "english": "Undo",
+      "chinese": "撤销",
+      "previous": "撤销",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.restored",
+      "english": "Restored F{{slot}} ({{label}})",
+      "chinese": "已恢复 F{{slot}}（{{label}}）",
+      "previous": "已恢复的 F{{slot}}(单位:千美元){{label}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.hide.stoppedOver",
+      "english": "F{{slot}} was on the air — the voice keyer closed and stopped it",
+      "chinese": "F{{slot}} 正在发射；语音键控器已关闭，并停止了该报文",
+      "previous": "页:1{{slot}}声音键盘关闭并停止播放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.hide.discarded",
+      "english": "Recording for F{{slot}} discarded — the voice keyer closed",
+      "chinese": "语音键控器已关闭，F{{slot}} 的录音已丢弃",
+      "previous": "F的记录{{slot}}丢弃 — 语音密钥关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.keyer.hide.recorderStuck",
+      "english": "Could not stop the recorder for F{{slot}} — it may still be running. Reopen the voice keyer.",
+      "chinese": "无法停止 F{{slot}} 的录音，录音可能仍在继续。请重新打开语音键控器。",
+      "previous": "无法停止 F 的记录器{{slot}}- 可能还在运行 重开语音键器.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.loading",
+      "english": "Connecting to Nexus…",
+      "chinese": "正在连接 Nexus...",
+      "previous": "正在连接 Nexus...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.windowTitle",
+      "english": "{{section}} — Nexus",
+      "chinese": "{{section}} — Nexus",
+      "previous": "{{section}}- 纳克萨斯",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tx.announce.on",
+      "english": "Transmitting",
+      "chinese": "正在发射",
+      "previous": "正在发射",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tx.announce.off",
+      "english": "Receiving",
+      "chinese": "正在接收",
+      "previous": "正在接收",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundInput",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundInput",
+          "chinese": "接收"
+        }
+      ]
+    },
+    {
+      "id": "shell.rail.stations.label",
+      "english": "stations panel width",
+      "chinese": "电台面板宽度",
+      "previous": "站台宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.rail.waterfall.label",
+      "english": "waterfall panel width",
+      "chinese": "瀑布图面板宽度",
+      "previous": "瀑布面板宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.bandActivity.title",
+      "english": "Band Activity — heard on the band",
+      "chinese": "频段活动：本频段收到的电台",
+      "previous": "乐队活动——在乐队中听到的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.roam.aria",
+      "english": "Roam settings",
+      "chinese": "Roam 设置",
+      "previous": "Roam 设置",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.roam.close.aria",
+      "english": "Close Roam settings",
+      "chinese": "关闭 Roam 设置",
+      "previous": "关闭 Roam 设置",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.crash.section",
+      "english": "This section",
+      "chinese": "此区域",
+      "previous": "本节",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.crash.retry",
+      "english": "Try again",
+      "chinese": "重试",
+      "previous": "重试",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.crash.back",
+      "english": "Back to {{section}}",
+      "chinese": "返回{{section}}",
+      "previous": "回来{{section}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

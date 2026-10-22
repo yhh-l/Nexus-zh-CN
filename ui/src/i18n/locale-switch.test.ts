@@ -151,7 +151,7 @@ describe('every shipped language has a name, not a tag', () => {
     // URL is http: and readFileSync refuses it. A wrong path throws here rather than passing
     // over an empty string, and the length control below pins that either way.
     const main = readFileSync(resolve(process.cwd(), 'src/main.tsx'), 'utf8')
-    const installed = [...main.matchAll(/installCatalog\(\s*'([a-z-]+)'/g)].map((m) => m[1])
+    const installed = [...main.matchAll(/installCatalog\(\s*'([A-Za-z-]+)'/g)].map((m) => m[1])
     expect(installed.length, 'control: main.tsx really does install catalogs').toBeGreaterThan(0)
     for (const l of ['en', ...installed]) {
       expect(LOCALE_NATIVE_NAME[l], `${l} would render in the picker as "${l}"`).toBeTruthy()

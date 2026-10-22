@@ -1,0 +1,1762 @@
+{
+  "batch": 26,
+  "range": [
+    5001,
+    5200
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 167,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 8,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/Js8FrequencySettings.tsx"
+  ],
+  "rows": [
+    {
+      "id": "settings.digital.harq.hint",
+      "english": "On (default) = a weak frame that fails is recovered by joint-combining its retransmissions (RV0+RV1+RV2), and unacknowledged QSO overs escalate redundancy. Off = RV0-only (each frame decoded on its own).",
+      "chinese": "开启（默认）：将同一弱信号帧的多次重传联合合并（RV0+RV1+RV2），以恢复原先解码失败的帧；QSO 中未获确认的发射轮次会提高冗余度。关闭：仅使用 RV0，各帧独立解码。",
+      "previous": "On(default) = 失败的弱边框通过联合合并其再发送(RV0+RV1+RV2)而未确认恢复.QSO超度升级冗余。 Off = 仅限RV0(每个帧自行解码).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.clockCheck.label",
+      "english": "Clock check (NTP)",
+      "chinese": "时钟检查（NTP）",
+      "previous": "时钟检查( NTP)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.clockCheck.hint",
+      "english": "Measure your PC clock against public NTP servers and CORRECT for it: TempoFast/TempoDeep are slot-timed to UTC, and Nexus shifts its own transmit and decode windows by the measured offset so they land on the true UTC grid even when the clock is off. The top bar shows what is being applied. Turn off for fully-offline operation (no network calls) — the last measurement then keeps steering until it ages out.",
+      "chinese": "通过公共 NTP 服务器测量电脑时钟偏差，并在 Nexus 内补偿：TempoFast/TempoDeep 的时隙以 UTC 为准，Nexus 根据测得的偏差平移自身的发射和解码窗口，即使电脑时钟有偏差，也能对齐准确的 UTC 时隙。顶栏会显示当前应用的补偿值。完全离线操作时可关闭此项（不发起网络请求）；关闭后，最后一次测量值仍用于补偿，直到过期。",
+      "previous": "测量您的 PC 时钟与 公共 NTP 服务器相对应, 并为它测量 CORREECT : TempoFast/ TempoDep 时间档为UTC,Nexus通过测量的偏移来转换自己的传输和解码窗口,从而降落在真实的UTC网格,即使时钟关闭。 顶端栏显示正在应用什么 。 关闭用于全线运行(没有网络呼叫)——最后的测量然后继续转动直到老化.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.stationPower.label",
+      "english": "Station power (W)",
+      "chinese": "本台发射功率（W）",
+      "previous": "车站供电(W)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.stationPower.hint",
+      "english": "Your transmit power in watts — unlocks the Journey miles-per-watt & QRP feats. Leave blank if unknown.",
+      "chinese": "本台发射功率，单位为瓦；填写后可解锁 Journey 中的每瓦通联里程和 QRP 成就。不确定时请留空。",
+      "previous": "你的发射功率以瓦特计——解锁千里/瓦特和QRP的功率. 如果未知, 请留空 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.units.label",
+      "english": "Units",
+      "chinese": "单位",
+      "previous": "单位",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.units.auto",
+      "english": "Automatic (from your system)",
+      "chinese": "自动（跟随系统）",
+      "previous": "自动( 从您的系统)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.units.metric",
+      "english": "Metric (km, °C)",
+      "chinese": "公制（km、°C）",
+      "previous": "计量(公里,°C)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.units.imperial",
+      "english": "Imperial (mi, °F)",
+      "chinese": "英制（mi、°F）",
+      "previous": "帝国语( mi, °F)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.units.hint",
+      "english": "Distances, temperature and wind speed. Automatic follows your operating system's region. Applies everywhere in the app immediately.",
+      "chinese": "用于距离、温度和风速。“自动”跟随操作系统的地区设置，更改后立即在整个应用中生效。",
+      "previous": "距离,温度和风速。 自动跟踪您的操作系统区域 。 立即在应用程序中应用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.jt65.legend",
+      "english": "JT65 — classic EME",
+      "chinese": "JT65 — 经典月面反射模式（EME）",
+      "previous": "JT65 — 经典的EME",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.jt65.submode.label",
+      "english": "Submode (tone spacing)",
+      "chinese": "子模式（音调间隔）",
+      "previous": "子模式( tone 间隔)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.jt65.submode.a",
+      "english": "A — HF standard, narrowest",
+      "chinese": "A — 高频标准，间隔最窄",
+      "previous": "A-高频标准,最窄",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.jt65.submode.b",
+      "english": "B — 2x spacing",
+      "chinese": "B — 2 倍间隔",
+      "previous": "B - 2x间距",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.jt65.submode.c",
+      "english": "C — 4x spacing, most Doppler-tolerant",
+      "chinese": "C — 4 倍间隔，多普勒容限最大",
+      "previous": "C - 4x间隔,大多数耐多普勒",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.jt65.submode.hint",
+      "english": "JT65 always uses a 60 s T/R period, so spacing is the only choice. A is what you want on HF; EME operators move up to B or C as Doppler spread on the higher bands smears the tones. Both stations must use the same submode.",
+      "chinese": "JT65 的收发周期固定为 60 秒，因此这里只需选择音调间隔。高频通常使用 A；较高频段的月面反射（EME）通联中，多普勒展宽会使音调变得模糊，因此常改用 B 或 C。双方必须使用相同子模式。",
+      "previous": "JT65总是使用60s的T/R周期,因此间隔是唯一的选择. A是您想要的在高频上;EME操作员移动到B或C,因为多普勒在较高波段上传播涂抹音量. 两个站台必须使用相同的子模式.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.jt65.hint",
+      "english": "The classic weak-signal and moonbounce mode, decoded and transmitted. Messages are the older 22-character format, not the 37-character one FT8 and friends use.",
+      "chinese": "经典的弱信号和月面反射通联模式，支持解码和发射。报文采用较早的 22 字符格式，而非 FT8 等模式使用的 37 字符格式。",
+      "previous": "经典的弱信号和月球弹跳模式,解码和传送. 信件是较老的22个字符格式,而不是37个字符格式FT8朋友会用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.msk144.legend",
+      "english": "MSK144 — meteor scatter",
+      "chinese": "MSK144 — 流星散射",
+      "previous": "MSK144 — 流星散射",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.msk144.period.label",
+      "english": "T/R period",
+      "chinese": "收发周期",
+      "previous": "T/R时期",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.msk144.period.fast",
+      "english": "5 s — fast turnaround, big showers",
+      "chinese": "5 秒 — 应答更快，适合强流星雨",
+      "previous": "5s——快速周转,大淋浴",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.msk144.period.standard",
+      "english": "15 s — the 6 m standard",
+      "chinese": "15 秒 — 6 米波段的标准周期",
+      "previous": "15s——6米标准",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.msk144.period.sparse",
+      "english": "30 s — sparse pings, more to stack",
+      "chinese": "30 秒 — 适合零星反射信号，可累积更多帧",
+      "previous": "30 s — 零星的 pings, 更多要堆放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.msk144.period.hint",
+      "english": "MSK144 sends a 72 ms message over and over, so a single meteor trail lasting a tenth of a second can carry the whole thing. Shorter periods turn the exchange around faster during a shower; longer ones give the decoder more frames to stack when pings are sparse. Both stations must use the same period.",
+      "chinese": "MSK144 会反复发送一条时长 72 毫秒的报文，因此即使流星余迹只持续十分之一秒，也能传递完整报文。流星雨期间，较短周期有利于加快双方应答；反射信号零星时，较长周期可让解码器累积更多帧。双方必须使用相同周期。",
+      "previous": "MSK144一次又一次地发出72ms的信息,所以一个单一的流星小径持续了十分之一秒,就可以携带整件事. 更短的时段在淋浴时使交换转速更快;更长的时段让解码器在平潭稀少时有更多的帧来堆叠. 两个车站必须使用相同的时间段.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.msk144.hint",
+      "english": "MSK144 transmits for nearly the whole period, sending the same 72 ms frame hundreds of times — that is how meteor scatter works, and a contact can take many minutes of apparent silence. The audio frequency is fixed at a 1500 Hz centre; the signal is 1 kHz wide, so there is nowhere to tune it. Shorthand (MSK40) messages are off, matching WSJT-X’s default.",
+      "chinese": "MSK144 几乎占用整个周期发射，将同一条 72 毫秒帧重复数百次，这是流星散射通联的工作方式；一次通联可能需要等待数分钟，期间听起来一片安静。音频中心频率固定为 1500 Hz，信号带宽为 1 kHz，因此无需调整音频频率。简短报文（MSK40）已关闭，与 WSJT-X 的默认设置一致。",
+      "previous": "MSK144几乎整个期间的传输,发送同样的72ms帧数以百计——这就是流星散射的原理,一个接触可以需要许多分钟的明显沉默. 音频频率固定在1500 Hz 中心;信号为 1 kHz 宽,所以没有地方可调 短手(MSK40)消息关闭,匹配WSJT-QQs默认.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.legend",
+      "english": "Beacons — WSPR & FST4W",
+      "chinese": "信标 — WSPR 与 FST4W",
+      "previous": "灯塔——WSPR和FST4W",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.txPercent.label",
+      "english": "Transmit %",
+      "chinese": "发射比例（%）",
+      "previous": "发送%",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.txPercent.title",
+      "english": "Round Robin is scheduling — this percentage is not used. Set the slot to 0 to schedule by percentage.",
+      "chinese": "当前由轮流发射功能安排时隙，此百分比不生效。将时隙设为 0 即可按百分比安排发射。",
+      "previous": "轮 Robin正在排程——这个百分比没有使用. 按百分比将时间档设置为 0 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.txPercent.hint.roundRobin",
+      "english": "<b>Ignored while Round Robin is active</b> — the rotation decides which intervals transmit. Set the slot to 0 to schedule by percentage again.",
+      "chinese": "<b>轮流发射启用时，此项不生效</b>：发射周期由轮换安排决定。将时隙设为 0，即可恢复按百分比安排发射。",
+      "previous": "<b>在 Robin 回合活动时被忽略</b>——旋转决定哪个间隔传送. 将时间档设定为 0 , 以便再次按百分比排列 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.txPercent.hint",
+      "english": "Fraction of intervals to transmit on. 0 = listen only. A beacon that transmits every interval hears nothing, so a minority is the convention — 20–30% is typical. Below 40% Nexus also avoids back-to-back transmissions while still hitting the rate you asked for.",
+      "chinese": "用于发射的周期占比，0 表示只接收。每个周期都发射的信标无法接收，因此通常只在少数周期发射，常用值为 20–30%。设为低于 40% 时，Nexus 还会在保持目标比例的同时避免连续两个周期发射。",
+      "previous": "要传送的间隔分数 。 0=仅听. 一个传送每个间隔的信号灯听不到任何声音,所以少数是公约——20-30%是典型的. 低于40%的Nexus也避免了背对背传输,同时仍然达到你所要求的速度.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.power.label",
+      "english": "Transmit power (dBm)",
+      "chinese": "发射功率（dBm）",
+      "previous": "传送电源( dBm)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.power.hint",
+      "english": "<b>Required, and it has to be real.</b> WSPR reports are published to a public propagation database that other operators draw conclusions from, so a wrong figure corrupts their data as well as yours. The beacon stays silent until this is set. 23 = 200 mW, 30 = 1 W, 37 = 5 W, 43 = 20 W.",
+      "chinese": "<b>必须填写，且必须符合实际功率。</b>WSPR 报告会发布到公共传播数据库，其他操作员会据此判断传播情况，错误数值会影响你和他人的数据。未设置此项前，信标不会发射。23 = 200 mW，30 = 1 W，37 = 5 W，43 = 20 W。",
+      "previous": "<b>必要,必须真实</b>WSPR报告发布在公共传播数据库中,其他操作者从中得出结论,因此错误的数字会腐蚀他们的数据和你的数据。 信标保持安静,直到这个设定。 23=200 mW,30=1 W,37=5 W,43=20 W.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.rrSlot.label",
+      "english": "FST4W Round Robin slot",
+      "chinese": "FST4W 轮流发射时隙",
+      "previous": "FST4W 圆形罗宾槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.rrSlot.hint",
+      "english": "0 = use the transmit-% schedule. Otherwise your slot in a coordinated rotation: stations agreeing on the same slot count and each taking a different slot never transmit at the same time, because the assignment is fixed by UTC. A rotation needs at least 2 slots.",
+      "chinese": "0 表示按发射百分比安排。其他值表示本台在协同轮流发射中所占的时隙：各台约定相同的时隙总数，并分别使用不同的时隙；时隙分配以 UTC 固定安排，因此各台不会同时发射。轮换至少需要 2 个时隙。",
+      "previous": "0=使用传输-%调度. 否则,您在协调旋转中的空档:在同一个空档计数上达成一致的台站,每个占用一个不同空档的台站从不同时传输,因为任务由UTC。旋转需要至少两个插槽。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.rrSlots.label",
+      "english": "Round Robin slots",
+      "chinese": "轮流发射时隙总数",
+      "previous": "圆形罗宾槽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.rrSlots.hint.degenerate",
+      "english": "<b>A one-station rotation is no rotation</b> — Round Robin needs at least 2 slots, so it is off and the transmit-% schedule applies.",
+      "chinese": "<b>只有一个台就无法轮流发射</b>：此功能至少需要 2 个时隙，因此当前已停用，改按发射百分比安排。",
+      "previous": "<b>一站制旋转不是旋转</b>—— Robin回合至少需要2个插槽,所以关闭了,并适用传输-%调度.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.rrSlots.hint",
+      "english": "How many stations are in the rotation. Ignored when the slot is 0.",
+      "chinese": "参与轮流发射的电台数量。时隙设为 0 时，此项不生效。",
+      "previous": "轮值中有多少站. 当槽为 0 时被忽略 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.beacons.hint",
+      "english": "Beacons transmit your callsign, grid and power — there is no QSO sequence, so Call CQ and S&P are inactive on these tiers. Transmit still has to be armed as usual; the schedule never keys a radio whose transmit you have not enabled.",
+      "chinese": "信标发送本台呼号、网格和功率，不进行 QSO 报文交换，因此这些模式下的“呼叫 CQ”和“扫频通联（S&P）”不可用。仍需像平常一样手动启用发射；定时安排不会让未获发射许可的电台自动发射。",
+      "previous": "灯塔传送你的呼号、电网和电源——没有QSO序列,所以调用 CQ 和 S&P 在这些级别上是不活动的 。 传输仍然必须像往常一样携带武器;时刻表从不按下你没有启用的收音机的键.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fst4.legend",
+      "english": "FST4 (QSO) / FST4W (beacon)",
+      "chinese": "FST4（QSO）/ FST4W（信标）",
+      "previous": "FST4 (英语:QSO) / FST4W(美洲狮)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fst4.period.label",
+      "english": "T/R period",
+      "chinese": "收发周期",
+      "previous": "T/R时期",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fst4.period.shortestBeacon",
+      "english": "120 s — shortest FST4W beacon interval",
+      "chinese": "120 秒 — FST4W 的最短信标周期",
+      "previous": "120s——最短的FST4W信标间隔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fst4.period.deepest",
+      "english": "1800 s — deepest",
+      "chinese": "1800 秒 — 弱信号探测能力最强",
+      "previous": "1800 s——最深处",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fst4.period.hint",
+      "english": "Shared by both tiers. Longer periods hear weaker signals at fewer exchanges per hour. FST4W beacons run at 120/300/900/1800 s; FST4 QSO work is usually 15–60 s. Both stations (or the beacon you are listening for) must be on the same period.",
+      "chinese": "两种模式共用此设置。周期越长，可接收的信号越弱，但每小时可交换的报文越少。FST4W 信标使用 120/300/900/1800 秒周期；FST4 QSO 通常使用 15–60 秒周期。双方电台（或你要接收的信标）必须使用相同周期。",
+      "previous": "由两层共用。 较长的时段以较少的时速听到较弱的信号. FST4W 信标为120/300个/900个/1800 s; FST4 (英语). QSO 工作时间通常为15-60秒。两个台站(或您正在听的灯塔)必须在同一时间段。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fst4.hint",
+      "english": "<b>FST4</b> is the QSO mode; <b>FST4W</b> is the WSPR-like beacon mode — pick which one on the tier selector. Nexus decodes both and transmits neither. Note that FST4W hashed callsigns show as <code><...></code>: the lookup table upstream fills from a file this build does not carry.",
+      "chinese": "<b>FST4</b> 是 QSO 模式；<b>FST4W</b> 是类似 WSPR 的信标模式，可通过模式选择器切换。Nexus 对两者均支持解码，但均不支持发射。注意：FST4W 的哈希呼号会显示为 <code><...></code>，因为上游用于填充呼号查找表的文件未包含在此构建中。",
+      "previous": "<b>FST4 (法语)</b>这是QSO模式;<b>FST4W (法语)</b>是类似 WSPR 的信标模式——在等级选择器上选择哪个。 Nexus同时解码和传送两种. 注意 FST4W 散列呼号显示为<code>[...]</code>: 上游查找表从此构建不包含的文件中填充。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.legend",
+      "english": "Q65 — EME / VHF+ scatter",
+      "chinese": "Q65 — 月面反射（EME）/ 甚高频及以上频段散射",
+      "previous": "问题65——EME/甚高频+散射",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.period.label",
+      "english": "T/R period",
+      "chinese": "收发周期",
+      "previous": "T/R时期",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.period.tropo",
+      "english": "15 s — troposcatter",
+      "chinese": "15 秒 — 对流层散射",
+      "previous": "15 s- 倾斜散射器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.period.meteor",
+      "english": "30 s — 6 m meteor / ionoscatter",
+      "chinese": "30 秒 — 6 米波段流星散射／电离层散射",
+      "previous": "30s——6米流星/离子散射器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.period.eme",
+      "english": "60 s — EME (most common)",
+      "chinese": "60 秒 — 月面反射（EME），最常用",
+      "previous": "60 s — EME( 最常见的)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.period.deepEme",
+      "english": "120 s — deep EME",
+      "chinese": "120 秒 — 更弱信号的月面反射（EME）",
+      "previous": "120 s——深层EME",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.period.microwaveEme",
+      "english": "300 s — deepest, microwave EME",
+      "chinese": "300 秒 — 最弱信号探测，适合微波月面反射（EME）",
+      "previous": "300 s——最深的微波EME",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.period.hint",
+      "english": "Longer periods integrate longer and hear weaker signals, at one exchange per period. Both stations must use the <b>same</b> period. Changing this changes the decode frame length, so it takes effect on the next slot.",
+      "chinese": "周期越长，信号积累时间越长，可接收的信号越弱；每个周期交换一条报文。双方必须使用<b>相同</b>周期。更改此项会改变解码帧长度，因此从下一时隙开始生效。",
+      "previous": "较长的时段集成较长且能听到较弱的信号,每个时段一次交换. 两个车站必须使用<b>不变</b>期间。 更改此选项会改变解码帧长度, 因此它会在下一个槽中生效 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.submode.label",
+      "english": "Submode (tone spacing)",
+      "chinese": "子模式（音调间隔）",
+      "previous": "子模式( tone 间隔)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.submode.a",
+      "english": "A — narrowest, most sensitive",
+      "chinese": "A — 间隔最窄，灵敏度最高",
+      "previous": "A-最窄、最敏感",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.submode.b",
+      "english": "B — 2x spacing",
+      "chinese": "B — 2 倍间隔",
+      "previous": "B - 2x间距",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.submode.c",
+      "english": "C — 4x spacing",
+      "chinese": "C — 4 倍间隔",
+      "previous": "C - 4个间隔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.submode.d",
+      "english": "D — 8x spacing",
+      "chinese": "D — 8 倍间隔",
+      "previous": "D - 8个间隔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.submode.e",
+      "english": "E — 16x spacing, most Doppler-tolerant",
+      "chinese": "E — 16 倍间隔，多普勒容限最大",
+      "previous": "E - 16x间隔,最耐多普勒",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.submode.hint",
+      "english": "Wider spacing survives more Doppler spread and frequency drift but costs sensitivity. Move up the letters as the path degrades — EME on the higher bands usually needs B or C.",
+      "chinese": "音调间隔越宽，越能容忍多普勒展宽和频率漂移，但会牺牲灵敏度。传播路径条件变差时，可依次改用字母靠后的子模式；较高频段的月面反射（EME）通常需要 B 或 C。",
+      "previous": "更宽的间距在多普勒的传播和频率漂移中存活下来,但代价是敏感的. 随着路径的降解而向上移动字母——较高波段的EME通常需要B或C.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.q65.hint",
+      "english": "Q65 transmits and receives. The period and submode set both what you hear and what you send, and BOTH STATIONS MUST MATCH — a correspondent on a different period or submode will not decode you.",
+      "chinese": "Q65 支持发射和接收。周期和子模式同时决定接收与发射参数，双方必须完全一致；对方使用不同周期或子模式时，将无法解码本台信号。",
+      "previous": "Q65 传输和接收. 时间段和子代码既设定了你听到的,又设定了你发送的,以及两个STATION MUST MATCH——一个不同时间段或子代码的通讯员不会解码你.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.quickReply.legend",
+      "english": "Quick-reply macros",
+      "chinese": "快捷回复宏",
+      "previous": "快速复制宏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.quickReply.chat.label",
+      "english": "Chat",
+      "chinese": "聊天",
+      "previous": "聊天",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.quickReply.chat.hint",
+      "english": "Comma-separated chips for Chat.",
+      "chinese": "聊天快捷按钮的内容，以逗号分隔。",
+      "previous": "Chat 的逗号分隔芯片 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.quickReply.qso.hint",
+      "english": "Chips for sequenced QSOs.",
+      "chinese": "按交信流程使用的快捷按钮。",
+      "previous": "排序的芯片 QSOs。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.quickReply.band.label",
+      "english": "Band / CQ",
+      "chinese": "频段 / CQ",
+      "previous": "带/ CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.quickReply.band.hint",
+      "english": "Open broadcasts — the Call CQ launchpad + band feed.",
+      "chinese": "面向所有人的广播，用于“呼叫 CQ”入口及频段动态。",
+      "previous": "开放广播——Call CQ发射板+乐队饲料.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.legend",
+      "english": "Phone (SSB / FM)",
+      "chinese": "话音（SSB / FM）",
+      "previous": "电话(SSB/调频)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.mode.title",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "settings.phone.mode.label",
+      "english": "Phone mode",
+      "chinese": "话音模式",
+      "previous": "电话模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.mode.ssb",
+      "english": "SSB (USB/LSB by band)",
+      "chinese": "SSB（按频段选择 USB/LSB）",
+      "previous": "SSB(按波段分列的USB/LSB)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.mode.fm",
+      "english": "FM (VHF/UHF + repeaters)",
+      "chinese": "FM（VHF/UHF 及中继通联）",
+      "previous": "调频(甚高频/超高频+中继器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.mode.hint",
+      "english": "FM drives the rig to FM + the shift/tone below.",
+      "chinese": "选择 FM 后，电台会切换到 FM，并应用下方的中继频差和亚音设置。",
+      "previous": "FM驱动钻机为FM+下移/调子.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.shift.label",
+      "english": "Repeater shift",
+      "chinese": "中继频差",
+      "previous": "中继器变换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.shift.simplex",
+      "english": "Simplex (no shift)",
+      "chinese": "单工（无频差）",
+      "previous": "Simplex( 无班次)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.shift.plus",
+      "english": "Plus (+)",
+      "chinese": "正频差（+）",
+      "previous": "加号(+)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.shift.minus",
+      "english": "Minus (−)",
+      "chinese": "负频差（−）",
+      "previous": "减( -)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.shift.hint",
+      "english": "Offset is the band standard (2 m 600 k, 70 cm 5 M…).",
+      "chinese": "频差采用相应频段的标准值（2 米波段为 600 k，70 cm 波段为 5 M 等）。",
+      "previous": "偏移是波段标准(2米600 k,70 cm 5 M...).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.ctcss.label",
+      "english": "CTCSS (PL) tone",
+      "chinese": "CTCSS（PL）亚音",
+      "previous": "CTCSS(PL)语调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.ctcss.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "settings.phone.ctcss.hint",
+      "english": "Repeater access tone (PL).",
+      "chinese": "用于开启中继台的亚音（PL）。",
+      "previous": "中继访问语气 (PL).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.mic.title",
+      "english": "Microphone",
+      "chinese": "话筒",
+      "previous": "话筒",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.mic.hint",
+      "english": "Mic gain and voice-keyer message recording are in the Phone cockpit (live CAT + one-touch record).",
+      "chinese": "话筒增益和语音自动呼叫报文的录制功能位于话音操作界面，支持实时 CAT 控制和一键录音。",
+      "previous": "Mic 增益和语音键信息录制在 Phone 驾驶舱(直播)CAT+单触记录).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.voiceMic.label",
+      "english": "Voice mic (recording)",
+      "chinese": "录音话筒",
+      "previous": "语音麦克风( 录音)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.voiceMic.default",
+      "english": "Same as audio input (default)",
+      "chinese": "与音频输入相同（默认）",
+      "previous": "与音频输入相同( 默认)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.phone.voiceMic.hint",
+      "english": "Mic used when RECORDING a voice-keyer message. Default records from the audio input device — but on a digital setup that's the rig's RX audio, so you'd record the band, not your voice. Pick your actual mic here. If it can't open, recording falls back to the input device (never silent).",
+      "chinese": "录制语音自动呼叫报文时使用的话筒。默认从音频输入设备录制，但数字模式配置中的输入通常是电台接收音频，这会录下频段上的信号，而非你的声音。请在此选择实际使用的话筒。若无法打开该话筒，会回退到音频输入设备录制，以免录成静音。",
+      "previous": "Mic在录音语音密钥消息时使用. 音频输入设备的默认记录——但是在一个数字设置上,这是钻机的RX音频,所以你会录下乐队,而不是你的声音. 选你的麦克风 如果无法打开,录制会回到输入设备(从不沉默).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.legend",
+      "english": "CW",
+      "chinese": "CW",
+      "previous": "CW",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.title",
+      "english": "Keyer",
+      "chinese": "键控器",
+      "previous": "密钥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.label",
+      "english": "Keyer backend",
+      "chinese": "键控方式",
+      "previous": "密钥后端",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.cat",
+      "english": "CAT — the rig keys CW (Hamlib send_morse; newer rigs only)",
+      "chinese": "CAT — 由电台内部键控 CW（Hamlib send_morse，仅较新电台支持）",
+      "previous": "CAT- 钻机钥匙CW(Hamlib send morse;仅限较新的钻机)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.serial",
+      "english": "Serial keyline (DTR/RTS) — key the rig's KEY jack",
+      "chinese": "串口键控线（DTR/RTS）— 通过电台 KEY 电键插口键控",
+      "previous": "串键线(DTR/RTS)——关键钻机的关键J",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.winkeyer",
+      "english": "WinKeyer — K1EL hardware keyer",
+      "chinese": "WinKeyer — K1EL 硬件键控器",
+      "previous": "Winkeyer — K1EL 硬件密钥器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.soundcard",
+      "english": "Soundcard — audio tone through a data mode (workaround)",
+      "chinese": "声卡 — 通过数据模式发送音频音调（变通方式）",
+      "previous": "音卡——通过数据模式的音频音调(绕行)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.hint",
+      "english": "How Nexus sends CW. <b>CAT</b> uses the rig's internal keyer, but older rigs (e.g. IC-756PRO III) don't support it. <b>Serial keyline</b> toggles DTR/RTS into the rig's KEY jack (rig in CW, rig shapes the signal — a clean method that needs only a keying cable). <b>WinKeyer</b> drives a K1EL.<b>Soundcard</b> keys an audio tone — a workaround; set drive so ALC reads zero. <b>It takes your radio out of CW</b> into a data mode (DATA-U/DATA-L, so the tone reaches the transmitter instead of the mic jack); pick any other keyer and CW mode comes straight back. Also switchable live from the CW cockpit.",
+      "chinese": "选择 Nexus 发送 CW 的方式。<b>CAT</b> 使用电台内部键控器，但较老的电台（如 IC-756PRO III）不支持。<b>串口键控线</b> 通过 DTR/RTS 控制电台的 KEY 电键插口（电台设为 CW，由电台完成信号整形，信号干净，仅需一根键控线）。<b>WinKeyer</b> 驱动 K1EL 硬件。<b>声卡</b> 通过音频音调键控，是一种变通方式；请将驱动电平调至 ALC 读数为零。<b>此方式会让电台退出 CW</b>，切换到数据模式（DATA-U/DATA-L，使音调进入发射通道而非话筒插口）；选择其他键控器后，会立即恢复 CW 模式。也可在 CW 操作界面中随时切换。",
+      "previous": "纳克萨斯如何表达CW。 。 。<b>CAT</b>使用钻机的内部键器,但较老的钻机(如IC-756PRO III)不支持.<b>串键行</b>将 DTR/RTS 切换到钻机的关键机匣(安装在CW,钻机塑造信号——一种只需要按键电缆的清洁方法.<b>温基尔</b>驱动一个 K1EL。<b>声卡</b>键入一个音调——一个工作轮;设置驱动器,所以ALC读作零。<b>这把收音机拿掉CW</b>进入数据模式(DATA-U/DATA-L,因此音调到达发报机而不是麦克杰克); 选择其他键器和CW模式直接回来。 也可以从CW驾驶舱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.unproven",
+      "english": "CAT CW keying is <b>unproven on this radio</b>. Its Hamlib backend sends a different keying command from the one other radios use, and it reports success either way — so if nothing is transmitted, Nexus cannot tell you. If CW doesn't go out, use the Serial keyline, WinKeyer, or Soundcard keyer.",
+      "chinese": "通过 CAT 进行 CW 键控在<b>这款电台上尚未经实机验证</b>。其 Hamlib 后端使用的键控命令与其他电台不同，而且无论是否实际发射都会报告成功，因此即使没有发射，Nexus 也无法提示。若 CW 无法发出，请改用串口键控线、WinKeyer 或声卡键控。",
+      "previous": "CAT CW密钥是<b>此电台未证实</b>. 它的Hamlib后端发送了不同于其他无线电使用的密钥指令,它以两种方式都报告成功——所以如果没有任何消息传输,Nexus不能告诉你. 若为CW不外出,使用序列键线,WinKeyer,或Soundcard键器.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyer.flexCatStop",
+      "english": "On a Flex over <b>SmartSDR CAT</b>, Esc stops Nexus at once, but the radio may finish the word it is sending: SmartSDR CAT has no documented CW stop, so Nexus hands the radio one word at a time. For a stop that cuts mid-word, choose the <b>WinKeyer</b> keyer on SmartSDR CAT's WinKeyer port, or use the <b>Flex native client</b>.",
+      "chinese": "使用 <b>SmartSDR CAT</b> 连接 Flex 时，按 Esc 会立即停止 Nexus，但电台可能会把当前单词发送完：SmartSDR CAT 没有公开说明 CW 停止命令，因此 Nexus 每次只向电台发送一个单词。若要在单词中途停止，请在 SmartSDR CAT 的 WinKeyer 端口选择 <b>WinKeyer</b>，或使用 <b>Flex 原生客户端</b>。",
+      "previous": "使用 <b>SmartSDR CAT</b> 连接 Flex 时，按 Esc 会立即停止 Nexus，但电台可能会把当前单词发送完：SmartSDR CAT 没有公开说明 CW 停止命令，因此 Nexus 每次只向电台发送一个单词。若要在单词中途停止，请在 SmartSDR CAT 的 WinKeyer 端口选择 <b>WinKeyer</b>，或使用 <b>Flex 原生客户端</b>。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.pitch.label",
+      "english": "Sidetone pitch (Hz)",
+      "chinese": "侧音频率（Hz）",
+      "previous": "侧面投球( S)Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.pitch.hint",
+      "english": "CW tone pitch (300–1200 Hz) — the soundcard keyer tone and the CW scope zero-beat marker.",
+      "chinese": "CW 音调频率（300–1200 Hz），用于声卡键控音调及 CW 频谱中的零拍标记。",
+      "previous": "CW音调( 300-1200)Hz)——声卡键调和声调.CW瞄准镜零拍标记。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.reverse.label",
+      "english": "Reverse CW (CW-R)",
+      "chinese": "反向 CW（CW-R）",
+      "previous": "反转CW(单位:千美元)CW-R) (英语).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.reverse.aria",
+      "english": "Use reverse CW on every band",
+      "chinese": "在所有频段使用反向 CW",
+      "previous": "使用反转CW每个乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.reverse.hint",
+      "english": "Put your radio in its <b>reverse</b> CW mode (CW-R / CW-L) instead of its normal CW, on <b>every band</b>. Off by default, so Nexus asks for plain CW and your radio stays where its own menu puts it. This changes only the pitch you hear on a signal — CW and CW-R transmit identically, and the station you work cannot tell — so it is a personal preference, not a band rule. Which sideband it actually selects depends on the radio: on a Yaesu it is CW-L, while on an Icom it follows that rig's own <b>CW Normal Side</b> menu. The Soundcard keyer ignores this, because it never puts the rig in CW at all.",
+      "chinese": "在<b>所有频段</b>让电台使用<b>反向</b> CW 模式（CW-R / CW-L），而非常规 CW。默认关闭，此时 Nexus 请求普通 CW，实际侧带由电台自身菜单设置决定。这只改变接收信号的音调；CW 和 CW-R 的发射信号完全相同，对方无法分辨，因此这属于个人偏好，并非频段规则。实际选用哪个侧带取决于电台：Yaesu 使用 CW-L，Icom 则遵循电台自身的 <b>CW Normal Side</b> 菜单设置。声卡键控器会忽略此项，因为它根本不会将电台置于 CW 模式。",
+      "previous": "把你的收音机放进去<b>反转</b> CW模式( E)CW- 红 /CW-L)而不是它的正常状态CW打开<b>每个乐队</b>默认关闭,所以 Nexus 要求平坦CW而你的无线电就留在自己的菜单上 这只会改变你听到的信号的音响...CW和CW-R传输完全相同,而你工作的台站不能告诉——所以这是个人偏好,而不是乐队规则. 它实际选择的哪个侧带取决于收音机:在Yaesu上CW-L,在Icom上,它跟随钻机自己的<b>CW普通边</b>菜单。 音卡键器忽略了这一点,因为它从来没有把钻机CW一点也不",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.winkeyerPort.label",
+      "english": "WinKeyer port",
+      "chinese": "WinKeyer 端口",
+      "previous": "温凯尔端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.winkeyerPort.placeholder",
+      "english": "{{example}} — K1EL WinKeyer serial port",
+      "chinese": "{{example}} — K1EL WinKeyer 串口",
+      "previous": "{{example}}- K1EL Winkeyer 序列端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.winkeyerPort.hint",
+      "english": "The serial port your WinKey presents. 1200 baud. A WinKey micro inside a multi-function interface (Timewave Navigator, microHAM) counts — use that device's CW/WinKey port, not its CAT port.",
+      "chinese": "WinKey 设备提供的串口，波特率为 1200。Timewave Navigator、microHAM 等多功能接口内置的 WinKey micro 也适用；应选择该设备的 CW/WinKey 端口，而非 CAT 端口。",
+      "previous": "你的WinKey礼物的序列端口 1200鲍德. 在多功能界面(Timewave Navigator, microHAM)内的一个 WinKey 微分计数——使用该设备的CW温基港,不是它的CAT开口。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyPort.label",
+      "english": "Keyline serial port",
+      "chinese": "键控串口",
+      "previous": "密钥串口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyPort.placeholder",
+      "english": "{{example}} — the keying interface (separate from CAT)",
+      "chinese": "{{example}} — 键控接口（与 CAT 分开）",
+      "previous": "{{example}}——键盘接口(从CAT) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyPort.hint",
+      "english": "The USB-to-serial into your keying interface (Buxcomm, a homebrew DTR cable, …) that plugs into the rig's KEY jack. Must be a SEPARATE port from CAT. Set the rig to CW and its key-jack to straight-key / bug. An interface with a WinKey chip in it — Timewave Navigator, microHAM, a K1EL WinKeyer — does <b>not</b> key on DTR: pick the WinKeyer backend above instead and give it that device's CW port.",
+      "chinese": "连接键控接口（如 Buxcomm、自制 DTR 键控线等）的 USB 转串口，该接口接入电台的 KEY 电键插口。必须使用与 CAT 不同的独立串口。将电台设为 CW，并将电键插口设为手键／半自动电键（straight-key / bug）。内置 WinKey 芯片的接口，如 Timewave Navigator、microHAM 或 K1EL WinKeyer，<b>不</b>通过 DTR 键控；请改选上方的 WinKeyer 键控方式，并指定该设备的 CW 端口。",
+      "previous": "USB对串行进入您的密钥接口(Buxcomm,一种家用DTR电缆,...),可以插入钻机的关键J. 必须是来自 SIPARATE 端口CAT设置钻机CW和它的键杰克到直键 / bug。 里面有 WinKey 芯片的接口 —— Timewave 导航器, microHAM, 一个 K1EL WinKeyer 的接口 —— 确实<b>没有</b>DTR 上的密钥 : 选择上面的 Winkeyer 后端并给出设备的CW开口。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyLine.label",
+      "english": "Keying line",
+      "chinese": "键控控制线",
+      "previous": "键行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyLine.dtr",
+      "english": "DTR (the CW convention)",
+      "chinese": "DTR（CW 通常使用此线）",
+      "previous": "DTR( 数据CW(公约)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.keyLine.hint",
+      "english": "Which control line keys the rig. DTR is standard (RTS = PTT); flip to RTS if your interface is wired the other way.",
+      "chinese": "选择用于键控电台的控制线。通常使用 DTR（RTS 用于 PTT）；若接口接线方式相反，请改选 RTS。",
+      "previous": "哪条控制线是钻机的钥匙 DTR为标准(RTS =PTT); 如果接口被反向电线, 翻转到RTS 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.idAfter73.label",
+      "english": "CW ID after 73",
+      "chinese": "73 后发送 CW 呼号标识",
+      "previous": "CW 73后身份证",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.idAfter73.hint",
+      "english": "Keys your callsign in CW once the final 73 has fully left the air, in Q65, FST4 and MSK144 (stock WSJT-X option, default off). As in WSJT-X, FT8 and FT4 send no CW ID, and neither do FT2, TempoFast or TempoDeep. Uses the normal CW keying path — PTT + tone — after the over, never on top of it.",
+      "chinese": "在 Q65、FST4 和 MSK144 模式下，最后的 73 完全发射结束后，以 CW 发送本台呼号（与标准 WSJT-X 的选项相同，默认关闭）。与 WSJT-X 一样，FT8 和 FT4 不发送 CW 呼号标识，FT2、TempoFast 和 TempoDeep 也不发送。使用常规 CW 键控通道（PTT + 音调），在该轮报文发完后发送，绝不与报文重叠。",
+      "previous": "键入您的呼号CW一旦最终的73号完全离开空气,在Q65,FST4和MSK144中(库存WSJT-X选项,默认关闭). 就像WSJT -X一样,FT8和FT4发送无CW身份证,FT2也没有,Tempo Fast或TempoDep。 使用常规CW键入路径——PTT+音调——完结后,永远不要在上面.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.title",
+      "english": "Macros (F-key profiles)",
+      "chinese": "宏（功能键配置）",
+      "previous": "宏( F- key 配置文件)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.label",
+      "english": "CW cockpit F-keys",
+      "chinese": "CW 操作界面功能键",
+      "previous": "CW驾驶舱F键",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.aria",
+      "english": "Active CW macro profile",
+      "chinese": "当前 CW 宏配置",
+      "previous": "活动CW宏简介",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.unnamed",
+      "english": "Profile {{n}}",
+      "chinese": "配置 {{n}}",
+      "previous": "简介{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.add",
+      "english": "New",
+      "chinese": "新建",
+      "previous": "新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.addPrompt",
+      "english": "New CW macro profile name:",
+      "chinese": "新建 CW 宏配置的名称：",
+      "previous": "新设CW宏配置文件名称 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.rename",
+      "english": "Rename",
+      "chinese": "重命名",
+      "previous": "重命名",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.renamePrompt",
+      "english": "Rename CW macro profile:",
+      "chinese": "重命名 CW 宏配置：",
+      "previous": "重命名CW宏简介 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.delete",
+      "english": "Delete",
+      "chinese": "删除",
+      "previous": "删除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "删除"
+        }
+      ]
+    },
+    {
+      "id": "settings.cw.macros.profiles.deleteTitle",
+      "english": "Delete this profile",
+      "chinese": "删除此配置",
+      "previous": "删除此配置",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.profiles.keepOne",
+      "english": "Keep at least one profile",
+      "chinese": "至少保留一个配置",
+      "previous": "保存至少一个配置文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.builtin.hint",
+      "english": "Using the built-in F1–F8 set. Customize to make them your own (labels + templates; tokens: {MYCALL} {RST} {NAME} and ! = the worked call).",
+      "chinese": "当前使用内置 F1–F8 宏。可自定义按钮标签和报文模板；变量为 {MYCALL} {RST} {NAME}，! 代表对方呼号。",
+      "previous": "使用内置的F1–F8集. 自定义使其成为自己的(标签+模板;符号):{MYCALL} {RST} {NAME}和!=工作电话。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.customize",
+      "english": "Customize",
+      "chinese": "自定义",
+      "previous": "自定义",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.row.label.aria",
+      "english": "{{key}} label",
+      "chinese": "{{key}} 标签",
+      "previous": "{{key}}标签",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.row.text.aria",
+      "english": "{{key}} text",
+      "chinese": "{{key}} 文本",
+      "previous": "{{key}}文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.tokens.hint",
+      "english": "Tokens: {MYCALL} {NAME} {MYGRID} {MYSTATE} {RST} · ! = the worked call · {HISNAME} {HISSTATE} = the worked station's QRZ name/state (fill in Settings ▸ Station for {MYSTATE}; the rest auto-fill from the copilot / roster click + QRZ lookup). Each key KEEPS its role — the Guided copilot's next-step highlight follows the role, so customized text still rolls through F1→F2→F3→F4 exactly as before. Keep the ! token wherever you want the other station's call inserted. Save to apply.",
+      "chinese": "变量：{MYCALL} {NAME} {MYGRID} {MYSTATE} {RST}；! = 对方呼号；{HISNAME} {HISSTATE} = 从 QRZ 查询的对方姓名／州。请在“设置 ▸ 电台信息”中填写 {MYSTATE}；其余内容会根据操作助手／电台列表中的点击选择及 QRZ 查询自动填入。各功能键的作用保持不变，引导式操作助手仍按该作用高亮下一步，因此自定义报文仍会按原有的 F1→F2→F3→F4 流程使用。需要插入对方呼号的位置请保留 ! 变量。保存后生效。",
+      "previous": "脚本 :{MYCALL} {NAME} {MYGRID} {MYSTATE} {RST}工作电话{HISNAME} {HISSTATE}=工作车站的QRZ名称/状态( 设置中的填充%% 1){MYSTATE};其他自动填充从副驾驶/名册点击+QRZ查问. 每个关键 KKEYS其角色——指南副驾驶下一步的亮点都跟随角色,因此定制文本仍然如前所述通过F1 F2 F3 F4滚动. 你想插入另一台的电话就留在那里 保存为应用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.reset",
+      "english": "Reset to defaults",
+      "chinese": "重置为默认值",
+      "previous": "重置为默认值",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.role.answer",
+      "english": "Answer a station",
+      "chinese": "应答电台",
+      "previous": "回答一个站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.role.report",
+      "english": "Send report",
+      "chinese": "发送报告",
+      "previous": "发送报告",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.role.signOff",
+      "english": "Sign off (73)",
+      "chinese": "结束通联（73）",
+      "previous": "注销(73)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.role.myCall",
+      "english": "My call",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.role.hisCall",
+      "english": "His call",
+      "chinese": "对方呼号",
+      "previous": "对方呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.role.askRepeat",
+      "english": "Ask repeat",
+      "chinese": "请求重发",
+      "previous": "重复询问",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.macros.role.query",
+      "english": "Query",
+      "chinese": "查询",
+      "previous": "查询",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.legend",
+      "english": "RTTY",
+      "chinese": "RTTY",
+      "previous": "RTTY",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.rxAutoArm.label",
+      "english": "Start receiving when RTTY opens",
+      "chinese": "打开 RTTY 界面时开始接收",
+      "previous": "开始接收RTTY打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.rxAutoArm.hint",
+      "english": "The RTTY screen starts the decoder as soon as you open it — tune a signal and the text prints, no setup. Turn this off to arm the receiver by hand (the Arm RX button in the decoded-text pane). This arms the RECEIVER only — transmitting is never armed for you.",
+      "chinese": "打开 RTTY 界面即启动解码器，调到信号后便会显示解码文本，无需额外设置。关闭此项后，需通过解码文本面板中的“启用接收（Arm RX）”按钮手动启动接收。此项只启用接收，绝不会替你启用发射。",
+      "previous": "那个RTTY屏幕打开后立即启动解码器——调制一个信号和文本打印,不设置. 关闭此选项以手举起接收器(解码文本面板中的Arm RX按钮). 这只臂膀 传送系统从不为你配备武器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.keying.title",
+      "english": "Keying",
+      "chinese": "键控",
+      "previous": "密钥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.backend.label",
+      "english": "Keying backend",
+      "chinese": "键控方式",
+      "previous": "密钥后端",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.backend.afsk",
+      "english": "AFSK — soundcard tones through the rig in LSB (default)",
+      "chinese": "AFSK — 电台置于 LSB，通过声卡发送双音信号（默认）",
+      "previous": "AFSK – 通过 LSB 的钻机发出声卡( 默认)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.backend.fsk",
+      "english": "True FSK — serial keyline (DTR/RTS), rig in RTTY mode",
+      "chinese": "直接 FSK — 串口键控线（DTR/RTS），电台置于 RTTY 模式",
+      "previous": "True FSK — 序列键盘(DTR/RTS),钻机在RTTY模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.backend.hint",
+      "english": "How Nexus transmits RTTY. <b>AFSK</b> plays the two-tone waveform through the same TX audio path as FT8 (soundcard-clocked = jitter-free; set drive so ALC reads just zero). <b>True FSK</b> bit-bangs the rig's FSK input over a serial control line with the rig in RTTY mode — unlocking its narrow RTTY filters (e.g. the FTDX10's) — with PTT on CAT or its own line. Software FSK timing is casual/Field-Day grade; AFSK is the timing-cleanest path.",
+      "chinese": "选择 Nexus 发送 RTTY 的方式。<b>AFSK</b> 通过与 FT8 相同的发射音频通道播放双音波形，由声卡时钟控制，无时序抖动；请将驱动电平调至 ALC 刚好为零。<b>直接 FSK</b> 将电台置于 RTTY 模式，通过串口控制线逐位驱动电台的 FSK 输入，从而可使用其窄带 RTTY 滤波器（如 FTDX10 的滤波器）；PTT 则通过 CAT 或独立控制线实现。软件 FSK 的时序精度适合日常通联及 Field Day 一类活动；AFSK 的时序最稳定。",
+      "previous": "Nexus 如何传输RTTY。 。 。<b>韩国战地服务团</b>通过相同的 TX 音频路径播放双色波形FT8(音卡-时钟=无抖动;设置驱动器所以ALC只读0).<b>真实的FSK</b>将钻机的FSK输入与钻机的串行控制线连接RTTY模式 —— 解锁其窄处RTTY滤波器(如FTDX10's)——与PTT打开CAT或自己的线条。 软件FSK计时是临时/外地日级;AFSK是计时最清洁的路径.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.afskSideband.label",
+      "english": "AFSK sideband",
+      "chinese": "AFSK 侧带",
+      "previous": "AFSK 副带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.afskSideband.lsb",
+      "english": "LSB (standard)",
+      "chinese": "LSB(标准)",
+      "previous": "LSB(标准)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.afskSideband.hint",
+      "english": "The sideband the rig runs AFSK on. LSB is the RTTY convention. On USB, Nexus puts the rig in its upper data mode (DATA-U / USB-D / DIGU) and swaps the tones itself, so mark stays high on the air and the decoder still copies — leave Reverse off.",
+      "chinese": "电台用于 AFSK 的侧带，RTTY 通常使用 LSB。选择 USB 时，Nexus 会将电台置于上边带数据模式（DATA-U / USB-D / DIGU）并自动互换音调，使空中信号的传号仍处于高频侧，解码器也能正常接收；请保持“反转”关闭。",
+      "previous": "该钻机的侧带运行 AFSK上。 LSB就是那个RTTY公约。 在USB上,Nexus将钻机置于其上层数据模式(DATA-U / USB-D / DIGU)中,并互换音量本身,因此标记保持高空,解码器仍然复制——离开逆变.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.fskPort.label",
+      "english": "FSK serial port",
+      "chinese": "FSK 串口",
+      "previous": "FSK 序列端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.fskPort.placeholder",
+      "english": "{{example}} — e.g. the FTDX10's USB Enhanced COM",
+      "chinese": "{{example}} — 例如 FTDX10 的 USB Enhanced COM 端口",
+      "previous": "{{example}}-例如,FTDX10的USB增强COM",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.fskPort.hint",
+      "english": "The port whose control line feeds the rig's FSK input. Empty = the CAT serial port.",
+      "chinese": "通过控制线连接电台 FSK 输入的串口。留空表示使用 CAT 串口。",
+      "previous": "控制线的港口为钻机的FSK输入提供了信息. 空 = 为CAT序列端口。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.fskLine.label",
+      "english": "FSK data line",
+      "chinese": "FSK 数据线",
+      "previous": "FSK 数据线",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.fskLine.dtr",
+      "english": "DTR (the common wiring — RTS stays free for PTT)",
+      "chinese": "DTR（常见接线方式，RTS 可留给 PTT）",
+      "previous": "DTR( 常用的线条—— RTS 保持免费PTT) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.fskLine.hint",
+      "english": "Which control line carries the data bits. PTT must ride its OWN path — CAT PTT or the separate PTT line, never this one; Nexus refuses a send if they collide.",
+      "chinese": "选择传送数据位的控制线。PTT 必须使用独立通道，即 CAT PTT 或另一根 PTT 控制线，不能与数据线共用；若发生冲突，Nexus 会拒绝发射。",
+      "previous": "哪个控制线带数据位 。PTT必须走自己的道路——CAT PTT或单独的PTT- Nexus拒绝发送,如果他们碰撞。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.signal.title",
+      "english": "Signal",
+      "chinese": "信号",
+      "previous": "信号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.baud.label",
+      "english": "Baud rate",
+      "chinese": "波特率",
+      "previous": "保税率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.baud.hf",
+      "english": "45.45 — the HF standard",
+      "chinese": "45.45 — 高频标准",
+      "previous": "45.45 高频标准",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.baud.vhf",
+      "english": "75 — VHF / some nets",
+      "chinese": "75 — 甚高频／部分通联网络使用",
+      "previous": "75个甚高频/一些蚊帐",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.baud.hint",
+      "english": "Drives the TX bit clock and the RX demodulator (true 45.45, never rounded to 45).",
+      "chinese": "同时设置发射位时钟和接收解调器，实际使用 45.45，绝不取整为 45。",
+      "previous": "驱动 TX 位钟和 RX 降级器( true 45.45, 从未四舍五入为 45).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.shift.label",
+      "english": "Shift (Hz)",
+      "chinese": "频移（Hz）",
+      "previous": "移动( R)Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.shift.hf",
+      "english": "170 — the HF standard",
+      "chinese": "170 — 高频标准",
+      "previous": "170 — 高频标准",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.shift.hint",
+      "english": "Mark/space spacing — the TX tone pair and the RX demodulator both.",
+      "chinese": "传号与空号的频率间隔，同时用于发射双音和接收解调器。",
+      "previous": "标记/空格间隔——TX音调对和RX降级两种.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.reverse.label",
+      "english": "Reverse (swap mark/space)",
+      "chinese": "反转（互换传号／空号）",
+      "previous": "反转( 擦拭标记/ 空格)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.reverse.hint",
+      "english": "Swaps mark and space on TX and in the RX decoder, to work a station sending upside down. Not for running USB: pick the AFSK sideband instead, which keeps the sense right on its own.",
+      "chinese": "在发射和接收解码时互换传号与空号，用于与信号极性颠倒的电台通联。使用 USB 时无需开启；请改选 AFSK 侧带，软件会自动保持正确极性。",
+      "previous": "在TX和RX解码器上互换标记和空间,以工作一个发送颠倒的站. 不用于运行 USB: 选择 AFSK 侧带代替, 使感官保持正确的自己.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.autoCall.title",
+      "english": "Auto call",
+      "chinese": "自动呼叫",
+      "previous": "自动调用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.autoListen.label",
+      "english": "Listen before repeating",
+      "chinese": "再次呼叫前的守听时间",
+      "previous": "重复前听着",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.autoListen.hint",
+      "english": "How long Auto call waits before it calls CQ again, in seconds — and the same wait before it asks a station for a repeat. The clock starts when your over has finished going out, not when it was queued. <b>30 seconds</b> is what Auto call has always done; change it only if you want a faster or slower cycle. Anything under 5 seconds would key over the answer you just asked for, so 5 is the floor.",
+      "chinese": "自动呼叫再次发送 CQ 前的等待秒数，请求对方重发前也使用相同的等待时间。计时从本轮报文实际发射结束时开始，而非从加入发送队列时开始。以往一直等待 <b>30 秒</b>；仅在希望加快或放慢循环时调整。少于 5 秒可能会压住刚刚请求的对方应答，因此最小值为 5 秒。",
+      "previous": "汽车呼叫要等多久才能再次呼叫CQ,在数秒内——同样在要求一个站重复之前等待. 时钟从你结束时开始,而不是从排队时开始。<b>30 秒钟</b>是“自动调用”始终所做的;只有在您想要一个更快或更慢的周期时才修改。 5秒以下的任何东西 都会在你刚刚要求的答案上占上风 所以5秒就是地板",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.autoRepeats.label",
+      "english": "Repeats before giving up",
+      "chinese": "放弃前的重试次数",
+      "previous": "在放弃前重复",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rtty.autoRepeats.hint",
+      "english": "How many times Auto call asks again inside a contact before it lets that station go. <b>This does not limit CQ.</b> An unanswered CQ repeats until you stop it — that is what the Stop button and the TX switch are for.",
+      "chinese": "一次交信中，自动呼叫再次向对方请求重发的次数上限，达到上限后便放弃该台。<b>此项不限制 CQ 呼叫。</b>无人应答时，CQ 会一直重复，直到通过“停止”按钮或 TX 开关停止发射。",
+      "previous": "多少次Auto呼叫再次在联系人内部询问,然后才让该站离开.<b>这并不限制CQ.</b>一个未回答的CQ重复直到停止——这就是停止按钮和TX开关的目的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.psk.legend",
+      "english": "PSK",
+      "chinese": "PSK",
+      "previous": "密码K",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.psk.rxAutoArm.label",
+      "english": "Start receiving when PSK opens",
+      "chinese": "打开 PSK 界面时开始接收",
+      "previous": "PSK 打开时开始接收",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.psk.rxAutoArm.hint",
+      "english": "The PSK screen starts the decoder as soon as you open it — click a trace on the waterfall and the text prints, no setup. Turn this off to arm the receiver by hand (the Arm RX button in the decoded-text pane). Stopping the receiver yourself is already remembered for the rest of the session. This arms the RECEIVER only — transmitting is never armed for you.",
+      "chinese": "打开 PSK 界面即启动解码器，点击瀑布图中的信号轨迹便会显示解码文本，无需额外设置。关闭此项后，需通过解码文本面板中的“启用接收（Arm RX）”按钮手动启动接收。若手动停止接收，该选择会在本次会话余下时间内保持。此项只启用接收，绝不会替你启用发射。",
+      "previous": "PSK屏幕一打开就启动解码器——点击瀑布和文字打印的痕迹,不设置. 关闭此选项以手举起接收器(解码文本面板中的Arm RX按钮). 停止接收器本身已经被记住了 剩下的会议。 这只臂膀 传送系统从不为你配备武器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.legend",
+      "english": "JS8",
+      "chinese": "JS8",
+      "previous": "JS8",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.receiving.title",
+      "english": "Speed & receiving",
+      "chinese": "速度与接收",
+      "previous": "快速接收( D)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.speed.label",
+      "english": "Transmit speed",
+      "chinese": "发射速度",
+      "previous": "传送速度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.speed.hint",
+      "english": "The speed your frames go out at, and the period the TX clock follows: Slow 30 s, Normal 15 s, Fast 10 s, JS8 40 6 s, JS8 60 4 s. Normal is what most of the band runs. JS8 40 (called Turbo before JS8Call 3.0) and JS8 60 are for strong signals; JS8Call 3.0 marks JS8 60 experimental. The speed chips in the JS8 header change this same setting.",
+      "chinese": "设置报文帧的发射速度及发射时钟采用的周期：Slow（慢速）30 秒、Normal（标准）15 秒、Fast（快速）10 秒、JS8 40 为 6 秒、JS8 60 为 4 秒。频段上大多数电台使用 Normal。JS8 40（JS8Call 3.0 以前称为 Turbo）和 JS8 60 适用于强信号；JS8Call 3.0 将 JS8 60 标为实验功能。JS8 界面顶栏的速度按钮调整的也是此项设置。",
+      "previous": "TX时钟的时速如下: JS8 40 6 s, (中文(简体) ). JS8 60 4s. 正常是大部分乐队运行。 JS8 40(JS8Call 3.0前称为涡轮)和 JS8 60是强信号;JS8Call 3.0马克 JS8 60号实验车. 速度筹码 JS8 标题更改相同的设置 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.rxSpeeds.label",
+      "english": "Decode these speeds",
+      "chinese": "要解码的速度",
+      "previous": "解码这些速度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.rxSpeeds.hint",
+      "english": "Every speed is decoded at once by default, as JS8Call does — a Slow station and a JS8 60 station on the same band both print. Untick a speed to save CPU on a small machine; each activity row is marked with its speed letter (E/A/B/C/I). A list saved before JS8 60 arrived keeps the four speeds it had: tick JS8 60 to add it.",
+      "chinese": "与 JS8Call 一样，默认同时解码所有速度，同一频段上的 Slow 电台和 JS8 60 电台都能显示解码文本。性能较弱的电脑可取消部分速度以降低 CPU 占用；每条活动记录会标出速度字母（E/A/B/C/I）。JS8 60 推出前保存的列表仍只含原有四种速度，请勾选 JS8 60 将其加入。",
+      "previous": "正如JS8Call所做的那样,每一次速度默认都会解码——一个慢站和一个慢站. JS8 同一带的60个车站都印了 取消在小机器上保存 CPU 的速度; 每个活动行都标注其速度字母( E)/页:1/页:1/C级/一. 以前保存的清单 JS8 60号到达时保持了4个速度: 滴答 JS8 六十为加.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.callsignAgingMin.label",
+      "english": "Callsign aging (minutes)",
+      "chinese": "呼号保留时限（分钟）",
+      "previous": "呼叫老化( 分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.callsignAgingMin.hint",
+      "english": "Off (0) by default, as in JS8Call. Otherwise a station not heard for this many minutes leaves the Stations list, unless you have it selected or it has an unread message for you, and your HEARING? replies leave it out. Up to 1440 (a day).",
+      "chinese": "默认关闭（0），与 JS8Call 一致。设置后，超过指定分钟数未再收到信号的电台会从电台列表移除，HEARING? 应答中也不再列出；但当前选中的电台或有未读消息的电台会保留。最大可设 1440 分钟（一天）。",
+      "previous": "默认关闭(0),如联署材料8Call。 否则,一个没有听到这么多分钟的站台离开站台名单,除非你已经选定了,或者它有一个未读的信息给你,还有你的听力? 回答时不提 最高1440(一天).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.activityAgingMin.label",
+      "english": "Band activity aging (minutes)",
+      "chinese": "频段活动保留时限（分钟）",
+      "previous": "乐队活动老化(分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.activityAgingMin.hint",
+      "english": "2 by default, as in JS8Call. A row of the Band activity pane whose newest decode is this many minutes old leaves the pane, unless RX is on its offset. 0 keeps every row. Up to 1440 (a day).",
+      "chinese": "默认 2 分钟，与 JS8Call 一致。频段活动面板中，某一行最近一次解码超过此时限后会移除；但接收频偏当前位于该行时会保留。0 表示保留所有行。最大可设 1440 分钟（一天）。",
+      "previous": "2默认,如JS8Call. 乐队活动面板的一排 最新解码器是这么长的 离开面板,除非RX在它的抵消。 0保持每行。 最高1440(一天).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freq.title",
+      "english": "Frequencies",
+      "chinese": "频率",
+      "previous": "频率",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "频率"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "频率"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.returnToLastDial.label",
+      "english": "Return to the last used frequency",
+      "chinese": "返回上次使用的频率",
+      "previous": "返回上次使用的频率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.returnToLastDial.hint",
+      "english": "Off by default, as in JS8Call. On, opening JS8 tunes the rig back to the frequency you last used in JS8, instead of the band's JS8 frequency.",
+      "chinese": "默认关闭，与 JS8Call 一致。开启后，打开 JS8 时会将电台调回上次使用 JS8 的频率，而非当前频段的 JS8 预设频率。",
+      "previous": "默认关闭,如JS8Call。 打开JS8将钻机调回上次使用的频率JS8而不是乐队的JS8频率。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.label",
+      "english": "JS8 frequencies",
+      "chinese": "JS8 频率",
+      "previous": "JS8频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.hint.stock",
+      "english": "JS8Call's suggested frequencies. Change, add or remove one and the list becomes your own: the band picker in JS8 shows it, and opening JS8 tunes the first one on the band.",
+      "chinese": "JS8Call 建议频率。修改、添加或删除任意一项后，便成为自定义列表；JS8 中的频段选择器会显示该列表，打开 JS8 时会调到当前频段的第一个频率。",
+      "previous": "JS8Call的建议频率. 更改、 添加或删除一个, 列表会变成您自己的列表: 带状选择器 in JS8 显示它,并打开 JS8 曲调乐队的第一个。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.hint.own",
+      "english": "Your own list: the band picker in JS8 shows it, and opening JS8 tunes the first one on the band. Reset puts JS8Call's suggested frequencies back.",
+      "chinese": "你的自定义列表。JS8 中的频段选择器会显示该列表，打开 JS8 时会调到当前频段的第一个频率。重置可恢复 JS8Call 建议频率。",
+      "previous": "自己的名单: 乐队选手JS8显示它,并打开JS8曲调乐队的第一个。 重置JS8Call的建议频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.mhz.aria",
+      "english": "Frequency {{n}} in MHz",
+      "chinese": "第 {{n}} 个频率（MHz）",
+      "previous": "频率{{n}}输入MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.description.aria",
+      "english": "Description of frequency {{n}}",
+      "chinese": "第 {{n}} 个频率的说明",
+      "previous": "频率说明{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.description.placeholder",
+      "english": "Description",
+      "chinese": "描述",
+      "previous": "描述",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "描述"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.freqs.remove.title",
+      "english": "Remove this frequency",
+      "chinese": "删除此频率",
+      "previous": "删除此频率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.remove.aria",
+      "english": "Remove {{mhz}} MHz",
+      "chinese": "删除{{mhz}} MHz",
+      "previous": "删除{{mhz}} MHz",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.add.mhz.aria",
+      "english": "New frequency in MHz",
+      "chinese": "新频率（MHz）",
+      "previous": "新频率MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.add.mhz.placeholder",
+      "english": "MHz",
+      "chinese": "MHz",
+      "previous": "MHz",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.add.description.aria",
+      "english": "Description of the new frequency",
+      "chinese": "新频率说明",
+      "previous": "新频率说明",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.add.action",
+      "english": "Add",
+      "chinese": "添加",
+      "previous": "添加",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.freqs.badMhz",
+      "english": "Type the frequency in MHz, for example {{example}}.",
+      "chinese": "请输入以 MHz 为单位的频率，例如 {{example}}。",
+      "previous": "键入频率MHz,例如,{{example}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.reset.action",
+      "english": "Reset",
+      "chinese": "重置",
+      "previous": "重置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "重置"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.freqs.reset.confirm.title",
+      "english": "Reset the JS8 frequencies?",
+      "chinese": "重置 JS8 频率？",
+      "previous": "重设JS8频率?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.reset.confirm.body",
+      "english": "Your list is replaced by JS8Call's suggested frequencies when you save.",
+      "chinese": "保存后，你的列表将替换为 JS8Call 建议频率。",
+      "previous": "你的列表被JS8Call的推荐频率所取代 当你节省。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.reset.confirm.action",
+      "english": "Reset",
+      "chinese": "重置",
+      "previous": "重置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "重置"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.freqs.export.action",
+      "english": "Export…",
+      "chinese": "导出…",
+      "previous": "导出...",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

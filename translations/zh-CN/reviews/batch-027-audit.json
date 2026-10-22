@@ -1,0 +1,1692 @@
+{
+  "batch": 27,
+  "range": [
+    5201,
+    5400
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 184,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 6,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/Js8FrequencySettings.tsx",
+    "ui/src/components/Js8WaterfallControls.tsx",
+    "ui/src/components/Js8HeartbeatSettings.tsx"
+  ],
+  "rows": [
+    {
+      "id": "settings.js8.freqs.export.done",
+      "english": "JS8 frequencies saved to {{path}}",
+      "chinese": "JS8 频率已保存至 {{path}}",
+      "previous": "JS8保存到频率{{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.export.failed",
+      "english": "Could not save the JS8 frequencies",
+      "chinese": "无法保存 JS8 频率",
+      "previous": "无法保存JS8频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.import.action",
+      "english": "Import…",
+      "chinese": "导入…",
+      "previous": "导入...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.import.bad",
+      "english": "That file holds no JS8 frequencies Nexus can read. Use a file this list exported.",
+      "chinese": "此文件中没有 Nexus 能读取的 JS8 频率。请使用本列表导出的文件。",
+      "previous": "这个文件没有JS8频率Nexus可以读取. 使用此列表导出的文件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.import.done",
+      "english": "JS8 frequencies imported: {{count}}. Save to keep them.",
+      "chinese": "已导入 {{count}} 个 JS8 频率，保存后才能保留。",
+      "previous": "JS8导入频率 :{{count}}保存它们。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.import.confirm.title",
+      "english": "Replace your JS8 frequencies?",
+      "chinese": "替换你的 JS8 频率？",
+      "previous": "替换您的JS8频率?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.import.confirm.body",
+      "english": "Your list is replaced by the one in this file.",
+      "chinese": "你的列表将替换为此文件中的列表。",
+      "previous": "您的列表被此文件中的列表所取代 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.freqs.import.confirm.action",
+      "english": "Replace",
+      "chinese": "替换",
+      "previous": "替换",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.label",
+      "english": "Change frequency by schedule",
+      "chinese": "按计划切换频率",
+      "previous": "按时间表更改频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.hint",
+      "english": "Off by default, as in JS8Call. On, Nexus changes the rig's frequency BY ITSELF at the times below, with nobody at the radio: a notice first, then the change 30 seconds later unless you cancel it. Never while transmitting or while a message is going out.",
+      "chinese": "默认关闭，与 JS8Call 一致。开启后，即使无人值守，Nexus 也会在下列时间自动切换电台频率：先显示通知，30 秒后切换，期间可取消。正在发射或发送报文时不会切换。",
+      "previous": "默认关闭,如JS8Call。 上面,Nexus在以下时间通过ISTELF更改钻机的频率,无人在电台:先通知,30秒后更改,除非你取消. 永远不要在传递或传递消息的时候。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.list.label",
+      "english": "Schedule (UTC)",
+      "chinese": "频率切换计划（UTC）",
+      "previous": "附表(续)UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.list.hint",
+      "english": "Each row: a frequency, and from when until when (UTC) to be on it. The frequency does not change back when a row ends; add another row for that. Where rows overlap, the one that starts later wins.",
+      "chinese": "每行指定一个频率及使用该频率的起止时间（UTC）。该行时段结束后不会自动切回原频率，如需切回，请另加一行。时段重叠时，以开始时间较晚的一行为准。",
+      "previous": "每行:频率,从何时到何时(UTC{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}要继续 当一行结束时,频率不会回转;为此添加另一行. 如果行重叠,则开始的行获胜。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.empty",
+      "english": "No rows yet.",
+      "chinese": "尚未添加计划。",
+      "previous": "还没排好",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.mhz.aria",
+      "english": "Frequency of row {{n}} in MHz",
+      "chinese": "第 {{n}} 行的频率（MHz）",
+      "previous": "行数{{n}}输入MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.from.aria",
+      "english": "Row {{n}}: from (UTC)",
+      "chinese": "第 {{n}} 行：开始时间（UTC）",
+      "previous": "线条{{n}}: 出处(出处)UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.until.aria",
+      "english": "Row {{n}}: until (UTC)",
+      "chinese": "第 {{n}} 行：结束时间（UTC）",
+      "previous": "线条{{n}}: 直至( )UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.until.title",
+      "english": "The frequency does not change back at this time. Add another row to return.",
+      "chinese": "到此时间不会自动切回原频率。如需切回，请另加一行。",
+      "previous": "此时的频率不会回转. 添加另一行以返回 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.description.aria",
+      "english": "Description of row {{n}}",
+      "chinese": "第 {{n}} 行的说明",
+      "previous": "行描述{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.remove.title",
+      "english": "Remove this row",
+      "chinese": "删除此行",
+      "previous": "删除此行",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.remove.aria",
+      "english": "Remove row {{n}}",
+      "chinese": "删除第 {{n}} 行",
+      "previous": "删除行{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.add.mhz.aria",
+      "english": "Frequency of the new row in MHz",
+      "chinese": "新行的频率（MHz）",
+      "previous": "新行的频率MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.schedule.add.action",
+      "english": "Add row",
+      "chinese": "添加行",
+      "previous": "添加行",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.failed",
+      "english": "That did not reach the station.",
+      "chinese": "指令未能送达电台。",
+      "previous": "那没有到达车站。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.centreAt",
+      "english": "Centre filter at {{hz}} Hz",
+      "chinese": "将滤波范围中心设为 {{hz}} Hz",
+      "previous": "居中过滤器位置{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.pill.title",
+      "english": "Waterfall controls: the decode filter and QSY to centre",
+      "chinese": "瀑布图控制：解码滤波与切频居中",
+      "previous": "瀑布控制:解码过滤器和QSY到中心",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.pill.on",
+      "english": "Filter {{lo}}–{{hi}} Hz",
+      "chinese": "滤波范围 {{lo}}–{{hi}} Hz",
+      "previous": "过滤器{{lo}}- 说吧{{hi}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.pill.off",
+      "english": "Filter off",
+      "chinese": "滤波已关闭",
+      "previous": "过滤关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.title",
+      "english": "Waterfall controls",
+      "chinese": "瀑布图控制",
+      "previous": "瀑布控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.filter.title",
+      "english": "Decode filter",
+      "chinese": "解码滤波",
+      "previous": "解码过滤器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.filter.label",
+      "english": "Filter",
+      "chinese": "滤波",
+      "previous": "筛选",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "窄 频"
+        }
+      ]
+    },
+    {
+      "id": "js8.wf.filter.hint.on",
+      "english": "On, as JS8Call ships it: the decoder looks only between {{lo}} and {{hi}} Hz.",
+      "chinese": "已开启，与 JS8Call 的默认设置一致：解码器仅在 {{lo}} 至 {{hi}} Hz 范围内解码。",
+      "previous": "正如JS8Call的船一样 解码器看起来只在两边{{lo}}和{{hi}} Hz。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.filter.hint.off",
+      "english": "Off: the decoder looks across the whole passband (F Low to F High).",
+      "chinese": "已关闭：解码器在整个通带内解码（F Low 至 F High）。",
+      "previous": "off:解码器外观横跨整个通过带(F低至F高).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.center.label",
+      "english": "Centre (Hz)",
+      "chinese": "中心频率（Hz）",
+      "previous": "中心(Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.width.label",
+      "english": "Width (Hz)",
+      "chinese": "宽度（Hz）",
+      "previous": "宽度( W)Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.sync.action",
+      "english": "Centre on my RX offset",
+      "chinese": "以本台接收频偏为中心",
+      "previous": "页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.sync.title",
+      "english": "Centre the filter on {{hz}} Hz, your RX offset",
+      "chinese": "将滤波范围中心设为本台接收频偏 {{hz}} Hz",
+      "previous": "在过滤器上居中{{hz}} Hz页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.qsy.title",
+      "english": "QSY to centre",
+      "chinese": "切频居中（QSY）",
+      "previous": "QSY 到中间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.qsyCenter.label",
+      "english": "Passband centre (Hz)",
+      "chinese": "通带中心（Hz）",
+      "previous": "通行证中心Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.qsy.action",
+      "english": "QSY to centre",
+      "chinese": "切频居中（QSY）",
+      "previous": "QSY 到中间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.qsy.hint",
+      "english": "Moves the rig's dial so your TX offset ({{tx}} Hz) sits on the passband centre ({{hz}} Hz), for narrow filters and rigs with an uneven passband. The RX offset moves with it. Not while transmitting or while a message is going out.",
+      "chinese": "调整电台拨盘频率，使本台发射频偏（{{tx}} Hz）落在通带中心（{{hz}} Hz），适用于窄带滤波器或通带不平坦的电台。接收频偏也会随之调整。正在发射或发送报文时不可执行。",
+      "previous": "移动钻机的拨号,所以您的 TX 偏移( T){{tx}} Hz(b) 座落在通过带中心({{hz}} Hz),用于带不均匀的窄滤波器和钻机. RX抵消与它移动。 发送消息时或消息发出时,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.hop.title",
+      "english": "Scheduled frequency change",
+      "chinese": "计划切换频率",
+      "previous": "计划频率变化",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.hop.body",
+      "english": "The rig frequency will be changed to {{mhz}} MHz in {{secs}} s.",
+      "chinese": "电台将在 {{secs}} 秒后切换至 {{mhz}} MHz。",
+      "previous": "钻机频率将改为{{mhz}} MHz输入{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.hop.held",
+      "english": "The rig frequency will be changed to {{mhz}} MHz when the transmission ends.",
+      "chinese": "本次发射结束后，电台将切换至 {{mhz}} MHz。",
+      "previous": "钻机频率将改为{{mhz}} MHz当传送结束。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.hop.now",
+      "english": "Change now",
+      "chinese": "立即切换",
+      "previous": "现在改变",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.wf.hop.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "js8.hop.toast",
+      "english": "Scheduled frequency change: the rig moves to {{mhz}} MHz in {{secs}} s.",
+      "chinese": "计划切频：电台将在 {{secs}} 秒后切换至 {{mhz}} MHz。",
+      "previous": "计划频率变化: 钻机移动到{{mhz}} MHz输入{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.hop.toast.described",
+      "english": "Scheduled frequency change: the rig moves to {{mhz}} MHz ({{description}}) in {{secs}} s.",
+      "chinese": "计划切频：电台将在 {{secs}} 秒后切换至 {{mhz}} MHz（{{description}}）。",
+      "previous": "计划频率变化: 钻机移动到{{mhz}} MHz(单位:千美元){{description}}单位{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.automatic.title",
+      "english": "Automatic transmissions",
+      "chinese": "自动发射",
+      "previous": "自动传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbIntervalMin.label",
+      "english": "Heartbeat interval (minutes)",
+      "chinese": "心跳间隔（分钟）",
+      "previous": "心跳间隔( 分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbIntervalMin.hint",
+      "english": "0 = a heartbeat only when you press HB. Otherwise, while the HB chip is on, one goes out every this-many minutes on a random free slot between 500 and 1000 Hz. The HB chip itself is never remembered across launches, and nothing keys unless TX is on.",
+      "chinese": "0 表示仅在按下 HB 时发送一次心跳。设为其他值时，若 HB 按钮处于开启状态，将每隔指定分钟数在 500 至 1000 Hz 之间随机选择一个空闲位置发送心跳。HB 按钮状态不会在重启应用后保留，只有 TX 开启时才会发射。",
+      "previous": "0=心跳,只当按HB. 否则,当HB芯片开机时,每多分钟就有一个在500到1000之间的随机自由插槽上出场Hz. HB芯片本身在发射过程中从未被记住,没有键,除非TX开着.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.cqIntervalMin.label",
+      "english": "CQ repeat interval (minutes)",
+      "chinese": "CQ 重复间隔（分钟）",
+      "previous": "CQ 重复间隔( 分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.cqIntervalMin.hint",
+      "english": "0 = the CQ button sends one CQ, as it does today. Above 0 the button becomes a switch: leave it on and a CQ goes out every this-many minutes, with the seconds to the next one counting down on the button — the POTA and beacon habit. A station answering you turns it off, so does the idle watchdog, and so does Stop TX. It is never remembered across launches, and nothing keys unless TX is on.",
+      "chinese": "0 表示 CQ 按钮只发送一次 CQ，与原有行为相同。大于 0 时，按钮变为开关：保持开启便会每隔指定分钟数发送一次 CQ，按钮上显示距下次发送的倒计时，适合 POTA 活动及信标式呼叫。收到电台应答、触发空闲超时保护或按下“停止发射”时，都会关闭重复呼叫。此状态不会在重启应用后保留，只有 TX 开启时才会发射。",
+      "previous": "0 = CQ 按钮发送一个 CQ,就像今天一样. 0以上按钮变成开关:打开它,每多分钟就发出一个CQ,秒数到下一个在按钮上计时的秒数。POTA还有信标习惯 一个电台回答你关闭它, 闲置的监视者也是如此, 停止TX。 除非TX开机 否则没有钥匙",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAck.label",
+      "english": "Answer heartbeats",
+      "chinese": "应答心跳",
+      "previous": "答题心跳",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAck.hint",
+      "english": "Off by default, as in JS8Call. On, a heard heartbeat is answered with your signal report (HEARTBEAT SNR), one frame per station, and a message you hold for that station is offered to it. Needs TX on.",
+      "chinese": "默认关闭，与 JS8Call 一致。开启后，会用信号报告（HEARTBEAT SNR）应答收到的心跳，每台一帧；若有为该台代存的消息，也会通知对方领取。需要开启 TX。",
+      "previous": "默认关闭,如JS8Call。 听到的心跳用你的信号报告(HEARTBEAT SNR)回答,每个站台一个帧,你为该站持有的信息被提供给它. 需要TX打开。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAckDeny.label",
+      "english": "Never acknowledge heartbeats from these callsigns",
+      "chinese": "不应答以下呼号的心跳",
+      "previous": "永远不要承认这些呼号的心跳",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAckDeny.hint",
+      "english": "Comma-separated, empty by default as in JS8Call. A heartbeat from a station on this list draws no acknowledgement.",
+      "chinese": "呼号以逗号分隔，默认为空，与 JS8Call 一致。收到列表中电台的心跳时，不返回应答。",
+      "previous": "逗号分离,默认为空,如JS8Call. 列表中一个站台的心跳不表示认可。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbNetworking.label",
+      "english": "Heartbeat networking",
+      "chinese": "心跳组网",
+      "previous": "心动网络",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbNetworking.hint",
+      "english": "Off by default, as in JS8Call (its Mode ▸ Enable Heartbeat Networking). On, the cockpit shows the HB button and Answer heartbeats can answer the heartbeats you hear; off, no heartbeat and no heartbeat acknowledgement goes out. The same switch as the cockpit’s HB NET.",
+      "chinese": "默认关闭，与 JS8Call 的“Mode ▸ Enable Heartbeat Networking”一致。开启后，操作界面会显示 HB 按钮，且启用“应答心跳”时可应答收到的心跳；关闭后，不发送心跳，也不发送心跳应答。与操作界面的 HB NET 开关控制同一设置。",
+      "previous": "默认关闭, 如JS8Call( 模式 QQ 启用 Heartbeat Networking) 。 驾驶舱显示HB按钮 回答心跳可以回答你听到的心跳 关闭,没有心跳,也没有心跳识别 开关与驾驶舱的HB NET相同.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAnywhere.label",
+      "english": "Allow heartbeats outside 500–1000 Hz",
+      "chinese": "允许在 500–1000 Hz 范围外发送心跳",
+      "previous": "允许心跳超过 500 - 1 000 Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAnywhere.hint",
+      "english": "Off by default, as in JS8Call. On, your heartbeats and heartbeat acknowledgements go out on your own TX offset. Off, each goes on a free spot between 500 and 1000 Hz, and a heartbeat stays on your offset if it is at or below 1000 Hz.",
+      "chinese": "默认关闭，与 JS8Call 一致。开启后，心跳和心跳应答使用本台当前发射频偏。关闭时，两者均在 500 至 1000 Hz 之间选择空闲位置发送；但若本台当前发射频偏不高于 1000 Hz，心跳会继续使用该频偏。",
+      "previous": "默认关闭,如JS8Call。 你的心跳和心跳的确认 以你自己的TX偏移进行 关闭,每个去 在500到1000的自由点Hz如果在1000或以下,则心跳会停留在您的偏移上Hz。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbQsoPause.label",
+      "english": "Pause heartbeats while a call is in the To box",
+      "chinese": "“发给”框中有呼号时暂停心跳",
+      "previous": "在呼叫时暂停心跳",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbQsoPause.hint",
+      "english": "On by default, as in JS8Call (its pause while in a QSO). While the cockpit’s To box holds a call, the heartbeat repeat pauses and starts again one interval after you clear the box, no heartbeat is acknowledged, and a repeating CQ stops. Turning the heartbeat repeat on clears the To box.",
+      "chinese": "默认开启，对应 JS8Call 的“QSO 期间暂停”设置。操作界面的“发给”框中有呼号时，重复心跳暂停，不应答心跳，并停止重复 CQ；清空该框后，经过一个心跳间隔才恢复重复心跳。开启重复心跳会清空“发给”框。",
+      "previous": "默认情况下,如JS8Call(暂停在QSO) (中文(简体) ). 驾驶舱的To box 持有一个呼叫, 心跳会重复暂停, 并在您清除了盒子后一个间隔再次开始, 无法识别心跳, 重复的 CQ 停止 。 转动心跳 重复在清除 To box。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAckRateLimit.label",
+      "english": "Don’t acknowledge stations that heartbeat more often than every 55 minutes",
+      "chinese": "不再应答心跳间隔短于 55 分钟的电台",
+      "previous": "不要承认心跳频率超过每55分钟一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.hbAckRateLimit.hint",
+      "english": "Off by default, as in JS8Call 3.0. On, a station heard heartbeating again within 55 minutes of its last acknowledged heartbeat is added to Never acknowledge heartbeats from these callsigns, as JS8Call adds it to its list, and the cockpit’s HB ACK chip names it. Take it off that list to acknowledge it again; turning this off leaves the list as it is.",
+      "chinese": "默认关闭，与 JS8Call 3.0 一致。开启后，某台上次心跳获应答后 55 分钟内又发来心跳时，会像 JS8Call 一样，将该台加入“不应答以下呼号的心跳”列表，并在操作界面的 HB ACK 按钮上显示其呼号。将其从列表移除后才会恢复应答；关闭此选项不会清空该列表。",
+      "previous": "默认关闭,如JS8Call 3.0. JS8Call将它添加到自己的列表中, 驾驶舱的HB ACK芯片将它命名。 把它从清单中摘下来,以再次确认它;关闭它就留下了它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.avoidAllcall.label",
+      "english": "Do not take part in @ALLCALL",
+      "chinese": "不参与 @ALLCALL",
+      "previous": "不参加@ALLCALL",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.avoidAllcall.hint",
+      "english": "Off by default, as in JS8Call. On, nothing addressed to @ALLCALL is answered (a QUERY MSGS included) or marked as addressed to you, and @ALLCALL leaves the To box’s list. Heartbeats and CQs are handled as before.",
+      "chinese": "默认关闭，与 JS8Call 一致。开启后，不应答任何发给 @ALLCALL 的报文（包括 QUERY MSGS），也不将其标记为发给本台；“发给”框的列表中也会移除 @ALLCALL。心跳和 CQ 仍按原有规则处理。",
+      "previous": "默认关闭,如JS8Call。 @ALLCALL没有回复@ALLCALL(包括一个QUERY MSGS), 心跳和CQ都像以前一样处理.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreply.label",
+      "english": "Auto-reply to queries",
+      "chinese": "自动回复查询",
+      "previous": "自动重载查询",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreply.hint",
+      "english": "On by default, as in JS8Call: SNR?, GRID?, INFO?, STATUS?, HEARING? and QUERY MSGS addressed to you are answered, and a MSG to you or to a group you joined, or a MSG TO: you hold for another station, gets an ACK; each one first asks for your Yes in the cockpit, unless you turn that off below. On @ALLCALL only QUERY MSGS is answered, when a message waits for that station, at most once every 15 minutes. Off, a reply is put in the message box for you to send, as JS8Call does, and QUERY MSGS is not answered. Needs TX on.",
+      "chinese": "默认开启，与 JS8Call 一致：回复发给本台的 SNR?、GRID?、INFO?、STATUS?、HEARING? 和 QUERY MSGS；对于发给本台或已加入群组的 MSG，以及为其他电台代存的 MSG TO:，返回 ACK。每次都会先在操作界面请求你确认，除非关闭下方的确认选项。对于 @ALLCALL，只在有待该台领取的消息时回复 QUERY MSGS，且每 15 分钟最多一次。关闭时，会像 JS8Call 一样把回复放入报文输入框，由你发送，并且不回复 QUERY MSGS。需要开启 TX。",
+      "previous": "默认情况下,如JS8Call:SNR?,GRID?,INFO?,状态?,听力?和QUERY MSGS发给你的答案,一个MSG发给你或你加入的团体,或一个MSG:你持有另一个站台,得到一个ACK;每一个先在驾驶舱中请求你同意,除非你关闭下面。 @ALLCALL只回答QUERY MSGS, 关闭,一个答复被放进信息箱中,供您发送,就像JS8Call所做的那样,QUERY MSGS没有被回复. 需要TX打开。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreplyConfirmation.label",
+      "english": "Ask for confirmation before sending automatic replies",
+      "chinese": "发送自动回复前请求确认",
+      "previous": "在发送自动回复前要求确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreplyConfirmation.hint",
+      "english": "On by default, as in JS8Call: every automatic reply (to a query, an ACK, a relay, a heartbeat acknowledgement) waits in the cockpit for your Yes, and is not sent if you say No or do not answer within 89 seconds. Off, each goes by itself in the next period.",
+      "chinese": "默认开启，与 JS8Call 一致：每次自动回复（查询应答、ACK、消息转发及心跳应答）都会在操作界面等待你确认；若拒绝或 89 秒内未确认，则不发送。关闭后，会在下一周期自动发送。",
+      "previous": "默认情况下,如JS8Call:每个自动回复(询问、ACK、中继、心跳确认)都在驾驶舱等待,如果你在89秒内拒绝或不回答,则不发送。 关闭,每个在下一个时期自己去。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreplyAllow.label",
+      "english": "Only auto-reply to these callsigns",
+      "chinese": "仅自动回复以下呼号",
+      "previous": "只有自动复制这些调用符号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreplyAllow.hint",
+      "english": "Comma-separated. Empty, the JS8Call default, answers everyone. Otherwise only a station on this list, by its call as heard or its base call (W1AW covers W1AW/P), is answered; anyone else is not acted on at all: no reply, no relay, nothing filed or held for them.",
+      "chinese": "呼号以逗号分隔。默认留空，与 JS8Call 一致，表示回复所有电台。填写后，仅回复所收到的呼号或基本呼号在列表中的电台（W1AW 也匹配 W1AW/P）；对其他电台完全不作处理：不回复、不转发，也不归档或代存消息。",
+      "previous": "逗号分离. 空的,那个  JS8Call  默认,回答每个人。 否则,仅通过电话或基地呼叫(W1AW覆盖W1AW),该名单上的某个台站即可。/答复是P),任何其他人根本没有被采取行动:没有答复,没有转发,没有为他们提交或持有任何文件。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreplyDeny.label",
+      "english": "Never auto-reply to these callsigns",
+      "chinese": "不自动回复以下呼号",
+      "previous": "从不自动复制这些呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.autoreplyDeny.hint",
+      "english": "Comma-separated, empty by default as in JS8Call. A station on this list (W1AW covers W1AW/P) is not acted on at all: no reply, no relay, its message not filed.",
+      "chinese": "呼号以逗号分隔，默认为空，与 JS8Call 一致。对列表中的电台（W1AW 也匹配 W1AW/P）完全不作处理：不回复、不转发，也不归档其消息。",
+      "previous": "逗号分离,默认为空,如JS8Call. 本列表(W1AW覆盖W1AW/P)上的台站完全没有行动:没有回复,没有转发,其信息没有存档.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.relay.label",
+      "english": "Relay for other stations",
+      "chinese": "为其他电台转发消息",
+      "previous": "其他站台的中继",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.relay.hint",
+      "english": "On by default, as in JS8Call: a message routed through your callsign is passed along (with Auto-reply off, it is put in the message box for you to send), and MSG TO: messages are held in your inbox until the addressee asks for them. This is third-party traffic — whether it is permitted where you operate is your call.",
+      "chinese": "默认开启，与 JS8Call 一致：经过本台呼号路由的消息会继续转发；若关闭自动回复，则先放入报文输入框，由你发送。MSG TO: 消息会代存在收件箱，直到收件人请求领取。这属于第三方通信，请自行判断当地规定是否允许。",
+      "previous": "默认情况下,如JS8Call中:通过您的呼号传递的一条消息被传递(自动重写后,它会被放入信息框中供您发送),MSG TO:消息被保存在您的收件箱中,直到收件人询问. 这是第三方交通——是否允许在您运营的地方由您决定。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.idleWatchdogMin.label",
+      "english": "Idle watchdog (minutes)",
+      "chinese": "空闲超时保护（分钟）",
+      "previous": "闲置监视器( 分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.idleWatchdogMin.hint",
+      "english": "After this long with nothing typed, heartbeats, auto-replies and relaying all switch off and the cockpit says so — the JS8Call rule, so an unattended station goes quiet. 60 by default; 0 turns the watchdog off; anything below 5 counts as 5. TX enable is left as it was.",
+      "chinese": "超过指定时间未输入文字后，会关闭心跳、自动回复和转发，并在操作界面提示。这遵循 JS8Call 的规则，使无人值守的电台停止自动发送。默认为 60 分钟，0 表示关闭保护，非零且小于 5 的值按 5 分钟处理。TX 启用状态保持原样。",
+      "previous": "这么长一段时间后,没有打字,心跳,自动复制和转发所有关机,驾驶舱也这么说——JS8Call规则,所以无人看管的车站会安静下来. 60 默认; 0 关闭监视器; 任何低于 5 的值为 5 。 TX 启用原样保留 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.station.title",
+      "english": "Station text",
+      "chinese": "电台文字信息",
+      "previous": "站点文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.info.label",
+      "english": "INFO",
+      "chinese": "INFO",
+      "previous": "新闻组织",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.info.hint",
+      "english": "What an INFO? query gets back — rig, antenna, power, a QTH. Upper-case letters, digits and basic punctuation pack tightest; anything else costs extra frames.",
+      "chinese": "回复 INFO? 查询的内容，例如电台设备、天线、功率或 QTH。大写字母、数字和基本标点的编码最紧凑，其他字符会占用更多报文帧。",
+      "previous": "什么样的INFO? 查询返回——钻机、天线、动力、a QTH。大写字母、数字和基本标注包最紧;其他任何费用都需额外帧。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.status.label",
+      "english": "STATUS",
+      "chinese": "STATUS",
+      "previous": "状况",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.status.hint",
+      "english": "What a STATUS? query gets back. Leave it blank for the JS8Call form: IDLE, the idle minutes, and the app name.",
+      "chinese": "回复 STATUS? 查询的内容。留空则采用 JS8Call 的格式：IDLE、空闲分钟数及应用名称。",
+      "previous": "什么状况? 查询返回。 给JS8Call表格留空白:IDLE,闲置的分钟,以及应用名称.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.groups.label",
+      "english": "Groups",
+      "chinese": "组",
+      "previous": "组",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.groups.hint",
+      "english": "The @GROUP names you belong to, comma-separated — a message to one of them counts as addressed to you. @ALLCALL is everyone and is always on.",
+      "chinese": "填写你加入的 @GROUP 群组名，以逗号分隔；发给其中任一群组的消息都视为发给本台。@ALLCALL 代表所有人，始终启用。",
+      "previous": "@GROUP 属于你, @ALLCALL是每个人,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sending.title",
+      "english": "Sending",
+      "chinese": "发送",
+      "previous": "正在发送",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundOutput",
+          "chinese": "发送"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundOutput",
+          "chinese": "发送"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.holdPtt.label",
+      "english": "Hold PTT between frames",
+      "chinese": "帧间保持 PTT",
+      "previous": "别动PTT框间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.holdPtt.hint",
+      "english": "Off by default, as in JS8Call. On, the radio stays keyed from the end of one frame of a message until the next frame starts, instead of dropping PTT after each frame and keying again. PTT still drops after the last frame, and at once when you stop transmitting.",
+      "chinese": "默认关闭，与 JS8Call 一致。开启后，同一报文的一帧结束至下一帧开始之间，电台保持发射，不再逐帧释放并重新触发 PTT。最后一帧结束后仍会释放 PTT；手动停止发射时也会立即释放。",
+      "previous": "默认关闭,如JS8Call。 打开, 收音机从一个消息框的结尾一直按键, 直到下一个消息框开始, 而不是下降PTT在每个框和键入后再次。PTT在最后一帧之后仍然会下降, 当你停止传输时会立刻下降。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.txOffsetWhileSending.label",
+      "english": "Allow TX offset changes while sending",
+      "chinese": "允许发送期间更改发射频偏",
+      "previous": "发送时允许 TX 偏移更改",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.txOffsetWhileSending.hint",
+      "english": "Off by default, as in JS8Call: while a message is waiting to go or going out, the TX offset stays where it is. On, you can move it at once: the frame on the air moves too, from where it has got to, and the frames still to go are sent at the new offset.",
+      "chinese": "默认关闭，与 JS8Call 一致：报文等待发送或正在发送期间，发射频偏固定不变。开启后可立即调整，当前正在发射的帧会从当前进度起移至新频偏，后续帧也会在新频偏上发送。",
+      "previous": "默认关闭, 如JS8Call: 当一个消息正在等待去或出去时, TX 偏移会留在原处。 打开,你可以马上移动它: 播放机上的帧也从它到达的地方移动, 仍然要移动的帧被发送到新的偏移处.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.txDelay.label",
+      "english": "TX delay",
+      "chinese": "TX 提前键控时间",
+      "previous": "TX 延迟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.txDelay.hint",
+      "english": "How long before each period a JS8 frame keys the radio, as JS8Call's Tx delay (0.2 s by default). The frame's first tone still goes out on time, at the period's start delay, so a radio slow to key no longer sends it late. Lengthen it for an amplifier or a radio whose relay is slow.",
+      "chinese": "设置每个 JS8 帧在周期到来前提前多久触发电台发射，对应 JS8Call 的 Tx delay（默认 0.2 秒）。帧的首个音调仍会按该周期的起始延时准时发出，避免电台切换发射较慢导致报文迟发。使用功放或继电器动作较慢的电台时，可增大此值。",
+      "previous": "每期多久前a JS8 帧按下收音机键,因为JS8Call的Tx延迟(默认为0.2 s). 帧的第一个音调仍然会及时发音,在期初延迟,所以一个向键慢的无线电不再迟发. 长它为放大器或收音机,其中继速度缓慢.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.txDelay.option",
+      "english": "{{s}} s",
+      "chinese": "{{s}} 秒",
+      "previous": "{{s}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.compose.title",
+      "english": "Composing",
+      "chinese": "报文编写",
+      "previous": "编译",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.cqText.label",
+      "english": "CQ message",
+      "chinese": "CQ 报文",
+      "previous": "CQ 消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.cqText.hint",
+      "english": "What the CQ button and the repeating CQ send. {{default}}, the JS8Call default, is one CQ frame, and so is any of the eight CQ forms in the list. Longer text takes more frames. It must start with CQ or hold your callsign. Empty sends CQ CQ CQ and your square.",
+      "chinese": "CQ 按钮和重复 CQ 功能发送的内容。默认值 {{default}} 与 JS8Call 一致，只占一帧；列表中的八种 CQ 格式也都只占一帧。更长的文字需要更多帧。内容必须以 CQ 开头或包含本台呼号。留空则发送 CQ CQ CQ 和本台网格。",
+      "previous": "CQ按钮和重复的CQ发送的内容.{{default}},JS8Call默认,是一个CQ框架,列表中的八个CQ表格中的任何一个也是. 较长的文本需要更多的框架 。 它必须从CQ开始 或保持你的呼号。 空发送 CQ CQ CQ 和您的广场.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.replyText.label",
+      "english": "Reply message",
+      "chinese": "回复报文",
+      "previous": "回复消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.replyText.hint",
+      "english": "What REPLY sends to the call in the To box. {{default}} is the JS8Call default.",
+      "chinese": "REPLY 向“发给”框中的呼号发送的内容。{{default}} 是 JS8Call 的默认值。",
+      "previous": "REPLY给To盒子里的电话寄来什么 {{default}} 这是  JS8Call  默认。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.label",
+      "english": "Saved messages",
+      "chinese": "已保存的消息",
+      "previous": "已保存的消息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.empty",
+      "english": "No saved messages.",
+      "chinese": "尚无已保存的消息。",
+      "previous": "没有保存的消息 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.row.aria",
+      "english": "Saved message {{n}}",
+      "chinese": "已保存的消息 {{n}}",
+      "previous": "已保存的消息{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.up.aria",
+      "english": "Move saved message {{n}} up",
+      "chinese": "上移已保存的消息 {{n}}",
+      "previous": "移动已保存的消息{{n}}上来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.down.aria",
+      "english": "Move saved message {{n}} down",
+      "chinese": "下移已保存的消息 {{n}}",
+      "previous": "移动已保存的消息{{n}}下来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.remove.aria",
+      "english": "Delete saved message {{n}}",
+      "chinese": "删除已保存的消息 {{n}}",
+      "previous": "删除已保存的消息{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.add.placeholder",
+      "english": "A new saved message",
+      "chinese": "要保存的新消息",
+      "previous": "新保存的消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.saved.add",
+      "english": "Add",
+      "chinese": "添加",
+      "previous": "添加",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.saved.hint",
+      "english": "The Saved menu by the JS8 compose box lists these, in this order. A saved message goes to the call in the To box, or to everyone when the box is empty.",
+      "chinese": "JS8 报文输入框旁的“已保存”菜单会按此顺序列出这些消息。消息发给“发给”框中的呼号；该框为空时，则发给所有人。",
+      "previous": "保存的菜单JS8作曲框按此顺序列出这些. 保存的消息会转到 To 框中的呼叫, 或者当盒子是空的时会发送给每个人 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.macros.label",
+      "english": "These words are replaced with your own when a message is used, in saved messages and in the CQ, reply, INFO and STATUS text:",
+      "chinese": "使用已保存消息或 CQ、回复、INFO、STATUS 文字时，下列变量会替换为本台的相应信息：",
+      "previous": "这些单词在使用信件时被替换为自己的单词,在保存的信件和CQ,回覆,INFO和状态文本中:",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sendAtOnce.label",
+      "english": "Send CQ, REPLY, SNR, INFO, STATUS, saved messages and a station's asks at once",
+      "chinese": "立即发送 CQ、REPLY、SNR、INFO、STATUS、已保存消息及向电台发起的查询",
+      "previous": "发送 CQ,REPLY, SNR, INFO, 状态, 保存消息和一个电台的询问",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sendAtOnce.hint",
+      "english": "On by default, as in JS8Call. Off, those buttons put their message in the compose box and Send sends it. The repeating CQ always sends.",
+      "chinese": "默认开启，与 JS8Call 一致。关闭后，这些按钮会先把报文放入输入框，再由“发送”按钮发出。重复 CQ 功能始终直接发送。",
+      "previous": "就像JS8Call中那样 默认的 关闭,这些按钮 把他们的信息 在作曲框,发送它。 重复的CQ总是发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.pills.label",
+      "english": "Show calls and commands as pills in the compose box",
+      "chinese": "在报文输入框中将呼号和命令显示为标签",
+      "previous": "将调用和命令显示为弹丸",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.pills.hint",
+      "english": "On by default, as in JS8Call 3.0. Point at a pill to read what that part of the message does.",
+      "chinese": "默认开启，与 JS8Call 3.0 一致。将指针停在标签上，可查看该段报文的作用。",
+      "previous": "默认情况下,如JS8Call 3.0. 点点药丸来读读那部分信息的作用.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.wordSuggestions.label",
+      "english": "Suggest cheaper words in the compose box",
+      "chinese": "在报文输入框中建议更省发送时间的词",
+      "previous": "在画框里建议便宜的字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.wordSuggestions.hint",
+      "english": "On by default, as in JS8Call. A word the JS8 dictionary sends in pieces is underlined. Right-click it for words that take less airtime.",
+      "chinese": "默认开启，与 JS8Call 一致。需要按片段编码发送的词会加下划线；右键点击可查看更省 JS8 空中发送时间的替代词。",
+      "previous": "就像JS8Call中那样 默认的 一个字JS8字典发送为块,下划线。 右键点击它,用于少播放时间的单词.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.spotting.title",
+      "english": "Spotting and APRS-IS",
+      "chinese": "通报与 APRS-IS",
+      "previous": "观察和APRS-对",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.spotAprs.label",
+      "english": "Spot @APRSIS messages to APRS-IS",
+      "chinese": "将 @APRSIS 消息上传至 APRS-IS",
+      "previous": "点点@ APISIS 消息到APRS-对",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.spotAprs.hint",
+      "english": "Off by default (JS8Call ships it on), and it works only while the PSK Reporter switch is on. A station heard sending @APRSIS GRID is put on the APRS map at that locator, and the text after @APRSIS CMD goes to APRS-IS as a raw packet. Both go up under your callsign: Nexus logs in to APRS-IS with the passcode worked out from it, as the iGate does, and stores nothing.",
+      "chinese": "默认关闭（JS8Call 默认开启），且仅在 PSK Reporter 开关开启时生效。收到电台发送的 @APRSIS GRID 后，会按其网格在 APRS 地图上标注该台；@APRSIS CMD 后的文本则作为原始数据包发送至 APRS-IS。两者都以本台呼号上传；Nexus 与 iGate 一样，使用由本台呼号计算出的验证码登录 APRS-IS，不存储任何内容。",
+      "previous": "默认关闭(JS8Call ship it on),它只在PSK Reporter开关时工作. 一个电台听到发送@APISIS全球资源信息数据库APRS地图在定位器上,APRS-是原始货包 两者都在你的呼号下: Nexus登录到APRS- 密码从中解析出来,就像iGate所做的, 并且什么都没有储存。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.aprsRelay.label",
+      "english": "Relay APRS-IS messages to heard stations",
+      "chinese": "将 APRS-IS 消息转发给已收到过的电台",
+      "previous": "中继APRS- IS消息给听到的电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.aprsRelay.hint",
+      "english": "Off by default. This transmits with nobody at the radio: an APRS message for a station you have heard on JS8 is keyed to it as @APRSIS MSG TO:, signed DE and the sender's call, and acknowledged on APRS-IS in that station's name. Never to a station on the never-spot list below. Only while TX is on, one message at a time, through every transmit guard, the idle and TX watchdogs included. Needs the switch above.",
+      "chinese": "默认关闭。此功能会在无人值守时发射：若一条 APRS 消息的收件人是本台在 JS8 上收到过的电台，就会以 @APRSIS MSG TO: 格式转发给该台，附上 DE 和原发件人呼号，并以收件电台名义向 APRS-IS 返回确认。不会转发给下方“禁止通报”列表中的电台。仅在 TX 开启时逐条发送，并受所有发射保护约束，包括空闲和 TX 超时保护。需要开启上方开关。",
+      "previous": "默认关闭。 收音机里没有人收听:APRS您所听到的电台留言JS8被按键为 @ APISIS MSG to: 、 签名的 DE 和发送者的电话, 并在APRS-是那个车站的名字 永远不要到下面的不点名单上的车站 仅在TX开机时,一次一个消息,通过每个传送守护,闲置和TX监听都包括在内. 上面需要开关 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.spotNever.label",
+      "english": "Never spot these callsigns",
+      "chinese": "禁止通报以下呼号",
+      "previous": "永远不要发现这些呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.spotNever.hint",
+      "english": "While the PSK Reporter switch is on, the stations you hear on JS8 are spotted as JS8Call spots them: to PSK Reporter and to JS8NET, JS8Call's spotting network, along with the commands sent to a @group. A callsign on this comma-separated list, as heard or by its base call, is spotted to no network. Empty by default, as in JS8Call.",
+      "chinese": "PSK Reporter 开关开启时，Nexus 会像 JS8Call 一样，将 JS8 上收到的电台及发给 @group 的命令通报至 PSK Reporter 和 JS8Call 的通报网络 JS8NET。此列表中的呼号，无论按收到的完整呼号还是基本呼号匹配，都不会向任何网络通报。呼号以逗号分隔，默认为空，与 JS8Call 一致。",
+      "previous": "PSK记者开关时 你听到的台站 JS8 JS8Call的观察网络, 以及发送到@group的命令。 听到的或根据它的基本呼号,这个逗号分隔的列表上的呼号没有被发现到网络. 默认为空,如JS8Call.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.lists.title",
+      "english": "Lists and marks",
+      "chinese": "列表与标记",
+      "previous": "名单和标记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.rxBlocklist.label",
+      "english": "Hide these callsigns in the RX pane",
+      "chinese": "在接收面板隐藏以下呼号",
+      "previous": "在 RX 窗格中隐藏这些调用符号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.rxBlocklist.hint",
+      "english": "Comma separated, as JS8Call 3.0 has it. Nothing a listed station sends prints in the RX pane, by its call or its base call; the call list marks it ✕. It is still heard, answered and filed as before. The call list’s “Block this station” adds to it.",
+      "chinese": "呼号以逗号分隔，与 JS8Call 3.0 一致。按完整呼号或基本呼号匹配后，该台发送的所有内容都不在接收面板显示，呼号列表中以 ✕ 标记；但仍会正常接收、应答和归档。呼号列表中的“屏蔽此电台”可将其加入此列表。",
+      "previous": "正如JS8Call 3.0拥有的,逗号分离. 上市的车站没有按其呼号或基号发送RX面板中的指纹;呼号表标记为QQ. 仍如前所述听取、答复并提交。 呼号列表的\"Block this station\"增加了它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.highlightPrimary.label",
+      "english": "Highlight these words or callsigns (primary colour)",
+      "chinese": "高亮以下词语或呼号（主色）",
+      "previous": "突出显示这些单词或调用符号( 主颜色)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.highlightPrimary.hint",
+      "english": "Comma separated. A Band activity row with one of these words, and the call list row of one of these calls, is tinted. Empty by default, as in JS8Call.",
+      "chinese": "以逗号分隔。频段活动中包含这些词语的行，以及呼号列表中匹配这些呼号的行，会着色显示。默认为空，与 JS8Call 一致。",
+      "previous": "逗号分离. 乐队活动排上这些单词之一,这些单词之一的呼号列表排上,是有色的. 默认为空,如JS8Call.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.highlightSecondary.label",
+      "english": "Highlight these words or callsigns (secondary colour)",
+      "chinese": "高亮以下词语或呼号（次色）",
+      "previous": "突出显示这些单词或调用符号( 次色)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.highlightSecondary.hint",
+      "english": "The same with the second colour. A row both lists name takes the primary.",
+      "chinese": "作用相同，但使用第二种颜色。同一行同时匹配两个列表时，优先使用主色。",
+      "previous": "与第二色相应. 列两个列表的名字都取第一。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.eot.label",
+      "english": "End of transmission mark",
+      "chinese": "发送结束标记",
+      "previous": "传输标记结束",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.eot.hint",
+      "english": "Printed after the last frame of a message in the RX pane and Band activity. ♢ by default, as in JS8Call; up to 2 characters.",
+      "chinese": "在接收面板和频段活动中，显示在一条报文的最后一帧之后。默认是 ♢，与 JS8Call 一致；最多 2 个字符。",
+      "previous": "在 RX 面板和 Band 活动的最后一个消息框后打印. XQ默认,如JS8Call;最多2个字符.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.mfi.label",
+      "english": "Missing frame mark",
+      "chinese": "丢帧标记",
+      "previous": "缺少帧标记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.mfi.hint",
+      "english": "Printed where the next frame of a message did not come within one and a half periods. …… by default, as in JS8Call.",
+      "chinese": "若一条报文的下一帧在一个半周期内未收到，就在缺失处显示此标记。默认是 ……，与 JS8Call 一致。",
+      "previous": "打印到下一个消息框没有在一个半期间内出现的地方。 ...默认的,如JS8Call。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sounds.title",
+      "english": "Sounds",
+      "chinese": "声音",
+      "previous": "声音",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sounds.hint",
+      "english": "A short tone when one of these is heard while the JS8 screen is open, each its own. All off by default, as JS8Call’s notifications are. Test plays it once.",
+      "chinese": "JS8 界面打开期间，收到以下事件时分别播放对应的短提示音。默认全部关闭，与 JS8Call 的通知设置一致。“测试”会播放一次提示音。",
+      "previous": "一个短调,当听到其中之一 在时,JS8屏幕是打开的,每个屏幕都是自己的。 如JS8Call通知, 试玩一次。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.cq",
+      "english": "A CQ",
+      "chinese": "收到 CQ",
+      "previous": "一个CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.hb",
+      "english": "A heartbeat",
+      "chinese": "收到心跳",
+      "previous": "一个心跳",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.ack",
+      "english": "An ACK for you",
+      "chinese": "收到给本台的 ACK",
+      "previous": "一个ACK给你",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.directed",
+      "english": "A message directed to you or your group",
+      "chinese": "收到发给本台或本台群组的消息",
+      "previous": "给您或您的团队的讯息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.inbox",
+      "english": "A message filed in your Inbox",
+      "chinese": "消息已存入收件箱",
+      "previous": "在您的收件箱中存档的消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.callNew",
+      "english": "A new callsign",
+      "chinese": "收到新呼号",
+      "previous": "一个新的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.callOld",
+      "english": "A callsign you have worked",
+      "chinese": "收到已通联过的呼号",
+      "previous": "你打过电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.test.label",
+      "english": "Test",
+      "chinese": "测试",
+      "previous": "测试",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.test.title",
+      "english": "Play this sound once",
+      "chinese": "播放此声音一次",
+      "previous": "播放此声音一次",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.sound.test.aria",
+      "english": "Test the sound for {{event}}",
+      "chinese": "测试 {{event}} 的提示音",
+      "previous": "测试声音{{event}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.title",
+      "english": "JS8Call API",
+      "chinese": "JS8Call API",
+      "previous": "JS8Call API (英语).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.hint",
+      "english": "For programs written for JS8Call, such as loggers, maps and message tools, on this computer. They can read what Nexus hears, the inbox and the station details. They cannot transmit, tune or change anything. Programs on other computers cannot connect.",
+      "chinese": "供本机上为 JS8Call 编写的程序使用，例如日志、地图和消息工具。这些程序可读取 Nexus 收到的内容、收件箱及电台信息，但不能发射、调频或进行任何更改。其他电脑上的程序无法连接。",
+      "previous": "对于为JS8Call编写的程序,例如记录器,地图和信件工具,在这个计算机上. 他们可以读取Nexus听到的,收件箱和车站细节. 它们不能传送、调音或改变任何东西。 其他计算机上的程序无法连接.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.tcp.label",
+      "english": "TCP API",
+      "chinese": "TCP API",
+      "previous": "TCP API 软件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.tcp.hint",
+      "english": "Programs connect to 127.0.0.1 on the port below. One at a time, as in JS8Call.",
+      "chinese": "程序连接本机 127.0.0.1 的下方端口。与 JS8Call 一样，一次只允许一个程序连接。",
+      "previous": "程序连接到以下端口的127.0.0.1. 一次一个,如JS8Call。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.tcpPort.label",
+      "english": "TCP port",
+      "chinese": "TCP 端口",
+      "previous": "TCP 端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.tcpPort.hint",
+      "english": "JS8Call uses 2442.",
+      "chinese": "JS8Call 使用 2442 端口。",
+      "previous": "JS8Call使用2442号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.udp.label",
+      "english": "UDP API",
+      "chinese": "UDP API",
+      "previous": "UDP API 软件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.udp.hint",
+      "english": "Nexus sends to a program listening on 127.0.0.1 at the port below, and answers it there.",
+      "chinese": "Nexus 向本机 127.0.0.1 上监听下方端口的程序发送数据，并向该端口返回应答。",
+      "previous": "Nexus发送到一个在下面的港口听127.0.0.1的程序,并在那里回答.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.udpPort.label",
+      "english": "UDP port",
+      "chinese": "UDP 端口",
+      "previous": "UDP 端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.udpPort.hint",
+      "english": "JS8Call uses 2242.",
+      "chinese": "JS8Call 使用 2242 端口。",
+      "previous": "JS8Call使用2242号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.tcpAccept.label",
+      "english": "Accept TCP requests",
+      "chinese": "接受 TCP 请求",
+      "previous": "接受 TCP 请求",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.js8.api.udpAccept.label",
+      "english": "Accept UDP requests",
+      "chinese": "接受 UDP 请求",
+      "previous": "接受UDP请求",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "接受UDP请求"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "接受UDP请求"
+        }
+      ]
+    },
+    {
+      "id": "settings.js8.api.accept.hint",
+      "english": "Off by default, as in JS8Call: the program then gets what Nexus hears and sends, and no answer to its requests. On, Nexus answers its requests to read. A request to send, tune or change a setting is never answered.",
+      "chinese": "默认关闭，与 JS8Call 一致：程序能收到 Nexus 的收发信息，但其请求不会获应答。开启后，Nexus 会应答读取请求。发送、调频或更改设置的请求始终不予响应。",
+      "previous": "默认关闭,如JS8Call中:程序然后得到Nexus听到和发送的,对其请求没有答复. On, Nexus应其要求阅读. 发送、调制或更改一个设置的请求从未得到答复。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.legend",
+      "english": "SSTV",
+      "chinese": "SSTV",
+      "previous": "SSTV",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.receiving.title",
+      "english": "Receiving",
+      "chinese": "接收",
+      "previous": "正在接收",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundInput",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundInput",
+          "chinese": "接收"
+        }
+      ]
+    },
+    {
+      "id": "settings.sstv.rxAutoArm.label",
+      "english": "Start receiving when SSTV opens",
+      "chinese": "打开 SSTV 界面时开始接收",
+      "previous": "开始接收SSTV打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.rxAutoArm.hint",
+      "english": "The SSTV screen starts the decoder as soon as you open it, so a picture on the band decodes without arming anything. Turn this off to arm the receiver by hand (the Arm button in the SSTV header). Stopping the receiver yourself is already remembered for the rest of the session.",
+      "chinese": "打开 SSTV 界面即启动解码器，无需手动启用便可解码频段上的图像。关闭此项后，需通过 SSTV 顶栏的“启用（Arm）”按钮手动开始接收。若手动停止接收，该选择会在本次会话余下时间内保持。",
+      "previous": "那个SSTV屏幕一打开就启动解码器,所以乐队上的一张图片解码时不携带任何东西. 关上这个 手举起接收器( 臂扣在SSTV头曰. 停止接收器本身已经被记住了 剩下的会议。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.issAutoArm.label",
+      "english": "ISS SSTV auto-arm",
+      "chinese": "ISS 过境时自动启用 SSTV 接收",
+      "previous": "国际空间站SSTV自动臂",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.issAutoArm.hint",
+      "english": "Auto-arm SSTV for ISS passes — tunes {{freq}} FM and arms the decoder when the ISS is overhead while the SSTV or Satellites screen is open, restores your dial at LOS. On any other screen it only tells you the ISS is up and leaves your radio alone. If your radio can't receive {{freq}} MHz, it tells you once a session and does nothing else. Off by default. A pass arm is an explicit act, so it works whether or not the switch above is on.",
+      "chinese": "ISS 过境时自动启用 SSTV 接收：若当前打开 SSTV 或卫星界面，会将电台调至 {{freq}} FM 并启动解码器，过境结束（LOS）后恢复原拨盘频率。在其他界面上仅提示 ISS 已升起，不调整电台。若电台无法接收 {{freq}} MHz，每次会话只提示一次，不进行其他操作。默认关闭。过境自动启用属于明确指定的操作，因此不受上方自动接收开关影响。",
+      "previous": "自动武装SSTV国际空间站通行证——调值{{freq}}调频并装上国际空间站高空时的解码器SSTV或卫星屏幕打开,在LOS恢复拨号。 在任何其他屏幕上,它只告诉你 国际空间站已经起动, 并离开你的收音机。 如果你的无线电无法接收{{freq}} MHz它告诉你一次 一次会,没有别的。 默认关闭。 传臂是明确的行为,所以无论上面的开关是否开启,都有效.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.transmitting.title",
+      "english": "Transmitting",
+      "chinese": "发射",
+      "previous": "正在发射",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.txMode.label",
+      "english": "Transmit mode",
+      "chinese": "发射模式",
+      "previous": "传送模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.txMode.auto",
+      "english": "Automatic — Scottie 1 on HF, PD-120 on 2 m (ARISS)",
+      "chinese": "自动 — 高频使用 Scottie 1，2 米波段使用 PD-120（ARISS）",
+      "previous": "自动——Scottie 1在高频,PD-120在2米(ARISS)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.txMode.hint",
+      "english": "This is the mode the SSTV screen starts on; you can still change it there for one picture. <b>Automatic</b> follows the band: HF gets Scottie 1 (the NA calling-frequency convention — Martin 1 is the EU one), 2 m gets PD-120, which is what ARISS transmits.",
+      "chinese": "SSTV 界面打开时默认使用此模式，仍可在界面中为单张图像临时更改。<b>自动</b>按频段选择：高频使用 Scottie 1（北美呼叫频率的惯用模式，欧洲通常使用 Martin 1）；2 米波段使用 ARISS 发射所用的 PD-120。",
+      "previous": "这是模式SSTV屏幕启动;您仍然可以在那里更改它,以便一张图片。<b>自动</b>随带:HF获得Scottie 1(NA调频会议——Martin 1是欧盟的1),2米获得PD-120,这是ARISS传输的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.txPower.label",
+      "english": "Transmit power",
+      "chinese": "发射功率",
+      "previous": "传递权力",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.txPower.aria",
+      "english": "SSTV transmit power percent",
+      "chinese": "SSTV 发射功率百分比",
+      "previous": "SSTV传输电源%",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.fskId.label",
+      "english": "Send my callsign after each picture",
+      "chinese": "每张图像发送完后发送本台呼号",
+      "previous": "每张照片后都给我打个电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.fskId.hint",
+      "english": "Adds the FSK callsign burst other SSTV software reads and shows under the received picture — the same one Nexus shows you under yours. Off by default: it adds about {{seconds}} seconds of key-down to every transmission. Your callsign is still drawn into the picture either way.",
+      "chinese": "追加一段 FSK 呼号标识，其他 SSTV 软件可读取并在收到的图像下显示，正如 Nexus 在接收图像下显示呼号一样。默认关闭，因为每次发射会额外增加约 {{seconds}} 秒的持续发射时间。无论是否开启，本台呼号都会写入图像。",
+      "previous": "添加 FSK 调用符SSTV软件在接收图片下读取和显示——同样的Nexus在你的图片下显示. 默认关闭: 它增加了关于{{seconds}}秒键下到每个传输。 无论是哪种方式,你的呼号仍然被吸引到图片中。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.txPower.hint",
+      "english": "The drive the SSTV screen starts on, and the level an image is sent at. Leave it blank and Nexus never touches your power. SSTV is up to 290 seconds of continuous key-down at full duty, so most operators run it well below their SSB drive. Your Phone power cap still applies on top of this.",
+      "chinese": "SSTV 界面的默认发射功率设置，也是发送图像时使用的功率。留空则 Nexus 不调整电台功率。SSTV 最长可连续满占空比发射 290 秒，因此通常应比 SSB 通联使用更低的功率。此外仍受话音功率上限约束。",
+      "previous": "驱动器SSTV屏幕开始,并发送图像的级别。 别管它了 Nexus从不碰你的力量SSTV最多290秒的连续键盘在全勤状态下, 所以大多数操作员运行它 远低于他们的SSB驱动。 你的手机电源封顶仍然适用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.sstv.callsignNote",
+      "english": "Your callsign is burned into the top-left of every picture you transmit, and there is no switch for it: an SSTV over is one long carrier of picture-only audio, so the picture is the identification ({{rule}}). Send is refused until you have set a callsign in Settings ▸ Station. If a picture already shows your call — a pre-made QSO card — tick “My picture already shows my callsign” in the SSTV screen: that is per-picture on purpose and resets with every new image.",
+      "chinese": "每张发射图像的左上角都会直接写入本台呼号，且无法关闭：SSTV 的一轮发射是仅承载图像音频的长时间连续载波，因此图像本身承担电台标识作用（{{rule}}）。在“设置 ▸ 电台信息”中填入呼号后才能发送。如果图像已包含本台呼号，例如预制 QSO 卡片，请在 SSTV 界面勾选“我的图像已包含本台呼号”；此选项有意仅对当前图像生效，每次载入新图像都会重置。",
+      "previous": "你的呼号被烧成你传送的每张照片的左上角,没有开关:SSTV上面是一个长长的只带图片的音频载体,所以图片是标识({{rule}}) (中文(简体) ). 在设置 QQ 站设置调用符号之前, 发送被拒绝 。 如果一张照片已经显示 您的电话—— 预先制作QSO牌——在“我的照片”中勾选“我的呼号”SSTV屏幕:这是故意的,并用每个新图像重播。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.legend",
+      "english": "APRS",
+      "chinese": "APRS",
+      "previous": "APRS",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.rf.title",
+      "english": "Over the air",
+      "chinese": "无线电收发",
+      "previous": "飞到空中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.channel.label",
+      "english": "Channel (RF)",
+      "chinese": "射频信道（RF）",
+      "previous": "频道( RF)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.channel.derived",
+      "english": "Automatic — {{freq}} from your grid",
+      "chinese": "自动 — 根据本台网格选择 {{freq}}",
+      "previous": "自动 -{{freq}}从您的网格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.channel.default",
+      "english": "Automatic — {{freq}} (set your grid on the Station tab)",
+      "chinese": "自动 — {{freq}}（请在“电台信息”页设置本台网格）",
+      "previous": "自动 -{{freq}}(把你的网格设置在车站标签)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.channel.custom",
+      "english": "{{freq}} · custom",
+      "chinese": "{{freq}} · 自定义",
+      "previous": "{{freq}}习俗",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.channel.hint",
+      "english": "The 2 m FM channel APRS runs on, which is regional. <b>Automatic</b> follows your grid square, so moving to another region lands you on the right channel with nothing to configure — the number it picked is shown above. The boundaries are approximate; pick a channel here to pin it for good.",
+      "chinese": "APRS 使用的 2 米 FM 信道因地区而异。<b>自动</b>根据本台网格选择，移动到其他地区时无需重新配置即可切换到相应信道，选中的频率显示在上方。地区边界仅为近似划分；也可在此手动选择信道，将其固定使用。",
+      "previous": "2米调频频道APRS继续,这是区域性的。<b>自动</b>遵循您的网格方块, 因此移动到另一个区域时, 您在正确的通道上没有任何配置—— 它所选择的数字在上方显示 。 边界是大致的;在这里选择一个通道来固定它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.symbol.label",
+      "english": "Beacon symbol",
+      "chinese": "信标图标",
+      "previous": "灯塔符号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.symbol.hint",
+      "english": "The icon other stations see on the map for your beacon. Digipeater and iGate come from the alternate symbol table and are what a fixed station running as infrastructure should show.",
+      "chinese": "其他电台在地图上看到的本台信标图标。数字中继台（Digipeater）和 iGate 图标来自备用符号表，作为网络基础设施运行的固定台应使用相应图标。",
+      "previous": "其他站点的图标会在地图上看到您的信标. Digipeter和iGate来自替代符号表,是作为基础设施运行的固定车站应该显示的内容.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.comment.label",
+      "english": "Beacon comment",
+      "chinese": "信标附言",
+      "previous": "灯塔评论",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.comment.hint",
+      "english": "Free text carried with your position — a name, a net, a URL. This goes on the air, and APRS caps it at 43 characters.",
+      "chinese": "随位置一起发送的自由文本，如姓名、通联网络或网址。此内容会通过无线电发出，APRS 最多允许 43 个字符。",
+      "previous": "自由文本随身携带——一个名字,一个网,一个URL. 这在播出,和APRS盖在43个字符。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.path.label",
+      "english": "Digipeater path",
+      "chinese": "数字中继路径",
+      "previous": "数字化路径",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.path.hint",
+      "english": "Which digipeaters may repeat your beacon. <code>{{path}}</code> is the near-universal default — one hop through a local fill-in digi, then one wide hop. Leave it empty to transmit direct, with no digipeaters at all.",
+      "chinese": "指定哪些数字中继台可以转发本台信标。<code>{{path}}</code> 是广泛使用的默认值：先经本地补盲数字中继转发一跳，再经广域数字中继转发一跳。留空则仅直接发送，不经任何数字中继转发。",
+      "previous": "哪个猎人可以重复你的信号<code>{{path}}</code>是近乎普遍的默认——一次跳过一个本地填充的digi,然后是一次宽跳。 留空可以直接传送,完全没有挖洞者.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.label",
+      "english": "Beacon SSID",
+      "chinese": "信标 SSID",
+      "previous": "灯塔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.fromCallsign",
+      "english": "From my callsign",
+      "chinese": "沿用本台呼号后缀",
+      "previous": "从我的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.hint",
+      "english": "The suffix on your callsign in every APRS frame you send, which is how other operators tell your mobile from your home station. <b>From my callsign</b> uses whatever your callsign already spells out — so if you have set it to <code>{{example}}</code> on the Station tab, that is what goes out.",
+      "chinese": "本台发送的每个 APRS 帧中，呼号后附带的后缀，其他操作员可据此区分移动台与家中的固定台。<b>沿用本台呼号后缀</b>表示按已设置的呼号原样发送；例如，在“电台信息”页将呼号设为 <code>{{example}}</code>，发送的就是这个呼号。",
+      "previous": "你呼号上的后缀APRS您发送的帧, 其他操作员从您的家电站告诉您的移动 。<b>从我的呼号</b>使用您已拼写过的呼号, 所以如果你已经设定它<code>{{example}}</code>在车站的标签上,这是出去。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.fixed",
+      "english": "fixed station",
+      "chinese": "固定台",
+      "previous": "固定站点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.genericSecondary",
+      "english": "generic / secondary",
+      "chinese": "通用／副台",
+      "previous": "通用/二级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.generic",
+      "english": "generic",
+      "chinese": "通用",
+      "previous": "常规",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.phone",
+      "english": "phone / tablet",
+      "chinese": "手机／平板电脑",
+      "previous": "电话/平板电脑",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.satellite",
+      "english": "satellite / special",
+      "chinese": "卫星／特殊用途",
+      "previous": "卫星/特殊",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.handheld",
+      "english": "handheld",
+      "chinese": "手持台",
+      "previous": "手持设备",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.boat",
+      "english": "boat / marine mobile",
+      "chinese": "船舶／海上移动台",
+      "previous": "船/海上机动车",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.mobile",
+      "english": "mobile (car)",
+      "chinese": "移动台（车载）",
+      "previous": "机动车(车)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.igate",
+      "english": "iGate / internet",
+      "chinese": "iGate／互联网",
+      "previous": "iGate/ 互联网",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.balloon",
+      "english": "balloon / aircraft",
+      "chinese": "气球／航空器",
+      "previous": "气球/飞机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.tracker",
+      "english": "tracker",
+      "chinese": "跟踪器",
+      "previous": "跟踪器",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

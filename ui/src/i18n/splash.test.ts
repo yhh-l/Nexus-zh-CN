@@ -45,7 +45,7 @@ const placeholders = (s: string) => [...s.matchAll(/\{\{(\w+)\}\}/g)].map((m) =>
 describe('the splash page speaks the languages the app ships', () => {
   it('every language main.tsx installs, and English', () => {
     const main = read('../main.tsx')
-    const installed = [...main.matchAll(/installCatalog\(\s*'([a-z-]+)'/g)].map((m) => m[1])
+    const installed = [...main.matchAll(/installCatalog\(\s*'([A-Za-z-]+)'/g)].map((m) => m[1])
     expect(installed.length, 'control: main.tsx really does install catalogs').toBeGreaterThan(0)
     expect(Object.keys(splashStrings()).sort()).toEqual([SOURCE_LOCALE, ...installed].sort())
   })

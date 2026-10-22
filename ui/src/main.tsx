@@ -12,6 +12,7 @@ import { DE } from './i18n/de'
 import { ES } from './i18n/es'
 import { FR } from './i18n/fr'
 import { JA } from './i18n/ja'
+import { ZH_CN } from './i18n/zh-CN'
 import { installExternalLinkInterceptor } from './externalLinks'
 import { clientStatus, isTauri, openExternalUrl } from './api'
 import { pushToast } from './toast'
@@ -122,10 +123,14 @@ void (async () => {
   // Register every shipped language BEFORE initLocale, which only accepts a locale that has a
   // catalog. Static imports, never a fetch: a catalog that arrives over the network is a
   // catalog that is absent in a field-day tent.
-  installCatalog('de', DE)
-  installCatalog('es', ES)
-  installCatalog('fr', FR)
-  installCatalog('ja', JA)
+  // A Chinese/English build keeps offline catalogs while dropping unused language data.
+  if (import.meta.env.VITE_NEXUS_ZH_LITE !== '1') {
+    installCatalog('de', DE)
+    installCatalog('es', ES)
+    installCatalog('fr', FR)
+    installCatalog('ja', JA)
+  }
+  installCatalog('zh-CN', ZH_CN)
   initLocale()
   createRoot(document.getElementById('root')!).render(tree)
 })

@@ -1,0 +1,1827 @@
+{
+  "batch": 36,
+  "range": [
+    7001,
+    7200
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 131,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 14,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/Js8CallList.tsx",
+    "ui/src/components/js8ListMenus.ts",
+    "ui/src/components/Js8Cockpit.tsx",
+    "ui/src/components/Js8InboxPanel.tsx",
+    "ui/src/components/SstvView.tsx",
+    "ui/src/components/CwCockpit.tsx"
+  ],
+  "rows": [
+    {
+      "id": "js8.view.col.tdrift",
+      "english": "Time delta",
+      "chinese": "时间偏差",
+      "previous": "时间偏差",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.col.submode",
+      "english": "Speed",
+      "chinese": "速度",
+      "previous": "速度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.col.callsign",
+      "english": "Callsign",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CallsignDialog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "CallsignDialog",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "js8.view.col.grid",
+      "english": "Grid",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        }
+      ]
+    },
+    {
+      "id": "js8.view.col.distance",
+      "english": "Distance",
+      "chinese": "距离",
+      "previous": "距离",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "距离"
+        }
+      ]
+    },
+    {
+      "id": "js8.view.col.azimuth",
+      "english": "Azimuth",
+      "chinese": "方位角",
+      "previous": "方位角",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.col.log",
+      "english": "Worked before",
+      "chinese": "曾经通联",
+      "previous": "曾交信",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.col.logName",
+      "english": "Logged name",
+      "chinese": "日志中的姓名",
+      "previous": "日志名称",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.col.logComment",
+      "english": "Logged comment",
+      "chinese": "日志中的附言",
+      "previous": "日志注释",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.clear",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "js8.lists.clearAll",
+      "english": "Clear all lists…",
+      "chinese": "清除所有列表...",
+      "previous": "清除所有列表...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.clearAll.confirm.title",
+      "english": "Clear all JS8 activity?",
+      "chinese": "清空全部 JS8 活动记录？",
+      "previous": "全部清除JS8活动?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.clearAll.confirm.body",
+      "english": "The RX pane, Band activity and the call list start empty and fill again as stations are heard. Your Inbox, your settings and the station’s own record of who it heard are kept.",
+      "chinese": "RX 窗格、频段活动和呼号列表将被清空，并在收到电台信号后重新填充。收件箱、设置和电台自身保存的已收听电台记录都会保留。",
+      "previous": "RX面板,乐队活动和呼叫列表从空开始,随着电台的听到再次填充. 您的收件箱、您的设置以及本站所听到的录音都保留下来。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.clearAll.confirm.label",
+      "english": "Clear all lists",
+      "chinese": "清除全部列表",
+      "previous": "清除全部列表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.jumpOffset",
+      "english": "Jump to {{offset}} Hz",
+      "chinese": "切换至 {{offset}} Hz",
+      "previous": "跳转到{{offset}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.jumpSpeed",
+      "english": "Jump to {{speed}} speed",
+      "chinese": "切换至 {{speed}} 速度",
+      "previous": "跳转到{{speed}}速度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.removeActivity",
+      "english": "Remove activity",
+      "chinese": "移除此活动记录",
+      "previous": "删除活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.showInbox",
+      "english": "Show message inbox",
+      "chinese": "显示消息收件箱",
+      "previous": "显示信箱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.pin",
+      "english": "Pin to the top",
+      "chinese": "置顶",
+      "previous": "向上倾斜",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.unpin",
+      "english": "Unpin",
+      "chinese": "取消置顶",
+      "previous": "撤销",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.add",
+      "english": "Add new station or group…",
+      "chinese": "添加新电台或群组…",
+      "previous": "添加新站或组...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.removeStation",
+      "english": "Remove this station",
+      "chinese": "移除此电台",
+      "previous": "删除此站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.removeGroup",
+      "english": "Remove this group",
+      "chinese": "移除此群组",
+      "previous": "删除此组",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.block",
+      "english": "Block this station",
+      "chinese": "屏蔽此电台",
+      "previous": "封锁本站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.unblock",
+      "english": "Unblock this station",
+      "chinese": "取消屏蔽此电台",
+      "previous": "打开这个车站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.lists.saveFailed",
+      "english": "The JS8 list was not saved",
+      "chinese": "JS8 列表未能保存",
+      "previous": "那个JS8列表未保存",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.new.open",
+      "english": "Show",
+      "chinese": "显示",
+      "previous": "显示",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.toolbar.aria",
+      "english": "Inbox",
+      "chinese": "收件箱",
+      "previous": "收件箱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.filter.label",
+      "english": "Messages:",
+      "chinese": "消息：",
+      "previous": "信件 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.filter.all",
+      "english": "All",
+      "chinese": "全部",
+      "previous": "全部",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "IARURegions",
+          "chinese": "全部"
+        }
+      ]
+    },
+    {
+      "id": "js8.inbox.reply.label",
+      "english": "Reply",
+      "chinese": "回复",
+      "previous": "回复",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.reply.title",
+      "english": "Put the path the message came by, MSG and [MESSAGE] in the compose box, as JS8Call does: type your message over [MESSAGE] and send it. Nothing is sent yet.",
+      "chinese": "与 JS8Call 一样，将消息来时的路径、MSG 和 [MESSAGE] 填入报文框。请把 [MESSAGE] 替换为要回复的内容，再发送。此操作尚未发送任何内容。",
+      "previous": "如JS8Call所做的那样,将信件的路径(MSG和[MESSAGE])放在写作框中:将信件输入[MESSAGE]并发送. 还没有寄出去",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.deleteSelected.label::one",
+      "english": "Delete",
+      "chinese": "删除",
+      "previous": "删除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "删除"
+        }
+      ]
+    },
+    {
+      "id": "js8.inbox.deleteSelected.label::other",
+      "english": "Delete {{count}}",
+      "chinese": "删除 {{count}} 条",
+      "previous": "删除{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.deleteSelected.title",
+      "english": "Delete the ticked messages (or press Delete)",
+      "chinese": "删除勾选的消息（也可按 Delete 键）",
+      "previous": "删除已选中的信件( 或按下“ 删除”)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.sort.title",
+      "english": "Sort by {{column}} (again to reverse)",
+      "chinese": "按“{{column}}”排序（再次点击反向排序）",
+      "previous": "排序为{{column}}(又反转)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.col.pick",
+      "english": "Pick",
+      "chinese": "选择",
+      "previous": "选择",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.col.unread",
+      "english": "Unread",
+      "chinese": "未读",
+      "previous": "未读",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.col.id",
+      "english": "ID",
+      "chinese": "编号",
+      "previous": "身份证",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.col.time",
+      "english": "Time",
+      "chinese": "时间",
+      "previous": "时间",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.col.from",
+      "english": "From",
+      "chinese": "发件人",
+      "previous": "发件人",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.col.to",
+      "english": "To",
+      "chinese": "收件人",
+      "previous": "收件人",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.col.text",
+      "english": "Message",
+      "chinese": "消息",
+      "previous": "消息",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "ActiveStations",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "信息"
+        }
+      ]
+    },
+    {
+      "id": "js8.inbox.pick.aria",
+      "english": "Pick the message from {{from}} at {{time}}",
+      "chinese": "选择 {{from}} 在 {{time}} 发来的消息",
+      "previous": "从中选择消息{{from}}时间{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.refuse.heic",
+      "english": "iPhone HEIC photos can't be read here — Nexus has no HEVC decoder. On the iPhone: Settings → Camera → Formats → Most Compatible (new photos are JPEG), or Settings → Photos → Transfer to Mac or PC → Automatic (converts on send). Then re-send this picture.",
+      "chinese": "无法读取 iPhone 的 HEIC 照片，Nexus 没有 HEVC 解码器。请在 iPhone 上选择“设置 → 相机 → 格式 → 兼容性最佳”（新照片将保存为 JPEG），或“设置 → 照片 → 传输到 Mac 或 PC → 自动”（传输时转换格式），然后重新传送这张照片。",
+      "previous": "iPhone HEIC照片不能在这里阅读——Nexus没有HEVC解码器. 在iPhone上:设置 → 相机 → 格式 → 大多数兼容性(新照片是JPEG),或设置 → 照片 → 传输到Mac或PC → 自动(发送时转换). 然后重新发送这张照片。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.refuse.avif",
+      "english": "That is an AVIF file. SSTV sends JPEG, PNG, WebP, BMP or GIF — export or save-as one of those.",
+      "chinese": "这是 AVIF 文件。SSTV 可发送 JPEG、PNG、WebP、BMP 或 GIF 图片，请导出或另存为其中一种格式。",
+      "previous": "这是一个AVIF文件。SSTV发送 JPEG, PNG, WebP, BMP 或 GIF —— 导出或保存为其中之一 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.refuse.tiff",
+      "english": "That is a TIFF file. SSTV sends JPEG, PNG, WebP, BMP or GIF — export or save-as one of those.",
+      "chinese": "这是 TIFF 文件。SSTV 可发送 JPEG、PNG、WebP、BMP 或 GIF 图片，请导出或另存为其中一种格式。",
+      "previous": "这是一个TIFF文件。SSTV发送 JPEG, PNG, WebP, BMP 或 GIF —— 导出或保存为其中之一 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.refuse.raw",
+      "english": "That is a camera RAW file. SSTV sends JPEG, PNG, WebP, BMP or GIF — export a JPEG from it first.",
+      "chinese": "这是相机 RAW 文件。SSTV 可发送 JPEG、PNG、WebP、BMP 或 GIF 图片，请先将此文件导出为 JPEG。",
+      "previous": "这是一个相机RAW文件。SSTV发送 JPEG, PNG, WebP, BMP 或 GIF - 从它导出一个 JPEG 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.refuse.psd",
+      "english": "That is a Photoshop file. SSTV sends JPEG, PNG, WebP, BMP or GIF — export or save-as one of those.",
+      "chinese": "这是 Photoshop 文件。SSTV 可发送 JPEG、PNG、WebP、BMP 或 GIF 图片，请导出或另存为其中一种格式。",
+      "previous": "这是照片店的文件SSTV发送 JPEG, PNG, WebP, BMP 或 GIF —— 导出或保存为其中之一 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.refuse.svg",
+      "english": "That is an SVG drawing, not a photo. SSTV sends JPEG, PNG, WebP, BMP or GIF — export it as one of those.",
+      "chinese": "这是 SVG 矢量图，而非照片。SSTV 可发送 JPEG、PNG、WebP、BMP 或 GIF 图片，请导出为其中一种格式。",
+      "previous": "那是SVG画,不是照片SSTV发送 JPEG, PNG, WebP, BMP 或 GIF - 导出为其中之一 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.where",
+      "english": " Images on this band appear at {{freq}} {{mode}}.",
+      "chinese": " 此频段通常在 {{freq}}、{{mode}} 模式接收图片。",
+      "previous": "此带上的图像出现在{{freq}} {{mode}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.off",
+      "english": "The receiver is stopped — nothing is being decoded. Press Arm to start it.{{where}}",
+      "chinese": "接收已停止，当前不进行解码。点击“启用接收”即可启动。{{where}}",
+      "previous": "接收器被停止——没有被解码. 按臂来启动它。{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.nocapture",
+      "english": "Listening, but no audio is reaching the decoder at all — the capture device is not delivering anything. Check that Input Device (RX) is the radio; hearing the signal on the speaker does not mean the app is capturing it.",
+      "chinese": "正在监听，但没有任何音频送达解码器，采集设备没有提供数据。请确认“输入设备（RX）”选择的是电台；扬声器能听到信号，并不代表软件已采集到该信号。",
+      "previous": "听,但没有任何音频完全到达解码器——捕获设备没有传递任何东西. 请检查access-date=中的日期值 (帮助) 输入设备(RX)是收音机;听到扬声器上的信号并不意味着应用程序正在捕捉它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.starting",
+      "english": "Receiver started — no audio has reached the decoder yet.{{where}}",
+      "chinese": "接收已启动，尚无音频送达解码器。{{where}}",
+      "previous": "接收器开始——还没有音频到达解码器.{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.unsupported",
+      "english": "Heard an SSTV header {{age}} ago in a mode this build cannot decode{{vis}}. The signal and the audio path are fine — Scottie, Martin, Robot and PD images all decode.",
+      "chinese": "{{age}}前收到 SSTV 起始头，但其模式是此版本无法解码的模式{{vis}}。信号和音频通路正常，Scottie、Martin、Robot 和 PD 模式的图片均可解码。",
+      "previous": "听到一个SSTV页眉{{age}}以前在一个模式下,此构建无法解码{{vis}}. 信号和音频路径都很好——斯科特,马丁,机器人和PD图像全部解码.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.decoded::one",
+      "english": "{{count}} image decoded since arming, last one {{age}} ago. Listening for the next header.",
+      "chinese": "自启用接收以来已解码 {{count}} 张图片，最近一张在{{age}}前收到。正在等待下一幅图片的起始头。",
+      "previous": "{{count}}图像解码自武装以来, 最后一个{{age}}刚才 听下个头.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.decoded::other",
+      "english": "{{count}} images decoded since arming, last one {{age}} ago. Listening for the next header.",
+      "chinese": "自启用接收以来已解码 {{count}} 张图片，最近一张在{{age}}前收到。正在等待下一幅图片的起始头。",
+      "previous": "{{count}}解除武装后的图像, 最后一个{{age}}刚才 听下个头.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.silent",
+      "english": "Audio is arriving but it is silent. If you can hear the signal on the speaker, the app is on a different input — check Input Device (RX), and RX Gain if the level is just low.{{where}}",
+      "chinese": "已收到音频数据，但内容无声。如果扬声器能听到信号，说明软件选用了其他输入，请检查“输入设备（RX）”；若只是电平过低，还需检查 RX 增益。{{where}}",
+      "previous": "音频已经到来,但是它没有声音。 如果您能听到扬声器上的信号,该应用程序在不同的输入上——检查输入设备(RX),如果关卡只是低,则检查RX Gain.{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.listening",
+      "english": "Hearing audio, no SSTV header yet — a picture decodes automatically when one starts.{{where}}",
+      "chinese": "已收到音频，尚未检测到 SSTV 起始头；图片开始传送后会自动解码。{{where}}",
+      "previous": "听声,不SSTV标题尚在——一个图片在开始时自动解码.{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.unreachable",
+      "english": "Cannot read the receiver state — the app is not answering. The decoder may still be running.",
+      "chinese": "无法读取接收状态，应用未响应。解码器可能仍在运行。",
+      "previous": "无法读取接收状态—— 应用程序没有响应 。 解码器可能还在运行中.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.dataMode.drops",
+      "english": "Between pictures this radio goes back to plain USB, and its data-mode filters go with it.",
+      "chinese": "在两幅图片之间，此电台会回到普通 USB 模式，数据模式的滤波设置也随之失效。",
+      "previous": "在图片之间,这台收音机会回到普通的USB, 其数据模式过滤器也随之而来.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.dataMode.action",
+      "english": "Hold the data mode",
+      "chinese": "保持数据模式",
+      "previous": "保持数据模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.rx.openAudio",
+      "english": "Open audio settings",
+      "chinese": "打开音频设置",
+      "previous": "打开音频设置",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.panel.waterfall",
+      "english": "Waterfall",
+      "chinese": "瀑布图",
+      "previous": "瀑布图",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "瀑布图"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "频谱图"
+        }
+      ]
+    },
+    {
+      "id": "sstv.panel.txcompose",
+      "english": "Transmit",
+      "chinese": "发射",
+      "previous": "发射",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "发射"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "发射"
+        }
+      ]
+    },
+    {
+      "id": "sstv.panel.gallery",
+      "english": "Gallery",
+      "chinese": "图库",
+      "previous": "图库",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.arm.on.label",
+      "english": "Armed",
+      "chinese": "接收已启用",
+      "previous": "武装",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.arm.off.label",
+      "english": "Arm",
+      "chinese": "启用接收",
+      "previous": "武装",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.arm.on.title",
+      "english": "Armed — any VIS header heard auto-decodes and auto-saves to the gallery (RX only). Click to disarm.",
+      "chinese": "接收已启用：收到 VIS 起始头后自动解码，并将图片保存到图库（仅接收）。点击可停用。",
+      "previous": "武装——任何VIS头部听到自动解码和自动保存到画廊(仅RX). 点击解除 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.arm.off.title",
+      "english": "Arm — auto-decode any VIS header heard on the receive audio (RX only, never transmits)",
+      "chinese": "启用接收：收到接收音频中的 VIS 起始头后自动解码（仅接收，绝不发射）",
+      "previous": "武装——自动解码接收音频中听到的任何VIS头(仅RX,从未传输)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.arm.failed",
+      "english": "Could not switch the SSTV receiver",
+      "chinese": "无法切换 SSTV 接收状态",
+      "previous": "无法切换SSTV接收器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.manualRx.label",
+      "english": "Start in",
+      "chinese": "手动接收模式",
+      "previous": "开始于",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.manualRx.title",
+      "english": "Pick the mode, then press Start to decode a picture already on the air — for a transmission you tuned into late, or one whose header was lost. Nothing guesses the mode; this is your answer.",
+      "chinese": "先选择模式，再点击“开始”，即可解码已经在传送的图片，适用于调到该频率较晚或漏收起始头的情况。软件不会猜测模式，须由你指定。",
+      "previous": "选择模式,然后按Start来解码已经在播出的图片——用于你调制到晚期的传输,或者一个其标题丢失的传输. 没有什么猜测模式;这是你的答案。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.manualRx.mode.aria",
+      "english": "Mode for a manual receive start",
+      "chinese": "手动启动接收时使用的模式",
+      "previous": "手册接收模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.manualRx.start.label",
+      "english": "Start",
+      "chinese": "开始",
+      "previous": "开始",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "开始"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "开始"
+        }
+      ]
+    },
+    {
+      "id": "sstv.manualRx.start.title",
+      "english": "Start decoding now in the mode chosen beside this, without waiting for a header. Arms the receiver if it is off. Receive only — this never transmits.",
+      "chinese": "立即按旁边选择的模式开始解码，无需等待起始头。若接收未启用，会一并启用。仅接收，绝不发射。",
+      "previous": "开始在此旁选择的模式进行解码, 无需等待标题 。 如果收发机关闭,就把收发机举起来。 仅接收——此从不传输.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.manualRx.failed",
+      "english": "Could not start the receiver in that mode",
+      "chinese": "无法以该模式启动接收器",
+      "previous": "无法以该模式启动接收器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.header.power.label",
+      "english": "Power",
+      "chinese": "功率",
+      "previous": "功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.header.power.title",
+      "english": "RF output power — set it against a Tune carrier, below ALC",
+      "chinese": "射频输出功率：发射调谐载波时调整，避免触发 ALC",
+      "previous": "RF输出功率——将其设定在低于ALC的Tune载体上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.header.mode.title",
+      "english": "Detected SSTV mode — fills in (Martin / Scottie / Robot / PD) when the receiver hears a VIS header",
+      "chinese": "检测到的 SSTV 模式：接收器收到 VIS 起始头后显示（Martin / Scottie / Robot / PD）",
+      "previous": "检测到SSTV模式 —— 当接收者听到一个VIS 页眉时填写(Martin / Scottie / Robot / PD)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.header.band.title",
+      "english": "Showing the rig's current band — SSTV decodes wherever you're tuned",
+      "chinese": "显示电台当前频段；SSTV 在当前调谐频率上解码",
+      "previous": "显示钻机的当前波段——SSTV解码器,无论你在哪里调制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.header.slant.label",
+      "english": "Slant",
+      "chinese": "倾斜校正",
+      "previous": "倾斜",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.header.slant.title",
+      "english": "Slant trim — fine sample-clock correction. Auto-corrected by the decoder; the manual trim comes in a later build.",
+      "chinese": "倾斜校正：微调采样时钟。解码器会自动校正，手动微调将在后续版本提供。",
+      "previous": "斜线修剪——精细采样-小时校正. 由解码器自动校正;手动修饰在后来的构造中出现.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.header.slant.aria",
+      "english": "SSTV slant trim (disabled — decoder not wired yet)",
+      "chinese": "SSTV 倾斜微调（已禁用，尚未连接解码器）",
+      "previous": "SSTV斜线剪接器( 已失效 )",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.stage.aria",
+      "english": "SSTV image",
+      "chinese": "SSTV图像",
+      "previous": "SSTV图像",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.stage.splitter.label",
+      "english": "waterfall and picture height",
+      "chinese": "瀑布图与图片区域的高度",
+      "previous": "瀑布和图片高度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.waterfall.hint",
+      "english": "the band — a picture takes this space when one arrives",
+      "chinese": "频段瀑布图；收到图片时，此区域将显示图片",
+      "previous": "带子——一张照片就占据这个空间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.caption.lines",
+      "english": "{{mode}} — {{done}}/{{total}} lines",
+      "chinese": "{{mode}} — {{done}}/{{total}} 行",
+      "previous": "{{mode}}. . . . . . .{{done}}页:1{{total}}线条",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.caption.decoding",
+      "english": "decoding {{mode}}…",
+      "chinese": "正在解码 {{mode}}…",
+      "previous": "解码{{mode}}. .  ....",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.caption.decoding.airtime",
+      "english": "decoding {{mode}}… the picture lands when the transmission ends (≈{{clock}})",
+      "chinese": "正在解码 {{mode}}…传送结束时图片才会完整显示（约 {{clock}}）",
+      "previous": "解码{{mode}}... 图像在传输结束时降落( Q){{clock}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.caption.tuneOff",
+      "english": " · tuning {{hz}} Hz",
+      "chinese": " · 调谐偏差 {{hz}} Hz",
+      "previous": "· 调试{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.preview.aria.empty",
+      "english": "No image chosen",
+      "chinese": "尚未选择图像",
+      "previous": "尚未选择图像",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.preview.aria.fits",
+      "english": "Transmit preview, {{w}}×{{h}} — the picture already fits, no crop needed{{overlays}}",
+      "chinese": "发射预览，{{w}}×{{h}}；图片尺寸已匹配，无需裁剪{{overlays}}",
+      "previous": "发送预览,{{w}}- ×{{h}}照片已经合适了,不需要收割{{overlays}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.preview.aria.cropX",
+      "english": "Transmit preview, {{w}}×{{h}}. Drag or use the arrow keys to choose which part of the picture is sent (left and right); Home re-centres.{{overlays}}",
+      "chinese": "发射预览，{{w}}×{{h}}。拖动或使用左右方向键，选择要发送的图片区域；按 Home 键重新居中。{{overlays}}",
+      "previous": "发送预览,{{w}}- ×{{h}}。拖动或使用箭头键来选择图片的哪个部分发送(左右); 家重灵枢.{{overlays}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.preview.aria.cropY",
+      "english": "Transmit preview, {{w}}×{{h}}. Drag or use the arrow keys to choose which part of the picture is sent (up and down); Home re-centres.{{overlays}}",
+      "chinese": "发射预览，{{w}}×{{h}}。拖动或使用上下方向键，选择要发送的图片区域；按 Home 键重新居中。{{overlays}}",
+      "previous": "发送预览,{{w}}- ×{{h}}。拖动或使用箭头键来选择图片的哪个部分发送(上下); 家重灵枢.{{overlays}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.preview.aria.overlays",
+      "english": " Click a text overlay to select it; arrows move it, Delete removes it.",
+      "chinese": " 点击叠加文字即可选中；方向键移动，Delete 键删除。",
+      "previous": "单击文本覆盖来选择;箭头移动,删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.drop.hint",
+      "english": "Drop an image here, or choose one below — any size, resized to the mode for you.",
+      "chinese": "将图片拖到这里，或在下方选择。任何尺寸均可，软件会按所选模式自动调整大小。",
+      "previous": "在此丢弃一个图像, 或者在下面选择一个图像 —— 任何大小, 都会调整为模式 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.file.choose",
+      "english": "Choose image…",
+      "chinese": "选择图像…",
+      "previous": "选择图像…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.file.change",
+      "english": "Change image…",
+      "chinese": "更换图像…",
+      "previous": "更换图像…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.presets.label",
+      "english": "Text:",
+      "chinese": "文本 :",
+      "previous": "文本 :",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.reply.label",
+      "english": "Reply",
+      "chinese": "回复",
+      "previous": "回复",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.reply.title",
+      "english": "Reply to {{call}} (the newest FSK ID in the gallery)",
+      "chinese": "回复 {{call}}（图库中最近收到的 FSK 呼号标识）",
+      "previous": "答复{{call}}(最新FSK身份证在画廊)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.reply.none.title",
+      "english": "Enabled once a station has been received with an FSK ID",
+      "chinese": "收到带 FSK 呼号标识的电台图片后可用",
+      "previous": "一旦收到带有 FSK ID 的站台,即可启用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.add.label",
+      "english": "+ Text",
+      "chinese": "+ 文本",
+      "previous": "+ 文本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.text.aria",
+      "english": "Overlay text",
+      "chinese": "叠加文字",
+      "previous": "重叠文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.style.aria",
+      "english": "Text style",
+      "chinese": "文字样式",
+      "previous": "文本样式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.style.title",
+      "english": "Crisp: the ident's pixel font, proven through the decoder. Banner: big display text with an outline.",
+      "chinese": "清晰：使用呼号标识的像素字体，已通过解码验证。横幅：使用带描边的大号展示文字。",
+      "previous": "Crisp:IDent的像素字体,通过解码器证明. Banner:带有大纲的大显示文本.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.style.crisp",
+      "english": "Crisp",
+      "chinese": "清晰",
+      "previous": "克里斯皮尔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.style.banner",
+      "english": "Banner",
+      "chinese": "横幅",
+      "previous": "横幅",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.size.aria",
+      "english": "Text size",
+      "chinese": "文字大小",
+      "previous": "文字大小",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.aria",
+      "english": "Text colour",
+      "chinese": "文字颜色",
+      "previous": "文字颜色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.white",
+      "english": "white",
+      "chinese": "白色",
+      "previous": "白色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.black",
+      "english": "black",
+      "chinese": "黑色",
+      "previous": "黑色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.yellow",
+      "english": "yellow",
+      "chinese": "黄色",
+      "previous": "黄色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.orange",
+      "english": "orange",
+      "chinese": "橙色",
+      "previous": "橙色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.red",
+      "english": "red",
+      "chinese": "红色",
+      "previous": "红色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.green",
+      "english": "green",
+      "chinese": "绿色",
+      "previous": "绿色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.cyan",
+      "english": "cyan",
+      "chinese": "青色",
+      "previous": "青色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.color.blue",
+      "english": "blue",
+      "chinese": "蓝色",
+      "previous": "蓝色",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.treatment.aria",
+      "english": "Contrast treatment",
+      "chinese": "文字对比度处理",
+      "previous": "对照治疗",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.treatment.title",
+      "english": "What keeps the text readable on the far end: a solid plate behind it, or a thick outline around it",
+      "chinese": "让对方更容易看清文字：在文字后加纯色底板，或在文字周围加粗描边",
+      "previous": "是什么使文字可以读到最远的一端:一个坚固的盘子,或者一个厚厚的轮廓",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.treatment.plate",
+      "english": "Plate",
+      "chinese": "底板",
+      "previous": "盘片",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.treatment.outline",
+      "english": "Outline",
+      "chinese": "描边",
+      "previous": "大纲",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.remove.aria",
+      "english": "Remove overlay {{text}}",
+      "chinese": "移除叠加文字“{{text}}”",
+      "previous": "删除重叠{{text}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.overlay.remove.title",
+      "english": "Remove this text",
+      "chinese": "删除此文本",
+      "previous": "删除此文本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.name",
+      "english": "{{name}}{{size}} → {{w}}×{{h}} · {{mode}} · {{clock}} key-down",
+      "chinese": "{{name}}{{size}} → {{w}}×{{h}} · {{mode}} · 持续发射 {{clock}}",
+      "previous": "{{name}}{{size}}→{{w}}- ×{{h}}* 妇女{{mode}}* 妇女{{clock}}键下",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.id.inPicture",
+      "english": "{{call}} — you've said it's already in the picture",
+      "chinese": "{{call}} — 你已确认图片中包含此呼号",
+      "previous": "{{call}}- 你说它已经在画面里了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.id.inText",
+      "english": "{{call}} in your text · no plate burned in",
+      "chinese": "叠加文字中已包含 {{call}}，不再添加呼号底板",
+      "previous": "{{call}}在您的文本中 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.id.plate",
+      "english": "{{call}} burned in · top left",
+      "chinese": "已将 {{call}} 嵌入图片左上角",
+      "previous": "{{call}}左上烧焦",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.id.missing",
+      "english": "No callsign set — SSTV identifies by burning your call into the picture, so it will not transmit without one.",
+      "chinese": "尚未设置呼号。SSTV 会将本台呼号嵌入图片作为标识，未设置呼号时不能发射。",
+      "previous": "没有设置调用标志...SSTV将您的电话刻录在图片中,所以没有它就不会传送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.id.missing.action",
+      "english": "Set your callsign",
+      "chinese": "设置您的呼号",
+      "previous": "设置您的呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.id.missing.where",
+      "english": "Set one in Settings ▸ Station.",
+      "chinese": "请在“设置 ▸ 电台信息”中填写呼号。",
+      "previous": "在设置 QQ 站设置一个 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.idopt.label",
+      "english": "My picture already shows my callsign",
+      "chinese": "我的照片已经显示我的呼号了",
+      "previous": "我的照片已经显示我的呼号了",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.idopt.title",
+      "english": "Skip the burned-in callsign for this picture only — use when the image already shows your call, e.g. a pre-made QSO card",
+      "chinese": "仅对此图片省略额外嵌入的呼号；适用于图片本身已含本台呼号的情况，例如预先制作的 QSO 卡片",
+      "previous": "只跳过此图片的已燃烧调用符号—— 当图像已经显示您的调用时使用, 例如预制QSO纸牌",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.notice.upscale",
+      "english": "That picture is {{w}}×{{h}}, smaller than {{mode}}'s {{mw}}×{{mh}} — it will be enlarged and look soft.",
+      "chinese": "此图片为 {{w}}×{{h}}，小于 {{mode}} 模式的 {{mw}}×{{mh}}；放大后清晰度会下降。",
+      "previous": "那张照片是{{w}}- ×{{h}},小于{{mode}}说{{mw}}- ×{{mh}}- 它会扩大,看起来很柔软。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.notice.exactFit",
+      "english": "Already {{w}}×{{h}} — sent pixel for pixel, no crop needed.",
+      "chinese": "图片已为 {{w}}×{{h}}，按原像素发送，无需裁剪。",
+      "previous": "已经{{w}}- ×{{h}}——发送像素用于像素,不需要作物.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.notice.gif",
+      "english": "Sending the first frame — SSTV transmits one still picture.",
+      "chinese": "仅发送第一帧；SSTV 传送的是单幅静态图片。",
+      "previous": "发送第一个框架——SSTV传输一个静态图片。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.notice.notImage",
+      "english": "That file isn't an image Nexus can read (it starts with {{magic}}).",
+      "chinese": "此文件不是 Nexus 可读取的图片格式（文件头为 {{magic}}）。",
+      "previous": "此文件不是 Nexus 能读取的图像( 它开始于{{magic}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.notice.damaged",
+      "english": "That image is damaged and only decoded partly — Nexus won't transmit half a picture. Try re-exporting it.",
+      "chinese": "图片已损坏，只能解码一部分；Nexus 不会发送残缺图片，请尝试重新导出。",
+      "previous": "该图像损坏,只解码部分——Nexus不会传送半幅图片. 尝试再出口它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.notice.tooLarge",
+      "english": "That's a {{w}}×{{h}} image ({{mp}} megapixels) — too large to work with. Export a smaller copy; anything over about 4000 px wide is already far more than SSTV can send.",
+      "chinese": "此图片为 {{w}}×{{h}}（{{mp}} 百万像素），尺寸过大，无法处理。请导出较小的副本；宽度超过约 4000 px，就已远超 SSTV 的传送分辨率。",
+      "previous": "这是{{w}}- ×{{h}}图像( E){{mp}}超大像素)——太大,无法工作. 导出一个较小的复制件; 超过 4000 px 宽度的任何东西已经远远超过SSTV可以发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.pixels.failed",
+      "english": "Could not read the image pixels",
+      "chinese": "无法读取图像像素",
+      "previous": "无法读取图像像素",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.mode.label",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "sstv.tx.mode.aria",
+      "english": "SSTV transmit mode",
+      "chinese": "SSTV 发射模式",
+      "previous": "SSTV传输模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.mode.title",
+      "english": "Transmit mode. VHF/2 m images use PD-120 (ARISS); HF uses Scottie 1 (NA) or Martin 1 (EU).",
+      "chinese": "发射模式。VHF / 2 米波段图片使用 PD-120（ARISS）；HF 通常使用 Scottie 1（北美）或 Martin 1（欧洲）。",
+      "previous": "传送模式 。 VHF/2米图像使用PD-120(ARISS);HF使用Scottie 1(NA)或Martin 1(EU).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.label",
+      "english": "Send",
+      "chinese": "发送",
+      "previous": "发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.noImage.title",
+      "english": "Choose an image to transmit first",
+      "chinese": "请先选择要发送的图片",
+      "previous": "选择要先传送的图像",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.noCallsign.title",
+      "english": "Set your callsign in Settings → Station — SSTV identifies by burning it into the picture, and will not transmit without one",
+      "chinese": "请先在“设置 → 电台信息”中填写呼号。SSTV 会将呼号嵌入图片作为标识，未设置呼号时不能发射",
+      "previous": "在设置中设置您的呼号 。SSTV将它刻录在图片中,没有它就不会传送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.title",
+      "english": "Transmit this image with {{call}} burned in — switches to Phone (USB/LSB) and keys the rig",
+      "chinese": "发送嵌入 {{call}} 呼号的图片，将切换至话音模式（USB/LSB）并使电台发射",
+      "previous": "以{{call}}电话(USB/LSB)交换机和钻机钥匙",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.noCallsign",
+      "english": "Set your callsign — SSTV identifies by burning it into the picture",
+      "chinese": "请设置本台呼号，SSTV 会将其嵌入图片作为标识",
+      "previous": "设置你的呼号...SSTV通过将它燃烧到图片中来识别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.noCallsign.action",
+      "english": "Set callsign",
+      "chinese": "设置呼号",
+      "previous": "设置调用符号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.radioHasMic",
+      "english": "SSTV can't send while the radio has the mic: with Flex native DAX audio on, Phone at the shack uses the radio's own mic, so the picture would not go out. Nothing was keyed.",
+      "chinese": "电台使用自身话筒时无法发送 SSTV：启用 Flex 原生 DAX 音频后，本地电台的话音模式使用电台自身话筒，因此图片无法通过 DAX 发出。本次未触发发射。",
+      "previous": "SSTV在收音机有麦克风时不能发送:在Flex本地DAX音频打开后,小屋的Phone使用收音机自己的麦克风,所以画面不会熄灭. 没有钥匙。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.iss.confirm",
+      "english": "{{freq}} MHz is the ISS SSTV downlink. Transmit only during a sanctioned ARISS uplink event. Send anyway?",
+      "chinese": "{{freq}} MHz 是国际空间站的 SSTV 下行频率。仅可在获准的 ARISS 上行活动期间发射。仍要发送吗？",
+      "previous": "{{freq}} MHz是国际空间站SSTV下行链路。 只在经批准的ARISS上行活动期间传送. 发送呢?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.send.failed",
+      "english": "SSTV send refused",
+      "chinese": "SSTV发送被拒绝",
+      "previous": "SSTV发送被拒绝",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.announce.sending",
+      "english": "Transmitting SSTV {{mode}}",
+      "chinese": "正在发射 SSTV {{mode}}",
+      "previous": "传送SSTV {{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.announce.finished",
+      "english": "SSTV transmit finished",
+      "chinese": "SSTV 发射完成",
+      "previous": "SSTV传输完成",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.announce.stopped",
+      "english": "SSTV transmit stopped",
+      "chinese": "SSTV 发射已停止",
+      "previous": "SSTV传输已停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.tx.progress",
+      "english": "TX — {{mode}} · {{clock}} remaining",
+      "chinese": "TX — {{mode}} · 剩余 {{clock}}",
+      "previous": "TX - (英语).{{mode}}* 妇女{{clock}}剩余",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.empty",
+      "english": "Received images collect here — auto-saved with callsign (FSK ID), mode, frequency, and time.",
+      "chinese": "收到的图片会汇集于此，并自动保存呼号（FSK 标识）、模式、频率和时间。",
+      "previous": "收到在这里收集的图像——自动保存有呼号(FSK ID),模式,频率和时间.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.open.aria",
+      "english": "Open the {{mode}} picture received {{when}} in its own window",
+      "chinese": "在独立窗口打开 {{when}} 收到的 {{mode}} 图片",
+      "previous": "打开{{mode}}收到图片{{when}}在自己的窗口中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.open.title",
+      "english": "Open this picture in its own window — it stays open beside the cockpit while the next one comes in. Esc closes it; ← and → step through the gallery.",
+      "chinese": "在独立窗口打开此图片。接收下一幅图片时，该窗口仍会在操作面板旁保持打开。按 Esc 关闭；按 ← 和 → 浏览图库。",
+      "previous": "在它自己的窗口打开这张照片——它一直开在驾驶舱旁边,而下一个则进入。 Esc关闭它; 和 + 步过画廊.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.empty",
+      "english": "No pictures in the gallery yet.",
+      "chinese": "图库中还没有图片。",
+      "previous": "画廊里还没有照片",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.meta",
+      "english": "{{when}} · {{mhz}} MHz · {{lines}} lines",
+      "chinese": "{{when}} · {{mhz}} MHz · {{lines}} 行",
+      "previous": "{{when}}* 妇女{{mhz}} MHz* 妇女{{lines}}线条",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.position",
+      "english": "{{n}} of {{total}}",
+      "chinese": "第 {{n}} 张，共 {{total}} 张",
+      "previous": "{{n}}页:1{{total}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.prev.label",
+      "english": "← Previous",
+      "chinese": "← 上一个",
+      "previous": "← 上一个",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.prev.title",
+      "english": "The picture received before this one (← or ↑)",
+      "chinese": "查看前一张收到的图片（← 或 ↑）",
+      "previous": "此照片之前收到的照片( QQ 或 QQ )",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.next.label",
+      "english": "Next →",
+      "chinese": "下一张 →",
+      "previous": "下一步 →",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.next.title",
+      "english": "The picture received after this one (→ or ↓)",
+      "chinese": "查看后一张收到的图片（→ 或 ↓）",
+      "previous": "此照片之后收到的图片( 或 )",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.save.label",
+      "english": "Save a copy",
+      "chinese": "保存副本",
+      "previous": "保存副本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.save.done",
+      "english": "Saved to {{path}}",
+      "chinese": "已保存到 {{path}}",
+      "previous": "保存到{{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.save.failed",
+      "english": "Could not save a copy of this picture",
+      "chinese": "无法保存此图片的副本",
+      "previous": "无法保存此图片的副本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.viewer.close.label",
+      "english": "Close",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "关闭"
+        }
+      ]
+    },
+    {
+      "id": "sstv.viewer.close.title",
+      "english": "Close this window (Esc)",
+      "chinese": "关闭此窗口( Esc)",
+      "previous": "关闭此窗口( Esc)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.reveal.label",
+      "english": "Reveal",
+      "chinese": "打开所在文件夹",
+      "previous": "启示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.reveal.title",
+      "english": "Open the folder the received pictures are saved in (Pictures/Nexus SSTV)",
+      "chinese": "打开接收图片的保存文件夹（Pictures/Nexus SSTV）",
+      "previous": "打开接收到的图片保存到的文件夹( Pictures/ Nexus)SSTV) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.reveal.failed",
+      "english": "Could not open the SSTV gallery folder",
+      "chinese": "无法打开SSTV图片库文件夹",
+      "previous": "无法打开SSTV图片库文件夹",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.thumb.alt",
+      "english": "{{mode}} image received {{when}}",
+      "chinese": "{{when}} 收到的 {{mode}} 图片",
+      "previous": "{{mode}}收到图像{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.delete.aria",
+      "english": "Delete the {{mode}} image received {{when}}",
+      "chinese": "删除 {{when}} 收到的 {{mode}} 图片",
+      "previous": "删除{{mode}}收到图像{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.delete.title",
+      "english": "Delete this image",
+      "chinese": "删除此图像",
+      "previous": "删除此图像",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.delete.confirm.title",
+      "english": "Delete the {{mode}} received {{when}}?",
+      "chinese": "删除 {{when}} 收到的 {{mode}} 图片？",
+      "previous": "删除{{mode}}已收到{{when}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.delete.confirm.body",
+      "english": "The image file is removed and cannot be recovered.",
+      "chinese": "图片文件将被删除，且无法恢复。",
+      "previous": "图像文件被删除, 无法恢复 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.delete.confirm.label",
+      "english": "Delete image",
+      "chinese": "删除图像",
+      "previous": "删除图像",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.delete.failed",
+      "english": "Could not delete the image",
+      "chinese": "无法删除图像",
+      "previous": "无法删除图像",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.edit.aria",
+      "english": "Edit and resend the {{mode}} image received {{when}}",
+      "chinese": "编辑并重发 {{when}} 收到的 {{mode}} 图片",
+      "previous": "编辑并重新发送{{mode}}收到图像{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.edit.title",
+      "english": "Load this image into the composer",
+      "chinese": "将此图片载入图片编辑区",
+      "previous": "将此图像装入作曲家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.edit.loaded",
+      "english": "Loaded {{mode}} image into the composer",
+      "chinese": "已将 {{mode}} 图片载入图片编辑区",
+      "previous": "已装入{{mode}}图像输入作曲家",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "sstv.gallery.edit.failed",
+      "english": "Could not load that image into the composer",
+      "chinese": "无法将此图片载入图片编辑区",
+      "previous": "无法将图像装入编曲",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.scope",
+      "english": "Scope",
+      "chinese": "频谱",
+      "previous": "频谱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.scopeCtl",
+      "english": "Scope Controls",
+      "chinese": "频谱控制",
+      "previous": "范围控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.dsp",
+      "english": "DSP Toggles",
+      "chinese": "DSP 开关",
+      "previous": "DSP 切换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.txmeters",
+      "english": "TX Meters",
+      "chinese": "发射仪表",
+      "previous": "发射仪表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.turnCue",
+      "english": "Turn Cue",
+      "chinese": "收发轮次提示",
+      "previous": "转弯 Cue",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.turnCue.note",
+      "english": "shows with the AI decoder on and the CW Decode pane shown, outside an unassisted entry",
+      "chinese": "开启 AI 解码器、显示 CW 解码面板且未以无辅助类别参赛时显示",
+      "previous": "与 AI 解码器一起显示CW在无辅助条目外显示解码窗格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.rxdsp",
+      "english": "RX DSP Levels",
+      "chinese": "接收 DSP 电平",
+      "previous": "RX DSP 级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.bandActivity",
+      "english": "Band Activity",
+      "chinese": "频段活动",
+      "previous": "频段活动",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "波段活动"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "波段活动"
+        }
+      ]
+    },
+    {
+      "id": "cw.panel.copilot",
+      "english": "CW Copilot",
+      "chinese": "CW 操作助手",
+      "previous": "CW副驾驶",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.decode",
+      "english": "CW Decode",
+      "chinese": "CW 解码",
+      "previous": "CW 解码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.sent",
+      "english": "Sent Echo",
+      "chinese": "已发内容回显",
+      "previous": "发送回声",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.spots",
+      "english": "Spots",
+      "chinese": "电台通报",
+      "previous": "电台通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.panel.needed",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pane.decode.title",
+      "english": "Decode",
+      "chinese": "解码",
+      "previous": "解码",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "解码"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "解码"
+        }
+      ]
+    }
+  ]
+}

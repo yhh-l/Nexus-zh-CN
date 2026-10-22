@@ -121,6 +121,24 @@ const markerLines = (f: Call[]) => f.filter((c) => c.op === 'fillRect' && c.args
 const label = (f: Call[], text: string) => f.find((c) => c.op === 'fillText' && c.args[0] === text)
 
 describe('the TX/RX markers are the theme tokens, not literals', () => {
+  it('a paused time tape redraws once per second, while marker changes stay immediate', async () => {
+    const clock = vi.spyOn(Date, 'now').mockReturnValue(10_000)
+    const view = render(<Waterfall transmitting={false} rxOffsetHz={1500} txOffsetHz={1000} theme="dark" />)
+    await frames(80)
+    await act(async () => { (view.container.querySelector('.wf-pause') as HTMLButtonElement).click() })
+    await frames(80)
+    overlay.calls.length = 0
+    await frames(120)
+    expect(overlay.calls.filter(c => c.op === 'clearRect'), 'unchanged paused overlay must not redraw at display refresh rate').toHaveLength(0)
+    clock.mockReturnValue(11_000)
+    await frames(80)
+    expect(overlay.calls.filter(c => c.op === 'clearRect'), 'the age labels still tick').toHaveLength(1)
+    overlay.calls.length = 0
+    view.rerender(<Waterfall transmitting={false} rxOffsetHz={1600} txOffsetHz={1000} theme="dark" />)
+    await frames(80)
+    expect(overlay.calls.filter(c => c.op === 'clearRect'), 'RX changes draw before the next second').toHaveLength(1)
+  })
+
   it('paints the TX marker in --tx and the RX marker in --rx, read off the canvas', async () => {
     render(<Waterfall transmitting={false} rxOffsetHz={1500} txOffsetHz={1000} theme="dark" />)
     await frames(120)

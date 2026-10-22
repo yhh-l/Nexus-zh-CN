@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-10-22T09:35:25.926650+00:00",
+  "baseline": "Nexus 1.19.0 / ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "scope": "Local frontend integration only",
+  "checks": [
+    {
+      "command": "node translations/zh-CN/integrate.mjs --check",
+      "exitCode": 0,
+      "result": "8360 reviewed rows; 8227 application keys and 5 splash strings match reviewed source"
+    },
+    {
+      "command": "npm --prefix ui run build",
+      "exitCode": 0,
+      "result": "TypeScript and Vite production build; large chunk warning remains"
+    },
+    {
+      "command": "npm --prefix ui test",
+      "exitCode": 0,
+      "filesPassed": 1186,
+      "testsPassed": 17510,
+      "testsSkipped": 3
+    },
+    {
+      "command": "npm --prefix ui test -- src/i18n/chinese.test.ts src/i18n/placeholders.test.ts src/i18n/splash.test.ts src/i18n/locale-switch.test.ts src/features/macroSets.test.ts",
+      "exitCode": 0,
+      "filesPassed": 5,
+      "testsPassed": 82
+    },
+    {
+      "command": "node translations/zh-CN/browser-check.mjs (CHROME_BIN set to local Chrome)",
+      "exitCode": 0,
+      "result": "Production LAN Chinese heading at 1024x768 and 1366x768; no document horizontal overflow; English switch; Chinese splash count"
+    },
+    {
+      "command": "Chinese native-name rejection control",
+      "result": "Temporarily removing the native label made chinese.test.ts fail; restored original file; rerun chinese and locale-switch tests: 19 passed"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "notValidated": [
+    "Full native application and radio operation",
+    "Windows build, installation and launch",
+    "All CI jobs",
+    "Independent human translation acceptance",
+    "Performance improvement"
+  ],
+  "published": false
+}

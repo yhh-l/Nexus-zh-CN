@@ -145,10 +145,10 @@ if [ -n "$SHARD" ]; then
   # in this one process. Mirroring CI's command surface is the point; a paraphrase of it is not
   # evidence about CI.
   NEXUS_BROWSER_SHARDS=2 NEXUS_BROWSER_SHARD="$SHARD" \
-    node --test "$SUITE" 2>&1 | tee "$LOG"
+    node --test --test-reporter=tap "$SUITE" 2>&1 | tee "$LOG"
 else
   NEXUS_BROWSER_SHARDS=1 NEXUS_BROWSER_SHARD=0 \
-    node --test --test-name-pattern="$SCENARIO" "$SUITE" 2>&1 | tee "$LOG"
+    node --test --test-reporter=tap --test-name-pattern="$SCENARIO" "$SUITE" 2>&1 | tee "$LOG"
 fi
 RC=${PIPESTATUS[0]}
 

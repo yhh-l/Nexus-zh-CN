@@ -1,0 +1,1780 @@
+{
+  "batch": 15,
+  "range": [
+    2801,
+    3000
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 179,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 6,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/ContestView.tsx",
+    "ui/src/components/ContestOverDialog.tsx"
+  ],
+  "rows": [
+    {
+      "id": "fieldDay.board.cell.worked.title",
+      "english": "{{code}} — {{name}} — worked",
+      "chinese": "{{code}} — {{name}} — 已通联",
+      "previous": "{{code}}. . . . . . .{{name}}- 工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.cell.notWorked.title",
+      "english": "{{code}} — {{name}} — not worked yet",
+      "chinese": "{{code}} — {{name}} — 尚未通联",
+      "previous": "{{code}}. . . . . . .{{name}}- 还没有工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.countClub",
+      "english": "{{worked}}/{{total}} sections · {{own}} on this laptop",
+      "chinese": "{{worked}}/{{total}} 个分区 · 本机通联 {{own}} 个",
+      "previous": "{{worked}}页:1{{total}}·{{own}}在笔记本电脑上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.own.title",
+      "english": "{{code}} — {{name}} ({{division}}) — worked on this laptop",
+      "chinese": "{{code}} — {{name}}（{{division}}）— 已由本机通联",
+      "previous": "{{code}}. . . . . . .{{name}}(单位:千美元){{division}})——在这部笔记本电脑上工作过.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.club.title",
+      "english": "{{code}} — {{name}} ({{division}}) — worked by another position",
+      "chinese": "{{code}} — {{name}}（{{division}}）— 已由其他操作席位通联",
+      "previous": "{{code}}. . . . . . .{{name}}(单位:千美元){{division}}()——由另一职位担任",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.own.aria",
+      "english": "{{name}}, worked on this laptop",
+      "chinese": "{{name}}，已由本机通联",
+      "previous": "{{name}}在笔记本电脑上工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.sections.cell.club.aria",
+      "english": "{{name}}, worked by another position",
+      "chinese": "{{name}}，已由其他操作席位通联",
+      "previous": "{{name}},由另一个职位担任",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.countClub",
+      "english": "{{worked}}/{{total}} worked · {{own}} on this laptop",
+      "chinese": "已通联 {{worked}}/{{total}} · 本机通联 {{own}} 个",
+      "previous": "{{worked}}页:1{{total}}参加工作{{own}}在笔记本电脑上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.cell.own.title",
+      "english": "{{code}} — {{name}} — worked on this laptop",
+      "chinese": "{{code}} — {{name}} — 已由本机通联",
+      "previous": "{{code}}. . . . . . .{{name}}- 在笔记本电脑上工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.cell.club.title",
+      "english": "{{code}} — {{name}} — worked by another position",
+      "chinese": "{{code}} — {{name}} — 已由其他操作席位通联",
+      "previous": "{{code}}. . . . . . .{{name}}- 由另一个职位担任",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.legend.own",
+      "english": "Worked on this laptop",
+      "chinese": "本机已通联",
+      "previous": "在电脑上工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.board.legend.club",
+      "english": "Worked by another position",
+      "chinese": "其他操作席位已通联",
+      "previous": "由其他职位担任",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.label::one",
+      "english": "Merge {{count}} contact into my logbook",
+      "chinese": "将 {{count}} 条交信合并至本台日志",
+      "previous": "合并{{count}}联系到我的日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.label::other",
+      "english": "Merge {{count}} contacts into my logbook",
+      "chinese": "将 {{count}} 条交信合并至本台日志",
+      "previous": "合并{{count}}联系人进入我的日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.busy",
+      "english": "Merging…",
+      "chinese": "正在合并…",
+      "previous": "合并中...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.title",
+      "english": "Add this session's contacts to your general logbook. Safe to press twice — a contact already there is skipped, never duplicated.",
+      "chinese": "将本次竞赛的交信记录加入常规交信日志。重复点击也不会产生重复记录，已存在的交信会被跳过。",
+      "previous": "将此会话的联系人添加到您的常规日志中 。 安全地按两次——一个联系人已经跳过,从未重复。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.added",
+      "english": "Added {{count}}",
+      "chinese": "已添加 {{count}} 条",
+      "previous": "已添加{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.already",
+      "english": "{{count}} already in your logbook",
+      "chinese": "{{count}} 条已在本台日志中",
+      "previous": "{{count}}已经在您的日志中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.refused",
+      "english": "{{count}} refused — no stable id",
+      "chinese": "{{count}} 条未接受，缺少稳定标识符",
+      "previous": "{{count}}被拒绝——无稳定编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.queued",
+      "english": "queued for upload",
+      "chinese": "已排队上传",
+      "previous": "已排队上传",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.merge.remote",
+      "english": "Only at the station: a press through Remote merges no contact into the logbook.",
+      "chinese": "仅可在电台本机操作；通过 Remote 点击不会将任何交信合并至日志。",
+      "previous": "仅在车站:通过远程的媒体将无联系人合并到日志中.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.title",
+      "english": "Contest over?",
+      "chinese": "比赛结束了吗？",
+      "previous": "比赛结束?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.desc",
+      "english": "Contest mode goes off when you press Turn off. Tick what you want done first: nothing is done that you have not ticked.",
+      "chinese": "点击“关闭竞赛模式”后才会关闭。请勾选关闭前要执行的操作，未勾选的操作不会执行。",
+      "previous": "比赛模式在按下关机键时终止. 勾选您想要先完成的 : 没有做您没有勾选的事情 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.export",
+      "english": "Export the Cabrillo log to Downloads",
+      "chinese": "将 Cabrillo 日志导出至“下载”文件夹",
+      "previous": "导出 Cabrillo 日志下载",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.putBack.legend",
+      "english": "Put back what the contest changed",
+      "chinese": "恢复因比赛而改变的设置",
+      "previous": "把比赛的改变放回去",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.putBack.note",
+      "english": "Before is how each one was the first time it changed for this contest, or when Contest mode went on.",
+      "chinese": "“原先”指各项设置因本次比赛首次改变前的值，或开启竞赛模式时的值。",
+      "previous": "在此之前,每场比赛是如何第一次为本场比赛而改变的,或者当比赛模式继续进行时.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.putBack.now",
+      "english": "Now",
+      "chinese": "当前",
+      "previous": "现在",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "现在"
+        }
+      ]
+    },
+    {
+      "id": "contestOver.putBack.before",
+      "english": "Before",
+      "chinese": "原先",
+      "previous": "在此之前",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.putBack.aria",
+      "english": "Put back {{setting}}: {{now}} back to {{before}}",
+      "chinese": "恢复{{setting}}：从 {{now}} 改回 {{before}}",
+      "previous": "退后点{{setting}}数字 :{{now}}返回到{{before}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.value.on",
+      "english": "On",
+      "chinese": "开启",
+      "previous": "开启",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "打开"
+        }
+      ]
+    },
+    {
+      "id": "contestOver.value.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "contestOver.value.yourCall",
+      "english": "your callsign",
+      "chinese": "本台呼号",
+      "previous": "你的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.value.none",
+      "english": "none",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.value.notDeclared",
+      "english": "not declared",
+      "chinese": "未申报",
+      "previous": "未声明",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.notNow",
+      "english": "Not now",
+      "chinese": "暂不",
+      "previous": "暂不",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.turnOff",
+      "english": "Turn off",
+      "chinese": "关闭竞赛模式",
+      "previous": "关机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.busy",
+      "english": "Working…",
+      "chinese": "正在处理…",
+      "previous": "工作时...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.club.queued::one",
+      "english": "{{count}} contact from this laptop is not in the club's log yet. It still goes to the host when this laptop is back with it, Contest mode on or off. Leave Nexus open, with club sync on, until then.",
+      "chinese": "本机有 {{count}} 条交信尚未进入俱乐部日志。重新连接主机后，无论竞赛模式是否开启，都会继续发送。请在完成同步前保持 Nexus 运行，并开启俱乐部同步。",
+      "previous": "{{count}}这台手提电脑上的联系人还没有在俱乐部的记录里 它仍然去主机 当这台笔记本电脑回来, 比赛模式打开或关闭。 离开Nexus, 与俱乐部同步, 在那之前。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestOver.club.queued::other",
+      "english": "{{count}} contacts from this laptop are not in the club's log yet. They still go to the host when this laptop is back with it, Contest mode on or off. Leave Nexus open, with club sync on, until then.",
+      "chinese": "本机有 {{count}} 条交信尚未进入俱乐部日志。重新连接主机后，无论竞赛模式是否开启，都会继续发送。请在完成同步前保持 Nexus 运行，并开启俱乐部同步。",
+      "previous": "{{count}}这台手提电脑上的联系人还没有在俱乐部的记录里 他们仍然去主机 当这台笔记本电脑回来, 比赛模式打开或关闭。 离开Nexus, 与俱乐部同步, 在那之前。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.upload.label",
+      "english": "Upload merged contacts to:",
+      "chinese": "将合并后的交信上传至：",
+      "previous": "上传合并到 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.upload.aria",
+      "english": "Upload this session's merged contacts",
+      "chinese": "上传本次竞赛已合并的交信记录",
+      "previous": "上传此会话的合并联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.role.aria",
+      "english": "Running or S&P",
+      "chinese": "守频呼叫或扫频通联（Running / S&P）",
+      "previous": "运行或S&P",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.role.running",
+      "english": "Running",
+      "chinese": "守频呼叫",
+      "previous": "运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.button",
+      "english": "Spot me",
+      "chinese": "发布本台通报",
+      "previous": "盯着我",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.button.title",
+      "english": "Post ONE spot of your call on this frequency to the DX cluster, with the comment beside it. Once per press; then a {{secs}} s wait.",
+      "chinese": "向 DX 集群发布一条本台在当前频率的通报，并附上旁边填写的备注。每次点击只发布一次，之后需等待 {{secs}} 秒。",
+      "previous": "给DX集群发送一个调用点 旁边是评论 每份报章一次;然后a{{secs}}等会儿",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.comment.label",
+      "english": "Spot comment",
+      "chinese": "通报备注",
+      "previous": "点评",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.cooling",
+      "english": "Wait {{secs}} s",
+      "chinese": "请等待 {{secs}} 秒",
+      "previous": "单单{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.posted",
+      "english": "Spotted to the DX cluster: {{line}}",
+      "chinese": "已向 DX 集群发布通报：{{line}}",
+      "previous": "分到DX组:{{line}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.noCall",
+      "english": "Not spotted: set your callsign in Settings first.",
+      "chinese": "未发布通报：请先在设置中填写本台呼号。",
+      "previous": "未发现: 先在设置中设置您的呼号 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.noCluster",
+      "english": "Not spotted: no DX cluster is connected. Set a cluster in Settings ▸ Spot Sources.",
+      "chinese": "未发布通报：尚未连接 DX 集群，请在“设置 ▸ 通报源”中配置集群。",
+      "previous": "未发现: 没有连接 DX 集群 。 在 Sets QQ点源设置集群 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.cooldown",
+      "english": "Not spotted again yet: one spot a minute. {{secs}} s to go.",
+      "chinese": "暂未再次发布：每分钟限一条通报，还需等待 {{secs}} 秒。",
+      "previous": "还没有再次发现: 一分钟一个点。{{secs}}开始吧",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.offBand",
+      "english": "Not spotted: the dial is outside the amateur bands.",
+      "chinese": "未发布通报：当前电台频率不在业余频段内。",
+      "previous": "未发现:拨号在业余乐队之外.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.noContest",
+      "english": "Not spotted: Contest mode is off.",
+      "chinese": "未发布通报：竞赛模式已关闭。",
+      "previous": "未发现: 比赛模式已关闭 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.notAllowed",
+      "english": "Not spotted: this contest's rules allow no spotting.",
+      "chinese": "未发布通报：本次比赛规则不允许使用通报。",
+      "previous": "未发现:本次比赛的规则不允许发现.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.rfOnly",
+      "english": "Not spotted: this contest allows spotting only over amateur radio while it runs.",
+      "chinese": "未发布通报：本次比赛进行期间，仅允许通过业余无线电传递通报。",
+      "previous": "未发现 : 此比赛只允许在运行时通过业余无线电进行显示 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.refused.failed",
+      "english": "Not spotted: the DX cluster did not take the spot.",
+      "chinese": "未发布通报：DX 集群未接受此次通报。",
+      "previous": "未发现: DX 星团没有占据位置 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.selfSpot.warn",
+      "english": "This contest may not allow self-spotting. Press Spot anyway within {{secs}} s to post.",
+      "chinese": "本次比赛可能不允许通报本台。如仍要发布，请在 {{secs}} 秒内点击“仍然发布”。",
+      "previous": "此比赛可能不允许自选. 内部按下点数{{secs}}员额改为员额。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "spotMe.selfSpot.confirm",
+      "english": "Spot anyway",
+      "chinese": "仍然发布",
+      "previous": "反正还是点点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.role.sp",
+      "english": "S&P",
+      "chinese": "扫频通联（S&P）",
+      "previous": "标准与标准",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.busy",
+      "english": "Exporting…",
+      "chinese": "正在导出…",
+      "previous": "导出中...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.cabrillo.label",
+      "english": "Export Cabrillo",
+      "chinese": "导出 Cabrillo",
+      "previous": "出口卡布里略",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.cabrillo.title",
+      "english": "Export the {{contest}} log as Cabrillo (.cbr), for submission to the sponsor",
+      "chinese": "将 {{contest}} 日志导出为 Cabrillo（.cbr），用于向主办方提交成绩",
+      "previous": "导出{{contest}}Cabrillo(.cbr)的日志,提交提案国",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.adif.label",
+      "english": "Export ADIF",
+      "chinese": "导出 ADIF",
+      "previous": "导出 ADIF",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.adif.title",
+      "english": "Export the {{contest}} log as ADIF (.adi)",
+      "chinese": "将 {{contest}} 日志导出为 ADIF（.adi）",
+      "previous": "导出{{contest}}日志为ADIF(.adi) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.summary.label",
+      "english": "Summary",
+      "chinese": "成绩摘要",
+      "previous": "目 录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.summary.title",
+      "english": "Download a one-page score summary (QSOs by band/mode, sections, power, bonuses, total)",
+      "chinese": "下载一页成绩摘要，包含各频段／模式的交信数、分区、功率、加分及总分",
+      "previous": "下载一页的分数摘要(按频段/模式、段、功率、奖金、合计)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.dupeSheet.label",
+      "english": "Dupe sheet",
+      "chinese": "重复交信检查表",
+      "previous": "调色板",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.dupeSheet.title",
+      "english": "Download a dupe / multiplier check sheet (sections + callsigns worked)",
+      "chinese": "下载重复交信／系数检查表，包含已通联分区和呼号",
+      "previous": "下载一个 dupe / 乘数检查表( 部分 + 调用符号已工作)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.done",
+      "english": "Exported → {{path}}",
+      "chinese": "已导出 → {{path}}",
+      "previous": "出口 ——{{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.export.remote",
+      "english": "Only at the station: a press through Remote exports no log.",
+      "chinese": "仅可在电台本机操作；通过 Remote 点击不会导出日志。",
+      "previous": "只在车站:通过远程输出的媒体没有日志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.head",
+      "english": "Bonuses",
+      "chinese": "加分项目",
+      "previous": "奖金",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.count",
+      "english": "{{claimed}}/{{total}} claimed · {{points}} pts",
+      "chinese": "已申报 {{claimed}}/{{total}} 项 · {{points}} 分",
+      "previous": "{{claimed}}页:1{{total}}索赔{{points}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.aria",
+      "english": "Claimed FD bonuses",
+      "chinese": "已申报的 FD 加分项目",
+      "previous": "索赔的FD奖金",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonus.aria",
+      "english": "{{label}} — {{points}} pts",
+      "chinese": "{{label}} — {{points}} 分",
+      "previous": "{{label}}. . . . . . .{{points}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonus.pts",
+      "english": "{{points}} pts",
+      "chinese": "{{points}} 分",
+      "previous": "{{points}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.scoring.power.chip",
+      "english": "×{{mult}} power",
+      "chinese": "功率系数 ×{{mult}}",
+      "previous": "- ×{{mult}}电源",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.planned.count",
+      "english": "{{count}} planned · +{{points}} pts",
+      "chinese": "计划 {{count}} 项 · +{{points}} 分",
+      "previous": "{{count}}计划 +{{points}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.chase.aria",
+      "english": "Bonus points earned and planned",
+      "chinese": "已获得及计划获得的加分",
+      "previous": "所得和计划的奖金点数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.chase.earned",
+      "english": "Earned {{points}} pts",
+      "chinese": "已获得 {{points}} 分",
+      "previous": "收入{{points}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.chase.earned.note",
+      "english": "counted in your score",
+      "chinese": "已计入成绩",
+      "previous": "数到分数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.chase.planned",
+      "english": "Planned +{{points}} pts",
+      "chinese": "计划增加 {{points}} 分",
+      "previous": "计划数{{points}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.chase.planned.note",
+      "english": "not scored until you tick it",
+      "chinese": "勾选完成后才计分",
+      "previous": "直到你选中它才得分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonuses.chase.potential",
+      "english": "If all land {{points}} pts",
+      "chinese": "全部达成后 {{points}} 分",
+      "previous": "如果所有的土地{{points}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonus.plan.off",
+      "english": "Plan",
+      "chinese": "计划",
+      "previous": "计划",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonus.plan.on",
+      "english": "Planned",
+      "chinese": "已计划",
+      "previous": "计划",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonus.plan.aria",
+      "english": "Plan {{label}} — planned bonuses do not score",
+      "chinese": "计划完成{{label}}；计划中的加分项目不计分",
+      "previous": "计划{{label}}——计划奖金不计分.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.bonus.plan.title",
+      "english": "Planned = you mean to earn it. It scores only once you tick the box.",
+      "chinese": "“已计划”表示打算完成，只有勾选完成后才会计分。",
+      "previous": "计划=你是想挣钱 它的分数只有一次你勾选的盒子。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.head",
+      "english": "Objectives",
+      "chinese": "目标",
+      "previous": "目标",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.count",
+      "english": "{{done}}/{{total}} completed · OM {{om}}",
+      "chinese": "已完成 {{done}}/{{total}} 项 · 目标系数 OM {{om}}",
+      "previous": "{{done}}页:1{{total}}· OM{{om}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.planned.count",
+      "english": "{{count}} planned · +OM {{om}}",
+      "chinese": "计划 {{count}} 项 · 目标系数 +OM {{om}}",
+      "previous": "{{count}}计划 + OM{{om}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.chase.aria",
+      "english": "Objective multiplier earned and planned",
+      "chinese": "已获得及计划获得的目标系数",
+      "previous": "获得和计划实现的目标乘数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.chase.earned",
+      "english": "Earned OM {{om}}",
+      "chinese": "已获得目标系数 OM {{om}}",
+      "previous": "获得的OM{{om}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.chase.planned",
+      "english": "Planned +OM {{om}}",
+      "chinese": "计划增加目标系数 OM {{om}}",
+      "previous": "计划数{{om}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.chase.potential",
+      "english": "If all land OM {{om}}",
+      "chinese": "全部达成后目标系数 OM {{om}}",
+      "previous": "如果所有着陆OM{{om}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.aria",
+      "english": "Completed Winter Field Day objectives",
+      "chinese": "已完成的 Winter Field Day 目标",
+      "previous": "已完成的冬季实地日目标",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objective.aria",
+      "english": "{{label}} — objective multiplier {{om}}",
+      "chinese": "{{label}} — 目标系数 {{om}}",
+      "previous": "{{label}}——目标乘数.{{om}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objective.om",
+      "english": "×{{om}}",
+      "chinese": "×{{om}}",
+      "previous": "- ×{{om}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objective.implied",
+      "english": "comes with an objective you ticked",
+      "chinese": "由已勾选的其他目标同时满足",
+      "previous": "有你勾选的目标",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objective.hint.bands",
+      "english": "log: {{count}} of {{need}} bands with 3+ contacts",
+      "chinese": "日志：{{count}}/{{need}} 个频段达到至少 3 次交信",
+      "previous": "日志 :{{count}}页:1{{need}}有 3+ 联系人的带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objective.hint.modes",
+      "english": "log: {{count}} modes",
+      "chinese": "日志：{{count}} 种模式",
+      "previous": "日志 :{{count}}模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objective.plan.aria",
+      "english": "Plan {{label}} — planned objectives do not count",
+      "chinese": "计划完成{{label}}；计划中的目标不计入成绩",
+      "previous": "计划{{label}}——计划目标不计数.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.qrp.undeclared",
+      "english": "“{{objective}}” is ticked, but your Power category (Settings ▸ Contesting ▸ Contest) is not QRP, so the Cabrillo file does not claim QRP.",
+      "chinese": "已勾选“{{objective}}”，但功率类别（设置 ▸ 竞赛 ▸ 比赛）不是 QRP，因此 Cabrillo 文件中不会申报 QRP。",
+      "previous": "“......{{objective}}Cabrillo文件没有主张QRP。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.objectives.qrp.unticked",
+      "english": "Your Power category is QRP, but “{{objective}}” (×{{om}}) is not ticked.",
+      "chinese": "本台功率类别为 QRP，但尚未勾选“{{objective}}”（×{{om}}）。",
+      "previous": "你的权力类别是QRP,但“{{objective}}“(××{{om}}未选中 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.column.time",
+      "english": "Time",
+      "chinese": "时间",
+      "previous": "时间",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.column.call",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "fieldDay.log.column.class",
+      "english": "Class",
+      "chinese": "组别",
+      "previous": "类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.column.category",
+      "english": "Category",
+      "chinese": "类别",
+      "previous": "类别",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.column.section",
+      "english": "Section",
+      "chinese": "分区",
+      "previous": "节次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.column.band",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "fieldDay.log.column.mode",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "fieldDay.log.empty",
+      "english": "No contacts logged yet.",
+      "chinese": "尚无交信记录。",
+      "previous": "尚未登录联系人 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.splitter.label",
+      "english": "contest log height",
+      "chinese": "竞赛日志区域高度",
+      "previous": "比赛日志高度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.clock.aria",
+      "english": "Contest clock, UTC and local time",
+      "chinese": "竞赛时钟，UTC 及本地时间",
+      "previous": "比赛时钟,UTC和当地时间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.aria",
+      "english": "Work this contest from a cockpit",
+      "chinese": "从操作台界面参加此比赛",
+      "previous": "在驾驶舱里比赛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.cw",
+      "english": "Work this contest in CW",
+      "chinese": "使用 CW 参加此比赛",
+      "previous": "参加比赛CW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.cw.title",
+      "english": "Go to the CW screen in the main window, with this contest on its log line: Enter Sends Message, Running / S&P and the F-key messages are there.",
+      "chinese": "转到主窗口的 CW 页面，其交信录入栏将用于本次比赛，并提供“按 Enter 发送报文”、守频呼叫／扫频通联（Running / S&P）及 F 键报文。",
+      "previous": "转到CW屏幕在主窗口中, 并在日志行中进行此竞争: 输入消息发送, 运行 / S&P 和 F- key 消息都在那里 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.phone",
+      "english": "Work this contest in Phone",
+      "chinese": "使用话音参加此比赛",
+      "previous": "在电话中进行这场比赛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.phone.title",
+      "english": "Go to the Phone screen in the main window, with this contest on its log line: Enter Sends Message, Running / S&P and the F-key messages are there.",
+      "chinese": "转到主窗口的话音页面，其交信录入栏将用于本次比赛，并提供“按 Enter 发送报文”、守频呼叫／扫频通联（Running / S&P）及 F 键报文。",
+      "previous": "到主窗口的 Phone 屏幕上, 在它的日志行上进行此比赛: 输入发送信件, 运行 / S&P 和 F 密钥信件都在那里 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.hint.aria",
+      "english": "Where sending happens",
+      "chinese": "在哪里进行发射",
+      "previous": "发送地点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.hint",
+      "english": "This screen logs and keeps score, and never transmits. To send, work the contest from the CW or Phone screen: its log line has Enter Sends Message, Running / S&P and the F-key messages.",
+      "chinese": "本页面仅记录交信和计分，不会发射。如需发射，请在 CW 或话音页面参加比赛；其交信录入栏提供“按 Enter 发送报文”、守频呼叫／扫频通联（Running / S&P）及 F 键报文。",
+      "previous": "此屏幕日志并保持分数, 并且从不传输 。 要发送,工作 比赛从CW或 Phone 屏幕: 它的日志行有 Enter Sends Message, running / S&P 和 F- key 消息 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.workIn.hint.dismiss",
+      "english": "Got it",
+      "chinese": "知道了",
+      "previous": "知道了",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.notRunning.aria",
+      "english": "Contest not running",
+      "chinese": "比赛尚未运行",
+      "previous": "比赛不运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.notRunning",
+      "english": "Contest mode is on, but the contest is not running.",
+      "chinese": "竞赛模式已开启，但比赛尚未运行。",
+      "previous": "比赛模式开始,但比赛没有进行.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.resume",
+      "english": "Resume",
+      "chinese": "继续",
+      "previous": "继续",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.remove",
+      "english": "Remove",
+      "chinese": "移除",
+      "previous": "移除",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.remove.ask",
+      "english": "Remove {{contact}}? Click Remove again.",
+      "chinese": "移除 {{contact}}？请再次点击“移除”。",
+      "previous": "删除{{contact}}单击再次删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.remove.title",
+      "english": "Take this contact out of the contest log. It is kept under Removed and can be restored. Click twice: the first click asks.",
+      "chinese": "从竞赛日志中移除此条交信，记录会保存在“已移除”中，可恢复。需点击两次，第一次仅提示确认。",
+      "previous": "从比赛日志中取出这个联系人. 它被保存在被移除的下面,可以恢复. 点击两次:第一次点击询问。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.title",
+      "english": "Removed ({{count}})",
+      "chinese": "已移除（{{count}}）",
+      "previous": "删除( N){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.aria",
+      "english": "Removed contacts",
+      "chinese": "已移除的交信",
+      "previous": "删除联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.note",
+      "english": "Kept, and left out of the score, the dupe check and every export.",
+      "chinese": "记录仍保留，但不参与计分、重复交信检查及任何导出。",
+      "previous": "保持,并离开 得分,杜佩检查和每出口。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.at",
+      "english": "removed {{time}}",
+      "chinese": "移除时间：{{time}}",
+      "previous": "删除{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.restore",
+      "english": "Restore",
+      "chinese": "恢复",
+      "previous": "恢复",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.restore.title",
+      "english": "Put this contact back in the contest log exactly as it was: the same time, serial and number.",
+      "chinese": "按原样将此交信恢复至竞赛日志，保留原时间、交信序号及记录编号。",
+      "previous": "把这个联系人放回比赛日志中,完全如原:同一时间,序列和号码.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.restored",
+      "english": "Restored {{call}} to the contest log.",
+      "chinese": "已将与 {{call}} 的交信恢复至竞赛日志。",
+      "previous": "已恢复{{call}}到比赛日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.workedAgain",
+      "english": "{{call}} was worked again on that band and mode after it was removed, so it was not restored.",
+      "chinese": "移除此记录后，已在同一频段和模式再次与 {{call}} 通联，因此未恢复原记录。",
+      "previous": "{{call}}被移除后又在那个波段和模式上工作,所以没有恢复.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.club",
+      "english": "The club log has it back too, on every laptop, as soon as the host has it.",
+      "chinese": "主机收到恢复记录后，俱乐部日志及每台电脑上的记录也会恢复。",
+      "previous": "俱乐部的日志也有,每台手提电脑上都有,一旦主机有它,就立刻回来.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.clubAway",
+      "english": "This laptop is not with the club host right now: the club log gets it back when the link is back.",
+      "chinese": "本机当前未连接俱乐部主机；连接恢复后，俱乐部日志也会恢复此记录。",
+      "previous": "这台手提电脑现在不在俱乐部主机上: 俱乐部日志在链接恢复时会把它拿回来.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.notRemoved",
+      "english": "That contact is no longer in the Removed list.",
+      "chinese": "此交信已不在“已移除”列表中。",
+      "previous": "该联系人已不在已删除的列表中 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.failed",
+      "english": "Nexus could not restore the contact.",
+      "chinese": "Nexus 无法恢复此交信。",
+      "previous": "Nexus 无法恢复联系 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.removed.restore.remote",
+      "english": "Only at the station: a press through Remote restores no contact.",
+      "chinese": "仅可在电台本机操作；通过 Remote 点击不会恢复任何交信。",
+      "previous": "仅在车站:通过远程的媒体恢复不接触.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.label",
+      "english": "Clear test contacts",
+      "chinese": "清除测试交信",
+      "previous": "清除测试联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.title",
+      "english": "Take every contact of this running out of the contest log, for contacts you logged as a test before the start. Each is kept under Removed, where Restore puts it back. Click twice: the first click asks.",
+      "chinese": "从竞赛日志中移除本次比赛的全部交信，适用于清除开赛前录入的测试记录。每条记录都会保存在“已移除”中，可通过“恢复”放回。需点击两次，第一次仅提示确认。",
+      "previous": "从比赛日志中取出所有联系人, 用于您在开始前作为测试记录的联系人 。 每个都保留在“删除”下,然后放回原处。 点击两次:第一次点击询问。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.title.serial",
+      "english": "Take every contact of this running out of the contest log, for contacts you logged as a test before the start. Each is kept under Removed, where Restore puts it back. Serials restart at 001. Click twice: the first click asks.",
+      "chinese": "从竞赛日志中移除本次比赛的全部交信，适用于清除开赛前录入的测试记录。每条记录都会保存在“已移除”中，可通过“恢复”放回。交信序号将从 001 重新开始。需点击两次，第一次仅提示确认。",
+      "previous": "从比赛日志中取出所有联系人, 用于您在开始前作为测试记录的联系人 。 每个都保留在“删除”下,然后放回原处。 序列在 001 重新开始 。 点击两次:第一次点击询问。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.confirm::one",
+      "english": "Clear {{count}} contact? Click again",
+      "chinese": "清除 {{count}} 条交信？请再次点击",
+      "previous": "清除{{count}}联系? 再次点击",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.confirm::other",
+      "english": "Clear all {{count}} contacts? Click again",
+      "chinese": "清除全部 {{count}} 条交信？请再次点击",
+      "previous": "全部清除{{count}}联系人? 再次点击",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.confirm.serial::one",
+      "english": "Clear {{count}} contact? Serials restart at 001. Click again",
+      "chinese": "清除 {{count}} 条交信？交信序号将从 001 重新开始。请再次点击",
+      "previous": "清除{{count}}联系? 序列在 001 重新开始 。 再次点击",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.confirm.serial::other",
+      "english": "Clear all {{count}} contacts? Serials restart at 001. Click again",
+      "chinese": "清除全部 {{count}} 条交信？交信序号将从 001 重新开始。请再次点击",
+      "previous": "全部清除{{count}}联系人? 序列在 001 重新开始 。 再次点击",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.done::one",
+      "english": "Took {{count}} contact out of the contest log. It is under Removed, where Restore puts it back.",
+      "chinese": "已从竞赛日志移除 {{count}} 条交信。记录保存在“已移除”中，可通过“恢复”放回。",
+      "previous": "带走{{count}}从比赛日志中联系 它被移除了, 在那里恢复它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.done::other",
+      "english": "Took {{count}} contacts out of the contest log. They are under Removed, where Restore puts each back.",
+      "chinese": "已从竞赛日志移除 {{count}} 条交信。记录保存在“已移除”中，可逐条恢复。",
+      "previous": "带走{{count}}从比赛日志中选择联系人 。 它们被清除了,恢复器放回原位。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.done.serial::one",
+      "english": "Took {{count}} contact out of the contest log. It is under Removed, where Restore puts it back. Serials restart at 001.",
+      "chinese": "已从竞赛日志移除 {{count}} 条交信。记录保存在“已移除”中，可通过“恢复”放回。交信序号从 001 重新开始。",
+      "previous": "带走{{count}}从比赛日志中联系 它被移除了, 在那里恢复它。 序列在 001 重新开始 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.done.serial::other",
+      "english": "Took {{count}} contacts out of the contest log. They are under Removed, where Restore puts each back. Serials restart at 001.",
+      "chinese": "已从竞赛日志移除 {{count}} 条交信。记录保存在“已移除”中，可逐条恢复。交信序号从 001 重新开始。",
+      "previous": "带走{{count}}从比赛日志中选择联系人 。 它们被清除了,恢复器放回原位。 序列在 001 重新开始 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.club",
+      "english": "The club log drops them too, on every laptop, as soon as the host has them.",
+      "chinese": "主机收到移除记录后，俱乐部日志及每台电脑上也会移除这些交信。",
+      "previous": "俱乐部的日志也把它们丢在每台笔记本电脑上,一旦主机有了它们.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.clubAway",
+      "english": "This laptop is not with the club host right now: the club log drops them when the link is back.",
+      "chinese": "本机当前未连接俱乐部主机；连接恢复后，俱乐部日志也会移除这些交信。",
+      "previous": "这台笔记本电脑现在不是俱乐部主机: 俱乐部日志在链接回来后会把它们丢掉.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.sentTo",
+      "english": "Some were already sent to {{places}}: delete them there too.",
+      "chinese": "部分交信已发送至 {{places}}，还需在那里删除。",
+      "previous": "有些已经送到{{places}}:删除它们。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.logbook",
+      "english": "Some stay in your logbook.",
+      "chinese": "部分交信仍保留在常规交信日志中。",
+      "previous": "一些留在你的日志里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.logbookUploaded",
+      "english": "Some stay in your logbook, and {{services}} have them: Nexus cannot take them back from there.",
+      "chinese": "部分交信仍保留在常规日志中，{{services}} 中也有这些记录；Nexus 无法从这些服务撤回它们。",
+      "previous": "一些留在你的日志,和{{services}}尼克萨斯不能把他们从那里带回去",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.changed",
+      "english": "The contest log changed, so nothing was cleared.",
+      "chinese": "竞赛日志已发生变化，因此未清除任何记录。",
+      "previous": "比赛日志变了,所以没有被清除.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.failed",
+      "english": "Nexus could not clear the contacts, so nothing was cleared.",
+      "chinese": "Nexus 无法清除交信，因此未清除任何记录。",
+      "previous": "Nexus无法澄清联系人,所以没有被澄清.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.clear.remote",
+      "english": "Only at the station: a press through Remote clears no contact.",
+      "chinese": "仅可在电台本机操作；通过 Remote 点击不会清除任何交信。",
+      "previous": "仅在车站:通过远程的媒体可以清除任何接触.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.dupe.title",
+      "english": "Duplicate — kept in the log and worth no points",
+      "chinese": "重复交信，保留在日志中但不计分",
+      "previous": "复制——保存在日志中,不值分数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.mult.title",
+      "english": "New section — multiplier",
+      "chinese": "新分区，可增加系数",
+      "previous": "新的一节——乘数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.log.mult",
+      "english": "Mult!",
+      "chinese": "新系数！",
+      "previous": "马特!",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.subtitle",
+      "english": "{{event}}: {{dates}} · {{status}}",
+      "chinese": "{{event}}：{{dates}} · {{status}}",
+      "previous": "{{event}}数字 :{{dates}}* 妇女{{status}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.status.active",
+      "english": "active",
+      "chinese": "进行中",
+      "previous": "活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.countdown.days",
+      "english": "starts in {{count}} days",
+      "chinese": "{{count}} 天后开始",
+      "previous": "开始于{{count}}天数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.countdown.tomorrow",
+      "english": "starts tomorrow",
+      "chinese": "明天开始",
+      "previous": "明天开始",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.countdown.hours",
+      "english": "starts in {{count}}h",
+      "chinese": "{{count}} 小时后开始",
+      "previous": "开始于{{count}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.countdown.soon",
+      "english": "starting soon",
+      "chinese": "即将开始",
+      "previous": "马上就开始",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.rules.line",
+      "english": "Rules {{year}} · data {{date}}",
+      "chinese": "规则年份 {{year}} · 数据日期 {{date}}",
+      "previous": "规则{{year}}数据{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.off",
+      "english": "Off. When it is on, the log strips, this screen and the exports follow the {{contest}} rules.",
+      "chinese": "竞赛模式已关闭。开启后，交信录入栏、本页面及导出均遵循 {{contest}} 规则。",
+      "previous": "关. 当它打开时,日志条,这个屏幕和出口跟着{{contest}}规则。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.on",
+      "english": "The {{contest}} rules apply now: the log strips, this screen and the exports follow them.",
+      "chinese": "当前采用 {{contest}} 规则，交信录入栏、本页面及导出均遵循此规则。",
+      "previous": "那个{{contest}}规则现在适用:日志条、此屏幕和导出都跟着它们。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.rule.banned",
+      "english": "Not permitted: {{modes}}. Contacts in them are logged but do not count.",
+      "chinese": "不允许使用 {{modes}}；这些模式的交信会记录，但不计入成绩。",
+      "previous": "不允许:{{modes}}。其中的联系人被记录,但不计数。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.rule.cluster",
+      "english": "DX cluster assistance is not permitted.",
+      "chinese": "不允许使用 DX 集群辅助。",
+      "previous": "不允许提供DX集群援助。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.rule.spotting",
+      "english": "Spotting assistance is not permitted.",
+      "chinese": "不允许使用通报辅助。",
+      "previous": "不允许提供零星援助。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.rule.spotsRfOnly",
+      "english": "No spots are posted over the internet during the event.",
+      "chinese": "比赛期间不通过互联网发布通报。",
+      "previous": "在活动期间,没有在互联网上张贴任何插播。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.switched",
+      "english": "Now running {{contest}}. Saving the new pick ended {{previous}}, and its contacts stay apart from this contest's.",
+      "chinese": "当前比赛已切换为 {{contest}}。保存新选择时已结束 {{previous}}，原交信与本次比赛分别保留。",
+      "previous": "现在运行{{contest}}保存新选择结束{{previous}},它的联系人与这场比赛无关。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.needs.one",
+      "english": "The station cannot enter {{contest}} until your {{field}} is set.",
+      "chinese": "请先设置{{field}}，本台才能参加 {{contest}}。",
+      "previous": "车站不能进入{{contest}}直到你们{{field}}已经设定。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.needs.two",
+      "english": "The station cannot enter {{contest}} until your {{first}} and {{second}} are set.",
+      "chinese": "请先设置{{first}}和{{second}}，本台才能参加 {{contest}}。",
+      "previous": "车站不能进入{{contest}}直到你们{{first}}和{{second}}已经设定。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.needs.open",
+      "english": "Open in Settings",
+      "chinese": "在设置中打开",
+      "previous": "在设置中打开",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.cabrillo.missing",
+      "english": "Before you export, set what {{contest}} requires in its Cabrillo file under Settings ▸ Contesting ▸ Your entry: {{lines}}.",
+      "chinese": "导出前，请在“设置 ▸ 竞赛 ▸ 参赛信息”中补全 {{contest}} 的 Cabrillo 文件所需字段：{{lines}}。",
+      "previous": "导出前, 设置什么{{contest}}需要在其 Cabrillo 设置下的文件 QQ 竞争 QQ 您的条目 :{{lines}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.cabrillo.restart",
+      "english": "Power category and Spotting assistance are read when Contest mode turns on, so after setting them turn Contest mode off and on again. Your contacts stay in the log.",
+      "chinese": "功率类别和通报辅助设置在开启竞赛模式时读取。修改后，请关闭并重新开启竞赛模式；交信记录仍保留在日志中。",
+      "previous": "Power分类和Spotting辅助在Contest模式开启时被读取,所以在设置它们关闭Contest模式后,会反复打开. 你的联络人留在日志里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.mode.club",
+      "english": "Club sync is on. With Contest mode off, this station stays in the club event, and contacts the club's log does not have yet still go to the host while Nexus is open. Nothing in the log is lost.",
+      "chinese": "俱乐部同步已开启。关闭竞赛模式后，本台仍留在俱乐部活动中；只要 Nexus 保持运行，尚未进入俱乐部日志的交信仍会发送至主机。日志记录不会丢失。",
+      "previous": "俱乐部同步开始。 由于Contest模式关闭,本站留在俱乐部活动中,联系俱乐部的日志尚未在Nexus开放期间前往东道主. 日志里没有任何东西丢失。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.advisory.banned",
+      "english": "{{mode}} is not permitted at {{event}} ({{year}} rules) — you can still log it, but it will not count",
+      "chinese": "{{event}} 不允许使用 {{mode}}（{{year}} 年规则）；仍可记录交信，但不计入成绩",
+      "previous": "{{mode}}不允许在{{event}}(单位:千美元){{year}}规则)——你仍然可以登录它,但它不会算",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.advisory.noCredit",
+      "english": "{{mode}} · no credit",
+      "chinese": "{{mode}} · 不计分",
+      "previous": "{{mode}}无信贷",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.advisory.cluster",
+      "english": "DX cluster assistance is not permitted at {{event}} ({{year}} rules) — live now: {{sources}}",
+      "chinese": "{{event}} 不允许使用 DX 集群辅助（{{year}} 年规则）；当前仍在使用：{{sources}}",
+      "previous": "不允许在{{event}}(单位:千美元){{year}}(规则)——现时:{{sources}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.advisory.spotting",
+      "english": "Spotting assistance is not permitted at {{event}} ({{year}} rules) — live now: {{sources}}",
+      "chinese": "{{event}} 不允许使用通报辅助（{{year}} 年规则）；当前仍在使用：{{sources}}",
+      "previous": "不允许在{{event}}(单位:千美元){{year}}(规则)——现时:{{sources}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.advisory.spotsRfOnly",
+      "english": "{{event}} allows spots only over amateur RF while it runs: Nexus is sending no PSK Reporter reports, DX cluster spots or POTA self-spots until it ends. Receiving spots carries on.",
+      "chinese": "{{event}} 进行期间仅允许通过业余无线电射频链路传递通报，因此 Nexus 在比赛结束前不会发送 PSK Reporter 报告、DX 集群通报或 POTA 本台通报。接收通报不受影响。",
+      "previous": "{{event}}运行时只允许在业余 RF 上出现斑点 : Nexus 没有发送 PSK 报告, DX 集群斑点或POTA直到结束 接收点继续",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.aria",
+      "english": "Club sync",
+      "chinese": "俱乐部同步",
+      "previous": "俱乐部同步",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.head",
+      "english": "Club",
+      "chinese": "俱乐部",
+      "previous": "俱乐部",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.state.synced",
+      "english": "Synced",
+      "chinese": "已同步",
+      "previous": "同步",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.state.behind",
+      "english": "Behind — {{queued}} to send",
+      "chinese": "同步尚未完成 — 待发送 {{queued}} 条",
+      "previous": "- 后面 - 后面 - 后面 - 后面{{queued}}发送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.state.offline",
+      "english": "Offline — {{queued}} queued here",
+      "chinese": "离线 — 本机排队待发 {{queued}} 条",
+      "previous": "离线——{{queued}}队列已在此",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.state.title",
+      "english": "Live sync state, derived from the send queue — never a guess. Contacts logged while offline are journaled and re-sent automatically.",
+      "chinese": "同步状态直接依据发送队列确定，并非估计。离线时记录的交信会持久保存，并自动重发。",
+      "previous": "Live同步状态, 来源于发送队列—— 从不猜测. 离线时登录的联系人会自动日志并重新发送.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.hostLine",
+      "english": "{{event}} · host {{call}}",
+      "chinese": "{{event}} · 主机呼号 {{call}}",
+      "previous": "{{event}}东道方{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.counters",
+      "english": "Club: {{score}} pts · {{qsos}} QSOs · {{sections}} sections",
+      "chinese": "俱乐部：{{score}} 分 · {{qsos}} 条交信 · {{sections}} 个分区",
+      "previous": "俱乐部 :{{score}}页:1{{qsos}}QSOs ·{{sections}}节次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.countersContest",
+      "english": "Club: {{score}} pts · {{qsos}} QSOs",
+      "chinese": "俱乐部：{{score}} 分 · {{qsos}} 条交信",
+      "previous": "俱乐部 :{{score}}页:1{{qsos}}快速行动组织",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.export.cabrillo.label",
+      "english": "Club Cabrillo",
+      "chinese": "俱乐部 Cabrillo 日志",
+      "previous": "卡布里略俱乐部",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.export.cabrillo.title",
+      "english": "Export the merged club log as Cabrillo (deduped — the earliest contact wins)",
+      "chinese": "将合并后的俱乐部日志导出为 Cabrillo，去除重复交信并保留最早记录",
+      "previous": "将合并的俱乐部日志导出为 Cabrillo (dedupd —— 最早的联系人获胜)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.export.cabrillo.titleKept",
+      "english": "Export the merged club log as Cabrillo (every contact stays in: this contest wants repeats reported, and a repeat scores zero)",
+      "chinese": "将合并后的俱乐部日志导出为 Cabrillo，保留每条交信；本次比赛要求报告重复交信，但重复交信计零分",
+      "previous": "将合并后的俱乐部日志导出为 Cabrillo( 每个联系人都留在: 此比赛需要重复报告, 重复分数为0)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fieldDay.club.export.adif.label",
+      "english": "Club ADIF",
+      "chinese": "俱乐部 ADIF 日志",
+      "previous": "俱乐部ADIF",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

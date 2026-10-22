@@ -1,0 +1,1709 @@
+{
+  "batch": 39,
+  "range": [
+    7601,
+    7800
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 147,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 4,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/App.tsx",
+    "ui/src/features/keptFiles.ts",
+    "ui/src/features/slotUnkeyFailed.ts",
+    "ui/src/features/slotOverDropped.ts",
+    "ui/src/components/LogbookSaving.tsx",
+    "ui/src/components/StatusLane.tsx",
+    "ui/src/components/ModeNav.tsx",
+    "ui/src/components/NowBar.tsx"
+  ],
+  "rows": [
+    {
+      "id": "shell.lane.audio.engineStopped",
+      "english": "RADIO ENGINE STOPPED",
+      "chinese": "电台引擎已停止",
+      "previous": "无线电引擎停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.soundCard",
+      "english": "SOUND CARD FAILED",
+      "chinese": "声卡故障",
+      "previous": "音响障碍",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.noReceiveAudio",
+      "english": "NO RECEIVE AUDIO",
+      "chinese": "没有接收音频",
+      "previous": "无接收审计",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.ptt",
+      "english": "PTT NOT ACCEPTED",
+      "chinese": "PTT 指令未被接受",
+      "previous": "PTT不详",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.flexAudio",
+      "english": "NO FLEX AUDIO",
+      "chinese": "没有 Flex 音频",
+      "previous": "没有FLEX审计",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.flexAddress",
+      "english": "NO FLEX RADIO IP",
+      "chinese": "未设置 Flex 电台 IP",
+      "previous": "没有FLEX无线电IP",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.monitor",
+      "english": "HEADPHONE MONITOR OFF",
+      "chinese": "耳机监听已关闭",
+      "previous": "总部电话监测器关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.voiceMic",
+      "english": "VOICE MIC FAILED",
+      "chinese": "话音话筒故障",
+      "previous": "音效误差",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.recording",
+      "english": "RECORDING FAILED",
+      "chinese": "录音失败",
+      "previous": "记录失败",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.decodeCrash",
+      "english": "DECODE CRASHED",
+      "chinese": "解码器已崩溃",
+      "previous": "解码器崩溃",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.audio.other",
+      "english": "RADIO ALERT",
+      "chinese": "电台警报",
+      "previous": "无线电发射",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.scopeSpan.message",
+      "english": "SCOPE SPAN REFUSED",
+      "chinese": "频谱跨度设置被拒绝",
+      "previous": "范围调整",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.radioConfig.message",
+      "english": "RADIO CONFIG",
+      "chinese": "电台配置",
+      "previous": "无线电通信",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.txPowerZero.message",
+      "english": "NO RF POWER",
+      "chinese": "无射频输出功率",
+      "previous": "无 RF 权限",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.txPowerZero.detail",
+      "english": "The radio reports 0% power and transmit is armed — it will key and put nothing on the air. Check the Pwr slider, and the rig’s own power for THIS mode: Yaesu rigs keep a separate level for SSB, DATA, CW and AM.",
+      "chinese": "电台报告功率为 0%，但发射已启用，会触发发射却没有射频输出。请检查功率滑块，以及电台自身在当前模式下的功率设置：Yaesu 电台对 SSB、DATA、CW 和 AM 分别保存功率。",
+      "previous": "收音机报告电源和传输量的0%是武装的——它会按键,而不会把任何内容放上广播. 请检查date=中的日期值 (帮助) Pwr 滑轮,以及钻机自身对这个模式的功率: Yaesu 钻机为SSB, DATA,CW和妈妈。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.recording.message",
+      "english": "RECORDING",
+      "chinese": "正在录音",
+      "previous": "记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.parsecStop.message",
+      "english": "PARSEC DROPPED — TX STOPPED",
+      "chinese": "Parsec 已断开，TX 已停止",
+      "previous": "PARSEC 丢弃 - TX 停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.parsecStop.detail",
+      "english": "Your Parsec session dropped (or Parsec’s log stopped answering) at {{time}} UTC, so Nexus stopped: {{what}}. Nothing was restarted; key up again when you are back.",
+      "chinese": "Parsec 会话在 {{time}} UTC 断开，或其日志不再响应，因此 Nexus 已停止：{{what}}。没有自动恢复任何发射；回到操作位置后请重新按键发射。",
+      "previous": "您的 Parsec 会话已放弃( 或 Parsec 日志已停止回复) 。{{time}} UTC,因此Nexus停止了:{{what}}。没有重新启动;返回时再次按键。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.parsecStop.what.ptt",
+      "english": "latched PTT",
+      "chinese": "锁定的 PTT 发射",
+      "previous": "带子PTT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.parsecStop.what.rtty",
+      "english": "continuous RTTY",
+      "chinese": "连续 RTTY 发射",
+      "previous": "连续RTTY",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.parsecStop.what.psk",
+      "english": "continuous PSK",
+      "chinese": "连续 PSK 发射",
+      "previous": "连续 PSK",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.parsecStop.what.tune",
+      "english": "Tune",
+      "chinese": "调谐载波",
+      "previous": "调谐",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "调谐"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "调谐"
+        }
+      ]
+    },
+    {
+      "id": "shell.lane.slotKeyRefused.message",
+      "english": "PTT REFUSED — TX STOPPED",
+      "chinese": "PTT 被拒绝，TX 已停止",
+      "previous": "PTT升级——TX停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotKeyRefused.detail",
+      "english": "The radio did not accept PTT at {{time}} UTC ({{why}}), so that over was not sent and TX was turned off. Check your PTT method and CAT/port, then turn TX on again.",
+      "chinese": "电台在 {{time}} UTC 未接受 PTT 指令（{{why}}），本轮未发送，TX 已关闭。请检查 PTT 方式及 CAT／端口，再重新开启 TX。",
+      "previous": "电台不接受PTT时间{{time}} UTC(单位:千美元){{why}}),因此没有发送,TX被关闭. 检查你的PTT方法和CAT端口,再打开TX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotKeyRefused.flex.notYetDax",
+      "english": "Nexus did not key the {{mode}} over at {{time}} UTC: Flex native DAX audio is on, but the radio was not yet taking its transmit audio from Nexus over DAX. Nothing was sent and TX was turned off. Nexus finishes setting the radio up within a moment; then turn TX on again.",
+      "chinese": "Nexus 未在 {{time}} UTC 启动本轮 {{mode}} 发射：Flex 原生 DAX 音频虽已开启，但电台尚未切换为通过 DAX 接收 Nexus 的发射音频。本次未发送，TX 已关闭。Nexus 稍后即会完成电台配置，届时请重新开启 TX。",
+      "previous": "Nexus没有按键{{mode}}结束于{{time}} UTC:Flex原生DAX音频已开播,但收音机尚未从Nexus接收其传输音频通过DAX. TX被关闭了 Nexus在一瞬间完成设置收音机;然后再次打开TX.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotKeyRefused.flex.daxUnfed",
+      "english": "Nexus did not key the {{mode}} over at {{time}} UTC: Flex native DAX audio is off, but the radio was still taking its transmit audio from DAX, as Nexus had set it, and nothing feeds DAX now. Nothing was sent and TX was turned off. Nexus puts the radio back on its mic input within a moment; then turn TX on again.",
+      "chinese": "Nexus 未在 {{time}} UTC 启动本轮 {{mode}} 发射：Flex 原生 DAX 音频已关闭，但电台仍保持 Nexus 先前设置的 DAX 发射输入，目前 DAX 没有音频供给。本次未发送，TX 已关闭。Nexus 稍后即会将电台恢复为话筒输入，届时请重新开启 TX。",
+      "previous": "Nexus没有按键{{mode}}结束于{{time}} UTC:Flex原生DAX音频关闭,但电台仍在从DAX接收其传输音频,正如Nexus设定的那样,现在没有任何信息可以提供DAX. TX被关闭了 Nexus让收音机在一瞬间恢复微波输入;然后再次打开TX.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotKeyRefused.txAudio",
+      "english": "Nexus did not key the radio at {{time}} UTC because the transmit audio output would not open ({{why}}). Nothing was sent and TX was turned off. Check Output Device (TX) in Settings (another program may be holding it, or it is unplugged), then turn TX on again.",
+      "chinese": "Nexus 未在 {{time}} UTC 触发电台发射，因为无法打开发射音频输出（{{why}}）。本次未发送，TX 已关闭。请在设置中检查“输出设备（TX）”，可能被其他程序占用或已拔出，然后重新开启 TX。",
+      "previous": "Nexus没有按下收音机的键{{time}} UTC因为传输音频输出不会打开( S){{why}}) (中文(简体) ). TX被关闭了 在设置中检查输出设备( TX) (另一个程序可能持有它, 或者它被解插), 然后再次打开 TX 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotUnkeyFailed.message",
+      "english": "PTT OFF FAILED — TX STOPPED",
+      "chinese": "PTT 释放失败，TX 已关闭",
+      "previous": "PTT关闭故障 - TX停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotUnkeyFailed.detail",
+      "english": "The radio did not accept PTT off at {{time}} UTC ({{why}}), so TX was turned off. It may still be transmitting: check the radio now. Nexus keeps sending PTT off until the radio accepts it. Turn TX on again once the radio is receiving.",
+      "chinese": "电台在 {{time}} UTC 未接受释放 PTT 的指令（{{why}}），因此 TX 已关闭。电台可能仍在发射，请立即检查。Nexus 会持续发送释放 PTT 的指令，直到电台接受。确认电台已恢复接收后，再重新开启 TX。",
+      "previous": "电台不接受PTT关闭在{{time}} UTC(单位:千美元){{why}}因此TX被关闭。 可能还在传送中 检查无线电 Nexus 继续发送PTT直到无线电接收为止 收音机接收后再打开TX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotAudioLost.message",
+      "english": "OVER ENDED — TX STOPPED",
+      "chinese": "本轮已中止，TX 已停止",
+      "previous": "结束 -- -- TX停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotAudioLost.detail",
+      "english": "The route carrying an over's audio to the radio (Flex DAX or TCI) stopped at {{time}} UTC in the middle of the over, so the rest of it would have gone out silent. Nexus ended the over there and turned TX off. Turn TX on again to carry on.",
+      "chinese": "本轮发射过程中，向电台传送音频的通路（Flex DAX 或 TCI）在 {{time}} UTC 中断，继续发射将只剩无声载波。因此 Nexus 已中止本轮并关闭 TX。重新开启 TX 后可继续。",
+      "previous": "将音频带往无线电(Flex DAX或TCI)的路线停止了{{time}} UTC在中间的过, 所以其余的会 出去沉默。 Nexus结束了那边,关闭了TX。 打开TX再继续",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotOverDropped.message",
+      "english": "OVER DROPPED — RADIO KEYED LATE",
+      "chinese": "本轮已取消，电台触发发射过晚",
+      "previous": "超脱落——无线电关键旬",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.slotOverDropped.detail",
+      "english": "This over was dropped: the radio keyed only at {{time}} UTC, {{late}} after your period had ended (slow CAT), so Nexus unkeyed it at once and sent nothing, and left TX on for your next over. Split operation sends the radio its commands before each key, which on a slow CAT link can take seconds: if this keeps happening, check the CAT link and Split operation in Settings.",
+      "chinese": "本轮已取消：由于 CAT 响应慢，电台直到 {{time}} UTC 才进入发射，此时距本台时隙结束已过 {{late}}。Nexus 随即解除发射，未发送报文，并保持 TX 开启以等待下一轮。异频操作会在每次触发发射前向电台发送指令，较慢的 CAT 连接可能耗时数秒；若反复发生，请检查 CAT 连接和设置中的异频操作选项。",
+      "previous": "这被丢掉: 收音机只按键在{{time}} UTC, (中文).{{late}}周期结束后( 较慢)CAT所以Nexus马上解开它 并发送什么, 并留下TX 到你的下一个。 拆分操作在每个密钥前发送无线电命令, 速度缓慢CAT链接需要几秒钟:如果这种情况持续发生,请检查CAT在设置中链接和分割操作。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.pttRefused.message",
+      "english": "PTT REFUSED",
+      "chinese": "PTT 被拒绝",
+      "previous": "PTT已修订",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.pttRefused.detail",
+      "english": "Nexus did not key the {{mode}} over at {{time}} UTC: the radio was still taking its transmit audio from DAX, as Nexus had set it, not from its mic, so your voice would not have gone out. Nothing was sent. Let go of PTT and Nexus puts the radio back on its mic input within a moment; then press PTT again.",
+      "chinese": "Nexus 未在 {{time}} UTC 启动本轮 {{mode}} 发射：电台仍保持 Nexus 先前设置的 DAX 发射输入，没有使用话筒，本台话音将无法发出。本次未发送。请松开 PTT，Nexus 稍后即会将电台恢复为话筒输入，然后再次按 PTT。",
+      "previous": "Nexus没有按键 {{mode}} 结束于 {{time}} UTC:电台仍然从DAX接收它的传输音频,正如Nexus设定的,而不是从它的麦克风,所以你的声音不会熄灭. 没有寄出去 放开我 PTT Nexus在一瞬间就恢复收音机的麦克风输入;然后按 PTT 再来一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.voiceDropped.message",
+      "english": "VOICE MESSAGE DROPPED",
+      "chinese": "语音报文已取消",
+      "previous": "声音消失",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.voiceDropped.noDax",
+      "english": "Nexus did not play the voice message at {{time}} UTC: the radio did not switch its transmit audio to DAX within 2 seconds, so nothing was keyed. The message was dropped, not held; press its key again.",
+      "chinese": "Nexus 未在 {{time}} UTC 播放语音报文：电台未能在 2 秒内将发射音频切换至 DAX，因此未触发发射。报文已取消，不会留待稍后发送；请重新按对应报文键。",
+      "previous": "Nexus没有播放语音信息 。{{time}} UTC:无线电没有在2秒内将其传输音频切换到DAX,所以没有键入. 信件被丢弃,没有被保存;再次按下密钥。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.voiceDropped.keyed",
+      "english": "Nexus did not play the voice message at {{time}} UTC: something else was transmitting or keyed the radio first (your mic or PTT, a tune carrier, another program), so nothing was keyed. The message was dropped, not held.",
+      "chinese": "Nexus 未在 {{time}} UTC 播放语音报文：其他来源正在发射，或已先触发电台发射，例如话筒、PTT、调谐载波或其他程序，因此本次未触发发射。报文已取消，不会留待稍后发送。",
+      "previous": "Nexus没有播放语音信息 。{{time}} UTC: 其它东西是先传送或按键收音机(您的麦克风或PTT调音器,另一个程序,所以没有键。 留言被丢掉,没有被扣.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.clockRepairHold.message",
+      "english": "CLOCK REPAIR — TX HELD",
+      "chinese": "正在修复时钟，暂停启动发射",
+      "previous": "CLOCK 替补 - TX 保持",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.clockRepairHold.detail",
+      "english": "Nexus is repairing this computer’s clock. Nothing starts transmitting until the repair finishes, two minutes at most, so the clock cannot move in the middle of an over.",
+      "chinese": "Nexus 正在修复此计算机的时钟。修复完成前不会启动任何发射，最多需要两分钟，以免在一轮发射中途调整时钟。",
+      "previous": "Nexus正在修复这台计算机的时钟。 在修复完成之前,没有开始传输,最多只有两分钟,所以时钟不能在结束的中间移动.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.prop.offline.message",
+      "english": "Prop: no live data",
+      "chinese": "传播：暂无实时数据",
+      "previous": "Prop: 无直播数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.prop.offline.detail",
+      "english": "No live propagation data yet — set your callsign in Settings and check your internet connection.",
+      "chinese": "尚无实时传播数据。请在设置中填写本台呼号，并检查互联网连接。",
+      "previous": "还没有实时传播数据——在设置中设置您的呼号并检查您的互联网连接 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.prop.cached.message",
+      "english": "Prop: cached {{minutes}}m",
+      "chinese": "传播：{{minutes}} 分钟前的缓存",
+      "previous": "道具: 缓存{{minutes}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.lane.prop.cached.detail",
+      "english": "Live propagation refetch failed — showing the last-good snapshot.",
+      "chinese": "重新获取实时传播数据失败，正在显示最近一次成功获取的快照。",
+      "previous": "现场传播 refetch 失败 —— 显示最后的好快照 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.conversation.delete.title",
+      "english": "Delete the conversation with {{peer}}?",
+      "chinese": "删除与 {{peer}} 的对话？",
+      "previous": "删除对话{{peer}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.conversation.delete.body",
+      "english": "Any messages still waiting to send will be cancelled. This can't be undone.",
+      "chinese": "仍在等待发送的消息也将取消。此操作无法撤销。",
+      "previous": "任何仍在等待发送的信件将被取消 。 这事不能解决",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.conversation.delete.action",
+      "english": "Delete conversation",
+      "chinese": "删除对话",
+      "previous": "删除对白",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.conversation.delete.failed",
+      "english": "Could not delete conversation",
+      "chinese": "无法删除对话",
+      "previous": "无法删除对话框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.error.switchMode",
+      "english": "Could not switch mode",
+      "chinese": "无法切换模式",
+      "previous": "无法切换模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.error.selectStation",
+      "english": "Could not select station",
+      "chinese": "无法选择电台",
+      "previous": "无法选择站点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.ownCall",
+      "english": "{{call}} is your own call",
+      "chinese": "{{call}} 是本台呼号",
+      "previous": "{{call}}是你自己决定的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tempo.open.failed",
+      "english": "Could not open {{call}}",
+      "chinese": "无法打开与 {{call}} 的对话",
+      "previous": "无法打开{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tempo.opened",
+      "english": "▶ {{call}} — open in Tempo",
+      "chinese": "▶ {{call}} — 已在 Tempo 中打开",
+      "previous": "▶{{call}}- 在Tempo开放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.work.failed",
+      "english": "Could not work {{call}}",
+      "chinese": "无法开始与 {{call}} 的通联",
+      "previous": "无法工作{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.work.started",
+      "english": "▶ Working {{call}} — transmitting your call",
+      "chinese": "▶ 正在呼叫 {{call}}，发送本台呼号",
+      "previous": "工作时间{{call}}- 转达你的电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.work.failed.cat",
+      "english": "Could not work {{call}} — check CAT",
+      "chinese": "无法开始与 {{call}} 的通联，请检查 CAT",
+      "previous": "无法工作{{call}}- 检查CAT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.work.ready",
+      "english": "▶ {{call}} — {{mode}} {{band}}, ready to log",
+      "chinese": "▶ {{call}} — {{mode}} {{band}}，可记录交信",
+      "previous": "▶{{call}}. . . . . . .{{mode}} {{band}},准备日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.work.here",
+      "english": "▶ {{call}} — {{band}} {{freq}} MHz",
+      "chinese": "▶ {{call}} — {{band}} {{freq}} MHz",
+      "previous": "▶{{call}}. . . . . . .{{band}} {{freq}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.pounce.qsy.failed",
+      "english": "Could not QSY to {{call}}",
+      "chinese": "无法切换至 {{call}} 的频率",
+      "previous": "无法将 QSY 复制到{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.log.failed",
+      "english": "Could not log QSO",
+      "chinese": "无法将 QSO 记入日志",
+      "previous": "无法日志QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.log.discard.failed",
+      "english": "Could not discard QSO",
+      "chinese": "无法丢弃此 QSO",
+      "previous": "无法丢弃QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.log.movedOn",
+      "english": "That contact had already been logged or discarded — nothing was logged, and the one waiting is shown now.",
+      "chinese": "该次交信已记入日志或已丢弃，本次没有新增记录。现已显示下一条待处理交信。",
+      "previous": "这种接触已经记录下来或被丢弃——没有任何记录,等待者现在被显示。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.toast.logged",
+      "english": "Logged QSO",
+      "chinese": "QSO 已记入日志",
+      "previous": "日志QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.toast.nothingToLog",
+      "english": "Nothing to log — the QSO already closed or no report was exchanged",
+      "chinese": "没有可入志的交信：QSO 已结束，或尚未交换信号报告",
+      "previous": "没有什么可以记录的——QSO已关闭或没有交换报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.logStore.network",
+      "english": "Nexus did not open the logbook database because your data folder is on a network drive, where a database can be damaged by the way file locking works across a network. Nothing is lost: this session keeps your log in log.adi, as before. To use the database, move the data folder to a drive inside this computer in Settings ▸ Config ▸ Data & log folder.",
+      "chinese": "数据文件夹位于网络驱动器上，跨网络的文件锁定机制可能损坏数据库，因此 Nexus 未打开交信日志数据库。数据未丢失，本次会话仍照常将交信记录保存在 log.adi 中。如需使用数据库，请在“设置 ▸ 配置 ▸ 数据与日志文件夹”中将数据文件夹移到此计算机的本地磁盘。",
+      "previous": "Nexus没有打开日志数据库,因为您的数据文件夹位于一个网络驱动器上,一个数据库可能会因为文件锁定在网络上的工作方式而损坏. 没有丢失: 此会话像以前一样将您的日志保存在log. adi 中 。 要使用数据库, 请将数据文件夹移动到此计算机内 Sets QQ 配置 & 日志文件夹中的驱动器 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.logStore.failed",
+      "english": "Nexus could not open the logbook database. Reason: {{reason}}. Nothing is lost: this session keeps your log in log.adi, as before. The diagnostic log has the details, in Settings ▸ Logging & Connectors ▸ Integrations & Feeds ▸ Diagnostic log.",
+      "chinese": "Nexus 无法打开交信日志数据库，原因：{{reason}}。数据未丢失，本次会话仍照常将交信记录保存在 log.adi 中。详情请查看“设置 ▸ 日志与连接器 ▸ 集成与数据源 ▸ 诊断日志”。",
+      "previous": "Nexus 无法打开日志数据库 。 原因:{{reason}}。没有丢失。此会话将您日志保存在log.adi中。 诊断日志有细节, 在设置 QQ 日志和连接器 QQ 集成和种子 QQ 诊断日志 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.pendingQso",
+      "english": "Nexus could not read the file of QSOs that were waiting in the “Log this QSO?” popup, so it kept that file, untouched, at {{path}}. Nothing was deleted.",
+      "chinese": "Nexus 无法读取“记录此 QSO？”弹窗中等待处理的交信文件，已将原文件完整保留在 {{path}}，未删除任何内容。",
+      "previous": "Nexus 无法读取文件 QSOs 在那座乐园里,  QSO ”弹出,所以它保持了文件,没有被移动,在 {{path}}。没有删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.contestHeldUploads",
+      "english": "Nexus could not read the list of contacts waiting for contest mode to end before they upload to QRZ, Club Log and the others, so it kept that file, untouched, at {{path}}. The contacts are in your Logbook. Nothing was deleted.",
+      "chinese": "Nexus 无法读取等待竞赛模式结束后上传至 QRZ、Club Log 等服务的交信清单，已将原文件完整保留在 {{path}}。这些交信仍在交信日志中，未删除任何内容。",
+      "previous": "Nexus 无法在上传到之前读取等待比赛模式结束的联系人列表QRZ, Club Log 和其他的, 所以它保持了文件,没有影响,在{{path}}。联系人在您的日志中。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.fieldDay",
+      "english": "Nexus could not read all of the backup of your Field Day or contest log, so it kept that file, untouched, at {{path}}, and started a new backup from the contacts it could read. Nothing was deleted.",
+      "chinese": "Nexus 无法完整读取 Field Day 或竞赛日志备份，已将原文件完整保留在 {{path}}，并用可读取的交信记录建立新备份。未删除任何内容。",
+      "previous": "Nexus 无法读取您 Field Day 或比赛日志的所有备份, 因此它保留了文件, 不加更改, at{{path}},然后从可以读取的联系人开始新的备份。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.js8Inbox",
+      "english": "Nexus could not read your JS8 inbox, so it kept that file, untouched, at {{path}}, and started a new inbox. Nothing was deleted.",
+      "chinese": "Nexus 无法读取 JS8 收件箱，已将原文件完整保留在 {{path}}，并建立新收件箱。未删除任何内容。",
+      "previous": "Nexus 无法读取您的JS8收件箱,所以它保持文件,没有被移动,在{{path}},并开始一个新的收件箱。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.pendingMsgs",
+      "english": "Nexus could not read the file of Tempo messages waiting to send, so it kept that file, untouched, at {{path}}. Nothing was deleted.",
+      "chinese": "Nexus 无法读取等待发送的 Tempo 消息文件，已将原文件完整保留在 {{path}}，未删除任何内容。",
+      "previous": "Nexus 无法读取 Tempo 信件的文件等待发送, 因此它保留了该文件, 不加更改, at{{path}}。没有删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.assistance",
+      "english": "Nexus could not read your Assistance record, so it kept that file, untouched, at {{path}}, and started a new record. Nothing was deleted.",
+      "chinese": "Nexus 无法读取辅助功能使用记录，已将原文件完整保留在 {{path}}，并建立新记录。未删除任何内容。",
+      "previous": "Nexus无法读取您的援助记录, 所以它保存了文件,没有被,在{{path}},并开始了新的记录。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.conversations",
+      "english": "Nexus could not read your Tempo conversations, so it kept that file, untouched, at {{path}}, and started with none. Nothing was deleted.",
+      "chinese": "Nexus 无法读取 Tempo 对话，已将原文件完整保留在 {{path}}，本次启动不加载旧对话。未删除任何内容。",
+      "previous": "Nexus无法读取您的Tempo对话, 所以它保存了文件,没有影响,在{{path}},然后从无开始。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.settings",
+      "english": "Nexus could not read your settings, so it kept that file, untouched, at {{path}}, and started from the default settings. Nothing was deleted.",
+      "chinese": "Nexus 无法读取设置，已将原文件完整保留在 {{path}}，并使用默认设置启动。未删除任何内容。",
+      "previous": "Nexus 无法读取您的设置, 因此它保留了文件, 未经更改, at{{path}},然后从默认设置开始。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.other",
+      "english": "Nexus could not read one of its files, so it kept that file, untouched, at {{path}}, and started a new one. Nothing was deleted.",
+      "chinese": "Nexus 无法读取其中一个文件，已将原文件完整保留在 {{path}}，并建立新文件。未删除任何内容。",
+      "previous": "Nexus无法读取它的一个文件 所以它把那个文件保存了下来{{path}},并开始一个新的。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.keptInPlace",
+      "english": "Nexus could not read {{path}} and could not move it aside, so it has left the file where it is and will not write over it. Nothing was deleted. Move or repair the file, then restart Nexus.",
+      "chinese": "Nexus 无法读取 {{path}}，也无法将其移到一旁，因此已将文件保留在原处，并且不会覆盖写入。未删除任何内容。请移动或修复此文件，再重启 Nexus。",
+      "previous": "无法读取 Nexus{{path}}并且无法将其移到一边,所以它已经离开了文件的位置,并且不会在文件上写。 没有被删除。 移动或修复文件,然后重新启动 Nexus 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.keptFile.settingsKeptInPlace",
+      "english": "Nexus could not read your settings at {{path}} and could not move that file aside, so it started from the default settings and will not save any setting over that file. Nothing was deleted. Move or repair the file, then restart Nexus.",
+      "chinese": "Nexus 无法读取 {{path}} 中的设置，也无法将此文件移到一旁，因此使用默认设置启动，且不会将任何设置保存到此文件。未删除任何内容。请移动或修复此文件，再重启 Nexus。",
+      "previous": "Nexus 无法读取您的设置{{path}}并且无法移动该文件, 因此它开始于默认设置, 不会保存该文件上的任何设置 。 没有被删除。 移动或修复文件,然后重新启动 Nexus 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.saving.title",
+      "english": "Saving your logbook…",
+      "chinese": "正在保存交信日志…",
+      "previous": "正在保存交信日志…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.saving.pending::one",
+      "english": "{{count}} change still to write",
+      "chinese": "仍有 {{count}} 项更改等待写入",
+      "previous": "{{count}}更改仍待写入",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.saving.pending::other",
+      "english": "{{count}} changes still to write",
+      "chinese": "仍有 {{count}} 项更改等待写入",
+      "previous": "{{count}}仍然要写入的更改",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.slow.title",
+      "english": "Your logbook is still saving",
+      "chinese": "您的日志仍在保存中",
+      "previous": "您的日志仍在保存中",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.slow.body::one",
+      "english": "Nexus has waited a minute, and {{count}} change is still not in the logbook.",
+      "chinese": "Nexus 已等待一分钟，仍有 {{count}} 项更改未写入交信日志。",
+      "previous": "尼克萨斯等了一分钟{{count}}更改仍然不在日志中。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.slow.body::other",
+      "english": "Nexus has waited a minute, and {{count}} changes are still not in the logbook.",
+      "chinese": "Nexus 已等待一分钟，仍有 {{count}} 项更改未写入交信日志。",
+      "previous": "尼克萨斯等了一分钟{{count}}更改仍然不在日志中。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.refused.title",
+      "english": "Your logbook could not be saved",
+      "chinese": "您的日志无法保存",
+      "previous": "您的日志无法保存",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.refused.body::one",
+      "english": "{{count}} change could not be written to the logbook: {{reason}}. Waiting longer will not save it.",
+      "chinese": "有 {{count}} 项更改无法写入交信日志：{{reason}}。继续等待也无法保存。",
+      "previous": "{{count}}无法将更改写入日志 :{{reason}}等待更长的时间不会保存它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.refused.body::other",
+      "english": "{{count}} changes could not be written to the logbook: {{reason}}. Waiting longer will not save them.",
+      "chinese": "有 {{count}} 项更改无法写入交信日志：{{reason}}。继续等待也无法保存。",
+      "previous": "{{count}}无法将更改写入日志 :{{reason}}等待更长的时间不会拯救他们。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.keepTrying",
+      "english": "Keep trying",
+      "chinese": "继续尝试",
+      "previous": "继续尝试",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.quitWithout::one",
+      "english": "Quit without the last change",
+      "chinese": "放弃保存最后一项更改并退出",
+      "previous": "没有上次更改就退出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.quitWithout::other",
+      "english": "Quit without the last {{count}} changes",
+      "chinese": "放弃保存最后 {{count}} 项更改并退出",
+      "previous": "退出没有最后一个{{count}}变动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.stopTx",
+      "english": "Stop TX",
+      "chinese": "停止发射",
+      "previous": "停止 TX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.retry.body::one",
+      "english": "{{count}} change could not be written to the logbook: {{reason}}. Keep trying sends it again.",
+      "chinese": "有 {{count}} 项更改未能写入交信日志：{{reason}}。点击“继续尝试”可重新提交保存。",
+      "previous": "{{count}}无法将更改写入日志 :{{reason}}再试一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "quit.logbook.retry.body::other",
+      "english": "{{count}} changes could not be written to the logbook: {{reason}}. Keep trying sends them again.",
+      "chinese": "有 {{count}} 项更改未能写入交信日志：{{reason}}。点击“继续尝试”可重新提交保存。",
+      "previous": "{{count}}无法将更改写入日志 :{{reason}}继续尝试再次发送它们。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.logSave.retrying",
+      "english": "Nexus could not save a change to the logbook: {{reason}}. It keeps the change in memory and sends it again until the logbook takes it. Nothing is lost while Nexus stays open.",
+      "chinese": "Nexus 无法将一项更改保存到交信日志：{{reason}}。该更改保留在内存中，软件会持续重试，直到日志接受写入。只要 Nexus 保持打开，数据就不会丢失。",
+      "previous": "Nexus 无法保存日志的更改 :{{reason}}它保持了记忆的改变,并再次发送,直到日志接收。 在Nexus继续开放时,没有什么损失。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.logSave.held",
+      "english": "The logbook refused a change for good: {{reason}}. Nexus keeps it in memory for this session, and asks about it when you quit. The diagnostic log has the details.",
+      "chinese": "交信日志已明确拒绝一项更改：{{reason}}。Nexus 会在本次会话的内存中保留该更改，并在退出时询问如何处理。详情见诊断日志。",
+      "previous": "日志拒绝更改:{{reason}}。 Nexus 保留它作为本次会话的记忆, 当你退出时会问这个问题。 诊断日志有细节",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.logSave.saved",
+      "english": "The logbook is saved again: every change it had refused is on disk now.",
+      "chinese": "交信日志已恢复保存，此前被拒绝的所有更改均已写入磁盘。",
+      "previous": "日志再次保存:它拒绝的每个更改现在都在磁盘上。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.message.failed",
+      "english": "Message could not be sent",
+      "chinese": "无法发送信件",
+      "previous": "无法发送信件",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.bandFeed.failed",
+      "english": "Could not open the band feed",
+      "chinese": "无法打开频段消息流",
+      "previous": "无法打开频段种子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.resend.failed",
+      "english": "Could not re-send to {{peer}}",
+      "chinese": "无法重新发送给 {{peer}}",
+      "previous": "无法重发送到{{peer}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.resend.sending",
+      "english": "↻ Re-sending to {{peer}}",
+      "chinese": "↻ 正在重新发送给 {{peer}}",
+      "previous": "重新发送到{{peer}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.resend.qso.failed",
+      "english": "Could not resend",
+      "chinese": "无法重传",
+      "previous": "无法重传",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.freetext.failed",
+      "english": "Could not send free text",
+      "chinese": "无法发送自由文本",
+      "previous": "无法发送免费文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.broadcast.failed",
+      "english": "Could not broadcast",
+      "chinese": "无法广播发送",
+      "previous": "无法播放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.cq.failed",
+      "english": "Could not call CQ",
+      "chinese": "无法呼叫 CQ",
+      "previous": "无法调用 CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.cqRun.toggle.failed",
+      "english": "Could not toggle the CQ run",
+      "chinese": "无法切换连续 CQ 呼叫",
+      "previous": "无法切换 CQ 运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.cqRun.resume.failed",
+      "english": "Could not resume the CQ run",
+      "chinese": "无法恢复连续 CQ 呼叫",
+      "previous": "无法恢复 CQ 运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.beacon.failed",
+      "english": "Could not toggle the heartbeat",
+      "chinese": "无法切换心跳",
+      "previous": "无法切换心跳",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.frequency.failed",
+      "english": "Could not set frequency",
+      "chinese": "无法设置频率",
+      "previous": "无法设置频率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.blocklist.failed",
+      "english": "Could not update the blocklist",
+      "chinese": "无法更新屏蔽名单",
+      "previous": "无法更新块列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.aprs.tune.failed",
+      "english": "Could not tune to APRS",
+      "chinese": "无法调谐到APRS",
+      "previous": "无法调谐到APRS",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tx.enable.failed",
+      "english": "Could not enable transmit",
+      "chinese": "无法启用发射",
+      "previous": "无法启用传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tx.mute.failed",
+      "english": "Could not mute transmit",
+      "chinese": "无法静音发射音频",
+      "previous": "无法静音传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tx.level.failed",
+      "english": "Could not set TX level",
+      "chinese": "无法设置发射音频电平",
+      "previous": "无法设置 TX 级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tune.failed",
+      "english": "Could not toggle tune",
+      "chinese": "无法切换调谐载波",
+      "previous": "无法切换曲调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.proveTx.failed",
+      "english": "Could not key the transmitter",
+      "chinese": "无法触发电台发射",
+      "previous": "无法按键发送器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.halt.failed",
+      "english": "Could not stop transmit",
+      "chinese": "无法停止发射",
+      "previous": "无法停止传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.radio.switch.failed",
+      "english": "Could not switch radios",
+      "chinese": "无法切换电台",
+      "previous": "无法切换收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.pegLock.failed",
+      "english": "Could not set peg-lock",
+      "chinese": "无法设置电台频段跟随锁定",
+      "previous": "无法设置连接锁定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.overrideTx.failed",
+      "english": "Could not queue TX to {{call}}",
+      "chinese": "无法将发给 {{call}} 的报文加入待发队列",
+      "previous": "无法将 TX 排队到{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.txPeriod.failed",
+      "english": "Could not set transmit period",
+      "chinese": "无法设置发射时隙",
+      "previous": "无法设置传输周期",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.cycleMode.failed",
+      "english": "Could not set the cycle mode",
+      "chinese": "无法设置循环模式",
+      "previous": "无法设置循环模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.holdTx.failed",
+      "english": "Could not toggle Hold Tx",
+      "chinese": "无法切换发射频偏保持（Hold Tx）",
+      "previous": "无法切换 Hold Tx",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.offset.failed",
+      "english": "Could not set offset",
+      "chinese": "无法设置频偏",
+      "previous": "无法设置偏移",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.tier.failed",
+      "english": "Could not change tier",
+      "chinese": "无法切换模式层级",
+      "previous": "无法更改等级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.digital.failed",
+      "english": "Could not switch to Digital",
+      "chinese": "无法切换至数字通信",
+      "previous": "无法切换到数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.source.switchFailed",
+      "english": "Could not switch signal source",
+      "chinese": "无法切换信号源",
+      "previous": "无法切换信号源",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.roam.toggle.failed",
+      "english": "Could not toggle Roam",
+      "chinese": "无法切换 Roam",
+      "previous": "无法切换 Roam",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.qsy.failed",
+      "english": "Could not QSY to {{band}}",
+      "chinese": "无法切换至 {{band}}",
+      "previous": "无法将 QSY 复制到{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.qsy.noChannel",
+      "english": "No channel for {{band}} in the band plan",
+      "chinese": "频段计划中没有 {{band}} 的信道",
+      "previous": "无频道{{band}}在乐队计划中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.qsy.done",
+      "english": "QSY {{dial}} MHz — listening",
+      "chinese": "已切换至 {{dial}} MHz，正在监听",
+      "previous": "QSY 语录{{dial}} MHz- 听着",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.recall.sectionOff",
+      "english": "Enable the {{section}} section in Settings to recall this memory",
+      "chinese": "请先在设置中启用“{{section}}”区域，才能调用此存储信道",
+      "previous": "启用{{section}}在设置中调用此内存",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.recall.failed",
+      "english": "Recall failed — check CAT",
+      "chinese": "存储信道调用失败，请检查 CAT",
+      "previous": "召回失败——检查CAT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.recall.error",
+      "english": "Recall failed: {{error}}",
+      "chinese": "存储信道调用失败：{{error}}",
+      "previous": "回顾失败 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.recall.done",
+      "english": "{{name}} — {{freq}} MHz {{mode}}",
+      "chinese": "{{name}} — {{freq}} MHz {{mode}}",
+      "previous": "{{name}}. . . . . . .{{freq}} MHz {{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.recall.done.setMode",
+      "english": "{{name}} — {{freq}} MHz · set {{mode}} on the rig",
+      "chinese": "{{name}} — {{freq}} MHz，请在电台上设置 {{mode}} 模式",
+      "previous": "{{name}}. . . . . . .{{freq}} MHz设置{{mode}}在钻机上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.net.reminder",
+      "english": "Net {{until}}: {{name}} — {{freq}} {{mode}}",
+      "chinese": "通联网{{until}}：{{name}} — {{freq}} {{mode}}",
+      "previous": "净额{{until}}数字 :{{name}}. . . . . . .{{freq}} {{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.net.tune",
+      "english": "Tune",
+      "chinese": "调谐",
+      "previous": "调谐",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "调谐"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "调谐"
+        }
+      ]
+    },
+    {
+      "id": "shell.rotator.pointed",
+      "english": "↗ Pointing antenna to {{bearing}}° ({{call}}, {{to}})",
+      "chinese": "↗ 正在将天线转向 {{bearing}}°（{{call}}，{{to}}）",
+      "previous": "* 指向天线{{bearing}}° ({{call}}, (中文).{{to}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.rotator.pointedLong",
+      "english": "↗ Pointing antenna long path to {{bearing}}° ({{call}}, {{to}})",
+      "chinese": "↗ 正在将天线按长路径转向 {{bearing}}°（{{call}}，{{to}}）",
+      "previous": "* 指向天线长路{{bearing}}° ({{call}}, (中文).{{to}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.rotator.failed",
+      "english": "Couldn't point the antenna at {{call}}",
+      "chinese": "无法将天线转向 {{call}}",
+      "previous": "无法对准天线{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.source.companion",
+      "english": "Source: {{source}} — listening for WSJT-X/JTDX/MSHV on :2237",
+      "chinese": "信号源：{{source}}，正在 2237 端口监听 WSJT-X/JTDX/MSHV",
+      "previous": "资料来源:{{source}}——收听WSJT-X/JTDX/MSHV于:2237",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.source.set",
+      "english": "Source: {{source}}",
+      "chinese": "信号源：{{source}}",
+      "previous": "资料来源:{{source}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "shell.wizard.saveFailed",
+      "english": "Setup didn't fully save: {{error}} — check Settings",
+      "chinese": "设置未能全部保存：{{error}}。请检查设置",
+      "previous": "设置没有完全保存 :{{error}}——检查设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.connecting",
+      "english": "Connecting to the radio…",
+      "chinese": "正在连接电台…",
+      "previous": "正在连接收音机...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.fieldDay.inactive",
+      "english": "No contest is running.",
+      "chinese": "没有比赛在进行",
+      "previous": "没有比赛在进行",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.fdClub.away.head",
+      "english": "Club board",
+      "chinese": "俱乐部看板",
+      "previous": "俱乐部董事会",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.fdClub.away.body",
+      "english": "The club board shows here while the contest is the section you are working in. Step back into the contest and it comes straight back — nothing has stopped, and the host is still collecting contacts.",
+      "chinese": "仅在当前操作区域为竞赛时，此处才显示俱乐部看板。切回竞赛后看板立即恢复，活动并未停止，主机仍在收集交信记录。",
+      "previous": "俱乐部的董事会在这里亮相 而比赛是你们工作的地方 回到比赛中,它直接回来——一无所获,主持人仍在收集联系人.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.fdClub.off.head",
+      "english": "Club sync is off",
+      "chinese": "俱乐部同步关闭",
+      "previous": "俱乐部同步关闭",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.fdClub.off.body",
+      "english": "This station is not hosting a club event and has not joined one, so there are no other positions to show.",
+      "chinese": "本台既未主持也未加入俱乐部活动，因此没有其他操作席位可显示。",
+      "previous": "本站不承办俱乐部活动,也未加入其中,因此没有其他位置可展示.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.fdClub.off.route",
+      "english": "Turn it on in Settings ▸ Contesting ▸ Field Day Club Sync ▸ Host a club event — or paste the host station’s address into Join event at to join one someone else is running.",
+      "chinese": "请在“设置 ▸ 竞赛 ▸ Field Day 俱乐部同步 ▸ 主持俱乐部活动”中启用，或在“加入活动地址”中粘贴主机电台地址，加入他人主持的活动。",
+      "previous": "在设置 QQ 比赛 QQ 场日俱乐部 同步 QQ 中打开 主办一个俱乐部活动——或将主办站的地址粘贴到联合活动上,以便加入另一个正在运行的人。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.fdClub.off.wait",
+      "english": "Leave this window open. The board fills in by itself the moment sync starts.",
+      "chinese": "可保持此窗口打开。同步启动后，看板会自动显示数据。",
+      "previous": "把窗户打开 当同步开始时 董事会就自己填充",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "detached.unavailable",
+      "english": "Panel “{{panel}}” isn’t available as a standalone window yet.",
+      "chinese": "“{{panel}}”面板暂不支持独立窗口。",
+      "previous": "“小组”{{panel}}”目前还没有作为独立的窗口。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.aria",
+      "english": "Operating mode",
+      "chinese": "操作模式",
+      "previous": "操作模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.group.label",
+      "english": "Digital",
+      "chinese": "数字通信",
+      "previous": "数字通信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.group.aria",
+      "english": "Digital modes",
+      "chinese": "数字通信模式",
+      "previous": "数字通信模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.ft.title",
+      "english": "FT weak-signal cockpit — FT8 / FT4 (pick the tier in the top bar)",
+      "chinese": "FT 弱信号电台操作界面——FT8 / FT4（在顶部栏选择层级）",
+      "previous": "FT 弱信号电台操作界面——FT8 / FT4（在顶部栏选择层级）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.tempo.title",
+      "english": "Tempo — two-way free-text calling (TempoFast / TempoDeep), with Roam (coordinated QSY) inside",
+      "chinese": "Tempo——双向自由文本通信（TempoFast / TempoDeep），含协同换频 Roam",
+      "previous": "Tempo——双向自由文本通信（TempoFast / TempoDeep），含协同换频 Roam",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.rtty.title",
+      "english": "RTTY — Baudot teletype (45.45 baud): streaming decode + F-key macros",
+      "chinese": "RTTY——Baudot 电传打字（45.45 baud）：流式解码与 F 键宏",
+      "previous": "RTTY——Baudot 电传打字（45.45 baud）：流式解码与 F 键宏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.psk.title",
+      "english": "PSK31 — narrow-band keyboard mode: click a trace on the waterfall, read the ragchew (receive)",
+      "chinese": "PSK31——窄带键盘通信模式：在瀑布图上点击信号，接收并阅读对话",
+      "previous": "PSK31——窄带键盘通信模式：在瀑布图上点击信号，接收并阅读对话",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.sstv.title",
+      "english": "SSTV — slow-scan TV: received images decode into the gallery",
+      "chinese": "SSTV——慢扫描电视：接收图像会解码并显示在图库中",
+      "previous": "SSTV——慢扫描电视：接收图像会解码并显示在图库中",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.aprs.title",
+      "english": "APRS — AFSK-1200 packet: decode positions/messages, send a position beacon",
+      "chinese": "APRS——AFSK-1200 分组通信：解码位置和消息，发送位置信标",
+      "previous": "APRS——AFSK-1200 分组通信：解码位置和消息，发送位置信标",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.digital.js8.title",
+      "english": "JS8 — JS8Call-compatible keyboard mode: heartbeats, directed messages, relay and a store-and-forward inbox, all four speeds decoded at once",
+      "chinese": "JS8——兼容 JS8Call 的键盘通信模式：心跳、定向消息、中继与存储转发收件箱；同时解码全部四种速率",
+      "previous": "JS8——兼容 JS8Call 的键盘通信模式：心跳、定向消息、中继与存储转发收件箱；同时解码全部四种速率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.phone.title",
+      "english": "Phone (SSB) operating — PTT, sideband, RF power, panadapter (casual)",
+      "chinese": "语音（SSB）操作——PTT、边带、射频功率、全景频谱（休闲通联）",
+      "previous": "语音（SSB）操作——PTT、边带、射频功率、全景频谱（休闲通联）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.cw.title",
+      "english": "CW operating — keyboard + F-key macros, WPM, spectrum (casual)",
+      "chinese": "CW 操作——键盘、F 键宏、WPM、频谱（休闲通联）",
+      "previous": "CW 操作——键盘、F 键宏、WPM、频谱（休闲通联）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.connect.label",
+      "english": "Conditions",
+      "chinese": "传播状况",
+      "previous": "传播状况",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.connect.title",
+      "english": "Conditions (formerly Connect) — THE map: grayline globe + live spots + openings + propagation, with click-to-work",
+      "chinese": "传播状况（原名 Connect）：晨昏线地球仪、实时通报、传播开通情况和传播信息；点击电台即可开始通联",
+      "previous": "传播地图——晨昏线地球仪、实时通报、开通情况与传播预测；点击即可开始通联",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.needed.label",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.needed.title",
+      "english": "Needed — what you still need that's on the air now; single-click to QSY",
+      "chinese": "当前仍需通联的电台；单击即可换频",
+      "previous": "当前仍需通联的电台；单击即可换频",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.spots.label",
+      "english": "Spots",
+      "chinese": "DX 通报",
+      "previous": "DX 通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.spots.title",
+      "english": "Spots — every cluster/RBN spot on the air (the raw firehose); filter by band/mode",
+      "chinese": "当前所有 DX 集群 / RBN 通报；可按频段和模式筛选",
+      "previous": "当前所有 DX 集群 / RBN 通报；可按频段和模式筛选",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.dxped.label",
+      "english": "DXped",
+      "chinese": "DX 远征",
+      "previous": "DX 远征",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.dxped.title",
+      "english": "DXpeditions — active now, the forward calendar, and what you need from each",
+      "chinese": "DX 远征：当前活动、未来日历，以及每次远征可补齐的待通联项目",
+      "previous": "正在进行的 DX 远征、未来日历及每个远征尚待获取的实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.sats.label",
+      "english": "Satellites",
+      "chinese": "卫星",
+      "previous": "卫星",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.sats.title",
+      "english": "Satellites — pass times over your grid, favorites, polar plots, and rotor tracking",
+      "chinese": "卫星：本台网格位置的过境时间、收藏、极坐标图及旋转器跟踪",
+      "previous": "卫星过境时间、收藏、极坐标图和天线旋转器跟踪",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.logbook.label",
+      "english": "Logbook",
+      "chinese": "交信日志",
+      "previous": "交信日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.logbook.title",
+      "english": "Logbook — your ADIF contacts",
+      "chinese": "交信日志——ADIF 格式的交信记录",
+      "previous": "交信日志——ADIF 格式的交信记录",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.awards.label",
+      "english": "Awards",
+      "chinese": "奖状",
+      "previous": "奖状",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.awards.title",
+      "english": "Awards — your Journey (firsts, ladders, milestones) + official DXCC/WAS/WAZ progress",
+      "chinese": "奖状：通联历程（首次通联、进阶和里程碑），以及 DXCC/WAS/WAZ 官方奖项进度",
+      "previous": "奖状——通联历程及 DXCC / WAS / WAZ 官方奖状进度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.stats.label",
+      "english": "Stats",
+      "chinese": "统计",
+      "previous": "统计",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.stats.title",
+      "english": "Statistics — your logbook sliced: QSOs by band/mode/year/hour, top DXCC entities, states, confirmations",
+      "chinese": "统计：按频段、模式、年份和小时分类的交信数，通联最多的 DXCC 实体、州省及确认情况",
+      "previous": "统计——你的日志切片:按波段/模式/年/小时、最高DXCC实体、国家、确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.fieldDay.label",
+      "english": "Contest",
+      "chinese": "竞赛",
+      "previous": "竞赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.fieldDay.title",
+      "english": "Contest — {{contest}}",
+      "chinese": "竞赛——{{contest}}",
+      "previous": "竞赛——{{contest}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.fdClub.label",
+      "english": "Club Board",
+      "chinese": "俱乐部看板",
+      "previous": "俱乐部看板",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.fdClub.title",
+      "english": "Club band board — who is on what band at every position on site, in its own window for a second monitor",
+      "chinese": "俱乐部频段看板：查看现场各操作席位使用的频段，可在第二台显示器中独立打开",
+      "previous": "俱乐部频段看板——查看现场各位置的电台和频段；可在第二台显示器中独立打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.pota.title",
+      "english": "POTA / SOTA — parks & summits: who's on now (hunt) + tag your activation",
+      "chinese": "POTA / SOTA：查找当前公园和山顶活动电台进行追逐通联，并为本台活动添加标记",
+      "previous": "POTA / SOTA——查找当前公园和山顶电台并标记自己的激活",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.memories.label",
+      "english": "Memories",
+      "chinese": "存储信道",
+      "previous": "存储信道",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.memories.title",
+      "english": "Memories — saved channels: repeaters, nets, calling freqs; groups + ★ favorites; one click to tune",
+      "chinese": "已保存信道：中继台、通联网和呼叫频率；支持分组、收藏和一键调谐",
+      "previous": "已保存信道：中继台、通联网和呼叫频率；支持分组、收藏和一键调谐",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.program.label",
+      "english": "Repeaters",
+      "chinese": "中继台",
+      "previous": "中继台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.program.title",
+      "english": "Repeaters — build channel lists for your radios: local repeaters → CHIRP CSV, rig memories, or tune-now",
+      "chinese": "为电台整理中继信道：导出本地中继台至 CHIRP CSV、电台存储器或立即调谐",
+      "previous": "为电台整理中继信道：导出本地中继台至 CHIRP CSV、电台存储器或立即调谐",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.order.reset.label",
+      "english": "Reset order",
+      "chinese": "重置顺序",
+      "previous": "重置顺序",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.order.reset.title",
+      "english": "Reset the section order to default",
+      "chinese": "将各分区顺序恢复为默认值",
+      "previous": "将各分区顺序恢复为默认值",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.mode.title",
+      "english": "Active operating mode",
+      "chinese": "当前操作模式",
+      "previous": "当前操作模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.mode.chat",
+      "english": "CHAT",
+      "chinese": "聊天",
+      "previous": "聊天",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nav.settings.label",
+      "english": "Settings",
+      "chinese": "设置",
+      "previous": "设置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "设置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "设置"
+        }
+      ]
+    },
+    {
+      "id": "nowbar.aria",
+      "english": "Now: band, getting out, and top need",
+      "chinese": "当前状态：频段、本台信号覆盖及首要待通联目标",
+      "previous": "现在:乐队,出来,最需要的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.label",
+      "english": "NOW",
+      "chinese": "现在",
+      "previous": "现在",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.age.secs",
+      "english": "{{secs}}s",
+      "chinese": "{{secs}} 秒",
+      "previous": "{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.age.mins",
+      "english": "{{mins}}m",
+      "chinese": "{{mins}} 分钟",
+      "previous": "{{mins}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.age.hours",
+      "english": "{{hours}}h",
+      "chinese": "{{hours}} 小时",
+      "previous": "{{hours}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "nowbar.band.label",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "nowbar.band.title.connect",
+      "english": "Open Conditions — the map + nowcast",
+      "chinese": "打开传播状况，查看地图和当前传播评估",
+      "previous": "打开条件——地图+现在播映",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

@@ -1,0 +1,1634 @@
+{
+  "batch": 31,
+  "range": [
+    6001,
+    6200
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 193,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 1,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/connect/panes.tsx",
+    "ui/src/components/connect/paneFormat.ts",
+    "ui/src/components/MessageBubble.tsx",
+    "ui/src/components/AprsCockpit.tsx",
+    "ui/src/components/Conversation.tsx",
+    "ui/src/components/FreetextMeter.tsx"
+  ],
+  "rows": [
+    {
+      "id": "connect.selection.age.secs",
+      "english": "{{secs}}s ago",
+      "chinese": "{{secs}} 秒前",
+      "previous": "{{secs}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.age.mins",
+      "english": "{{mins}}m ago",
+      "chinese": "{{mins}} 分钟前",
+      "previous": "{{mins}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.heardYou",
+      "english": "heard YOU",
+      "chinese": "已收到本台信号",
+      "previous": "听见了吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.approx",
+      "english": "~location",
+      "chinese": "约略位置",
+      "previous": "~ 地点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.decoded",
+      "english": "decoded here",
+      "chinese": "本台已解码",
+      "previous": "在此解码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.workedBefore",
+      "english": "worked before",
+      "chinese": "曾通联",
+      "previous": "曾经工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.bestShot",
+      "english": "Best shot: {{window}}",
+      "chinese": "最佳通联时段：{{window}}",
+      "previous": "最佳镜头 :{{window}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.work.title",
+      "english": "Rig jumps to this spot's band/mode/frequency; the right cockpit opens",
+      "chinese": "将电台切换至此通报的频段、模式和频率，并打开相应操作界面",
+      "previous": "Rig 跳转到此位置的带/ 模式/ 频率; 右驾驶舱打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.work.label",
+      "english": "▶ Work {{band}}",
+      "chinese": "▶ 通联 {{band}}",
+      "previous": "• 工作{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.engine.modelled",
+      "english": "modelled",
+      "chinese": "模型预测",
+      "previous": "模拟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.engine.outlook",
+      "english": "modelled · DX",
+      "chinese": "模型预测 · DX",
+      "previous": "- DX模型",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.path.heading",
+      "english": "Path to {{call}}",
+      "chinese": "通往 {{call}} 的传播路径",
+      "previous": "路径{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.path.muf.title",
+      "english": "Maximum Usable Frequency — the path's ceiling right now. Bands below it are open; bands above it are closed.",
+      "chinese": "最高可用频率，表示当前路径的频率上限。低于此频率的频段预测可通，高于此频率的频段预测不通。",
+      "previous": "最大可用频率——目前路径的天花板. 其下方的乐队是开放的;其上方的乐队是封闭的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.path.muf",
+      "english": "Ceiling (MUF): <b>{{muf}} MHz</b>",
+      "chinese": "频率上限（MUF）：<b>{{muf}} MHz</b>",
+      "previous": "上限(货币基金):<b>{{muf}} MHz</b>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.path.none",
+      "english": "No HF band modelled workable on this path right now.",
+      "chinese": "模型预测当前此路径上没有可通联的高频频段。",
+      "previous": "现在这个路径上没有可行的高频带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.path.greyline.title",
+      "english": "Greyline (terminator) opening",
+      "chinese": "晨昏线传播开通",
+      "previous": "灰线(结束) 打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.path.modeChip.title",
+      "english": "{{mode}}: ~{{pct}}% of days this circuit works right now (P.533)",
+      "chinese": "{{mode}}：按当前时刻条件，此链路约有 {{pct}}% 的天数可用（P.533）",
+      "previous": "{{mode}}:~{{pct}}电路工作日的百分比(P.533)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.outlook.heading",
+      "english": "Band outlook",
+      "chinese": "频段展望",
+      "previous": "带状展望",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.outlook.muf.title",
+      "english": "Maximum Usable Frequency — the modeled ceiling to long-haul DX right now. Bands below it are open; above it, closed.",
+      "chinese": "最高可用频率，表示模型预测当前远距离 DX 通联的频率上限。低于此频率的频段预测可通，高于此频率的频段预测不通。",
+      "previous": "最大可用频率——目前模拟天花板为长长DX. 它下面的乐队是开放的;在它的上面,关闭。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.outlook.none",
+      "english": "No HF band modelled workable to DX right now.",
+      "chinese": "模型预测当前没有适合 DX 通联的高频频段。",
+      "previous": "目前DX没有可以模拟的高频波段.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.getout.heading",
+      "english": "Am I getting out?",
+      "chinese": "哪些电台收到了本台信号？",
+      "previous": "我要出去吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.getout.none",
+      "english": "No reception reports yet — call CQ, then watch who hears you.",
+      "chinese": "暂无接收报告，请先呼叫 CQ，再查看哪些电台收到了本台信号。",
+      "previous": "还没有接收报告 给CQ打电话 看谁听到你的声音",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.getout.summary",
+      "english": "<b>{{count}}</b> hearing you · furthest <b>{{dist}}</b>",
+      "chinese": "<b>{{count}}</b> 台收到本台信号 · 最远 <b>{{dist}}</b>",
+      "previous": "<b>{{count}}</b>听到你的声音 距离最远<b>{{dist}}</b>",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.getout.select.title",
+      "english": "Select {{call}} on the map",
+      "chinese": "在地图上选中 {{call}}",
+      "previous": "选择{{call}}在地图上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.loading",
+      "english": "Reading the band…",
+      "chinese": "正在获取频段状况…",
+      "previous": "看乐队...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.offline",
+      "english": "No live propagation data right now.",
+      "chinese": "当前没有实时传播数据。",
+      "previous": "现在没有直播数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bandAdvisor.offline",
+      "english": "No live band data yet.",
+      "chinese": "暂无实时频段数据。",
+      "previous": "还没有现场乐队数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bandAdvisor.none",
+      "english": "No bands modelled open right now.",
+      "chinese": "模型预测当前没有开通的频段。",
+      "previous": "现在没有乐队模拟打开。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bandAdvisor.best",
+      "english": "Best band now: {{band}} ({{word}}).",
+      "chinese": "当前最佳频段：{{band}}（{{word}}）。",
+      "previous": "现在最好的乐队:{{band}}(单位:千美元){{word}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bandAdvisor.bestRegion",
+      "english": "Best band now: {{band}} to {{region}} ({{word}}).",
+      "chinese": "当前通往 {{region}} 的最佳频段：{{band}}（{{word}}）。",
+      "previous": "现在最好的乐队:{{band}}改为:{{region}}(单位:千美元){{word}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.selection.none",
+      "english": "Tap a station, spot, or DXpedition on the map.",
+      "chinese": "点击地图上的电台、通报或远征活动。",
+      "previous": "在地图上录下一个车站,位置,或者DXpedition.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.selection",
+      "english": "{{call}} — {{who}}{{az}}{{band}}.",
+      "chinese": "{{call}} — {{who}}{{az}}{{band}}。",
+      "previous": "{{call}}. . . . . . .{{who}}{{az}}{{band}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.selection.hearing",
+      "english": "{{call}} — {{who}}{{az}}{{band}}, and is hearing you.",
+      "chinese": "{{call}} — {{who}}{{az}}{{band}}，已收到本台信号。",
+      "previous": "{{call}}. . . . . . .{{who}}{{az}}{{band}}听到你的声音",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.selection.az",
+      "english": " {{az}}",
+      "chinese": "，{{az}}",
+      "previous": "{{az}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.selection.band",
+      "english": " on {{band}}",
+      "chinese": "，位于 {{band}}",
+      "previous": "打开{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.outlook.none.call",
+      "english": "No HF band modelled workable to {{call}} right now.",
+      "chinese": "模型预测当前没有可与 {{call}} 通联的高频频段。",
+      "previous": "无法模拟高频波段{{call}}现在",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.outlook.none.dx",
+      "english": "No HF band modelled workable for DX right now.",
+      "chinese": "模型预测当前没有适合 DX 通联的高频频段。",
+      "previous": "现在DX没有可以使用的高频波段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.outlook.path",
+      "english": "{{band}} is your best path to {{call}} now — {{window}}.",
+      "chinese": "当前与 {{call}} 通联的最佳频段是 {{band}}，时段为 {{window}}。",
+      "previous": "{{band}}这是你最好的路径{{call}}现在...{{window}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.outlook.best",
+      "english": "Best DX band now: {{band}} ({{workability}}).",
+      "chinese": "当前最佳 DX 频段：{{band}}（{{workability}}）。",
+      "previous": "现在最好的DX乐队:{{band}}(单位:千美元){{workability}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.openings.none",
+      "english": "No band openings right now.",
+      "chinese": "当前没有检测到频段传播开通。",
+      "previous": "现在没有乐队开张",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.openings",
+      "english": "{{band}} OPEN {{octant}} — ~{{dist}}, {{stations}} stns.",
+      "chinese": "{{band}} 向 {{octant}} 方向开通，距离约 {{dist}}，共 {{stations}} 台。",
+      "previous": "{{band}}打开{{octant}}{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}你觉得呢?{{dist}}, (中文).{{stations}}师曰.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.spaceWx.unavailable",
+      "english": "Space weather unavailable.",
+      "chinese": "暂无空间气象数据。",
+      "previous": "空间气象没有。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.spaceWx",
+      "english": "SFI {{sfi}}, Kp {{kp}}: {{impact}}.",
+      "chinese": "SFI {{sfi}}，Kp {{kp}}：{{impact}}。",
+      "previous": "自立扶持组织{{sfi}}时速{{kp}}数字 :{{impact}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.spaceWx.flare",
+      "english": "SFI {{sfi}}, Kp {{kp}}: {{impact}}; {{xray}} flare in progress.",
+      "chinese": "SFI {{sfi}}，Kp {{kp}}：{{impact}}；正在发生 {{xray}} 级耀斑。",
+      "previous": "自立扶持组织{{sfi}}时速{{kp}}数字 :{{impact}}· ;{{xray}}发射中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.spaceWx.blackout",
+      "english": "SFI {{sfi}}, Kp {{kp}}: {{impact}}; R{{scale}} radio blackout.",
+      "chinese": "SFI {{sfi}}，Kp {{kp}}：{{impact}}；R{{scale}} 级无线电黑障。",
+      "previous": "自立扶持组织{{sfi}}时速{{kp}}数字 :{{impact}}页:1{{scale}}无线电停电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.spaceWx.flareBlackout",
+      "english": "SFI {{sfi}}, Kp {{kp}}: {{impact}}; {{xray}} flare in progress; R{{scale}} radio blackout.",
+      "chinese": "SFI {{sfi}}，Kp {{kp}}：{{impact}}；正在发生 {{xray}} 级耀斑；R{{scale}} 级无线电黑障。",
+      "previous": "自立扶持组织{{sfi}}时速{{kp}}数字 :{{impact}}· ;{{xray}}发生中; R{{scale}}无线电停电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.getout.dir",
+      "english": "{{count}} hearing you — {{dir}}.",
+      "chinese": "{{count}} 台收到本台信号，{{dir}}。",
+      "previous": "{{count}}听着...{{dir}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.getout.furthest",
+      "english": "{{count}} hearing you — furthest {{dist}}.",
+      "chinese": "{{count}} 台收到本台信号，最远 {{dist}}。",
+      "previous": "{{count}}听到你的声音,最远{{dist}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bestband.none",
+      "english": "No region reachable on any band yet.",
+      "chinese": "暂无任何频段可到达的地区。",
+      "previous": "还没有一个区域可以到达任何区域。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bestband",
+      "english": "To {{region}}: try {{band}} ({{word}}).",
+      "chinese": "前往 {{region}}：可尝试 {{band}}（{{word}}）。",
+      "previous": "改为{{region}}: 尝试{{band}}(单位:千美元){{word}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.activity.offline",
+      "english": "No live activity data right now.",
+      "chinese": "当前没有实时活动数据。",
+      "previous": "现在没有活动数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.activity.none",
+      "english": "Quiet on all bands — no activity around you yet.",
+      "chinese": "所有频段都较安静，附近暂无活动。",
+      "previous": "所有乐队都安静下来——你周围还没有活动.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.activity.top::one",
+      "english": "Hottest: {{band}} to {{region}} ({{count}} stn).",
+      "chinese": "最活跃：{{band}} 通往 {{region}}（{{count}} 台）。",
+      "previous": "热度 :{{band}}改为:{{region}}(单位:千美元){{count}}(中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.activity.top::other",
+      "english": "Hottest: {{band}} to {{region}} ({{count}} stns).",
+      "chinese": "最活跃：{{band}} 通往 {{region}}（{{count}} 台）。",
+      "previous": "热度 :{{band}}改为:{{region}}(单位:千美元){{count}}t.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.beacons.heard",
+      "english": "Beacons heard: {{list}}.",
+      "chinese": "已收到的信标：{{list}}。",
+      "previous": "灯塔听到:{{list}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.beacons.now",
+      "english": "Beacons now: {{list}}.",
+      "chinese": "当前发射的信标：{{list}}。",
+      "previous": "现在灯塔:{{list}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.insights.none",
+      "english": "No notable changes right now.",
+      "chinese": "当前没有显著变化。",
+      "previous": "现在没有明显的变化。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.greyline.noGrid",
+      "english": "Set your grid in Settings to see your greyline windows.",
+      "chinese": "在设置中填入本台网格，即可查看晨昏线通联时段。",
+      "previous": "设置您的网格以查看您的灰线窗口 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.greyline.sunrise",
+      "english": "Your sunrise greyline in {{when}} — watch 160/80/40m long-path.",
+      "chinese": "距本台日出晨昏线时段还有 {{when}}，可留意 160/80/40 米波段的长路径传播。",
+      "previous": "你的日出灰色线{{when}}——看160/80/40m长途.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.greyline.sunset",
+      "english": "Your sunset greyline in {{when}} — watch 160/80/40m long-path.",
+      "chinese": "距本台日落晨昏线时段还有 {{when}}，可留意 160/80/40 米波段的长路径传播。",
+      "previous": "你的日落灰色线{{when}}——看160/80/40m长途.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.greyline.in.hours",
+      "english": "{{hours}}h {{mins}}m",
+      "chinese": "{{hours}} 小时 {{mins}} 分钟",
+      "previous": "{{hours}}页:1{{mins}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.greyline.in.mins",
+      "english": "{{mins}}m",
+      "chinese": "{{mins}} 分钟",
+      "previous": "{{mins}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bandHours.none",
+      "english": "No workable bands modelled in the next 24 h.",
+      "chinese": "模型预测未来 24 小时没有可通联频段。",
+      "previous": "在接下来的24 h中没有可行的带型.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.bandHours.peak",
+      "english": "{{band}} peaks {{hour}}Z ({{pct}}%).",
+      "chinese": "{{band}} 在 {{hour}}Z 达到峰值（{{pct}}%）。",
+      "previous": "{{band}}峰数{{hour}}兹({{pct}}(单位:千美元)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.muf.noData",
+      "english": "No live ionosonde data right now.",
+      "chinese": "暂无实时电离层测高仪数据。",
+      "previous": "现在没有电离层数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.muf.noneNearby",
+      "english": "No ionosonde MUF reported nearby.",
+      "chinese": "附近暂无电离层测高仪的 MUF 报告。",
+      "previous": "附近没有Iononsonde MUF的报道.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.muf.nearby",
+      "english": "Measured MUF nearby: {{mhz}} MHz ({{mins}} min old).",
+      "chinese": "附近实测 MUF：{{mhz}} MHz（{{mins}} 分钟前）。",
+      "previous": "附近测量的聚氯氟烃:{{mhz}} MHz(单位:千美元){{mins}}分钟老)。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.es.open::one",
+      "english": "{{band}} OPEN {{octant}} — ~{{dist}} {{mode}}, {{count}} stn.",
+      "chinese": "{{band}} 向 {{octant}} 方向开通，约 {{dist}}，{{mode}}，{{count}} 台。",
+      "previous": "{{band}}打开{{octant}}{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}你觉得呢?{{dist}} {{mode}}, (中文).{{count}}师曰.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.es.open::other",
+      "english": "{{band}} OPEN {{octant}} — ~{{dist}} {{mode}}, {{count}} stns.",
+      "chinese": "{{band}} 向 {{octant}} 方向开通，约 {{dist}}，{{mode}}，{{count}} 台。",
+      "previous": "{{band}}打开{{octant}}{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}你觉得呢?{{dist}} {{mode}}, (中文).{{count}}师曰.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.es.season",
+      "english": "Es season: watch {{freq}} for sudden 6m DX.",
+      "chinese": "当前为 Es 季节，可守听 {{freq}}，留意突然出现的 6 米 DX 信号。",
+      "previous": "Es 季节:表{{freq}}6mDX突然出现",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.basic.es.quiet",
+      "english": "6m quiet — outside Es season.",
+      "chinese": "6 米波段安静，当前不在 Es 季节。",
+      "previous": "6m安静——在埃斯赛季外.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.empty.heading",
+      "english": "No conversation selected",
+      "chinese": "尚未选择对话",
+      "previous": "没有选择对话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.empty.body",
+      "english": "Pick a station from the roster, or call CQ to be heard on the band.",
+      "chinese": "从电台列表选择一个电台，或呼叫 CQ，让频段上的其他电台收到本台信号。",
+      "previous": "从名册上选一个站,或打电话CQ在乐队中听到.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.empty.fdActive",
+      "english": "<chip>{{event}}</chip> active — call CQ, then send your exchange from the chat box.",
+      "chinese": "<chip>{{event}}</chip> 正在进行，请先呼叫 CQ，再从聊天框发送交换信息。",
+      "previous": "<chip>{{event}}</chip>活动 —— 呼叫 CQ, 然后从聊天框中发送您的交换 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.cq.button",
+      "english": "📣 Call CQ",
+      "chinese": "📣 呼叫 CQ",
+      "previous": "QQ 调用 CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.cq.onAir",
+      "english": "Transmits the standard <b>{{cq}}</b> and arms TX.",
+      "chinese": "启用发射并发送标准报文 <b>{{cq}}</b>。",
+      "previous": "传送标准<b>{{cq}}</b>还有武器 TX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.heartbeat.launch.on",
+      "english": "💓 Heartbeat on",
+      "chinese": "💓 心跳已开启",
+      "previous": "心跳动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.heartbeat.launch.off",
+      "english": "🤍 Heartbeat off",
+      "chinese": "🤍 心跳已关闭",
+      "previous": "心跳结束",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.heartbeat.launch.title",
+      "english": "Periodically beacon your presence so other Tempo stations can hear you and deliver queued messages — turn off to stay silent",
+      "chinese": "定期发送在线心跳，让其他 Tempo 电台收到本台信号并投递排队消息；关闭后不再发送心跳",
+      "previous": "定期通知您的出现, 以便其他 Tempo 站能听到您并发送排队的消息—— 关闭以保持沉默",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.heartbeat.chip.on",
+      "english": "💓 Heartbeat",
+      "chinese": "💓 心跳",
+      "previous": "心跳乐",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.heartbeat.chip.off",
+      "english": "🤍 Heartbeat",
+      "chinese": "🤍 心跳",
+      "previous": "心跳乐",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.heartbeat.chip.title",
+      "english": "Presence heartbeat — periodically beacon so other Tempo stations can hear you and deliver queued messages",
+      "chinese": "在线心跳：定期发送信标，让其他 Tempo 电台收到本台信号并投递排队消息",
+      "previous": "存在心跳——定期信标,以便其他Tempo站能听到你并发送排队的消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.band.quickbar.aria",
+      "english": "Band broadcasts",
+      "chinese": "频段广播",
+      "previous": "乐队广播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.band",
+      "english": "Band — open calls",
+      "chinese": "频段 — 公开呼叫",
+      "previous": "乐队——开通电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.broadcastAs",
+      "english": "You broadcast as DE {{call}}",
+      "chinese": "本台以 DE {{call}} 广播",
+      "previous": "你作为DE广播{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.messages",
+      "english": "{{count}} messages",
+      "chinese": "{{count}} 条消息",
+      "previous": "{{count}}信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.fd.title",
+      "english": "Winter Field Day is active — Tempo is a first-class Field Day contact surface",
+      "chinese": "Winter Field Day 正在进行，Tempo 可直接用于该活动的交信操作",
+      "previous": "冬季战地日活动——Tempo是一等战地日接触面.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.fd.working",
+      "english": "Working {{call}}",
+      "chinese": "正在与 {{call}} 通联",
+      "previous": "工作{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.fd.running",
+      "english": "Running (calling CQ)",
+      "chinese": "守频呼叫（CQ）",
+      "previous": "运行( 呼叫 CQ)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.header.fd.searchPounce",
+      "english": "Search & pounce",
+      "chinese": "扫频通联",
+      "previous": "搜索弹出( P)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.messages.empty",
+      "english": "No messages yet — say hello.",
+      "chinese": "暂无消息，打个招呼吧。",
+      "previous": "还没有消息——打招呼.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.composer.quickReplies.aria",
+      "english": "Quick replies",
+      "chinese": "快捷回复",
+      "previous": "快速回复",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.composer.fdExchange.title",
+      "english": "Send your Winter Field Day exchange (class + section)",
+      "chinese": "发送本台 Winter Field Day 交换信息（类别 + 分区）",
+      "previous": "发送您的冬季战地日交换( 类+ 部分)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.composer.placeholder.broadcast",
+      "english": "Broadcast to all (DE {{call}}…)",
+      "chinese": "向所有电台广播（DE {{call}}…）",
+      "previous": "向所有人广播(DE){{call}}. ) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.composer.placeholder.direct",
+      "english": "Message {{peer}}…",
+      "chinese": "向 {{peer}} 发消息…",
+      "previous": "消息{{peer}}. .  ....",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.composer.aria.broadcast",
+      "english": "Broadcast to all on frequency",
+      "chinese": "向当前频率上的所有电台广播",
+      "previous": "用频率向所有人广播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.composer.aria.direct",
+      "english": "Message {{peer}}",
+      "chinese": "向 {{peer}} 发消息",
+      "previous": "消息{{peer}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.composer.send",
+      "english": "Send",
+      "chinese": "发送",
+      "previous": "发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.meter.title::one",
+      "english": "{{count}} character · {{frames}}/{{max}} overs. Each over carries up to {{payload}} characters; {{max}} overs max — longer text is trimmed before it sends.",
+      "chinese": "{{count}} 个字符 · {{frames}}/{{max}} 轮发射。每轮最多 {{payload}} 个字符，最多 {{max}} 轮；超出长度的文字会在发送前截断。",
+      "previous": "{{count}}字符 ・{{frames}}页:1{{max}}结束了。 每一个都背到{{payload}}字符; 数字{{max}}超过最大值 — 较长的文本在发送前会修剪 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.meter.title::other",
+      "english": "{{count}} characters · {{frames}}/{{max}} overs. Each over carries up to {{payload}} characters; {{max}} overs max — longer text is trimmed before it sends.",
+      "chinese": "{{count}} 个字符 · {{frames}}/{{max}} 轮发射。每轮最多 {{payload}} 个字符，最多 {{max}} 轮；超出长度的文字会在发送前截断。",
+      "previous": "{{count}}字符 ・{{frames}}页:1{{max}}结束了。 每一个都背到{{payload}}字符; 数字{{max}}超过最大值 — 较长的文本在发送前会修剪 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.meter.unit",
+      "english": "overs",
+      "chinese": "轮发射",
+      "previous": "超过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.meter.full",
+      "english": "full",
+      "chinese": "满",
+      "previous": "满",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.abandoned",
+      "english": "Not sent — abandoned on restart. Tap to send it again.",
+      "chinese": "未发送，重启时已放弃。点击可重新发送。",
+      "previous": "未发送 - 重新启动时已放弃 。 敲击再次发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.noAck",
+      "english": "Sent {{attempts}}× — no acknowledgement. Tap to send it again.",
+      "chinese": "已发送 {{attempts}} 次，未收到确认。点击可重新发送。",
+      "previous": "发送{{attempts}}×——无确认. 敲击再次发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.held",
+      "english": "Waiting to send",
+      "chinese": "等待发送",
+      "previous": "等待发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.held.peer",
+      "english": "Waiting to send — {{call}} not heard yet",
+      "chinese": "等待发送，尚未收到 {{call}} 的信号",
+      "previous": "等待发送 -{{call}}还没有听到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.sending",
+      "english": "Sending — try {{attempt}}",
+      "chinese": "正在发送，第 {{attempt}} 次尝试",
+      "previous": "发送——尝试{{attempt}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.sent",
+      "english": "Sent",
+      "chinese": "已发送",
+      "previous": "已发送",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "发出"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "发送"
+        }
+      ]
+    },
+    {
+      "id": "tempo.bubble.onAir",
+      "english": "On air",
+      "chinese": "已发至空中",
+      "previous": "直播时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.delivered",
+      "english": "Delivered",
+      "chinese": "已送达",
+      "previous": "已交付",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.confirmed",
+      "english": "Confirmed — they answered after this went out",
+      "chinese": "已获回应，消息发出后对方作出了应答",
+      "previous": "确认,他们回答说,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.resend.title",
+      "english": "Tap to re-send this message",
+      "chinese": "点击重新发送此消息",
+      "previous": "调试以重新发送此信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.incomplete.title",
+      "english": "Only {{got}} of {{total}} parts of this message were received — the rest never arrived",
+      "chinese": "此消息共 {{total}} 部分，仅收到 {{got}} 部分，其余部分未收到",
+      "previous": "仅{{got}}页:1{{total}}收到了部分信息——其余信息从未到达",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "tempo.bubble.incomplete.badge",
+      "english": "{{got}} of {{total}} received",
+      "chinese": "已收到 {{got}}/{{total}} 部分",
+      "previous": "{{got}}页:1{{total}}已收到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.head.hint",
+      "english": "AFSK-1200 packet — decode positions/messages, send a beacon",
+      "chinese": "AFSK-1200 分组通信，解码位置和消息，发送信标",
+      "previous": "AFSK-1200包——解码位置/消息,发送信标",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.head.packets",
+      "english": "{{count}} pkts",
+      "chinese": "{{count}} 个数据包",
+      "previous": "{{count}}数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.channel.title",
+      "english": "APRS frequency by region — selecting one tunes the rig (2 m FM, AFSK-1200)",
+      "chinese": "各地区的 APRS 频率，选择后会调整电台频率（2 米 FM，AFSK-1200）",
+      "previous": "APRS按区域分列的频率——选择一个调制装置(2米调频,AFSK-1200)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.retune.label",
+      "english": "Re-tune",
+      "chinese": "重新调频",
+      "previous": "重调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.retune.title.loading",
+      "english": "Reading your APRS channel…",
+      "chinese": "正在读取本台 APRS 信道…",
+      "previous": "读你的APRS频道...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.retune.title",
+      "english": "Re-tune the rig to the selected APRS frequency (2 m FM simplex; switches to your 2 m radio)",
+      "chinese": "将电台重新调至所选 APRS 频率（2 米 FM 单工，会切换至本台的 2 米电台）",
+      "previous": "将钻机重新调整到选中的APRS频率(2m FM simplex;切换到2m收音机)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.retune.title.noCoverage",
+      "english": "This radio doesn't cover {{freq}} MHz — RF APRS needs a VHF radio.",
+      "chinese": "此电台不支持 {{freq}} MHz，射频 APRS 需要甚高频电台。",
+      "previous": "这收音机不覆盖{{freq}} MHz- RF(俄罗斯)APRS需要一个甚高频无线电。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.dial.title",
+      "english": "The rig's current dial / band / mode (this view hides the top bar's readout)",
+      "chinese": "电台当前拨盘频率／频段／模式，此界面会隐藏顶栏的相应读数",
+      "previous": "钻机目前的拨号 / 频段 / 模式( 此视图隐藏顶部栏的读取)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.rail.width.label",
+      "english": "Station list column width",
+      "chinese": "电台列表列宽度",
+      "previous": "车站列表列宽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.mapLeft.label",
+      "english": "Map on the left",
+      "chinese": "地图置于左侧",
+      "previous": "左边的地图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.mapLeft.title",
+      "english": "Show the map on the left of the station list, or back on the right",
+      "chinese": "将地图显示在电台列表左侧，或恢复到右侧",
+      "previous": "显示车站列表左侧或右侧的地图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.monitor.label.auto",
+      "english": "● Monitoring (auto)",
+      "chinese": "● 正在监听（自动）",
+      "previous": "* 监测(自动)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.monitor.label.explicit",
+      "english": "● Monitoring",
+      "chinese": "● 正在监听",
+      "previous": "* 监测",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.monitor.label.off",
+      "english": "Monitor",
+      "chinese": "监听",
+      "previous": "监视器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.monitor.title.explicit",
+      "english": "You armed the decoder, so automatic acks are allowed — an incoming message addressed to you is acked when TX is on. Click to stop.",
+      "chinese": "解码器由你手动启用，因此允许自动确认；TX 开启时，会自动确认发给本台的消息。点击可停止监听。",
+      "previous": "你武装了解码器,所以自动ocks是被允许的——当TX开机时,寄给你的来函就被敲响了. 点击停止 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.monitor.title.auto",
+      "english": "Armed automatically when you opened APRS: RECEIVE ONLY. It will never send an automatic ack. To allow those, stop it and arm it yourself, then turn TX on. Click to stop.",
+      "chinese": "打开 APRS 时自动启用，仅接收，绝不发送自动确认。若要允许自动确认，请先停止，再手动启用监听并开启 TX。点击可停止。",
+      "previous": "打开时自动武装APRS仅收。 它永远也不会自动发射 为了让这些,停止它并武装它自己,然后打开TX. 点击停止 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.monitor.title.off",
+      "english": "Arm the APRS decoder on the RX audio. Arming it yourself also allows automatic acks once TX is on.",
+      "chinese": "启用 APRS 解码器，解码接收音频。手动启用后，若 TX 开启，也允许自动确认。",
+      "previous": "武装 APRS RX音频上的解码器. 一旦TX开机 自己武装它也允许自动撞门",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.tuneFix.label",
+      "english": "Tune to {{freq}}",
+      "chinese": "调至 {{freq}}",
+      "previous": "托尔{{freq}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.tuneFix.title",
+      "english": "Tune the radio to {{freq}} FM for APRS",
+      "chinese": "将电台调至 {{freq}} FM 以接收 APRS",
+      "previous": "把收音机拨到{{freq}}调频用于APRS",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.showInet.label.shown",
+      "english": "Internet {{count}}",
+      "chinese": "互联网 {{count}} 台",
+      "previous": "互联网{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.showInet.label.hidden",
+      "english": "Internet {{count}} hidden",
+      "chinese": "互联网 {{count}} 台，已隐藏",
+      "previous": "互联网{{count}}隐藏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.showInet.title.hide::one",
+      "english": "Hide the {{count}} station only the internet has reported, leaving what this radio actually hears",
+      "chinese": "隐藏仅由互联网通报的 {{count}} 个电台，保留本机实际接收到的电台",
+      "previous": "隐藏{{count}}只有互联网报导了, 留下了这个电台听到的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.showInet.title.hide::other",
+      "english": "Hide the {{count}} stations only the internet has reported, leaving what this radio actually hears",
+      "chinese": "隐藏仅由互联网通报的 {{count}} 个电台，保留本机实际接收到的电台",
+      "previous": "隐藏{{count}}留下这台电台实际听到的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.showInet.title.show::one",
+      "english": "Show the {{count}} station the internet feed reports",
+      "chinese": "显示互联网数据流通报的 {{count}} 个电台",
+      "previous": "显示{{count}}提供互联网资讯报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.showInet.title.show::other",
+      "english": "Show the {{count}} stations the internet feed reports",
+      "chinese": "显示互联网数据流通报的 {{count}} 个电台",
+      "previous": "显示{{count}}互联网资讯报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.chip.title",
+      "english": "{{detail}}\n\nClick for internet feed controls.",
+      "chinese": "{{detail}}\n\n点击调整互联网数据流。",
+      "previous": "{{detail}}点击网络种子控制 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.panel.aria",
+      "english": "APRS-IS internet feed",
+      "chinese": "APRS-IS 互联网数据流",
+      "previous": "APRS- 互联网信息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.enabled.label",
+      "english": "Internet feed",
+      "chinese": "互联网数据流",
+      "previous": "互联网种子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.radius.label",
+      "english": "Radius (km)",
+      "chinese": "半径（km）",
+      "previous": "半径( 公里)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.watch.label",
+      "english": "Watched calls",
+      "chinese": "关注的呼号",
+      "previous": "看着电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.note",
+      "english": "Changing the radius or watched calls reconnects the feed — the server does the filtering, so a new subscription has to be sent. Server, port, traffic types and the iGate live in Settings ▸ APRS.",
+      "chinese": "更改半径或关注呼号后会重新连接数据流；过滤由服务器执行，因此需重新发送订阅。服务器、端口、数据类型及 iGate 可在“设置 ▸ APRS”中调整。",
+      "previous": "改变半径或被监视的呼叫重新连接到种子——服务器进行过滤,所以需要发送新的订阅. 服务器、端口、流量类型和 iGate 在设置 QQ 中直播APRS。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.note.open",
+      "english": "Open them",
+      "chinese": "打开设置",
+      "previous": "打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.off.label",
+      "english": "Internet off",
+      "chinese": "互联网数据流已关闭",
+      "previous": "互联网关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.off.detail",
+      "english": "The APRS-IS feed is switched off.",
+      "chinese": "APRS-IS 数据流已关闭。",
+      "previous": "那个APRS-IS信号被关闭了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.js8.label",
+      "english": "Internet for JS8",
+      "chinese": "JS8 互联网连接",
+      "previous": "互联网JS8",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.js8.detail",
+      "english": "This screen's feed is off. APRS-IS is connected for JS8: its @APRSIS gateway sends what JS8 stations address to @APRSIS, under your callsign. Nothing from it is plotted here.{{relay}}",
+      "chinese": "本页数据流已关闭，但 APRS-IS 仍为 JS8 保持连接：其 @APRSIS 网关以本台呼号转发 JS8 电台发给 @APRSIS 的内容。这些数据不会标在本页地图上。{{relay}}",
+      "previous": "这个屏幕的种子关闭。APRS-IS连接到JS8@APISIS网关发送什么JS8站台地址是 @ APISS, 在您的呼号下 。 这里没有计划{{relay}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.js8.connecting",
+      "english": "This screen's feed is off. Connecting to APRS-IS for JS8's @APRSIS gateway, retrying with backoff.{{relay}}",
+      "chinese": "本页数据流已关闭。正在为 JS8 的 @APRSIS 网关连接 APRS-IS，失败后会逐步延长重试间隔。{{relay}}",
+      "previous": "这个屏幕的种子关闭。 正在连接到APRS- 这是给JS8@APISIS网关,{{relay}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.js8.relay",
+      "english": "JS8's relay listens on it too, for APRS messages to stations you hear on JS8.",
+      "chinese": "JS8 转发功能也通过此连接，监听发给本台在 JS8 上收到过的电台的 APRS 消息。",
+      "previous": "JS8中继器也听它,因为APRS给您所听到的站点留言JS8。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.connecting.label",
+      "english": "Internet connecting",
+      "chinese": "互联网连接中",
+      "previous": "互联网连接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.connecting.detail",
+      "english": "Not connected to APRS-IS yet — retrying with backoff.{{gate}}",
+      "chinese": "尚未连接到 APRS-IS，正在逐步延长间隔重试。{{gate}}",
+      "previous": "未连接到APRS- 还没有 - 重试与备份。{{gate}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.quiet.label",
+      "english": "Internet quiet",
+      "chinese": "互联网暂无数据",
+      "previous": "互联网安静",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.quiet.detail.recent",
+      "english": "Connected, but no packets recently — nothing matches your filter. Widen the radius or add watched calls.{{gate}}",
+      "chinese": "已连接，但最近未收到数据包，没有数据符合当前过滤条件。可扩大半径或添加关注呼号。{{gate}}",
+      "previous": "已连接, 但最近没有数据包 —— 没有匹配您的过滤器 。 扩大半径或增加监视电话。{{gate}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.quiet.detail.never",
+      "english": "Connected, but no packets yet — nothing matches your filter. Widen the radius or add watched calls.{{gate}}",
+      "chinese": "已连接，但尚未收到数据包，没有数据符合当前过滤条件。可扩大半径或添加关注呼号。{{gate}}",
+      "previous": "已连接, 但还没有包 —— 没有匹配您的过滤器 。 扩大半径或增加监视电话。{{gate}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.live.label",
+      "english": "Internet {{count}}",
+      "chinese": "互联网 {{count}} 包",
+      "previous": "互联网{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.live.detail.verified",
+      "english": "Connected and verified — {{count}} packets received.{{gate}}",
+      "chinese": "已连接并通过验证，收到 {{count}} 个数据包。{{gate}}",
+      "previous": "连接和核实——{{count}}收到货包{{gate}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.live.detail.readOnly",
+      "english": "Connected read-only — {{count}} packets received.{{gate}}",
+      "chinese": "已建立只读连接，收到 {{count}} 个数据包。{{gate}}",
+      "previous": "连接到只读...{{count}}收到货包{{gate}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.gate",
+      "english": "iGate on: {{uploaded}} contributed.",
+      "chinese": "iGate 已开启：已上传 {{uploaded}} 包。",
+      "previous": "iGate 打开 :{{uploaded}}捐款。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.gate.held",
+      "english": "iGate on: {{uploaded}} contributed, {{held}} held back.",
+      "chinese": "iGate 已开启：已上传 {{uploaded}} 包，拦下 {{held}} 包。",
+      "previous": "iGate 打开 :{{uploaded}}捐款,{{held}}不许动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.inet.gate.held.reason",
+      "english": "iGate on: {{uploaded}} contributed, {{held}} held back (last: {{reason}}).",
+      "chinese": "iGate 已开启：已上传 {{uploaded}} 包，拦下 {{held}} 包（最近原因：{{reason}}）。",
+      "previous": "iGate 打开 :{{uploaded}}捐款,{{held}}拖放( 最后一个 :{{reason}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.radioNote.label",
+      "english": "on {{name}}",
+      "chinese": "使用 {{name}}",
+      "previous": "打开{{name}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.radioNote.detail",
+      "english": "{{count}} of your radios cover this band, so APRS had a choice to make. It follows the active radio, currently {{name}} — if that is not the rig your packet audio is wired to, this is why nothing is decoding. Routing rules decide which radio a band goes to: Settings → Radios.",
+      "chinese": "本台有 {{count}} 部电台覆盖此频段，因此 APRS 需要选择设备。它跟随当前电台，目前为 {{name}}；若分组通信音频并未接到该设备，就无法解码。频段使用哪部电台由分派规则决定，可在“设置 → 电台设备”中调整。",
+      "previous": "{{count}}你的收音机覆盖这个乐队,所以APRS做了个选择 它跟随活跃的无线电,目前{{name}}- 如果这不是你收音机的电线 这就是为什么什么也没有解码。 跑步规则决定乐队去的电台是: Sets → Radios.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.level.silence",
+      "english": "input over the most recent 0.1 s: digital silence (exactly zero)",
+      "chinese": "最近 0.1 秒输入：数字静音（数值完全为零）",
+      "previous": "输入最近0.1 s: 数字沉默(确切为0)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.level.peak",
+      "english": "input peak over the most recent 0.1 s: {{db}} dBFS",
+      "chinese": "最近 0.1 秒输入峰值：{{db}} dBFS",
+      "previous": "最近0.1 s 的输入峰值:{{db}}dBFS (英语:",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.dbfs.silence",
+      "english": "silence",
+      "chinese": "静音",
+      "previous": "安静",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.norf.label",
+      "english": "No 2 m radio",
+      "chinese": "没有 2 米电台",
+      "previous": "无2米无线电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.norf.detail",
+      "english": "This radio doesn't cover {{freq}} MHz, so it can't receive RF APRS. RF APRS needs a VHF radio. The internet feed works without one — turn it on to see APRS traffic reported by other stations.",
+      "chinese": "此电台不支持 {{freq}} MHz，因此无法接收射频 APRS；射频 APRS 需要甚高频电台。互联网数据流无需此设备，开启后即可查看其他电台通报的 APRS 数据。",
+      "previous": "这收音机不覆盖 {{freq}} MHz无法接收RF APRS. RF APRS 需要一个甚高频无线电。 互联网上没有一条线, APRS 其他车站报告的客流量.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.off.label",
+      "english": "Monitor off",
+      "chinese": "监听已关闭",
+      "previous": "关闭监视器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.off.detail",
+      "english": "The APRS decoder is not running. Arm Monitor to decode the RX audio.",
+      "chinese": "APRS 解码器尚未运行，请启用监听以解码接收音频。",
+      "previous": "那个APRS解码器没有运行 。 武装监视器可以解码RX音频.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.wrongFreq.label",
+      "english": "Wrong frequency",
+      "chinese": "频率错误",
+      "previous": "频率错误",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.wrongMode.label",
+      "english": "Wrong mode",
+      "chinese": "模式错误",
+      "previous": "错误模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.wrongMode.detail",
+      "english": "The radio is on {{want}} but in {{mode}} — APRS needs FM. FM packet audio demodulated as SSB is garbled, so nothing will decode however strong the signal is. Tune to the APRS channel to start hearing it.",
+      "chinese": "电台频率为 {{want}}，但模式是 {{mode}}；APRS 需要 FM。以 SSB 解调 FM 分组信号会使音频失真，即使信号再强也无法解码。请调至 APRS 信道开始接收。",
+      "previous": "收音机开播了{{want}}不过在{{mode}}. . . . . . .APRS需要调频。 FM包音频被降级, 因为SSB是被套装的, 所以没有什么会解码 无论信号是强。 转弯APRS频道开始听到它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.wrongFreqMode.detail",
+      "english": "The radio is on {{dial}} {{mode}} — APRS needs {{want}} FM. Nothing on this channel can decode as APRS packet, whatever the audio level says. Tune to the APRS channel to start hearing it.",
+      "chinese": "电台当前为 {{dial}} {{mode}}，而 APRS 需要 {{want}} FM。无论音频电平如何，当前信道都无法解码出 APRS 数据包。请调至 APRS 信道开始接收。",
+      "previous": "收音机开播了{{dial}} {{mode}}. . . . . . .APRS需求{{want}}调频. 此频道上没有任何内容可以解码为APRS包,无论音频级别怎么说。 转弯APRS频道开始听到它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.wrongFreq.detail",
+      "english": "The radio is on {{dial}} — APRS needs {{want}}. Nothing on this channel can decode as APRS packet, whatever the audio level says. Tune to the APRS channel to start hearing it.",
+      "chinese": "电台当前为 {{dial}}，而 APRS 需要 {{want}}。无论音频电平如何，当前信道都无法解码出 APRS 数据包。请调至 APRS 信道开始接收。",
+      "previous": "收音机开播了{{dial}}. . . . . . .APRS需求{{want}}。该频道上没有任何内容可以解码为APRS包,无论音频级别怎么说。 转弯APRS频道开始听到它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.noCapture.label",
+      "english": "No input",
+      "chinese": "无输入",
+      "previous": "无输入",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.noCapture.detail",
+      "english": "Armed, but no audio samples are arriving at all — the capture device is not delivering anything. Check that Input Device (RX) in Settings ▸ Radio ▸ Audio is the radio (not a microphone or a disconnected device); what you hear on the speaker does not tell you what the app is capturing.",
+      "chinese": "已启用，但完全没有收到音频采样，采集设备未提供任何数据。请检查“设置 ▸ 电台设备 ▸ 音频”中的“输入设备（接收）”是否为电台，而非话筒或已断开的设备；扬声器能听到声音不代表应用正在采集该音频。",
+      "previous": "武装的,但没有任何音频样本到达——捕获装置没有传递任何东西. 请检查date=中的日期值 (帮助) Sets QQ Radio QQ Audio是收音机(不是麦克风或断开的设备);您在扬声器上听到的不告诉你该应用正在捕获什么.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.decoding.label",
+      "english": "{{count}} decoded",
+      "chinese": "已解码 {{count}} 包",
+      "previous": "{{count}}已解码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.decoding.detail",
+      "english": "{{count}} packets decoded since arming. Live {{level}}.",
+      "chinese": "启用后已解码 {{count}} 个数据包。当前电平：{{level}}。",
+      "previous": "{{count}}装药后就解码了 现场直播{{level}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.decoding.detail.aged",
+      "english": "{{count}} packets decoded since arming, last one {{age}} ago. Live {{level}}.",
+      "chinese": "启用后已解码 {{count}} 个数据包，最近一包在 {{age}} 前。当前电平：{{level}}。",
+      "previous": "{{count}}装入后解码的包,最后一个{{age}}刚才 现场直播{{level}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.unreadable.label",
+      "english": "{{count}} failed CRC",
+      "chinese": "{{count}} 包 CRC 校验失败",
+      "previous": "{{count}}失败的 CRC",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.unreadable.detail",
+      "english": "{{count}} bursts heard since arming, last one {{age}} ago — none passed the checksum. Some of that is normal: when the squelch opens partway through a burst the start of the packet is lost, and a part-heard packet can never pass. It is only a fault if nothing ever decodes — in which case check the rig is on {{channel}} in FM.{{advice}} Last burst peaked {{burst}}; live {{level}}.",
+      "chinese": "启用后收到 {{count}} 段突发信号，最近一段在 {{age}} 前，均未通过校验。部分失败属于正常现象：若静噪在突发信号中途才打开，就会丢失包头，收到的不完整数据包不可能通过校验。只有始终无法解码时才说明有问题，此时请确认电台位于 {{channel}} 并使用 FM。{{advice}} 最近突发峰值：{{burst}}；当前电平：{{level}}。",
+      "previous": "{{count}}从武装开始就听到的,最后一个{{age}}之前,没有人通过支票和。 其中一些是正常的:当squelch通过爆裂打开部分路段时,包的起始会丢失,一个部分听力包永远无法通过. 如果没有任何东西解码,这仅仅是一个错误——在这种情况下,检查钻机已经打开。{{channel}}在调频。{{advice}}上次爆破达到顶峰{{burst}}; 现场{{level}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.advice.clipping",
+      "english": "The burst is CLIPPING (peaked {{peak}}, {{samples}} sample(s) at the rails) — lower the rig's USB AF output level, or the Windows input level for that device. Packet survives a lot of clipping, so this costs headroom rather than decodes, but there is no reason to run into the rails.",
+      "chinese": "突发信号发生削波，峰值 {{peak}}，{{samples}} 个采样达到幅度极限。请降低电台的 USB AF 输出电平，或该设备的 Windows 输入电平。分组信号能容忍较严重的削波，因此这主要损失电平余量，不一定影响解码，但没有必要让信号持续顶到幅度极限。",
+      "previous": "爆破是CLIPPING(顶峰){{peak}}, (中文).{{samples}}铁轨上的样品——降低钻机的USB AF输出水平,或该设备的Windows输入水平. 包在大量的剪辑中幸存下来,因此这需要头室而不是解码,但没有理由跑进铁轨.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.advice.quiet",
+      "english": "The burst peaked {{peak}}, well below the healthy {{min}} to {{max}} band — raise the rig's USB AF output level (IC-9700: SET > Connectors > USB AF Output Level) or the Windows input level for that device. That buys margin against noise; it is not by itself why a checksum fails.",
+      "chinese": "突发峰值为 {{peak}}，远低于建议的 {{min}} 至 {{max}} 范围。请提高电台 USB AF 输出电平（IC-9700：SET > Connectors > USB AF Output Level），或该设备的 Windows 输入电平。这能增加抗噪余量，但电平低本身并非校验失败的原因。",
+      "previous": "爆炸达到顶峰{{peak}},远远低于健康{{min}}改为:{{max}}band ——提高钻机的USB AF输出级(IC-9700:SET > Connectors > USB AF输出级)或该设备的Windows输入级. 这样做可以防止噪音;检查和不合格本身并不是原因。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.silent.label",
+      "english": "Silent",
+      "chinese": "静音",
+      "previous": "安静",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.silent.detail",
+      "english": "The input is alive and delivering audio, but it is silent — normally that just means the squelch is closed between packets, which is what an idle FM channel looks like. To confirm the routing, open the squelch: hiss should show up here as a level. If it still reads silent with the squelch open, the wrong input device is selected. Live {{level}}.",
+      "chinese": "输入设备正常提供音频，但内容为静音，通常只是数据包之间静噪关闭，这是空闲 FM 信道的正常状态。可打开静噪核对音频通路，此处应能显示底噪电平；若打开静噪后仍显示静音，说明选错了输入设备。当前电平：{{level}}。",
+      "previous": "输入是活的并发送音频,但它是静默的——通常只是表示squelch在包之间是关闭的,这就是闲置的FM频道的样子. 为了确认路线,打开塞音:他的应该在这里作为关卡出现. 如果它仍然用 squelch 打开读作无声,则选择错误的输入设备. 现场直播{{level}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.listening.label",
+      "english": "Listening",
+      "chinese": "正在守听",
+      "previous": "正在收听",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.health.listening.detail",
+      "english": "Audio is reaching the decoder and no packets have been heard recently — a quiet channel. Live {{level}}. With the squelch open, hiss should sit around {{hiss}}; a packet burst should peak {{min}} to {{max}}.",
+      "chinese": "音频已送入解码器，最近未收到数据包，信道较安静。当前电平：{{level}}。打开静噪后，底噪应在 {{hiss}} 左右，数据包突发信号的峰值应在 {{min}} 至 {{max}}。",
+      "previous": "音频正在到达解码器,最近没有听到任何数据包——一个安静的频道。 现场直播{{level}}挤开后,他应该坐在这里{{hiss}}; 包爆破应达到峰值{{min}}改为:{{max}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.age.secs",
+      "english": "{{secs}}s",
+      "chinese": "{{secs}} 秒",
+      "previous": "{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.age.mins",
+      "english": "{{mins}}m",
+      "chinese": "{{mins}} 分钟",
+      "previous": "{{mins}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.age.hours",
+      "english": "{{hours}}h",
+      "chinese": "{{hours}} 小时",
+      "previous": "{{hours}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.source.rf.label",
+      "english": "RF",
+      "chinese": "射频",
+      "previous": "风琴",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.source.inet.label",
+      "english": "net",
+      "chinese": "网络",
+      "previous": "净额",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.source.both.label",
+      "english": "RF+net",
+      "chinese": "射频+网络",
+      "previous": "RF+网络",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.source.rf.title",
+      "english": "Your receiver decoded this station off the air",
+      "chinese": "本台接收机从无线电信号中解码到此电台",
+      "previous": "你的接收器解码了这个站台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.source.inet.title",
+      "english": "Reported by APRS-IS — your receiver has not heard this station",
+      "chinese": "由 APRS-IS 通报，本台接收机尚未收到此电台信号",
+      "previous": "报告APRS你的接收器没有听到这个站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.source.both.title",
+      "english": "Heard off the air by your receiver AND reported by APRS-IS",
+      "chinese": "本台接收机已从无线电收到，同时也有 APRS-IS 通报",
+      "previous": "听到你的接收器的广播 和报道APRS-对",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "aprs.beacon.title",
+      "english": "Position beacon",
+      "chinese": "位置信标",
+      "previous": "位置信标",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

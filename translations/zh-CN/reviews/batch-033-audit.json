@@ -1,0 +1,1789 @@
+{
+  "batch": 33,
+  "range": [
+    6401,
+    6600
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 154,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 13,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/OperateDecodes.tsx",
+    "ui/src/components/OperateRoster.tsx",
+    "ui/src/components/OperateCockpit.tsx",
+    "ui/src/components/RttyCockpit.tsx"
+  ],
+  "rows": [
+    {
+      "id": "operate.decodes.filter.title.all",
+      "english": "All decodes",
+      "chinese": "全部解码结果",
+      "previous": "全部解码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.filter.title.cq",
+      "english": "CQ calls only",
+      "chinese": "仅显示 CQ 呼叫",
+      "previous": "CQ只打电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.filter.title.cq73",
+      "english": "73 and RR73 signoffs included — a free frequency is about to appear",
+      "chinese": "同时包含 73 和 RR73 结束报文，便于发现即将空出的频率",
+      "previous": "包括73和RR73签注——一个免费频率即将出现",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.filter.title.me",
+      "english": "Directed to my callsign",
+      "chinese": "发给本台呼号的报文",
+      "previous": "指向我的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.filter.title.rx",
+      "english": "On my RX frequency (±50 Hz), plus anything addressed to me — follow a QSO without clutter",
+      "chinese": "显示本台接收频率附近（±50 Hz）的报文及所有发给本台的报文，便于清晰跟进 QSO",
+      "previous": "用我的RX频率(±50)Hz),加上任何寄给我的东西——遵循QSO不杂乱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.filter.title.b4",
+      "english": "Worked before",
+      "chinese": "已通联",
+      "previous": "曾交信",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.filter.title.new",
+      "english": "New DXCC / new grid — the \"new one\" chase",
+      "chinese": "新 DXCC 实体／新网格，追逐尚缺目标",
+      "previous": "新设DXCC/新网格——\"新网格\"追逐",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.hideBlocked.label",
+      "english": "−Blk",
+      "chinese": "−屏蔽",
+      "previous": "- 颜色",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.hideBlocked.title",
+      "english": "Hide blocked callsigns from this pane (they render dimmed when off). The auto-responder never answers blocked calls regardless — Alt-double-click a row to block or unblock.",
+      "chinese": "在此面板隐藏被屏蔽的呼号，关闭时则以暗色显示。无论是否隐藏，自动应答都不会回复被屏蔽的电台。按住 Alt 双击行可屏蔽或取消屏蔽。",
+      "previous": "从此窗格中隐藏被屏蔽的呼号( 关闭时会变暗) 。 自动通讯员从不回答被封锁的电话,不管... 选择双击一行以阻断或解阻 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.hideConfirmed.label",
+      "english": "−Conf",
+      "chinese": "−已确认",
+      "previous": "- 密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.hideConfirmed.title",
+      "english": "Hide stations whose ENTITY is already confirmed (LoTW/card) on this band — chase what you still need. It is the country that is confirmed, not necessarily this callsign. A station that's new on the band always shows.",
+      "chinese": "隐藏本频段上所属实体已获 LoTW／纸质卡片确认的电台，集中追逐尚缺目标。已确认的是国家／地区实体，不一定是这个呼号。在本频段尚未通联过的电台始终显示。",
+      "previous": "隐藏已被确认的站点(LoTW在这个乐队里——追寻你仍然需要的东西. 国家得到确认,不一定是这个呼号。 一个乐队里新来的电台 总是在演出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.hideB4.title",
+      "english": "Hide stations you have already worked (B4) from whichever filter is active — CQ-only minus B4, and friends",
+      "chinese": "从当前筛选结果中隐藏已通联电台（B4），例如只看未通联的 CQ 电台，也适用于其他筛选条件",
+      "previous": "隐藏您已经工作过的站点( B4) , 不论使用哪个过滤器 — CQ 仅减 B4, 以及朋友",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.hideB4.title.idle",
+      "english": "The B4 chip shows worked stations — the hide switch is idle there",
+      "chinese": "B4 筛选本就显示已通联电台，因此此时隐藏开关不生效",
+      "previous": "B4芯片显示工作站——隐藏开关在那里闲置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.newestTop.label",
+      "english": "Newest on top",
+      "chinese": "最新结果置顶",
+      "previous": "最新的顶端",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.newestTop.title",
+      "english": "Draw the newest decodes at the top and follow them there. Off is the WSJT-X order, with the newest at the bottom.",
+      "chinese": "将最新解码结果显示在顶部并自动跟随。关闭时使用 WSJT-X 的顺序，最新结果位于底部。",
+      "previous": "在顶部绘制最新的解码,并跟随到那里. 关闭是WSJT-X的顺序,底部是最新的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.newestTop.title.idle",
+      "english": "Newest on top works in Time order",
+      "chinese": "“最新结果置顶”仅在按时间排序时生效",
+      "previous": "按时间顺序排列的最新作品",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.sort.label",
+      "english": "sort",
+      "chinese": "排序",
+      "previous": "排序",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.sort.time",
+      "english": "Time",
+      "chinese": "时间",
+      "previous": "时间",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.sort.freq",
+      "english": "Freq",
+      "chinese": "频率",
+      "previous": "频率",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "频率"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "频率"
+        }
+      ]
+    },
+    {
+      "id": "operate.decodes.heard",
+      "english": "{{count}} heard",
+      "chinese": "收到 {{count}} 条",
+      "previous": "{{count}}听见了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.reviewing",
+      "english": "▲ reviewing — scroll to bottom to follow",
+      "chinese": "▲ 正在回顾 — 滚动至底部以跟随最新内容",
+      "previous": "▲ 正在回顾 — 滚动至底部以跟随最新内容",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.harq.title",
+      "english": "IR-HARQ recovered {{count}} decode(s) this session",
+      "chinese": "本次会话中，IR-HARQ 恢复了 {{count}} 条解码结果",
+      "previous": "IR-HARQ已恢复{{count}}解码此会话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.list.aria",
+      "english": "Decoded stations — arrow to move, Enter to select, Shift+Enter to work",
+      "chinese": "已解码电台，方向键移动，Enter 选中，Shift+Enter 发起通联",
+      "previous": "解码站 — 要移动的箭头, 要选择的输入, Shift+ 进入工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.empty.title",
+      "english": "No decodes yet",
+      "chinese": "尚无解码结果",
+      "previous": "尚无解码结果",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.empty.detail",
+      "english": "Waiting for the next slot — decoded signals will appear here as they arrive.",
+      "chinese": "正在等待下一时隙，解码结果到达后会显示在此。",
+      "previous": "等待下一个槽——解码信号在到达时会出现在这里.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.emptyFiltered.title",
+      "english": "Nothing matches “{{filter}}”",
+      "chinese": "没有符合“{{filter}}”的结果",
+      "previous": "无任何符合“{{filter}}“",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.emptyFiltered.detail",
+      "english": "{{count}} decodes in history are hidden by the current filter — pick another chip to see them.",
+      "chinese": "当前筛选条件隐藏了 {{count}} 条历史解码结果，请选择其他筛选按钮查看。",
+      "previous": "{{count}}历史中的解码器被当前过滤器隐藏——另选一个芯片来查看.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.period.aria",
+      "english": "Period {{time}} UTC",
+      "chinese": "周期 {{time}} UTC",
+      "previous": "期间{{time}} UTC",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.period.heard",
+      "english": "{{band}} · {{mode}} · {{dial}} MHz",
+      "chinese": "{{band}} · {{mode}} · {{dial}} MHz",
+      "previous": "{{band}}* 妇女{{mode}}* 妇女{{dial}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.period.heard.aria",
+      "english": "Period {{time}} UTC, heard on {{band}} {{mode}} before the change",
+      "chinese": "周期 {{time}} UTC，切换前在 {{band}} {{mode}} 收到",
+      "previous": "期间{{time}} UTC,听到在{{band}} {{mode}}更改前",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.row.heard.title",
+      "english": "Heard on {{band}} {{mode}} before the band or mode change. Shown only: it cannot be worked from here.",
+      "chinese": "切换频段或模式前在 {{band}} {{mode}} 收到的历史结果。仅供查看，不能从此处发起通联。",
+      "previous": "听说{{band}} {{mode}}在带或模式改变之前。 只显示: 无法从这里工作 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.row.aria",
+      "english": "{{call}}, {{snr}} dB, {{hz}} hertz, {{message}}{{country}}{{azimuth}}",
+      "chinese": "{{call}}，{{snr}} dB，{{hz}} 赫兹，{{message}}{{country}}{{azimuth}}",
+      "previous": "{{call}}, (中文).{{snr}}DB, (英语).{{hz}}赫兹{{message}}{{country}}{{azimuth}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.row.aria.country",
+      "english": ", {{country}}",
+      "chinese": "，{{country}}",
+      "previous": ", (中文).{{country}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.row.aria.azimuth",
+      "english": ", {{deg}} degrees",
+      "chinese": "，方位 {{deg}} 度",
+      "previous": ", (中文).{{deg}}学位",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.row.aria.azimuth.approx",
+      "english": ", about {{deg}} degrees",
+      "chinese": "，方位约 {{deg}} 度",
+      "previous": "关于{{deg}}学位",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.row.title",
+      "english": "Click to select {{call}} · double-click to work{{highlight}}",
+      "chinese": "单击选中 {{call}}，双击发起通联{{highlight}}",
+      "previous": "单击以选择{{call}}双击工作{{highlight}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.row.highlighted",
+      "english": " · highlighted by your logger (UDP)",
+      "chinese": " · 由日志软件通过 UDP 高亮",
+      "previous": "由您的日志显示 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.tier.title",
+      "english": "Decoded by {{tier}}",
+      "chinese": "由 {{tier}} 解码",
+      "previous": "已解码{{tier}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.utc.title",
+      "english": "UTC heard",
+      "chinese": "接收时间（UTC）",
+      "previous": "UTC听见了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.utc.period.title",
+      "english": "Start of the period it was heard in (UTC). Arrived at {{time}}.",
+      "chinese": "收到此信号的周期起始时间（UTC），结果到达时间为 {{time}}。",
+      "previous": "(b) 所听到的时期的开始UTC) (中文(简体) ). 抵达{{time}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.dt.title",
+      "english": "DT — time offset (s); large = clock/sync skew",
+      "chinese": "DT：时间偏差（秒），数值较大表示时钟或同步存在偏差",
+      "previous": "DT — 时间偏移; 大 = 时钟/同步 skew",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.dt.title.msk144",
+      "english": "T — when in the period the ping landed (s)",
+      "chinese": "T：流星反射信号在周期内到达的时间（秒）",
+      "previous": "T——当该时期的 p落地(s).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.marker.lowConf.title",
+      "english": "Low-confidence decode",
+      "chinese": "低置信度解码",
+      "previous": "低信任解码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.marker.ap.title",
+      "english": "AP-assisted decode",
+      "chinese": "AP 辅助解码",
+      "previous": "AP 辅助解码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.needs.aria",
+      "english": "needs",
+      "chinese": "待通联目标",
+      "previous": "需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.harqRv.title",
+      "english": "Recovered by IR-HARQ (RV0–RV{{rv}})",
+      "chinese": "由 IR-HARQ 恢复（RV0–RV{{rv}}）",
+      "previous": "由IR-HARQ(RV0–RV)回收{{rv}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.tag.you",
+      "english": "YOU",
+      "chinese": "本台",
+      "previous": "你们",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.lotw.title",
+      "english": "Uploads to LoTW — a QSO with {{call}} should confirm (ARRL activity list)",
+      "chinese": "有 LoTW 上传记录，与 {{call}} 的 QSO 有望获得确认（依据 ARRL 活跃用户列表）",
+      "previous": "上传到 LoTW a 包括: QSO 与 {{call}} 应确认(ARRL活动清单)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.decodes.lotw.thisStation",
+      "english": "this station",
+      "chinese": "此电台",
+      "previous": "这个站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.title",
+      "english": "Call Roster",
+      "chinese": "呼号列表",
+      "previous": "调用名册",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.neededOnly",
+      "english": "Needed only",
+      "chinese": "仅待通联目标",
+      "previous": "仅需",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.hideWorked",
+      "english": "Hide worked",
+      "chinese": "隐藏已通联",
+      "previous": "隐藏工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.hideWorked.title",
+      "english": "Hide stations you have already worked — EXCEPT the ones that still fill a need, which stay on the list. That is why a B4 chip can survive this filter: you worked that call on another band or mode and this is still a new slot, or that call is on a park or summit you have not worked in the activation running right now. Turn on Needed only to see just those.",
+      "chinese": "隐藏已通联电台，但仍能补足所缺项目的电台会保留。因此带 B4 标记的电台仍可能显示：可能曾在其他频段或模式通联，但当前组合仍是新项目；也可能该台正在进行的公园／山峰活动尚未与本台通联。开启“仅待通联目标”可只显示这些电台。",
+      "previous": "隐藏您已经工作的站点——将那些仍然满足需要的站点排除在外,这些站点留在名单上。 这就是为什么一个B4芯片可以活过这个过滤器: 你用另一个频段或模式打过电话,这仍然是一个新的插槽, 或者这个电话是在公园或峰顶上打的,你还没有在激活运行中工作。 打开它只需要看到这些。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.hideBlocked",
+      "english": "Hide blocked",
+      "chinese": "隐藏已屏蔽",
+      "previous": "隐藏被屏蔽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.hideBlocked.title",
+      "english": "Drop blocked callsigns from the roster entirely (unchecked: they render dimmed). Alt-double-click a row to block or unblock; the auto-responder never answers blocked calls either way.",
+      "chinese": "从呼号列表完全隐藏被屏蔽的呼号，未勾选时则以暗色显示。按住 Alt 双击行可屏蔽或取消屏蔽；无论是否隐藏，自动应答都不会回复被屏蔽的电台。",
+      "previous": "从名册上完全放下被封锁的呼号( 未检查: 它们会变暗) 。 Alt-double-单击一行以阻断或解除阻断;自动响应器从不回答任何方式的阻断呼叫.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.distance.aria",
+      "english": "Maximum distance",
+      "chinese": "最大距离",
+      "previous": "最大距离",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.distance.title",
+      "english": "Show only the stations within this distance of your grid square. A station you have not heard send a grid yet has no known distance, so it always stays on the list, and so does the station you are working.",
+      "chinese": "只显示距本台网格在指定距离内的电台。尚未收到其网格的电台距离未知，因此始终保留；当前正在通联的电台也会保留。",
+      "previous": "只显示您网格平方的距离 。 你没有听到的发送网格 还没有已知的距离, 所以它总是留在名单上, 你工作的站也是这样。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.distance.any",
+      "english": "Any distance",
+      "chinese": "不限距离",
+      "previous": "任何距离",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.filter.distance.within",
+      "english": "Within {{distance}}",
+      "chinese": "{{distance}} 以内",
+      "previous": "内部{{distance}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.spot.label",
+      "english": "Spot",
+      "chinese": "通报",
+      "previous": "通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.spot.label.call",
+      "english": "Spot {{call}}",
+      "chinese": "通报 {{call}}",
+      "previous": "点{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.spot.title",
+      "english": "Spot {{call}} to the DX cluster at the current dial",
+      "chinese": "以当前拨盘频率向 DX 集群通报 {{call}}",
+      "previous": "点{{call}}到当前拨号的 DX 集群",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.spot.title.none",
+      "english": "Select a station to spot it to the DX cluster",
+      "chinese": "选择一个电台后可向 DX 集群发布通报",
+      "previous": "选择一个站点以查看 DX 集群",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.grid.aria",
+      "english": "Call roster — arrow to move, Enter to select, Shift+Enter to work",
+      "chinese": "呼号列表，方向键移动，Enter 选中，Shift+Enter 发起通联",
+      "previous": "调用名册——要移动的箭头, 要选择的输入, Shift+ 进入工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.sort.title",
+      "english": "Sort by {{column}}",
+      "chinese": "按 {{column}} 排序",
+      "previous": "排序为{{column}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.call",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "operate.roster.col.calling",
+      "english": "Calling",
+      "chinese": "正在呼叫",
+      "previous": "通话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.calling.title",
+      "english": "Sort by who each station is calling (CQ = calling nobody)",
+      "chinese": "按各台正在呼叫的对象排序，CQ 表示面向所有电台呼叫",
+      "previous": "按每个电台的呼号排序(CQ=无人)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.need",
+      "english": "Need",
+      "chinese": "待通联项目",
+      "previous": "需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.country",
+      "english": "Country",
+      "chinese": "国家／地区",
+      "previous": "国家／地区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.state",
+      "english": "State",
+      "chinese": "州／省",
+      "previous": "州／省",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.state.title",
+      "english": "Sort by state or province (from the callsign, or the heard grid)",
+      "chinese": "按州或省排序，信息来自呼号或接收到的网格",
+      "previous": "按州或省排序(从呼号,或听到的网格)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.grid",
+      "english": "Grid",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        }
+      ]
+    },
+    {
+      "id": "operate.roster.col.dist",
+      "english": "Dist",
+      "chinese": "距离",
+      "previous": "距离",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.bearing",
+      "english": "Brg",
+      "chinese": "方位",
+      "previous": "方位",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.col.age",
+      "english": "Age",
+      "chinese": "距今",
+      "previous": "距今",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "距今"
+        }
+      ]
+    },
+    {
+      "id": "operate.roster.empty",
+      "english": "No stations heard yet — decoded stations appear here as they arrive.",
+      "chinese": "尚未收到电台信号，解码到的电台会陆续显示在此。",
+      "previous": "还没有听到站台的声音——解码站到达时出现在这里.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.row.aria",
+      "english": "{{call}}{{grid}}{{need}}{{watch}}{{worked}}{{working}}",
+      "chinese": "{{call}}{{grid}}{{need}}{{watch}}{{worked}}{{working}}",
+      "previous": "{{call}}{{grid}}{{need}}{{watch}}{{worked}}{{working}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.row.aria.grid",
+      "english": ", grid {{grid}}",
+      "chinese": "，网格 {{grid}}",
+      "previous": "网格{{grid}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.row.aria.need",
+      "english": ", needed {{need}}",
+      "chinese": "，待通联项目 {{need}}",
+      "previous": "时,需要{{need}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.row.aria.watch",
+      "english": ", on your watch list: {{what}}",
+      "chinese": "，在本台关注列表中：{{what}}",
+      "previous": "在你的观察名单上:{{what}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.row.aria.worked",
+      "english": ", worked",
+      "chinese": "，已通联",
+      "previous": ",已经工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.row.aria.working",
+      "english": ", working now",
+      "chinese": "，正在通联",
+      "previous": "现在工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.row.work.title",
+      "english": "Double-click to work {{call}}",
+      "chinese": "双击与 {{call}} 通联",
+      "previous": "双击工作{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.lotw.title",
+      "english": "Uploads to LoTW — this contact should confirm",
+      "chinese": "有 LoTW 上传记录，本次交信有望获得确认",
+      "previous": "上传到LoTW- 这一联系应确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.calling.title",
+      "english": "Working {{call}}",
+      "chinese": "正在与 {{call}} 通联",
+      "previous": "工作{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.calling.cq.title",
+      "english": "Calling CQ — not in a QSO",
+      "chinese": "正在呼叫 CQ，尚未进入 QSO",
+      "previous": "电话:CQ-不在QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.calling.cqDir.title",
+      "english": "Calling CQ {{dir}} — a DIRECTED call. He is asking for {{dir}} only, so answering from anywhere else will usually be ignored.",
+      "chinese": "正在呼叫 CQ {{dir}}，这是定向呼叫，只寻求 {{dir}} 的电台；其他地区的应答通常不会被理会。",
+      "previous": "调用 CQ{{dir}}- 一个直接的电话。 他请求{{dir}}只有,所以从其他任何地方回答通常会被忽略.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.state.title",
+      "english": "{{call}} is in {{state}}",
+      "chinese": "{{call}} 位于 {{state}}",
+      "previous": "{{call}}进入{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.age.now",
+      "english": "now",
+      "chinese": "现在",
+      "previous": "现在",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.age.slots",
+      "english": "{{count}} sl",
+      "chinese": "{{count}} 个时隙",
+      "previous": "{{count}}标准",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.roster.age.minutes",
+      "english": "{{minutes}}m",
+      "chinese": "{{minutes}} 分钟",
+      "previous": "{{minutes}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.row.ignored.title",
+      "english": "Ignored this session (Alt-double-click to restore)",
+      "chinese": "本次会话中已忽略，按住 Alt 双击可恢复",
+      "previous": "忽略了此会话( 选择双击以恢复)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.b4.sameBand",
+      "english": "Worked before on this band",
+      "chinese": "曾在此频段通联",
+      "previous": "以前在这个乐队工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.b4.otherBand",
+      "english": "Worked before (another band)",
+      "chinese": "曾在其他频段通联",
+      "previous": "以前工作过(另一个乐队)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.aria",
+      "english": "Standard messages (Tx1–Tx6)",
+      "chinese": "标准报文（Tx1–Tx6）",
+      "previous": "标准消息 (Tx1 - Tx6)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.dxCall.label",
+      "english": "DX Call",
+      "chinese": "DX 呼号",
+      "previous": "DX 呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "DX 呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "DX 呼号"
+        }
+      ]
+    },
+    {
+      "id": "operate.tx.dxCall.aria",
+      "english": "DX callsign",
+      "chinese": "DX 呼号",
+      "previous": "DX 调用符号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.dxGrid.label",
+      "english": "DX Grid",
+      "chinese": "DX 网格",
+      "previous": "DX 网格",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "DX 网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "DX 网格"
+        }
+      ]
+    },
+    {
+      "id": "operate.tx.dxGrid.aria",
+      "english": "DX grid locator",
+      "chinese": "DX 网格定位",
+      "previous": "DX 网格定位器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.generate.label",
+      "english": "Generate Std Msgs",
+      "chinese": "生成标准报文",
+      "previous": "生成标准信息",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "生成标准信息"
+        }
+      ]
+    },
+    {
+      "id": "operate.tx.generate.title",
+      "english": "Generate the six standard messages from DX Call / Grid / report (WSJT-X Generate Std Msgs)",
+      "chinese": "根据 DX 呼号、网格和报告生成六条标准报文（WSJT-X 的 Generate Std Msgs）",
+      "previous": "从 DX 调用/ 网格 / 报告生成六条标准消息( WSJT- X 生成 Std Msgs)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.clear.label",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "operate.tx.clear.title",
+      "english": "Clear DX Call + Grid (F4)",
+      "chinese": "清除 DX 呼号和网格（F4）",
+      "previous": "清除 DX 调用+网格( F4)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.rows.aria",
+      "english": "Tx message rows",
+      "chinese": "发射报文行",
+      "previous": "Tx 消息行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.next.title",
+      "english": "Queued as the next transmission",
+      "chinese": "已排为下一条发射报文",
+      "previous": "排队为下一次传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.tx5.placeholder",
+      "english": "Free text",
+      "chinese": "自由文本",
+      "previous": "自由文本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.tx5.aria",
+      "english": "Tx5 free text",
+      "chinese": "Tx5 自由文本",
+      "previous": "Tx5 免费文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.tx6.placeholder",
+      "english": "CQ call",
+      "chinese": "CQ 呼叫",
+      "previous": "CQ电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.tx6.aria",
+      "english": "Tx6 Call CQ (edit for a directed CQ)",
+      "chinese": "Tx6 呼叫 CQ (编辑为定向 CQ)",
+      "previous": "Tx6 呼叫 CQ (编辑为定向 CQ)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.tx6.hint",
+      "english": "Edit for a directed CQ — CQ DX / CQ NA / CQ POTA / CQ TEST",
+      "chinese": "可编辑为定向 CQ，例如 CQ DX / CQ NA / CQ POTA / CQ TEST",
+      "previous": "为直接的 CQ 编辑 CQ — CQ DX / CQNA 国 务 院 / 核心问题 POTA / CQ 测试",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.tx6.contest.aria",
+      "english": "Tx6 Call CQ (the contest's CQ)",
+      "chinese": "Tx6 呼叫 CQ（竞赛专用 CQ）",
+      "previous": "Tx6 呼叫 CQ( 比赛的 CQ)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.tx6.contest.hint",
+      "english": "The contest's CQ — Tx 6 calls it as Call CQ does",
+      "chinese": "竞赛专用 CQ，Tx6 与“呼叫 CQ”使用相同报文",
+      "previous": "比赛的CQ——Tx 6像CQ一样称它为CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.callCq.title",
+      "english": "Call CQ (Alt+6)",
+      "chinese": "呼叫 CQ（Alt+6）",
+      "previous": "调用 CQ( Alt+6)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.send.title",
+      "english": "Send this as the next transmission (Alt+{{n}})",
+      "chinese": "将此报文设为下一次发射内容（Alt+{{n}}）",
+      "previous": "将此发送为下一个传输( Alt+){{n}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.cq.malformed.try",
+      "english": "Nothing sent — that is not a CQ Nexus can call. Try: {{fix}}",
+      "chinese": "未发送，此 CQ 格式无法由 Nexus 发出。可尝试：{{fix}}",
+      "previous": "没有发件人——这不是CQ Nexus可以打电话的。 尝试 :{{fix}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "operate.tx.cq.malformed",
+      "english": "Nothing sent — that is not a CQ Nexus can call. The form is CQ, an optional direction word, then {{mycall}} and your grid.",
+      "chinese": "未发送，此 CQ 格式无法由 Nexus 发出。格式应为 CQ、可选方向词、{{mycall}} 及本台网格。",
+      "previous": "没有发件人——这不是CQ Nexus可以打电话的。 形式是CQ,一个可选的方向词,然后{{mycall}}还有你的网格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.panel.waterfall",
+      "english": "Waterfall",
+      "chinese": "瀑布图",
+      "previous": "瀑布图",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "瀑布图"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "频谱图"
+        }
+      ]
+    },
+    {
+      "id": "rtty.panel.stream",
+      "english": "Decoded Text",
+      "chinese": "解码文本",
+      "previous": "解码文本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.header.mode.title",
+      "english": "RTTY — Baudot/ITA2 at the configured baud + shift (45.45 / 170 Hz is the HF standard; change it in Settings → RTTY)",
+      "chinese": "RTTY：Baudot/ITA2，使用所设波特率和频移（高频标准为 45.45 / 170 Hz，可在“设置 → RTTY”中更改）",
+      "previous": "RTTY— Baudot/ITA2在配置的baud+班次(45.45/170)Hz是高频标准; 在设置中更改 −RTTY) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.header.backend.fsk.title",
+      "english": "True FSK — data bits on the serial keyline, rig in RTTY mode (its narrow RTTY filters work). Change the backend in Settings → RTTY.",
+      "chinese": "直接 FSK：通过串口键控线发送数据位，电台置于 RTTY 模式，可使用其窄带 RTTY 滤波器。可在“设置 → RTTY”中更改键控方式。",
+      "previous": "True FSK — 序列密钥线上的数据位, 钻机 in RTTY 模式(其窄度) RTTY 过滤器工作)。 更改设置中的后端 ~ RTTY。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.header.backend.afsk.title",
+      "english": "AFSK — soundcard tones through the rig in LSB (soundcard-clocked, the robust default). Change the backend in Settings → RTTY.",
+      "chinese": "AFSK：通过声卡向 LSB 模式的电台发送双音信号，由声卡时钟控制，是可靠的默认方式。可在“设置 → RTTY”中更改键控方式。",
+      "previous": "AFSK——声卡通通过LSB的钻机(声卡点,强烈的默认). 更改设置中的后端 ~RTTY。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.header.power.label",
+      "english": "Power",
+      "chinese": "功率",
+      "previous": "功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.header.power.title",
+      "english": "RF output power — RTTY keys the carrier for the whole over, so most rigs want well under their SSB rating",
+      "chinese": "射频输出功率：RTTY 在整轮发射中持续输出载波，因此多数电台应使用远低于其 SSB 额定值的功率",
+      "previous": "RF输出功率 -RTTY所以大多数钻机都想在SSB的评级下",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.header.band.title",
+      "english": "Showing the rig's current band",
+      "chinese": "显示电台当前频段",
+      "previous": "显示钻机的当前波段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.waterfall.hint",
+      "english": "click nets the decoder and your transmit tones",
+      "chinese": "点击可将接收解码与发射音调一同对准信号",
+      "previous": "点击解码器和您的传输音符网",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.waterfall.hint.keyed",
+      "english": "tuning held while transmitting",
+      "chinese": "发射期间禁止调频",
+      "previous": "发送时按住调音",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoTune.label",
+      "english": "Auto-tune",
+      "chinese": "自动对准",
+      "previous": "自动调试",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoTune.title",
+      "english": "Net onto the nearest RTTY signal at this shift, near the current tones. This moves the transmit tones too.",
+      "chinese": "在当前音调附近，寻找符合所设频移的最近 RTTY 信号并对准。发射音调也会随之移动。",
+      "previous": "净值到最近的RTTY信号在移动,接近电流声调。 这个也移动了传送声",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoTune.keyed.title",
+      "english": "Auto-tune is off while transmitting: it would move the transmit tones mid-over",
+      "chinese": "发射期间禁用自动对准，以免在报文发送中途改变发射音调",
+      "previous": "传输时自动调音关机: 它会移动中途的传输声",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoTune.none",
+      "english": "Auto-tune: no RTTY signal at this shift near the current tones",
+      "chinese": "自动对准：当前音调附近没有符合所设频移的 RTTY 信号",
+      "previous": "自动调试:无RTTY在接近电流吨位的这一班次发出信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoTune.failed",
+      "english": "Auto-tune could not read the spectrum",
+      "chinese": "自动对准无法读取频谱",
+      "previous": "自动调试无法读取频谱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tag.title",
+      "english": "Net onto {{call}} at {{hz}} Hz. This moves the transmit tones too.",
+      "chinese": "对准 {{hz}} Hz 处的 {{call}}，发射音调也会随之移动。",
+      "previous": "净入{{call}}时间{{hz}} Hz。这也可以移动传输声。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tag.worked.title",
+      "english": "{{call}} at {{hz}} Hz is already in the contest log. Click to net onto it.",
+      "chinese": "{{hz}} Hz 处的 {{call}} 已在竞赛日志中。点击可对准此信号。",
+      "previous": "{{call}}时间{{hz}} Hz已在比赛日志中。 点击到网上 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.wf.speed.aria",
+      "english": "Waterfall speed",
+      "chinese": "瀑布图速度",
+      "previous": "瀑布图速度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.wf.speed.title",
+      "english": "A new row every {{ms}} ms",
+      "chinese": "每 {{ms}} 毫秒增加一行",
+      "previous": "每行换一行{{ms}}分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.wf.speed.fast",
+      "english": "Fast",
+      "chinese": "快速",
+      "previous": "快",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "快速"
+        }
+      ]
+    },
+    {
+      "id": "rtty.wf.speed.med",
+      "english": "Med",
+      "chinese": "中速",
+      "previous": "中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.wf.speed.slow",
+      "english": "Slow",
+      "chinese": "慢速",
+      "previous": "慢",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.title",
+      "english": "Tuning",
+      "chinese": "调谐",
+      "previous": "调谐",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.scope.aria",
+      "english": "Tuning scope: {{state}}",
+      "chinese": "调谐示波图：{{state}}",
+      "previous": "调整范围 :{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.tuned",
+      "english": "Tuned",
+      "chinese": "已调谐",
+      "previous": "已调谐",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.high",
+      "english": "Signal {{hz}} Hz high",
+      "chinese": "信号偏高 {{hz}} Hz",
+      "previous": "信号{{hz}} Hz高级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.low",
+      "english": "Signal {{hz}} Hz low",
+      "chinese": "信号偏低 {{hz}} Hz",
+      "previous": "信号{{hz}} Hz低级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.noSignal",
+      "english": "No signal",
+      "chinese": "无信号",
+      "previous": "无信号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.disarmed",
+      "english": "Arm the decoder to tune",
+      "chinese": "启用解码器后才能调谐",
+      "previous": "装入解码器以调谐",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.keyed",
+      "english": "Paused while we send",
+      "chinese": "本台发射期间暂停",
+      "previous": "发送时暂停",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.unavailable",
+      "english": "Not on this link",
+      "chinese": "当前连接不支持",
+      "previous": "不在这个链接上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.down.aria",
+      "english": "Tune down {{hz}} Hz",
+      "chinese": "下调 {{hz}} Hz",
+      "previous": "放下枪{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.up.aria",
+      "english": "Tune up {{hz}} Hz",
+      "chinese": "上调 {{hz}} Hz",
+      "previous": "上来{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.nudge.title",
+      "english": "Moves the decoder and the transmit tone together. Hold to repeat.",
+      "chinese": "同时移动解码频率和发射音调，按住可连续调整。",
+      "previous": "将解码器和传输音调一起移动。 持诵.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.nudge.keyed",
+      "english": "Off while transmitting: a nudge also moves the transmit tone.",
+      "chinese": "发射期间禁用，因为微调也会改变发射音调。",
+      "previous": "在传输时关闭:一个微软也会移动传输语气.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.mark",
+      "english": "M {{hz}}",
+      "chinese": "M {{hz}}",
+      "previous": "医务{{hz}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.tuning.mark.title",
+      "english": "The mark tone the decoder is listening to (Hz)",
+      "chinese": "解码器正在接收的传号音调频率（Hz）",
+      "previous": "解码器在听的标记语气(Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.pane.stream.title",
+      "english": "Decoded text",
+      "chinese": "解码文本",
+      "previous": "解码文本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.pane.log.title",
+      "english": "Log",
+      "chinese": "日志",
+      "previous": "记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seam.streamLog.label",
+      "english": "Decoded text / Log",
+      "chinese": "解码文本／日志",
+      "previous": "解码文本／日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.waterfall.splitter.label",
+      "english": "waterfall height",
+      "chinese": "瀑布图高度",
+      "previous": "瀑布图高度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.stream.title",
+      "english": "Decoded RTTY text — faint characters are low-confidence copy (the demodulator's soft metric)",
+      "chinese": "RTTY 解码文本，颜色较淡的字符表示解码置信度较低，依据解调器的软判决指标",
+      "previous": "已解码RTTY文本 – 微弱字符为低自信副本(降级器的软度量度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.arm.on.label",
+      "english": "RX armed",
+      "chinese": "接收已启用",
+      "previous": "武装RX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.arm.off.label",
+      "english": "Arm RX",
+      "chinese": "启用接收",
+      "previous": "装甲RX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.arm.on.title",
+      "english": "RX armed — decoding the receive audio (RX only, never keys the rig). Click to disarm.",
+      "chinese": "接收已启用，正在解码接收音频，仅接收，绝不触发电台发射。点击可停用。",
+      "previous": "RX武装——对接收的音频进行解码(仅RX,从不按键钻机). 点击解除 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.arm.off.title",
+      "english": "Arm RX — start decoding RTTY from the receive audio (RX only, never keys the rig)",
+      "chinese": "启用接收，开始从接收音频中解码 RTTY，仅接收，绝不触发电台发射",
+      "previous": "武装RX - 开始解码RTTY从接收音频(仅RX,从未按键钻机)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.arm.failed",
+      "english": "Could not switch the RTTY decoder",
+      "chinese": "无法切换 RTTY 解码器状态",
+      "previous": "无法切换RTTY解码器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.auto.failed",
+      "english": "Could not switch the RTTY auto-sequencer",
+      "chinese": "无法切换 RTTY 自动通联流程",
+      "previous": "无法切换RTTY自动序列器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.afc.locked.title",
+      "english": "AFC locked — acquired the mark/space pair and frozen on it (offset from the nominal tones)",
+      "chinese": "AFC 已锁定，捕获传号／空号音调对后固定在该处，显示相对标称音调的偏差",
+      "previous": "AFC锁定——获得标记/空格对并冷冻在上(从名义音调抵消)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.afc.title",
+      "english": "AFC offset from the nominal mark/space tone pair — locks once a signal is acquired",
+      "chinese": "相对标称传号／空号音调对的 AFC 偏差，捕获信号后即锁定",
+      "previous": "AFC 从标称标记/空格音配对中抵消——一旦获得信号即锁定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.afcReset.label",
+      "english": "Re-tune",
+      "chinese": "重新捕获",
+      "previous": "重调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.afcReset.title",
+      "english": "Re-acquire AFC — drop and rebuild the demodulator (use when it froze on the wrong signal)",
+      "chinese": "重新捕获 AFC：重建解调器，适用于误锁到其他信号的情况",
+      "previous": "重新获取 AFC —— 降级并重建降级器( 在错误信号上冻结时使用)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.clear.label",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "rtty.clear.title",
+      "english": "Clear the decoded transcript",
+      "chinese": "清除解码记录",
+      "previous": "清除解码记录",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.stream.listening",
+      "english": "listening…",
+      "chinese": "正在守听…",
+      "previous": "听着...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.stream.sent.title",
+      "english": "Sent by this station",
+      "chinese": "由本台发送",
+      "previous": "本站寄来的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.stream.idle",
+      "english": "Arm RX to decode RTTY from the receive audio",
+      "chinese": "启用接收，以解码接收音频中的 RTTY 信号",
+      "previous": "装入 RX 以解码RTTY从接收音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seq.aria",
+      "english": "RTTY auto-sequencer",
+      "chinese": "RTTY 自动通联流程",
+      "previous": "RTTY自动序列器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seq.callingCq",
+      "english": "Calling CQ",
+      "chinese": "正在呼叫 CQ",
+      "previous": "正在呼叫 CQ",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seq.answering",
+      "english": "Answering",
+      "chinese": "正在应答",
+      "previous": "正在应答",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seq.exchangeSent",
+      "english": "Exchange sent",
+      "chinese": "交换信息已发送",
+      "previous": "发送交换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seq.confirmed",
+      "english": "Confirmed",
+      "chinese": "已确认",
+      "previous": "已确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seq.done",
+      "english": "Done",
+      "chinese": "完成",
+      "previous": "完成",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.seq.idle",
+      "english": "Idle",
+      "chinese": "空闲",
+      "previous": "空闲",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundInput",
+          "chinese": "闲置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundOutput",
+          "chinese": "闲置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundInput",
+          "chinese": "闲置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundOutput",
+          "chinese": "闲置"
+        }
+      ]
+    },
+    {
+      "id": "rtty.autoCq.label",
+      "english": "Auto call",
+      "chinese": "自动呼叫",
+      "previous": "自动调用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoCq.title",
+      "english": "Call CQ and auto-run the QSO — the engine keys only after you click, never on its own",
+      "chinese": "呼叫 CQ 并自动完成 QSO 流程，仅在你点击后才会启动发射，不会自行发起",
+      "previous": "呼叫 CQ 并自动运行QSO——引擎键只在点击后,从不单独点击.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoCq.failed",
+      "english": "Auto CQ refused",
+      "chinese": "自动 CQ 被拒绝",
+      "previous": "拒绝自动 CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoAnswer.label",
+      "english": "Answer",
+      "chinese": "应答",
+      "previous": "应答",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoAnswer.title",
+      "english": "Answer {{call}} and auto-run the exchange (search & pounce)",
+      "chinese": "应答 {{call}} 并自动完成交换流程（扫频通联）",
+      "previous": "答复{{call}}自动运行交换( 搜索和跳跃)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoAnswer.none.title",
+      "english": "No CQ heard yet — Answer lights up when the decoder surfaces one",
+      "chinese": "尚未收到 CQ，解码器检测到 CQ 后，“应答”按钮才会启用",
+      "previous": "还没有听到CQ的声音... 当解码器浮出一面时, 答灯亮起",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.autoAnswer.failed",
+      "english": "Auto answer refused",
+      "chinese": "自动应答被拒绝",
+      "previous": "拒绝自动回答",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macros.aria",
+      "english": "RTTY macros",
+      "chinese": "RTTY 宏",
+      "previous": "RTTY 宏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.answer.label",
+      "english": "Answer",
+      "chinese": "应答",
+      "previous": "应答",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.exchange.label",
+      "english": "Exchange",
+      "chinese": "交换信息",
+      "previous": "交换信息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.hisCall.placeholder",
+      "english": "Their call…",
+      "chinese": "对方呼号…",
+      "previous": "对方呼号…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.hisCall.aria",
+      "english": "Worked station callsign (the {CALL} macro token)",
+      "chinese": "对方电台呼号（{CALL} 宏变量）",
+      "previous": "工作站呼号{CALL}宏符号)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.compose.aria",
+      "english": "RTTY compose",
+      "chinese": "RTTY 报文输入",
+      "previous": "RTTY编曲",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.compose.placeholder",
+      "english": "Type RTTY to send… (Enter)",
+      "chinese": "输入要发送的 RTTY 文字…（Enter 发送）",
+      "previous": "类型RTTY发送... (输入)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.compose.placeholder.latched",
+      "english": "Typing on the air…",
+      "chinese": "正在边输入边发射…",
+      "previous": "播放时打字...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.compose.send.label",
+      "english": "Send",
+      "chinese": "发送",
+      "previous": "发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.txline.aria",
+      "english": "What this station is sending",
+      "chinese": "本台发送的内容",
+      "previous": "这个站发送什么",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.txline.title",
+      "english": "What this station is sending: the over going out now, or the last one. Underlined characters have gone out; the rest has not gone yet. When an over is stopped, what never went out is struck through. Decoded text keeps the whole record.",
+      "chinese": "本台当前或上一轮发射的内容。带下划线的字符已发出，其余尚未发出；若中止发射，未发出的部分会加删除线。解码文本中保留完整记录。",
+      "previous": "这个站正在发送的是什么: 现在出去,或者最后一个。 下划线的字符已经出局;其余还没有出局. 当一个超度被阻止, 从未发生的被击中。 解码文本保存整个记录.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.txline.sending",
+      "english": "Sending",
+      "chinese": "正在发送",
+      "previous": "正在发送",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundOutput",
+          "chinese": "发送"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundOutput",
+          "chinese": "发送"
+        }
+      ]
+    }
+  ]
+}

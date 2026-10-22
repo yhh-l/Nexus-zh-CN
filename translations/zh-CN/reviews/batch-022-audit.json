@@ -1,0 +1,1664 @@
+{
+  "batch": 22,
+  "range": [
+    4201,
+    4400
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 157,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 3,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/BandStrip.tsx",
+    "ui/src/features/contestSpotMarks.ts",
+    "crates/tempo-app/src/dto.rs"
+  ],
+  "rows": [
+    {
+      "id": "bandStrip.offPlan",
+      "english": "{{band}} — off the band plan",
+      "chinese": "{{band}}，不在频段规划内",
+      "previous": "{{band}}脱离乐队计划",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.empty.noPlan",
+      "english": "no band-plan data for {{band}}",
+      "chinese": "没有 {{band}} 的频段规划数据",
+      "previous": "没有带宽计划数据{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.empty.thisFrequency",
+      "english": "this frequency",
+      "chinese": "此频率",
+      "previous": "此频率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.count::one",
+      "english": "{{count}} {{mode}} spot · {{band}}",
+      "chinese": "{{count}} 条 {{mode}} 通报 · {{band}}",
+      "previous": "{{count}} {{mode}}地点 ·{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.count::other",
+      "english": "{{count}} {{mode}} spots · {{band}}",
+      "chinese": "{{count}} 条 {{mode}} 通报 · {{band}}",
+      "previous": "{{count}} {{mode}}斑点 ·{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.empty.none",
+      "english": "no {{mode}} spots on {{band}} yet",
+      "chinese": "{{band}} 暂无 {{mode}} 通报",
+      "previous": "无{{mode}}点点上{{band}}现在",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.legend.label",
+      "english": "Legend",
+      "chinese": "图例",
+      "previous": "图例",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.legend.title",
+      "english": "Show/hide the colour + type key",
+      "chinese": "显示／隐藏颜色和类型图例",
+      "previous": "显示/隐藏颜色+类型密钥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.popout.label",
+      "english": "⧉ Band map",
+      "chinese": "⧉ 频段图",
+      "previous": "QQ 带图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.popout.title",
+      "english": "Open the vertical band map in its own window",
+      "chinese": "在独立窗口中打开纵向频段图",
+      "previous": "在自己的窗口打开垂直带图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.track.title",
+      "english": "{{band}}: {{lo}}–{{hi}} MHz",
+      "chinese": "{{band}}：{{lo}}–{{hi}} MHz",
+      "previous": "{{band}}数字 :{{lo}}- 说吧{{hi}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.track.title.tunable",
+      "english": "{{band}}: {{lo}}–{{hi}} MHz — scroll to tune",
+      "chinese": "{{band}}：{{lo}}–{{hi}} MHz，滚动可调频",
+      "previous": "{{band}}数字 :{{lo}}- 说吧{{hi}} MHz——卷轴调奏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.shade.title",
+      "english": "Your licensed phone segment on this band",
+      "chinese": "本台执照在此频段允许使用的话音频率范围",
+      "previous": "你在这个乐队的有执照的电话段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.spot.title",
+      "english": "{{detail}} — click to work",
+      "chinese": "{{detail}}，点击通联",
+      "previous": "{{detail}}——点击工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.spot.tci.title",
+      "english": "{{detail}} — click to tune",
+      "chinese": "{{detail}}，点击调谐",
+      "previous": "{{detail}}——点击调制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.spot.tci.from",
+      "english": "from TCI connection {{id}}",
+      "chinese": "来自 TCI 连接 {{id}}",
+      "previous": "从 TMI 连接{{id}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestSpot.dupe",
+      "english": "dupe",
+      "chinese": "重复交信",
+      "previous": "哑弹",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestSpot.mult",
+      "english": "new mult: {{rule}} {{value}}",
+      "chinese": "新系数：{{rule}} {{value}}",
+      "previous": "新黏土 :{{rule}} {{value}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestSpot.tag.dupe",
+      "english": "DUPE",
+      "chinese": "重复",
+      "previous": "杜普尔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestSpot.tag.mult",
+      "english": "MULT",
+      "chinese": "系数",
+      "previous": "穆尔特",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestSpot.predicted",
+      "english": "predicted from call history: {{rule}} {{value}}",
+      "chinese": "根据呼号历史资料预测：{{rule}} {{value}}",
+      "previous": "根据调用历史预测:{{rule}} {{value}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestSpot.predictedLine",
+      "english": "predicted from call history (county line {{line}}): {{rule}} {{value}}",
+      "chinese": "根据呼号历史资料预测（县界交信 {{line}}）：{{rule}} {{value}}",
+      "previous": "根据调用历史(县行)预测{{line}}:{{rule}} {{value}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contestSpot.tag.predicted",
+      "english": "MULT?",
+      "chinese": "系数？",
+      "previous": "MULT吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.age.secs",
+      "english": "{{secs}}s ago",
+      "chinese": "{{secs}} 秒前",
+      "previous": "{{secs}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.age.mins",
+      "english": "{{mins}}m ago",
+      "chinese": "{{mins}} 分钟前",
+      "previous": "{{mins}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.age.hours",
+      "english": "{{hours}}h ago",
+      "chinese": "{{hours}} 小时前",
+      "previous": "{{hours}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.dial.title",
+      "english": "You: {{freq}} MHz",
+      "chinese": "本台：{{freq}} MHz",
+      "previous": "你们:{{freq}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "bandStrip.dial.title.blocked",
+      "english": "You: {{freq}} MHz — transmit blocked (outside your privileges)",
+      "chinese": "本台：{{freq}} MHz，已禁止发射（超出执照许可范围）",
+      "previous": "你们:{{freq}} MHz——传输被屏蔽(在权限之外)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.picker.aria",
+      "english": "Choose radio",
+      "chinese": "选择电台",
+      "previous": "选择电台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.picker.title",
+      "english": "Which radio?",
+      "chinese": "选择哪台电台？",
+      "previous": "哪台无线电?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.picker.sub",
+      "english": "You have two radios running at once. Pick the radio this window will operate — you can open a second window for the other. They share one logbook.",
+      "chinese": "当前同时运行两台电台。请选择此窗口要操作的电台，可另开一个窗口操作另一台，两者共用同一本日志。",
+      "previous": "你马上有两台无线电 选择这个窗口会操作的收音机——你可以为另一个打开第二个窗口. 他们共享一个日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.picker.inUse.title",
+      "english": "{{name}} is already open in another window",
+      "chinese": "{{name}} 已在另一窗口中打开",
+      "previous": "{{name}}已经在另一个窗口打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.picker.inUse.tag",
+      "english": "in use",
+      "chinese": "正在使用",
+      "previous": "正在使用",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.picker.choose.title",
+      "english": "Operate {{name}}",
+      "chinese": "操作 {{name}}",
+      "previous": "运行{{name}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.picker.single",
+      "english": "Use one radio (follow bands on a single window)",
+      "chinese": "使用单台电台（在一个窗口内随频段切换）",
+      "previous": "使用一个收音机( 在单个窗口上跟踪频段)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.switcher.aria",
+      "english": "Active radio",
+      "chinese": "当前使用的电台",
+      "previous": "活动电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.switcher.active.title",
+      "english": "{{name}} — active radio ({{band}} · {{freq}} MHz)",
+      "chinese": "{{name}}，当前使用的电台（{{band}} · {{freq}} MHz）",
+      "previous": "{{name}}- 活跃的无线电台{{band}}* 妇女{{freq}} MHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.switcher.switch.title",
+      "english": "Switch to {{name}} (last on {{band}} · {{freq}} MHz)",
+      "chinese": "切换至 {{name}}（上次使用 {{band}} · {{freq}} MHz）",
+      "previous": "切换到{{name}}(最后一点){{band}}* 妇女{{freq}} MHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.switcher.catDead.title",
+      "english": "Switch to {{name}} — ⚠ CAT not responding (check its rig, cable, and COM port)",
+      "chinese": "切换至 {{name}}。⚠ CAT 无响应，请检查电台、连接线和 COM 端口",
+      "previous": "切换到{{name}}- ⚠CAT未答复(检查它的钻机、电缆和COM端口)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.switcher.catDead.aria",
+      "english": "CAT not responding",
+      "chinese": "CAT 无响应",
+      "previous": "CAT未回复",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.switcher.catDead.band",
+      "english": "no CAT",
+      "chinese": "CAT 未连接",
+      "previous": "无CAT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.peg.on.label",
+      "english": "🔒 Pegged",
+      "chinese": "🔒 已固定电台",
+      "previous": "{\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}我被骗了 {\\fn黑体\\fs22\\bord1\\shad0\\3aHBE\\4aH00\\fscx67\\fscy66\\2cHFFFFFF\\3cH808080}我",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.peg.off.label",
+      "english": "🔓 Peg",
+      "chinese": "🔓 固定电台",
+      "previous": "佩格语",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.peg.on.title",
+      "english": "Peg-lock ON — the active radio stays put; selecting a band won’t auto-switch radios. Click to unlock.",
+      "chinese": "电台固定已开启：保持使用当前电台，选择频段时不会自动切换电台。点击解除固定。",
+      "previous": "Peg-lock ON — 运行中的收音机仍保留; 点击可解锁 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "radios.peg.off.title",
+      "english": "Peg-lock OFF — selecting a band may auto-switch to the radio that covers it. Click to pin the active radio.",
+      "chinese": "电台固定已关闭：选择频段时，可能自动切换到覆盖该频段的电台。点击固定使用当前电台。",
+      "previous": "Peg-lock Off——选择一个乐队可能会自动切换到覆盖它的无线电. 点击以锁定正在运行的收音机 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.noPort",
+      "english": "No serial port chosen — a rig model is set, so CAT needs a port.",
+      "chinese": "未选择串口。已设置电台型号，因此 CAT 需要指定端口。",
+      "previous": "没有选择序列端口——设置了钻机模型,所以CAT需要一个端口。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.portMissing",
+      "english": "{{port}} is not connected right now — check the rig is powered on, or pick another port.",
+      "chinese": "{{port}} 当前未连接。请检查电台是否已开机，或选择其他端口。",
+      "previous": "{{port}}目前没有连接——检查钻机的电源,或者选择另一个端口.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.dialIn",
+      "english": "{{port}} is a dial-in device and will hang waiting for carrier. Use the matching /dev/cu.… port instead.",
+      "chinese": "{{port}} 是拨入设备，会一直等待载波。请改用对应的 /dev/cu.… 端口。",
+      "previous": "{{port}}是一个拨号设备,将悬空等待载体。 使用匹配的 /dev/cu.... 端口代替 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.catNoModel",
+      "english": "PTT is set to CAT but the rig model is None/VOX — pick your rig model, or choose a different PTT method.",
+      "chinese": "PTT 设为 CAT，但电台型号为 None/VOX。请选择电台型号，或改用其他 PTT 方式。",
+      "previous": "PTT设置为CAT但钻机型号是None/VOX——选择你的钻机型号,或者选择另一种PTT方法。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radio.check.noCatPtt",
+      "english": "Hamlib can't key this radio over CAT, so PTT on CAT won't put it in transmit. Choose VOX if your interface keys the radio on audio, or Serial RTS or DTR if it keys on a serial line.",
+      "chinese": "Hamlib 无法通过 CAT 控制这台电台的收发切换，因此 PTT 选用 CAT 时不能进入发射。如果接口通过音频触发发射，请选择 VOX；如果通过串口控制线触发，请选择 Serial RTS 或 DTR。",
+      "previous": "Hamlib无法按下收音机CAT,这样PTT打开CAT也不会放进去的 如果您的接口按下音频上的收音机键,请选择VOX;如果按下序列线键,则选择串号RTS或DTR。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.title",
+      "english": "Settings",
+      "chinese": "设置",
+      "previous": "设置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "设置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "设置"
+        }
+      ]
+    },
+    {
+      "id": "settings.panel.subtitle",
+      "english": "operator, rig & network",
+      "chinese": "操作员、电台与网络",
+      "previous": "操作员、钻机和网络",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.loading",
+      "english": "Loading settings…",
+      "chinese": "正在装入设置...",
+      "previous": "正在装入设置...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.build",
+      "english": "build {{id}}",
+      "chinese": "构建版本 {{id}}",
+      "previous": "构建{{id}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.build.title",
+      "english": "This install's build stamp — confirm a fresh install actually took",
+      "chinese": "当前安装的构建标识，可用于确认新版是否已成功安装",
+      "previous": "这个安装的构建印章——确认一个新安装实际拍摄的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.update.label",
+      "english": "Check for updates",
+      "chinese": "检查更新",
+      "previous": "检查更新",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.update.title",
+      "english": "Check for a newer Nexus release",
+      "chinese": "检查是否有新版 Nexus",
+      "previous": "检查更新的 Nexus 发布",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.licenses.button",
+      "english": "Licenses",
+      "chinese": "许可证",
+      "previous": "许可证",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.licenses.title",
+      "english": "Third-party licenses",
+      "chinese": "第三方许可证",
+      "previous": "第三方许可证",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.licenses.loading",
+      "english": "Loading the license texts…",
+      "chinese": "正在装入许可证文本...",
+      "previous": "正在装入许可证文本...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.licenses.unavailable",
+      "english": "This build does not carry the license texts. An installed Nexus has them in resources/ui/THIRD-PARTY.txt and resources/rust/THIRD-PARTY.txt.",
+      "chinese": "此构建未附带许可证文本。已安装的 Nexus 中可在 resources/ui/THIRD-PARTY.txt 和 resources/rust/THIRD-PARTY.txt 找到。",
+      "previous": "这栋楼没有许可证文本。 安装的Nexus在资源/i/THIRD-PARTY.txt以及资源/rust/THIRD-PARTY.txt中都有.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.tabs.aria",
+      "english": "Settings sections",
+      "chinese": "设置分类",
+      "previous": "设置区域",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.save",
+      "english": "Save",
+      "chinese": "保存",
+      "previous": "保存",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        }
+      ]
+    },
+    {
+      "id": "settings.panel.saving",
+      "english": "Saving…",
+      "chinese": "正在保存...",
+      "previous": "正在保存...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.panel.saved",
+      "english": "Saved",
+      "chinese": "已保存",
+      "previous": "已保存",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.tabs.station",
+      "english": "Station",
+      "chinese": "电台信息",
+      "previous": "电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.tabs.radio",
+      "english": "Radio",
+      "chinese": "电台",
+      "previous": "电台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.tabs.spots",
+      "english": "Spots & Alerts",
+      "chinese": "通报与提醒",
+      "previous": "斑点提醒( A)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.tabs.logging",
+      "english": "Logging & Connectors",
+      "chinese": "日志与集成服务",
+      "previous": "日志连接器( C)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.tabs.contesting",
+      "english": "Contesting",
+      "chinese": "竞赛",
+      "previous": "竞赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.tabs.appearance",
+      "english": "Appearance",
+      "chinese": "外观",
+      "previous": "外观",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.tabs.configurations",
+      "english": "Config",
+      "chinese": "配置",
+      "previous": "配置",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.configurations.legend",
+      "english": "Backup & reset",
+      "chinese": "备份与重置",
+      "previous": "备份重置( R)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.configurations.note",
+      "english": "Your whole setup in one file — for a new computer, before a rebuild, or to get back to a known-good state. These used to live under <em>Radio → Transmit limits & sharing</em>, where nobody found them.",
+      "chinese": "将整套设置保存在一个文件中，便于迁移到新电脑、重装前备份，或恢复到已知正常的状态。这些功能原先位于<em>电台 → 发射限制与共享</em>，不易找到。",
+      "previous": "在一个文件中你的整个设置——在重建之前为一台新的计算机,或者回到已知的好状态. 这些曾经生活在<em>收音机 — 传输限制和共享</em>在那里没有人找到他们。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.configurations.reset.label",
+      "english": "Start over",
+      "chinese": "重新开始",
+      "previous": "重新开始",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.configurations.reset.action",
+      "english": "Reset all settings…",
+      "chinese": "重置所有设置...",
+      "previous": "重置所有设置...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.configurations.reset.title",
+      "english": "Erase all settings and return to factory defaults",
+      "chinese": "清除全部设置并恢复出厂默认值",
+      "previous": "取消所有设置并返回工厂默认值",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.configurations.reset.hint",
+      "english": "Erases your radios, audio devices, callsign and preferences. Your <b>logbook is not touched</b>, and stored passwords stay in your keychain (clear those individually under Logging & Connectors). Back up first — this cannot be undone.",
+      "chinese": "清除电台、音频设备、呼号和偏好设置，<b>不会改动交信日志</b>。已保存的密码仍保留在系统钥匙串中，可在“日志与集成服务”中分别清除。此操作不可撤销，请先备份。",
+      "previous": "清除您的收音机,音频设备,调用符号和偏好. 你们<b>未触摸日志</b>,并且存储的密码会留在您的密钥链中(在日志和连接器下单独清除密码)。 先退后,这不能取消。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.save.callsignFirst",
+      "english": "Enter your callsign on the Station tab before saving.",
+      "chinese": "保存前，请先在“电台信息”页填写本台呼号。",
+      "previous": "在保存前在车站标签上输入您的呼号 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.save.fdPositionName",
+      "english": "Name this position on the Contesting tab before hosting or joining a club event — the club band board shows this name.",
+      "chinese": "建立或加入俱乐部活动前，请先在“竞赛”页为此操作席位命名。该名称将显示在俱乐部频段看板上。",
+      "previous": "在主办或加入俱乐部活动前在比赛标签上命名这个位置——俱乐部乐队板显示这个名称.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.save.js8GroupCannotJoin",
+      "english": "{{group}} is a group that cannot be joined. Take it out of Groups under JS8 on the Digital tab before saving.",
+      "chinese": "{{group}} 是不可加入的群组。保存前，请在“数字模式”页的 JS8 群组设置中将其移除。",
+      "previous": "{{group}}是无法加入的组。 把它从下面的组中取出来JS8在保存前的数字标签上。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.save.js8CqText",
+      "english": "The JS8 CQ message must start with CQ or hold your callsign, as in JS8Call. Change it under JS8 on the Digital tab before saving.",
+      "chinese": "JS8 的 CQ 报文必须以 CQ 开头，或包含本台呼号，与 JS8Call 的要求一致。保存前，请在“数字模式”页的 JS8 设置中修改。",
+      "previous": "那个 JS8 CQ信息必须从CQ开始,或者像JS8Call一样,保持你的呼号. 换在下面 JS8 在保存前的数字标签上。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.save.tciServerPortClash",
+      "english": "Share this radio with other programs and Share by TCI both use port {{port}}, and only one of them can have it. Give one of them another port.",
+      "chinese": "“与其他程序共享此电台”和“通过 TCI 共享”均使用端口 {{port}}，同一端口只能由其中一个占用。请为其中一个改用其他端口。",
+      "previous": "与其他程序共享此收音机, TCI 共享均使用端口{{port}}只有一个可以拥有它。 给其中一个港口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.save.checkRadio",
+      "english": "Check the radio settings.",
+      "chinese": "请检查电台设置。",
+      "previous": "检查无线电设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.save.failed",
+      "english": "Could not save settings.",
+      "chinese": "无法保存设置 。",
+      "previous": "无法保存设置 。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.restore.confirm.title",
+      "english": "Replace your current setup with {{file}}?",
+      "chinese": "用 {{file}} 替换当前设置？",
+      "previous": "将您的当前设置替换为{{file}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.restore.confirm.body",
+      "english": "Your radios, preferences, memory channels, watchlist and chase sets will be replaced. Your contact log is not affected. This cannot be undone.",
+      "chinese": "电台、偏好设置、存储信道、关注列表及追踪目标集将被替换，不影响交信日志。此操作不可撤销。",
+      "previous": "您的收音机,首选,内存频道,监视列表和追逐集将被替换. 您的联系人日志没有受到影响 。 这一点是无法消除的。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.restore.confirm.action",
+      "english": "Restore",
+      "chinese": "恢复",
+      "previous": "恢复",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.restore.done",
+      "english": "Settings restored — check your radio and Test CAT",
+      "chinese": "设置已恢复，请检查电台并执行 CAT 测试",
+      "previous": "恢复设置——检查您的收音机和测试CAT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.restore.failed",
+      "english": "Restore failed",
+      "chinese": "还原失败",
+      "previous": "还原失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.reset.confirm.title",
+      "english": "Reset all settings to factory defaults?",
+      "chinese": "将所有设置恢复为出厂默认值？",
+      "previous": "将所有设置重置为工厂默认值 ?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.reset.confirm.body",
+      "english": "Your radios, audio devices, callsign and preferences will be erased. Your contact log is not affected, and stored passwords stay in your keychain. This cannot be undone — back up first if you have not.",
+      "chinese": "电台、音频设备、呼号和偏好设置将被清除，不影响交信日志；已保存的密码仍保留在系统钥匙串中。此操作不可撤销，如尚未备份，请先备份。",
+      "previous": "你的收音机、音频设备、呼号和首选将被删除。 您的联系人日志不受影响, 存储的密码会留在您的密钥链中 。 这不能被取消——如果你没有的话,首先退后。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.reset.confirm.action",
+      "english": "Reset",
+      "chinese": "重置",
+      "previous": "重置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "重置"
+        }
+      ]
+    },
+    {
+      "id": "settings.backup.reset.done",
+      "english": "Settings reset to defaults",
+      "chinese": "设置已恢复为默认值",
+      "previous": "设置重设为默认值",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.backup.reset.failed",
+      "english": "Could not reset the configuration",
+      "chinese": "无法重设配置",
+      "previous": "无法重设配置",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.rxGain.failed",
+      "english": "Could not apply RX gain",
+      "chinese": "无法应用接收增益",
+      "previous": "无法应用 RX 增益",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.txPower.failed",
+      "english": "Could not set TX power",
+      "chinese": "无法设置发射功率",
+      "previous": "无法设置 TX 电源",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.device.notInList",
+      "english": "{{device}} — saved, not in the list",
+      "chinese": "{{device}}，已保存但不在当前列表中",
+      "previous": "{{device}}——保存,不在列表中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.betaUpdates.failed",
+      "english": "Could not change the update channel",
+      "chinese": "无法更改更新通道",
+      "previous": "无法更改更新通道",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satellites.vfoMap.failed",
+      "english": "Could not confirm the VFO mapping",
+      "chinese": "无法确认 VFO 上下行分配",
+      "previous": "无法确认VFO绘图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFreq.reset.confirm.title",
+      "english": "Clear all working-frequency overrides?",
+      "chinese": "清除所有自定义工作频率？",
+      "previous": "清除所有工作频率覆盖吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFreq.reset.confirm.body",
+      "english": "The stock WSJT-X frequency table is restored.",
+      "chinese": "将恢复默认的 WSJT-X 频率表。",
+      "previous": "股票WSJT-X频率表恢复.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFreq.reset.confirm.action",
+      "english": "Clear overrides",
+      "chinese": "清除自定义频率",
+      "previous": "清除覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.thisRadio",
+      "english": "this radio",
+      "chinese": "这台电台",
+      "previous": "这个电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.unnamed",
+      "english": "radio {{id}}",
+      "chinese": "电台 {{id}}",
+      "previous": "电台{{id}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.add.failed",
+      "english": "Could not add a radio",
+      "chinese": "无法添加电台",
+      "previous": "无法添加收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.remove.confirm.title",
+      "english": "Remove {{name}}?",
+      "chinese": "移除 {{name}}？",
+      "previous": "删除{{name}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.remove.confirm.body",
+      "english": "This deletes its CAT/audio config, its rigctld port and its band coverage. Your contact log is not affected. This can't be undone.",
+      "chinese": "将删除这台电台的 CAT／音频配置、rigctld 端口及频段覆盖设置，不影响交信日志。此操作不可撤销。",
+      "previous": "此删除其CAT和它的波段覆盖。 您的联系人日志没有受到影响 。 这事不能解决",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.remove.confirm.action",
+      "english": "Remove radio",
+      "chinese": "移除电台",
+      "previous": "删除收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.remove.failed",
+      "english": "Could not remove the radio",
+      "chinese": "无法移除电台",
+      "previous": "无法删除收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.rename.failed",
+      "english": "Could not rename the radio",
+      "chinese": "无法重命名电台",
+      "previous": "无法重命名收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.bands.failed",
+      "english": "Could not set band coverage",
+      "chinese": "无法设置频段覆盖范围",
+      "previous": "无法设置带状覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.default.failed",
+      "english": "Could not set the default radio",
+      "chinese": "无法设置默认电台",
+      "previous": "无法设置默认的收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.switch.failed",
+      "english": "Could not switch radios",
+      "chinese": "无法切换电台",
+      "previous": "无法切换收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.edit.confirm.title",
+      "english": "Discard unsaved changes to the radio you were editing?",
+      "chinese": "放弃正在编辑的电台的未保存更改？",
+      "previous": "放弃您正在编辑的收音机未保存的更改 ?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.edit.confirm.body",
+      "english": "The edits you have not saved for that radio are lost.",
+      "chinese": "将丢失尚未保存的此电台设置更改。",
+      "previous": "您尚未保存的编辑器已丢失 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.edit.confirm.action",
+      "english": "Discard and switch",
+      "chinese": "放弃并切换",
+      "previous": "丢弃和切换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.makeActive.confirm.title",
+      "english": "Discard unsaved changes and switch the operating radio?",
+      "chinese": "放弃未保存的更改，并切换当前操作的电台？",
+      "previous": "丢弃未保存的更改并切换操作中的收音机?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.makeActive.confirm.body",
+      "english": "The carrier is dropped before the swap. Unsaved edits to the radio you were editing are lost.",
+      "chinese": "切换前会先停止发射载波，正在编辑的电台的未保存更改将丢失。",
+      "previous": "航母在交换前被丢弃. 未保存的编辑到您正在编辑的收音机已丢失 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.makeActive.confirm.action",
+      "english": "Discard and switch",
+      "chinese": "放弃并切换",
+      "previous": "丢弃和切换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.routing.rules.failed",
+      "english": "Could not save the routing rules",
+      "chinese": "无法保存电台分派规则",
+      "previous": "无法保存路由规则",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.usb.failed",
+      "english": "USB radio detection failed",
+      "chinese": "USB 电台检测失败",
+      "previous": "USB 无线电检测失败",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.flex.scanFailed",
+      "english": "Flex LAN scan: {{error}}",
+      "chinese": "Flex 局域网扫描：{{error}}",
+      "previous": "弹性局域网扫描 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.none",
+      "english": "No radios found — USB: plug in + power on; Flex: must be on this network.",
+      "chinese": "未找到电台。USB 电台请连接设备并开机；Flex 电台须位于同一网络内。",
+      "previous": "没有找到收音机——USB:插上+功率;Flex:必须在这个网络上.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.unknownRadio",
+      "english": "radio",
+      "chinese": "电台",
+      "previous": "电台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.applied.interface",
+      "english": "Applied {{device}} on {{port}} — now pick your Rig Model, then Save",
+      "chinese": "已采用 {{port}} 上的 {{device}}。请继续选择电台型号，然后保存",
+      "previous": "应用{{device}}打开{{port}}- 现在选择你的Rig模型,然后保存",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.applied.identifying",
+      "english": "Applied {{device}} on {{port}} — identifying via Auto-test…",
+      "chinese": "已采用 {{port}} 上的 {{device}}，正在通过自动测试识别…",
+      "previous": "应用{{device}}打开{{port}}通过自动测试识别...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.applied.review",
+      "english": "Applied {{device}} on {{port}} — review + Save settings",
+      "chinese": "已采用 {{port}} 上的 {{device}}，请检查并保存设置",
+      "previous": "应用{{device}}打开{{port}}——审查+ 保存设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.flex.applied",
+      "english": "Applied {{radio}} at {{ip}} — SmartSDR CAT (slice A, port 5002); native panadapter/DAX ready to enable below. Review + Save, then Test CAT. Second slice? Use port 60001.",
+      "chinese": "已采用 {{ip}} 上的 {{radio}}，使用 SmartSDR CAT（接收切片 A，端口 5002）。下方可开启原生频谱显示／DAX。请检查并保存，再执行 CAT 测试。使用第二个接收切片时，请改用端口 60001。",
+      "previous": "应用{{radio}}时间{{ip}}- SmartSDR(智能软件)CAT(Slice A, port 5002); 本地的适应器/DAX, 准备在下面启用。 检讨 + 保存,然后测试CAT第二块? 使用港口60001.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.detect.flex.found",
+      "english": "Found {{radio}} at {{ip}} — model and radio IP applied. SmartSDR CAT is Windows-only, so set Network Address yourself: the address of a Windows PC on this network running SmartSDR CAT (slice A is its port 5002). Native panadapter/DAX below talk to the radio directly and need no such PC.",
+      "chinese": "已找到 {{ip}} 上的 {{radio}}，已填入型号和电台 IP。SmartSDR CAT 仅支持 Windows，请自行填写“网络地址”：同一网络内运行 SmartSDR CAT 的 Windows 电脑地址（接收切片 A 使用端口 5002）。下方原生频谱显示／DAX 可直接连接电台，无需这台电脑。",
+      "previous": "发现{{radio}}时间{{ip}}——模型和无线电IP应用. 智能软件CAT仅限 Windows , 因此设置 Network 地址: 运行 SmartSDR 的网络上的 Windows PC 地址CAT(slice A是它的港口5002). 下面的原生泛适应器/DAX直接与收音机交谈,不需要这种PC.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cat.callsignRequired",
+      "english": "Callsign is required.",
+      "chinese": "请填写呼号。",
+      "previous": "请填写呼号。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cat.savedNotTested",
+      "english": "Saved to {{name}}. CAT can only be tested on the radio you're operating — make {{name}} active to test it.",
+      "chinese": "已保存到 {{name}}。只能测试当前操作电台的 CAT，请先将 {{name}} 设为当前使用的电台。",
+      "previous": "保存到{{name}}。 。 。CAT只能在你操作的收音机上测试——制作{{name}}活动测试它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cat.test.failed",
+      "english": "Could not run the CAT test.",
+      "chinese": "无法执行 CAT 测试。",
+      "previous": "无法运行CAT测试。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cat.autoTest.failed",
+      "english": "Could not run the port auto-test.",
+      "chinese": "无法运行端口自动测试 。",
+      "previous": "无法运行端口自动测试 。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.saved",
+      "english": "Profile \"{{name}}\" saved",
+      "chinese": "配置方案“{{name}}”已保存",
+      "previous": "简介 \"{{name}}\" 节省",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.profiles.loaded",
+      "english": "Loaded profile \"{{name}}\"",
+      "chinese": "已加载配置方案“{{name}}”",
+      "previous": "已装入配置文件 \"{{name}}\" (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.test.testing",
+      "english": "testing…",
+      "chinese": "正在测试…",
+      "previous": "测试...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.sync.unmatched",
+      "english": " · {{count}} unmatched",
+      "chinese": " · {{count}} 条未匹配",
+      "previous": "* 妇女{{count}}未匹配",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.password.saveFailed",
+      "english": "Could not save the LoTW password",
+      "chinese": "无法保存 LoTW 密码",
+      "previous": "无法保存LoTW密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.password.saved",
+      "english": "LoTW password saved to the system keychain",
+      "chinese": "LoTW 密码已保存到系统钥匙串",
+      "previous": "LoTW密码保存到系统密钥链",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.password.clearFailed",
+      "english": "Could not clear the LoTW password",
+      "chinese": "无法清除 LoTW 密码",
+      "previous": "无法清除LoTW密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.password.cleared",
+      "english": "LoTW password cleared from the keychain",
+      "chinese": "LoTW 密码已从系统钥匙串清除",
+      "previous": "LoTW从密钥链清除密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.sync.failed",
+      "english": "LoTW sync failed",
+      "chinese": "LoTW 同步失败",
+      "previous": "LoTW 同步失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.sync.done",
+      "english": "LoTW: {{confirmed}} newly confirmed, {{credited}} credited{{promoted}}{{unmatched}}",
+      "chinese": "LoTW：新增确认 {{confirmed}} 条，新增奖项认可 {{credited}} 条{{promoted}}{{unmatched}}",
+      "previous": "LoTW数字 :{{confirmed}}新确认,{{credited}}贷记{{promoted}}{{unmatched}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.sync.promoted::one",
+      "english": " · {{count}} upload now on file",
+      "chinese": " · {{count}} 条上传记录现已入库",
+      "previous": "* 妇女{{count}}现在上传到文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.sync.promoted::other",
+      "english": " · {{count}} uploads now on file",
+      "chinese": " · {{count}} 条上传记录现已入库",
+      "previous": "* 妇女{{count}}现在上传到文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.redownload.pending",
+      "english": "Your whole LoTW history was not downloaded this time. Your next Download confirmations still asks for all of it.",
+      "chinese": "此次未下载完整的 LoTW 历史记录。下次执行“下载确认”时，仍会请求全部历史记录。",
+      "previous": "你整个LoTW这次没有下载历史 。 您的下一个下载确认 仍然要求全部。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.lotw.redownload.failed",
+      "english": "Could not reset the LoTW download",
+      "chinese": "无法重置 LoTW 下载状态",
+      "previous": "无法重设LoTW下载",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.eqsl.password.saveFailed",
+      "english": "Could not save the eQSL password",
+      "chinese": "无法保存 eQSL 密码",
+      "previous": "无法保存 eQSL 密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.eqsl.password.saved",
+      "english": "eQSL password saved — auto-upload to eQSL is ON",
+      "chinese": "eQSL 密码已保存，已开启自动上传到 eQSL",
+      "previous": "已保存的 eQSL 密码—— 自动上载到 eQSL 是 ON",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.eqsl.password.clearFailed",
+      "english": "Could not clear the eQSL password",
+      "chinese": "无法清除 eQSL 密码",
+      "previous": "无法清除 eQSL 密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.eqsl.password.cleared",
+      "english": "eQSL password cleared — auto-upload to eQSL is off",
+      "chinese": "eQSL 密码已清除，已关闭自动上传到 eQSL",
+      "previous": "已清除 eQSL 密码—— 自动上载到 eQSL 已关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.eqsl.sync.failed",
+      "english": "eQSL sync failed",
+      "chinese": "eQSL  同步失败",
+      "previous": "eQSL  同步失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.eqsl.sync.done",
+      "english": "eQSL: {{confirmed}} newly confirmed (not DXCC/WAS credit){{unmatched}}",
+      "chinese": "eQSL：新增确认 {{confirmed}} 条（不计入 DXCC／WAS 奖项认可）{{unmatched}}",
+      "previous": "eQSL 数字 : {{confirmed}} 新确认(无)  DXCC /是功劳).{{unmatched}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.password.saveFailed",
+      "english": "Could not save the QRZ password",
+      "chinese": "无法保存 QRZ 密码",
+      "previous": "无法保存QRZ密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.password.saved",
+      "english": "QRZ password saved to the system keychain",
+      "chinese": "QRZ 密码已保存到系统钥匙串",
+      "previous": "QRZ密码保存到系统密钥链",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.password.clearFailed",
+      "english": "Could not clear the QRZ password",
+      "chinese": "无法清除 QRZ 密码",
+      "previous": "无法清除QRZ密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.password.cleared",
+      "english": "QRZ password cleared from the keychain",
+      "chinese": "QRZ 密码已从系统钥匙串清除",
+      "previous": "QRZ从密钥链清除密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.key.saveFailed",
+      "english": "Could not save the QRZ Logbook key",
+      "chinese": "无法保存 QRZ 日志密钥",
+      "previous": "无法保存QRZ日志密钥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.key.saved",
+      "english": "QRZ Logbook key saved — auto-upload to QRZ is ON",
+      "chinese": "QRZ 日志密钥已保存，已开启自动上传到 QRZ",
+      "previous": "QRZ日志密钥已保存——自动加载到QRZ打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.key.clearFailed",
+      "english": "Could not clear the QRZ Logbook key",
+      "chinese": "无法清除 QRZ 日志密钥",
+      "previous": "无法清除QRZ日志密钥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.key.cleared",
+      "english": "QRZ Logbook key cleared — auto-upload to QRZ is off",
+      "chinese": "QRZ 日志密钥已清除，已关闭自动上传到 QRZ",
+      "previous": "QRZ日志密钥已清除——自动加载到QRZ关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.sync.failed",
+      "english": "QRZ sync failed",
+      "chinese": "QRZ 同步失败",
+      "previous": "QRZ 同步失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.sync.done::one",
+      "english": "QRZ: {{count}} new QSO, {{confirmed}} newly confirmed{{unmatched}}",
+      "chinese": "QRZ：新增 {{count}} 条 QSO，新增确认 {{confirmed}} 条{{unmatched}}",
+      "previous": "QRZ数字 :{{count}}新设QSO, (中文).{{confirmed}}新确认{{unmatched}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.sync.done::other",
+      "english": "QRZ: {{count}} new QSOs, {{confirmed}} newly confirmed{{unmatched}}",
+      "chinese": "QRZ：新增 {{count}} 条交信，新增确认 {{confirmed}} 条{{unmatched}}",
+      "previous": "QRZ数字 :{{count}}新的快速行动组织,{{confirmed}}新确认{{unmatched}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hamqth.password.saveFailed",
+      "english": "Could not save the HamQTH password",
+      "chinese": "无法保存 HamQTH 密码",
+      "previous": "无法保存 HamQTH 密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hamqth.password.saved",
+      "english": "HamQTH password saved to the system keychain",
+      "chinese": "HamQTH 密码已保存到系统钥匙串",
+      "previous": "将 HamQTH 密码保存到系统密钥链",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hamqth.password.clearFailed",
+      "english": "Could not clear the HamQTH password",
+      "chinese": "无法清除 HamQTH 密码",
+      "previous": "无法清除 HamQTH 密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hamqth.password.cleared",
+      "english": "HamQTH password cleared from the keychain",
+      "chinese": "HamQTH 密码已从系统钥匙串清除",
+      "previous": "从密钥链清除 HamQTH 密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.clublog.password.saveFailed",
+      "english": "Could not save the ClubLog password",
+      "chinese": "无法保存 ClubLog 密码",
+      "previous": "无法保存 ClubLog 密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.clublog.password.saved",
+      "english": "ClubLog app-password saved — auto-upload to ClubLog is ON",
+      "chinese": "ClubLog 应用专用密码已保存，已开启自动上传到 ClubLog",
+      "previous": "ClubLog App-password 保存——自动加载到 ClubLog 已打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.clublog.password.clearFailed",
+      "english": "Could not clear the ClubLog password",
+      "chinese": "无法清除 ClubLog 密码",
+      "previous": "无法清除 ClubLog 密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.clublog.password.cleared",
+      "english": "ClubLog password cleared — auto-upload to ClubLog is off",
+      "chinese": "ClubLog 密码已清除，已关闭自动上传到 ClubLog",
+      "previous": "ClubLog 密码被清除——自动加载到 ClubLog 已关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hrdlog.code.saveFailed",
+      "english": "Could not save the HRDLog.net upload code",
+      "chinese": "无法保存 HRDLog.net 上传代码",
+      "previous": "无法保存 HRDLog.net 上传代码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hrdlog.code.saved",
+      "english": "HRDLog.net code saved — auto-upload to HRDLog.net is ON",
+      "chinese": "HRDLog.net 上传码已保存，已开启自动上传到 HRDLog.net",
+      "previous": "HRDLog.net 代码保存——自动上载到HRDLog.net是On",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hrdlog.code.clearFailed",
+      "english": "Could not clear the HRDLog.net upload code",
+      "chinese": "无法清除 HRDLog.net 上传代码",
+      "previous": "无法清除 HRDLog.net 上传代码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.hrdlog.code.cleared",
+      "english": "HRDLog.net code cleared — auto-upload to HRDLog.net is off",
+      "chinese": "HRDLog.net 上传码已清除，已关闭自动上传到 HRDLog.net",
+      "previous": "HRDLog.net代码已清除——自动上载至HRDLog.net已关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.repeaterbook.token.saveFailed",
+      "english": "Could not save the RepeaterBook token",
+      "chinese": "无法保存 RepeaterBook 令牌",
+      "previous": "无法保存中继器书签符",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.repeaterbook.token.saved",
+      "english": "RepeaterBook token saved — the Repeaters section now uses RepeaterBook",
+      "chinese": "RepeaterBook 令牌已保存，中继台页面现使用 RepeaterBook 数据",
+      "previous": "中继器 Book 令牌保存——中继器部分现在使用中继器 Book",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.repeaterbook.token.clearFailed",
+      "english": "Could not clear the RepeaterBook token",
+      "chinese": "无法清除 RepeaterBook 令牌",
+      "previous": "无法清除中继器Book 令牌",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.repeaterbook.token.cleared",
+      "english": "RepeaterBook token cleared — the Repeaters section falls back to hearham.com",
+      "chinese": "RepeaterBook 令牌已清除，中继台页面改用 hearham.com 数据",
+      "previous": "中继器 Book 令牌清空——中继器部分掉回hearham.com",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.cloudlog.key.saveFailed",
+      "english": "Could not save the Cloudlog API key",
+      "chinese": "无法保存 Cloudlog API 密钥",
+      "previous": "无法保存 Cloudlog API 密钥",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.cloudlog.key.saved",
+      "english": "Cloudlog API key saved to the keychain",
+      "chinese": "Cloudlog API 密钥已保存到系统钥匙串",
+      "previous": "Cloudlog API 密钥保存到密钥链",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.cloudlog.key.clearFailed",
+      "english": "Could not clear the Cloudlog API key",
+      "chinese": "无法清除 Cloudlog API 密钥",
+      "previous": "无法清除 Cloudlog API 密钥",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.cloudlog.key.cleared",
+      "english": "Cloudlog API key cleared from the keychain",
+      "chinese": "Cloudlog API 密钥已从系统钥匙串清除",
+      "previous": "Cloudlog API 密钥从密钥链中清除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.legend",
+      "english": "Radios",
+      "chinese": "电台列表",
+      "previous": "无线电",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.anotherRadio",
+      "english": "another radio",
+      "chinese": "另一台电台",
+      "previous": "另一个电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.selectedRadio",
+      "english": "the selected radio",
+      "chinese": "所选电台",
+      "previous": "选定收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.editingNote",
+      "english": "<b>Editing {{name}}</b> — not your operating radio. <b>Save</b> writes only this radio's CAT / audio config; your active radio and station-wide settings are untouched.",
+      "chinese": "<b>正在编辑 {{name}}</b>，它不是当前操作的电台。<b>保存</b>只会写入这台电台的 CAT／音频配置，不会更改当前操作电台或全局电台设置。",
+      "previous": "<b>编辑{{name}}</b>- 不是你的无线电<b>保存</b>只写这台收音机CAT/ 音频配置; 您正在运行的无线电和全站设置未受影响 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.name.placeholder",
+      "english": "Radio name",
+      "chinese": "电台名称",
+      "previous": "无线电名称",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.active.badge",
+      "english": "Active",
+      "chinese": "使用中",
+      "previous": "活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.active.title",
+      "english": "Your operating radio.",
+      "chinese": "当前操作的电台。",
+      "previous": "你的操作无线电。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.editing.badge",
+      "english": "Editing",
+      "chinese": "编辑中",
+      "previous": "编辑",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.editing.title",
+      "english": "The Rig / CAT + Audio form below is editing this radio.",
+      "chinese": "下方的电台／CAT 与音频表单正在编辑这台电台。",
+      "previous": "规则/CAT+ 以下音频表正编辑此收音机。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.edit.action",
+      "english": "Edit",
+      "chinese": "编辑",
+      "previous": "编辑",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.edit.title",
+      "english": "Edit this radio's CAT / audio below — WITHOUT changing your operating radio (no swap, no dropped carrier).",
+      "chinese": "在下方编辑这台电台的 CAT／音频设置，不切换当前操作电台，也不会中断发射载波。",
+      "previous": "编辑此收音机CAT/ 下面的音频——不改变您的操作收音机(没有互换,没有丢弃的载体).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.makeActive.action",
+      "english": "Make active",
+      "chinese": "设为当前电台",
+      "previous": "启动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.makeActive.title",
+      "english": "Make this your operating radio (swaps rigs; drops any carrier first).",
+      "chinese": "将此台设为当前操作电台，切换设备前会先停止发射载波。",
+      "previous": "把这个做成你的操作收音机(扫瞄机;先放下任何载体).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.remove.action",
+      "english": "Remove",
+      "chinese": "移除",
+      "previous": "移除",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.radios.remove.title",
+      "english": "Remove this radio from the roster",
+      "chinese": "从列表中移除此电台",
+      "previous": "从名册中删除此收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

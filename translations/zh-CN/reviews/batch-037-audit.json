@@ -1,0 +1,1777 @@
+{
+  "batch": 37,
+  "range": [
+    7201,
+    7400
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 145,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 13,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/CwCockpit.tsx",
+    "ui/src/features/cwTurn.ts"
+  ],
+  "rows": [
+    {
+      "id": "cw.pane.sent.title",
+      "english": "Sent",
+      "chinese": "已发送",
+      "previous": "已发送",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "发出"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "发送"
+        }
+      ]
+    },
+    {
+      "id": "cw.pane.rigctl.title",
+      "english": "Rig controls",
+      "chinese": "电台控制",
+      "previous": "刚性控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pane.bandActivity.title",
+      "english": "Band activity",
+      "chinese": "频段活动",
+      "previous": "频段活动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pane.copilot.title",
+      "english": "Copilot",
+      "chinese": "操作助手",
+      "previous": "副驾驶",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pane.spots.title",
+      "english": "Spots",
+      "chinese": "电台通报",
+      "previous": "电台通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pane.needed.title",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pane.log.title",
+      "english": "Log",
+      "chinese": "日志",
+      "previous": "记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.header.mode.title",
+      "english": "The rig is set to CW while you're in this section",
+      "chinese": "进入此区域时，电台设为 CW 模式",
+      "previous": "钻机被设定为CW当你在这个区域",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.wpm.label",
+      "english": "Speed",
+      "chinese": "速度",
+      "previous": "速度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.wpm.aria",
+      "english": "CW keyer speed (WPM)",
+      "chinese": "CW 键控器速度（WPM）",
+      "previous": "CW键盘速度( E)WPM) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.wpm.title",
+      "english": "Keyer speed — PgUp/PgDn to nudge (Shift = ±4)",
+      "chinese": "键控器速度：按 PgUp/PgDn 微调（按住 Shift 时每次 ±4）",
+      "previous": "键器速度 — PgUp/ PgDn 到 udge (Shift = ±4)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.wpm.title.mac",
+      "english": "Keyer speed — PgUp/PgDn to nudge (Shift = ±4) · on a Mac: Fn+↑/Fn+↓",
+      "chinese": "键控器速度：按 PgUp/PgDn 微调（按住 Shift 时每次 ±4）；Mac 可用 Fn+↑/Fn+↓",
+      "previous": "键速 — PgUp/ PgDn to nuff( Shift = ±4) — 在Mac上: Fn+↑/ Fn+↓",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.keyer.label",
+      "english": "Keyer",
+      "chinese": "键控器",
+      "previous": "密钥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.keyer.aria",
+      "english": "CW keyer back-end",
+      "chinese": "CW 键控方式",
+      "previous": "CW键盘后端",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.keyer.serial.label",
+      "english": "Serial",
+      "chinese": "串口",
+      "previous": "序列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.keyer.soundcard.label",
+      "english": "Soundcard",
+      "chinese": "声卡",
+      "previous": "声卡",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "声效卡"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "声卡"
+        }
+      ]
+    },
+    {
+      "id": "cw.keyer.cat.title",
+      "english": "CAT keyer — the rig generates CW (rig in CW). Zero extra hardware.",
+      "chinese": "CAT 键控器：由电台生成 CW 信号，电台处于 CW 模式。无需额外硬件。",
+      "previous": "CAT键器——钻机生成CW(钻进CW) (中文(简体) ). 零额外硬件.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.keyer.serial.title",
+      "english": "Serial keyline — Nexus toggles DTR/RTS into the rig's KEY jack (rig in CW, rig shapes the signal). The clean method for rigs without CAT CW. Set the keyline port + line in Settings ▸ CW.",
+      "chinese": "串口键控线：Nexus 切换 DTR/RTS 电平，接入电台的 KEY 电键插口；电台处于 CW 模式，并负责波形整形。适用于不支持 CAT CW 的电台。请在“设置 ▸ CW”中选择键控串口及控制线。",
+      "previous": "串键线 — Nexus 将 DTR/RTS 切换到钻机的关键千斤顶( rig in)CW,钻机塑造信号。 钻机的清洁方法CAT CW设置中设置键行端口+行CW。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.keyer.winkeyer.title",
+      "english": "K1EL WinKeyer — hardware keyer over serial (rig in CW). Set its port in Settings ▸ CW.",
+      "chinese": "K1EL WinKeyer：通过串口连接的硬件键控器，电台处于 CW 模式。请在“设置 ▸ CW”中选择其端口。",
+      "previous": "K1EL Winkeyer —— 硬件密钥比串行( rig in)CW) (中文(简体) ). 将其端口设置在 QQ 设置中CW。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.keyer.soundcard.title",
+      "english": "Soundcard keyer — a keyed audio tone (this TAKES THE RADIO OUT OF CW, into a data mode like FT8 uses; CW mode returns when you pick another keyer). A workaround: works ONLY if Nexus's audio output is routed to the rig (like FT8) AND PTT works, and you must keep drive below ALC. WinKeyer or the serial keyline are the clean options.",
+      "chinese": "声卡键控器：发送断续音频音调。此方式会让电台退出 CW，进入与 FT8 类似的数据模式；选择其他键控器后恢复 CW 模式。这是替代方案：只有将 Nexus 音频输出送入电台（与 FT8 相同）且 PTT 正常时才能使用，并须降低驱动电平，避免触发 ALC。WinKeyer 或串口键控线是更直接的选择。",
+      "previous": "声卡键器——一个按键的音调(这把 RADIO 取出CW,进入数据模式FT8用途;CW模式返回时选择另一个键器。 工作绕道:只有在Nexus的音频输出被路由到钻机时才能工作(例如:FT8和PTT工作,你必须保持驱动低于ALC。 WinKeyer 或 序列密钥线是干净的选项.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pitch.label",
+      "english": "Pitch",
+      "chinese": "音调",
+      "previous": "皮条",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pitch.aria",
+      "english": "CW pitch (Hz)",
+      "chinese": "CW 音调（Hz）",
+      "previous": "CW投球数( E)Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pitch.title",
+      "english": "Sidetone / zero-beat pitch (Hz) — the scope's dashed marker",
+      "chinese": "侧音／零拍音调（Hz），对应频谱中的虚线标记",
+      "previous": "侧式/ 零拍投球( N)Hz)——瞄准镜的破损标记.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroProfile.label",
+      "english": "Macros",
+      "chinese": "宏",
+      "previous": "宏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroProfile.aria",
+      "english": "CW macro profile",
+      "chinese": "CW 宏配置",
+      "previous": "CW宏简介",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroProfile.title",
+      "english": "CW macro profile — your active F-key set (edit sets in Settings ▸ CW)",
+      "chinese": "CW 宏配置：当前使用的功能键报文组，可在“设置 ▸ CW”中编辑",
+      "previous": "CW宏配置文件 — 您活动的 F 密钥集( 设置中的编辑集 QQ)CW) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroProfile.unnamed",
+      "english": "Profile {{n}}",
+      "chinese": "配置 {{n}}",
+      "previous": "简介{{n}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroProfile.failed",
+      "english": "Could not switch macro profile",
+      "chinese": "无法切换宏配置",
+      "previous": "无法切换宏配置文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.filter.title",
+      "english": "RX filter / passband width (CAT) — narrow to dig CW out of QRM",
+      "chinese": "接收滤波器／通带宽度（CAT）：收窄通带有助于从 QRM 干扰中辨认 CW 信号",
+      "previous": "RX 过滤器 / 传波段宽度( N)CAT) —— 狭窄的挖掘 CW QRM 输出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.filter.narrower.title",
+      "english": "Narrower (−{{step}} Hz)",
+      "chinese": "收窄（−{{step}} Hz）",
+      "previous": "缩小( -{{step}} Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.filter.wider.title",
+      "english": "Wider (+{{step}} Hz)",
+      "chinese": "加宽（+{{step}} Hz）",
+      "previous": "较大(+){{step}} Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.filter.failed",
+      "english": "Could not set filter width",
+      "chinese": "无法设置滤波器带宽",
+      "previous": "无法设置过滤宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rotator.pointed",
+      "english": "Rotator → {{call}}: {{bearing}}° ({{to}})",
+      "chinese": "旋转器 → {{call}}：{{bearing}}°（{{to}}）",
+      "previous": "旋转器   {{call}}数字 :{{bearing}}° ({{to}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rotator.failed",
+      "english": "Rotator: {{error}}",
+      "chinese": "旋转器：{{error}}",
+      "previous": "旋转器 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.record.start.aria",
+      "english": "Record QSO audio",
+      "chinese": "录制本次 QSO 的音频",
+      "previous": "记录QSO音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.record.stop.aria",
+      "english": "Stop recording this QSO",
+      "chinese": "停止录制本次 QSO",
+      "previous": "别录了QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.record.off.title",
+      "english": "Record the received audio to a WAV in the recordings folder",
+      "chinese": "将接收音频录制为 WAV 文件，存入录音文件夹",
+      "previous": "在录音文件夹中将收到的音频记录到 WAV",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.record.on.title",
+      "english": "Recording — click to stop recording this QSO",
+      "chinese": "正在录音，点击可停止录制本次 QSO",
+      "previous": "录音——点击以停止录音QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.paddleTookOver",
+      "english": "Your paddle took over: Nexus stopped its message.",
+      "chinese": "双桨电键已接管，Nexus 已停止发送报文。",
+      "previous": "你的划桨接管了:Nexus停止了它的信息.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.record.startFailed",
+      "english": "Could not start recording",
+      "chinese": "无法开始录制",
+      "previous": "无法开始录制",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.record.stopFailed",
+      "english": "Could not stop recording",
+      "chinese": "无法停止录音",
+      "previous": "无法停止录音",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.tuneHint",
+      "english": "Scroll here to tune the VFO",
+      "chinese": "在此滚动鼠标滚轮可调谐 VFO",
+      "previous": "在这里滚动以调制VFO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.nativeRf.label",
+      "english": "RF Panadapter",
+      "chinese": "射频全景频谱",
+      "previous": "射频全景频谱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.nativeRf.title",
+      "english": "Native RF panadapter — the real RF spectrum around your dial.",
+      "chinese": "电台原生射频全景频谱，显示当前调谐频率附近的实际射频信号。",
+      "previous": "原生RF全适应器——你拨号周围真正的RF频谱.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.audio.label",
+      "english": "CW audio",
+      "chinese": "CW音频",
+      "previous": "CW音频",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.zeroBeat.label",
+      "english": "Zero beat",
+      "chinese": "零拍",
+      "previous": "零节拍",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.zeroBeat.aria",
+      "english": "Zero-beat tuning indicator",
+      "chinese": "零拍调谐指示器",
+      "previous": "零拍调制指示器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.zeroBeat.none",
+      "english": "no signal",
+      "chinese": "无信号",
+      "previous": "无信号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.zeroBeat.locked",
+      "english": "ON PITCH",
+      "chinese": "音调已对准",
+      "previous": "关于采购问题的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.zeroBeat.title",
+      "english": "Where the received tone sits against your CW pitch. The light comes on within {{tol}} Hz. Tune until the needle centres — it runs the same way as the scope below it. Display only: it never moves your radio.",
+      "chinese": "显示接收音调与设定 CW 音调的偏差。偏差在 {{tol}} Hz 以内时指示灯点亮。调谐至指针居中即可，指针方向与下方频谱一致。仅作显示，不会自动调谐电台。",
+      "previous": "听到的语气会和你对立CW发球。 灯光从里面发出{{tol}} Hz. Tune直到针头中心——它运行的方式与下面的范围相同. 只显示: 它从不移动您的收音机 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.audio.title",
+      "english": "Receiver AUDIO centered on your CW pitch ({{lo}}–{{hi}} Hz) — tune a signal onto the dashed hairline, mid-screen, to zero-beat it.",
+      "chinese": "以设定 CW 音调为中心的接收音频频谱（{{lo}}–{{hi}} Hz）。将信号调到屏幕中央的虚线位置，即可对准零拍。",
+      "previous": "接收者 AUDIO 以您为中心CW投球数( E){{lo}}- 说吧{{hi}} Hz)——将信号调到破碎的发线上,中屏,以零拍.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.audio.sub",
+      "english": "zero-beat",
+      "chinese": "零拍",
+      "previous": "零击",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.colors.label",
+      "english": "Colors",
+      "chinese": "颜色",
+      "previous": "颜色",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "EchoGraph",
+          "chinese": "颜色"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "颜色"
+        }
+      ]
+    },
+    {
+      "id": "cw.scope.splitter.label",
+      "english": "scope height",
+      "chinese": "频谱高度",
+      "previous": "范围高度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.seam.columns.label",
+      "english": "Decode column / Rig controls column",
+      "chinese": "解码列／电台控制列",
+      "previous": "解码列/ 硬控制列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.seam.spotsNeeded.label",
+      "english": "Spots / Needed",
+      "chinese": "电台通报／待通联",
+      "previous": "点/ 需要",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rfZoom.aria",
+      "english": "Panadapter zoom",
+      "chinese": "全景频谱缩放",
+      "previous": "调整器缩放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rfZoom.full.label",
+      "english": "Full",
+      "chinese": "全宽",
+      "previous": "完整",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rfZoom.full.title",
+      "english": "The rig's whole scope sweep (set the width on the radio)",
+      "chinese": "显示电台频谱的完整扫描范围，宽度在电台上设置",
+      "previous": "钻机的整个瞄准镜扫描(在无线电上设置宽度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rfZoom.span.title",
+      "english": "±{{khz}} kHz around your dial",
+      "chinese": "当前调谐频率两侧各 {{khz}} kHz",
+      "previous": "・{{khz}} kHz绕着你的电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rigScope.aria",
+      "english": "Rig scope control",
+      "chinese": "电台频谱控制",
+      "previous": "严格范围控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rigScope.label",
+      "english": "Rig scope",
+      "chinese": "电台频谱",
+      "previous": "严格范围",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rigScope.title",
+      "english": "These command the radio's own scope, not just the on-screen zoom",
+      "chinese": "这些控件会调整电台自身的频谱设置，而非仅缩放软件中的显示",
+      "previous": "这些命令是无线电自己范围, 不只是屏幕放大",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rigScope.span.title",
+      "english": "Set the radio's scope span to {{span}}",
+      "chinese": "将电台频谱跨度设为 {{span}}",
+      "previous": "设定收音机的范围范围为{{span}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rigScope.ref.title",
+      "english": "Scope reference level — lower to lift weak signals out of the noise",
+      "chinese": "频谱参考电平：降低可使弱信号在显示中更突出",
+      "previous": "范围参考水平——低到从噪音中调出弱信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rigScope.ref.aria",
+      "english": "Scope reference level (dB)",
+      "chinese": "频谱参考电平（dB）",
+      "previous": "范围参考水平 (dB)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.flexPan.aria",
+      "english": "Flex panadapter control",
+      "chinese": "Flex 全景频谱控制",
+      "previous": "Flex 修改器控制器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.flexPan.label",
+      "english": "Flex pan",
+      "chinese": "Flex 全景频谱",
+      "previous": "弹性锅",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.flexPan.title",
+      "english": "These command the FlexRadio's real SmartSDR panadapter, not just the on-screen zoom",
+      "chinese": "这些控件会调整 FlexRadio 实际的 SmartSDR 全景频谱，而非仅缩放软件中的显示",
+      "previous": "这些命令是 FlexRadio 真正的 SmartSDR 修改器, 而不仅仅是屏幕上的缩放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.flexPan.span.title",
+      "english": "Set the Flex panadapter bandwidth to {{span}}",
+      "chinese": "将 Flex 全景频谱带宽设为 {{span}}",
+      "previous": "设定 Flex 泛适应带宽为{{span}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.flexPan.ref.title",
+      "english": "Panadapter reference level (dBm) — lower to lift weak signals out of the noise",
+      "chinese": "全景频谱参考电平（dBm）：降低可使弱信号在显示中更突出",
+      "previous": "Panadapter 参考级 (dBm) – 降低到从噪声中提升弱信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.flexPan.ref.aria",
+      "english": "Flex panadapter reference level (dBm)",
+      "chinese": "Flex 全景频谱参考电平（dBm）",
+      "previous": "Flex 泛读器参考级 (dBm)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.scope.ref.label",
+      "english": "Ref",
+      "chinese": "参考电平",
+      "previous": "参考文献",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.dsp.aria",
+      "english": "Rig DSP functions",
+      "chinese": "电台 DSP 功能",
+      "previous": "Rig DSP 函数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.dsp.nb.title",
+      "english": "Noise Blanker — kills impulse/ignition noise (RX)",
+      "chinese": "脉冲噪声抑制（NB）：抑制脉冲及点火噪声，仅影响接收",
+      "previous": "噪音Blanker——杀死冲动/点燃噪音(RX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.dsp.nr.title",
+      "english": "Noise Reduction — pulls a tone out of broadband hiss (RX, DSP)",
+      "chinese": "降噪（NR）：从宽带嘶声中提取信号音调，使用接收 DSP",
+      "previous": "减少噪音——从宽带中调出调子(RX,DSP)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.dsp.notch.title",
+      "english": "Auto-Notch (ANF) — nulls a competing carrier (RX, DSP)",
+      "chinese": "自动陷波（ANF）：抑制干扰载波，使用接收 DSP",
+      "previous": "Auto-Notch (ANF) - 无效竞合承运人(RX, DSP)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.dsp.toggleFailed",
+      "english": "Could not toggle {{func}}",
+      "chinese": "无法切换 {{func}}",
+      "previous": "无法切换{{func}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.aria",
+      "english": "RX DSP levels",
+      "chinese": "接收 DSP 电平",
+      "previous": "RX DSP水平",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.nr.title",
+      "english": "Noise-reduction depth — raise until the noise floor drops, back off if the tone gets watery",
+      "chinese": "降噪深度：逐步提高，直到底噪降低；若音调出现水声般的失真，请适当调低",
+      "previous": "降噪深度——提高至噪音下降,如果声调水化则退后",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.nr.aria",
+      "english": "Noise-reduction level",
+      "chinese": "降噪深度",
+      "previous": "降噪深度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.agc.aria",
+      "english": "AGC speed",
+      "chinese": "AGC 速度",
+      "previous": "AGC 速度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.agc.title",
+      "english": "AGC time constant — Fast for CW/pileups, Slow for steady copy",
+      "chinese": "AGC 时间常数：CW 或多台争叫时用快档，稳定抄收时用慢档",
+      "previous": "AGC 时间常数 — fast for CW/堆放, 慢点复制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.agc.auto",
+      "english": "Auto",
+      "chinese": "自动",
+      "previous": "自动",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "自动"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "自动"
+        }
+      ]
+    },
+    {
+      "id": "cw.rxDsp.agc.fast",
+      "english": "Fast",
+      "chinese": "快",
+      "previous": "快",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "快速"
+        }
+      ]
+    },
+    {
+      "id": "cw.rxDsp.agc.mid",
+      "english": "Mid",
+      "chinese": "中",
+      "previous": "中",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.agc.slow",
+      "english": "Slow",
+      "chinese": "慢",
+      "previous": "慢",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.rxDsp.agc.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "cw.decode.ai.badge",
+      "english": "AI",
+      "chinese": "AI",
+      "previous": "大赦国际",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.decode.ai.on.title",
+      "english": "AI decoder on — click for the classic pitch decoder",
+      "chinese": "AI 解码器已开启，点击切换至传统音调跟踪解码器",
+      "previous": "AI 解码器在 – 点击经典 pitch 解码器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.decode.ai.off.title",
+      "english": "AI decoder off (classic pitch decoder) — click to turn AI on",
+      "chinese": "AI 解码器已关闭，当前使用传统音调跟踪解码器；点击开启 AI",
+      "previous": "AI解码器关闭(经典音标解码器)——点击打开AI",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.decode.clear.label",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "cw.decode.clear.title",
+      "english": "Clear the decoded + sent transcript",
+      "chinese": "清空解码内容和已发报文记录",
+      "previous": "清除已解码的 + 发送的记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.decode.title",
+      "english": "Live CW decode — the AI (neural-net) decoder reads the whole {{window}} Hz window, far better weak-signal copy than a pitch-tracking decoder. Turn AI off to fall back to the classic decoder.",
+      "chinese": "实时 CW 解码：AI（神经网络）解码器分析整个 {{window}} Hz 窗口，弱信号抄收能力明显优于音调跟踪解码器。关闭 AI 即可改用传统解码器。",
+      "previous": "现场直播CW解码器——人工智能(神经网)解码器读取整个{{window}} Hz窗口,比投影解码器要好得多。 关闭AI倒回经典解码器.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.decode.log.aria",
+      "english": "Decoded CW",
+      "chinese": "已解码的 CW 内容",
+      "previous": "已解码CW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.decode.listening",
+      "english": "listening…",
+      "chinese": "正在监听…",
+      "previous": "听着...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.decode.unassisted",
+      "english": "Unassisted entry: the CW decoder is off. CQ WW counts it as assistance.",
+      "chinese": "当前以无辅助类别参赛，CW 解码器已关闭。CQ WW 将此功能视为辅助。",
+      "previous": "非辅助条目:CW解码器关闭。 CQ WW将它算作援助.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.sent.title",
+      "english": "What you've transmitted (F-key macros expanded to the real text)",
+      "chinese": "本台已发送的内容，功能键宏已展开为实际报文",
+      "previous": "您所传输的( F- key 宏扩展为真实文本)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.copilot.working.label",
+      "english": "Working",
+      "chinese": "正在通联",
+      "previous": "工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.copilot.heard.label",
+      "english": "Heard",
+      "chinese": "已收到",
+      "previous": "听说了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.copilot.empty",
+      "english": "Decoded calls appear here…",
+      "chinese": "解码出的呼号将显示在这里…",
+      "previous": "解码电话出现在这里...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.copilot.worked.title",
+      "english": "The station you're working — the F-keys + log use this",
+      "chinese": "当前通联电台，功能键宏及日志均使用此呼号",
+      "previous": "你工作的车站——F键+日志使用此功能.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.copilot.work.title",
+      "english": "Work {{call}} — set it for the F-keys + log",
+      "chinese": "与 {{call}} 通联，将其设为功能键宏和日志使用的呼号",
+      "previous": "工作{{call}}用于F键+日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macros.aria",
+      "english": "CW macros",
+      "chinese": "CW 宏",
+      "previous": "CW 宏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.call.label",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "cw.macro.reply.label",
+      "english": "Reply",
+      "chinese": "回复",
+      "previous": "回复",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.exch.label",
+      "english": "Exch",
+      "chinese": "交换信息",
+      "previous": "交换信息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.myCall.label",
+      "english": "My Call",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "我的呼号"
+        }
+      ]
+    },
+    {
+      "id": "cw.macro.hisCall.label",
+      "english": "His Call",
+      "chinese": "对方呼号",
+      "previous": "对方呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.spExch.label",
+      "english": "S&P exch",
+      "chinese": "扫频通联交换",
+      "previous": "S&P 输出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.empty.label",
+      "english": "(empty)",
+      "chinese": "（空）",
+      "previous": "（空）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.empty.title",
+      "english": "{{key}} is empty. Click to write a message for it.",
+      "chinese": "{{key}} 尚未设置报文，点击即可编写。",
+      "previous": "{{key}}为空。 点击可写入信件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.edit.aria",
+      "english": "Edit the {{key}} macro",
+      "chinese": "编辑 {{key}} 宏",
+      "previous": "编辑{{key}}宏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macro.edit.title",
+      "english": "Edit the {{key}} macro. You can also right-click the key, or press Ctrl+Shift+{{key}}.",
+      "chinese": "编辑 {{key}} 宏。也可右键点击该功能键，或按 Ctrl+Shift+{{key}}。",
+      "previous": "编辑{{key}}宏 。 您也可以右键单击,或者按 Ctrl+ 移动+{{key}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.aria",
+      "english": "Edit {{key}}",
+      "chinese": "编辑 {{key}}",
+      "previous": "编辑{{key}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.title.label",
+      "english": "Title",
+      "chinese": "标题",
+      "previous": "标题",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.message.label",
+      "english": "Message",
+      "chinese": "消息",
+      "previous": "消息",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "ActiveStations",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "信息"
+        }
+      ]
+    },
+    {
+      "id": "cw.macroEditor.tokens.aria",
+      "english": "Insert a token",
+      "chinese": "插入宏变量",
+      "previous": "插入宏变量",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.token.mycall",
+      "english": "Your callsign",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.token.call",
+      "english": "Their callsign: the station you are working",
+      "chinese": "对方呼号，即当前通联电台",
+      "previous": "他们的呼号:你正在工作的车站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.token.rst",
+      "english": "The signal report, sent as 5NN",
+      "chinese": "信号报告，发送为 5NN",
+      "previous": "信号报告,作为5NN发送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.token.exch",
+      "english": "Your contest exchange, without the report (with the serial, where the contest has one)",
+      "chinese": "本台竞赛交换信息，不含信号报告；比赛使用序号时包含序号",
+      "previous": "您的比赛交流, 没有报告( 与系列, 比赛有一个)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.token.name",
+      "english": "Your name, from Settings ▸ Station",
+      "chinese": "本台操作员姓名，取自“设置 ▸ 电台信息”",
+      "previous": "你的名字,来自设置QQ站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.token.hisname",
+      "english": "Their name, from the callbook lookup",
+      "chinese": "对方姓名，取自呼号簿查询结果",
+      "previous": "他们的名字,从呼叫簿查",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.stopTitle",
+      "english": "A macro transmits, so its title can’t look like a stop button (Stop, Esc, Abort).",
+      "chinese": "宏会启动发射，因此标题不能看起来像停止按钮（Stop、Esc、Abort）。",
+      "previous": "宏传输, 因此其标题不能看起来像一个停止按钮( Stop, Esc, A中止 ) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.unknownToken",
+      "english": "Unknown token {{token}}. The keyer skips braces, so it would go out as a bare word.",
+      "chinese": "未知宏变量 {{token}}。键控器会跳过花括号，将其中的单词直接发出。",
+      "previous": "未知的符号{{token}}键器跳过牙套,所以它会作为一个空话出去。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.save",
+      "english": "Save",
+      "chinese": "保存",
+      "previous": "保存",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        }
+      ]
+    },
+    {
+      "id": "cw.macroEditor.sendOnce",
+      "english": "Send once",
+      "chinese": "发送一次",
+      "previous": "发送一次",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.sendOnce.title",
+      "english": "Send this message now, this once. The key stays as it is.",
+      "chinese": "立即发送此报文一次，不修改该功能键原有的报文。",
+      "previous": "现在发这个消息,这个一次。 钥匙保持原样",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macroEditor.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "cw.macroEditor.resetButton",
+      "english": "Reset this button",
+      "chinese": "重置此按钮",
+      "previous": "重置此按钮",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.macros.saveFailed",
+      "english": "Could not save the CW macro",
+      "chinese": "无法保存CW宏",
+      "previous": "无法保存CW宏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.compose.placeholder",
+      "english": "Type CW to send… (Enter)",
+      "chinese": "输入要发送的 CW 报文…（按 Enter 发送）",
+      "previous": "类型CW发送... (输入)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.hisCall.label",
+      "english": "His call",
+      "chinese": "对方呼号",
+      "previous": "对方呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.hisCall.title",
+      "english": "The station you are working. The ! in a macro sends this call. A decoded call fills it in; type over it to answer someone else, then press Enter or a macro key.",
+      "chinese": "当前通联电台。宏中的 ! 会发送此呼号。解码出的呼号会自动填入；如需应答其他电台，可改填其呼号，再按 Enter 或功能键宏发送。",
+      "previous": "你在工作的那个站 在宏中发送这个电话。 解码的调用填充;在调用上键以回答别人,然后按 Enter 或宏键.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.compose.send.label",
+      "english": "Send",
+      "chinese": "发送",
+      "previous": "发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.send.txLocked",
+      "english": "TX locked — this frequency is outside your license privileges",
+      "chinese": "TX 已锁定：此频率超出你的执照许可范围",
+      "previous": "TX 锁定—— 此频率不在您的许可权限之内 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.send.failed",
+      "english": "CW send failed",
+      "chinese": "CW发送失败",
+      "previous": "CW发送失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.speedMatch.label",
+      "english": "CW speed match",
+      "chinese": "CW速度匹配",
+      "previous": "CW速度匹配",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.speedMatch.short",
+      "english": "Match WPM",
+      "chinese": "匹配WPM",
+      "previous": "匹配WPM",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.speedMatch.title",
+      "english": "CW speed match: an answer to a station (your call, your exchange) is sent at the speed Nexus measured for that station, within the slowest and fastest set in Settings ▸ CW. A CQ is sent at your own speed, and so is everything once the answer has gone. Without a recent measurement of the station you are working, your own speed.",
+      "chinese": "CW 速度匹配：应答对方的报文（本台呼号、交换信息）按 Nexus 测得的对方速度发送，且不超出“设置 ▸ CW”中的最低和最高速度。CQ 使用本台设定速度，应答发完后也恢复本台速度。若没有当前通联电台近期的测速结果，则使用本台速度。",
+      "previous": "CW速度匹配:一个对一个站台(你的呼叫,你的交换)的回答以该站测得的速度发送,在设置QQ中最慢和最快的设定范围内.CW. CQ以你的速度发送,一旦答案消失,一切也一样. 没有最近测量的站台 你的工作,你自己的速度。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.speedMatch.failed",
+      "english": "CW speed match was not saved, so the switch is as it was.",
+      "chinese": "CW 速度匹配未能保存，开关保持原状态。",
+      "previous": "CW速度匹配没有保存,所以开关是原样的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.title",
+      "english": "Whose turn it is, read from the decoder's copy. It never sends: you press the key.",
+      "chinese": "根据解码内容判断当前轮到谁发送。此功能不会自行发射，须由你按键发送。",
+      "previous": "轮到谁了,从解码器的副本读出来. 它从不发送:按键.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.suggested",
+      "english": "Suggested now",
+      "chinese": "当前建议",
+      "previous": "现在建议",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.key.enter",
+      "english": "Enter",
+      "chinese": "Enter",
+      "previous": "输入",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.idle",
+      "english": "Listening",
+      "chinese": "正在收听",
+      "previous": "正在收听",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.theySend",
+      "english": "{{call}} sending",
+      "chinese": "{{call}} 正在发送",
+      "previous": "{{call}}发送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.theySend.bare",
+      "english": "Station sending",
+      "chinese": "对方正在发送",
+      "previous": "发送站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.finishing",
+      "english": "{{call}} finishing…",
+      "chinese": "{{call}} 即将发完…",
+      "previous": "{{call}}结束...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.finishing.bare",
+      "english": "Finishing…",
+      "chinese": "对方即将发完…",
+      "previous": "正在完成…",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.yourTurn",
+      "english": "Your turn · {{key}}",
+      "chinese": "轮到本台 · {{key}}",
+      "previous": "该你了...{{key}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.yourTurn.bare",
+      "english": "Your turn",
+      "chinese": "轮到本台",
+      "previous": "该你了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.type",
+      "english": "Your turn · type",
+      "chinese": "轮到本台 · 输入报文",
+      "previous": "轮到你 ・ 类型",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.partial",
+      "english": "Probably you · {{key}} once",
+      "chinese": "可能在叫本台 · 按 {{key}} 发一次",
+      "previous": "说不定你...{{key}}一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.partial.bare",
+      "english": "Probably you",
+      "chinese": "可能在叫本台",
+      "previous": "也许是你",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.hold",
+      "english": "Hold · {{call}}",
+      "chinese": "请等待 · {{call}}",
+      "previous": "坚持...{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.hold.bare",
+      "english": "Hold",
+      "chinese": "请等待",
+      "previous": "别动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.splitOff",
+      "english": "UP · split off",
+      "chinese": "UP · 异频未开启",
+      "previous": "UP 分离",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.unsure",
+      "english": "Not sure · {{key}}",
+      "chinese": "轮次不确定 · {{key}}",
+      "previous": "不确定 。{{key}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.unsure.bare",
+      "english": "Not sure",
+      "chinese": "轮次不确定",
+      "previous": "还不知道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.youSend",
+      "english": "You're sending",
+      "chinese": "本台正在发送",
+      "previous": "你送来了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.listen",
+      "english": "Listening for a reply",
+      "chinese": "等待对方应答",
+      "previous": "正在听答复",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.late",
+      "english": "They may go on · listen",
+      "chinese": "对方可能还要继续 · 请收听",
+      "previous": "他们可能继续...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.closing",
+      "english": "73 · log it",
+      "chinese": "73 · 记入日志",
+      "previous": "73 登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.closing.bare",
+      "english": "Log it",
+      "chinese": "记入日志",
+      "previous": "登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.noReply",
+      "english": "No reply · {{key}}",
+      "chinese": "未收到应答 · {{key}}",
+      "previous": "无答复{{key}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.noReply.bare",
+      "english": "No reply",
+      "chinese": "未收到应答",
+      "previous": "无答复",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.fiveNnTu",
+      "english": "Your turn · send 5NN TU",
+      "chinese": "轮到本台 · 发送 5NN TU",
+      "previous": "轮到你了 发送5NN TU",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.fiveNnTu.title",
+      "english": "Send 5NN TU. The Reply key would send a whole ragchew over.",
+      "chinese": "请发送 5NN TU。“回复”功能键会发出一整段闲聊报文。",
+      "previous": "发送5NNTU。 答覆键会把整个破碎送过去",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.yourTurn",
+      "english": "Your turn: {{key}}.",
+      "chinese": "轮到本台，请按 {{key}}。",
+      "previous": "轮到你了:{{key}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.yourTurn.bare",
+      "english": "Your turn.",
+      "chinese": "轮到本台。",
+      "previous": "该你了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.fiveNnTu",
+      "english": "Your turn: send 5NN TU.",
+      "chinese": "轮到本台，请发送 5NN TU。",
+      "previous": "轮到你了 派5NN TU去",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.hold",
+      "english": "Hold: it is {{call}}'s turn.",
+      "chinese": "请等待，当前轮到 {{call}} 发送。",
+      "previous": "坚持:这是{{call}}\"轮到。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.hold.bare",
+      "english": "Hold.",
+      "chinese": "请等待。",
+      "previous": "别动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.splitOff",
+      "english": "Hold: they listen up, and split is off.",
+      "chinese": "请等待，对方在较高频率接收，但本台尚未开启异频。",
+      "previous": "坚持:他们听好了,分头行动。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.unsure",
+      "english": "Not sure whose turn it is.",
+      "chinese": "无法确定当前轮到谁发送。",
+      "previous": "不知道轮到谁了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.noReply",
+      "english": "No reply.",
+      "chinese": "未收到应答。",
+      "previous": "没有答复。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.turn.say.closing",
+      "english": "They are signing.",
+      "chinese": "对方正在结束通联。",
+      "previous": "他们要签了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pace.label",
+      "english": "them {{them}} · you {{you}}",
+      "chinese": "对方 {{them}} · 本台 {{you}}",
+      "previous": "他们{{them}}~ 你个~{{you}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cw.pace.title",
+      "english": "Their speed beside yours. Click to send at {{them}} WPM for this contact; your saved speed stays as it is.",
+      "chinese": "并列显示对方和本台的速度。点击后，本次交信按 {{them}} WPM 发送，已保存的速度设置保持原值。",
+      "previous": "他们的速度在你身边。 点击以发送{{them}} WPM用于此联系人; 您保存的速度保持不变 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.speedMatch.label",
+      "english": "Answer at the station’s speed",
+      "chinese": "按对方速度应答",
+      "previous": "以空间站的速度回答",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.speedMatch.hint",
+      "english": "CW speed match: a message answering a station is sent at the speed the decoder measured for it, held between the two speeds below. A CQ, and everything after the answer, goes at your own speed. Off by default; the contest strip has the same switch.",
+      "chinese": "CW 速度匹配：应答对方的报文按解码器测得的对方速度发送，并限制在下方设定的最低和最高速度之间。CQ 及应答后的其他报文使用本台速度。默认关闭，竞赛操作栏也有同一开关。",
+      "previous": "CW速度匹配:一个响应一个站点的信息以为其测量的解码器的速度发送,在下面的两个速度之间保持. 一个CQ, 以及回答后的一切, 以你自己的速度进行. 默认关闭; 比赛条有相同的开关 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.speedMatch.min.label",
+      "english": "Speed match: slowest (WPM)",
+      "chinese": "速度匹配：最低速度（WPM）",
+      "previous": "速度匹配:最慢 (WPM) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.cw.speedMatch.max.label",
+      "english": "Speed match: fastest (WPM)",
+      "chinese": "速度匹配：最高速度（WPM）",
+      "previous": "速度比对:最快(WPM) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.scope",
+      "english": "Scope",
+      "chinese": "频谱",
+      "previous": "频谱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.rigscope",
+      "english": "Rig Scope Controls",
+      "chinese": "电台频谱控制",
+      "previous": "严格范围控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.txmeters",
+      "english": "TX Meters",
+      "chinese": "发射仪表",
+      "previous": "发射仪表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.receiver",
+      "english": "Receiver",
+      "chinese": "接收机",
+      "previous": "接收机",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.transmitter",
+      "english": "Transmitter",
+      "chinese": "发射机",
+      "previous": "发射机",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.bandActivity",
+      "english": "Band Activity",
+      "chinese": "频段活动",
+      "previous": "频段活动",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "波段活动"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "波段活动"
+        }
+      ]
+    },
+    {
+      "id": "phone.panel.voiceKeyer",
+      "english": "Voice Keyer",
+      "chinese": "语音键控器",
+      "previous": "语音键控器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.spots",
+      "english": "Spots",
+      "chinese": "电台通报",
+      "previous": "电台通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.panel.needed",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.pane.bandActivity.title",
+      "english": "Band activity",
+      "chinese": "频段活动",
+      "previous": "频段活动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.pane.voiceKeyer.title",
+      "english": "Voice keyer",
+      "chinese": "语音键控器",
+      "previous": "语音键控器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.pane.spots.title",
+      "english": "Spots",
+      "chinese": "电台通报",
+      "previous": "电台通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.pane.needed.title",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.seam.spotsNeeded.label",
+      "english": "Spots / Needed",
+      "chinese": "电台通报／待通联",
+      "previous": "点/ 需要",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.seam.columns.label",
+      "english": "Band activity column / Receiver column",
+      "chinese": "频段活动列／接收机列",
+      "previous": "乐队活动栏/接收栏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.pane.rigscope.title",
+      "english": "Rig scope controls",
+      "chinese": "电台频谱控制",
+      "previous": "严格范围控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

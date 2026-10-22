@@ -984,14 +984,19 @@ export function Waterfall({
       }
     }
 
-    /** Everything the overlay draws from, as one string: it is drawn again only when this moves
-     *  (or its inks were dropped, or while paused, when the time tape's ages move every frame). */
+    /** Everything the overlay draws from, as one string. Paused age labels only have second
+     *  precision; refreshing them every display frame needlessly repaints the whole overlay. */
     const overlayKeyOf = () => {
       const c = cursorsRef.current
       const named = c ? c.map((k) => `${k.hz}/${k.color}/${k.label}`).join(',') : '-'
       const band = toneBandRef.current
       const shade = band ? `${band.loHz}/${band.hiHz}/${keyedRef.current}` : '-'
-      return `${cssW}|${cssH}|${scaleX}|${scaleY}|${textScale}|${viewLoRef.current}|${viewHiRef.current}|${txOffRef.current}|${rxOffRef.current}|${markerWidthRef.current}|${txRef.current}|${named}|${shade}`
+      // A new incoming row increments the offset while paused, preserving the SAME frame.
+      // Key on that frame's timestamp, not the offset, so reception does not force a repaint.
+      const tape = pausedRef.current
+        ? `${Math.floor(Date.now() / 1000)}/${renderer.rowAt(offsetRef.current)?.tMs ?? '-'}/${newestAtTopRef.current}`
+        : 'live'
+      return `${cssW}|${cssH}|${scaleX}|${scaleY}|${textScale}|${viewLoRef.current}|${viewHiRef.current}|${txOffRef.current}|${rxOffRef.current}|${markerWidthRef.current}|${txRef.current}|${named}|${shade}|${tape}`
     }
 
     const loop = (now: number) => {
@@ -1039,7 +1044,7 @@ export function Waterfall({
       // shows moved: clearing and redrawing a full-window overlay 60 times a second was most
       // of the waterfall's cost on a large screen.
       const key = overlayKeyOf()
-      if (key !== overlayKey || pausedRef.current || !inksRef.current) {
+      if (key !== overlayKey || !inksRef.current) {
         overlayKey = key
         drawOverlay()
       }

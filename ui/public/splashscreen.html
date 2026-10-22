@@ -148,6 +148,13 @@
           "count": "{{done}} / {{total}} 件の交信",
           "finishing": "仕上げています…",
           "opening": "Nexusを開いています…"
+        },
+        "zh-CN": {
+          "title": "正在将交信日志迁移至新数据库",
+          "once": "此操作只需执行一次。完成后 Nexus 会自动打开。",
+          "count": "已处理 {{done}} / {{total}} 条交信记录",
+          "finishing": "正在完成…",
+          "opening": "正在打开 Nexus…"
         }
       }
     </script>
@@ -173,6 +180,11 @@
           if (stored && STRINGS[stored]) return stored
           const os = navigator.language || ''
           if (STRINGS[os]) return os
+          if (/^zh(?:-|$)/i.test(os)) {
+            const parts = os.toLowerCase().split('-')
+            const simplified = parts.includes('hans') || (!parts.includes('hant') && (parts.includes('cn') || parts.includes('sg')))
+            return simplified && STRINGS['zh-CN'] ? 'zh-CN' : 'en'
+          }
           const lang = os.split('-')[0]
           return STRINGS[lang] ? lang : 'en'
         }

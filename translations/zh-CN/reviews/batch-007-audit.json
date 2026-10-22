@@ -1,0 +1,2016 @@
+{
+  "batch": 7,
+  "range": [
+    1201,
+    1400
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 150,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 18,
+  "externalDefinitions": [
+    "https://adif.org/314/ADIF_314.htm",
+    "https://www.arrl.org/sweepstakes"
+  ],
+  "implementation": [
+    "ui/src/components/LogEntry.tsx",
+    "ui/src/features/contestEdit.ts",
+    "ui/src/features/contestSlots.ts"
+  ],
+  "rows": [
+    {
+      "id": "logbook.change.gone",
+      "english": "{{call}} was deleted in another window, so this was not saved.",
+      "chinese": "{{call}} 的记录已在另一个窗口中删除，因此本次修改未保存。",
+      "previous": "{{call}} 的记录已在另一个窗口中删除，因此本次修改未保存。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.change.busy",
+      "english": "The logbook was busy, so this change to {{call}} was not saved. Try again.",
+      "chinese": "日志正忙，未能保存对 {{call}} 的修改。请重试。",
+      "previous": "日志正忙，未能保存对 {{call}} 的修改。请重试。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.delete.busy",
+      "english": "The logbook was busy, so {{call}} was not deleted. Try again.",
+      "chinese": "日志正忙，未能删除 {{call}} 的记录。请重试。",
+      "previous": "日志正忙，未能删除 {{call}} 的记录。请重试。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.title",
+      "english": "Log this QSO",
+      "chinese": "记录本次 QSO",
+      "previous": "记录本次 QSO",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.clear.label",
+      "english": "Clear",
+      "chinese": "清空",
+      "previous": "清空",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.clear.title",
+      "english": "Clear the log fields",
+      "chinese": "清空日志表单",
+      "previous": "清空日志表单",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.hunt.title",
+      "english": "This QSO will be tagged with the hunted park reference when you log it (matched by callsign).",
+      "chinese": "记录这条 QSO 时，会按呼号匹配并添加追逐目标的公园参考编号。",
+      "previous": "这个QSO当您登录时, 会被标记为被猎杀的公园参考文献( 由呼号匹配) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.hunt.mismatch",
+      "english": "(call ≠ hunt)",
+      "chinese": "（呼号与追逐目标不符）",
+      "previous": "(叫打猎)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.call.placeholder",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.lookup.label",
+      "english": "Lookup",
+      "chinese": "查询呼号",
+      "previous": "查询呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.lookup.title",
+      "english": "Look up name + QTH in the callbook — QRZ first, then HamQTH (grid/state need a QRZ subscription)",
+      "chinese": "在呼号数据库中查询姓名和 QTH：先查询 QRZ，再查询 HamQTH（网格定位和州信息需要 QRZ 订阅）",
+      "previous": "查找名称 +QTH在电话簿中——QRZ首先,然后是HamQTH(网格/状态需要QRZ订阅)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.rstSent.label",
+      "english": "Sent",
+      "chinese": "发送报告",
+      "previous": "已发送",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "发出"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "发送"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.rstSent.title",
+      "english": "Signal report you SENT them",
+      "chinese": "你发送给对方的信号报告",
+      "previous": "你发送给对方的信号报告",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.rstRcvd.label",
+      "english": "Rcvd",
+      "chinese": "接收报告",
+      "previous": "已接收",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "接收"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "接收"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.rstRcvd.title",
+      "english": "Signal report you RECEIVED from them",
+      "chinese": "你收到的对方信号报告",
+      "previous": "你收到的对方信号报告",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.grid.placeholder",
+      "english": "Grid",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.grid.title",
+      "english": "Their Maidenhead locator — the satellite exchange. 4, 6 or 8 characters (EN52, EN52XA or EN52XA25); auto-filled by the callbook lookup only while it is blank",
+      "chinese": "对方的梅登海德网格定位（卫星通联交换的信息之一），共 4、6 或 8 个字符，例如 EN52、EN52XA 或 EN52XA25。仅当此栏为空时，才会通过呼号数据库查询自动填入。",
+      "previous": "对方的梅登海德网格定位（卫星通联交换的信息之一），共 4、6 或 8 个字符，例如 EN52、EN52XA 或 EN52XA25。仅当此栏为空时，才会通过呼号数据库查询自动填入。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.grid.blocked",
+      "english": "“{{grid}}” isn’t a grid square — Nexus logs 4, 6 or 8 characters (EN52, EN52XA or EN52XA25). Fix it or clear it to log.",
+      "chinese": "“{{grid}}”不是有效的网格定位。Nexus 接受 4、6 或 8 个字符的定位码，例如 EN52、EN52XA、EN52XA25。请更正或清空后再记录交信。",
+      "previous": "“......{{grid}}”不是一个网格方块, 修或清为日志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.grid.blockedToast",
+      "english": "“{{grid}}” isn’t a grid square — enter EN52, EN52XA or EN52XA25, or clear it",
+      "chinese": "“{{grid}}”不是有效的网格定位，请输入 EN52、EN52XA 或 EN52XA25 这类定位码，或清空此栏",
+      "previous": "“......{{grid}}”不是网格方块,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.grid.blockedTitle",
+      "english": "Enter a 4-, 6- or 8-character grid square (EN52, EN52XA or EN52XA25), or clear it",
+      "chinese": "请输入 4、6 或 8 个字符的网格定位码（如 EN52、EN52XA、EN52XA25），或清空此栏",
+      "previous": "输入一个 4- 、 6- 或 8- 特征网格方块( EN52、 EN52XA 或 EN52XA25), 或清除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.name.placeholder",
+      "english": "Name",
+      "chinese": "姓名",
+      "previous": "姓名",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "姓名"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "姓名"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileSystemModel",
+          "chinese": "姓名"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.qth.placeholder",
+      "english": "QTH (city)",
+      "chinese": "QTH（城市）",
+      "previous": "QTH（城市）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.state.placeholder",
+      "english": "State",
+      "chinese": "州／省",
+      "previous": "州／省",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.state.title",
+      "english": "State / province — auto-filled by the QRZ lookup when available",
+      "chinese": "州／省——查询 QRZ 时，若有对应信息会自动填入",
+      "previous": "州/省——自动填充QRZ可用时查找",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.parkState.ask",
+      "english": "On a state line. Which state?",
+      "chinese": "公园跨越州界，对方位于哪个州？",
+      "previous": "此交信位于州界附近。属于哪个州？",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.parkState.title",
+      "english": "This park is in more than one state, and the contact counts for the one the activator is in. Nexus does not guess it: pick it here, or log without a state and set it later in the Logbook.",
+      "chinese": "这个公园跨越多个州，交信应计入对方活动电台当时所在的州。Nexus 不会自行推测；请在此选择，或暂不填写，之后在交信日志中补充。",
+      "previous": "这个公园处于不止一个状态, 联系人数是活动者所在的状态。 Nexus不猜测它:在这里选择它,或者在没有状态下日志,然后在后期的日志中设定.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.country.placeholder",
+      "english": "Country",
+      "chinese": "国家／地区",
+      "previous": "国家／地区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.country.title",
+      "english": "DXCC entity — auto-filled from the callsign when available",
+      "chinese": "DXCC 实体——能够根据呼号识别时会自动填入",
+      "previous": "DXCC实体——可用时从调用符号自动填充",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.comment.placeholder",
+      "english": "Comment (sharable)",
+      "chinese": "附言（可与对方分享）",
+      "previous": "评注（可分享）",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.park.program.title",
+      "english": "On-the-air program for the park/summit you worked",
+      "chinese": "对方电台所参与的公园／山峰空中活动项目",
+      "previous": "对方电台所参与的公园／山峰空中活动项目",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.park.ref.placeholderPota",
+      "english": "Park ({{example}} or name)",
+      "chinese": "公园（{{example}} 或名称）",
+      "previous": "公园（{{example}} 或名称）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.park.ref.placeholderSota",
+      "english": "Summit ({{example}})",
+      "chinese": "山峰（{{example}}）",
+      "previous": "山峰（{{example}}）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.park.ref.title",
+      "english": "Park/summit reference of the station you worked — logged to ADIF (POTA→SIG_INFO, SOTA→SOTA_REF)",
+      "chinese": "对方电台的公园／山峰活动参考编号——写入 ADIF 字段（POTA→SIG_INFO，SOTA→SOTA_REF）",
+      "previous": "对方电台的公园／山峰活动参考编号——写入 ADIF 字段（POTA→SIG_INFO，SOTA→SOTA_REF）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.park.live.label",
+      "english": "live",
+      "chinese": "实时",
+      "previous": "实时",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.park.live.title",
+      "english": "Fetched live from the POTA directory",
+      "chinese": "从 POTA 目录获取的实时数据",
+      "previous": "从 POTA 目录获取的实时数据",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.notes.placeholder",
+      "english": "Notes (private, multi-line)…",
+      "chinese": "私人备注（支持多行）……",
+      "previous": "备注（私人，多行）…",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.toggle",
+      "english": "Log a contact from another radio",
+      "chinese": "补录使用其他电台设备完成的交信",
+      "previous": "从另一个电台登录联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.toggleSub",
+      "english": "· adjust band · freq · mode · time (UTC)",
+      "chinese": "· 手动设置频段 · 频率 · 模式 · 时间（UTC）",
+      "previous": "· 调整带 · freq 模式 · 时间(UTC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.title",
+      "english": "Log a contact you made on another radio that isn't connected to Nexus — set the band, frequency, mode, and UTC time by hand",
+      "chinese": "补录使用未连接到 Nexus 的其他电台设备完成的交信；请手动设置频段、频率、模式和 UTC 时间",
+      "previous": "在另一个与Nexus不相连的无线电上记录你所做的联系——设定波段,频率,模式,以及UTC手动时间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.date.label",
+      "english": "Date (UTC)",
+      "chinese": "日期 (UTC)",
+      "previous": "日期 (UTC)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.time.label",
+      "english": "Time (UTC)",
+      "chinese": "时间 (UTC)",
+      "previous": "时间 (UTC)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.band.label",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.override.freq.label",
+      "english": "Freq (MHz)",
+      "chinese": "频率 (MHz)",
+      "previous": "频率 (MHz)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.mode.label",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.override.offBand",
+      "english": "{{freq}} MHz is outside {{band}} — logged as entered",
+      "chinese": "{{freq}} MHz 不在 {{band}} 频段内，将按输入值记录",
+      "previous": "{{freq}} MHz外边{{band}}- 按输入记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.needFreq",
+      "english": "Enter a numeric frequency",
+      "chinese": "请输入数字格式的频率。",
+      "previous": "请输入数字格式的频率。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.blockedHint",
+      "english": "Enter a frequency for the override to log",
+      "chinese": "请填写手动补录的频率后再记录交信",
+      "previous": "输入要登录的覆盖频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.blocked",
+      "english": "Enter a valid frequency for the override, or close it",
+      "chinese": "请为手动补录输入有效频率，或关闭手动补录",
+      "previous": "输入覆盖的有效频率, 或关闭它",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.timeBlocked",
+      "english": "Enter a valid UTC date ({{date}}) and 24-hour time ({{short}} or {{long}}) for the override, or close it",
+      "chinese": "请为手动补录输入有效的 UTC 日期（{{date}}）和 24 小时制时间（{{short}} 或 {{long}}），或关闭手动补录",
+      "previous": "输入一个有效的UTC日期({{date}}(a) 24小时{{short}}或{{long}}用于覆盖,或关闭它",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.override.timeBlockedHint",
+      "english": "Enter the UTC date ({{date}}) and a 24-hour time ({{short}} or {{long}}) for the override to log",
+      "chinese": "请为手动补录填写 UTC 日期（{{date}}）和 24 小时制时间（{{short}} 或 {{long}}）后再记录交信",
+      "previous": "输入UTC日期({{date}}24小时时间({{short}}或{{long}}用于日志的覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.summary",
+      "english": "Logs to the shared logbook as {{mode}} · {{freq}} MHz",
+      "chinese": "将写入共享日志：{{mode}} · {{freq}} MHz",
+      "previous": "共享日志的日志为{{mode}}* 妇女{{freq}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.summaryBand",
+      "english": "Logs to the shared logbook as {{mode}} · {{band}} · {{freq}} MHz",
+      "chinese": "将写入共享日志：{{mode}} · {{band}} · {{freq}} MHz",
+      "previous": "共享日志的日志为{{mode}}* 妇女{{band}}* 妇女{{freq}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.log",
+      "english": "Log",
+      "chinese": "记录交信",
+      "previous": "记录交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.logged",
+      "english": "Logged {{call}} ({{mode}})",
+      "chinese": "已记录与 {{call}} 的交信（{{mode}}）",
+      "previous": "日志{{call}}(单位:千美元){{mode}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.logFailed",
+      "english": "Could not log the QSO",
+      "chinese": "无法记录这条 QSO",
+      "previous": "无法登录QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.spot.label",
+      "english": "📢 Spot",
+      "chinese": "📢 发布通报",
+      "previous": "点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.spot.title",
+      "english": "Spot this call to the DX cluster (pre-fills the call + your frequency)",
+      "chinese": "将此呼号发布到 DX 集群（自动填入呼号和本台当前频率）",
+      "previous": "将此调用点到 DX 集群( 预先填充调用 + 您的频率)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.chip",
+      "english": "FD LOG",
+      "chinese": "FD 日志",
+      "previous": "FD 语言",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.hint",
+      "english": "{{band}} · contacts go to the Field Day log",
+      "chinese": "{{band}} · 交信将写入 Field Day 日志",
+      "previous": "{{band}}联系人到外地日日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.call.label",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.fd.class.label",
+      "english": "Class",
+      "chinese": "参赛组别",
+      "previous": "类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.class.title",
+      "english": "Their Field Day class",
+      "chinese": "对方的 Field Day 参赛组别",
+      "previous": "他们的战地日课",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.section.label",
+      "english": "Section",
+      "chinese": "分区",
+      "previous": "节次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.section.title",
+      "english": "Their ARRL section",
+      "chinese": "对方所属的 ARRL 分区",
+      "previous": "他们的ARRL部分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.log",
+      "english": "Log FD",
+      "chinese": "记录 FD 交信",
+      "previous": "日志 FD",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.needClass",
+      "english": "Enter their Field Day class to log.",
+      "chinese": "请填写对方的 Field Day 参赛组别后再记录交信。",
+      "previous": "输入他们的战地日课以登录 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.badSection",
+      "english": "Section \"{{section}}\" isn't a known ARRL/RAC section — required to log.",
+      "chinese": "“{{section}}”不是有效的 ARRL/RAC 分区代码，请更正后再记录交信。",
+      "previous": "节 \"{{section}}\" 不是已知的ARRL/RAC区段——需要登录.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.logged",
+      "english": "Logged {{call}} {{exchange}} ({{mode}})",
+      "chinese": "已记录 {{call}} {{exchange}}（{{mode}}）",
+      "previous": "日志{{call}} {{exchange}}(单位:千美元){{mode}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.failed",
+      "english": "FD log failed",
+      "chinese": "无法写入 FD 日志",
+      "previous": "FD 日志失败",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.own",
+      "english": "Dupe: {{call}} is already in this position's log on {{band}} {{mode}}",
+      "chinese": "重复交信：本操作席位已在 {{band}} 频段以 {{mode}} 模式记录过 {{call}}",
+      "previous": "哑弹:{{call}}此位置的日志已打开{{band}} {{mode}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.ownAnyMode",
+      "english": "Dupe: {{call}} is already in this position's log on {{band}} — this contest counts a station once per band, any mode",
+      "chinese": "重复交信：本操作席位已在 {{band}} 频段记录过 {{call}}。本竞赛在每个频段对同一电台只计一次，不区分模式。",
+      "previous": "哑弹:{{call}}此位置的日志已打开{{band}}——这场比赛计算每个波段一个站台一次,任何模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.ownAnyBand",
+      "english": "Dupe: {{call}} is already in this position's log in {{mode}} — this contest counts a station once per mode, any band",
+      "chinese": "重复交信：本操作席位已用 {{mode}} 模式记录过 {{call}}。本竞赛在每种模式对同一电台只计一次，不区分频段。",
+      "previous": "哑弹:{{call}}已在此位置的日志中{{mode}}——这场比赛计算每个模式一个站台一次,任何波段.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.ownAnyBandOrMode",
+      "english": "Dupe: {{call}} is already in this position's log — this contest counts a station once, regardless of band or mode",
+      "chinese": "重复交信：本操作席位已记录过 {{call}}。本竞赛对同一电台只计一次，不区分频段或模式。",
+      "previous": "哑弹:{{call}}已经进入了这个位置的日志中 —— 无论乐队或模式如何, 这场比赛都算一个站台一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.badge",
+      "english": "DUPE",
+      "chinese": "重复",
+      "previous": "杜普尔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.worked",
+      "english": "Worked: {{qths}}",
+      "chinese": "已通联：{{qths}}",
+      "previous": "参加工作:{{qths}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.rstSent.label",
+      "english": "RST sent",
+      "chinese": "发送 RST",
+      "previous": "发送 RST",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.rstSent.title",
+      "english": "The report this contact logs as sent: {{rst}} unless you type another here, for this contact only. Space and Tab skip this box; click it, or press Shift+Tab from the received report, to change it.",
+      "chinese": "本次交信的发送报告默认为 {{rst}}；在此修改仅影响这一条交信。按空格或 Tab 会跳过此栏；如需修改，可点击此栏，或在接收报告栏按 Shift+Tab。",
+      "previous": "所发送的这份联系日志:{{rst}}除非您在此输入另一个, 只用于此联系人 。 空格和标签跳过此框; 单击它, 或按 Shift+ 从收到的报告中调出标签,以修改它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.workedAt",
+      "english": "{{time}} {{band}} {{mode}}",
+      "chinese": "{{time}} {{band}} {{mode}}",
+      "previous": "{{time}} {{band}} {{mode}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.workedOn",
+      "english": "{{band}} {{mode}}",
+      "chinese": "{{band}} {{mode}}",
+      "previous": "{{band}} {{mode}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.loggedDupe",
+      "english": "Logged {{call}} {{exchange}} ({{mode}}) as a DUPE: worked before, it scores no points",
+      "chinese": "已将 {{call}} {{exchange}}（{{mode}}）记为重复交信（DUPE）：此前已通联，不计分",
+      "previous": "日志{{call}} {{exchange}}(单位:千美元){{mode}})作为DUPE:曾经工作过,没有得分.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.dupe.club",
+      "english": "Club dupe: another position already worked {{call}} on {{band}} {{mode}} — logging is allowed but adds no points",
+      "chinese": "俱乐部重复交信：其他操作席位已在 {{band}} 频段以 {{mode}} 模式通联过 {{call}}。可以记录，但不计分。",
+      "previous": "Club dupe: 另一个已经工作的职位{{call}}打开{{band}} {{mode}}——允许采伐,但不增加点数.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.needField",
+      "english": "Enter their {{field}} to log.",
+      "chinese": "请填写对方的{{field}}后再记录交信。",
+      "previous": "输入他们的{{field}}以登录。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.badField",
+      "english": "{{field}} \"{{value}}\" isn't a known value — required to log.",
+      "chinese": "{{field}}的值“{{value}}”无效，请更正后再记录交信。",
+      "previous": "{{field}}\" (中文(简体) ).{{value}}\" 不是一个已知的价值——需要记录。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.badNumber",
+      "english": "{{field}} must be a number from {{min}} to {{max}}.",
+      "chinese": "{{field}}必须是 {{min}} 至 {{max}} 之间的数字。",
+      "previous": "{{field}}必须是来自{{min}}改为:{{max}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.notOnList",
+      "english": "{{value}} is not a county, state or province on this contest's list.",
+      "chinese": "{{value}} 不在本竞赛的县、州或省名单中。",
+      "previous": "{{value}}本次比赛名单中没有郡、州或省。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.didYouMean",
+      "english": "{{value}} is not a code on this contest's list. Did you mean {{codes}}?",
+      "chinese": "{{value}} 不在本竞赛的代码表中。你是否想输入 {{codes}}？",
+      "previous": "{{value}}这不是比赛的代码。 你是说{{codes}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.zone.label",
+      "english": "Zone",
+      "chinese": "分区",
+      "previous": "分区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.zone.title",
+      "english": "Their CQ zone, 1–40",
+      "chinese": "对方所在的 CQ 分区，范围为 1–40",
+      "previous": "他们的CQ区,1 -40",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.county.label",
+      "english": "County",
+      "chinese": "县",
+      "previous": "县",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.countyOrState.label",
+      "english": "County / State",
+      "chinese": "县／州",
+      "previous": "县/州",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.countyIn.label",
+      "english": "{{state}} county",
+      "chinese": "{{state}} 州的县",
+      "previous": "{{state}}县",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.state.label",
+      "english": "State",
+      "chinese": "州／省",
+      "previous": "州／省",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.serial.label",
+      "english": "Serial",
+      "chinese": "交信序号",
+      "previous": "序列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.grid.label",
+      "english": "Grid",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.fd.precedence.label",
+      "english": "Precedence",
+      "chinese": "参赛类别代码",
+      "previous": "优先发言",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.precedence.title",
+      "english": "Their precedence: Q, A, B, U, M or S",
+      "chinese": "对方的参赛类别代码：Q、A、B、U、M 或 S",
+      "previous": "它们的地位:Q、A、B、U、M或S",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.check.label",
+      "english": "Check",
+      "chinese": "首次持照年份",
+      "previous": "检查",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fd.check.title",
+      "english": "Their check: the last two digits of the year they were first licensed",
+      "chinese": "对方首次取得业余无线电执照年份的后两位数字",
+      "previous": "他们的支票:他们首次获得许可证的当年最后两位数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.chip",
+      "english": "CONTEST LOG",
+      "chinese": "竞赛日志",
+      "previous": "背景资料",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.hint",
+      "english": "{{band}} · contacts go to the contest log",
+      "chinese": "{{band}} · 交信将写入竞赛日志",
+      "previous": "{{band}}联系人到比赛日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.offBand",
+      "english": "{{band}} is not a band this contest uses · contacts still go to the contest log",
+      "chinese": "{{band}} 不在本竞赛使用的频段中；交信仍会写入竞赛日志",
+      "previous": "{{band}}此比赛使用的不是乐队... 联系人仍然会转到比赛日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.points::one",
+      "english": "{{count}} pt",
+      "chinese": "{{count}} 分",
+      "previous": "{{count}}ưμ㼯A",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.points::other",
+      "english": "{{count}} pts",
+      "chinese": "{{count}} 分",
+      "previous": "{{count}}点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.qsos",
+      "english": "{{count}} Q",
+      "chinese": "{{count}} 条交信",
+      "previous": "{{count}}问题",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.mults::one",
+      "english": "{{count}} mult",
+      "chinese": "{{count}} 个系数",
+      "previous": "{{count}}泥浆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.mults::other",
+      "english": "{{count}} mults",
+      "chinese": "{{count}} 个系数",
+      "previous": "{{count}}泥浆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.sections::one",
+      "english": "{{count}} section",
+      "chinese": "{{count}} 个分区",
+      "previous": "{{count}}节次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.sections::other",
+      "english": "{{count}} sections",
+      "chinese": "{{count}} 个分区",
+      "previous": "{{count}}节次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.rate",
+      "english": "{{rate}}/hr",
+      "chinese": "{{rate}} 条／小时",
+      "previous": "{{rate}}小时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.score.title",
+      "english": "The contest so far, as the Contest screen counts it: your score, contacts, multipliers (sections at Field Day) and contacts per hour over your last ten.",
+      "chinese": "按“竞赛”页面的统计方式显示当前成绩：得分、交信数、系数（Field Day 为分区数），以及根据最近十条交信计算的每小时交信速率。",
+      "previous": "目前为止的比赛,作为比赛屏幕的计数:你的得分,联系人,乘数(在战地日的节数)以及最后十次的时速联系人.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.qthMissing",
+      "english": "No QTH for {{call}}. Stations in the USA and Canada send their state or province — add it if you copied one. You can log without it.",
+      "chinese": "{{call}} 缺少 QTH 信息。美国和加拿大的电台应发送所在州或省；如果已抄收到，请补充。也可以不填此项直接记录交信。",
+      "previous": "没有QTH(单位:千美元){{call}}. 在美国和加拿大的台站发送它们的州或省——如果你复制了它的话。 你可以登录没有它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.scp.label",
+      "english": "Super Check Partial",
+      "chinese": "Super Check Partial（呼号补全）",
+      "previous": "超级检查部分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.scp.title",
+      "english": "Calls active in recent contests that match what you have typed. Click one to put it in the Call box.",
+      "chinese": "列出近期竞赛中活跃、且与你已输入内容匹配的呼号。点击即可填入呼号栏。",
+      "previous": "调用在最近匹配您输入的比赛中的活动 。 点击一键将其放入呼叫框。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.scp.worked.title",
+      "english": "Already in this log",
+      "chinese": "已在此日志中",
+      "previous": "已在此日志中",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.scp.near.title",
+      "english": "One character different from what you typed",
+      "chinese": "与输入的呼号仅相差一个字符",
+      "previous": "与您输入的字符不同",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.scp.none",
+      "english": "Super Check Partial has no list yet. Settings › Contesting says why.",
+      "chinese": "Super Check Partial 尚无呼号列表，请到“设置 → 竞赛”查看原因。",
+      "previous": "Super check Party 还没有列表 。 比赛会说原因",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.history.mark",
+      "english": "call history",
+      "chinese": "历史呼号资料",
+      "previous": "调用历史",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fill.contest",
+      "english": "this contest",
+      "chinese": "此比赛",
+      "previous": "此比赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fill.contest.title",
+      "english": "From your last contact with them in this contest. Type over it if they sent something else.",
+      "chinese": "来自本竞赛中上次与该电台交信的记录。若本次抄收到的内容不同，请直接修改。",
+      "previous": "从你最后一次接触 他们在这个比赛。 如果他们寄了别的东西就打过来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fill.log",
+      "english": "log {{year}}",
+      "chinese": "{{year}} 年日志",
+      "previous": "日志{{year}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.fill.log.title",
+      "english": "From your most recent contact with them in the log ({{year}}). Type over it if they sent something else.",
+      "chinese": "来自日志中最近一次与该电台的交信（{{year}} 年）。若本次抄收到的内容不同，请直接修改。",
+      "previous": "从你最近与他们在日志中的联系中{{year}}) (中文(简体) ). 如果他们寄了别的东西就打过来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.history.title",
+      "english": "From call history ({{file}}). Type over it if they sent something else.",
+      "chinese": "来自历史呼号资料（{{file}}）。若本次抄收到的内容不同，请直接修改。",
+      "previous": "调用历史{{file}}) (中文(简体) ). 如果他们寄了别的东西就打过来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.logged::one",
+      "english": "Logged {{call}} {{exchange}} ({{mode}})",
+      "chinese": "已记录 {{call}} {{exchange}}（{{mode}}）",
+      "previous": "日志{{call}} {{exchange}}(单位:千美元){{mode}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.logged::other",
+      "english": "Logged {{call}} {{exchange}} ({{mode}}): {{count}} contacts, one per county",
+      "chinese": "已记录 {{call}} {{exchange}}（{{mode}}）：共 {{count}} 条交信，每个县一条",
+      "previous": "日志{{call}} {{exchange}}(单位:千美元){{mode}}:{{count}}联系人,每个县一个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.dupe::one",
+      "english": "{{call}} in {{counties}} is a dupe on this band/mode, not logged again",
+      "chinese": "{{call}} 在 {{counties}} 的交信在此频段和模式下已重复，不再记录",
+      "previous": "{{call}}输入{{counties}}是这个乐队/模式上的哑弹,不再登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.dupe::other",
+      "english": "{{call}} in {{counties}} are dupes on this band/mode, not logged again",
+      "chinese": "{{call}} 在 {{counties}} 的交信在此频段和模式下均已重复，不再记录",
+      "previous": "{{call}}输入{{counties}}属于此带/ 模式上的 dupes, 不再登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.dupeFor",
+      "english": " for {{counties}}",
+      "chinese": "（{{counties}}）",
+      "previous": "(单位:千美元){{counties}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.someDupe::one",
+      "english": "{{counties}} is a dupe",
+      "chinese": "{{counties}} 为重复交信",
+      "previous": "{{counties}}是一个哑弹",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.someDupe::other",
+      "english": "{{counties}} are dupes",
+      "chinese": "{{counties}} 为重复交信",
+      "previous": "{{counties}}是哑巴",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.someNew::one",
+      "english": "; {{counties}} is new",
+      "chinese": "；{{counties}} 为新交信",
+      "previous": "· ;{{counties}}为新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.someNew::other",
+      "english": "; {{counties}} are new",
+      "chinese": "；{{counties}} 为新交信",
+      "previous": "· ;{{counties}}为新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.unknown",
+      "english": "{{value}} is not a county on the sponsor's list, so this county line cannot be logged.",
+      "chinese": "{{value}} 不在主办方的县名列表中，因此无法记录这条县界交信。",
+      "previous": "{{value}}并不是赞助商名单上的郡 所以这个郡的线路不能登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.label",
+      "english": "Remove last",
+      "chinese": "移除最新交信",
+      "previous": "最后删除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.title",
+      "english": "Remove the newest contest contact (Ctrl+D). Press twice: the first press names it, and a second within 5 seconds removes it.",
+      "chinese": "移除最新一条竞赛交信（Ctrl+D）。需按两次：第一次显示待移除的记录，5 秒内再次按下才会移除。",
+      "previous": "删除最新的比赛联系人(Ctrl+D). 按两次:第一个按下它的名字,5秒内一秒就删除.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.contact",
+      "english": "{{call}} · {{band}} {{mode}} · {{time}} · {{exchange}}",
+      "chinese": "{{call}} · {{band}} {{mode}} · {{time}} · {{exchange}}",
+      "previous": "{{call}}* 妇女{{band}} {{mode}}* 妇女{{time}}* 妇女{{exchange}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.contactBare",
+      "english": "{{call}} · {{band}} {{mode}} · {{time}}",
+      "chinese": "{{call}} · {{band}} {{mode}} · {{time}}",
+      "previous": "{{call}}* 妇女{{band}} {{mode}}* 妇女{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.armed",
+      "english": "Remove {{contact}}? Press Ctrl+D again.",
+      "chinese": "要移除 {{contact}} 吗？请再次按 Ctrl+D。",
+      "previous": "删除{{contact}}再次按 Ctrl+D 键。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.done",
+      "english": "Removed {{contact}} from the contest log. Restore it on the contest screen.",
+      "chinese": "已从竞赛日志中移除 {{contact}}，可在“竞赛”页面恢复。",
+      "previous": "删除{{contact}}从比赛日志。 在比赛屏幕上恢复它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.sentTo",
+      "english": "It was already sent to {{places}}: delete it there too.",
+      "chinese": "此记录已发送到 {{places}}，也需要在这些地方删除。",
+      "previous": "已经发给了{{places}}:删除那里也。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.sent.n3fjp",
+      "english": "N3FJP ({{host}})",
+      "chinese": "N3FJP（{{host}}）",
+      "previous": "国家3FJP({{host}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.sent.n1mm",
+      "english": "the N1MM broadcast",
+      "chinese": "N1MM 广播接收端",
+      "previous": "N1MM广播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.sent.wsjtx",
+      "english": "WSJT-X listeners",
+      "chinese": "WSJT-X 数据接收端",
+      "previous": "WSJT-X听众",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.logbook",
+      "english": "It stays in your logbook.",
+      "chinese": "此记录仍保留在交信日志中。",
+      "previous": "它留在你的日志里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.logbookUploaded",
+      "english": "It stays in your logbook, and {{services}} have it: Nexus cannot take it back from them.",
+      "chinese": "此记录仍保留在交信日志中，{{services}} 也已收到；Nexus 无法从这些服务中撤回。",
+      "previous": "它留在你的日志里,和{{services}}内克萨斯无法收回它",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.empty",
+      "english": "There is no contest contact to remove.",
+      "chinese": "没有可移除的竞赛交信。",
+      "previous": "没有要删除的比赛联系人 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.changed",
+      "english": "The newest contact changed, so nothing was removed.",
+      "chinese": "最新交信已发生变化，未移除任何记录。",
+      "previous": "最新的联系方式改变了,所以没有被移除.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.club",
+      "english": "The club log drops it too, on every laptop, as soon as the host has it.",
+      "chinese": "主机收到此操作后，所有笔记本电脑上的俱乐部日志都会移除这条记录。",
+      "previous": "俱乐部的日志也掉在每台笔记本电脑上,只要主机有它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.clubAway",
+      "english": "This laptop is not with the club host right now: the club log drops it when the link is back.",
+      "chinese": "这台笔记本电脑当前未连接俱乐部主机；恢复连接后，俱乐部日志会移除这条记录。",
+      "previous": "这台笔记本电脑现在不是俱乐部主机: 俱乐部日志在链接回来后就放下了.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.failed",
+      "english": "Nexus could not remove the contact, so nothing was removed.",
+      "chinese": "Nexus 未能移除交信，所有记录均未更改。",
+      "previous": "Nexus无法移除联系人,所以没有移除任何联系人.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.remove.remote",
+      "english": "Only at the station: a press through Remote removes no contact.",
+      "chinese": "此操作仅限电台本机使用；通过远程界面点击不会移除任何交信。",
+      "previous": "仅在车站:通过远程的媒体可以取消任何联系.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.label",
+      "english": "Edit",
+      "chinese": "编辑",
+      "previous": "编辑",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.title",
+      "english": "Edit this contact: the call, what they sent, the band and the mode. It keeps its time, serial and number. In the log strip, Ctrl+Y edits the newest contact.",
+      "chinese": "编辑交信的呼号、接收的交换信息、频段和模式；交信时间、序号和编号保持不变。在日志输入栏按 Ctrl+Y 可编辑最新交信。",
+      "previous": "编辑这个联系人:电话,他们发送的东西,乐队和模式. 它保持时间,序列和号码. 在日志条中,Ctrl+Y编辑最新的联系人.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.aria",
+      "english": "Edit {{contact}}",
+      "chinese": "编辑{{contact}}",
+      "previous": "编辑{{contact}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.save",
+      "english": "Save",
+      "chinese": "保存",
+      "previous": "保存",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        }
+      ]
+    },
+    {
+      "id": "contest.edit.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "contest.edit.editing",
+      "english": "Editing {{contact}}: Enter saves, Esc leaves it as it was.",
+      "chinese": "正在编辑 {{contact}}：按 Enter 保存，按 Esc 放弃修改。",
+      "previous": "编辑{{contact}}:输入保存,ESC按原样离开.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.done",
+      "english": "Edited {{was}}: now {{contact}}.",
+      "chinese": "已修改 {{was}}：现为 {{contact}}。",
+      "previous": "已编辑{{was}}: 现在{{contact}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.sentTo",
+      "english": "It had already gone to {{places}}, which still have it as it was: fix it there too.",
+      "chinese": "此记录先前已发送到 {{places}}，这些地方仍保留修改前的内容，也需要在那里更正。",
+      "previous": "它已经去了{{places}}仍保留着原样: 把它也修好。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.logbook",
+      "english": "Your logbook has a copy merged before the edit, which still says {{call}}: edit it there too.",
+      "chinese": "交信日志中保留着编辑前合并的副本，呼号仍为 {{call}}；也需要在那里修改。",
+      "previous": "您的日志在编辑前已经合并了一份副本, 它仍然写着{{call}}: 编辑那里也.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.logbookUploaded",
+      "english": "Your logbook has a copy merged before the edit, which still says {{call}}, and {{services}} have it: edit it there too.",
+      "chinese": "交信日志中保留着编辑前合并的副本，呼号仍为 {{call}}，且已发送到 {{services}}；这些地方也需要修改。",
+      "previous": "您的日志在编辑前已经合并了一份副本, 它仍然写着{{call}},以及{{services}}编辑它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.needCall",
+      "english": "A contact needs a call.",
+      "chinese": "请填写交信呼号。",
+      "previous": "联系人需要打电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.lineCount::one",
+      "english": "This contact was logged for one county, and an edit keeps it one.",
+      "chinese": "此交信原本只记录了一个县，编辑后仍须保留一个县。",
+      "previous": "这个联系人被记录在一个县,一个编辑保留一个.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.lineCount::other",
+      "english": "This contact is a county line of {{count}} counties, and an edit keeps {{count}}: give them joined by /.",
+      "chinese": "此县界交信原本记录了 {{count}} 个县，编辑后仍须保留 {{count}} 个县；请用 / 连接各县。",
+      "previous": "这个联系方式是县级线路{{count}}县,并保留编辑{{count}}: 给他们加入 /.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.changed",
+      "english": "That contact changed in the contest log since it was shown, so nothing was edited.",
+      "chinese": "此交信在显示后已被更改，本次未作修改。",
+      "previous": "该联系人自显示后在比赛日志中有所改变,因此没有编辑.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.incomplete",
+      "english": "A contact needs a call and a band, so nothing was edited.",
+      "chinese": "交信必须包含呼号和频段，本次未作修改。",
+      "previous": "一个联系人需要一个电话和一个乐队, 所以没有编辑。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.rows",
+      "english": "A county line keeps its number of counties, so nothing was edited.",
+      "chinese": "县界交信的县数必须保持不变，本次未作修改。",
+      "previous": "一个县线保留了县的数量,所以没有编辑.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.satellite",
+      "english": "A contact made through a satellite keeps the band of its pass, so nothing was edited.",
+      "chinese": "卫星交信必须保留其过境记录对应的频段，本次未作修改。",
+      "previous": "通过卫星进行的联系保留了它的通行证带,所以没有编辑任何内容.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.club",
+      "english": "At a club an edit cannot reach the other laptops yet, so nothing was edited. To fix your newest contact, take it back (Ctrl+D twice, or Remove on the contest screen) and log it again: the club log drops it on every laptop.",
+      "chinese": "俱乐部模式下的编辑目前无法同步到其他笔记本电脑，因此本次未作修改。若需更正最新交信，请先撤回（按两次 Ctrl+D，或在“竞赛”页面点击“移除”），再重新记录；撤回会从所有笔记本电脑的俱乐部日志中移除该记录。",
+      "previous": "在一个俱乐部,一个编辑器还无法到达其他的笔记本电脑,所以没有被编辑. 为了固定你最新的联系人,取回(Ctrl+D两次,或在比赛屏幕上移除)并再次登录:俱乐部日志将其丢到每台笔记本电脑上.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.failed",
+      "english": "Nexus could not edit the contact, so nothing was changed.",
+      "chinese": "Nexus 未能编辑此交信，内容未更改。",
+      "previous": "Nexus无法编辑联系人, 因此没有更改 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.remote",
+      "english": "Only at the station: a press through Remote edits no contact.",
+      "chinese": "此操作仅限电台本机使用；通过远程界面点击不会修改任何交信。",
+      "previous": "仅在车站:通过远程编辑的媒体不接触.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.edit.empty",
+      "english": "There is no contest contact to edit.",
+      "chinese": "没有可编辑的竞赛交信。",
+      "previous": "没有要编辑的比赛联系人 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.shared.logged",
+      "english": "{{call}} is already in the log: Enter was pressed in the other window first.",
+      "chinese": "{{call}} 的交信已记录：另一窗口先按下了 Enter。",
+      "previous": "{{call}}已经输入日志 : 输入先按在另一个窗口中。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.shared.changed",
+      "english": "The contact changed in the other window before it was logged. Check it and log it again.",
+      "chinese": "交信在写入前已被另一窗口更改，请核对后重新记录。",
+      "previous": "在另一个窗口登录之前,联系人已经改变。 检查一下再登录一遍",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.repeated",
+      "english": "{{value}} is in this county line twice.",
+      "chinese": "此县界交信中重复填写了 {{value}}。",
+      "previous": "{{value}}这郡里有两次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.tooMany",
+      "english": "A county line counts at most {{max}} counties.",
+      "chinese": "县界交信最多可计入 {{max}} 个县。",
+      "previous": "县线最多算数{{max}}县.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.countyLine.incomplete",
+      "english": "Finish the county line: 2 to {{max}} counties joined by / or +.",
+      "chinese": "请补全县界交信：填写 2 至 {{max}} 个县，并用 / 或 + 连接。",
+      "previous": "完成县线: 2至{{max}}加入的县有/或+.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.location.blank",
+      "english": "Your call is in the US or Canada, but no contest state or province is set, so Nexus will send the DX exchange with no QTH. Set yours in Settings › Contesting, or ignore this if you are operating from outside the US and Canada.",
+      "chinese": "你的呼号属于美国或加拿大，但尚未设置参赛所在州或省，Nexus 将发送不含 QTH 的 DX 交换信息。请到“设置 → 竞赛”填写；若你正在美国和加拿大以外操作，可忽略此提示。",
+      "previous": "您的电话是在美国或加拿大, 但是没有设置任何竞技状态或省份, 因此Nexus会发送 DX 交换与不QTH设置在 QQ 竞技中, 如果您从美国和加拿大以外运行, 请忽略此选项 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.location.unlisted",
+      "english": "{{typed}} is not a state or province this contest lists, so Nexus will send the DX exchange with no QTH. Set yours in Settings › Contesting, or ignore this if you are operating from outside the US and Canada.",
+      "chinese": "{{typed}} 不在本竞赛的州或省名单中，Nexus 将发送不含 QTH 的 DX 交换信息。请到“设置 → 竞赛”更正；若你正在美国和加拿大以外操作，可忽略此提示。",
+      "previous": "{{typed}}此比赛名单不是州或省, 因此Nexus将发送 DX 交换, 不QTH设置在 QQ 竞技中, 如果您从美国和加拿大以外运行, 请忽略此选项 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.contest.location.hint",
+      "english": "Did you mean {{codes}}?",
+      "chinese": "你是否想输入 {{codes}}？",
+      "previous": "你是说{{codes}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.sent.aria",
+      "english": "What you are sending",
+      "chinese": "当前发送的交换信息",
+      "previous": "你发的是什么",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.sent.label",
+      "english": "Sending",
+      "chinese": "发送内容",
+      "previous": "正在发送",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundOutput",
+          "chinese": "发送"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundOutput",
+          "chinese": "发送"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.sent.title",
+      "english": "The exchange you are sending now. Contacts already logged keep what they sent.",
+      "chinese": "本台当前发送的竞赛交换信息。已记录交信中的发送内容保持不变。",
+      "previous": "你现在发送的交换。 已经登录的联络人保留他们发送的邮件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.sent.moved.label",
+      "english": "I moved",
+      "chinese": "我已更换地点",
+      "previous": "我动了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.sent.moved.title",
+      "english": "Change what you send from here on — it takes effect on your next contact.",
+      "chinese": "更改此后发送的交换信息，从下一次交信开始生效。",
+      "previous": "改变你从这里发送的东西——它影响你的下一次联系。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.sent.moved.save",
+      "english": "Save",
+      "chinese": "保存",
+      "previous": "保存",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.sent.moved.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "logEntry.sent.moved.failed",
+      "english": "Could not change what you send",
+      "chinese": "无法更改发送的交换信息",
+      "previous": "无法更改您发送的内容",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logEntry.sent.moved.done",
+      "english": "Sending the new exchange from your next contact on",
+      "chinese": "从下一次交信开始发送新的交换信息",
+      "previous": "发送您下次联系人的新交换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.aria",
+      "english": "Log QSO",
+      "chinese": "记录 QSO",
+      "previous": "日志QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.title",
+      "english": "Log this QSO?",
+      "chinese": "要记录这条 QSO 吗？",
+      "previous": "记录此QSO? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.call.label",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "logPrompt.grid.label",
+      "english": "Grid",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        }
+      ]
+    },
+    {
+      "id": "logPrompt.rstSent.label",
+      "english": "RST sent",
+      "chinese": "发送 RST",
+      "previous": "发送 RST",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.rstRcvd.label",
+      "english": "RST rcvd",
+      "chinese": "接收 RST",
+      "previous": "接收 RST",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.waiting::one",
+      "english": "{{count}} more contact is waiting behind this one",
+      "chinese": "后面还有 {{count}} 条交信等待记录",
+      "previous": "{{count}}更多联系人在后面等着呢",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.waiting::other",
+      "english": "{{count}} more contacts are waiting behind this one",
+      "chinese": "后面还有 {{count}} 条交信等待记录",
+      "previous": "{{count}}更多联系人在这后面等着呢",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.autoLogged::one",
+      "english": "{{count}} contact was logged without your confirmation — the queue was full. It is in your log and your connectors will upload it; the Connections log names it.",
+      "chinese": "由于队列已满，{{count}} 条交信未经你的确认便已自动记录。这些记录已写入交信日志，并会通过已配置的连接服务上传；具体记录可在“连接”日志中查看。",
+      "previous": "{{count}}联系人未经您确认即被登录——队列满载. 它在您的日志中, 您的连接器会上传它; 连接日志名称 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.autoLogged::other",
+      "english": "{{count}} contacts were logged without your confirmation — the queue was full. They are in your log and your connectors will upload them; the Connections log names them.",
+      "chinese": "由于队列已满，{{count}} 条交信未经你的确认便已自动记录。这些记录已写入交信日志，并会通过已配置的连接服务上传；具体记录可在“连接”日志中查看。",
+      "previous": "{{count}}联系人未经您的确认而被登录—— 队列满了 。 它们在您的日志中, 您的连接器会上传它们; 连接日志将命名它们 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logPrompt.discard",
+      "english": "Discard",
+      "chinese": "放弃",
+      "previous": "放弃",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "丢弃"
+        }
+      ]
+    },
+    {
+      "id": "logPrompt.log",
+      "english": "Log QSO",
+      "chinese": "记录 QSO",
+      "previous": "日志QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

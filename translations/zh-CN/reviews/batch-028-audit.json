@@ -1,0 +1,1742 @@
+{
+  "batch": 28,
+  "range": [
+    5401,
+    5600
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 168,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 3,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/SettingsClusterNodes.tsx"
+  ],
+  "rows": [
+    {
+      "id": "settings.aprs.ssid.weather",
+      "english": "weather station",
+      "chinese": "气象站",
+      "previous": "气象站",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.ssid.truck",
+      "english": "truck / freight",
+      "chinese": "卡车／货运",
+      "previous": "卡车/运费",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.title",
+      "english": "APRS-IS (internet feed)",
+      "chinese": "APRS-IS（互联网数据流）",
+      "previous": "APRS-IS(网间信号)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.enabled.label",
+      "english": "APRS-IS feed",
+      "chinese": "APRS-IS 数据流",
+      "previous": "APRS-IS信号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.enabled.hint",
+      "english": "Plot stations the internet reports alongside the ones your own antenna hears — each one tagged so you can always tell which is which. Runs whether or not the APRS decoder is armed: it uses no radio and never transmits. If internet stations appear while your receiver stays silent, the fault is in the RF chain.",
+      "chinese": "将互联网通报的电台与本台天线收到的电台一同标在地图上，并分别标注来源，便于区分。无论 APRS 解码器是否启用，此功能均可运行，不使用电台设备，也绝不发射。若互联网电台正常显示而本台接收不到信号，问题就在射频接收链路。",
+      "previous": "将互联网上的报道与你自己的天线所听到的一样, 运行与否APRS解码器是武装的:它使用没有收音机,从不传输. 如果互联网站出现 而接收器保持缄默, 故障在RF链。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.host.label",
+      "english": "Server",
+      "chinese": "服务器",
+      "previous": "服务器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.host.hint",
+      "english": "Your regional Tier 2 rotate is best — noam / soam / euro / asia / aunz .aprs2.net. <code>{{host}}</code> works anywhere.",
+      "chinese": "建议使用所在地区的 Tier 2 轮询服务器：noam / soam / euro / asia / aunz .aprs2.net。<code>{{host}}</code> 在全球均可使用。",
+      "previous": "您的区域二级旋转最好 —— noam / soam / 欧元 / asia / aunz. aprs2.net.<code>{{host}}</code>到处都行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.port.label",
+      "english": "Port",
+      "chinese": "端口",
+      "previous": "端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.port.hint",
+      "english": "14580 is the filtered port clients and iGates should use. The full-feed ports would send you the entire planet.",
+      "chinese": "客户端和 iGate 应使用带过滤功能的 14580 端口；使用全量数据端口会收到全球所有数据。",
+      "previous": "14580是过滤的端口客户端,iGates应该使用. 充裕的港口会把整个星球都寄给你",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.radius.label",
+      "english": "Radius (km)",
+      "chinese": "半径（km）",
+      "previous": "半径( 公里)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.radius.hint",
+      "english": "How far around your grid square to subscribe. APRS is a local mode; 150 km is a generous 2 m-plus-digipeater horizon. 0 = no distance limit (busy).",
+      "chinese": "订阅以本台网格为中心、多大半径内的数据。APRS 主要用于本地通信，150 km 已能较宽裕地覆盖 2 米波段加数字中继的通信范围。0 表示不限距离，数据量会很大。",
+      "previous": "离你的网格广场多远?APRS是一个当地模式;150公里是一个宽大的2米+潜水器地平线。 0=无距离限制(繁忙).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.watchCalls.label",
+      "english": "Watched calls",
+      "chinese": "关注的呼号",
+      "previous": "看着电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.watchCalls.hint",
+      "english": "Comma separated. These come through from anywhere on earth, however far outside your radius they are — the club tracker on a road trip, a friend chasing a summit.",
+      "chinese": "呼号以逗号分隔。无论位于全球何处、超出订阅半径多远，这些电台的数据都会接收，例如公路旅行中的俱乐部跟踪台或参与山峰活动的朋友。",
+      "previous": "逗号分离. 这些都来自地球上的任何地方,不管它们离你半径有多远——一个在路上旅行的俱乐部追踪者,一个追赶高峰会的朋友。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.weather.label",
+      "english": "Weather stations",
+      "chinese": "气象站",
+      "previous": "气象台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.weather.hint",
+      "english": "Include weather reports in the feed.",
+      "chinese": "在数据流中包含气象报告。",
+      "previous": "将天气报告纳入饲料中。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.objects.label",
+      "english": "Objects & items",
+      "chinese": "对象与项目（Objects / Items）",
+      "previous": "对象( R)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.objects.hint",
+      "english": "Repeaters, NWS alerts and event markers other stations have placed on the map.",
+      "chinese": "其他电台在地图上标注的中继台、美国国家气象局（NWS）警报和活动标记。",
+      "previous": "中继器、核子系统警报和事件标记其他站点已在地图上放置。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.messages.label",
+      "english": "Messages",
+      "chinese": "消息",
+      "previous": "信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.messages.hint",
+      "english": "Show APRS text messages from the feed. Display only — replying to an internet message is not wired up.",
+      "chinese": "显示 APRS 互联网数据流中的文字消息。仅供查看，目前尚不支持回复互联网消息。",
+      "previous": "显示APRS种子的短信。 仅显示 – 对互联网消息的回复没有被监听 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.stationTtl.label",
+      "english": "Keep stations for (min)",
+      "chinese": "电台保留时间（分钟）",
+      "previous": "保留站点(分钟)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.stationTtl.hint",
+      "english": "How long a station stays on the map after its last packet. Stations start to fade at a third of this. An hour by default: fixed stations often beacon only every ten to thirty minutes, and a shorter window makes the slow ones blink off between their own beacons. 0 keeps every station forever (no fade, no removal — the 2000-station ceiling still applies).",
+      "chinese": "收到电台最后一个数据包后，在地图上保留该台的时间。经过此时长的三分之一后，图标开始逐渐淡出。默认一小时：固定台往往每 10 至 30 分钟才发送一次信标，若时限过短，间隔较长的电台会在两次信标之间消失。0 表示永久保留所有电台，不淡出也不移除，但仍受最多 2000 个电台的上限约束。",
+      "previous": "一个车站在地图上停留了多久? 三分之一的车站开始衰落 默认为一小时:固定的站点往往每10至30分钟才有一个信标,一个较短的窗口使慢的站点在自己的信标之间闪烁. 0永远保留每个车站(不淡出,不拆除——2000年车站上限仍然适用).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.uplink.label",
+      "english": "Receive-only iGate",
+      "chinese": "只收型 iGate",
+      "previous": "仅接收 iGate",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.uplink.hint.call",
+      "english": "Contribute packets <b>your own antenna hears</b> to APRS-IS, so stations in your area reach the global map through you. Publishes under <b>{{call}}</b>, so it is a separate choice from watching the feed, and it needs the APRS decoder running to have anything to send. Nexus never sends the other way: gating the internet back onto the air means transmitting unattended.",
+      "chinese": "将<b>本台天线实际收到</b>的数据包上传至 APRS-IS，让附近电台通过本台出现在全球地图上。上传使用呼号 <b>{{call}}</b>，因此需与查看互联网数据流分开选择；还须运行 APRS 解码器，才有数据可上传。Nexus 不会反向将互联网数据转发到无线电，因为那意味着无人值守发射。",
+      "previous": "贡献包<b>自己的天线听到</b>改为:APRS-IS,所以你所在地区的站台通过你到达全球地图。 出版情况<b>{{call}}</b>因此,这是一个单独的选择 从观看饲料, 它需要APRS解码器正在运行,以获取任何要发送的信息。 Nexus从不以另一种方式发送:将互联网放回空中意味着传输无人关注。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.aprs.is.uplink.hint.noCall",
+      "english": "Contribute packets <b>your own antenna hears</b> to APRS-IS, so stations in your area reach the global map through you. Publishes under your callsign, so it is a separate choice from watching the feed, and it needs the APRS decoder running to have anything to send. Nexus never sends the other way: gating the internet back onto the air means transmitting unattended.",
+      "chinese": "将<b>本台天线实际收到</b>的数据包上传至 APRS-IS，让附近电台通过本台出现在全球地图上。上传使用本台呼号，因此需与查看互联网数据流分开选择；还须运行 APRS 解码器，才有数据可上传。Nexus 不会反向将互联网数据转发到无线电，因为那意味着无人值守发射。",
+      "previous": "贡献包<b>自己的天线听到</b>改为:APRS-IS,所以你所在地区的站台通过你到达全球地图。 在您的呼号下发布, 所以这是一个单独的选择 与观看种子,它需要APRS解码器正在运行,以获取任何要发送的信息。 Nexus从不以另一种方式发送:将互联网放回空中意味着传输无人关注。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.legend",
+      "english": "Working Frequencies",
+      "chinese": "工作频率",
+      "previous": "工作频率",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "工作频率"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "工作频率"
+        }
+      ]
+    },
+    {
+      "id": "settings.workingFrequencies.note",
+      "english": "The dial frequency used when a band/mode is selected. These are <b>overrides</b> of the stock WSJT-X working-frequency table — leave the list empty to use stock everywhere. An override replaces the stock row for its band + mode (e.g. to move FT8 to an alternate sub-band).",
+      "chinese": "选择频段／模式时使用的拨盘频率。此列表用于<b>替换</b> WSJT-X 标准工作频率表中的设置；留空则全部使用标准值。每项自定义设置会替换相同频段与模式的标准行，例如将 FT8 改至另一子频段。",
+      "previous": "选定带/码时使用的拨号频率 。 这些是<b>覆盖</b>WSJT-X工作频率表——将清单空置,供各地使用。 覆盖替换其带段 + 模式的库存行( 例如移动)FT8改为另一个子带。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.stock.label",
+      "english": "Standard table (read-only)",
+      "chinese": "标准频率表（只读）",
+      "previous": "标准表格(只读)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.stock.band",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "settings.workingFrequencies.stock.mode",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "settings.workingFrequencies.stock.dial",
+      "english": "Dial (MHz)",
+      "chinese": "拨盘频率（MHz）",
+      "previous": "拨号( N)MHz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.stock.overrideTitle",
+      "english": "Your override — stock is {{mhz}} MHz",
+      "chinese": "当前为自定义值，标准值是 {{mhz}} MHz",
+      "previous": "您的首选项是{{mhz}} MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.stock.overrideTag",
+      "english": "override",
+      "chinese": "自定义",
+      "previous": "覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.stock.sixtyMetres",
+      "english": "{{us}} (US) · {{world}} (outside the US, chosen from your callsign)",
+      "chinese": "{{us}}（美国）· {{world}}（美国以外，按本台呼号选择）",
+      "previous": "{{us}}(美国){{world}}(美国以外,从你的呼号中选择)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.stock.hint",
+      "english": "WSJT-X stock dial frequencies. A row with an active override shows your value (highlighted) instead of the stock one.",
+      "chinese": "WSJT-X 标准拨盘频率。已启用自定义设置的行会高亮显示你的值，代替标准值。",
+      "previous": "WSJT-X股票拨号频率. 带有活动覆盖的一行显示您的值( 突出显示) , 而不是股票 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.label",
+      "english": "Your overrides",
+      "chinese": "自定义频率",
+      "previous": "您的覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.none",
+      "english": "None — the stock table is in effect.",
+      "chinese": "无自定义设置，正在使用标准频率表。",
+      "previous": "无——股票表生效.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.band.aria",
+      "english": "Override {{n}} band",
+      "chinese": "第 {{n}} 项自定义频段",
+      "previous": "覆盖{{n}}带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.mode.aria",
+      "english": "Override {{n}} mode",
+      "chinese": "第 {{n}} 项自定义模式",
+      "previous": "覆盖{{n}}模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.mhz.aria",
+      "english": "Override {{n}} dial frequency in MHz",
+      "chinese": "第 {{n}} 项自定义拨盘频率（MHz）",
+      "previous": "覆盖{{n}}拨号频率MHz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.remove.aria",
+      "english": "Remove the {{band}} {{mode}} override",
+      "chinese": "删除 {{band}} {{mode}} 的自定义频率",
+      "previous": "删除{{band}} {{mode}}覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.remove.title",
+      "english": "Remove this override",
+      "chinese": "删除此自定义频率",
+      "previous": "删除此覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.duplicate",
+      "english": "duplicate band + mode — the last row wins",
+      "chinese": "频段与模式重复，以最后一行为准",
+      "previous": "复制带 + 模式 — 最后一行获胜",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.add",
+      "english": "Add override",
+      "chinese": "添加自定义频率",
+      "previous": "添加覆盖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.reset",
+      "english": "Reset to standard",
+      "chinese": "重置为标准",
+      "previous": "重置为标准",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workingFrequencies.overrides.hint",
+      "english": "MHz is the dial (suppressed-carrier) frequency. Save to apply — band switches then use your value for that band + mode.",
+      "chinese": "MHz 数值是拨盘频率，即被抑制载波所在的频率。保存后生效，之后切换频段时，相应频段与模式将使用你设置的频率。",
+      "previous": "MHz是拨号(suppressed-carrier)频率。 保存用于应用 – 然后将您的值用于该频段 + 模式 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.legend",
+      "english": "Connections",
+      "chinese": "连接",
+      "previous": "连接",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.test.busy",
+      "english": "Testing…",
+      "chinese": "测试中…",
+      "previous": "测试...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.test.action",
+      "english": "Test",
+      "chinese": "测试",
+      "previous": "测试",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.test.title",
+      "english": "Round-trips the QRZ Logbook API (ACTION=STATUS) — proves the key works without logging anything",
+      "chinese": "向 QRZ Logbook API 发起状态查询（ACTION=STATUS），验证密钥是否有效，不写入任何交信记录",
+      "previous": "绕行 QRZ Logbook API( ACTION=STATUS) — 在不记录任何内容的情况下证明关键作品",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.test.ok",
+      "english": "✓ QRZ Logbook reachable: {{detail}}",
+      "chinese": "✓ QRZ 日志服务可访问：{{detail}}",
+      "previous": "✓QRZ可达日志 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.qrz.test.fail",
+      "english": "✗ QRZ test failed: {{detail}} (Uploads need the per-logbook <b>API key</b> from logbook.qrz.com ▸ Settings ▸ API — not your QRZ password.)",
+      "chinese": "✗ QRZ 测试失败：{{detail}}（上传需要使用 logbook.qrz.com ▸ Settings ▸ API 中对应日志的 <b>API 密钥</b>，而非 QRZ 账户密码。）",
+      "previous": "✗QRZ测试失败 :{{detail}}(上载需要每个日志)<b>API 密钥</b>从logbook.qrz.com \\\\\\ n设置\\\\\\\\\\ nAPI\\\\\\\\ n不是您的QRZ密码。 )",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.log.title",
+      "english": "Connection log",
+      "chinese": "连接日志",
+      "previous": "连接日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.log.hint",
+      "english": "every save, sync, push, and failure lands here",
+      "chinese": "每次保存、同步、推送及失败都会记录在此",
+      "previous": "所有节省,同步,推, 和失败在这里降落",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connections.log.empty",
+      "english": "No events yet this session — save a credential or run a sync and it shows here.",
+      "chinese": "本次会话尚无事件；保存凭据或执行同步后，相关记录会显示在此。",
+      "previous": "尚没有任何事件——保存证书或运行同步并显示在这里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.b4.legend",
+      "english": "Worked-before (B4) & dupes",
+      "chinese": "已通联（B4）与重复交信",
+      "previous": "工作前( B4) & dupes",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.b4.matchMode.label",
+      "english": "Match mode too",
+      "chinese": "同时匹配模式",
+      "previous": "匹配模式也",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.b4.matchMode.hint",
+      "english": "Off (the default, and WSJT-X’s): working a station on 40m marks them B4-on-band for 40m in every mode, and the log strip’s Dupe badge counts any mode on the band. On: 40m FT8 and 40m phone are separate contacts — the solid B4 chip and the Dupe badge require the mode to match as well. The hollow B4 chip (worked anywhere) is unaffected either way.",
+      "chinese": "关闭时（默认，与 WSJT-X 一致）：在 40 米波段通联过的电台，在该频段所有模式下都标记为 B4；日志栏的“重复”标记也不区分该频段内的模式。开启时：40 米 FT8 与 40 米话音分别计算，实心 B4 标记及“重复”标记还要求模式相同。空心 B4 标记表示曾在任意频段或模式通联，不受此设置影响。",
+      "previous": "关闭(默认值,和WSJT-QQs):在40m上工作的一个站台标记他们每个模式40m的B4-on-band,日志条的Dupe徽章计算了乐队上的任何模式. 时间: 40米FT8而40m的电话是独立的联系人——固态B4芯片和Dupe徽章也要求模式匹配. 空心B4芯片(在任何地方工作)无论是哪种方式都不受影响.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.legend",
+      "english": "Integrations & Feeds",
+      "chinese": "外部集成与数据源",
+      "previous": "整合种子( F)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.local.title",
+      "english": "Local APIs & Loggers",
+      "chinese": "本地 API 与日志软件",
+      "previous": "本地 APIs & Loggers",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.wsjtxUdp.hint",
+      "english": "for JTAlert / GridTracker / loggers — and FT8 contest scorers. Several at once: separate addresses with a comma.",
+      "chinese": "供 JTAlert、GridTracker、日志软件及 FT8 竞赛计分软件使用。可同时发送至多个地址，以逗号分隔。",
+      "previous": "用于JTAlert / 网格跟踪器 / 日志 ——和FT8参赛得分者. 几个同时:用逗号单独地址.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.udpAddr.label",
+      "english": "UDP Address",
+      "chinese": "UDP 地址",
+      "previous": "UDP 地址",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.udpAddr.hint",
+      "english": "host:port for the UDP feed",
+      "chinese": "UDP 数据流的目标地址，格式为 host:port",
+      "previous": "主机: UDP 种子的端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.hrdLogging.label",
+      "english": "Ham Radio Deluxe logging",
+      "chinese": "Ham Radio Deluxe 日志联动",
+      "previous": "Ham电台豪华记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.hrdLogging.hint",
+      "english": "push each QSO to HRD Logbook over its QSO-Forwarding UDP port (HRD must be running; don't also run JTAlert/QSO Relay into HRD or you'll double-log)",
+      "chinese": "通过 HRD Logbook 的 QSO-Forwarding UDP 端口推送每条 QSO（须运行 HRD；请勿同时通过 JTAlert/QSO Relay 向 HRD 写入，否则会重复记录）",
+      "previous": "逐个推QSO转至人力资源开发日志QSO- 前置 UDP 端口( HRD 必须运行; 不要同时运行 JTAlert/)QSO中继到HRD,否则你将重复日志).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.hrdAddr.label",
+      "english": "HRD UDP Address",
+      "chinese": "HRD UDP 地址",
+      "previous": "HRD UDP 地址",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.hrdAddr.hint",
+      "english": "HRD QSO-Forwarding host:port (default 127.0.0.1:2333)",
+      "chinese": "HRD QSO-Forwarding 的主机:端口（默认 127.0.0.1:2333）",
+      "previous": "人力资源开发QSO- 前进主机:端口(默认为 127.0.0.1:2333)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.hrd.linkUp",
+      "english": "● HRD reachable — contacts are forwarding",
+      "chinese": "● HRD 可连接，正在转发交信记录",
+      "previous": "* 人力资源开发可达到——联系人正在转发",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.hrd.linkDown",
+      "english": "○ HRD not reachable — {{count}} contact(s) queued, will send when HRD is back",
+      "chinese": "○ HRD 无法连接，{{count}} 条交信记录已排队，恢复连接后会继续发送",
+      "previous": "○ 人力资源开发无法达到 -{{count}}已队列联系人, 当 HRD 返回时会发送",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.companionAddr.label",
+      "english": "Companion UDP address",
+      "chinese": "Companion UDP 地址",
+      "previous": "伴侣 UDP 地址",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.companionAddr.hint",
+      "english": "Where Nexus listens for WSJT-X/JTDX in Companion source mode.",
+      "chinese": "在 Companion 数据源模式下，Nexus 监听 WSJT-X/JTDX 数据的地址。",
+      "previous": "Nexus在Companyon源模式下监听WSJT-X/JTDX.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.allTxt.label",
+      "english": "Write ALL.TXT decode log",
+      "chinese": "写入 ALL.TXT 解码日志",
+      "previous": "写入 ALL.TXT 解码日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.allTxt.hint",
+      "english": "WSJT-X-format decode log for GridTracker / loggers to tail. Written only while this is on, and it first appears after the next decode.",
+      "chinese": "以 WSJT-X 格式保存解码日志，供 GridTracker 或日志软件持续读取新增内容。仅在开启时写入，下一次解码后才会生成文件。",
+      "previous": "WSJT-X格式解码日志用于GridTracker / loggers尾端. 仅在打开时写入, 它首先出现在下一个解码后 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.allTxt.js8",
+      "english": "In JS8 it also writes DIRECTED.TXT beside it, as JS8Call does: every directed message heard.",
+      "chinese": "在 JS8 中还会像 JS8Call 一样，在同一目录写入 DIRECTED.TXT，记录收到的每条定向报文。",
+      "previous": "内JS8也写着\"导演\" 正如JS8Call所言,TXT旁边是每个直接听到的信息。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.allTxt.path",
+      "english": "Saved at <code>{{path}}</code>.",
+      "chinese": "保存位置：<code>{{path}}</code>。",
+      "previous": "保存时间<code>{{path}}</code>。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.allTxt.reveal",
+      "english": "Reveal in folder",
+      "chinese": "在文件夹中显示",
+      "previous": "文件夹中的启示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.qsoWav.label",
+      "english": "Save a WAV per logged QSO",
+      "chinese": "每条入志 QSO 保存一份 WAV 录音",
+      "previous": "每个登录时保存一个 WAV QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.qsoWav.hint",
+      "english": "Auto-records the last ~60 s of RX audio on log.",
+      "chinese": "交信入志时，自动保存此前约 60 秒的接收音频。",
+      "previous": "自动记录日志上最后一个~60 s的RX音频.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.qsoWav.path",
+      "english": "Saved in <code>{{path}}</code>, created the first time you record.",
+      "chinese": "保存于 <code>{{path}}</code>，首次录音时创建此目录。",
+      "previous": "保存在<code>{{path}}</code>,创造了你第一次录制。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.qsoWav.reveal",
+      "english": "Open recordings folder",
+      "chinese": "打开录音文件夹",
+      "previous": "打开录音文件夹",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.saveWav.label",
+      "english": "Save received audio (.wav per period)",
+      "chinese": "保存接收音频（每周期一个 .wav 文件）",
+      "previous": "保存收到的音频 (. wav 每期)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.saveWav.none",
+      "english": "None (default)",
+      "chinese": "不保存（默认）",
+      "previous": "无( 默认)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.saveWav.decodes",
+      "english": "Save periods with decodes",
+      "chinese": "保存成功解码的周期",
+      "previous": "用解码保存时段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.saveWav.all",
+      "english": "Save all periods",
+      "chinese": "保存所有周期",
+      "previous": "保存全部时段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.saveWav.hint",
+      "english": "WAVs land in recordings/periods (12 kHz mono, ~360 KB each). \"All\" writes ~2 GB/day of continuous monitoring — use for decoder debugging, not always-on.",
+      "chinese": "WAV 文件保存在 recordings/periods（12 kHz 单声道，每个约 360 KB）。选择“保存所有周期”时，连续守听每天约产生 2 GB 数据，适合解码器调试，不宜长期启用。",
+      "previous": "WAVs 记录/期间土地(12个)kHz单体,每只约360KB)。 \"All\"写~2 GB/日持续监控——用于解码器调试,并非总在.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.spotSources.title",
+      "english": "Spot Sources",
+      "chinese": "通报来源",
+      "previous": "点源",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.pskreporter.hint",
+      "english": "upload spots to the global map",
+      "chinese": "将通报上传至全球地图",
+      "previous": "上传点到全局地图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.pskreporter.rfOnly",
+      "english": "While {{event}} runs, its rules allow spots only over amateur RF, so no reports are sent; they resume when it ends.",
+      "chinese": "{{event}} 进行期间，规则只允许通过业余无线电射频传送通报，因此暂停上传报告，活动结束后恢复。",
+      "previous": "虽然{{event}}运行时,其规则只允许在业余 RF 上出现斑点,所以没有发送报告;报告结束后会恢复。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterSpots.label",
+      "english": "DX Cluster / RBN spots",
+      "chinese": "DX 集群 / RBN 通报",
+      "previous": "DX 集群/ RBN 点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterSpots.hint",
+      "english": "Surface \"new ones\" from the Reverse Beacon Network on the Needed board + Conditions. Takes effect on restart.",
+      "chinese": "在“待通联”面板和“传播状况”中显示反向信标网络（RBN）通报的未通联目标。重启后生效。",
+      "previous": "在需要的棋盘+条件上的反光灯网的表面\"新\". 重新启动时生效 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.label",
+      "english": "Phone/SSB cluster nodes",
+      "chinese": "话音／SSB 集群节点",
+      "previous": "电话/SSB集群节点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.empty",
+      "english": "No nodes — add one below to get SSB/phone needs (RBN only carries CW + digital).",
+      "chinese": "尚无节点。请在下方添加，以获取 SSB／话音待通联目标（RBN 仅提供 CW 及数字模式通报）。",
+      "previous": "无节点——在下面添加一个以获取SSB/手机需求(RBN只携带)CW+数字).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.remove.title",
+      "english": "Remove this cluster node",
+      "chinese": "删除此集群节点",
+      "previous": "删除此集群节点",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.remove.aria",
+      "english": "Remove {{host}}",
+      "chinese": "删除 {{host}}",
+      "previous": "删除{{host}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.remove.ariaBlank",
+      "english": "Remove node",
+      "chinese": "删除节点",
+      "previous": "删除节点",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.add.option",
+      "english": "+ Add a known node…",
+      "chinese": "+ 添加已知节点…",
+      "previous": "+ 添加已知节点...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.addCustom.title",
+      "english": "Add a custom node row",
+      "chinese": "添加自定义节点行",
+      "previous": "添加自定义节点行",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.addCustom.action",
+      "english": "+ Custom",
+      "chinese": "+ 自定义",
+      "previous": "+ 自定义",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.hint",
+      "english": "We connect to ALL listed nodes and union their human SSB/phone spots — more nodes = wider phone coverage (RBN CW + digital connect automatically; RBN endpoints are ignored here). Nexus never changes this list for you. An added node connects, and a removed one disconnects, on the next Save.",
+      "chinese": "连接列表中的所有节点，并汇总其中由操作员提交的 SSB／话音通报；节点越多，话音通报的覆盖越广。RBN 的 CW 及数字模式数据会自动连接，此处填写 RBN 地址会被忽略。Nexus 不会擅自修改此列表。新增节点将在下次保存后连接，删除的节点则会断开。",
+      "previous": "我们连接所有列出的节点,并结合他们的人类SSB/电话点——更多的节点=更广泛的电话覆盖面(RBN).CW+ 数字连接自动; RBN 端点在此被忽略). Nexus从来不会为你改变这个列表. 一个添加的节点连接, 一个删除的断开, 在下一个保存上 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.mode.auto",
+      "english": "Pick working nodes automatically (recommended)",
+      "chinese": "自动选择可用节点（推荐）",
+      "previous": "自动选择工作节点( 建议)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.mode.manual",
+      "english": "Use my list",
+      "chinese": "使用我的列表",
+      "previous": "使用我的列表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.autoHint",
+      "english": "Nexus keeps two of these nodes connected for SSB/phone spots and spreads operators across them. A node that stops answering for five minutes, while your other spot feeds are working, is skipped for a day and another takes its place. A quiet band never counts against a node. RBN CW + digital connect automatically either way. Takes effect on the next Save.",
+      "chinese": "Nexus 会保持连接其中两个节点以获取 SSB／话音通报，并将不同用户分散到不同节点。若其他通报数据源正常，而某节点持续五分钟不响应，则跳过该节点一天并换用另一个。频段上暂时没有活动不会被视为节点故障。无论选择哪种方式，RBN 的 CW 及数字模式数据均自动连接。下次保存后生效。",
+      "previous": "Nexus为SSB/电话点保留了其中两个节点连接,并将操作员分布在它们之间. 一个停止回答5分钟的节点, 而另一个点的种子正在工作, 被跳过一天,另一个取代它。 一个安静的乐队从不考虑节点 中文CW+ 数字连接方式任意一种。 在下一个保存上生效。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.status.inUse",
+      "english": "In use",
+      "chinese": "使用中",
+      "previous": "使用中",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.status.connecting",
+      "english": "Connecting…",
+      "chinese": "正在连接…",
+      "previous": "正在连接…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.status.standby",
+      "english": "Standby",
+      "chinese": "备用",
+      "previous": "待机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.status.failing",
+      "english": "Not answering ({{reason}})",
+      "chinese": "无响应（{{reason}}）",
+      "previous": "未回复( N){{reason}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.status.skipped",
+      "english": "Not answering ({{reason}}), skipped until {{time}}",
+      "chinese": "无响应（{{reason}}），跳过至 {{time}}",
+      "previous": "未回复( N){{reason}}),跳过至{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.reason.unreachable",
+      "english": "can't be reached",
+      "chinese": "无法连接",
+      "previous": "无法到达",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.reason.noGreeting",
+      "english": "sends nothing",
+      "chinese": "未返回任何数据",
+      "previous": "发送无",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.reason.noPrompt",
+      "english": "no login prompt",
+      "chinese": "未显示登录提示",
+      "previous": "无登录提示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.reason.droppedAfterLogin",
+      "english": "drops the login",
+      "chinese": "登录后断开连接",
+      "previous": "放弃登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterNodes.preset",
+      "english": "{{callsign}} — {{software}}, port {{port}}",
+      "chinese": "{{callsign}} — {{software}}，端口 {{port}}",
+      "previous": "{{callsign}}. . . . . . .{{software}}端口{{port}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterSsid.label",
+      "english": "Cluster login SSID",
+      "chinese": "集群登录 SSID",
+      "previous": "集群登录 SSID",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.clusterSsid.hint",
+      "english": "Added to your callsign at login (2 = W9XYZ-2). A node allows one session per callsign and drops the older one, so a second Nexus — or another cluster program on the same call — knocks this one off unless each uses a different SSID. 1-99, or leave it empty to log in with your bare call. Your spots still reach the network under your plain callsign. On a node that requires registration, register the suffixed call there too or it will not let you post spots. Takes effect on the next Save.",
+      "chinese": "登录时附加到本台呼号之后（例如 2 表示 W9XYZ-2）。节点通常只允许每个呼号保持一个会话，新连接会挤掉旧连接；因此另一份 Nexus 或使用同一呼号的集群软件会使此连接掉线，除非各自使用不同 SSID。可填 1–99，留空则使用无后缀呼号登录。发布的通报仍以原始呼号进入网络。若节点要求注册，还须在该节点注册带后缀的呼号，否则无法发布通报。下次保存后生效。",
+      "previous": "添加到登录时的呼号(2 = W9XYZ-2). 一个节点允许每个调用符号一个会话,并放下旧的会话,所以第二个Nexus——或者同一调用的另一个集群程序——将这个会话敲掉,除非每个会用不同的SSID. 1 -99,或留空 登录与你的空呼。 你的点点仍然到达网络 在你的普通呼号。 在需要注册的节点上,也登记后缀的呼叫,否则它不会让你贴点. 在下一个保存上生效。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.propagation.title",
+      "english": "Propagation",
+      "chinese": "传播",
+      "previous": "传播",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.openingWatch.label",
+      "english": "Near-region opening watch",
+      "chinese": "附近传播开通监测",
+      "previous": "近区域开放观察",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.openingWatch.hint",
+      "english": "Watch VHF/10 m activity near your QTH (not just your own contacts) so openings flag \"open around you\" before you've worked anyone. Takes effect on restart.",
+      "chinese": "监测本台 QTH 附近的甚高频／10 米波段活动，不限于本台交信；即使本台尚未与任何电台通联，也可提前提示附近传播已开通。重启后生效。",
+      "previous": "监视您附近的甚高频/ 10 m 活动QTH(不只是你自己的联络人) 所以在你工作之前,就打开了旗子 重新启动时生效 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.propEngine.label",
+      "english": "Prediction engine",
+      "chinese": "预测引擎",
+      "previous": "预测引擎",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.propEngine.heuristic",
+      "english": "Modelled (fast heuristic)",
+      "chinese": "模型估算（快速经验算法）",
+      "previous": "模型化(快速热力)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.propEngine.p533",
+      "english": "ITU-R P.533 (full physics)",
+      "chinese": "ITU-R P.533（完整物理模型）",
+      "previous": "ITU-R P.533(全物理学)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.integrations.propEngine.hint",
+      "english": "Drives the per-station path outlook + 24h band×hour grid. P.533 is the real circuit-reliability method (validated against the ITU reference; ~0.1 s per prediction, uses your station power). Live spots always win over any model.",
+      "chinese": "用于逐台传播路径预测及 24 小时频段×小时网格。P.533 使用实际的通信链路可靠性计算方法，已与 ITU 参考结果核对，每次预测约 0.1 秒，并使用本台功率设置。实时通报始终优先于模型预测。",
+      "previous": "驱动每站路径展望+24h波段x小时网格. P.533是真实的电路可靠性方法(参照ITU的参考文献进行验证;~0.1 s每次预测,使用你的站电). 生活点总是胜过任何模特",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.antennaGain.title",
+      "english": "Antenna gain (advanced)",
+      "chinese": "天线增益（高级）",
+      "previous": "天线增益( 高级)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.antennaGain.label",
+      "english": "Antenna gain (dBi) — TX / RX",
+      "chinese": "天线增益（dBi）— 发射 / 接收",
+      "previous": "天线增益(dBi)——TX/RX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.antennaGain.tx.aria",
+      "english": "TX antenna gain (dBi)",
+      "chinese": "发射天线增益（dBi）",
+      "previous": "TX 天线增益( dBi)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.antennaGain.rx.aria",
+      "english": "RX antenna gain (dBi)",
+      "chinese": "接收天线增益（dBi）",
+      "previous": "RX 天线增益(dBi)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.antennaGain.hint",
+      "english": "Used by the P.533 link budget only. 0 = a simple wire/vertical (isotropic); a 3-element yagi ≈ 6–8. Honest v1: a plain dB shift — no pattern or takeoff-angle modelling, and the fast heuristic ignores it.",
+      "chinese": "仅用于 P.533 链路预算。0 表示简单线天线／垂直天线的近似值，按各向同性天线处理；三单元八木天线约为 6–8。当前初版仅按增益作简单 dB 修正，不模拟方向图或辐射仰角；快速经验算法不使用此项。",
+      "previous": "仅由P.533链接预算使用. 0 = 简单的线/垂直(异构); 3 元素 yagi = 6–8. 诚实v1:平坦的dB转变——没有规律或起飞角建模,快速的heuristic忽略了它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dxkeeper.note",
+      "english": "Pushes each logged QSO into <b>DXKeeper</b> over its TCP Network Service. Enable it in DXKeeper under <em>Configuration ▸ Defaults ▸ Network Service</em> first.",
+      "chinese": "通过 TCP Network Service 将每条入志 QSO 推送至 <b>DXKeeper</b>。请先在 DXKeeper 的 <em>Configuration ▸ Defaults ▸ Network Service</em> 中启用该服务。",
+      "previous": "按每个记录QSO输入<b>DX保持器</b>超过它的TCP网络服务。 在 DXkeeper 中启用<em>配置 QQ 默认 QQ 网络服务</em>先说",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dxkeeper.host.label",
+      "english": "DXKeeper host",
+      "chinese": "DXKeeper 主机",
+      "previous": "DXkeeper 主机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dxkeeper.host.placeholder",
+      "english": "{{example}} (empty = off)",
+      "chinese": "{{example}}（留空关闭）",
+      "previous": "{{example}}(空=关)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dxkeeper.host.hint",
+      "english": "Usually 127.0.0.1 — same PC. Leave blank to disable.",
+      "chinese": "通常为 127.0.0.1，即同一台电脑。留空则禁用。",
+      "previous": "通常为127.0.0.1 — 相同的PC. 留空以禁用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dxkeeper.basePort.hint",
+      "english": "The <em>Base Port</em> from DXKeeper's Network Service panel (default 52000). DXKeeper itself listens on <b>{{port}}</b> — Nexus adds the 1 for you.",
+      "chinese": "填写 DXKeeper 的 Network Service 面板中的 <em>Base Port</em>（默认 52000）。DXKeeper 实际监听 <b>{{port}}</b>，Nexus 会自动在基础端口上加 1。",
+      "previous": "那个<em>基地端口</em>从 DXkeeper 的网络服务面板( 默认 52000) 。 DXkeeper 自己在监听<b>{{port}}</b>- Nexus给你加了1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dxkeeper.uploads.label",
+      "english": "Let DXKeeper do the uploads",
+      "chinese": "由 DXKeeper 负责上传",
+      "previous": "让 DXkeeper 上传",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dxkeeper.uploads.hint",
+      "english": "Off by default: Nexus already uploads to LoTW / eQSL / ClubLog / QRZ, so turning this on would upload every QSO twice. Note DXKeeper ignores this for Club Log and QRZ if <em>Auto upload</em> is ticked on its own QSL Configuration tab — untick it there.",
+      "chinese": "默认关闭：Nexus 已向 LoTW / eQSL / ClubLog / QRZ 上传，开启此项会使每条 QSO 上传两次。注意：若 DXKeeper 自身的 QSL Configuration 页勾选了 <em>Auto upload</em>，它对 Club Log 和 QRZ 会忽略此设置；请在该页取消勾选。",
+      "previous": "默认关闭: Nexus 已经上传到LoTW/ eQSL / 俱乐部日志 /QRZ,所以打开它会上传到每个QSO两次 注意 DXkeeper 忽略 Club 日志和QRZ若为<em>自动上传</em>单独勾选QSL配置标签 —— 打开它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.legend",
+      "english": "N3FJP Integration (club master log)",
+      "chinese": "N3FJP 集成(俱乐部主日志)",
+      "previous": "N3FJP 集成(俱乐部主日志)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.note",
+      "english": "Each contact you log in Contest mode reaches the club's master N3FJP log the moment you log it. Nexus fills in the form of the <b>N3FJP Field Day Contest Log</b> (call, band, mode, class and section), so at Field Day the whole club's score updates in real time. CQ WPX, CQ WW RTTY and the ARRL VHF contests carry their exchange too; a QSO party, Sweepstakes or CQ WW CW/SSB contact reaches N3FJP without its exchange. Run N3FJP on the master computer; point Nexus at its IP + port (default 1100).",
+      "chinese": "在竞赛模式下，每条交信入志时都会立即送入俱乐部的 N3FJP 主日志。Nexus 会填写 <b>N3FJP Field Day Contest Log</b> 中的呼号、频段、模式、类别和分区，因此 Field Day 期间全俱乐部的分数可实时更新。CQ WPX、CQ WW RTTY 和 ARRL VHF 竞赛的交换信息也会传送；QSO Party、Sweepstakes 或 CQ WW CW/SSB 的交信会送入 N3FJP，但不含交换信息。请在主电脑运行 N3FJP，并在 Nexus 中填写其 IP 和端口（默认 1100）。",
+      "previous": "在Contest模式下登录的每个联系人,在登录时到达俱乐部主机N3FJP日志. Nexus以表格形式填写 <b>N3FJP 场日比赛日志</b> (电话,乐队,模式,班级和部分),所以在野战日全俱乐部的分数实时更新. CQ WPX, CQ WW RTTY 和ARRL甚高频比赛也进行交流;a QSO 派对、扫荡或CQ WW CW/SSB联系人没有交换就到达N3FJP. 在主计算机上运行N3FJP;在它的IP + port(默认1100)上点Nexus.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.host.label",
+      "english": "N3FJP host",
+      "chinese": "N3FJP 主机",
+      "previous": "N3FJP 主机",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.host.placeholder",
+      "english": "{{example}} (empty = off)",
+      "chinese": "{{example}}（留空关闭）",
+      "previous": "{{example}}(空=关)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.host.hint",
+      "english": "IP or hostname of the master log computer. Leave blank to disable.",
+      "chinese": "主日志电脑的 IP 地址或主机名。留空则禁用。",
+      "previous": "主日志计算机的IP或主机名. 留空以禁用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.port.label",
+      "english": "N3FJP port",
+      "chinese": "N3FJP 端口",
+      "previous": "N3FJP 端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.port.hint",
+      "english": "N3FJP's API TCP port (default 1100).",
+      "chinese": "N3FJP API 的 TCP 端口（默认 1100）。",
+      "previous": "N3FJP的API TCP端口(默认为1100).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.useEnter.label",
+      "english": "Use ENTER for contest scoring",
+      "chinese": "使用 ENTER 流程进行竞赛计分",
+      "previous": "使用 ENTER 进行比赛评分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.useEnter.hint",
+      "english": "Log each contest contact with N3FJP's <b>ENTER</b> sequence, which scores the contest — the correct path. Turn off to fall back to a plain <code>ADDDIRECT</code> insert (may not score). On by default.",
+      "chinese": "通过 N3FJP 的 <b>ENTER</b> 流程记录每条竞赛交信，从而正确触发竞赛计分。关闭后，改用直接插入命令 <code>ADDDIRECT</code>，可能不参与计分。默认开启。",
+      "previous": "用 N3FJP 记录每次比赛的联系人<b>环境</b>序列,对比赛进行评分——正确的路径. 关掉掉到平原上<code>错误</code>插入(可能不计分)。 在默认情况下。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.reportBand.label",
+      "english": "Report my band to N3FJP",
+      "chinese": "向 N3FJP 报告本台频段",
+      "previous": "把我的乐队报告给N3FJP",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.reportBand.hint",
+      "english": "Tell N3FJP which band you're on (no CAT needed), so the club's Network Status Display band board shows this position. Off by default.",
+      "chinese": "告知 N3FJP 本台所在频段，无需 CAT，使俱乐部 Network Status Display 的频段看板显示本操作席位。默认关闭。",
+      "previous": "告诉N3FJP你在哪个乐队(没有)CAT)),因此俱乐部的网络状态显示带板显示了这个位置. 默认关闭。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.forwardAll.label",
+      "english": "Forward every QSO",
+      "chinese": "转发每条 QSO",
+      "previous": "转发QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.forwardAll.hint",
+      "english": "Also push <b>every</b> logged QSO (not just contest contacts) to N3FJP ACLog on the host above — everyday general logging. N3FJP dedupes, so it's safe to run alongside the contest push.",
+      "chinese": "还会将<b>每条</b>入志 QSO（不限于竞赛交信）推送至上方主机的 N3FJP ACLog，用于日常日志记录。N3FJP 会去重，因此可以与竞赛推送同时启用。",
+      "previous": "还要推<b>每个</b>登录QSO(不仅仅是竞争联系人)到上面主机上的N3FJP ACLog——日常一般伐木. N3FJP脱衣舞,因此与比赛推力同时跑是安全的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.test.label",
+      "english": "Connection test",
+      "chinese": "连接测试",
+      "previous": "连接测试",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.test.title",
+      "english": "Save settings, then test the N3FJP TCP connection",
+      "chinese": "保存设置, 然后测试 N3FJP TCP 连接",
+      "previous": "保存设置, 然后测试 N3FJP TCP 连接",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.test.action",
+      "english": "Test N3FJP",
+      "chinese": "测试 N3FJP",
+      "previous": "测试 N3FJP",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n3fjp.test.hint",
+      "english": "Run this at the club site before the event starts to confirm the API link works.",
+      "chinese": "请在活动开始前于俱乐部现场执行测试，确认 API 连接正常。",
+      "previous": "在活动开始确认API链接工作前在俱乐部现场运行此功能.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.legend",
+      "english": "N1MM+ Integration",
+      "chinese": "N1MM+ 集成",
+      "previous": "N1MM+ 整合",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.addr.label",
+      "english": "N1MM contact broadcast address",
+      "chinese": "N1MM 交信记录广播地址",
+      "previous": "N1MM 联系人广播地址",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.addr.placeholder",
+      "english": "{{example}} (empty = off)",
+      "chinese": "{{example}}（留空关闭）",
+      "previous": "{{example}}(空=关)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.addr.hint",
+      "english": "Where the N1MM contact packets go (host:port, UDP). Name the port — consumers stack on one host, and 12060 is often already taken by another logger. Leave blank to disable.",
+      "chinese": "N1MM 交信数据包的目标地址（主机:端口，UDP）。必须明确指定端口：同一主机可能运行多个接收程序，12060 常已被其他日志软件占用。留空则禁用。",
+      "previous": "N1MM联系包去的地方(主机:port,UDP). 命名端口——消费者堆放在一个主机上,12060经常被另一个伐木者所占据. 留空以禁用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.addr.sending",
+      "english": "Sending for every logged QSO.",
+      "chinese": "每条入志 QSO 都会发送。",
+      "previous": "发送每个登录QSO。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.addr.idle",
+      "english": "An address alone sends only the contacts you log in Contest mode — turn on Broadcast every QSO below for everyday logging.",
+      "chinese": "仅填写地址时，只发送竞赛模式下的交信记录；日常日志请开启下方“广播每条 QSO”。",
+      "previous": "仅一个地址只发送您在 Contest 模式下登录的联系人 – 打开广播QSO用于日常伐木。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.broadcastAll.label",
+      "english": "Broadcast every QSO",
+      "chinese": "广播每条 QSO",
+      "previous": "播放次数QSO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.n1mm.broadcastAll.hint",
+      "english": "Send the contact packet for <b>every</b> logged QSO, not just contest contacts — point a map app such as GridTracker at the address above and each contact plots on its map as you log it. One packet per QSO: this never doubles up with the contest broadcast, so it is safe to leave on through a contest. Off by default; with it off, packets go out <em>only</em> for the contacts you log in Contest mode.",
+      "chinese": "发送<b>每条</b>入志 QSO 的交信数据包，不限于竞赛交信。将 GridTracker 等地图软件指向上方地址，每次入志便会在地图上标出该次交信。每条 QSO 只发送一个数据包，不会与竞赛广播重复，因此竞赛期间也可保持开启。默认关闭；关闭时，<em>仅</em>发送竞赛模式下的交信记录。",
+      "previous": "发送联系人包<b>每个</b>登录QSO,而不仅仅是竞争联系人 —— 在上面的地址点点一个像 GridTracker 这样的地图应用程序,并在您登录时在其地图上点出每个联系人图。 每包一个QSO:这从不与比赛广播翻倍,所以通过比赛离开是安全的. 默认关闭; 关闭后, 包将输出<em>仅限</em>用于您在竞赛模式下登录的联系人。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.legend",
+      "english": "LoTW users list",
+      "chinese": "LoTW 用户列表",
+      "previous": "LoTW用户列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.fetch.action",
+      "english": "Fetch now",
+      "chinese": "立即获取",
+      "previous": "现在拿",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.fetch.busy",
+      "english": "Fetching…",
+      "chinese": "获取中…",
+      "previous": "正在获取...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.fetch.done",
+      "english": "LoTW list loaded — {{count}} calls",
+      "chinese": "LoTW 列表已加载，包含 {{count}} 个呼号",
+      "previous": "LoTW已装入的列表 -{{count}}电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.fetch.failed",
+      "english": "LoTW list fetch failed: {{detail}}",
+      "chinese": "LoTW 列表获取失败：{{detail}}",
+      "previous": "LoTW列表获取失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.status",
+      "english": "{{count}} calls · fetched {{date}}",
+      "chinese": "{{count}} 个呼号 · 获取于 {{date}}",
+      "previous": "{{count}}已获取{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.empty",
+      "english": "Not fetched yet — decode lists gain an L mark on calls that upload to LoTW.",
+      "chinese": "尚未获取。获取后，解码列表中有上传 LoTW 记录的呼号将带有 L 标记。",
+      "previous": "尚未获取 —— 解码列表在上传到LoTW。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.maxAge.label",
+      "english": "Count as a LoTW user if uploaded within (days)",
+      "chinese": "最近多少天内上传过才计为 LoTW 用户",
+      "previous": "计为 a LoTW 用户在( 天)内上传",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.lotwUsers.maxAge.hint",
+      "english": "ARRL's activity list updates weekly — refetching more often just returns \"unchanged\". Manual fetch by design (WSJT-X convention).",
+      "chinese": "ARRL 活跃用户列表每周更新，频繁重新获取只会返回“未变化”。按 WSJT-X 的惯例，此处设计为手动获取。",
+      "previous": "ARRL的活动列表每周更新——更经常的回放只是返回\"不变\". 通过设计手动获取(WSJT-X常规).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.legend",
+      "english": "Callsign → state database",
+      "chinese": "呼号 → 美国州数据库",
+      "previous": "国家数据库",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.update.action",
+      "english": "Update now",
+      "chinese": "立即更新",
+      "previous": "现在更新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.update.busy",
+      "english": "Updating…",
+      "chinese": "更新中…",
+      "previous": "更新...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.update.done",
+      "english": "Callsign→state database updated — {{count}} US calls",
+      "chinese": "呼号 → 美国州数据库已更新，包含 {{count}} 个美国呼号",
+      "previous": "更新的Callign 状态数据库 -{{count}}美国电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.update.failed",
+      "english": "Callsign→state update failed: {{detail}}",
+      "chinese": "呼号 → 美国州数据库更新失败：{{detail}}",
+      "previous": "Callign  状态更新失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.status",
+      "english": "{{count}} US calls · fetched {{date}}",
+      "chinese": "{{count}} 个美国呼号 · 获取于 {{date}}",
+      "previous": "{{count}}美国电话 \\ 已获取{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.empty",
+      "english": "Not loaded yet — downloads on first launch, then auto-refreshes weekly.",
+      "chinese": "尚未加载。首次启动时下载，此后每周自动刷新。",
+      "previous": "尚未加载——在第一次发布时下载,然后每周自动更新.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.callsignState.hint",
+      "english": "A callsign→state index (from the FCC license file) so a New State lights up on cluster / CW / SSB spots that carry no grid. Refreshed weekly from hamradiotools.io; a live decode grid refines it for rovers.",
+      "chinese": "根据 FCC 执照文件建立的呼号 → 美国州索引，使不含网格的集群 / CW / SSB 通报也能显示“新州”提示。每周从 hamradiotools.io 刷新；对于移动操作电台，实时解码得到的网格可进一步修正位置判断。",
+      "previous": "调用符号=状态指数(来自FCC许可证文件),所以新状态灯亮在集群上 /CW/ 无网格的SSB斑点. 每周从 hamradiotools.io 中刷新一次;一个活解码网格可以改进它给游民.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.legend",
+      "english": "Country file (DXCC)",
+      "chinese": "国家／地区文件（DXCC）",
+      "previous": "国家档案( E)DXCC) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.update.action",
+      "english": "Update country file",
+      "chinese": "更新国家／地区文件",
+      "previous": "更新国家文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.update.busy",
+      "english": "Updating…",
+      "chinese": "更新中…",
+      "previous": "更新...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.update.done",
+      "english": "Country file downloaded — AD1C {{ver}} applies at next launch.",
+      "chinese": "国家／地区文件已下载，AD1C {{ver}} 将于下次启动时生效。",
+      "previous": "国家文件下载——AD1C{{ver}}适用于下一次发射。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.update.current",
+      "english": "Country file is already current — AD1C {{ver}}.",
+      "chinese": "国家／地区文件已是最新版本：AD1C {{ver}}。",
+      "previous": "国家文件已经存在 —— AD1C{{ver}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.update.failed",
+      "english": "Country file update failed: {{detail}}",
+      "chinese": "国家／地区文件更新失败：{{detail}}",
+      "previous": "国家文件更新失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.status",
+      "english": "{{count}} entities · AD1C {{ver}} · fetched {{date}}",
+      "chinese": "{{count}} 个实体 · AD1C {{ver}} · 获取于 {{date}}",
+      "previous": "{{count}}● AD1C{{ver}}已获取{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.statusBuiltIn",
+      "english": "{{count}} entities · AD1C {{ver}} (built-in)",
+      "chinese": "{{count}} 个实体 · AD1C {{ver}}（内置）",
+      "previous": "{{count}}● AD1C{{ver}}(内置)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.empty",
+      "english": "Built-in country file active.",
+      "chinese": "正在使用内置国家／地区文件。",
+      "previous": "内建的国别文件活动 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.pending",
+      "english": "Update downloaded (AD1C {{ver}}) — applies at next launch.",
+      "chinese": "更新已下载（AD1C {{ver}}），将于下次启动时生效。",
+      "previous": "下载更新( AD1C){{ver}})——适用于下一次发射.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.countryFile.hint",
+      "english": "The AD1C cty.dat country file maps callsigns to DXCC entities — the country on decode rows, the Needed board and the log. Checked weekly; a downloaded update applies at the next launch.",
+      "chinese": "AD1C 的 cty.dat 国家／地区文件将呼号映射至 DXCC 实体，用于解码行、“待通联”面板及日志中的国家／地区信息。每周检查更新，下载的更新于下次启动时生效。",
+      "previous": "AD1C cty.dat 国别文件地图调用符号DXCC实体——解码行上的国家,需要的棋盘和日志. 每周检查一次;下一次发射时适用下载更新。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.legend",
+      "english": "Confirmations",
+      "chinese": "交信确认",
+      "previous": "确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.credential.set.action",
+      "english": "Set",
+      "chinese": "设置",
+      "previous": "设定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.credential.forget.action",
+      "english": "Forget",
+      "chinese": "移除",
+      "previous": "忘记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.credential.forget.title",
+      "english": "Remove the stored password from the system keychain",
+      "chinese": "从系统密钥链中删除存储的密码",
+      "previous": "从系统密钥链中删除存储的密码",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.username.label",
+      "english": "LoTW username",
+      "chinese": "LoTW 用户名",
+      "previous": "LoTW用户名",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.username.placeholder",
+      "english": "your LoTW account login",
+      "chinese": "你的 LoTW 账户登录名",
+      "previous": "ưμ㼯A LoTW 账户登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.username.hint",
+      "english": "Often your callsign, but not always — use your LoTW account login. Save settings to apply.",
+      "chinese": "通常是本台呼号，但并非总是如此，请填写 LoTW 账户的实际登录名。保存设置后生效。",
+      "previous": "通常你的呼号,但并不总是——用你的LoTW账户登录。 保存要应用的设置 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.password.label",
+      "english": "LoTW password",
+      "chinese": "LoTW 密码",
+      "previous": "LoTW密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.password.placeholder",
+      "english": "LoTW website password",
+      "chinese": "LoTW 网站密码",
+      "previous": "LoTW网站密码",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.password.hint",
+      "english": "Your LoTW <b>website</b> password (not your TQSL certificate password). Stored in the OS keychain, never on disk; not shown again after you click Set.",
+      "chinese": "LoTW <b>网站</b>的密码，而非 TQSL 证书密码。保存在操作系统密钥链中，不写入磁盘文件；点击“设置”后不会再次显示。",
+      "previous": "你们LoTW <b>网站</b>密码( 不是您的 TQSL 证书密码) 。 存储在 OS 密钥链中, 永远不要在磁盘中; 点击 Set 后不再显示 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.sync.label",
+      "english": "LoTW confirmations",
+      "chinese": "LoTW 交信确认",
+      "previous": "LoTW确认数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.sync.action",
+      "english": "Download confirmations",
+      "chinese": "下载交信确认",
+      "previous": "下载确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.sync.busy",
+      "english": "Downloading…",
+      "chinese": "下载中…",
+      "previous": "正在下载...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.sync.hint",
+      "english": "This only pulls confirmations <b>down</b>. To send your contacts <em>to</em> LoTW, use <b>Upload to LoTW (N)</b> in the Logbook. Pulls new confirmations into your log and marks which of your uploads LoTW now holds on file (so they read “waiting on the other op,” not “never uploaded”). The first pull covers your whole history (can be slow); later ones are incremental.",
+      "chinese": "此功能仅<b>下载</b>交信确认。若要<em>向</em> LoTW 上传交信，请使用日志中的 <b>上传至 LoTW（N）</b>。它会将新的确认写入本台日志，并标记哪些上传记录已被 LoTW 收录，使其显示为“等待对方确认”，而非“从未上传”。首次下载涵盖全部历史记录，可能较慢；之后仅下载新增内容。",
+      "previous": "这只会拉出确认<b>下来</b>。发送您的联系人<em>改为:</em> LoTW编辑<b>上传到LoTW(无)</b>在日志中。 在日志中拉出新的确认, 标记您上传的哪个LoTW现在搁置(因此他们读作“等待另一个行动”,而不是“从未上传 ” )。 第一拉可以覆盖你的整个历史(可以是缓慢的);后一拉可以递增的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.confirmations.lotw.redownload.action",
+      "english": "Download everything again",
+      "chinese": "再次下载全部",
+      "previous": "再次下载全部",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

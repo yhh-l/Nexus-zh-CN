@@ -1,0 +1,1665 @@
+{
+  "batch": 41,
+  "range": [
+    8001,
+    8200
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 161,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 3,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/PhoneScope.tsx",
+    "ui/src/components/RotorStrip.tsx",
+    "ui/src/components/AmpStrip.tsx",
+    "ui/src/components/TxAlarmBanner.tsx",
+    "ui/src/components/TopBar.tsx"
+  ],
+  "rows": [
+    {
+      "id": "scope.dss.on.title",
+      "english": "Back to the flat trace + waterfall",
+      "chinese": "返回平面频谱曲线与瀑布图",
+      "previous": "回到平坦的微量+瀑布",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.dss.off.title",
+      "english": "Switch to the 3D stacked-spectrum view (fills the panel; hides the trace)",
+      "chinese": "切换至 3D 堆叠频谱视图，占满面板并隐藏频谱曲线",
+      "previous": "切换到3D 堆叠光谱视图( 填充面板; 隐藏跟踪)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.pause.title",
+      "english": "Pause the waterfall — then scroll back through it with the mouse wheel",
+      "chinese": "暂停瀑布图，然后可用鼠标滚轮回看历史",
+      "previous": "暂停瀑布——然后用鼠标轮子滚动回来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.pause.resume.title",
+      "english": "Resume the live scope (history kept filling while paused)",
+      "chinese": "恢复实时频谱；暂停期间仍持续积累历史数据",
+      "previous": "恢复实弹瞄准镜( 历史在暂停时继续填充)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.flow.down.label",
+      "english": "Scrolls down",
+      "chinese": "向下滚动",
+      "previous": "向下滚动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.flow.up.label",
+      "english": "Scrolls up",
+      "chinese": "向上滚动",
+      "previous": "向上滚动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.flow.down.title",
+      "english": "Scrolls down — the newest row appears at the TOP and history travels downward. Click for newest at the bottom.",
+      "chinese": "向下滚动：最新一行在顶部，历史向下移动。点击可改为最新一行在底部。",
+      "previous": "向下滚动——最新一行出现在TOP上,历史往下走. 点击下方的最新信息 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.flow.up.title",
+      "english": "Scrolls up — the newest row appears at the BOTTOM and history travels upward. Click for newest at the top.",
+      "chinese": "向上滚动：最新一行在底部，历史向上移动。点击可改为最新一行在顶部。",
+      "previous": "卷起——最新一行出现在BOTTOM上,历史往上走. 点击顶端的最新消息 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.canvas.title",
+      "english": "Click a signal to tune it · press and drag to slide the passband",
+      "chinese": "点击信号可调谐至该频率 · 按住并拖动可平移通带",
+      "previous": "单击一个信号以调谐它 。\\ 按下并拖动以滑动通过带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.canvas.edges.title",
+      "english": "Click a signal to tune it · press and drag to slide the passband · drag a filter edge to change the width",
+      "chinese": "点击信号可调谐至该频率 · 按住并拖动可平移通带 · 拖动滤波器边缘可改变带宽",
+      "previous": "单击一个信号以调谐它 ^ 按下并拖动以滑动通过带 ^ 拖动过滤边以改变宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.canvas.keys.aria",
+      "english": "Scope: ← and → tune, with Shift in bigger steps; Enter tunes onto the signal in the passband; [ and ] narrow and widen the filter; ↑ and ↓ scroll back while paused",
+      "chinese": "频谱：← 和 → 调谐，按住 Shift 增大步进；Enter 对准通带内的信号；[ 收窄、] 加宽滤波器；暂停时用 ↑ 和 ↓ 回看历史",
+      "previous": "范围: +++ 调值,以更大的步骤移动; 将调值输入通过带中的信号; [和] 缩小并拓宽过滤器; 在暂停时返回QQ和QQ滚动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.paused.badge",
+      "english": "⏸ paused · wheel to rewind",
+      "chinese": "⏸ 已暂停 · 滚动滚轮回看",
+      "previous": "* * * 暂停 * * 轮子倒转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rfScope.title",
+      "english": "RF scope",
+      "chinese": "射频频谱",
+      "previous": "射频频谱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.rf.none",
+      "english": "No scope data from the radio",
+      "chinese": "未收到电台的频谱数据",
+      "previous": "没有收音机提供的范围数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.aria",
+      "english": "Scope display settings",
+      "chinese": "频谱显示设置",
+      "previous": "范围显示设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.window.aria",
+      "english": "Resolution",
+      "chinese": "分辨率",
+      "previous": "分辨率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.window.fast.title",
+      "english": "Fast — 1024-point window, 85 ms. Keying and speech onsets resolve; carriers read twice as wide.",
+      "chinese": "快速：1024 点窗口，85 毫秒。可分辨键控和话音起始的变化，但载波显示宽度加倍。",
+      "previous": "快——1024号点窗,85ms. 键入和语音触发问题得到解决;载体读数是两倍。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.window.balanced.title",
+      "english": "Balanced — 2048-point window, 171 ms. The default. A 25 WPM dit is shorter than this window.",
+      "chinese": "均衡：2048 点窗口，171 毫秒，默认设置。25 WPM 下的一个短点比此窗口更短。",
+      "previous": "平衡型——2048个点窗,171米. 默认 A. 25项 WPM dit比这个窗口短.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.window.sharp.title",
+      "english": "Sharp — 4096-point window, 341 ms. Half the carrier width, at double the time smear.",
+      "chinese": "精细：4096 点窗口，341 毫秒。载波显示宽度减半，但时间拖影加倍。",
+      "previous": "锐——4096个点窗,341 ms. 航母宽度的一半 时间涂抹的两倍",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.average.label",
+      "english": "Smooth",
+      "chinese": "平滑",
+      "previous": "平滑",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.average.title",
+      "english": "Averaging — how long each frequency is smoothed. Longer steadies the noise floor; shorter keeps keying and syllables. Off draws every sweep as it arrives.",
+      "chinese": "平均处理：每个频点的平滑时长。时间较长可稳定底噪，较短可保留键控和音节变化；关闭后每次扫描到达即直接显示。",
+      "previous": "演绎——每个频率平滑多久. 更长的稳住噪音层;较短的保持键和音节. 每一次扫荡都会被抽到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.average.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "scope.strip.detector.aria",
+      "english": "Detector",
+      "chinese": "检波方式",
+      "previous": "检波方式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.detector.peak",
+      "english": "Peak",
+      "chinese": "峰值",
+      "previous": "峰值",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.detector.peak.title",
+      "english": "Peak — where one pixel covers several frequency bins, draw the strongest. A narrow carrier keeps its level.",
+      "chinese": "峰值：一个像素覆盖多个频点时，显示其中最强值，窄带载波仍能保持其电平。",
+      "previous": "峰——一个像素覆盖几个频率的插座,画出最强的. 窄航母保持其水平.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.detector.average",
+      "english": "Avg",
+      "chinese": "平均值",
+      "previous": "平均值",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.strip.detector.average.title",
+      "english": "Average — where one pixel covers several frequency bins, draw their mean power. A smoother noise floor; a narrow carrier in a wide view reads lower.",
+      "chinese": "平均：一个像素覆盖多个频点时，显示平均功率。底噪更平滑，但宽视野中的窄带载波读数会降低。",
+      "previous": "平均——在一个像素覆盖多个频率的插座时,绘制其平均功率. 较平滑的噪音地板;宽视线的窄载体读数较低。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.gear.aria",
+      "english": "Display settings",
+      "chinese": "显示设置",
+      "previous": "显示设置",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.gear.title",
+      "english": "Display settings — resolution, smoothing, the detector, and how a slow scope scrolls",
+      "chinese": "显示设置：分辨率、平滑、检波方式，以及电台频谱扫描较慢时的滚动方式",
+      "previous": "显示设置 — 分辨率、 平滑度、 检测器, 以及一个缓慢范围滚动的方式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.rows.smooth.label",
+      "english": "Smooth scroll",
+      "chinese": "平滑滚动",
+      "previous": "平滑滚动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.rows.sweep.label",
+      "english": "Row per sweep",
+      "chinese": "每次扫描一行",
+      "previous": "逐行扫描",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.rows.smooth.title",
+      "english": "Smooth scroll — the waterfall moves at a steady rate. When the radio's scope sweeps slower than that, the newest sweep is repeated until the next one arrives, and each repeat is recorded as one. Click for one row per sweep.",
+      "chinese": "平滑滚动：瀑布图以恒定速度移动。若电台扫描较慢，会重复显示最近一次扫描，直到新扫描到达，每次重复均作为一行记入历史。点击可改为每次扫描一行。",
+      "previous": "平滑卷轴——瀑布稳步移动. 当收音机的瞄准镜扫描速度比这慢时,最新的扫描会重复到下一部到来,每部重复都记录为一集. 点击每次扫描一行 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "scope.rows.sweep.title",
+      "english": "One row per sweep — the waterfall moves only when the radio sends a new sweep, so a slow scope scrolls slowly, in steps, and every row is new. Click for smooth scroll.",
+      "chinese": "每次扫描一行：只有电台发来新扫描时瀑布图才移动。扫描慢时会逐步缓慢滚动，但每行都是新数据。点击可改为平滑滚动。",
+      "previous": "每扫一行——只有收音机发出新扫荡时瀑布才会移动,所以一个缓慢的瞄准镜卷轴缓慢地,以步为单位,每排都是新的. 单击以进行平滑滚动 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "fastGraph.aria",
+      "english": "Fast Graph — signal power across the T/R period; pings draw as spikes",
+      "chinese": "快速图：显示收发周期内的信号功率，短促信号呈尖峰",
+      "previous": "Fast Graph – 跨T/R时期的信号功率; pings 绘制为 spings",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.rx.label",
+      "english": "RX level",
+      "chinese": "接收电平",
+      "previous": "接收电平",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.rx.title",
+      "english": "{{label}}: {{level}} (aim ~30 dB, like WSJT-X)",
+      "chinese": "{{label}}：{{level}}，目标约为 30 dB，与 WSJT-X 类似",
+      "previous": "{{label}}数字 :{{level}}(aim~30 dB,类似WSJT-X).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.tx.aria",
+      "english": "Transmit meters",
+      "chinese": "发射仪表",
+      "previous": "发射仪表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.tx.idle",
+      "english": "TX meters — {{when}}",
+      "chinese": "发射仪表 — {{when}}",
+      "previous": "TX米 -{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "phone.unavail.meter",
+      "english": "Your radio does not report {{meter}} over CAT — the bar stays empty.",
+      "chinese": "此电台不通过 CAT 报告{{meter}}，表条保持空白。",
+      "previous": "您的电台不报告{{meter}}结束CAT——吧台保持空闲.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.tx.swr.title",
+      "english": "Antenna match — keep it under 2:1",
+      "chinese": "天线匹配，驻波比应低于 2:1",
+      "previous": "天线比赛——保持2:1以下",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.tx.swr.unverified",
+      "english": "Antenna match — this is the radio's own raw figure, and Nexus has no verified scale for this model, so it cannot tell you what counts as high here. Watch which way it moves as you tune; the absolute number may be well out, and nothing stops your transmission on it.",
+      "chinese": "天线匹配：此处为电台报告的原始数值，Nexus 尚无此型号经过验证的换算标度，因此无法判断数值是否过高。调谐时请观察变化方向；绝对数值可能偏差很大，软件不会据此停止发射。",
+      "previous": "天线匹配——这是收音机本身的原始数字,Nexus对于这个模型没有经过核实的尺度,所以它不能告诉你这里算什么高. 注意它的移动方式 当你调音时;绝对数可能很好, 没有什么能阻止你的传输。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.tx.alc.title",
+      "english": "ALC — set mic gain so SSB peaks just tickle the zone, never peg it",
+      "chinese": "ALC：调整话筒增益，使 SSB 话音峰值刚进入指示区域，切勿持续顶满",
+      "previous": "ALC — 设置麦克增益, 所以SSB 峰值只是痒的区, 从来没有连接它",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.tx.po.title",
+      "english": "Actual output power",
+      "chinese": "实际输出功率",
+      "previous": "实际输出功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "meters.tx.comp.title",
+      "english": "Speech compression",
+      "chinese": "语音压缩",
+      "previous": "语音压缩",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.stop.failed",
+      "english": "Rotator stop: {{error}}",
+      "chinese": "旋转器停止失败：{{error}}",
+      "previous": "旋转停止 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pointed.to.grid",
+      "english": "their grid {{grid}}",
+      "chinese": "对方网格 {{grid}}",
+      "previous": "他们的网格{{grid}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pointed.to.position",
+      "english": "their callbook position",
+      "chinese": "呼号簿中的对方位置",
+      "previous": "他们的电话簿位置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pointed.to.country",
+      "english": "the centre of {{country}}: no grid known for them",
+      "chinese": "{{country}} 的中心位置，因对方网格未知",
+      "previous": "中心点{{country}}: 没有已知的网格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.aria",
+      "english": "Rotator",
+      "chinese": "天线旋转器",
+      "previous": "天线旋转器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.az.title",
+      "english": "Rotator at {{deg}}° true",
+      "chinese": "旋转器真方位 {{deg}}°",
+      "previous": "旋转器在{{deg}}° 真实",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.az.title.magnetic",
+      "english": "Rotator at {{deg}}° true · {{mag}}° magnetic (WMM)",
+      "chinese": "旋转器真方位 {{deg}}° · 磁方位 {{mag}}°（WMM）",
+      "previous": "旋转器在{{deg}}° 真实的...{{mag}}° 磁性( WMM)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.pointAt.title",
+      "english": "Point the antenna at {{call}}",
+      "chinese": "将天线转向 {{call}}",
+      "previous": "瞄准天线{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.pointAtLong.title",
+      "english": "Point the antenna at {{call}} the long way round (reciprocal heading)",
+      "chinese": "按长路径将天线转向 {{call}}，即短路径的反方向",
+      "previous": "瞄准天线{{call}}长途圆(对等方向)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.stop.title",
+      "english": "Stop rotation NOW (mid-pass: stops the satellite track too)",
+      "chinese": "立即停止旋转；卫星过境跟踪期间也会停止自动跟踪",
+      "previous": "现在停止旋转( 中间通道: 也停止卫星轨道)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.held.aria",
+      "english": "A satellite transponder holds the dial",
+      "chinese": "卫星转发器正在接管调谐频率",
+      "previous": "卫星转发器按住拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.held.title",
+      "english": "{{bird}} holds the dial — picked in Satellites; the dial stays on the bird through section changes. ■ releases the hold and hands the dial back",
+      "chinese": "{{bird}} 正在接管调谐频率，这是在卫星页面中选择的；切换操作区域后仍保持跟随该卫星。点击 ■ 可解除接管，恢复手动调谐",
+      "previous": "{{bird}}按住拨号——用卫星接;拨号通过区间变化停留在鸟上. ~ 松开手把电话拿回来 ~",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.held.title.here",
+      "english": "{{bird}} holds the dial — picked in Satellites; the dial stays on the bird through section changes. Release it there or with the strip's ■",
+      "chinese": "{{bird}} 正在接管调谐频率，这是在卫星页面中选择的；切换操作区域后仍保持跟随该卫星。可在卫星页面解除，或点击此栏的 ■",
+      "previous": "{{bird}}按住拨号——用卫星接;拨号通过区间变化停留在鸟上. 把它放那里,或者带条子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.held.chip",
+      "english": "⟳ {{bird}} · bird holds the dial",
+      "chinese": "⟳ {{bird}} · 卫星接管频率",
+      "previous": "⟳{{bird}}* 鸟儿拿着拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.held.chip.dial",
+      "english": "⟳ {{bird}} +dial",
+      "chinese": "⟳ {{bird}} +频率",
+      "previous": "⟳{{bird}}+拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.release.aria",
+      "english": "Release the transponder hold",
+      "chinese": "解除转发器频率接管",
+      "previous": "释放转发器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.release.title",
+      "english": "Release the transponder NOW — the dial is yours again",
+      "chinese": "立即解除转发器频率接管，恢复手动调谐",
+      "previous": "立刻释放转发器 拨号又是你的了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.release.failed",
+      "english": "Release: {{error}}",
+      "chinese": "解除接管失败：{{error}}",
+      "previous": "释放 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.dial.aria",
+      "english": "Satellite Doppler owns the dial",
+      "chinese": "卫星多普勒补偿正在接管调谐频率",
+      "previous": "卫星多普勒拥有拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.tx.aria",
+      "english": "Satellite Doppler owns the TX VFO",
+      "chinese": "卫星多普勒补偿正在接管 TX VFO",
+      "previous": "多普勒卫星拥有TX VFO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.dial.title",
+      "english": "Satellite Doppler is {{what}} for {{bird}} ({{state}}) — ■ stops the track and hands the dial back",
+      "chinese": "卫星多普勒补偿：{{bird}}（{{state}}），{{what}}。点击 ■ 停止跟踪并恢复手动调谐",
+      "previous": "多普勒卫星{{what}}(单位:千美元){{bird}}(单位:千美元){{state}}) —— 停止赛道,把拨号拿回来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.tx.title",
+      "english": "Satellite Doppler is {{what}} for {{bird}} ({{state}}) — ■ stops the track and releases the split",
+      "chinese": "卫星多普勒补偿：{{bird}}（{{state}}），{{what}}。点击 ■ 停止跟踪并解除异频",
+      "previous": "多普勒卫星{{what}}(单位:千美元){{bird}}(单位:千美元){{state}}) — — 停止赛道并释放拆分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.dial.steering",
+      "english": "steering the radio dial",
+      "chinese": "正在控制电台调谐频率",
+      "previous": "拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.dial.atAos",
+      "english": "armed to take the radio dial at AOS",
+      "chinese": "已就绪，将在 AOS（升起）时接管电台调谐频率",
+      "previous": "武装在AOS接无线电拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.tx.steering",
+      "english": "steering the TX (split) VFO — the dial stays yours",
+      "chinese": "正在控制 TX（异频）VFO，接收频率仍可手动调谐",
+      "previous": "引导 TX (分割)VFO- 拨号留在你的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.tx.atAos",
+      "english": "armed to take the TX (split) VFO at AOS — the dial stays yours",
+      "chinese": "已就绪，将在 AOS（升起）时接管 TX（异频）VFO，接收频率仍可手动调谐",
+      "previous": "武装取 TX (分割)VFO在AOS,拨号留在你的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.chip.dial",
+      "english": "⟳ {{bird}} · Doppler holds the dial",
+      "chinese": "⟳ {{bird}} · 多普勒接管频率",
+      "previous": "⟳{{bird}}多普勒拿着电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.chip.dialAtAos",
+      "english": "⟳ {{bird}} · dial at AOS",
+      "chinese": "⟳ {{bird}} · AOS 时接管频率",
+      "previous": "⟳{{bird}}* 在AOS拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.chip.tx",
+      "english": "⟳ {{bird}} · Doppler holds the TX VFO",
+      "chinese": "⟳ {{bird}} · 多普勒接管 TX VFO",
+      "previous": "⟳ {{bird}} 多普勒持有TX VFO",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.doppler.chip.txAtAos",
+      "english": "⟳ {{bird}} · TX VFO at AOS",
+      "chinese": "⟳ {{bird}} · AOS 时接管 TX VFO",
+      "previous": "⟳ {{bird}} • TX VFO 在AOS办公室",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.trackStop.aria",
+      "english": "Stop the satellite track",
+      "chinese": "停止卫星跟踪",
+      "previous": "停止卫星轨道",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.trackStop.title",
+      "english": "Stop the satellite track NOW — Doppler releases the dial",
+      "chinese": "立即停止卫星跟踪，多普勒补偿将释放调谐频率",
+      "previous": "现在停止卫星轨道——多普勒释放拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.trackStop.failed",
+      "english": "Track stop: {{error}}",
+      "chinese": "停止跟踪失败：{{error}}",
+      "previous": "音轨站点 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.track.title",
+      "english": "Auto-tracking {{bird}} ({{state}}) — the Satellites section owns the rotor until LOS{{doppler}}",
+      "chinese": "正在自动跟踪 {{bird}}（{{state}}）；卫星页面将控制旋转器，直到 LOS（落下）{{doppler}}",
+      "previous": "自动跟踪{{bird}}(单位:千美元){{state}}——卫星部分拥有转子直到LOS.{{doppler}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.track.title.dial",
+      "english": "; Doppler owns the radio dial too",
+      "chinese": "；多普勒补偿也会接管电台调谐频率",
+      "previous": "多普勒也拥有无线电拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.track.title.tx",
+      "english": "; Doppler drives the TX (split) VFO too — the dial stays yours",
+      "chinese": "；多普勒补偿也会控制 TX（异频）VFO，接收频率仍可手动调谐",
+      "previous": "; 多普勒驱动 TX( 分割)VFO拨号也不要动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.track.chip",
+      "english": "⟳ {{bird}}",
+      "chinese": "⟳{{bird}}",
+      "previous": "⟳{{bird}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.track.chip.dial",
+      "english": "⟳ {{bird}} +dial",
+      "chinese": "⟳ {{bird}} +频率",
+      "previous": "⟳{{bird}}+拨号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.track.chip.uplink",
+      "english": "⟳ {{bird}} +uplink",
+      "chinese": "⟳ {{bird}} +上行",
+      "previous": "⟳{{bird}}+上连线",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.lost.silent",
+      "english": "Rotator not answering",
+      "chinese": "旋转器未响应",
+      "previous": "旋转器未响应",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.lost.stopped",
+      "english": "Rotator stopped answering",
+      "chinese": "旋转器停止响应",
+      "previous": "旋转器停止响应",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.lost.silent.title",
+      "english": "The rotator controller isn't answering. Is it switched on and plugged in? Nexus keeps trying to reach it. If it is, check the model, port and baud in Settings ▸ Radio ▸ Rotator (the baud belongs to the model), or the external rotctld, and the Connections log",
+      "chinese": "旋转器控制器没有响应。请检查是否已开机并连接，Nexus 会持续尝试连接。若设备已连接，请检查“设置 ▸ 电台设备 ▸ 旋转器”中的型号、端口和波特率（须与型号匹配），或检查外部 rotctld 及连接日志。",
+      "previous": "转子控制器没接 是开机插进去的吗? Nexus一直试图达到它。 如果是,请检查设置 QQ Radio 旋转器( baud 属于该模型) 中的模型、 端口和缓冲, 或外部转盘, 以及连接日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.lost.stopped.title",
+      "english": "The rotator stopped answering mid-pass, so the track let it go — point the antenna yourself. Check the model, port and baud in Settings ▸ Radio ▸ Rotator (the baud belongs to the model), or the external rotctld, and the Connections log",
+      "chinese": "旋转器在卫星过境中途停止响应，自动跟踪已释放控制，请手动调整天线。请检查“设置 ▸ 电台设备 ▸ 旋转器”中的型号、端口和波特率（须与型号匹配），或检查外部 rotctld 及连接日志。",
+      "previous": "转动器停止了中路接应,所以赛道让它离开——自己指向天线. 请检查date=中的日期值 (帮助) Sets QQ Radio 旋转器中的模型、 端口和缓冲器( 缓冲器属于模型) , 或外部转盘, 以及连接日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.lost.open.aria",
+      "english": "{{state}} — open the rotator settings",
+      "chinese": "{{state}}，打开旋转器设置",
+      "previous": "{{state}}——打开转子设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.strip.lost.open.title",
+      "english": "{{detail}}. Click to open it",
+      "chinese": "{{detail}}。点击打开相关设置",
+      "previous": "{{detail}}打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.strip.aria",
+      "english": "Amplifier",
+      "chinese": "功率放大器",
+      "previous": "功率放大器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.strip.toOperate.title",
+      "english": "Put the amplifier into Operate.",
+      "chinese": "将功放切换到工作状态。",
+      "previous": "将放大器放入操作中。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.strip.toStandby.title",
+      "english": "Put the amplifier into Standby. This does NOT stop a transmission — the exciter keeps keying and the drive passes straight through.",
+      "chinese": "将功放切换到待机状态。此操作不会停止发射，激励电台仍会继续发射，其射频输出将直接通过功放旁路。",
+      "previous": "把扩音器放进待命状态 这并不能阻止一个传输——排泄器保持按键,驱动器直接通过.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.strip.keyed.title",
+      "english": "Not while you are transmitting. Changing band or mode on a keyed amplifier can damage it.",
+      "chinese": "发射期间不可操作。在功放发射时切换频段或模式可能损坏设备。",
+      "previous": "在你传送时不行 在按键放大器上改变波段或模式可以损坏它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.strip.bandDown.aria",
+      "english": "Amplifier band down",
+      "chinese": "功放切换至较低频段",
+      "previous": "放大带向下",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.strip.bandUp.aria",
+      "english": "Amplifier band up",
+      "chinese": "功放切换至较高频段",
+      "previous": "放大带向上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.strip.refused",
+      "english": "Not sent",
+      "chinese": "未发送",
+      "previous": "未发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.link.up",
+      "english": "Linked",
+      "chinese": "已连接",
+      "previous": "链接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.operate",
+      "english": "Operate",
+      "chinese": "工作",
+      "previous": "操作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.standby",
+      "english": "Standby",
+      "chinese": "待机",
+      "previous": "待机",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.k.power",
+      "english": "Power out",
+      "chinese": "输出功率",
+      "previous": "输出功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.k.temp",
+      "english": "PA temp",
+      "chinese": "功放温度",
+      "previous": "功放温度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.k.current",
+      "english": "Current",
+      "chinese": "电流",
+      "previous": "电流",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "EqualizationToolsDialog::impl",
+          "chinese": "当前"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "当前"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "当前"
+        }
+      ]
+    },
+    {
+      "id": "amp.swr.title",
+      "english": "Standing-wave ratio measured at the antenna.",
+      "chinese": "天线端测得的驻波比。",
+      "previous": "天线测得的常波比.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.swrAtu.title",
+      "english": "Standing-wave ratio measured before the amplifier's tuner.",
+      "chinese": "功放天调前端测得的驻波比。",
+      "previous": "放大器调谐器前测量的常波比.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.temp.unknownScale",
+      "english": "The SPE protocol does not say whether this is °C or °F — the amplifier reports whatever its own display is set to. Check the amplifier's front panel.",
+      "chinese": "SPE 协议未说明单位是 °C 还是 °F，功放按自身显示设置报告数值。请查看功放前面板。",
+      "previous": "SPE协议没有说这是 °C 还是 °F —— 放大器报告,不管它自己要显示什么。 检查放大器的前置面板.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.reason.noAnswer",
+      "english": "Not answering",
+      "chinese": "无响应",
+      "previous": "无响应",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.reason.portBusy",
+      "english": "Port in use by something else",
+      "chinese": "端口被其他程序占用",
+      "previous": "被其它东西使用的端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.reason.wrongModel",
+      "english": "Answering, but in a protocol Nexus does not read yet",
+      "chinese": "设备有响应，但其协议暂不受 Nexus 支持",
+      "previous": "回答,但在协议Nexus还没有读到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.reason.malformed",
+      "english": "Answering with something Nexus cannot read",
+      "chinese": "设备有响应，但 Nexus 无法解析返回内容",
+      "previous": "回答 Nexus 无法读取的东西",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.alarm.swrExceedingLimits",
+      "english": "Alarm: SWR beyond limits",
+      "chinese": "警报：驻波比（SWR）超限",
+      "previous": "提醒: 超限 SWR",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.alarm.amplifierProtection",
+      "english": "Alarm: amplifier protection tripped",
+      "chinese": "警报：功放保护已触发",
+      "previous": "警报:放大器保护绊倒",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.alarm.inputOverdriving",
+      "english": "Alarm: input overdriven",
+      "chinese": "警报：输入驱动过强",
+      "previous": "提醒: 输入超驱动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.alarm.excessOverheating",
+      "english": "Alarm: overheating",
+      "chinese": "警报:过热",
+      "previous": "警报:过热",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.alarm.combinerFault",
+      "english": "Alarm: combiner fault",
+      "chinese": "警报：功率合成器故障",
+      "previous": "提醒: 结合器故障",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.alarm.fault",
+      "english": "Fault",
+      "chinese": "故障",
+      "previous": "故障",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.alarm.unknown",
+      "english": "Alarm the amplifier did not name",
+      "chinese": "功放报告了未注明类型的警报",
+      "previous": "提醒放大器没有命名",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.alarmAmplifier",
+      "english": "Warning: amplifier alarm",
+      "chinese": "警告：功放报警",
+      "previous": "警告:放大器提醒",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.noSelectedAntenna",
+      "english": "Warning: no antenna selected",
+      "chinese": "警告: 未选择天线",
+      "previous": "警告: 未选择天线",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.swrAntenna",
+      "english": "Warning: antenna SWR",
+      "chinese": "警告: 天线 SWR",
+      "previous": "警告: 天线 SWR",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.noValidBand",
+      "english": "Warning: no valid band",
+      "chinese": "警告：无有效频段",
+      "previous": "警告: 没有有效的带宽",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.powerLimitExceeded",
+      "english": "Warning: power limit exceeded",
+      "chinese": "警告：功率超限",
+      "previous": "警告: 功率限制已超过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.overheating",
+      "english": "Warning: overheating",
+      "chinese": "警告:过热",
+      "previous": "警告:过热",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.atuNotAvailable",
+      "english": "Warning: tuner not available",
+      "chinese": "警告：天调不可用",
+      "previous": "警告: 调制解调器不可用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.tuningWithNoPower",
+      "english": "Warning: tuning with no drive",
+      "chinese": "警告：调谐时无射频驱动",
+      "previous": "警告:无驱动器调音",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.atuBypassed",
+      "english": "Warning: tuner bypassed",
+      "chinese": "警告：天调已旁路",
+      "previous": "警告: 调制解调器已绕过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.powerSwitchHeldByRemote",
+      "english": "Warning: power switch held by remote",
+      "chinese": "警告：电源开关由远端控制",
+      "previous": "警告: 电源开关被远程控制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.combinerOverheating",
+      "english": "Warning: combiner overheating",
+      "chinese": "警告：功率合成器过热",
+      "previous": "警告: 联合体过热",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.combinerFault",
+      "english": "Warning: combiner fault",
+      "chinese": "警告：功率合成器故障",
+      "previous": "警告: 合并错误",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "amp.warning.unknown",
+      "english": "Warning the amplifier did not name",
+      "chinese": "功放报告了未注明类型的警告",
+      "previous": "警告放大器没有命名",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.rose.aria",
+      "english": "Rotator at {{deg}} degrees — click to slew",
+      "chinese": "旋转器位于 {{deg}} 度，点击可转向",
+      "previous": "旋转器在{{deg}}度 - 单击以锁定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.rose.aria.unknown",
+      "english": "Rotator — position not reported; click to slew",
+      "chinese": "旋转器未报告位置，点击仍可转向",
+      "previous": "旋转器- 未报告位置; 单击以显示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.az.title",
+      "english": "True bearing",
+      "chinese": "真方位角",
+      "previous": "真方位",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.az.title.magnetic",
+      "english": "{{deg}}° true · {{mag}}° magnetic (WMM)",
+      "chinese": "真方位 {{deg}}° · 磁方位 {{mag}}°（WMM）",
+      "previous": "{{deg}}° 真实的...{{mag}}° 磁性( WMM)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.az.title.unknown",
+      "english": "This rotator does not report its position — pointing still works",
+      "chinese": "此旋转器不报告位置，但仍可控制转向",
+      "previous": "这个转子不报告它的立场——指针仍然有效",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.track.title",
+      "english": "Auto-tracking {{bird}} ({{state}}) — the Satellites section owns the rotor until LOS; a manual slew or STOP halts it",
+      "chinese": "正在自动跟踪 {{bird}}（{{state}}）；卫星页面将控制旋转器，直到 LOS（落下）。手动转向或点击 STOP 均会停止自动跟踪",
+      "previous": "自动跟踪{{bird}}(单位:千美元){{state}}——卫星部分拥有转子,直到LOS;手动完成或停止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.commanded.title",
+      "english": "Commanded heading — the needle is on its way",
+      "chinese": "指令方位，天线正在转向该位置",
+      "previous": "命中目标——针头在路上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.entry.aria",
+      "english": "Azimuth to slew to (degrees true)",
+      "chinese": "目标真方位角，单位为度",
+      "previous": "杀到( 度为真)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.stop.label",
+      "english": "■ STOP",
+      "chinese": "■ 停止",
+      "previous": "* 停下来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.stop.title",
+      "english": "Stop rotation NOW",
+      "chinese": "立即停止旋转",
+      "previous": "现在停止旋转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.hint",
+      "english": "click the rose or type a bearing · headings are TRUE",
+      "chinese": "点击罗盘或输入方位角 · 均为真方位",
+      "previous": "单击玫瑰花或键入轴 # 标题为 TRUE",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.hint.noPosition",
+      "english": "no position from this rotator — pointing and STOP still work",
+      "chinese": "此旋转器不回报位置，转向和停止功能仍可用",
+      "previous": "这个旋转器没有位置——指向和停止仍然工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.notAnswering",
+      "english": "The rotator controller isn't answering. Is it switched on and plugged in? Nexus keeps trying to reach it.",
+      "chinese": "旋转器控制器没有响应。请检查是否已开机并连接，Nexus 会持续尝试连接。",
+      "previous": "转子控制器没接 是开机插进去的吗? Nexus一直试图达到它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.slew.failed",
+      "english": "Rotator: {{error}}",
+      "chinese": "旋转器：{{error}}",
+      "previous": "旋转器 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.el.title",
+      "english": "Elevation above the horizon · this rotator reaches {{min}}–{{max}}°",
+      "chinese": "相对地平线的仰角，此旋转器范围为 {{min}}–{{max}}°",
+      "previous": "位于地平线上方的旋转器{{min}}- 说吧{{max}}°",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.commandedEl.title",
+      "english": "Commanded elevation — the antenna is on its way",
+      "chinese": "指令仰角，天线正在移向该位置",
+      "previous": "指挥高地——天线在路上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.el.entry.aria",
+      "english": "Elevation to move to (degrees, {{min}}–{{max}})",
+      "chinese": "目标仰角，单位为度，范围 {{min}}–{{max}}",
+      "previous": "升迁到(度,{{min}}- 说吧{{max}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.el.outside",
+      "english": "This rotator reaches {{min}}–{{max}}° of elevation",
+      "chinese": "此旋转器的仰角范围为 {{min}}–{{max}}°",
+      "previous": "这个旋转器到达{{min}}- 说吧{{max}}° 高 度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.hint.azel",
+      "english": "click the rose or type a bearing or an elevation · headings are TRUE",
+      "chinese": "点击罗盘，或输入方位角、仰角 · 方位角均为真方位",
+      "previous": "单击玫瑰花或键入轴心或高空 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.aim.title",
+      "english": "Bearing and distance to {{call}}, short path ({{to}})",
+      "chinese": "至 {{call}} 的短路径方位和距离（{{to}}）",
+      "previous": "轴承和距离{{call}},短路径({{to}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.aim.point.label",
+      "english": "Point",
+      "chinese": "转向",
+      "previous": "转向",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.aim.point.title",
+      "english": "Point the antenna at {{call}}, short path",
+      "chinese": "按短路径将天线转向 {{call}}",
+      "previous": "瞄准天线{{call}},短路径",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.aim.unknown",
+      "english": "location unknown",
+      "chinese": "位置不详",
+      "previous": "位置不详",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.aim.noGrid",
+      "english": "set your grid in Settings for a bearing",
+      "chinese": "请在设置中填写本台网格，以计算方位",
+      "previous": "将网格设置为轴线",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.aim.off",
+      "english": "{{deg}}° off",
+      "chinese": "偏差 {{deg}}°",
+      "previous": "{{deg}}关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rotor.pane.aim.off.title",
+      "english": "The antenna is {{deg}}° off the bearing to {{call}} (the dotted line on the rose), the short way round",
+      "chinese": "天线与 {{call}} 短路径方位的偏差为 {{deg}}°，目标方位在罗盘上以虚线表示",
+      "previous": "天线是{{deg}}° 离轴向{{call}}(玫瑰上的点缀线) 短路转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.readout.wheelTune.title",
+      "english": "Scroll to tune",
+      "chinese": "滚动滚轮可调谐",
+      "previous": "滚动到曲调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.readout.digitTune.title",
+      "english": "Scroll a digit to tune it",
+      "chinese": "在某一数位上滚动，可按该数位调谐",
+      "previous": "滚动一个数字来调谐它",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.bandEdge.up",
+      "english": "Stopped at the {{band}} band edge, {{edge}} MHz — scroll again to keep tuning up",
+      "chinese": "已停在 {{band}} 频段上边缘 {{edge}} MHz；再次滚动可继续向上调谐",
+      "previous": "停止在{{band}}乐队边缘,{{edge}} MHz——再次滚动以不断调整.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.bandEdge.down",
+      "english": "Stopped at the {{band}} band edge, {{edge}} MHz — scroll again to keep tuning down",
+      "chinese": "已停在 {{band}} 频段下边缘 {{edge}} MHz；再次滚动可继续向下调谐",
+      "previous": "停止在{{band}}乐队边缘,{{edge}} MHz——再次滚动以保持低调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.power.label",
+      "english": "Power",
+      "chinese": "功率",
+      "previous": "功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.power.title",
+      "english": "{{label}} — trim so your rig's ALC is just zero",
+      "chinese": "{{label}}：调整至电台 ALC 刚好归零",
+      "previous": "{{label}}修剪一下你的钻机的ALC只是零",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.cat.ok.title",
+      "english": "CAT link OK",
+      "chinese": "CAT 连接正常",
+      "previous": "CAT链接确定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.header.cat.bad.title",
+      "english": "No CAT link",
+      "chinese": "没有 CAT 连接",
+      "previous": "没有CAT链接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.txAlarm.lead.radio",
+      "english": "Transmitter alarm, {{radio}}, {{time}} UTC:",
+      "chinese": "发射警报，{{radio}}，{{time}} UTC：",
+      "previous": "发射警报器{{radio}}, (中文).{{time}} UTC数字 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.txAlarm.lead.noRadio",
+      "english": "Transmitter alarm, {{time}} UTC:",
+      "chinese": "发射警报，{{time}} UTC：",
+      "previous": "发射警报器{{time}} UTC数字 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.txAlarm.queue",
+      "english": "1 of {{total}}",
+      "chinese": "第 1 条，共 {{total}} 条",
+      "previous": "1个{{total}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.txAlarm.dismiss.title",
+      "english": "Clear this alarm once you have checked the radio. An alarm raised since stays on screen.",
+      "chinese": "检查电台后可清除此警报。此后新出现的警报仍会保留在屏幕上。",
+      "previous": "检查过收音机后清除这个警报 。 保持屏蔽后发出警报",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.txAlarm.dismiss.failed",
+      "english": "Could not clear the transmitter alarm",
+      "chinese": "无法清除发射警报",
+      "previous": "无法清除发送器提醒",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.aria",
+      "english": "Tuning",
+      "chinese": "调谐",
+      "previous": "调谐",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.down.title",
+      "english": "Down {{hz}} Hz",
+      "chinese": "降低 {{hz}} Hz",
+      "previous": "下来{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.down.aria",
+      "english": "Tune down {{hz}} Hz",
+      "chinese": "向下调谐 {{hz}} Hz",
+      "previous": "放下枪{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.up.title",
+      "english": "Up {{hz}} Hz",
+      "chinese": "提高 {{hz}} Hz",
+      "previous": "上来{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.up.aria",
+      "english": "Tune up {{hz}} Hz",
+      "chinese": "向上调谐 {{hz}} Hz",
+      "previous": "上来{{hz}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.wheel.title",
+      "english": "Scroll to tune ±{{hz}} Hz (Shift = ×10)",
+      "chinese": "滚动滚轮调谐 ±{{hz}} Hz，按住 Shift 时步进 ×10",
+      "previous": "滚动到曲调 ±{{hz}} Hz(Shift=×10) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.step.label",
+      "english": "Tuning step",
+      "chinese": "调谐步进",
+      "previous": "调谐步进",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.vfo.aria",
+      "english": "Active VFO",
+      "chinese": "当前 VFO",
+      "previous": "当前 VFO",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.vfo.title",
+      "english": "Use VFO {{vfo}}",
+      "chinese": "使用 VFO {{vfo}}",
+      "previous": "使用VFO {{vfo}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.vfo.swap.aria",
+      "english": "Swap VFO A and B",
+      "chinese": "交换 VFO A 与 B",
+      "previous": "交换 VFO A 与 B",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.vfo.swap.title",
+      "english": "Swap VFO A and B — each dial keeps its frequency and they change places, so the one you were listening on is a press away.",
+      "chinese": "交换 VFO A 和 B 的频率，按一次即可切回先前收听的频率。",
+      "previous": "交换 VFO A和B——每个拨号都保持频率,它们会改变位置,所以你正在听的就是一个新闻。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.rit.title",
+      "english": "RIT clarifier — click to clear",
+      "chinese": "接收微调（RIT），点击清零",
+      "previous": "RIT 读写器 - 点击以清除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.rit.down.aria",
+      "english": "RIT down",
+      "chinese": "降低 RIT 偏移",
+      "previous": "减速",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.rit.up.aria",
+      "english": "RIT up",
+      "chinese": "提高 RIT 偏移",
+      "previous": "升起来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.xit.title",
+      "english": "XIT clarifier — click to clear",
+      "chinese": "发射微调（XIT），点击清零",
+      "previous": "XIT 读写器——单击以清除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.xit.down.aria",
+      "english": "XIT down",
+      "chinese": "降低 XIT 偏移",
+      "previous": "关闭XIT",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "cockpit.tuning.xit.up.aria",
+      "english": "XIT up",
+      "chinese": "提高 XIT 偏移",
+      "previous": "起来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.aria",
+      "english": "Link tier",
+      "chinese": "通信模式层级",
+      "previous": "链接级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.tempoFast.title",
+      "english": "Fast conversational tier",
+      "chinese": "快速对话模式",
+      "previous": "快速对讲层",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.tempoDeep.title",
+      "english": "Robust non-coherent tier — fading-resilient (15 s)",
+      "chinese": "稳健的非相干模式，抗衰落（15 秒）",
+      "previous": "强力无协调等级——可减弱抗震性(15 s)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.ft4.title",
+      "english": "Standard WSJT-X FT4 (7.5 s)",
+      "chinese": "标准 WSJT-X FT4（7.5 秒）",
+      "previous": "标准 WSJT-X FT4 (7.5 s) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.ft8.title",
+      "english": "Standard WSJT-X FT8 (15 s)",
+      "chinese": "标准 WSJT-X FT8（15 秒）",
+      "previous": "标准 WSJT-X FT8 (15岁)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.ft2.title",
+      "english": "FT2 — Decodium’s fast slotted mode (3.75 s), FT4 with a halved symbol time. Transmit and receive. No settings: the period is fixed",
+      "chinese": "FT2：Decodium 的快速时隙模式，周期 3.75 秒，基于 FT4 并将符号时长减半。支持发射和接收，周期固定，无需设置",
+      "previous": "FT2 — Decodium的快档模式( 3. 75 s),FT4符号时间减半。 传与受. 无设置: 周期固定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.wspr.title",
+      "english": "WSPR propagation beacons — 2 min intervals. Transmits on a schedule; set the transmit % and power in Settings ▸ Beacons (WSPR & FST4W)",
+      "chinese": "WSPR 传播信标，周期 2 分钟。按计划发射，可在“设置 ▸ 信标（WSPR & FST4W）”中设置发射比例和功率",
+      "previous": "WSPR传播信标——间隔2分钟. 在调度中传输; 设置 QQ灯塔( WSPR & FST4W) 中的传输% 和功率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.q65.title",
+      "english": "Q65 — EME / VHF+ scatter. Transmit and receive. Period + submode in Settings ▸ Q65",
+      "chinese": "Q65：月面反射（EME）／VHF 及更高频段散射通信。支持发射和接收，周期及子模式在“设置 ▸ Q65”中设置",
+      "previous": "问题65——EME/甚高频+散射。 传与受. 设置中的周期+子模式QQ65",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.msk144.title",
+      "english": "MSK144 — meteor scatter. Transmits for nearly the whole period (that is how the mode works). Period in Settings ▸ MSK144",
+      "chinese": "MSK144：流星余迹散射。几乎占满整个周期发射，这是该模式的正常工作方式。周期在“设置 ▸ MSK144”中设置",
+      "previous": "MSK144 — 流星散射. 发送时间几乎为整个期间(即模式如何运作). 设置周期 QQ MSK144",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.jt65.title",
+      "english": "JT65 — classic EME, 60 s. Receive only in this build (transmit is disabled pending a fix). Submode in Settings ▸ JT65",
+      "chinese": "JT65：经典月面反射（EME）模式，周期 60 秒。此版本仅接收，发射功能因问题待修复而禁用。子模式在“设置 ▸ JT65”中设置",
+      "previous": "JT65 — 经典的EME, 60 s. 仅在此架构中接收( 发送器在固定之前被禁用) 。 设置中的子模式 QQJT65",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.fst4.title",
+      "english": "FST4 — slow weak-signal QSO mode (LF/MF). Transmit and receive",
+      "chinese": "FST4：低频／中频（LF/MF）的慢速弱信号 QSO 模式，支持发射和接收",
+      "previous": "FST4 — 缓慢的弱信号QSO模式(LF/MF)。 发送和接收",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.tier.fst4w.title",
+      "english": "FST4W — LF/MF beacons. Transmits on a schedule; set the transmit % and power in Settings ▸ Beacons (WSPR & FST4W). Hashed calls show as <...>",
+      "chinese": "FST4W：低频／中频（LF/MF）信标，按计划发射。发射比例和功率在“设置 ▸ 信标（WSPR & FST4W）”中设置。哈希呼号显示为 <...>",
+      "previous": "FST4W — LF/MF信标. 在调度中传送; 在设置 QQ灯塔( WSPR & FST4W) 中设置传输% 和功率 。 中断通话显示为 <... >",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.rxOnly.why",
+      "english": "This mode is receive-only in Nexus — it decodes but does not transmit",
+      "chinese": "此模式在 Nexus 中仅支持接收，可解码但不能发射",
+      "previous": "此模式只在 Nexus 中接收—— 它解码但不传输",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "topbar.help.label",
+      "english": "Help",
+      "chinese": "帮助",
+      "previous": "帮助",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "帮助"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "帮助"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "帮助"
+        }
+      ]
+    },
+    {
+      "id": "topbar.field.label",
+      "english": "Field",
+      "chinese": "野外",
+      "previous": "外地",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

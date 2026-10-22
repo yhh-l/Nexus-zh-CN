@@ -1,0 +1,1816 @@
+{
+  "batch": 34,
+  "range": [
+    6601,
+    6800
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 136,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 14,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/RttyMacroEditor.tsx",
+    "ui/src/components/PskCockpit.tsx",
+    "ui/src/components/Js8InboxDropped.tsx",
+    "ui/src/components/Js8InboxTooLong.tsx",
+    "ui/src/components/Js8Cockpit.tsx"
+  ],
+  "rows": [
+    {
+      "id": "rtty.txline.sent",
+      "english": "Sent",
+      "chinese": "已发送",
+      "previous": "已发送",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "发出"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "发送"
+        }
+      ]
+    },
+    {
+      "id": "rtty.txline.stopped",
+      "english": "Stopped",
+      "chinese": "已停止",
+      "previous": "已停止",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundInput",
+          "chinese": "停止"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "SoundOutput",
+          "chinese": "停止"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundInput",
+          "chinese": "停止"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "SoundOutput",
+          "chinese": "停止"
+        }
+      ]
+    },
+    {
+      "id": "rtty.txline.empty",
+      "english": "Nothing sent yet",
+      "chinese": "尚未发送任何内容",
+      "previous": "还没有寄出去",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.txline.keyed.sr",
+      "english": "Gone out:",
+      "chinese": "已发出：",
+      "previous": "出门了:",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.txline.pending.sr",
+      "english": "Still to send:",
+      "chinese": "尚待发送：",
+      "previous": "仍在发送 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.txline.unsent.sr",
+      "english": "Never sent:",
+      "chinese": "未发出：",
+      "previous": "未发送 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.send.noCallsign",
+      "english": "Set your callsign in Settings before transmitting",
+      "chinese": "发射前请在设置中填写本台呼号",
+      "previous": "发送前在设置中设置您的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.send.noTheirCall",
+      "english": "Enter their call first (the {CALL} field)",
+      "chinese": "请先输入对方呼号（{CALL} 字段）",
+      "previous": "请先输入他们的呼叫({CALL}字段)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.send.txLocked",
+      "english": "TX locked — this frequency is outside your license privileges",
+      "chinese": "发射已锁定，此频率超出本台执照权限",
+      "previous": "TX 锁定—— 此频率不在您的许可权限之内 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.send.failed",
+      "english": "RTTY send failed",
+      "chinese": "RTTY 发送失败",
+      "previous": "RTTY发送失败",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.latch.failed",
+      "english": "Continuous TX refused",
+      "chinese": "连续发射被拒绝",
+      "previous": "拒绝连续 TX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.type.failed",
+      "english": "RTTY typing refused",
+      "chinese": "RTTY 实时输入发送被拒绝",
+      "previous": "RTTY拒绝打字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.exch.label",
+      "english": "Exch",
+      "chinese": "交换信息",
+      "previous": "交换信息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.myCall.label",
+      "english": "My call",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.hisCall.label",
+      "english": "His call",
+      "chinese": "对方呼号",
+      "previous": "对方呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.spExch.label",
+      "english": "S&P exch",
+      "chinese": "扫频交换信息",
+      "previous": "S&P 输出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.empty.label",
+      "english": "(empty)",
+      "chinese": "（空）",
+      "previous": "（空）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.empty.title",
+      "english": "{{key}} is empty — click to write a message for it",
+      "chinese": "{{key}} 尚无内容，点击可为其编写报文",
+      "previous": "{{key}}是空的——单击可为此写一个消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.edit.aria",
+      "english": "Edit the {{key}} macro",
+      "chinese": "编辑 {{key}} 宏",
+      "previous": "编辑{{key}}宏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macro.edit.title",
+      "english": "Edit the {{key}} macro. You can also right-click the key, or press Ctrl+Shift+{{key}}.",
+      "chinese": "编辑 {{key}} 宏，也可右键点击该键或按 Ctrl+Shift+{{key}}。",
+      "previous": "编辑{{key}}宏 。 您也可以右键单击,或者按 Ctrl+ 移动+{{key}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.aria",
+      "english": "Edit {{key}}",
+      "chinese": "编辑 {{key}}",
+      "previous": "编辑{{key}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.title.label",
+      "english": "Title",
+      "chinese": "标题",
+      "previous": "标题",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.message.label",
+      "english": "Message",
+      "chinese": "消息",
+      "previous": "消息",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "ActiveStations",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "信息"
+        }
+      ]
+    },
+    {
+      "id": "rtty.macroEditor.tokens.aria",
+      "english": "Insert a token",
+      "chinese": "插入宏变量",
+      "previous": "插入宏变量",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.token.mycall",
+      "english": "Your callsign",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.token.call",
+      "english": "Their callsign, from the Call box",
+      "chinese": "对方呼号，取自呼号输入框",
+      "previous": "他们的呼号,从呼叫箱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.token.rst",
+      "english": "The signal report, 599",
+      "chinese": "信号报告 599",
+      "previous": "信号报告,599",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.token.exch",
+      "english": "Your contest exchange, without the report",
+      "chinese": "本台竞赛交换信息，不含信号报告",
+      "previous": "你的比赛交流,没有报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.stopTitle",
+      "english": "A macro transmits, so its title can’t look like a stop button (Stop, Esc, Abort).",
+      "chinese": "宏会启动发射，因此标题不能像停止按钮一样使用 Stop、Esc 或 Abort 等名称。",
+      "previous": "宏传输, 因此其标题不能看起来像一个停止按钮( Stop, Esc, A中止 ) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.unknownToken",
+      "english": "Unknown token {{token}} — RTTY can’t send braces, so it would go out as a bare word.",
+      "chinese": "未知变量 {{token}}，RTTY 无法发送花括号，因此会去掉括号，仅发出其中的文字。",
+      "previous": "未知的符号{{token}}. . . . . . .RTTY无法发送牙套,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.save",
+      "english": "Save",
+      "chinese": "保存",
+      "previous": "保存",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        }
+      ]
+    },
+    {
+      "id": "rtty.macroEditor.sendOnce",
+      "english": "Send once",
+      "chinese": "发送一次",
+      "previous": "发送一次",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.sendOnce.title",
+      "english": "Send this message now, this once. The key stays as it is.",
+      "chinese": "立即发送此报文一次，不更改该宏键的已存内容。",
+      "previous": "现在发这个消息,这个一次。 钥匙保持原样",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroEditor.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "rtty.macroEditor.resetButton",
+      "english": "Reset this button",
+      "chinese": "重置此按钮",
+      "previous": "重置此按钮",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroSet.aria",
+      "english": "Macro set",
+      "chinese": "宏组",
+      "previous": "宏组",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroSet.everyday",
+      "english": "Everyday",
+      "chinese": "日常",
+      "previous": "日常",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroSet.contest",
+      "english": "Contest",
+      "chinese": "竞赛",
+      "previous": "竞赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroSet.reset.label",
+      "english": "Reset set",
+      "chinese": "重置宏组",
+      "previous": "重置宏组",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroSet.reset.title",
+      "english": "Put every {{set}} key back to its built-in message",
+      "chinese": "将 {{set}} 中的所有宏键恢复为内置报文",
+      "previous": "全部放进去{{set}}密钥返回其内置消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroSet.reset.confirm",
+      "english": "Reset every {{set}} key?",
+      "chinese": "重置 {{set}} 中的所有宏键？",
+      "previous": "重置时间{{set}}钥匙?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macroSet.reset.yes",
+      "english": "Reset",
+      "chinese": "重置",
+      "previous": "重置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "重置"
+        }
+      ]
+    },
+    {
+      "id": "rtty.macroSet.reset.no",
+      "english": "Keep",
+      "chinese": "保留",
+      "previous": "保留",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.macros.saveFailed",
+      "english": "Could not save the RTTY macros",
+      "chinese": "无法保存 RTTY 宏",
+      "previous": "无法保存RTTY宏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.send.noExchange",
+      "english": "Not sent — {EXCH} is your contest exchange, and no contest is running",
+      "chinese": "未发送，{EXCH} 代表本台竞赛交换信息，但当前未进行竞赛",
+      "previous": "未发送...{EXCH}您的比赛交换, 没有进行比赛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "rtty.send.unknownToken",
+      "english": "Not sent — {{token}} is not a token an RTTY macro can fill",
+      "chinese": "未发送，RTTY 宏无法填入 {{token}} 变量",
+      "previous": "未发送...{{token}}不是一个标志RTTY宏可以填充",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.panel.waterfall",
+      "english": "Waterfall",
+      "chinese": "瀑布图",
+      "previous": "瀑布图",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "瀑布图"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "频谱图"
+        }
+      ]
+    },
+    {
+      "id": "psk.panel.stream",
+      "english": "Decoded Text",
+      "chinese": "解码文本",
+      "previous": "解码文本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.header.mode.aria",
+      "english": "PSK sub-mode",
+      "chinese": "PSK 子模式",
+      "previous": "PSK 子模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.header.power.label",
+      "english": "Power",
+      "chinese": "功率",
+      "previous": "功率",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.header.power.title",
+      "english": "RF output power — key Tune and wind it back until the ALC stops moving; overdriven PSK splatters",
+      "chinese": "射频输出功率：启动调谐发射后逐渐调低，直到 ALC 表基本不动；过度驱动会使 PSK 信号产生杂散干扰",
+      "previous": "RF输出功率——关键Tune和风向返回直到ALC停止移动;超驱动PSK溅射",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.mode.failed",
+      "english": "PSK mode switch refused",
+      "chinese": "PSK 模式切换被拒绝",
+      "previous": "PSK 模式开关被拒绝",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.rev.on.label",
+      "english": "Rev on",
+      "chinese": "反向已开启",
+      "previous": "修订版",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.rev.off.label",
+      "english": "Rev off",
+      "chinese": "反向已关闭",
+      "previous": "关机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.rev.on.title",
+      "english": "Reversed polarity (LSB) — decoding and transmitting with the ±90° phase shifts mirrored. Click for normal (USB, the standard).",
+      "chinese": "反向极性（LSB），以镜像后的 ±90° 相移解码和发射。点击恢复标准极性（USB）。",
+      "previous": "反极性(LSB)——与±90°相位移进行解码和传输,反极性反光反光. 点击正常( USB, 标准) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.rev.off.title",
+      "english": "Normal polarity (USB, the standard). Click if a QPSK31 station warbles but prints garbage — an LSB station’s phase shifts are mirrored.",
+      "chinese": "标准极性（USB）。若听到 QPSK31 电台的调制声却只解码出乱码，可点击切换；LSB 电台的相移方向与标准极性相反。",
+      "previous": "正常极性(USB,标准). 如果一个QPSK31站台的摇篮但打印垃圾——一个LSB站台的相位班次被反射,请点击.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.header.band.title",
+      "english": "Showing the rig's current band",
+      "chinese": "显示电台当前频段",
+      "previous": "显示钻机的当前波段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.waterfall.hint",
+      "english": "click nets the decoder",
+      "chinese": "点击可将解码器对准信号",
+      "previous": "点击解码器网",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.pane.log.title",
+      "english": "Log",
+      "chinese": "日志",
+      "previous": "记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.pane.stream.title",
+      "english": "Decoded text",
+      "chinese": "解码文本",
+      "previous": "解码文本",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.seam.streamLog.label",
+      "english": "Decoded text / Log",
+      "chinese": "解码文本／日志",
+      "previous": "解码文本／日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.waterfall.splitter.label",
+      "english": "waterfall height",
+      "chinese": "瀑布图高度",
+      "previous": "瀑布图高度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.stream.title",
+      "english": "Decoded PSK31 text — faint characters are low-confidence copy (the demodulator's phase-margin metric)",
+      "chinese": "PSK31 解码文本，颜色较淡的字符表示解码置信度较低，依据解调器的相位裕量指标",
+      "previous": "已解码PSK31文本 – 微弱字符为低自信副本(降级器的相-边距度量度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.arm.on.label",
+      "english": "RX armed",
+      "chinese": "接收已启用",
+      "previous": "武装RX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.arm.off.label",
+      "english": "Arm RX",
+      "chinese": "启用接收",
+      "previous": "装甲RX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.arm.on.title",
+      "english": "RX armed — decoding the receive audio (RX only, never keys the rig). Click to stop; stopping is remembered for this session.",
+      "chinese": "接收已启用，正在解码接收音频，仅接收，绝不触发电台发射。点击可停止，本次会话中会保持停止状态。",
+      "previous": "RX武装——对接收的音频进行解码(仅RX,从不按键钻机). 点击可停止; 停止会被记住此会话 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.arm.off.title",
+      "english": "Arm RX — start decoding PSK31 from the receive audio (RX only, never keys the rig)",
+      "chinese": "启用接收，开始从接收音频中解码 PSK31，仅接收，绝不触发电台发射",
+      "previous": "武装RX - 开始解码PSK31从接收音频(仅RX,从未按键钻机)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.arm.failed",
+      "english": "Could not switch the PSK decoder",
+      "chinese": "无法切换 PSK 解码器状态",
+      "previous": "无法切换 PSK 解码器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.carrier.on.title",
+      "english": "Carrier — the decoder reads a PSK signal at its cursor; the AFC offset from the netted frequency is shown (slew-limited, never more than ±25 Hz)",
+      "chinese": "已检测到载波，解码器在光标处收到 PSK 信号；此处显示 AFC 相对对准频率的偏移，跟踪速度受限，且偏移始终不超过 ±25 Hz",
+      "previous": "载体 — 解码器在光标上读取一个 PSK 信号; 显示从网格频率中抵消的 AFC( 有限, 不超过± 25)Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.carrier.off.title",
+      "english": "No carrier at the cursor yet — click a trace on the waterfall to net the decoder onto it",
+      "chinese": "光标处尚无载波，请点击瀑布图上的信号轨迹，使解码器对准它",
+      "previous": "光标上还没有任何载体——点击瀑布上的踪迹,以将解码器净到其中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.afcReset.label",
+      "english": "Re-acquire",
+      "chinese": "重新捕获",
+      "previous": "重新获取",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.afcReset.title",
+      "english": "Re-acquire — drop and rebuild the demodulator for a fresh AFC pull from the netted frequency (use when it pulled onto a neighbor)",
+      "chinese": "重新捕获：重建解调器，从对准频率重新进行 AFC 跟踪，适用于误跟踪到相邻信号的情况",
+      "previous": "重新获取( Required) —— 将降级器从网状频率中降下并重建为新鲜的 APC 牵引( 拖入邻居时使用)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.clear.label",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "psk.clear.title",
+      "english": "Clear the decoded transcript",
+      "chinese": "清除解码记录",
+      "previous": "清除解码记录",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.stream.listening",
+      "english": "listening… click a PSK trace on the waterfall to net the decoder",
+      "chinese": "正在守听…点击瀑布图上的 PSK 信号轨迹以对准解码器",
+      "previous": "听... 点击瀑布上的 PSK 追踪到解码器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.stream.idle",
+      "english": "Arm RX to decode PSK31 from the receive audio",
+      "chinese": "启用接收，以解码接收音频中的 PSK31 信号",
+      "previous": "装入 RX 以解码PSK31从接收音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macros.aria",
+      "english": "PSK macros",
+      "chinese": "PSK 宏",
+      "previous": "PSK 宏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.answer.label",
+      "english": "Answer",
+      "chinese": "应答",
+      "previous": "应答",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.exchange.label",
+      "english": "Exchange",
+      "chinese": "交换信息",
+      "previous": "交换信息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.exch.label",
+      "english": "Exch",
+      "chinese": "交换信息",
+      "previous": "交换信息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.myCall.label",
+      "english": "My call",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.hisCall.label",
+      "english": "His call",
+      "chinese": "对方呼号",
+      "previous": "对方呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.spExch.label",
+      "english": "S&P exch",
+      "chinese": "扫频交换信息",
+      "previous": "S&P 输出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.empty.label",
+      "english": "(empty)",
+      "chinese": "（空）",
+      "previous": "（空）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.empty.title",
+      "english": "{{key}} is empty — click to write a message for it",
+      "chinese": "{{key}} 尚无内容，点击可为其编写报文",
+      "previous": "{{key}}是空的——单击可为此写一个消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.edit.aria",
+      "english": "Edit the {{key}} macro",
+      "chinese": "编辑 {{key}} 宏",
+      "previous": "编辑{{key}}宏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macro.edit.title",
+      "english": "Edit the {{key}} macro. You can also right-click the key, or press Ctrl+Shift+{{key}}.",
+      "chinese": "编辑 {{key}} 宏，也可右键点击该键或按 Ctrl+Shift+{{key}}。",
+      "previous": "编辑{{key}}宏 。 您也可以右键单击,或者按 Ctrl+ 移动+{{key}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.aria",
+      "english": "Edit {{key}}",
+      "chinese": "编辑 {{key}}",
+      "previous": "编辑{{key}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.title.label",
+      "english": "Title",
+      "chinese": "标题",
+      "previous": "标题",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.message.label",
+      "english": "Message",
+      "chinese": "消息",
+      "previous": "消息",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "ActiveStations",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "信息"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "信息"
+        }
+      ]
+    },
+    {
+      "id": "psk.macroEditor.tokens.aria",
+      "english": "Insert a token",
+      "chinese": "插入宏变量",
+      "previous": "插入宏变量",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.token.mycall",
+      "english": "Your callsign",
+      "chinese": "本台呼号",
+      "previous": "本台呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.token.call",
+      "english": "Their callsign, from the Call box",
+      "chinese": "对方呼号，取自呼号输入框",
+      "previous": "他们的呼号,从呼叫箱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.token.rst",
+      "english": "The signal report, 599",
+      "chinese": "信号报告 599",
+      "previous": "信号报告,599",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.token.exch",
+      "english": "Your contest exchange, without the report",
+      "chinese": "本台竞赛交换信息，不含信号报告",
+      "previous": "你的比赛交流,没有报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.stopTitle",
+      "english": "A macro transmits, so its title can’t look like a stop button (Stop, Esc, Abort).",
+      "chinese": "宏会启动发射，因此标题不能像停止按钮一样使用 Stop、Esc 或 Abort 等名称。",
+      "previous": "宏传输, 因此其标题不能看起来像一个停止按钮( Stop, Esc, A中止 ) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.unknownToken",
+      "english": "Unknown token {{token}} — it would go out on the air exactly as written.",
+      "chinese": "未知变量 {{token}}，它会按原样通过无线电发出。",
+      "previous": "未知的符号{{token}}- 它会播放 完全按照书面。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.save",
+      "english": "Save",
+      "chinese": "保存",
+      "previous": "保存",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "保存"
+        }
+      ]
+    },
+    {
+      "id": "psk.macroEditor.sendOnce",
+      "english": "Send once",
+      "chinese": "发送一次",
+      "previous": "发送一次",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.sendOnce.title",
+      "english": "Send this message now, this once. The key stays as it is.",
+      "chinese": "立即发送此报文一次，不更改该宏键的已存内容。",
+      "previous": "现在发这个消息,这个一次。 钥匙保持原样",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroEditor.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "psk.macroEditor.resetButton",
+      "english": "Reset this button",
+      "chinese": "重置此按钮",
+      "previous": "重置此按钮",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroSet.aria",
+      "english": "Macro set",
+      "chinese": "宏组",
+      "previous": "宏组",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroSet.everyday",
+      "english": "Everyday",
+      "chinese": "日常",
+      "previous": "日常",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroSet.contest",
+      "english": "Contest",
+      "chinese": "竞赛",
+      "previous": "竞赛",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroSet.reset.label",
+      "english": "Reset set",
+      "chinese": "重置宏组",
+      "previous": "重置宏组",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroSet.reset.title",
+      "english": "Put every {{set}} key back to its built-in message",
+      "chinese": "将 {{set}} 中的所有宏键恢复为内置报文",
+      "previous": "全部放进去{{set}}密钥返回其内置消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroSet.reset.confirm",
+      "english": "Reset every {{set}} key?",
+      "chinese": "重置 {{set}} 中的所有宏键？",
+      "previous": "重置时间{{set}}钥匙?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macroSet.reset.yes",
+      "english": "Reset",
+      "chinese": "重置",
+      "previous": "重置",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "重置"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "重置"
+        }
+      ]
+    },
+    {
+      "id": "psk.macroSet.reset.no",
+      "english": "Keep",
+      "chinese": "保留",
+      "previous": "保留",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.macros.saveFailed",
+      "english": "Could not save the PSK macros",
+      "chinese": "无法保存 PSK 宏",
+      "previous": "无法保存 PSK 宏",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.hisCall.placeholder",
+      "english": "Their call…",
+      "chinese": "对方呼号…",
+      "previous": "对方呼号…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.hisCall.aria",
+      "english": "Worked station callsign (the {CALL} macro token)",
+      "chinese": "对方电台呼号（{CALL} 宏变量）",
+      "previous": "工作站呼号{CALL}宏符号)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.compose.aria",
+      "english": "PSK compose",
+      "chinese": "PSK 报文输入",
+      "previous": "PSK 编曲",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.compose.placeholder",
+      "english": "Type PSK31 to send… (Enter)",
+      "chinese": "输入要发送的 PSK31 文字…（Enter 发送）",
+      "previous": "类型PSK31发送... (输入)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.compose.placeholder.latched",
+      "english": "Typing on the air…",
+      "chinese": "正在边输入边发射…",
+      "previous": "播放时打字...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.compose.send.label",
+      "english": "Send",
+      "chinese": "发送",
+      "previous": "发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.send.noCallsign",
+      "english": "Set your callsign in Settings before transmitting",
+      "chinese": "发射前请在设置中填写本台呼号",
+      "previous": "发送前在设置中设置您的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.send.noTheirCall",
+      "english": "Enter their call first (the {CALL} field)",
+      "chinese": "请先输入对方呼号（{CALL} 字段）",
+      "previous": "请先输入他们的呼叫({CALL}字段)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.send.txLocked",
+      "english": "TX locked — this frequency is outside your license privileges",
+      "chinese": "发射已锁定，此频率超出本台执照权限",
+      "previous": "TX 锁定—— 此频率不在您的许可权限之内 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.send.noExchange",
+      "english": "Not sent — {EXCH} is your contest exchange, and no contest is running",
+      "chinese": "未发送，{EXCH} 代表本台竞赛交换信息，但当前未进行竞赛",
+      "previous": "未发送...{EXCH}您的比赛交换, 没有进行比赛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.send.unknownToken",
+      "english": "Not sent — {{token}} is not a token a PSK macro can fill",
+      "chinese": "未发送，PSK 宏无法填入 {{token}} 变量",
+      "previous": "未发送...{{token}}PSK 宏不能填充符号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.send.failed",
+      "english": "PSK send failed",
+      "chinese": "PSK 发送失败",
+      "previous": "PSK 发送失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.latch.failed",
+      "english": "Continuous TX refused",
+      "chinese": "连续发射被拒绝",
+      "previous": "拒绝连续 TX",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.type.failed",
+      "english": "PSK typing refused",
+      "chinese": "PSK 实时输入发送被拒绝",
+      "previous": "PSK 输入被拒绝",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.drive.text",
+      "english": "Keep the rig's ALC near zero — an overdriven PSK31 signal splatters (IMD). Lower TX audio until the ALC meter barely moves.",
+      "chinese": "请使电台 ALC 接近零，过度驱动的 PSK31 信号会产生互调失真（IMD）并干扰邻频。请降低发射音频电平，直到 ALC 表基本不动。",
+      "previous": "使钻机的ALC接近0——超驱动PSK31信号溅射(IMD). 降低 TX 音频直到 ALC meter 勉强移动为止 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "psk.drive.title",
+      "english": "PSK31 is an amplitude-shaped mode: if the rig's ALC is compressing, the signal splatters into the neighbors (IMD). Nexus keys at a modest drive by default — set TX audio / power so the rig's ALC meter barely moves.",
+      "chinese": "PSK31 使用幅度整形，若电台 ALC 正在压缩信号，就会产生互调失真（IMD）并干扰邻频。Nexus 默认使用适中的驱动电平，请调整发射音频／功率，使电台 ALC 表基本不动。",
+      "previous": "PSK31是一种振幅形状模式:如果钻机的ALC正在压缩,信号会溅入邻居(IMD). 默认情况下,Nexus键在适度驱动器中——设置TX音频/电源,因此钻机的ALC表几乎不动.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.scope",
+      "english": "Waterfall",
+      "chinese": "瀑布图",
+      "previous": "瀑布图",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "瀑布图"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "频谱图"
+        }
+      ]
+    },
+    {
+      "id": "js8.panel.activity",
+      "english": "RX",
+      "chinese": "接收",
+      "previous": "RX 调用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.stations",
+      "english": "Stations",
+      "chinese": "电台列表",
+      "previous": "电台列表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.inbox",
+      "english": "Inbox",
+      "chinese": "收件箱",
+      "previous": "收件箱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.log",
+      "english": "Log",
+      "chinese": "日志",
+      "previous": "记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.offsets",
+      "english": "Band activity",
+      "chinese": "频段活动",
+      "previous": "频段活动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.seam.columns.label",
+      "english": "RX column / Stations column",
+      "chinese": "接收列 / 电台列",
+      "previous": "RX列/车站列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.seam.auxWidth.label",
+      "english": "Stations column width",
+      "chinese": "电台列宽度",
+      "previous": "站台宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.seam.activityOffsets.label",
+      "english": "RX / Band activity",
+      "chinese": "接收 / 频段活动",
+      "previous": "RX/乐队活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.seam.stationsInbox.label",
+      "english": "Stations / Inbox",
+      "chinese": "电台 / 收件箱",
+      "previous": "车站/收件箱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.waterfall.splitter.label",
+      "english": "waterfall height",
+      "chinese": "瀑布图高度",
+      "previous": "瀑布图高度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.offsets.empty",
+      "english": "Listening… each offset in the passband gets a row as it decodes",
+      "chinese": "正在守听…通带内每个频偏解码出信号后会各显示一行",
+      "previous": "听... 每一个偏移在 密码解码时都会得到一行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.offsets.row.title",
+      "english": "Double-click to move RX here",
+      "chinese": "双击将接收频偏移至此处",
+      "previous": "双击将 RX 移动到这里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.panel.offsets.dt.title",
+      "english": "DT — the sender’s time delta against the slot clock, in milliseconds. Negative is early.",
+      "chinese": "DT：发送方相对时隙时钟的时间偏差，单位为毫秒，负值表示提前。",
+      "previous": "DT——发送者的时间三角洲对时档钟,以毫秒计. 负者为早.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.power.label",
+      "english": "Drive",
+      "chinese": "驱动电平",
+      "previous": "驱动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.power.title",
+      "english": "TX audio drive — set it so the rig’s ALC barely moves; JS8 is a constant-envelope mode, but an overdriven sound card still splatters",
+      "chinese": "发射音频驱动电平，应调至电台 ALC 表基本不动。JS8 虽为恒包络模式，但声卡过度驱动仍会产生杂散干扰",
+      "previous": "TX音频驱动器——设置它,所以钻机的ALC几乎不动;JS8是一个恒信封模式, 但超驱动的音卡仍然溅射",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.speed.title",
+      "english": "JS8 — JS8Call-compatible keyboard mode on FT8’s waveform",
+      "chinese": "JS8：兼容 JS8Call 的键盘通信模式，采用 FT8 波形",
+      "previous": "JS8——JS8Call兼容键盘模式开启.FT8其波状",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.speed.aria",
+      "english": "Transmit speed",
+      "chinese": "发射速度",
+      "previous": "传送速度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.speed.chip.title",
+      "english": "Transmit at {{speed}} ({{period}} s periods). Receiving decodes every speed ticked in Settings ▸ Digital ▸ JS8, whatever this is set to.",
+      "chinese": "以 {{speed}} 发射，周期为 {{period}} 秒。无论此处如何设置，接收时都会解码“设置 ▸ 数字模式 ▸ JS8”中勾选的全部速度。",
+      "previous": "发送到{{speed}}(单位:千美元){{period}}(第12条)。 在设置 QQ 数字 QQ 中接收解码JS8随便你怎么说",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.speed.chip.aliasTitle",
+      "english": "Transmit at {{speed}}, also called {{alias}} ({{period}} s periods). Receiving decodes every speed ticked in Settings ▸ Digital ▸ JS8, whatever this is set to.",
+      "chinese": "以 {{speed}} 发射，也称 {{alias}}，周期为 {{period}} 秒。无论此处如何设置，接收时都会解码“设置 ▸ 数字模式 ▸ JS8”中勾选的全部速度。",
+      "previous": "发送到{{speed}},也称为{{alias}}(单位:千美元){{period}}(第12条)。 在设置 QQ 数字 QQ 中接收解码JS8随便你怎么说",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.speed.failed",
+      "english": "JS8 speed change refused",
+      "chinese": "JS8 速度更改被拒绝",
+      "previous": "JS8更改速度被拒绝",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.rx.title",
+      "english": "Decoding {{n}} of the {{total}} speeds at once — choose them in Settings ▸ Digital ▸ JS8",
+      "chinese": "正在同时解码 {{total}} 种速度中的 {{n}} 种，可在“设置 ▸ 数字模式 ▸ JS8”中选择",
+      "previous": "解码{{n}}会 议 日 程 和 议 程{{total}}速度一时——在设置QQ数字QQ中选择.JS8",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.header.band.title",
+      "english": "Showing the rig's current band",
+      "chinese": "显示电台当前频段",
+      "previous": "显示钻机的当前波段",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.empty",
+      "english": "No stations heard yet — the heard list fills as heartbeats and CQs decode",
+      "chinese": "尚未收到电台信号，解码到心跳和 CQ 后，电台列表会陆续显示内容",
+      "previous": "还没有听到任何台站——所听到的列表作为心跳和CQs解码填充",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.select.title",
+      "english": "Write to {{call}} (fills the To box and the log strip)",
+      "chinese": "向 {{call}} 发消息，填入“发给”框及日志栏",
+      "previous": "写到{{call}}(填写 To 框和日志条)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.query.title",
+      "english": "Send {{cmd}} to {{call}} — they answer automatically if their auto-reply is on",
+      "chinese": "向 {{call}} 发送 {{cmd}}，若对方开启自动回复，就会自动应答",
+      "previous": "发送{{cmd}}改为:{{call}}他们自动回答,如果他们的自动备份是",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.sendGrid.title",
+      "english": "Send your grid square {{grid}} to {{call}}",
+      "chinese": "将本台网格 {{grid}} 发送给 {{call}}",
+      "previous": "发送您的网格平方{{grid}}改为:{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.stored::one",
+      "english": "{{count}} message stored for this station",
+      "chinese": "为此电台代存了 {{count}} 条消息",
+      "previous": "{{count}}为本站存储的消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.stored::other",
+      "english": "{{count}} messages stored for this station",
+      "chinese": "为此电台代存了 {{count}} 条消息",
+      "previous": "{{count}}为本站存储的信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.unread.title",
+      "english": "Unread message for you from {{call}}, in the Inbox",
+      "chinese": "收件箱中有 {{call}} 发给本台的未读消息",
+      "previous": "未读信件{{call}},在收件箱中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.distance.title",
+      "english": "Great-circle distance to {{grid}}, from your grid square",
+      "chinese": "本台网格至 {{grid}} 的大圆距离",
+      "previous": "大圆圈距离{{grid}}从您的网格平方",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.worked.title",
+      "english": "Worked before — {{count}} in the log, last {{when}}",
+      "chinese": "曾通联，日志中共 {{count}} 次，最近一次为 {{when}}",
+      "previous": "以前工作过...{{count}}在日志中, 最后一个{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.name.title",
+      "english": "Name from your log",
+      "chinese": "日志中的姓名",
+      "previous": "日志中的姓名",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.comment.title",
+      "english": "Comment from your log",
+      "chinese": "日志中的附言",
+      "previous": "日志中的评注",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.empty",
+      "english": "Nothing in the inbox — messages addressed to you, and MSG TO: messages you hold for others, appear here",
+      "chinese": "收件箱为空。发给本台的消息，以及为他台代存的 MSG TO: 消息会显示在此",
+      "previous": "收件箱中没有任何内容——给你和MSG To:你为他人持有的信息,请在这里显示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.state.unread",
+      "english": "unread",
+      "chinese": "未读",
+      "previous": "未读",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.state.read",
+      "english": "read",
+      "chinese": "已读",
+      "previous": "读",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.state.store",
+      "english": "held for delivery",
+      "chinese": "代存待领取",
+      "previous": "为交付而持有",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.state.delivered",
+      "english": "delivered",
+      "chinese": "已送达",
+      "previous": "已交付",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.failed",
+      "english": "Inbox change refused",
+      "chinese": "收件箱更改被拒绝",
+      "previous": "拒绝收件箱更改",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.new",
+      "english": "New message from {{from}} at {{time}} UTC, in the Inbox",
+      "chinese": "收件箱中有来自 {{from}} 的新消息，时间为 {{time}} UTC",
+      "previous": "新消息来自{{from}}时间{{time}} UTC,在收件箱中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.store.label",
+      "english": "Store…",
+      "chinese": "代存…",
+      "previous": "存储...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.station.store.title",
+      "english": "Store a message here for {{call}}: it is held at your station and handed over when {{call}} asks for it",
+      "chinese": "在本台为 {{call}} 代存消息，等 {{call}} 请求领取时再发送",
+      "previous": "在此存储信件{{call}}:它保存在你的车站,并在{{call}}问吧",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.store.title",
+      "english": "Store message",
+      "chinese": "代存消息",
+      "previous": "存储信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.store.label",
+      "english": "Store this message locally for {{call}}:",
+      "chinese": "在本地为 {{call}} 代存此消息：",
+      "previous": "将此信件存储在本地{{call}}数字 :",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.store.aria",
+      "english": "Message to hold for {{call}}",
+      "chinese": "为 {{call}} 代存的消息",
+      "previous": "要保存的信件{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.store.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "js8.store.save",
+      "english": "Store",
+      "chinese": "代存",
+      "previous": "存储",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.store.done",
+      "english": "Held for {{call}} until they ask for it",
+      "chinese": "已为 {{call}} 代存，等待对方请求领取",
+      "previous": "为备抵{{call}}直到他们要求它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.dropped.chip",
+      "english": "removed",
+      "chinese": "已移除",
+      "previous": "删除",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.dropped.count.held",
+      "english": "The inbox holds at most 100 messages for other stations; this one made room for a new one",
+      "chinese": "收件箱最多为其他电台代存 100 条消息；此消息已被移除，为新消息腾出空间",
+      "previous": "收件箱最多可以容纳100条留言给其他车站,这封可以换个新的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.dropped.bytes.held",
+      "english": "Messages held for other stations may take at most 64 KB; this one made room for a new one",
+      "chinese": "为其他电台代存的消息最多占用 64 KB；此消息已被移除，为新消息腾出空间",
+      "previous": "为其他车站所持信件最多可使用64 KB;这一条为新车提供了空间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.dropped.count.mine",
+      "english": "The inbox keeps at most 100 of your messages; this one made room for a new one",
+      "chinese": "收件箱最多保留本台的 100 条消息；此消息已被移除，为新消息腾出空间",
+      "previous": "收件箱最多保存了100条留言,这封可以换个新的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.dropped.bytes.mine",
+      "english": "Your messages may take at most 64 KB; this one made room for a new one",
+      "chinese": "本台消息最多占用 64 KB；此消息已被移除，为新消息腾出空间",
+      "previous": "您的留言最多需要64 KB, 这封可以换个新的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.dropped.clear.label",
+      "english": "Clear notes",
+      "chinese": "清除移除提示",
+      "previous": "清除笔记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.dropped.clear.title",
+      "english": "Clear these notes of messages the inbox removed",
+      "chinese": "清除这些关于收件箱已移除消息的提示",
+      "previous": "清除删除的收件箱中的信件笔记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.tooLong.fits",
+      "english": "Not offered at this speed: handing it over takes {{frames}} frames, one transmission holds {{max}}. Offered at {{speed}}.",
+      "chinese": "当前速度下无法供对方领取：传送需 {{frames}} 帧，而一次发射最多 {{max}} 帧。可在 {{speed}} 速度下领取。",
+      "previous": "不按这个速度提供: 交给它{{frames}}帧, 一个传输控件{{max}}提供{{speed}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.inbox.tooLong.never",
+      "english": "Not offered: handing it over takes {{frames}} frames, more than one transmission holds at any speed.",
+      "chinese": "无法供对方领取：传送需 {{frames}} 帧，超过所有速度下单次发射可容纳的帧数。",
+      "previous": "未提供:移交{{frames}}帧,在任何速度下都会有一个以上的传输。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.aria",
+      "english": "JS8 composer",
+      "chinese": "JS8 报文输入",
+      "previous": "JS8编曲",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.to.placeholder",
+      "english": "To — a callsign, @ALLCALL or @GROUP (blank = everyone)",
+      "chinese": "发给：呼号、@ALLCALL 或 @GROUP（留空表示所有人）",
+      "previous": "呼叫符号,@ALLCALL或@GROUP(空白=每个人)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.to.aria",
+      "english": "Addressee",
+      "chinese": "收件人",
+      "previous": "收件人",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.compose.placeholder",
+      "english": "Type a message… (Enter queues it; one frame goes out per period)",
+      "chinese": "输入消息…（Enter 加入队列，每周期发送一帧）",
+      "previous": "键入信件... (输入队列; 每个时段有一个框架退出)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.compose.aria",
+      "english": "JS8 message",
+      "chinese": "JS8 消息",
+      "previous": "JS8消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.send.label",
+      "english": "Send",
+      "chinese": "发送",
+      "previous": "发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.typeahead.sent",
+      "english": "Sent so far",
+      "chinese": "目前已发送",
+      "previous": "到现在为止",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.typeahead.locked",
+      "english": "A MSG or relay message cannot be changed while it goes out, as in JS8Call.",
+      "chinese": "与 JS8Call 一样，MSG 或转发消息在发送过程中不能更改。",
+      "previous": "MSG或中继消息在发出时不能更改,如JS8Call.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cq.send",
+      "english": "Call CQ in the next period: {{text}}. The CQ message is set in Settings ▸ Digital ▸ JS8.",
+      "chinese": "下一周期呼叫 CQ：{{text}}。可在“设置 ▸ 数字模式 ▸ JS8”中设置 CQ 报文。",
+      "previous": "在下一个周期给 CQ 打电话 :{{text}}CQ 信息设置在 QQ 设置中。JS8。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cq.fill",
+      "english": "Put the CQ message in the compose box, and Send sends it: {{text}}. It is set in Settings ▸ Digital ▸ JS8.",
+      "chinese": "将 CQ 报文放入输入框，再点击“发送”：{{text}}。可在“设置 ▸ 数字模式 ▸ JS8”中设置。",
+      "previous": "将 CQ 信息放入绘图框中,并发送: {{text}}设置 QQ 数字 QQ JS8。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.aria",
+      "english": "One-click messages",
+      "chinese": "一键消息",
+      "previous": "一击消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.needsCall",
+      "english": "Put a call in the To box first.",
+      "chinese": "请先在“发给”框中填入呼号。",
+      "previous": "先打给To盒子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.reply.send",
+      "english": "Put your reply message to {{call}} in the compose box and send the box.",
+      "chinese": "将给 {{call}} 的回复放入报文输入框，并发送框内内容。",
+      "previous": "将您的回复信息输入{{call}}在写作盒里,发送盒子。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.reply.fill",
+      "english": "Put your reply message to {{call}} in the compose box.",
+      "chinese": "将给 {{call}} 的回复放入报文输入框。",
+      "previous": "将您的回复信息输入{{call}}在画框。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.snr.notHeard",
+      "english": "No report to send: {{call}} has not been heard lately.",
+      "chinese": "无报告可发送，最近未收到 {{call}} 的信号。",
+      "previous": "无报告可发送 :{{call}}最近没有听到。",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

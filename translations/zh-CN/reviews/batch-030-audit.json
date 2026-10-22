@@ -1,0 +1,1643 @@
+{
+  "batch": 30,
+  "range": [
+    5801,
+    6000
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 172,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 2,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/ConnectView.tsx",
+    "ui/src/components/DashRail.tsx",
+    "ui/src/components/connect/panes.tsx"
+  ],
+  "rows": [
+    {
+      "id": "settings.dataFolder.note",
+      "english": "Your logbook, the data tables Nexus downloads and the Winlink mailbox live in one folder. Keep it on a drive inside this computer. Nexus keeps your logbook in a database, and a database on a network drive can be damaged by the way file locking works across a network, so a network drive is refused. A synced folder (Dropbox, OneDrive, iCloud, Google Drive) is allowed, but only ONE Nexus may use it at a time: two computers writing one logbook through a sync client make a conflicted copy, not a merged log.",
+      "chinese": "日志、Nexus 下载的数据表和 Winlink 邮箱都保存在同一文件夹中，请放在本机内部磁盘上。Nexus 使用数据库保存日志，网络文件锁的工作方式可能导致网络盘上的数据库损坏，因此不允许使用网络盘。可以使用 Dropbox、OneDrive、iCloud 或 Google Drive 同步文件夹，但同一时间只能由一个 Nexus 使用；两台电脑经同步客户端同时写同一日志，只会产生冲突副本，不会合并日志。",
+      "previous": "您的日志、 数据表 Nexus 的下载和 Winlink 邮箱在一个文件夹内直播 。 放在电脑里 Nexus将您的日志保存在数据库中,一个网络驱动器上的数据库可能会因为文件锁定工作跨网络的方式而损坏,因此网络驱动器被拒绝. 允许一个同步文件夹(Dropbox, OneDrive, iCloud, Google Drive),但只有ONE Nexus可以一次使用:两台计算机通过同步客户端写一个日志来制作一个相冲突的副本,而不是一个合并的日志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.onNetwork",
+      "english": "This folder is on a network drive. Nexus keeps your logbook in a database, and a database on network storage can be damaged by the way file locking works across a network — the worst case is a logbook that will not open. Copy the folder to a drive inside this computer and point Nexus at the copy.",
+      "chinese": "此文件夹位于网络盘。Nexus 使用数据库保存日志，网络文件锁的工作方式可能导致网络存储上的数据库损坏，严重时日志将无法打开。请将文件夹复制到本机内部磁盘，并将 Nexus 的数据目录指向该副本。",
+      "previous": "此文件夹在网络驱动器中 。 Nexus将您的日志保存在数据库中,一个网络存储的数据库可能会因为文件锁定工作跨网络的方式而损坏——最糟糕的情况是日志不会打开. 复制文件夹到此计算机内部的驱动器,并将Nexus指向副本.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.onSync",
+      "english": "This folder looks like it is synced by Dropbox, OneDrive, iCloud or Google Drive. Only ONE Nexus may use it at a time — two computers writing one logbook through a sync client make a conflicted copy, not a merged log.",
+      "chinese": "此文件夹似乎由 Dropbox、OneDrive、iCloud 或 Google Drive 同步。同一时间只能由一个 Nexus 使用；两台电脑经同步客户端同时写同一日志，只会产生冲突副本，不会合并日志。",
+      "previous": "这个文件夹看起来是由Dropbox, OneDrive, iCloud 或 Google Drive 同步的. 只有One Nexus可以一次使用它——两台计算机通过同步客户端写一个日志来制作冲突的副本,而不是合并日志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.current.label",
+      "english": "Folder in use",
+      "chinese": "正在使用的文件夹",
+      "previous": "正在使用的文件夹",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.source.env",
+      "english": "Set by NEXUS_DATA_DIR for this launch, which wins over this setting.",
+      "chinese": "本次启动由 NEXUS_DATA_DIR 指定，其优先级高于此处设置。",
+      "previous": "由 NEXUS DATA DIR 设定为本次发布,它胜过此设定.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.source.chosen",
+      "english": "Chosen here.",
+      "chinese": "在此处指定。",
+      "previous": "选择在这里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.source.default",
+      "english": "The default folder.",
+      "chinese": "默认文件夹。",
+      "previous": "默认文件夹 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.pending",
+      "english": "Chosen: {{path}} — Nexus uses it the next time it starts.",
+      "chinese": "已选择 {{path}}，Nexus 将在下次启动时使用。",
+      "previous": "选择:{{path}}——Nexus下次开机时使用.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.path.label",
+      "english": "New folder",
+      "chinese": "新的数据文件夹",
+      "previous": "新建文件夹",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.browse",
+      "english": "Browse…",
+      "chinese": "浏览…",
+      "previous": "浏览...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.browse.title",
+      "english": "Pick the folder from your computer instead of typing the path. This only fills the box in — nothing changes until you choose one of the buttons below.",
+      "chinese": "从电脑中选择文件夹，无需输入路径。这里只会填入路径，点击下方相应按钮后才会应用。",
+      "previous": "从计算机中选择文件夹而不是输入路径 。 这只填充了框中——在下面选择一个按钮之前,没有什么变化.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.browse.failed",
+      "english": "Could not open the folder picker",
+      "chinese": "无法打开文件夹选择器",
+      "previous": "无法打开文件夹拾取器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.use",
+      "english": "Use this folder",
+      "chinese": "使用此文件夹",
+      "previous": "使用此文件夹",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.use.title",
+      "english": "Use this folder from the next start. Nothing is copied, so the folder should already hold your log.",
+      "chinese": "下次启动时使用此文件夹。不会复制任何内容，因此该文件夹应已包含本台日志。",
+      "previous": "从下次开始使用此文件夹 。 没有复制任何内容, 因此文件夹应该已经保存您的日志 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.copy",
+      "english": "Copy my log and data there",
+      "chinese": "将本台日志和数据复制到此处",
+      "previous": "复制我的日志和数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.copy.title",
+      "english": "Copy the logbook, the data tables and the Winlink mailbox to the new folder, check every copied file against the original, and use it from the next start. Your old folder is left exactly as it is.",
+      "chinese": "将日志、数据表和 Winlink 邮箱复制到新文件夹，逐个与原文件核对，并于下次启动时使用新目录。原文件夹保持原样。",
+      "previous": "将日志,数据表和Winlink邮箱复制到新文件夹,对照原件检查每个复制的文件,并从下一个开始使用. 你的旧文件夹是原样的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.reset",
+      "english": "Use the default folder",
+      "chinese": "使用默认文件夹",
+      "previous": "使用默认文件夹",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.reset.title",
+      "english": "Forget the chosen folder and go back to the default one at the next start. Nothing is deleted.",
+      "chinese": "清除自定义目录设置，下次启动时恢复使用默认文件夹，不删除任何内容。",
+      "previous": "忘记选中的文件夹, 在下次启动时返回默认的文件夹 。 没有被删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.restart",
+      "english": "A new folder is used the next time Nexus starts. Nothing is ever moved or deleted — your old folder stays as it is.",
+      "chinese": "新文件夹将在 Nexus 下次启动时使用。不会移动或删除任何内容，原文件夹保持原样。",
+      "previous": "Nexus 下次启动时使用新文件夹 。 没有任何东西被移动或删除——你的旧文件夹保持不变。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.copied",
+      "english": "Copied {{files}} files ({{bytes}} bytes) and checked every one against the original. Nexus uses the new folder the next time it starts.",
+      "chinese": "已复制 {{files}} 个文件（{{bytes}} 字节），并逐个与原文件核对。Nexus 将在下次启动时使用新文件夹。",
+      "previous": "复制{{files}}文档( E){{bytes}}字节),并对照原件检查每个字节. Nexus下次启动时使用新文件夹.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.chosen",
+      "english": "Saved. Nexus uses the new folder the next time it starts.",
+      "chinese": "已保存，Nexus 将在下次启动时使用新文件夹。",
+      "previous": "获救. Nexus下次启动时使用新文件夹.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.dataFolder.failed",
+      "english": "Could not change the data folder",
+      "chinese": "无法更改数据文件夹",
+      "previous": "无法更改数据文件夹",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workspace.panes.label",
+      "english": "Pane sizes",
+      "chinese": "窗格大小",
+      "previous": "窗格大小",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workspace.panes.reset",
+      "english": "Reset pane sizes",
+      "chinese": "重置窗格大小",
+      "previous": "重置窗格大小",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.workspace.panes.hint",
+      "english": "Restore the default left/right pane widths.",
+      "chinese": "恢复左右窗格的默认宽度。",
+      "previous": "恢复默认的左/右窗格宽度 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.legend",
+      "english": "Features",
+      "chinese": "功能",
+      "previous": "特征",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.alwaysOn",
+      "english": "always on",
+      "chinese": "始终开启",
+      "previous": "总是这样",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.toggle.aria.enable",
+      "english": "Enable {{feature}}",
+      "chinese": "启用 {{feature}}",
+      "previous": "启用{{feature}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.toggle.aria.disable",
+      "english": "Disable {{feature}}",
+      "chinese": "禁用 {{feature}}",
+      "previous": "禁用{{feature}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.dependsOn",
+      "english": "Turning on also enables {{feature}}.",
+      "chinese": "开启时也会启用 {{feature}}。",
+      "previous": "打开也可以{{feature}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.label",
+      "english": "Profile",
+      "chinese": "功能配置",
+      "previous": "简介",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.aria",
+      "english": "Feature profile",
+      "chinese": "功能配置",
+      "previous": "特征简介",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.confirm.title",
+      "english": "Switch to “{{profile}}”?",
+      "chinese": "切换到“{{profile}}”？",
+      "previous": "切换到“{{profile}}“?” ?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.confirm.body",
+      "english": "This replaces your custom feature set.",
+      "chinese": "这会替换当前自定义功能组合。",
+      "previous": "此选项取代您的自定义特性集 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.confirm.action",
+      "english": "Switch",
+      "chinese": "切换",
+      "previous": "切换",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.custom.label",
+      "english": "Custom",
+      "chinese": "自定义",
+      "previous": "自定义",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.custom.title",
+      "english": "Custom — a blended feature set (manual toggles or multiple goals)",
+      "chinese": "自定义功能组合，通过手动开关或选择多个目标形成",
+      "previous": "自定义——混合特性集(手动切换或多个目标)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.hint.custom",
+      "english": "Custom — a blended feature set. Pick a single goal above to reset to its defaults.",
+      "chinese": "当前为自定义功能组合。选择上方一个目标，可恢复该目标的默认配置。",
+      "previous": "自定义——混合特性集. 在上面选择一个单一的进球来重置其默认值.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.profile.hint.preset",
+      "english": "Pick a goal to set sensible defaults — every feature stays toggleable below. Switching profiles re-applies its set.",
+      "chinese": "选择操作目标以应用适合的默认配置，之后仍可在下方单独开关各项功能。切换配置会重新应用其功能组合。",
+      "previous": "选择一个设定合理默认的目标——每个特性在下面都可以切换. 切换配置文件会重新应用它的设定 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.rerunWizard",
+      "english": "Re-run setup…",
+      "chinese": "重新运行设置向导…",
+      "previous": "重新运行设置...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.features.core.title",
+      "english": "Core — always on",
+      "chinese": "核心功能 — 始终开启",
+      "previous": "核心——总是",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.legend",
+      "english": "Accessibility & eyes-free",
+      "chinese": "无障碍与听觉操作",
+      "previous": "无障碍和无眼睛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.note",
+      "english": "Speech and sound cues for operating by ear (screen-reader users, or anyone who wants audible feedback). The keyboard and screen-reader labels throughout Nexus are always on — these settings only control what comes out of the speakers.",
+      "chinese": "通过语音和提示音辅助听觉操作，适合屏幕阅读器用户及需要声音反馈的操作员。Nexus 的键盘操作及屏幕阅读器标签始终可用，此处仅控制扬声器输出的提示。",
+      "previous": "用耳机操作的语音和声音提示(屏幕阅读器用户,或任何想要听觉反馈的人). 整个Nexus的键盘和屏幕阅读器标签总是在使用——这些设置只控制着扬声器发出的内容.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.announce.label",
+      "english": "Announce decodes (screen reader)",
+      "chinese": "播报解码结果（屏幕阅读器）",
+      "previous": "宣布解码( 屏幕阅读器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.announce.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "settings.accessibility.announce.needed",
+      "english": "Needed only (calling you / new / watched)",
+      "chinese": "仅播报关注目标（呼叫本台／新目标／关注电台）",
+      "previous": "只需要(呼叫您/ 新/ 监视)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.announce.all",
+      "english": "All (adds a per-cycle CQ summary)",
+      "chinese": "全部（每周期增加 CQ 汇总）",
+      "previous": "全部(增加每个周期的CQ摘要)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.announce.hint",
+      "english": "What a screen reader speaks as decodes arrive. Silent without a reader running. \"Needed\" mirrors your alerts; \"All\" adds a spoken batch summary each cycle.",
+      "chinese": "设置解码结果到达时屏幕阅读器播报的内容。未运行屏幕阅读器时不会发声。“仅播报关注目标”与警报规则一致；“全部”还会在每个周期播报一段汇总。",
+      "previous": "屏幕阅读器在解码器到达时会说什么 寂然无读者奔走. \"需要\"映射出你的警示;\"全部\"每个周期增加一个口语批量摘要.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.txRxEarcon.label",
+      "english": "TX / RX earcon",
+      "chinese": "收发状态提示音",
+      "previous": "TX / RX 耳孔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.txRxEarcon.hint",
+      "english": "A rising tone when you key up, falling when you unkey — know your TX state by ear.",
+      "chinese": "开始发射时播放上升音，结束发射时播放下降音，方便通过声音判断收发状态。",
+      "previous": "一个上升的音调 当你按键, 下降 当你不按键—— 了解你的TX状态 逐耳。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.decodeTick.label",
+      "english": "Decode-batch tick",
+      "chinese": "解码周期提示音",
+      "previous": "解码批勾选",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.decodeTick.hint",
+      "english": "A soft tick each cycle new signals are decoded — the band's rhythm, eyes-free.",
+      "chinese": "每个周期解码出新信号时轻响一声，无需看屏幕也能感知频段活动节奏。",
+      "previous": "每个周期都会有一个软滴滴的新信号被解码——乐队的节奏,无眼.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.cwTurnSound.label",
+      "english": "CW turn sound",
+      "chinese": "CW 发送轮次提示音",
+      "previous": "CW转动声音",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.accessibility.cwTurnSound.hint",
+      "english": "A short rising chirp when the CW turn cue says it is your turn to send. Never while you transmit.",
+      "chinese": "CW 轮次提示轮到本台发送时，播放一声短促的上升音。本台发射期间不会播放。",
+      "previous": "短暂的上升的鸣叫声CW转动提示说轮到你了 永远不要,当你传送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.intent.aria",
+      "english": "What are you doing?",
+      "chinese": "你准备进行什么操作？",
+      "previous": "你在干吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.intent.dx.label",
+      "english": "Chase DX",
+      "chinese": "追逐 DX",
+      "previous": "大通DX系统",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.intent.dx.title",
+      "english": "Globe, need-colored, live openings",
+      "chinese": "地球仪视图，按待通联目标着色，显示实时传播开通",
+      "previous": "环球网, 需要彩色, 现场开放",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.intent.pota.title",
+      "english": "World view, park/summit activators",
+      "chinese": "全球视图，显示公园／山峰活动电台",
+      "previous": "世界观、公园/首脑会议活动者",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.intent.casual.label",
+      "english": "Ragchew",
+      "chinese": "闲聊通联",
+      "previous": "拉格丘",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.intent.casual.title",
+      "english": "Who can I hear — signal-colored, calm",
+      "chinese": "查看能收到哪些电台，按信号着色，界面简洁",
+      "previous": "我听得到谁——信号彩色,冷静",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.intent.vhf.title",
+      "english": "Openings front-and-center (Es / F2 / aurora)",
+      "chinese": "突出显示传播开通（Es / F2 / 极光）",
+      "previous": "开放前端和中心(Es / F2 / 极光)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.globe3d.loading",
+      "english": "Loading 3D globe…",
+      "chinese": "正在加载三维地球仪…",
+      "previous": "正在装入 3D 地球...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.popOut.label",
+      "english": "⧉ Pop out",
+      "chinese": "⧉ 独立窗口",
+      "previous": "弹出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.popOut.title",
+      "english": "Open Conditions in its own window (for a second monitor)",
+      "chinese": "在独立窗口打开“传播状况”，便于放到第二台显示器",
+      "previous": "在自己的窗口中打开条件( 用于第二个监视器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.pick.aria",
+      "english": "Choose what the {{slot}} slot shows",
+      "chinese": "选择 {{slot}} 面板位显示的内容",
+      "previous": "选择什么{{slot}}插槽显示",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.pick.title",
+      "english": "Choose what this slot shows",
+      "chinese": "选择此面板位显示的内容",
+      "previous": "选择此槽显示的内容",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.group.bands",
+      "english": "Bands",
+      "chinese": "频段",
+      "previous": "带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.group.spaceWx",
+      "english": "Space weather",
+      "chinese": "空间气象",
+      "previous": "空间气象",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.group.activity",
+      "english": "Activity",
+      "chinese": "活动",
+      "previous": "活动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.group.station",
+      "english": "Station",
+      "chinese": "电台",
+      "previous": "电台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.menu.aria",
+      "english": "Options for {{title}}",
+      "chinese": "{{title}} 的选项",
+      "previous": "备选方案{{title}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.menu.title",
+      "english": "Options for this pane",
+      "chinese": "此窗格的选项",
+      "previous": "此窗格的选项",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.text.size",
+      "english": "Text size: {{pct}}%",
+      "chinese": "文字大小：{{pct}}%",
+      "previous": "文本大小 :{{pct}}百分比(%)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.text.smaller",
+      "english": "Smaller text",
+      "chinese": "缩小文字",
+      "previous": "较小的文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.text.larger",
+      "english": "Larger text",
+      "chinese": "放大文字",
+      "previous": "更大的文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.help",
+      "english": "{{title}} in the manual",
+      "chinese": "手册中的 {{title}}",
+      "previous": "{{title}}在手册中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.help.title",
+      "english": "Opens this part of the manual in your browser",
+      "chinese": "在浏览器中打开手册对应章节",
+      "previous": "在浏览器中打开手册的这一部分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.tabs.aria",
+      "english": "Panes in this slot",
+      "chinese": "此面板位中的窗格",
+      "previous": "此位置的窗体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.tab.add",
+      "english": "Add a tab",
+      "chinese": "添加标签页",
+      "previous": "添加标签",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.tab.remove",
+      "english": "Remove {{title}} from this slot",
+      "chinese": "从此面板位移除 {{title}}",
+      "previous": "删除{{title}}从此位置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.rotate.heading",
+      "english": "Rotate the tabs",
+      "chinese": "轮播标签页",
+      "previous": "旋转标签",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.rotate.off",
+      "english": "Off",
+      "chinese": "关闭",
+      "previous": "关闭",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "WideGraph",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "connect.box.rotate.secs",
+      "english": "{{secs}} s",
+      "chinese": "{{secs}} 秒",
+      "previous": "{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.box.rotate.mins",
+      "english": "{{mins}} min",
+      "chinese": "{{mins}} 分钟",
+      "previous": "{{mins}}分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.panels.item",
+      "english": "{{title}} · {{where}}",
+      "chinese": "{{title}} · {{where}}",
+      "previous": "{{title}}* 妇女{{where}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.where.left1",
+      "english": "left, top",
+      "chinese": "左侧上方",
+      "previous": "左边,顶端",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.where.left2",
+      "english": "left, bottom",
+      "chinese": "左侧下方",
+      "previous": "左边,底部",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.where.right1",
+      "english": "right, top",
+      "chinese": "右侧上方",
+      "previous": "右,顶部",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.where.right2",
+      "english": "right, bottom",
+      "chinese": "右侧下方",
+      "previous": "右边,底部",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.where.bottom1",
+      "english": "bottom, left",
+      "chinese": "底部左侧",
+      "previous": "下, 左边",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.where.bottom2",
+      "english": "bottom, middle",
+      "chinese": "底部中间",
+      "previous": "底, 中间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.slot.where.bottom3",
+      "english": "bottom, right",
+      "chinese": "底部右侧",
+      "previous": "底,右边",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.rail.left.width",
+      "english": "Left panel column width",
+      "chinese": "左侧面板列宽度",
+      "previous": "左侧面板宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.rail.right.width",
+      "english": "Right panel column width",
+      "chinese": "右侧面板列宽度",
+      "previous": "右面板列宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.rail.left.split",
+      "english": "Split between the left panels",
+      "chinese": "左侧面板分隔位置",
+      "previous": "在左面板之间分割",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.rail.right.split",
+      "english": "Split between the right panels",
+      "chinese": "右侧面板分隔位置",
+      "previous": "在右侧面板之间分割",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.rail.handle.title",
+      "english": "Drag, or use the arrow keys, to resize ({{label}}). Double-click to reset.",
+      "chinese": "拖动或使用方向键调整大小（{{label}}），双击重置。",
+      "previous": "拖曳或使用箭头键来调整大小({{label}}。双击重置。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.strip.height.label",
+      "english": "Bottom panel row height",
+      "chinese": "底部面板行高度",
+      "previous": "底板行高",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.name",
+      "english": "Dashboard rail",
+      "chinese": "仪表板侧栏",
+      "previous": "板式铁轨",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.title",
+      "english": "Dashboard",
+      "chinese": "仪表板",
+      "previous": "电线板",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.width.label",
+      "english": "Dashboard rail width",
+      "chinese": "仪表板侧栏宽度",
+      "previous": "铁轨宽度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.split.label",
+      "english": "Split between {{above}} and {{below}}",
+      "chinese": "{{above}} 与 {{below}} 之间的分隔位置",
+      "previous": "分开{{above}}和{{below}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.hide.label",
+      "english": "Hide the dashboard rail",
+      "chinese": "隐藏仪表板侧栏",
+      "previous": "隐藏仪表板栏",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.hide.title",
+      "english": "Hide the dashboard rail beside this cockpit (⊞ Panels or the NOW bar brings it back)",
+      "chinese": "隐藏此操作界面旁的仪表板侧栏，可通过“⊞ 面板”或 NOW 栏恢复显示",
+      "previous": "将仪表板栏藏在这驾驶舱旁边(XQ面板或NOW栏带回来)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.crash.label",
+      "english": "The dashboard rail",
+      "chinese": "仪表板侧栏",
+      "previous": "仪表板铁路",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.slot.where.rail1",
+      "english": "top",
+      "chinese": "顶部",
+      "previous": "顶端",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.slot.where.rail2",
+      "english": "upper middle",
+      "chinese": "中上部",
+      "previous": "中层",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.slot.where.rail3",
+      "english": "lower middle",
+      "chinese": "中下部",
+      "previous": "中层",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.slot.where.rail4",
+      "english": "bottom",
+      "chinese": "底部",
+      "previous": "下边",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.menu.small",
+      "english": "Needs a larger window (or a smaller zoom) to show. Remembered for this section.",
+      "chinese": "需要扩大窗口或缩小界面才能显示。此选择会按当前功能页面保存。",
+      "previous": "需要一个更大的窗口(或较小的缩放)来显示 。 为本节所记.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "dashRail.menu.folded",
+      "english": "On this window its boxes stand at the foot of this screen's columns; the rail comes back beside them on a larger window (or a smaller zoom). Remembered for this section.",
+      "chinese": "当前窗口中，侧栏窗格折叠显示在本页各列底部；扩大窗口或缩小界面后，侧栏会恢复到旁边。此选择会按当前功能页面保存。",
+      "previous": "在这个窗口上,它的盒子站在这个屏幕的柱子的脚下;铁路在更大的窗口(或更小的缩放)的旁边返回. 为本节所记.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.heading",
+      "english": "Layout",
+      "chinese": "布局",
+      "previous": "版式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.standard",
+      "english": "Standard",
+      "chinese": "标准",
+      "previous": "标准",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.standard.title",
+      "english": "Conditions as it opened before Frame + bar: two panes down each side of the map and three along the bottom, all open, at the usual widths",
+      "chinese": "“传播状况”采用“框架 + 顶栏”之前的布局：地图两侧各两个窗格，底部三个窗格，全部展开并使用常规宽度",
+      "previous": "在Frame + 栏前打开的条件:地图两侧下方两个面板,底部三个,均按通常宽度打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.kept.label",
+      "english": "Your earlier layout",
+      "chinese": "先前的布局",
+      "previous": "您先前的布局",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.kept.title",
+      "english": "The layout you had here before Conditions opened in Frame + bar, as you left it: every box, tab, width and split",
+      "chinese": "保留改用“框架 + 顶栏”之前的布局，包括各个窗格、标签页、宽度和分隔位置",
+      "previous": "在框架 + 栏中打开条件前的布局, 如您留下时: 每个框、 标签、 宽度和拆分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.custom",
+      "english": "Custom",
+      "chinese": "自定义",
+      "previous": "自定义",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.mapFirst.label",
+      "english": "Map first",
+      "chinese": "地图优先",
+      "previous": "地图第一",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.mapFirst.title",
+      "english": "The map as big as it goes: both side columns at their narrowest and the bottom row closed",
+      "chinese": "尽可能放大地图：两侧列缩至最窄，关闭底部窗格行",
+      "previous": "地图的大小: 两侧的柱子最窄,下行关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.listFirst.label",
+      "english": "List first",
+      "chinese": "列表优先",
+      "previous": "名单第一",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.listFirst.title",
+      "english": "The chase and spot lists in two wide columns, with a small map between them and the bottom row closed",
+      "chinese": "追逐目标和通报列表各占一个宽列，中间保留小地图，关闭底部窗格行",
+      "previous": "追逐和点点列表分为两个宽的栏目,它们之间的小地图和下行关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.dashboard.label",
+      "english": "Dashboard",
+      "chinese": "仪表板",
+      "previous": "电线板",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.dashboard.title",
+      "english": "Seven panes open at once around a smaller map: conditions on the left, activity on the right, what is coming along the bottom",
+      "chinese": "小地图周围同时展开七个窗格：左侧显示传播状况，右侧显示活动，底部显示即将到来的事件",
+      "previous": "七个面板立刻打开 围绕一个较小的地图: 左侧的条件,右侧的活动, 沿着底部出现的东西",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.frame.label",
+      "english": "Frame",
+      "chinese": "框架",
+      "previous": "框架",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.frame.title",
+      "english": "Two panes down each side of a map that runs the full height, for a dashboard on a screen of its own: band conditions and space weather on the left, who is hearing you and what to chase on the right",
+      "chinese": "地图占满高度，两侧各放两个窗格，适合独占一块屏幕的仪表板：左侧显示频段状况及空间气象，右侧显示哪些电台收到本台信号及可追逐的目标",
+      "previous": "一张图的两面各有两幅图 上面有一张仪表板 左边是带状条件和空间天气",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.frameBar.label",
+      "english": "Frame + bar (default)",
+      "chinese": "框架 + 顶栏（默认）",
+      "previous": "框架 + 栏( 默认)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.frameBar.title",
+      "english": "Frame's shape with the clock and space-weather bar across the top: Bands for you over Openings on the left, Chase over Getting Out on the right, and the other boxes one click away as tabs",
+      "chinese": "沿用框架布局，顶部增加时钟和空间气象栏；左上为“适合本台的频段”，左下为“传播开通”，右上为“追逐目标”，右下为“本台信号覆盖”。其他窗格作为标签页，点击即可查看",
+      "previous": "横跨顶部的时钟和空间-天气栏的帧形状:左侧的“打开”、右侧的“打开”、左侧的“打开”、右侧的“打开”、左侧的“打开”、左侧的“打开”、左侧的“打开”、左侧的“打开”、左侧的“打开”、左侧的“打开”、左侧的“打开”、右侧的“打开”、左侧的“打开”、左侧的“打开”、右侧的“打开”、左侧的“打开”、右侧的“打开”、左侧的“打开”、右侧的“打开”、左侧的“打开”、右侧的“打开”、右侧的“打开”",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.replaces",
+      "english": "Picking one replaces your own arrangement. Undo last change puts it back.",
+      "chinese": "选择预设会替换当前布局；“撤销上次更改”可恢复。",
+      "previous": "选一个代替你的安排 撤销上次更改后放回去 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.button",
+      "english": "Layout",
+      "chinese": "布局",
+      "previous": "版式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.layout.button.title",
+      "english": "Choose a layout for this screen: Standard, Map first, List first, Dashboard, Frame or Frame + bar (default)",
+      "chinese": "选择本页布局：标准、地图优先、列表优先、仪表板、框架或框架 + 顶栏（默认）",
+      "previous": "选择此屏幕的布局: 标准、 地图、 先列出、 Dashboard、 框架或框架 + 栏( 默认)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.advisory.title",
+      "english": "Best band",
+      "chinese": "最佳频段",
+      "previous": "最佳乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.bandAdvisor.title",
+      "english": "Band Advisor",
+      "chinese": "频段建议",
+      "previous": "乐队顾问",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.bandTiles.title",
+      "english": "Bands for you",
+      "chinese": "适合本台的频段",
+      "previous": "乐队给你",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.selection.title",
+      "english": "Selection",
+      "chinese": "选择",
+      "previous": "选择",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.outlook.title",
+      "english": "Band Outlook",
+      "chinese": "频段展望",
+      "previous": "带状展望",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.openings.title",
+      "english": "Openings",
+      "chinese": "传播开通",
+      "previous": "开幕",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.openingsLog.title",
+      "english": "Openings Log",
+      "chinese": "传播开通记录",
+      "previous": "打开日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.kpOutlook.title",
+      "english": "Kp outlook",
+      "chinese": "Kp 预报",
+      "previous": "Kp 展望",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.kpOutlook.basic",
+      "english": "Three-day planetary-K forecast from NOAA — when the bands settle down.",
+      "chinese": "NOAA 提供的三天地磁 Kp 指数预报，用于判断频段何时恢复平稳。",
+      "previous": "NOAA的3天行星-K预报——当波段安顿下来时.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.unavailable",
+      "english": "No Kp outlook yet — NOAA has not answered.",
+      "chinese": "暂无 Kp 预报，NOAA 尚未响应。",
+      "previous": "没有 Kp 展望 —— NOAA 还没有回答 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.noForward",
+      "english": "NOAA has published no forecast beyond now.",
+      "chinese": "NOAA 尚未发布当前时刻之后的预报。",
+      "previous": "NOAA现在没有发布任何预测。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.now",
+      "english": "Now Kp {{kp}} ({{when}}, measured)",
+      "chinese": "当前 Kp {{kp}}（{{when}}，实测）",
+      "previous": "现在 Kp{{kp}}(单位:千美元){{when}},测量)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.peak",
+      "english": "Worst ahead: Kp {{kp}} at {{when}}",
+      "chinese": "预计最高：{{when}} 的 Kp 为 {{kp}}",
+      "previous": "最糟糕的前途: Kp{{kp}}时间{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.onset",
+      "english": "Storm level (Kp {{kp}}) expected from {{when}}",
+      "chinese": "预计从 {{when}} 起达到地磁暴水平（Kp {{kp}}）",
+      "previous": "风暴级别( Kp){{kp}}预期从{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.relief",
+      "english": "Settling below storm level around {{when}}",
+      "chinese": "预计 {{when}} 左右降至地磁暴水平以下",
+      "previous": "位于风暴水平以下{{when}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.chart.aria",
+      "english": "Planetary K index, measured hours then forecast",
+      "chinese": "地磁 Kp 指数，前段为实测，后段为预报",
+      "previous": "行星K指数,测量时数,然后预测",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.bar.title",
+      "english": "{{when}} · Kp {{kp}} · {{kind}}{{scale}}",
+      "chinese": "{{when}} · Kp {{kp}} · {{kind}}{{scale}}",
+      "previous": "{{when}}• 基普{{kp}}* 妇女{{kind}}{{scale}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.kind.observed",
+      "english": "measured",
+      "chinese": "实测",
+      "previous": "测量",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.kind.estimated",
+      "english": "estimated by NOAA",
+      "chinese": "NOAA 估算",
+      "previous": "NOAA估计",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.kp.kind.predicted",
+      "english": "forecast",
+      "chinese": "预报",
+      "previous": "预测",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.solar.caption",
+      "english": "NOAA daily · {{from}} – {{to}}",
+      "chinese": "NOAA 每日数据 · {{from}} – {{to}}",
+      "previous": "国家海洋管理局日报{{from}}- 说吧{{to}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.solar.stale",
+      "english": "NOAA daily indices not updated since {{date}}",
+      "chinese": "NOAA 每日指数自 {{date}} 起未更新",
+      "previous": "NOAA 每日指数自2004年以来未更新{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.solar.unavailable",
+      "english": "30-day SFI and sunspot trend unavailable.",
+      "chinese": "暂无 30 天太阳射电流量指数（SFI）和太阳黑子趋势。",
+      "previous": "30天的自立倡议和日光点趋势不存在。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.solar.trend.aria",
+      "english": "{{index}} daily, {{from}} to {{to}}: low {{low}}, high {{high}}",
+      "chinese": "{{index}} 每日数据，{{from}} 至 {{to}}：最低 {{low}}，最高 {{high}}",
+      "previous": "{{index}}日报{{from}}改为:{{to}}页:1{{low}}高级{{high}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.spacewx.title",
+      "english": "Space Wx",
+      "chinese": "空间气象",
+      "previous": "空间Wx",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.getout.title",
+      "english": "Getting Out",
+      "chinese": "本台信号覆盖",
+      "previous": "滚出去",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.bestband.title",
+      "english": "Bands by region",
+      "chinese": "各地区适用频段",
+      "previous": "按区域划分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.activity.title",
+      "english": "Activity Matrix",
+      "chinese": "活动矩阵",
+      "previous": "活动矩阵",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.beacons.title",
+      "english": "NCDXF Beacons",
+      "chinese": "NCDXF 信标",
+      "previous": "NCDXF 灯塔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.insights.title",
+      "english": "Insights",
+      "chinese": "分析提示",
+      "previous": "透视",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.chase.title",
+      "english": "Chase",
+      "chinese": "追逐目标",
+      "previous": "蔡斯 蔡斯 蔡斯 蔡斯",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.greyline.title",
+      "english": "Greyline",
+      "chinese": "晨昏线",
+      "previous": "晨昏线",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.bandHours.title",
+      "english": "24h Band×Hour",
+      "chinese": "24 小时频段×小时",
+      "previous": "24小时班轮x小时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.esNowcast.title",
+      "english": "Sporadic-E",
+      "chinese": "偶发 E 层（Es）",
+      "previous": "零星电子",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.measuredMuf.title",
+      "english": "Measured MUF",
+      "chinese": "实测最高可用频率（MUF）",
+      "previous": "计量的多边基金",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.chaseFeed.title",
+      "english": "Chase Feed",
+      "chinese": "追逐目标动态",
+      "previous": "大通饲料",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.satPasses.title",
+      "english": "Satellite Passes",
+      "chinese": "卫星过境",
+      "previous": "卫星通行证",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.rotor.title",
+      "english": "Rotor",
+      "chinese": "天线旋转器",
+      "previous": "旋转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.amp.title",
+      "english": "Amplifier",
+      "chinese": "功率放大器",
+      "previous": "功率放大器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.scope.title",
+      "english": "Band Scope",
+      "chinese": "频段频谱",
+      "previous": "带宽范围",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.contests.title",
+      "english": "Contests",
+      "chinese": "竞赛",
+      "previous": "比赛",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.clock.title",
+      "english": "Clock",
+      "chinese": "时钟",
+      "previous": "时钟",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.openingsLog.basic",
+      "english": "A historical record of every detected band opening (6m/2m tropo, Es, aurora) builds here.",
+      "chinese": "在此累积记录每次检测到的传播开通，包括 6 米／2 米波段的对流层传播、Es 和极光传播。",
+      "previous": "每个探测到的波段开口(6m/2m tropo, Es, 极光)的历史记录在此建立.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.satPasses.basic",
+      "english": "Upcoming amateur-satellite passes over your QTH appear here once orbital elements load.",
+      "chinese": "轨道根数加载后，此处会显示即将经过本台 QTH 上空的业余卫星。",
+      "previous": "即将到来的业余卫星通过你的QTH轨道元素加载后在此出现。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.rotor.basic",
+      "english": "Rotator control appears here once you pick a rotator model and port in Settings ▸ Radio ▸ Rotator.",
+      "chinese": "在“设置 ▸ 电台设备 ▸ 天线旋转器”中选择型号和端口后，此处会显示旋转器控制。",
+      "previous": "旋转器控制器出现在这里 一旦你选择了旋转器模型 和端口 在设置 QQ Radio QQ 旋转器。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.amp.basic",
+      "english": "Amplifier readings appear here once you pick an amplifier and its port in Settings ▸ Radio ▸ Amplifier.",
+      "chinese": "在“设置 ▸ 电台设备 ▸ 功率放大器”中选择功放及端口后，此处会显示功放读数。",
+      "previous": "放大器读数在这里出现, 一旦你选择一个放大器及其端口 在设置 QQ Radio QQ 放大器。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.scope.basic",
+      "english": "A live spectrum of the active radio's passband — band noise and signals at a glance.",
+      "chinese": "当前电台通带的实时频谱，方便一眼查看频段噪声和信号。",
+      "previous": "活跃的无线电传频段的直播频谱——一目了然的乐队噪音和信号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.scope.idle",
+      "english": "Flat — the radio's audio isn't reaching Nexus right now.",
+      "chinese": "频谱为平线，电台音频目前未传入 Nexus。",
+      "previous": "Flat——收音机的音频现在还没有到达Nexus.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.contests.basic",
+      "english": "Upcoming HF/VHF contests (WA7BNM) appear here once online.",
+      "chinese": "联网后，此处会显示即将举行的高频／甚高频竞赛，数据来自 WA7BNM。",
+      "previous": "即将到来的HF/VHF比赛(WA7BNM)一度在网上出现.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.clock.basic",
+      "english": "UTC and local time, today's date, and sunrise and sunset at your grid.",
+      "chinese": "显示 UTC、当地时间、今天的日期及本台网格位置的日出日落时间。",
+      "previous": "UTC当地时间,今天的日期, 日出和日落 在你的网格。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.clock.utc.aria",
+      "english": "UTC {{time}}",
+      "chinese": "UTC {{time}}",
+      "previous": "UTC {{time}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.clock.local.aria",
+      "english": "Local time {{time}}",
+      "chinese": "当地时间 {{time}}",
+      "previous": "当地时间{{time}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.clock.sun",
+      "english": "{{grid}} · Sunrise {{rise}} · Sunset {{set}}",
+      "chinese": "{{grid}} · 日出 {{rise}} · 日落 {{set}}",
+      "previous": "{{grid}}• 日出{{rise}}• 日落{{set}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.clock.sun.local",
+      "english": "On this computer's clock: sunrise {{rise}}, sunset {{set}}",
+      "chinese": "按本机当地时间：日出 {{rise}}，日落 {{set}}",
+      "previous": "在这个电脑的时钟上: 日出{{rise}}日落时分{{set}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.clock.sun.up",
+      "english": "Sun up all day",
+      "chinese": "全天日不落",
+      "previous": "整天都晒太阳",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.clock.sun.down",
+      "english": "Sun down all day",
+      "chinese": "全天无日出",
+      "previous": "整天太阳落下",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.clock.noGrid",
+      "english": "Set your grid in Settings for today's sunrise and sunset.",
+      "chinese": "在设置中填入本台网格，即可显示今天的日出日落时间。",
+      "previous": "设置您的网格为今天的日出和日落 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.spots.title",
+      "english": "Spots",
+      "chinese": "电台通报",
+      "previous": "电台通报",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.spots.basic",
+      "english": "The spot list isn't available on this screen.",
+      "chinese": "本页无法显示通报列表。",
+      "previous": "此屏幕上没有现成列表 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.pota.basic",
+      "english": "The POTA/SOTA list isn't available on this screen.",
+      "chinese": "本页无法显示 POTA/SOTA 列表。",
+      "previous": "那个 POTA/SOTA 列表在此屏幕上不可用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.needed.title",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.needed.basic",
+      "english": "The Needed list isn't available on this screen.",
+      "chinese": "本页无法显示待通联列表。",
+      "previous": "此屏幕上没有需要的列表 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.operators.title",
+      "english": "Operators",
+      "chinese": "操作员",
+      "previous": "运算符",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.pane.operators.basic",
+      "english": "No contest running.",
+      "chinese": "当前未进行竞赛。",
+      "previous": "无赛跑。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.prov.title",
+      "english": "Data provenance",
+      "chinese": "数据来源",
+      "previous": "数据来源",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.prov.live",
+      "english": "LIVE",
+      "chinese": "实时",
+      "previous": "活着",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.prov.partial",
+      "english": "PARTIAL",
+      "chinese": "部分",
+      "previous": "部分",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.prov.cached",
+      "english": "CACHED {{mins}}m",
+      "chinese": "缓存 {{mins}} 分钟",
+      "previous": "已获得{{mins}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.prov.offline",
+      "english": "NO LIVE DATA",
+      "chinese": "无实时数据",
+      "previous": "无生活数据",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "connect.selection.clear.title",
+      "english": "Clear selection",
+      "chinese": "清除选择",
+      "previous": "清除选择",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

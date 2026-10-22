@@ -54,6 +54,7 @@ import { DE } from './de'
 import { ES } from './es'
 import { FR } from './fr'
 import { JA } from './ja'
+import { ZH_CN } from './zh-CN'
 import type { PluralForms } from './types'
 
 /** A `t()` / `<T>` call site with everything written literally enough to check. */
@@ -342,6 +343,7 @@ describe('translated catalogs agree with English', () => {
     ['es', ES as Record<string, unknown>],
     ['fr', FR as Record<string, unknown>],
     ['ja', JA as Record<string, unknown>],
+    ['zh-CN', ZH_CN as Record<string, unknown>],
   ]
 
   const holesOf = (v: unknown): Set<string> => {
@@ -432,7 +434,7 @@ describe('translated catalogs agree with English', () => {
   // precisely what happened when Spanish and French landed.
   it('every catalog main.tsx installs is on the list above', () => {
     const main = readFileSync(new URL('../main.tsx', import.meta.url), 'utf8')
-    const installed = [...main.matchAll(/installCatalog\(\s*'([a-z-]+)'/g)].map((m) => m[1]).sort()
+    const installed = [...main.matchAll(/installCatalog\(\s*'([A-Za-z-]+)'/g)].map((m) => m[1]).sort()
     expect(installed.length, 'control: main.tsx really does install catalogs').toBeGreaterThan(0)
     expect(OTHER.map(([l]) => l).sort()).toEqual(installed)
   })

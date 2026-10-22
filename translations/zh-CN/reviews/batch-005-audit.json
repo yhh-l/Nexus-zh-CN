@@ -1,0 +1,1834 @@
+{
+  "batch": 5,
+  "range": [
+    801,
+    1000
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 100,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 9,
+  "externalDefinitions": "https://adif.org/314/ADIF_314.htm",
+  "implementation": [
+    "ui/src/components/Logbook.tsx",
+    "ui/src/components/ConfirmationReview.tsx",
+    "crates/tempo-core/src/reconcile/check.rs"
+  ],
+  "rows": [
+    {
+      "id": "logbook.sync.done",
+      "english": "Synced: {{confirmed}} newly confirmed, {{credited}} credited",
+      "chinese": "同步完成：新增确认 {{confirmed}} 条，新增奖项认可 {{credited}} 条",
+      "previous": "同步完成：新增 {{confirmed}} 条已确认记录，{{credited}} 条获得奖项计分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.sync.doneUnmatched",
+      "english": "Synced: {{confirmed}} newly confirmed, {{credited}} credited · {{unmatched}} unmatched",
+      "chinese": "同步完成：新增确认 {{confirmed}} 条，新增奖项认可 {{credited}} 条；{{unmatched}} 条未匹配",
+      "previous": "同步完成：新增 {{confirmed}} 条已确认记录，{{credited}} 条获得奖项计分；{{unmatched}} 条未匹配",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.pota.label",
+      "english": "Import POTA",
+      "chinese": "导入 POTA",
+      "previous": "导入 POTA",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.button",
+      "english": "Check park states",
+      "chinese": "核对公园所在州",
+      "previous": "检查公园状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.buttonTitle",
+      "english": "List the park and summit contacts whose state is not their park’s, and correct the ones you tick",
+      "chinese": "列出州信息与公园或山峰所在地不符的交信，并更正你勾选的记录",
+      "previous": "列出州信息与公园或山峰所在地不符的交信，并更正你勾选的记录",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.title",
+      "english": "Check park states",
+      "chinese": "核对公园所在州",
+      "previous": "检查公园状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.intro",
+      "english": "These park and summit contacts hold a state other than the one their park or summit is in, or none: Nexus used to log the activator’s home state, from their licence or their callbook entry. Tick the ones to change. Nothing changes until you press the button, and nothing is uploaded again. A confirmed contact starts unticked.",
+      "chinese": "这些公园或山峰通联记录中的州信息与所在地不符，或未填写州信息。旧版 Nexus 可能会根据激活者执照或呼号资料，将其居住州记入日志。请勾选要更正的记录。点击更改按钮前不会修改任何内容，也不会再次上传。已确认的交信默认不勾选。",
+      "previous": "这些公园或山峰通联记录中的州信息与所在地不符，或未填写州信息。旧版 Nexus 可能会根据激活者执照或呼号资料，将其居住州记入日志。请勾选要更正的记录。点击更改按钮前不会修改任何内容，也不会再次上传。已确认的交信默认不勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.reading",
+      "english": "Reading your log…",
+      "chinese": "正在读取交信日志……",
+      "previous": "读你的日志...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.none",
+      "english": "Every park and summit contact Nexus can place holds its park’s state.",
+      "chinese": "Nexus 能识别的公园和山峰通联记录，其州信息都与所在地一致。",
+      "previous": "Nexus 能识别的公园和山峰通联记录，其州信息都与所在地一致。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.change",
+      "english": "{{from}} → {{to}}",
+      "chinese": "{{from}} → {{to}}",
+      "previous": "{{from}}→{{to}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.noState",
+      "english": "none",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.confirmed",
+      "english": "confirmed",
+      "chinese": "已确认",
+      "previous": "已确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.confirmedTitle",
+      "english": "Confirmed: its confirmation came with the state the other station signed. Tick it only if you are sure.",
+      "chinese": "已确认：对方电台提交的确认信息包含此州信息。只有确认需要更改时才勾选。",
+      "previous": "已确认：对方电台提交的确认信息包含此州信息。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "logbook.parkStates.skip",
+      "english": "Skip to Cancel and Change",
+      "chinese": "跳至“取消”和“更正”按钮",
+      "previous": "跳过到取消和更改",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.apply::one",
+      "english": "Change {{count}} contact",
+      "chinese": "更正 {{count}} 条交信",
+      "previous": "更正 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.apply::other",
+      "english": "Change {{count}} contacts",
+      "chinese": "更正 {{count}} 条交信",
+      "previous": "更正 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.done::one",
+      "english": "{{count}} contact now holds its park’s state",
+      "chinese": "已将 {{count}} 条交信的州信息更正为公园所在地",
+      "previous": "已将 {{count}} 条交信的州信息更正为公园所在地",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.done::other",
+      "english": "{{count}} contacts now hold their park’s state",
+      "chinese": "已将 {{count}} 条交信的州信息更正为公园所在地",
+      "previous": "已将 {{count}} 条交信的州信息更正为公园所在地",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.parkStates.failed",
+      "english": "Could not check park states",
+      "chinese": "无法核对公园所在州",
+      "previous": "无法检查公园状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.button",
+      "english": "Check confirmations",
+      "chinese": "核对确认状态",
+      "previous": "检查确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.buttonTitle",
+      "english": "Download your whole history from LoTW, eQSL and QRZ, each one you have set up, and list the contacts holding a confirmation or LoTW upload mark that the service gives another contact, or none, for you to tick and take off",
+      "chinese": "从已配置的 LoTW、eQSL 和 QRZ 服务下载完整记录，列出确认状态或 LoTW 上传标记可能属于其他交信、或无法匹配到交信的日志，供你勾选清除。",
+      "previous": "从已配置的 LoTW、eQSL 和 QRZ 服务下载完整记录，列出确认状态或 LoTW 上传标记可能属于其他交信、或无法匹配到交信的日志，供你勾选清除。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.title",
+      "english": "Check confirmations",
+      "chinese": "核对确认状态",
+      "previous": "检查确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.intro",
+      "english": "Earlier versions of Nexus could put the confirmation of one contact, from LoTW, eQSL or QRZ, or the mark that LoTW holds its upload, on another contact with the same station, band and mode on the same UTC day. Check downloads your whole history once from each of these services you have set up, which can take several minutes for LoTW, and lists each contact holding a confirmation or upload mark that the service’s own records give another contact, or none. A line starts ticked only when those records decide it. Nothing changes until you press the button, nothing is uploaded, and no paper card is touched.",
+      "chinese": "旧版 Nexus 可能会把 LoTW、eQSL 或 QRZ 对某条交信的确认，或 LoTW 的上传标记，错误地记到同一 UTC 日期内电台、频段和模式相同的另一条交信上。点击“检查”会从已配置的各项服务下载完整历史记录；LoTW 可能需要几分钟。随后会列出服务记录显示确认或上传标记实际属于其他交信、或无法匹配到交信的记录。只有证据足以判定时，条目才会默认勾选。点击更改按钮前不会修改任何内容，不会上传数据，也不会更改纸质卡片的记录。",
+      "previous": "Nexus的早期版本可以确认一个联系人  LoTW , (中文).  eQSL  或  QRZ ,或者标记  LoTW  保持上传,在同一站、带和模式上的另一个联系人上传  UTC  日报. 请检查access-date=中的日期值 (帮助)  LoTW ,并列出持有确认或上传标记的每个联系人,即服务处自己的记录能提供另一个联系人,或者没有。 只有这些记录决定了才开始排行。 除非按下按钮,否则任何变化都不会改变,任何变化都不会上传,纸牌也不会被触碰.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.check",
+      "english": "Check",
+      "chinese": "检查",
+      "previous": "检查",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.checking",
+      "english": "Downloading your whole {{service}} history…",
+      "chinese": "正在下载 {{service}} 的全部历史记录……",
+      "previous": "正在下载全部{{service}}历史...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.notChecked",
+      "english": "Not checked: {{reason}}",
+      "chinese": "未能检查：{{reason}}",
+      "previous": "未选中 :{{reason}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.none",
+      "english": "LoTW’s records back every LoTW confirmation and upload mark this check can judge.",
+      "chinese": "本次能够判定的所有 LoTW 确认状态和上传标记，均与 LoTW 的记录一致。",
+      "previous": "LoTW 的记录支持所有可由此检查判定的 LoTW 确认状态和上传标记。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.noneService",
+      "english": "{{service}}’s records back every {{service}} confirmation this check can judge.",
+      "chinese": "本次能够判定的所有 {{service}} 确认状态，均与 {{service}} 的记录一致。",
+      "previous": "{{service}} 的记录支持所有可由此检查判定的 {{service}} 确认状态。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.change",
+      "english": "{{service}} ✓ → —",
+      "chinese": "{{service}} ✓ → —",
+      "previous": "{{service}}✓ → - -",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.changeUpload",
+      "english": "LoTW: on file → not uploaded",
+      "chinese": "LoTW：已上传 → 未上传",
+      "previous": "LoTW: 在文件中 ~ 未上传",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.why.moved",
+      "english": "{{service}}’s confirmation is your {{time}} contact’s",
+      "chinese": "{{service}} 的确认属于你在 {{time}} 的那条交信",
+      "previous": "{{service}} 的确认属于你在 {{time}} 的那条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.why.contradicted",
+      "english": "{{service}} holds this contact unconfirmed",
+      "chinese": "{{service}} 记录显示此交信尚未确认",
+      "previous": "{{service}} 记录显示此交信尚未确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.why.orphan",
+      "english": "{{service}} confirms a {{time}} QSO that is not in your log",
+      "chinese": "{{service}} 确认了一条时间为 {{time}}、但日志中没有的 QSO",
+      "previous": "{{service}} 确认了一条时间为 {{time}}、但日志中没有的 QSO",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.why.uploadMoved",
+      "english": "The upload LoTW holds is your {{time}} contact’s",
+      "chinese": "LoTW 中的上传记录对应的是你在 {{time}} 的那条交信",
+      "previous": "LoTW 中的上传记录对应的是你在 {{time}} 的那条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.why.uploadOrphan",
+      "english": "LoTW holds a {{time}} upload that is not in your log",
+      "chinese": "LoTW 中有一条 {{time}} 的上传记录，但本地日志中没有对应交信",
+      "previous": "LoTW持有{{time}}上传日志中没有的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.why.dateOnly",
+      "english": "no time of day",
+      "chinese": "未记录具体时间",
+      "previous": "无时间",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.dateOnly",
+      "english": "This contact, or one the check compares it with, has a date but no time of day, so {{service}}’s records cannot say which contact this belongs to. Tick it only if you are sure.",
+      "chinese": "此交信或与之比较的交信只有日期、没有具体时间，因此无法根据 {{service}} 的记录判断确认属于哪一条。只有确认需要更改时才勾选。",
+      "previous": "此交信或与之比较的交信只有日期、没有具体时间，因此无法根据 {{service}} 的记录判断确认属于哪一条。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.notReplayed",
+      "english": "Earlier versions could not have put this confirmation here by taking the wrong contact, so it came some other way: an import, an older call, or a paper card an older Nexus filed as LoTW. Tick it only if you are sure.",
+      "chinese": "旧版 Nexus 的错误匹配逻辑无法解释此确认的来源。它可能来自导入、此前使用的呼号，或旧版 Nexus 误记为 LoTW 确认的纸质卡片。只有确定需要更改时才勾选。",
+      "previous": "先前的版本不可能通过错误的接触将这个确认放在这里,所以出现了另一种方式:导入,旧的呼叫,或者旧的Nexus存档的纸卡.LoTW选中它,除非你确定。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.notReplayedEqsl",
+      "english": "Earlier versions could not have put this card here by taking the wrong contact, so it came some other way: an import, an older call, or a confirmation an older Nexus filed as eQSL. Tick it only if you are sure.",
+      "chinese": "旧版 Nexus 的错误匹配逻辑无法解释此卡片的来源。它可能来自导入、此前使用的呼号，或旧版 Nexus 误记为 eQSL 的确认。只有确定需要更改时才勾选。",
+      "previous": "旧版 Nexus 不可能因匹配错交信而写入此确认，因此它可能来自其他途径，例如导入、较早的程序版本，或旧版 Nexus 将确认记录成 eQSL。只有确认需要更改时才勾选。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.notReplayedQrz",
+      "english": "Earlier versions could not have put this confirmation here by taking the wrong contact, so it came some other way, such as an import or an older call. Tick it only if you are sure.",
+      "chinese": "旧版 Nexus 的错误匹配逻辑无法解释此确认的来源。它可能来自导入或此前使用的呼号等其他途径。只有确定需要更改时才勾选。",
+      "previous": "旧版 Nexus 不可能因匹配错交信而写入此确认，因此它可能来自其他途径，例如导入或较早的程序版本。只有确认需要更改时才勾选。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.uploadNotReplayed",
+      "english": "Earlier versions could not have marked this contact by taking the wrong one, so the mark came some other way, such as an import. Tick it only if you are sure.",
+      "chinese": "旧版 Nexus 不可能因匹配错交信而标记此记录，因此上传标记可能来自其他途径，例如导入。只有确认需要更改时才勾选。",
+      "previous": "旧版 Nexus 不可能因匹配错交信而标记此记录，因此上传标记可能来自其他途径，例如导入。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.tie",
+      "english": "{{service}}’s record is exactly as near your other contact as this one, so the check cannot tell which it belongs to. Tick it only if you are sure.",
+      "chinese": "{{service}} 的记录与这条交信及另一条交信的时间距离完全相同，因此无法判断它属于哪一条。只有确认需要更改时才勾选。",
+      "previous": "{{service}} 的记录与这条交信及另一条交信的时间距离完全相同，因此无法判断它属于哪一条。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.orphan",
+      "english": "No contact in your log is within 30 minutes of {{service}}’s record: the QSO may be missing from your log, or this contact’s time may be more than 30 minutes off. Tick it only if you are sure.",
+      "chinese": "日志中没有交信时间与 {{service}} 记录相差 30 分钟以内。可能是日志缺少该 QSO，也可能是此交信的时间误差超过 30 分钟。只有确认需要更改时才勾选。",
+      "previous": "日志中没有交信时间与 {{service}} 记录相差 30 分钟以内。可能是日志缺少该 QSO，也可能是此交信的时间误差超过 30 分钟。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.insideWindow",
+      "english": "{{service}}’s record is within 30 minutes of this contact too, so it may be this contact’s. Tick it only if you are sure.",
+      "chinese": "{{service}} 的记录与此交信时间相差也在 30 分钟以内，因此确认可能属于此交信。只有确认需要更改时才勾选。",
+      "previous": "{{service}} 的记录与此交信时间相差也在 30 分钟以内，因此确认可能属于此交信。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.insideWindowEqsl",
+      "english": "eQSL’s card is within 30 minutes of this contact too, and a card carries the time the other station logged, so it may be this contact’s. Tick it only if you are sure.",
+      "chinese": "eQSL 卡片上的时间与此交信相差也在 30 分钟以内；卡片记录的是对方电台填写的时间，因此确认可能属于此交信。只有确认需要更改时才勾选。",
+      "previous": "eQSL 卡片上的时间与此交信相差也在 30 分钟以内；卡片记录的是对方电台填写的时间，因此确认可能属于此交信。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unticked.notToTheMinute",
+      "english": "{{service}}’s unconfirmed record is near this contact but not on its minute, so it may be another QSO’s. Tick it only if you are sure.",
+      "chinese": "{{service}} 的未确认记录时间接近此交信，但分钟数不同，因此可能属于另一条 QSO。只有确认需要更改时才勾选。",
+      "previous": "{{service}} 的未确认记录时间接近此交信，但分钟数不同，因此可能属于另一条 QSO。只有确认需要更改时才勾选。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.badge.card",
+      "english": "paper card — keeps award credit",
+      "chinese": "纸质卡片——保留奖项认可",
+      "previous": "纸卡——保持授标信用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.badge.credit",
+      "english": "credit {{codes}} removed",
+      "chinese": "将移除 {{codes}} 的奖项认可",
+      "previous": "已移除 {{codes}} 奖项计分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.badge.submitted",
+      "english": "submitted credit {{codes}} removed",
+      "chinese": "将移除已提交的 {{codes}} 奖项申请标记",
+      "previous": "已移除已提交的 {{codes}} 奖项计分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.badge.owed",
+      "english": "never uploaded — goes in your next LoTW upload",
+      "chinese": "尚未上传——将在下次上传到 LoTW 时一并发送",
+      "previous": "尚未上传——将在下次上传到 LoTW 时一并发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.badge.owedTitle",
+      "english": "LoTW holds no upload of this contact. Once it is changed, Upload to LoTW sends it, and so does the automatic LoTW upload if you turned that on.",
+      "chinese": "LoTW 中没有此交信的上传记录。更正后，点击“上传到 LoTW”会发送此记录；如果已启用 LoTW 自动上传，也会自动发送。",
+      "previous": "LoTW 尚无此交信的上传记录。更改后，点击“上传到 LoTW”会发送此记录；如果已启用 LoTW 自动上传，自动上传也会发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.gains::one",
+      "english": "{{count}} contact gains the confirmation {{service}} holds for it.",
+      "chinese": "将为 {{count}} 条交信补上 {{service}} 中对应的确认状态。",
+      "previous": "{{count}} 条交信已补上 {{service}} 中对应的确认状态。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.gains::other",
+      "english": "{{count}} contacts gain the confirmation {{service}} holds for them.",
+      "chinese": "将为 {{count}} 条交信补上 {{service}} 中对应的确认状态。",
+      "previous": "{{count}} 条交信已补上 {{service}} 中对应的确认状态。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unreached::one",
+      "english": "{{count}} contact holds a {{service}} confirmation that {{service}} does not list within a day of it; this check leaves it alone.",
+      "chinese": "{{count}} 条交信带有 {{service}} 确认，但 {{service}} 在交信时间前后一天内没有列出对应记录；本次核对不会修改这些交信。",
+      "previous": "{{count}}联系人持有{{service}}证实:{{service}}不在其中的一天之内列出;此检查将它单独列出。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.unreached::other",
+      "english": "{{count}} contacts hold a {{service}} confirmation that {{service}} does not list within a day of them; this check leaves them alone.",
+      "chinese": "{{count}} 条交信带有 {{service}} 确认，但 {{service}} 在交信时间前后一天内没有列出对应记录；本次核对不会修改这些交信。",
+      "previous": "{{count}}联系人持有{{service}}证实:{{service}}不在其中的一天之内列出;此检查让他们单独进行。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.outOfScope::one",
+      "english": "{{count}} contact with a {{service}} confirmation was logged under another call than the one in Settings; this check leaves it alone.",
+      "chinese": "{{count}} 条带有 {{service}} 确认的交信，使用的本台呼号与设置中的呼号不同；本次核对不会修改这些交信。",
+      "previous": "{{count}}联系人{{service}}确定被记录在另一个呼叫中, 而不是设置中。 此检查会让它单独进行 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.outOfScope::other",
+      "english": "{{count}} contacts with a {{service}} confirmation were logged under another call than the one in Settings; this check leaves them alone.",
+      "chinese": "{{count}} 条带有 {{service}} 确认的交信，使用的本台呼号与设置中的呼号不同；本次核对不会修改这些交信。",
+      "previous": "{{count}}与 a 的联系{{service}}在Settings中,确认被记录在另一个呼叫下;这个检查让他们一个人。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.uploadsUnreached::one",
+      "english": "{{count}} contact marked as uploaded has no upload LoTW lists within a day of it; this check leaves it alone.",
+      "chinese": "{{count}} 条交信已标记为上传，但 LoTW 在交信时间前后一天内没有列出对应上传记录；本次核对不会修改这些交信。",
+      "previous": "{{count}}标记为上传的联系人没有上传LoTW列表在它的一天之内;此检查不包含它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.uploadsUnreached::other",
+      "english": "{{count}} contacts marked as uploaded have no upload LoTW lists within a day of them; this check leaves them alone.",
+      "chinese": "{{count}} 条交信已标记为上传，但 LoTW 在交信时间前后一天内没有列出对应上传记录；本次核对不会修改这些交信。",
+      "previous": "{{count}}标为上传的联系人没有上传LoTW在其中的一天之内列出清单;此检查将让他们单独进行。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.uploadsOutOfScope::one",
+      "english": "{{count}} contact marked as uploaded was logged under another call than the one in Settings; this check leaves it alone.",
+      "chinese": "{{count}} 条标记为已上传的交信，使用的本台呼号与设置中的呼号不同；本次核对不会修改这些交信。",
+      "previous": "{{count}}标记为上传的联系人被记录在另一个呼叫下,而不是设置中。 此检查会让它单独进行 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.uploadsOutOfScope::other",
+      "english": "{{count}} contacts marked as uploaded were logged under another call than the one in Settings; this check leaves them alone.",
+      "chinese": "{{count}} 条标记为已上传的交信，使用的本台呼号与设置中的呼号不同；本次核对不会修改这些交信。",
+      "previous": "{{count}}标记为上传的联系人被记录在另一个呼叫中而不是设置中。 此检查让他们单独进行 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.otherCalls::one",
+      "english": "{{count}} LoTW record is for a call your log holds no contact under, such as a club call on your LoTW account; this check leaves it alone.",
+      "chinese": "{{count}} 条 LoTW 记录使用的呼号未出现在本地交信日志中，例如 LoTW 账号下的俱乐部呼号；本次核对不会修改这些记录。",
+      "previous": "{{count}} LoTW记录是给一个电话,你的日志 没有任何联系,例如俱乐部呼叫你LoTW账户; 此检查不包含它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.otherCalls::other",
+      "english": "{{count}} LoTW records are for calls your log holds no contact under, such as a club call on your LoTW account; this check leaves them alone.",
+      "chinese": "{{count}} 条 LoTW 记录使用的呼号未出现在本地交信日志中，例如 LoTW 账号下的俱乐部呼号；本次核对不会修改这些记录。",
+      "previous": "{{count}} LoTW记录是给电话的,你的日志 没有任何联系,例如俱乐部呼叫你LoTW账户; 此检查让他们独处 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "logbook.confirmations.skipCheck",
+      "english": "Skip to Cancel and Check",
+      "chinese": "跳至“取消”和“检查”按钮",
+      "previous": "跳过到取消和检查",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.skipChange",
+      "english": "Skip to Cancel and Change",
+      "chinese": "跳至“取消”和“更改”按钮",
+      "previous": "跳过到取消和更改",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.apply::one",
+      "english": "Change {{count}} contact",
+      "chinese": "更改 {{count}} 条交信",
+      "previous": "更改 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.apply::other",
+      "english": "Change {{count}} contacts",
+      "chinese": "更改 {{count}} 条交信",
+      "previous": "更改 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.confirmations::one",
+      "english": "Took {{service}}’s confirmation off {{count}} contact.",
+      "chinese": "已从 {{count}} 条交信中移除 {{service}} 确认状态。",
+      "previous": "已从 {{count}} 条交信中移除 {{service}} 确认状态。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.confirmations::other",
+      "english": "Took {{service}}’s confirmation off {{count}} contacts.",
+      "chinese": "已从 {{count}} 条交信中移除 {{service}} 确认状态。",
+      "previous": "已从 {{count}} 条交信中移除 {{service}} 确认状态。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.uploads::one",
+      "english": "Marked {{count}} contact as not uploaded to LoTW.",
+      "chinese": "已将 {{count}} 条交信标记为尚未上传到 LoTW。",
+      "previous": "已将 {{count}} 条交信标记为尚未上传到 LoTW。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.uploads::other",
+      "english": "Marked {{count}} contacts as not uploaded to LoTW.",
+      "chinese": "已将 {{count}} 条交信标记为尚未上传到 LoTW。",
+      "previous": "已将 {{count}} 条交信标记为尚未上传到 LoTW。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.gained::one",
+      "english": "{{count}} contact gained the confirmation {{service}} holds for it.",
+      "chinese": "{{count}} 条交信已补上 {{service}} 中对应的确认状态。",
+      "previous": "{{count}} 条交信已补上 {{service}} 中对应的确认状态。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.gained::other",
+      "english": "{{count}} contacts gained the confirmation {{service}} holds for them.",
+      "chinese": "{{count}} 条交信已补上 {{service}} 中对应的确认状态。",
+      "previous": "{{count}} 条交信已补上 {{service}} 中对应的确认状态。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.skipped::one",
+      "english": "{{count}} ticked line was left alone: its contact changed after the check.",
+      "chinese": "已跳过 {{count}} 个勾选项：对应交信在检查后发生了变化。",
+      "previous": "{{count}}选中的行被单独保留: 检查后其联系人更改 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.skipped::other",
+      "english": "{{count}} ticked lines were left alone: their contacts changed after the check.",
+      "chinese": "已跳过 {{count}} 个勾选项：对应交信在检查后发生了变化。",
+      "previous": "{{count}}选中的行被留下: 检查后他们的联系人会更改 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.beforeFile",
+      "english": "The changed contacts, as they were, are in {{path}}. Logbook ▸ Import ADIF puts them back.",
+      "chinese": "更改前的交信记录已保存到 {{path}}。可通过“日志 → 导入 ADIF”恢复。",
+      "previous": "更改前的交信记录已保存到 {{path}}。可通过“日志 → 导入 ADIF”恢复。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.done.nothing",
+      "english": "Nothing changed.",
+      "chinese": "未更改任何内容。",
+      "previous": "什么都没有改变。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.failed",
+      "english": "Could not check confirmations",
+      "chinese": "无法核对确认状态",
+      "previous": "无法检查确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.confirmations.applyFailed",
+      "english": "Could not change the ticked contacts",
+      "chinese": "无法更改勾选的交信记录",
+      "previous": "无法更改选中的联系人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.pota.title",
+      "english": "Import a pota.app hunter/activator ADIF export — stamps park references onto your matching logged QSOs. Never creates or overwrites records.",
+      "chinese": "导入 pota.app 导出的追逐／激活活动 ADIF 日志，为本地匹配的交信记录添加公园参考编号。不会新建或覆盖交信记录。",
+      "previous": "导入 a pota.app 猎人/活动者  ADIF  导出 —— 在您的匹配记录上显示邮票园区引用 QSOs。从不创建或覆盖记录。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.pota.failed",
+      "english": "POTA import failed",
+      "chinese": "POTA 导入失败",
+      "previous": "POTA 导入失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.pota.stamped::one",
+      "english": "POTA: {{count}} QSO stamped with park refs",
+      "chinese": "POTA：已为 {{count}} 条 QSO 添加公园参考编号",
+      "previous": "POTA数字 :{{count}} QSO由公园参考器盖章",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.pota.stamped::other",
+      "english": "POTA: {{count}} QSOs stamped with park refs",
+      "chinese": "POTA：已为 {{count}} 条交信添加公园参考编号",
+      "previous": "POTA 数字 : {{count}} QSOs 由公园参考器盖章",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.pota.already",
+      "english": " · {{count}} already stamped",
+      "chinese": " · 其中 {{count}} 条已添加公园参考编号",
+      "previous": " · 其中 {{count}} 条已添加公园参考编号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.pota.unmatched",
+      "english": " · {{count}} had no matching QSO (not added)",
+      "chinese": " · {{count}} 条未匹配到日志中的 QSO（未添加）",
+      "previous": " · {{count}} 条未匹配到日志中的 QSO（未添加）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.fetchLotw.label",
+      "english": "Fetch LoTW",
+      "chinese": "获取 LoTW 数据",
+      "previous": "获取 LoTW 数据",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.fetchLotw.title",
+      "english": "Fetch confirmations directly from LoTW (no file download — uses the LoTW credentials saved in Settings ▸ Confirmations)",
+      "chinese": "直接从 LoTW 获取确认记录（无需下载文件；使用“设置 → 确认服务”中保存的 LoTW 凭据）",
+      "previous": "直接从 LoTW 获取确认记录（无需下载文件；使用“设置 → 确认服务”中保存的 LoTW 凭据）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.fetchLotw.failed",
+      "english": "LoTW fetch failed",
+      "chinese": "LoTW 获取失败",
+      "previous": "LoTW 获取失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.fetchLotw.done",
+      "english": "LoTW — {{confirmed}} newly confirmed, {{credited}} credited",
+      "chinese": "LoTW：新增确认 {{confirmed}} 条，新增奖项认可 {{credited}} 条",
+      "previous": "LoTW. . . . . . .{{confirmed}}新确认,{{credited}}贷记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.qrzSync.label",
+      "english": "Sync QRZ",
+      "chinese": "同步 QRZ",
+      "previous": "同步 QRZ",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.qrzSync.title",
+      "english": "Fetch your online QRZ Logbook and merge it here — QSOs logged elsewhere plus QRZ confirmation status (needs the QRZ Logbook API key in Settings ▸ Confirmations)",
+      "chinese": "获取 QRZ 在线日志并合并到本地，包括在其他地方记录的交信和 QRZ 确认状态（需要在“设置 → 确认服务”中配置 QRZ Logbook API 密钥）",
+      "previous": "获取在线  QRZ  日志并合并到此... QSOs 在别处登记  QRZ  确认状态( 需要  QRZ  设置 QQ确认中的日志 API 密钥",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.qrzSync.failed",
+      "english": "QRZ sync failed",
+      "chinese": "QRZ 同步失败",
+      "previous": "QRZ 同步失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.qrzSync.done::one",
+      "english": "QRZ sync — {{count}} new QSO, {{confirmed}} newly confirmed",
+      "chinese": "QRZ 同步完成：新增 {{count}} 条 QSO，新增确认 {{confirmed}} 条",
+      "previous": "QRZ同步 -{{count}}新设QSO, (中文).{{confirmed}}新确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.qrzSync.done::other",
+      "english": "QRZ sync — {{count}} new QSOs, {{confirmed}} newly confirmed",
+      "chinese": "QRZ 同步完成：新增 {{count}} 条交信，新增确认 {{confirmed}} 条",
+      "previous": "QRZ 同步完成：新增 {{count}} 条交信，新增确认 {{confirmed}} 条",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.from.label",
+      "english": "from",
+      "chinese": "从",
+      "previous": "从",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.from.title",
+      "english": "Export only QSOs on/after this UTC date (empty = from the beginning)",
+      "chinese": "仅导出此 UTC 日期当天及之后的交信（留空则从日志开头导出）",
+      "previous": "仅导出此 UTC 日期当天及之后的交信（留空则从日志开头导出）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.to.label",
+      "english": "to",
+      "chinese": "至",
+      "previous": "改为:",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.to.title",
+      "english": "Export only QSOs on/before this UTC date (empty = to the end)",
+      "chinese": "仅导出此 UTC 日期当天及之前的交信（留空则导出至日志末尾）",
+      "previous": "仅导出此 UTC 日期当天及之前的交信（留空则导出至日志末尾）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.rangeInvalid",
+      "english": "Enter the date range in UTC ({{date}}), or leave the boxes blank for the whole log.",
+      "chinese": "请按 UTC 输入有效日期范围（{{date}}）；留空则导出整个日志。",
+      "previous": "请按 UTC 输入有效日期范围（{{date}}）；留空则导出整个日志。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.adif.label",
+      "english": "Export ADIF",
+      "chinese": "导出 ADIF",
+      "previous": "导出 ADIF",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.adif.title",
+      "english": "Save the whole logbook as an ADIF file in your Downloads folder",
+      "chinese": "将整个交信日志保存为 ADIF 文件，存入“下载”文件夹",
+      "previous": "保存整个日志为ADIF下载文件夹中的文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.adif.titleRange",
+      "english": "Save the selected date range as an ADIF file in your Downloads folder",
+      "chinese": "将所选日期范围内的交信保存为 ADIF 文件，存入“下载”文件夹",
+      "previous": "将选定的日期范围另存为ADIF下载文件夹中的文件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.csv.label",
+      "english": "Export CSV",
+      "chinese": "导出 CSV",
+      "previous": "导出 CSV",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.csv.title",
+      "english": "Save the whole logbook as a CSV spreadsheet in your Downloads folder",
+      "chinese": "将整个交信日志保存为 CSV 表格，存入“下载”文件夹",
+      "previous": "在下载文件夹中将整个日志保存为 CSV 电子表格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.csv.titleRange",
+      "english": "Save the selected date range as a CSV spreadsheet in your Downloads folder",
+      "chinese": "将所选日期范围内的交信保存为 CSV 表格，存入“下载”文件夹",
+      "previous": "将选中的日期范围保存为 CSV 电子表格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.selected.label",
+      "english": "Export selected ({{count}})",
+      "chinese": "导出所选记录（{{count}}）",
+      "previous": "导出选中的( E){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.selected.title",
+      "english": "Save the contacts you picked as an ADIF file in your Downloads folder. Ctrl-click (⌘-click on a Mac) a row to pick it, Shift-click to pick a run of rows, Space picks the focused row, Esc clears.",
+      "chinese": "将所选交信保存为 ADIF 文件到“下载”文件夹。按住 Ctrl（Mac 上按住 ⌘）并点击行可选择单条记录；按住 Shift 并点击可选择连续多行；按 Space 选择焦点行；按 Esc 清除选择。",
+      "previous": "将所选交信保存为 ADIF 文件到“下载”文件夹。按住 Ctrl（Mac 上按住 ⌘）并点击行可选择单条记录；按住 Shift 并点击可选择连续多行；按 Space 选择焦点行；按 Esc 清除选择。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.selected.notLoaded",
+      "english": "Some of those rows are still loading. Try the Shift-click again in a moment.",
+      "chinese": "所选行中仍有记录正在加载，请稍后再按住 Shift 点击一次。",
+      "previous": "所选行中仍有记录正在加载，请稍后再按住 Shift 点击一次。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.nothing",
+      "english": "No contacts to export, so no file was written.",
+      "chinese": "没有可导出的交信记录，因此未生成文件。",
+      "previous": "没有要导出的联系人, 因此没有写入文件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.failed",
+      "english": "Export failed",
+      "chinese": "导出失败",
+      "previous": "导出失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.done::one",
+      "english": "Exported {{count}} QSO → {{path}}",
+      "chinese": "已导出 {{count}} 条 QSO → {{path}}",
+      "previous": "导出{{count}} QSO→{{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.done::other",
+      "english": "Exported {{count}} QSOs → {{path}}",
+      "chinese": "已导出 {{count}} 条交信 → {{path}}",
+      "previous": "导出 {{count}} QSOs → {{path}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.perOperator.label",
+      "english": "Export per operator",
+      "chinese": "按操作员分别导出",
+      "previous": "每个经营者的出口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.perOperator.title",
+      "english": "One ADIF per operator ({{operators}}) plus the combined log",
+      "chinese": "为每位操作员（{{operators}}）分别导出一个 ADIF 文件，并额外导出合并后的日志",
+      "previous": "为每位操作员（{{operators}}）分别导出一个 ADIF 文件，并额外导出合并后的日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.perOperator.done",
+      "english": "Exported {{count}} files → Downloads",
+      "chinese": "已导出 {{count}} 个文件 → 下载文件夹",
+      "previous": "导出{{count}}文件 – 下载",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.lacks.saving::one",
+      "english": "{{count}} recent change is not in the export: Nexus is still saving it to the logbook.",
+      "chinese": "有 {{count}} 项近期更改尚未包含在导出文件中：Nexus 仍在将其写入日志。",
+      "previous": "有 {{count}} 项近期更改尚未包含在导出文件中：Nexus 仍在将其写入日志。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.lacks.saving::other",
+      "english": "{{count}} recent changes are not in the export: Nexus is still saving them to the logbook.",
+      "chinese": "有 {{count}} 项近期更改尚未包含在导出文件中：Nexus 仍在将其写入日志。",
+      "previous": "有 {{count}} 项近期更改尚未包含在导出文件中：Nexus 仍在将其写入日志。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.lacks.held::one",
+      "english": "{{count}} change the logbook refused is not in the export. Nexus keeps it in memory for this session and asks about it when you quit.",
+      "chinese": "{{count}} 项更改未能写入日志，因此未包含在导出文件中。Nexus 会在本次运行期间将其暂存在内存中，并在退出时询问如何处理。",
+      "previous": "{{count}}更改拒绝的日志不在导出中 。 Nexus将它保存在这个会话的记忆中,并在你退出时询问这个问题.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.lacks.held::other",
+      "english": "{{count}} changes the logbook refused are not in the export. Nexus keeps them in memory for this session and asks about them when you quit.",
+      "chinese": "{{count}} 项更改未能写入日志，因此未包含在导出文件中。Nexus 会在本次运行期间将其暂存在内存中，并在退出时询问如何处理。",
+      "previous": "{{count}}更改拒绝的日志不在导出中 。 Nexus为这个会话保留它们,并在你退出时询问它们.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.label",
+      "english": "activation",
+      "chinese": "活动",
+      "previous": "活动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.title",
+      "english": "Pick a park-day to export as the file POTA asks for — one park, one UTC day, one callsign",
+      "chinese": "选择一个公园活动日，并按 POTA 要求导出文件：一个公园、一个 UTC 日期、一个呼号",
+      "previous": "选择一个公园活动日，并按 POTA 要求导出文件：一个公园、一个 UTC 日期、一个呼号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.none",
+      "english": "none",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.option::one",
+      "english": "{{activation}} · {{count}} QSO",
+      "chinese": "{{activation}} · {{count}} 条 QSO",
+      "previous": "{{activation}} · {{count}} 条 QSO",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.option::other",
+      "english": "{{activation}} · {{count}} QSOs",
+      "chinese": "{{activation}} · {{count}} 条交信",
+      "previous": "{{activation}} · {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.short",
+      "english": " · under {{min}}",
+      "chinese": " · 不足 {{min}} 条交信",
+      "previous": "· 下{{min}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.button",
+      "english": "Export activation",
+      "chinese": "导出活动日志",
+      "previous": "导出活动日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.export.activation.buttonTitle",
+      "english": "Save the selected activation as an ADIF named the way POTA asks. Ignores the date range — an activation is already one park on one UTC day",
+      "chinese": "将所选活动保存为 ADIF 文件，并按 POTA 要求命名。此操作会忽略日期范围，因为一次活动已限定为同一公园的一个 UTC 日期。",
+      "previous": "按 POTA 要求的格式，将所选活动保存为 ADIF 文件。此导出会忽略日期范围，因为一次活动已限定为同一公园的一个 UTC 日期。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.label",
+      "english": "Upload to LoTW",
+      "chinese": "上传至 LoTW",
+      "previous": "上传至 LoTW",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.labelCount",
+      "english": "Upload to LoTW ({{count}})",
+      "chinese": "上传至 LoTW（{{count}}）",
+      "previous": "上传到LoTW(单位:千美元){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.busy",
+      "english": "Uploading…",
+      "chinese": "正在上传…",
+      "previous": "正在上传…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.title",
+      "english": "Sign + upload your un-uploaded QSOs to LoTW via TQSL (set your Station Location in Settings)",
+      "chinese": "通过 TQSL 为尚未上传的交信签名，并上传至 LoTW（请先在“设置”中配置电台位置）",
+      "previous": "签名 + 上传您的未加载 QSOs 改为:  LoTW  通过  TQSL  (设置您的站位设置)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.timeless::one",
+      "english": " — {{count}} imported QSO has no time of day and can never match at LoTW, so they are not sent",
+      "chinese": "——导入的 {{count}} 条 QSO 没有具体时间，无法与 LoTW 匹配，因此不会上传",
+      "previous": "——导入的 {{count}} 条 QSO 没有具体时间，无法与 LoTW 匹配，因此不会上传",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.timeless::other",
+      "english": " — {{count}} imported QSOs have no time of day and can never match at LoTW, so they are not sent",
+      "chinese": " ——导入的 {{count}} 条交信没有具体时间，无法与 LoTW 匹配，因此不会上传",
+      "previous": ". . . . . . . {{count}} 进口 QSOs 没有白天的时间 永远无法匹配  LoTW 故他们不被派遣,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.nothingNew",
+      "english": "Nothing new to upload to LoTW",
+      "chinese": "没有需要上传到 LoTW 的新交信",
+      "previous": "没有新内容可以上传到LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.pending::one",
+      "english": "Signed + uploaded {{count}} QSO to LoTW — they'll confirm as partners upload",
+      "chinese": "已对 {{count}} 条 QSO 签名并上传到 LoTW；待对方上传后即可完成确认",
+      "previous": "已对 {{count}} 条 QSO 签名并上传到 LoTW；待对方上传后即可完成确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.pending::other",
+      "english": "Signed + uploaded {{count}} QSOs to LoTW — they'll confirm as partners upload",
+      "chinese": "已对 {{count}} 条交信签名并上传到 LoTW；待对方电台也上传后，即可获得确认。",
+      "previous": "已对 {{count}} 条交信签名并上传到 LoTW；待对方电台也上传后，即可获得确认。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.duplicate::one",
+      "english": "{{count}} QSO were already on LoTW",
+      "chinese": "{{count}} 条 QSO 已在 LoTW 中",
+      "previous": "{{count}} QSO已经上线了LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.duplicate::other",
+      "english": "{{count}} QSOs were already on LoTW",
+      "chinese": "{{count}} 条交信已在 LoTW 中",
+      "previous": "{{count}} QSOs 已经上线了  LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.retry",
+      "english": "LoTW unreachable — try again shortly",
+      "chinese": "无法连接 LoTW，请稍后重试",
+      "previous": "LoTW无法到达——很快再试一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.authFailed",
+      "english": "LoTW rejected your certificate/Station Location",
+      "chinese": "LoTW 拒绝了你的证书或电台位置信息",
+      "previous": "LoTW拒绝您的证书/ 站点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.authFailedDetail",
+      "english": "LoTW rejected your certificate/Station Location: {{detail}}",
+      "chinese": "LoTW 拒绝了你的证书或电台位置信息：{{detail}}",
+      "previous": "LoTW拒绝您的证书/ 站点 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.failed",
+      "english": "LoTW upload failed",
+      "chinese": "LoTW 上传失败",
+      "previous": "LoTW 上传失败",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.upload.failedDetail",
+      "english": "LoTW upload failed: {{detail}}",
+      "chinese": "上传至 LoTW 失败：{{detail}}",
+      "previous": "LoTW上传失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.skipped.changed::one",
+      "english": "{{count}} QSO changed while TQSL was signing this upload, so Nexus did not mark it as uploaded.",
+      "chinese": "TQSL 为本次上传签名期间，{{count}} 条 QSO 发生了变化，因此 Nexus 未将其标记为已上传。",
+      "previous": "{{count}} QSO TQSL 正在签名此上传时更改, 因此 Nexus 没有将其标记为上传 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.skipped.changed::other",
+      "english": "{{count}} QSOs changed while TQSL was signing this upload, so Nexus did not mark them as uploaded.",
+      "chinese": "TQSL 为本次上传签名期间，{{count}} 条交信发生了变化，因此 Nexus 未将其标记为已上传。",
+      "previous": "{{count}} QSOs 更改时  TQSL  所以Nexus没有把它们标记为上传",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.skipped.edited::one",
+      "english": " {{count}} was edited and is offered again with the next upload.",
+      "chinese": " {{count}} 条记录已被编辑，将在下次上传时再次列入待上传列表。",
+      "previous": "{{count}}已编辑,并在下一次上传时再次提供。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.skipped.edited::other",
+      "english": " {{count}} were edited and are offered again with the next upload.",
+      "chinese": " {{count}} 条记录已被编辑，将在下次上传时再次列入待上传列表。",
+      "previous": "{{count}}已编辑,并再次提供下一次上传。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.skipped.deleted::one",
+      "english": " {{count}} was deleted from the log.",
+      "chinese": " {{count}} 条记录已从日志中删除。",
+      "previous": "{{count}}从日志中删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.lotw.skipped.deleted::other",
+      "english": " {{count}} were deleted from the log.",
+      "chinese": " {{count}} 条记录已从日志中删除。",
+      "previous": "{{count}}从日志中删除。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.label",
+      "english": "Mark on LoTW",
+      "chinese": "标记已在 LoTW 上传",
+      "previous": "标记LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.title",
+      "english": "Already have these on LoTW (uploaded via another tool)? Mark them so Nexus stops counting them as needing upload.",
+      "chinese": "这些记录已通过其他工具上传到 LoTW？将其标记为已上传后，Nexus 就不会再把它们计入待上传数量。",
+      "previous": "这些记录已通过其他工具上传到 LoTW？将其标记为已上传后，Nexus 就不会再把它们计入待上传数量。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.aria",
+      "english": "Mark as already on LoTW",
+      "chinese": "标记为已在 LoTW 上传",
+      "previous": "标记为已经LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.heading::one",
+      "english": "Mark {{formatted}} QSO as already on LoTW?",
+      "chinese": "要将 {{formatted}} 条 QSO 标记为已在 LoTW 上传吗？",
+      "previous": "标记{{formatted}} QSO已经LoTW? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.heading::other",
+      "english": "Mark {{formatted}} QSOs as already on LoTW?",
+      "chinese": "要将 {{formatted}} 条交信标记为已在 LoTW 上传吗？",
+      "previous": "标记 {{formatted}} QSOs 已经  LoTW ? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.body::one",
+      "english": "Use this if you imported a log you'd already uploaded to LoTW another way (Ham2K Polo, TQSL…). It marks the {{formatted}} un-uploaded QSO as already on LoTW, so the <b>Upload to LoTW</b> count stops offering to re-send them. It only updates Nexus's own record — nothing is sent, and your LoTW account and log are untouched. New QSOs you make later still upload normally.",
+      "chinese": "如果导入的日志已通过其他工具（如 Ham2K Polo、TQSL）上传到 LoTW，可使用此功能。它会将 {{formatted}} 条待上传 QSO 标记为已在 LoTW 上传，<b>上传到 LoTW</b>的待上传数量也会相应减少。此操作只更新 Nexus 的本地标记，不会发送数据，也不会更改 LoTW 账号或在线日志。之后新增的交信仍会正常上传。",
+      "previous": "如果您导入了您已经上传到的日志, 请使用此选项  LoTW  另一种方式(Ham2K Polo,  TQSL . (......) (中文(简体) ). 它标志着 {{formatted}} 未装入  QSO  已经  LoTW ,所以请 <b>上传到  LoTW </b> 停止提供 重新发送。 它只更新了Nexus自己的记录——什么也没有寄出去,还有你  LoTW  账户和日志没有被更改。 新设 QSOs 之后仍然正常上传。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.body::other",
+      "english": "Use this if you imported a log you'd already uploaded to LoTW another way (Ham2K Polo, TQSL…). It marks the {{formatted}} un-uploaded QSOs as already on LoTW, so the <b>Upload to LoTW</b> count stops offering to re-send them. It only updates Nexus's own record — nothing is sent, and your LoTW account and log are untouched. New QSOs you make later still upload normally.",
+      "chinese": "如果导入的日志已通过其他工具（如 Ham2K Polo、TQSL）上传到 LoTW，可使用此功能。它会将 {{formatted}} 条待上传交信标记为已在 LoTW 上传，<b>上传到 LoTW</b>的待上传数量也会相应减少。此操作只更新 Nexus 的本地标记，不会发送数据，也不会更改 LoTW 账号或在线日志。之后新增的交信仍会正常上传。",
+      "previous": "如果您导入了您已经上传到的日志, 请使用此选项  LoTW  另一种方式(Ham2K Polo,  TQSL . (......) (中文(简体) ). 它标志着 {{formatted}} 未装入 QSOs 已经  LoTW ,所以请 <b>上传到  LoTW </b> 停止提供 重新发送。 它只更新了Nexus自己的记录——什么也没有寄出去,还有你  LoTW  账户和日志没有被更改。 新设 QSOs 之后仍然正常上传。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "logbook.markLotw.confirm",
+      "english": "Mark {{formatted}} as on LoTW",
+      "chinese": "将 {{formatted}} 条标记为已在 LoTW 上传",
+      "previous": "标记{{formatted}}至 时LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.failed",
+      "english": "Could not update LoTW state",
+      "chinese": "无法更新 LoTW 上传状态",
+      "previous": "无法更新LoTW状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.done::one",
+      "english": "Marked {{formatted}} QSO as already on LoTW",
+      "chinese": "已将 {{formatted}} 条 QSO 标记为已在 LoTW 上传",
+      "previous": "标记{{formatted}} QSO已经LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.done::other",
+      "english": "Marked {{formatted}} QSOs as already on LoTW",
+      "chinese": "已将 {{formatted}} 条交信标记为已在 LoTW 上传",
+      "previous": "标记 {{formatted}} QSOs 已经  LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.markLotw.nothing",
+      "english": "Nothing to mark",
+      "chinese": "没有需要标记的记录",
+      "previous": "没什么好标注的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.label",
+      "english": "Purge log",
+      "chinese": "清空日志",
+      "previous": "清除日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.title",
+      "english": "Delete every contact in the local logbook (irreversible)",
+      "chinese": "删除本地日志中的全部交信记录（无法撤销）",
+      "previous": "删除本地日志中的每个联系人( 不可逆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.aria",
+      "english": "Purge logbook",
+      "chinese": "清空交信日志",
+      "previous": "清理日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.heading",
+      "english": "Purge the entire logbook?",
+      "chinese": "要清空整个交信日志吗？",
+      "previous": "清理整个日志?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.irreversible",
+      "english": "Irreversible",
+      "chinese": "无法撤销",
+      "previous": "不可逆转",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.warn::one",
+      "english": "This permanently deletes <b>all {{count}} contact</b> from your local logbook and rewrites the ADIF file to empty. It does <b>not</b> remove anything you've already uploaded to LoTW, QRZ, eQSL, or ClubLog. There is no undo — export an ADIF backup first if you might want it.",
+      "chinese": "这会从本地日志中永久删除 <b>全部 {{count}} 条交信记录</b>，并将 ADIF 文件清空。此操作<b>不会</b>删除已上传到 LoTW、QRZ、eQSL 或 ClubLog 的内容，且无法撤销。若之后可能需要这些记录，请先导出 ADIF 备份。",
+      "previous": "这会从本地日志中永久删除 <b>全部 {{count}} 条交信记录</b>，并将 ADIF 文件清空。此操作<b>不会</b>删除已上传到 LoTW、QRZ、eQSL 或 ClubLog 的内容，且无法撤销。若之后可能需要这些记录，请先导出 ADIF 备份。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.warn::other",
+      "english": "This permanently deletes <b>all {{count}} contacts</b> from your local logbook and rewrites the ADIF file to empty. It does <b>not</b> remove anything you've already uploaded to LoTW, QRZ, eQSL, or ClubLog. There is no undo — export an ADIF backup first if you might want it.",
+      "chinese": "这会从本地日志中永久删除 <b>全部 {{count}} 条交信记录</b>，并将 ADIF 文件清空。此操作<b>不会</b>删除已上传到 LoTW、QRZ、eQSL 或 ClubLog 的内容，且无法撤销。若之后可能需要这些记录，请先导出 ADIF 备份。",
+      "previous": "这会从本地日志中永久删除 <b>全部 {{count}} 条交信记录</b>，并将 ADIF 文件清空。此操作<b>不会</b>删除已上传到 LoTW、QRZ、eQSL 或 ClubLog 的内容，且无法撤销。若之后可能需要这些记录，请先导出 ADIF 备份。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.syncWarn",
+      "english": "It also resets your <b>LoTW and eQSL sync position</b>, so the next sync re-downloads your whole confirmation history instead of only recent matches. That is what brings your confirmations back after a purge — but it takes considerably longer than a routine sync, so give it time to finish.",
+      "chinese": "这还会重置 <b>LoTW 和 eQSL 的同步位置</b>，所以下次同步会重新下载完整的确认历史，而不只是最近的匹配记录。这样可以在清空日志后恢复确认信息，但耗时会比日常同步长很多，请耐心等待完成。",
+      "previous": "这还会重置 <b>LoTW 和 eQSL 的同步位置</b>，所以下次同步会重新下载完整的确认历史，而不只是最近的匹配记录。这样可以在清空日志后恢复确认信息，但耗时会比日常同步长很多，请耐心等待完成。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.typeWord",
+      "english": "Type <b>{{word}}</b> to confirm",
+      "chinese": "输入 <b>{{word}}</b> 以确认",
+      "previous": "输入 <b>{{word}}</b> 以确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "logbook.purge.busy",
+      "english": "Purging…",
+      "chinese": "正在清空……",
+      "previous": "清扫...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.confirm::one",
+      "english": "Purge {{count}} contact",
+      "chinese": "清空 {{count}} 条交信",
+      "previous": "清空 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.confirm::other",
+      "english": "Purge {{count}} contacts",
+      "chinese": "清空 {{count}} 条交信",
+      "previous": "清空 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.failed",
+      "english": "Could not purge the log",
+      "chinese": "无法清空交信日志",
+      "previous": "无法清除日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.done::one",
+      "english": "Purged {{count}} contact from the log",
+      "chinese": "已从日志中清空 {{count}} 条交信",
+      "previous": "已从日志中清空 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.purge.done::other",
+      "english": "Purged {{count}} contacts from the log",
+      "chinese": "已从日志中清空 {{count}} 条交信",
+      "previous": "已从日志中清空 {{count}} 条交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.form.open",
+      "english": "Log QSO",
+      "chinese": "记录 QSO",
+      "previous": "记录 QSO",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.form.close",
+      "english": "Close",
+      "chinese": "关闭日志表单",
+      "previous": "关闭日志表单",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "JTDXMessageBox",
+          "chinese": "关闭"
+        }
+      ]
+    },
+    {
+      "id": "logbook.field.call.label",
+      "english": "Call",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "logbook.field.qrz.title",
+      "english": "Look up name + grid on QRZ.com",
+      "chinese": "在 QRZ.com 查询姓名和网格定位",
+      "previous": "在 QRZ.com 查询姓名和网格定位",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.grid.label",
+      "english": "Grid",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        }
+      ]
+    },
+    {
+      "id": "logbook.field.band.label",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "logbook.field.freq.label",
+      "english": "Freq (MHz)",
+      "chinese": "频率 (MHz)",
+      "previous": "频率 (MHz)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.mode.label",
+      "english": "Mode",
+      "chinese": "模式",
+      "previous": "模式",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FrequencyList_v2_101",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "FrequencyList_v2::impl",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Modes",
+          "chinese": "模式"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "模式"
+        }
+      ]
+    },
+    {
+      "id": "logbook.field.rstSent.label",
+      "english": "RST Sent",
+      "chinese": "发送 RST",
+      "previous": "发送 RST",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.rstRcvd.label",
+      "english": "RST Rcvd",
+      "chinese": "接收 RST",
+      "previous": "接收 RST",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.date.label",
+      "english": "Date (UTC)",
+      "chinese": "日期 (UTC)",
+      "previous": "日期 (UTC)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.time.label",
+      "english": "Time (UTC)",
+      "chinese": "时间 (UTC)",
+      "previous": "时间 (UTC)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.end.label",
+      "english": "End (UTC)",
+      "chinese": "结束时间 (UTC)",
+      "previous": "结束时间 (UTC)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.end.title",
+      "english": "When the contact ENDED (ADIF TIME_OFF), as a 24-hour UTC time on the date of the contact. A time earlier than the start means it ran past midnight. Blank leaves the stored end time alone — it cannot be cleared here.",
+      "chinese": "交信结束时间（ADIF TIME_OFF）：填写交信日期对应的 24 小时制 UTC 时间。若结束时间早于开始时间，表示交信持续到了午夜之后。留空会保留已保存的结束时间，不能在此处清除。",
+      "previous": "交信结束时间（ADIF TIME_OFF）：填写交信日期对应的 24 小时制 UTC 时间。若结束时间早于开始时间，表示交信持续到了午夜之后。留空会保留已保存的结束时间，不能在此处清除。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.when.title",
+      "english": "When the contact actually happened, in UTC. Leave blank to stamp now.",
+      "chinese": "填写交信实际发生的 UTC 时间。留空则使用当前时间。",
+      "previous": "填写交信实际发生的 UTC 时间。留空则使用当前时间。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.state.label",
+      "english": "State",
+      "chinese": "州",
+      "previous": "州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.state.title",
+      "english": "US state — drives Worked All States. A hand-logged contact has no decode to derive it from.",
+      "chinese": "美国州信息，用于 Worked All States（WAS）奖项统计。手动记录的交信没有解码信息可供自动识别州，因此需要在此填写。",
+      "previous": "美国州信息，用于 Worked All States（WAS）奖项统计。手动记录的交信没有解码信息可供自动识别州，因此需要在此填写。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.txPower.label",
+      "english": "TX power (W)",
+      "chinese": "发射功率 (W)",
+      "previous": "发射功率 (W)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.parkTheirs.label",
+      "english": "Park (worked)",
+      "chinese": "公园（对方）",
+      "previous": "公园（对方）",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "logbook.field.parkTheirs.title",
+      "english": "POTA reference of the park the station you worked was activating (ADIF SIG_INFO). Defaults to POTA.",
+      "chinese": "本次交信对应的对方电台 POTA 活动参考编号（ADIF SIG_INFO 字段）。默认活动类型为 POTA。",
+      "previous": "本次交信对应的对方电台 POTA 活动参考编号（ADIF SIG_INFO 字段）。默认活动类型为 POTA。",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

@@ -1,0 +1,1700 @@
+{
+  "batch": 24,
+  "range": [
+    4601,
+    4800
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 163,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 5,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/components/SetupHealth.tsx",
+    "crates/tempo-app/src/settings.rs"
+  ],
+  "rows": [
+    {
+      "id": "settings.rigControl.serialHandshake.hint",
+      "english": "Tells Nexus what your cable actually does, instead of letting it guess. Leave it on Auto unless you have a rig that keys at launch — Auto changes nothing about how your station works today. If you change it and CAT stops working, put it back on Auto: on some rigs Hamlib quietly refuses the setting and then answers without ever having opened the radio, so you get a CAT light and a rig that ignores you.",
+      "chinese": "明确告诉 Nexus 接口线采用哪种握手方式，避免猜测。除非遇到程序启动后电台自行发射，否则请保持自动；自动不会改变现有操作方式。如果更改后 CAT 失效，请改回自动：部分电台的 Hamlib 后端会静默拒绝设置，在实际未打开电台连接的情况下仍返回响应，导致 CAT 指示正常，但电台不听指令。",
+      "previous": "告诉Nexus你的电缆是做什么的 而不是让它猜到 除非你有一台在发射时按键的钻机——汽车不会改变你的车站今天的工作方式。 如果你改变了它CAT停止工作,把它放回自动: 在一些钻机上,Hamlib悄悄地拒绝设定,然后在从未打开收音机的情况下回答,所以你得到一个CAT轻而易举 轻而易举",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttLineState.label",
+      "english": "Keying line at startup",
+      "chinese": "启动时的键控线状态",
+      "previous": "启动时键行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttLineState.auto",
+      "english": "Auto (recommended)",
+      "chinese": "自动（推荐）",
+      "previous": "自动( 建议)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttLineState.untouched",
+      "english": "Never touch it",
+      "chinese": "不改变状态",
+      "previous": "别碰它",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttLineState.low",
+      "english": "Hold it low",
+      "chinese": "保持低电平",
+      "previous": "保持低调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttLineState.high",
+      "english": "Hold it high",
+      "chinese": "保持高电平",
+      "previous": "举高点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.pttLineState.hint",
+      "english": "For the one fault this exists to fix: a rig that keys at launch, before you have touched anything. Leave it on Auto unless that is happening to you — Auto changes nothing about how your station works today. If you change it and CAT stops working, put it back on Auto. Only you can see whether the rig unkeys; nobody can test this from our end, so treat it as something to try on a rig you are watching.",
+      "chinese": "此项专用于排查程序一启动、电台就自行发射的问题。没有遇到该问题时，请保持自动，沿用现有操作方式。若更改后 CAT 失效，请改回自动。只有现场观察电台，才能确认它是否退出发射；开发方无法远程替你验证，请在能观察设备状态时尝试。",
+      "previous": "唯一的缺陷是它可以修复: 在你触摸到任何东西之前,一个在发射时按键的钻机。 除非这发生在你身上,否则就放在Auto上——Auto不会改变你今天的车站工作方式。 如果你改变了它CAT停止工作,把它放回汽车。 只有你才能看清钻机是否未开关, 没有人能从我们这边测试, 所以把它当作一个在你们正在观察的钻机上尝试的东西。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.tunePower.label",
+      "english": "Tune power (%)",
+      "chinese": "调谐功率（%）",
+      "previous": "电源(%)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.tunePower.hint",
+      "english": "The power a tune-up keys at — leave it empty and Nexus never touches your power, which is what it does today. It can only turn the rig DOWN, never up: it keys at whichever is lower, this or the power you are already running, so 50 % here while you run 25 % still tunes at 25 %. On a 100 W rig, 10 % is about 10 W — enough for an antenna tuner, kind to a loop.",
+      "chinese": "调谐时使用的功率。留空时 Nexus 不调整功率，沿用现有行为。它只会降低功率，不会提高：按此值与当前功率中的较低者发射。例如当前为 25%，此处填 50%，仍按 25% 调谐。100 瓦电台的 10% 约为 10 瓦，通常足以触发天调，也可减轻环形天线的负担。",
+      "previous": "一个调谐键的力量——让它空空而Nexus从不触及你的力量,这就是它今天所做的. 它只能让钻机向下倾斜,永远不要向上: 它按键在哪个更低,这个或你已经运行的电源, 所以这里有50%,而你运行的25%仍然按25%。 在100瓦的钻机上,10%大约是10瓦——足够一个天线调谐器,对一个环来说是善意的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.tunePower.flexHint",
+      "english": "With the Flex native client, Tune is the radio's own carrier at the tune power set in SmartSDR ({{pct}} % now). Nexus writes no power for it, so this setting does not apply there.",
+      "chinese": "使用 Flex 原生客户端时，调谐由电台自身发出载波，功率采用 SmartSDR 中的调谐功率（当前 {{pct}}%）。Nexus 不写入功率，因此此设置不适用于该方式。",
+      "previous": "与Flex本地客户端,Tune是电台在SmartSDR(SmartSDR)的调制动力装置(英语:SmartSDR)的自身载体.{{pct}}现在%). Nexus 写入它没有权力, 因此此设置并不适用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.digital.tunePower.flexHintNoValue",
+      "english": "With the Flex native client, Tune is the radio's own carrier at the tune power set in SmartSDR. Nexus writes no power for it, so this setting does not apply there.",
+      "chinese": "使用 Flex 原生客户端时，调谐由电台自身发出载波，功率采用 SmartSDR 中的调谐功率。Nexus 不写入功率，因此此设置不适用于该方式。",
+      "previous": "与Flex本地客户端,Tune是电台在SmartSDR的调制动力装置上的自带载体. Nexus 写入它没有权力, 因此此设置并不适用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigctldPort.label",
+      "english": "rigctld TCP Port",
+      "chinese": "rigctld TCP 端口",
+      "previous": "刚性 TCP 端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.rigctldPort.hint",
+      "english": "Port Nexus launches rigctld on.",
+      "chinese": "Nexus 启动 rigctld 时使用的端口。",
+      "previous": "Nexus港的发射要紧",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.plainSsb.label",
+      "english": "Data modes use plain SSB",
+      "chinese": "数据模式使用普通 SSB",
+      "previous": "使用普通 SSB 的数据模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.plainSsb.hint",
+      "english": "<b>Leave this off unless you know you need it.</b> Nexus normally puts the radio in its DATA submode (DATA-U / USB-D / PKTUSB) for FT8, FT4, RTTY-AFSK and SSTV, because on most rigs that is the only mode where the USB codec reaches the transmitter. Turn this on and Nexus commands plain <b>USB/LSB</b> for those modes instead, and stays there — through band changes and when you call a station. Correct if your transmit audio goes in the <b>microphone</b> path, as with an interface wired to the mic jack (some RIGblaster models) — or if you simply prefer plain USB to the DATA submode (for its wider receive passband, say) and your rig is set to send its USB-codec audio in SSB, which on many modern rigs (FT-991A, IC-7300 and the like) is a single menu item. Either way the rig has to put the audio you're feeding onto the air in plain SSB: where it does not — the codec feeds only the data port and nothing carries in SSB — plain SSB takes audio from the mic and the radio transmits <b>no RF at all</b>, a red TX light and nothing on the air. <b>Per radio</b>, since it depends on how that rig is cabled and set. True FSK RTTY is unaffected — it keeps the rig's own RTTY mode.",
+      "chinese": "<b>除非明确需要，否则请保持关闭。</b>Nexus 通常为 FT8、FT4、RTTY-AFSK 和 SSTV 选择电台的 DATA 子模式（DATA-U／USB-D／PKTUSB），因为多数电台只有在该模式下才会将 USB 音频送入发射机。开启后，这些模式改用普通 <b>USB/LSB</b>，切换频段或呼叫电台时也保持不变。如果发射音频通过<b>话筒</b>通道输入，例如接在话筒插座上的部分 RIGblaster 接口，则适合开启。若偏好普通 USB 而非 DATA 子模式，例如为了更宽的接收通带，也可开启，但必须先将电台设为在 SSB 下发送 USB 音频；FT-991A、IC-7300 等现代电台通常可用一个菜单项设置。无论哪种情况，普通 SSB 下都必须能将所输入的音频送入发射。如果 USB 音频只进入数据端口，而 SSB 仍取话筒音频，则会出现 TX 灯亮却<b>完全没有射频输出</b>的情况。<b>按电台分别设置</b>，取决于接线和设备设置。真正的 FSK RTTY 不受影响，仍使用电台自身的 RTTY 模式。",
+      "previous": "<b>离开这个,除非你知道你需要它。</b> Nexus通常将收音机放在其DATA子模组(DATA-)中. 吴 / USB - D (英语). / (PKTUSB)用于: FT8, (中文). FT4, (中文). RTTY-AFSK 和 (韩语) SSTV,因为在大多数钻机上,这是USB编码器到达发射机的唯一模式. 打开, Nexus 命令普通 <b>USB 美国/当地雇员</b> 换成这些模式,然后呆在那里——通过乐队的改变,当您调用一个站。 正确,如果您的传输音频进入 <b>麦克风</b> 路径,就像连接到麦克杰克(一些RIGblaster模型)的接口一样——或者,如果你简单地偏爱简单的USB而不是DATA子模具(因为其更广泛的接收密码带,比如),而你的钻机被设定在SSB中发送其USB编码音频,在许多现代钻机(FT-991A,IC-7300等)上是一个单一的菜单项. 无论哪种方式,钻机都必须将你输入的音频放入平原SSB的空气中:在它不输入的地方——解码器只输入数据端口,在SSB中没有任何载体——平原SSB从麦克和无线电传输中接收音频. <b>完全没有RF</b>红色的TX灯光 和没有播出。 <b>每台无线电</b>因为这取决于钻机的电缆和布置方式 真实的FSK RTTY 不受影响——它保留了钻机的自有设备 RTTY 模式。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.sstvHoldData.label",
+      "english": "Hold the data mode while SSTV is receiving",
+      "chinese": "SSTV 接收期间保持数据模式",
+      "previous": "保持数据模式时SSTV正在接收",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.sstvHoldData.hint",
+      "english": "Keeps this radio in the <b>data</b> submode for the whole time the SSTV receiver is running, instead of only while a picture is queued or going out — FM-D / DATA-FM on an FM channel, and USB-D / LSB-D on HF. Off by default, which is what Nexus does today: it commands the data submode around a send and puts the radio back in plain FM or SSB in between, so a rig parked on an SSTV calling channel keeps dropping out of the data mode. That revert is deliberate — an SSTV send once keyed a data mode into an FM repeater input — but it is the wrong answer if you sit on an SSTV calling channel for the evening. <b>Stop the receiver before you go back to voice.</b> The receiver keeps running after you leave the SSTV screen, and while it runs this radio is held in the data submode, where transmit audio comes from the data port and your microphone modulates nothing. <b>Per radio</b>, since it depends on how that rig is cabled and what you use it for.",
+      "chinese": "SSTV 接收器运行的整个期间，都让这台电台保持在<b>数据</b>子模式，而非仅在图片排队或发送时使用。FM 信道采用 FM-D／DATA-FM，短波采用 USB-D／LSB-D。默认关闭，沿用 Nexus 现有行为：发送时切入数据子模式，两次发送之间恢复普通 FM 或 SSB，因此停留在 SSTV 呼叫信道时会反复退出数据模式。主动恢复是为了避免曾经出现的情况：SSTV 发送使调频中继台输入频率切入数据模式。但若整晚守听 SSTV 呼叫信道，这种恢复就不合适。<b>返回话音操作前，请先停止接收器。</b>离开 SSTV 页面后接收器仍会运行，电台也会保持数据子模式，此时发射音频来自数据端口，话筒无法产生调制。<b>按电台分别设置</b>，取决于接线和用途。",
+      "previous": "将这个收音机保存在<b>数据</b>整个时间的子模式SSTV接收器正在运行,而不是仅在一个图片排队或外出时——FM-D / DATA-FM在一个FM频道上,而USB-D / LSB-D在HF上. 默认关闭,即Nexus今天所做的:它命令数据子模组绕着一个发送器,并将收音机放回Plain FM或SSB之间,所以一个平台停放在一个SSTV调用频道继续退出数据模式。 这种倒退是蓄意的——一种SSTV一次按键将数据模式输入到调频中继器输入中——但如果坐在一个SSTV晚上呼叫频道<b>在你回到声音之前 停止接收器</b>你离开后,接收器继续运行SSTV屏幕,当它运行时,这个收音机被保存在数据子模版中,其中传输音频来自数据端口,而您的麦克风则没有调制。<b>每台无线电</b>取决于那台钻机是怎样铺设的 以及你用来做什么的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomNative.label",
+      "english": "Native Icom CI-V (early access)",
+      "chinese": "原生 Icom CI-V（抢先体验）",
+      "previous": "本地 Icom CI-V( 早期访问)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.icomNative.hint",
+      "english": "Nexus drives this Icom's CI-V directly instead of launching rigctld — unlocking the rig's real spectrum scope in the waterfall (\"CI-V RF\") and instant dial tracking. The scope needs <b>115200 baud, set the same on BOTH the radio and Nexus</b>: (1) on the rig, Menu ▸ SET ▸ Connectors ▸ CI-V ▸ \"CI-V USB Baud Rate\" = <b>115200</b>; (2) on the rig, same menu, \"CI-V USB Port\" = \"Unlink from [REMOTE]\"; (3) the <b>Baud</b> field above = <b>115200</b> to match. Below that the rig refuses to stream the scope (CAT still works; the panadapter just stays off). Save to apply; turn off any time to return to the classic Hamlib path.",
+      "chinese": "Nexus 直接控制这台 Icom 的 CI-V，不再启动 rigctld，可在瀑布图中显示电台自身的射频频谱（“CI-V RF”），并即时跟随调谐频率。频谱功能要求<b>电台和 Nexus 两端波特率均设为 115200</b>：① 在电台 Menu ▸ SET ▸ Connectors ▸ CI-V 中，将“CI-V USB Baud Rate”设为 <b>115200</b>；② 在同一菜单中，将“CI-V USB Port”设为“Unlink from [REMOTE]”；③ 将上方<b>波特率</b>也设为 <b>115200</b>。低于此速率时，电台不传送频谱数据，CAT 仍可工作，但频谱显示不会开启。保存后生效，随时可关闭以恢复传统 Hamlib 方式。",
+      "previous": "Nexus直接驱动这个Icom的CI-V,而不是发射刚性——在瀑布(\"CI-V RF\")和即时拨号跟踪中解锁钻机的真正频谱范围. 范围需要<b>115200 baud,在广播和Nexus上设置相同</b>: (1)在钻机上,Menu QQ SET QQ连接器 CI-V QQ\"CI-V USB 鲍德率\"=<b>115200 (英语).</b>; (2)在钻机上,相同的菜单,\"CI-V USB Port\" = \"Unlink from [REMOTE]\"; (3)<b>鲍德</b>上方字段 =<b>115200 (英语).</b>来匹配 钻机下方拒绝流出瞄准镜(CAT仍然工作; 调整器只是保持关闭)。 保存应用; 随时关闭返回经典的Hamlib路径 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexPan.label",
+      "english": "Flex native panadapter (Beta)",
+      "chinese": "Flex 原生频谱显示（测试版）",
+      "previous": "Flex 本土读取器( Beta)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexPan.hint",
+      "english": "Stream this FlexRadio's real SmartSDR panadapter (VITA-49 FFT) into the cockpit scope — the RF spectrum around your dial, with the Flex-pan span/ref controls. Beta and <b>unverified on hardware</b>, so it's opt-in: needs the Flex IP set (from Find Radios) and SmartSDR reachable on this network. If the scope stays blank or the app hitches, turn it back off. Save to apply.",
+      "chinese": "将此 FlexRadio 的 SmartSDR 原始频谱（VITA-49 FFT）显示在操作界面中，可查看调谐频率周围的射频频谱，并使用 Flex 频谱跨度／参考电平控制。此为测试版，<b>尚未通过实际硬件验证</b>，须主动开启。需要设置 Flex IP（可通过查找电台取得），并确保同一网络内可访问 SmartSDR。若频谱空白或程序卡顿，请关闭。保存后生效。",
+      "previous": "将这个FlexRadio真正的SmartSDR泛调适器(VITA-49 FFT)流入驾驶舱范围——你的拨号周围的RF频谱,并带有Flex-pan跨度/折射控制. 贝塔和<b>未核实的硬件</b>,所以它是可选的:需要Flex IP集(来自Find Radios)和SmartSDR可以在这个网络上达到. 如果瞄准镜是空白的或者应用的,就关掉它。 保存为应用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.yaesuScope.label",
+      "english": "FT-710 RF scope (spectrum over USB)",
+      "chinese": "FT-710 射频频谱（经 USB 传输）",
+      "previous": "FT-710 RF 范围(USB的频谱)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.yaesuScope.title",
+      "english": "Read the FT-710's own spectrum over its internal USB-SPI bridge instead of the sound card",
+      "chinese": "通过 FT-710 内置 USB-SPI 桥读取电台自身的频谱，不使用声卡频谱",
+      "previous": "在其内部 USB-SPI 桥面上读取 FT-710 的光谱, 而不是音卡",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.yaesuScope.hint",
+      "english": "Draws the radio's own band scope instead of the sound card's 4 kHz slice. Needs <b>SCU-LAN10 enabled in the radio's EX menu</b>, and a build that carries FTDI's LibFT4222 — which is not bundled, because it is closed source and Nexus is GPL-3.0-only. If either is missing the app says which, rather than leaving the panel empty.",
+      "chinese": "显示电台自身的频段频谱，而非声卡的 4 kHz 音频片段。须<b>在电台 EX 菜单中开启 SCU-LAN10</b>，且所用构建须包含 FTDI 的 LibFT4222。该库闭源，而 Nexus 仅采用 GPL-3.0-only 许可，因此未随软件打包。缺少任一条件时，程序会说明原因，不会只留空白面板。",
+      "previous": "绘制电台自己的频段范围, 而不是音卡的4 kHz 切开 需求 <b>在电台EX菜单中启用 SCU-LAN10</b>,以及一个搭载FTDI的LibFT4222的建筑——它不是捆绑的,因为它是封闭的源头,Nexus是GPL-3.0只. 如果缺少其中之一, 应用程序会说哪些, 而不是让面板空空 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexAudio.label",
+      "english": "Flex native DAX audio (Beta)",
+      "chinese": "Flex 原生 DAX 音频（测试版）",
+      "previous": "Flex 本地 DAX 音频 (Beta)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexAudio.hint",
+      "english": "Carry this FlexRadio's audio over the network (VITA-49 DAX) instead of the \"DAX Audio RX\" / \"DAX TX\" sound devices, which are <b>invisible under Remote Desktop</b>. <b>Needs Flex native client (Beta) on.</b> With SmartSDR CAT this does nothing: audio stays on the sound devices, and the setting is kept for the client. On the client, the decoders read receive audio straight from the radio, and <b>digital modes</b> and the Remote stream's voice transmit over DAX. Phone at the shack keeps the radio's own mic, so the voice keyer can't play there. Turning this off or disconnecting puts your own DAX setting back, and Nexus never changes it while SmartSDR's DAX is connected. <b>Beta, unverified on hardware:</b> if decodes or transmit stop, turn it back off. Save to apply.",
+      "chinese": "通过网络（VITA-49 DAX）传输此 FlexRadio 的音频，代替“DAX Audio RX”／“DAX TX”音频设备，后者<b>在远程桌面中不可见</b>。<b>须开启 Flex 原生客户端（测试版）。</b>使用 SmartSDR CAT 时，此设置不起作用，音频仍走系统音频设备，该设置保留供原生客户端使用。使用原生客户端时，解码器直接读取电台接收音频，<b>数字模式</b>和 Remote 音频流的话音发射通过 DAX 传输。电台现场的话音操作仍使用电台自身话筒，因此语音键控器无法在该方式下播放。关闭此项或断开连接时会恢复原有 DAX 设置；SmartSDR 的 DAX 已连接时，Nexus 不会更改它。<b>测试版，尚未通过实际硬件验证：</b>如解码或发射停止，请关闭。保存后生效。",
+      "previous": "通过网络携带这个FlexRadio的音频(VITA-49 DAX)而不是\"DAX Audio RX\" / “DAX TX”音响设备,即 <b>在远程桌面下看不见</b>。 。 。 <b>需要 Flex 本地客户端( Beta) 打开 。</b> 使用 SmartSDR CAT 这没有任何作用: 音频保留在声音设备上, 设置是留给客户端的 。 在客户端上,解码器直接接收收音机的音频, <b>数字模式</b> 而远程流的声音通过DAX传输. 棚子里的电话保存着收音机自己的麦克风,所以语音键器不能在那里播放. 关闭这个或断开连接会使你自己的DAX设置回落,在SmartSDR的DAX连接时Nexus从不改变它. <b>Beta, 未经硬件验证:</b> 如果解码或发送停止,请将其关闭。 保存为应用 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexClient.label",
+      "english": "Flex native client (Beta)",
+      "chinese": "Flex 原生客户端（测试版）",
+      "previous": "Flex 本地客户端 (Beta)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexClient.hint",
+      "english": "Nexus connects to the radio itself, at the <b>Flex radio IP</b>, as one of its SmartSDR clients, and runs CAT and PTT on a slice of its own. Beta and <b>unverified on hardware</b>: try transmit into a dummy load first. If Nexus cannot connect, it falls back to SmartSDR CAT. Save to apply.",
+      "chinese": "Nexus 作为 SmartSDR 客户端之一，直接连接 <b>Flex 电台 IP</b>，并在自己的接收切片上控制 CAT 和 PTT。此为测试版，<b>尚未通过实际硬件验证</b>，请先接假负载测试发射。若无法连接，Nexus 会回退到 SmartSDR CAT。保存后生效。",
+      "previous": "Nexus连接无线电本身,在 <b>Flex 无线电IP</b>,作为其 SmartSDR 客户端之一,并运行 CAT 和 PTT 在自己的一块。 贝塔和 <b>未核实的硬件</b>: 尝试先传输到假负载中 。 如果 Nexus 无法连接, 它会回到 SmartSDR CAT。保存为应用程序。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexUnbenched.label",
+      "english": "Let Nexus send CW, Tune and ATU through the native Flex client (not yet bench-tested)",
+      "chinese": "允许 Nexus 通过 Flex 原生客户端执行 CW、调谐和 ATU 操作（尚未实机测试）",
+      "previous": "让Nexus发送CW,Tune和ATU通过当地Flex客户端(尚未进行板凳测试)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexUnbenched.hint",
+      "english": "<b>Not yet checked on a real Flex:</b> try CW, Tune and the ATU into a dummy load first. Off by default. Save to apply; Nexus reconnects to the radio.",
+      "chinese": "<b>尚未在真实 Flex 电台上验证：</b>请先接假负载测试 CW、调谐和 ATU。默认关闭。保存后生效，Nexus 会重新连接电台。",
+      "previous": "<b>尚未在真实 Flex 电台上验证：</b>请先将 CW、调谐和 ATU 连接到假负载进行测试。默认关闭。保存后应用；Nexus 会重新连接电台。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.civLog.label",
+      "english": "CI-V bus diagnostic log",
+      "chinese": "CI-V总线诊断日志",
+      "previous": "CI-V总线诊断日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.civLog.failed",
+      "english": "Could not toggle the CI-V diagnostic log",
+      "chinese": "无法切换 CI-V 诊断日志",
+      "previous": "无法切换 CI- V 诊断日志",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.civLog.recording",
+      "english": "<b>Recording</b> to <code>{{path}}</code> — this keeps running while you're on other screens, so go to the FT8 or Phone cockpit and reproduce the issue (Tune or transmit) now. Come back and turn it off when done, then send that file. It shows exactly what's on the bus during the fault.",
+      "chinese": "<b>正在记录</b>到 <code>{{path}}</code>。切换页面后仍会继续记录，请现在前往 FT8 或话音操作界面复现问题（调谐或发射）。完成后回来关闭记录，再发送该文件。文件会准确保存故障期间总线上的数据。",
+      "previous": "<b>记录</b>改为:<code>{{path}}</code>- 继续运行 当你在其他屏幕上,所以去FT8或电话驾驶舱并复制 问题(Tune或传输)。 完成后回来关机 然后发送文件 准确显示故障期间巴士上的内容.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.civLog.idle",
+      "english": "Records every byte to/from the radio on the native CI-V path to a file in your Downloads — a support tool for hardware-only issues like the IC-9700 PTT flicker. Turn on, reproduce the problem, turn off, then send the file.",
+      "chinese": "将原生 CI-V 通道中与电台收发的每个字节写入“下载”文件夹中的日志，用于排查 IC-9700 PTT 抖动等仅在实际硬件上出现的问题。开启记录、复现问题、关闭记录，然后发送文件。",
+      "previous": "在本地 CI-V 路径上的收音机记录到您下载中的文件的每个字节—— 仅用于IC- 9700等硬件问题的辅助工具PTT闪烁。 打开,复制问题,关闭,然后发送文件.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexIp.label",
+      "english": "Flex radio IP (native panadapter + DAX)",
+      "chinese": "Flex 电台 IP（原生频谱＋DAX）",
+      "previous": "Flex 无线电 IP (本地调制器 + DAX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.flexIp.hint",
+      "english": "Your FlexRadio's LAN IP (SmartSDR API, port 4992) — turns on the native RF panadapter. This is the <em>radio's</em> address, not the SmartSDR-CAT port above.",
+      "chinese": "FlexRadio 的局域网 IP（SmartSDR API，端口 4992），用于开启原生射频频谱显示。这是<em>电台本身</em>的地址，不是上方 SmartSDR-CAT 的端口地址。",
+      "previous": "您的FlexRadio的LAN IP(SmartSDR API,端口4992)——开启本土的RF全适应器. 这是<em>电台</em>地址,不是SmartSDR...CAT上端端口 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.sharingPort.label",
+      "english": "Sharing port",
+      "chinese": "共享端口",
+      "previous": "共享端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.sharingPort.hint",
+      "english": "The \"Share this radio\" address other programs connect to (Hamlib NET rigctl default 4532). Change it only if something else on this computer already owns the port.",
+      "chinese": "其他程序通过“共享此电台”服务连接的端口（Hamlib NET rigctl 默认 4532）。仅当本机其他程序已占用此端口时才需更改。",
+      "previous": "\"分享这个电台\"地址是其它程序连接(Hamlib NET strictl default 4532). 只有在计算机上的其他东西已经拥有端口时才能更改.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.testCat.action",
+      "english": "Test CAT",
+      "chinese": "测试 CAT",
+      "previous": "测试 CAT",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "测试 CAT"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "测试 CAT"
+        }
+      ]
+    },
+    {
+      "id": "settings.rigControl.testCat.testing",
+      "english": "Testing…",
+      "chinese": "正在测试…",
+      "previous": "测试...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rigControl.testCat.title",
+      "english": "Save settings, connect to the rig, and read its frequency",
+      "chinese": "保存设置、连接电台并读取频率",
+      "previous": "保存设置、 连接到平台并读取其频率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.legend",
+      "english": "Audio",
+      "chinese": "音频",
+      "previous": "音频",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.multiRadio.note",
+      "english": "🎚 Audio devices below are for <b>{{radio}}</b>. Each radio has its OWN input/output — click “Edit” on another radio (in Radios above) to set its audio. The live RX audio + waterfall follow whichever radio is active.",
+      "chinese": "🎚 下方音频设备用于 <b>{{radio}}</b>。每台电台都有独立的输入／输出；如需配置另一台，请在上方电台列表中点击其“编辑”。实时接收音频和瀑布图始终跟随当前使用的电台。",
+      "previous": "下面的音频设备用于<b>{{radio}}</b>. 每一台电台都有自己的OWN输入/输出——点击另一台(以上电台)的“编辑”来设置其音频。 直播的RX音频+瀑布跟随任何活跃的收音机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.multiRadio.selectedRadio",
+      "english": "the selected radio",
+      "chinese": "所选电台",
+      "previous": "选定收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.device.systemDefault",
+      "english": "System default",
+      "chinese": "系统默认",
+      "previous": "系统默认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.input.label",
+      "english": "Input Device (RX)",
+      "chinese": "输入设备（接收）",
+      "previous": "输入设备( RX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.input.hint",
+      "english": "Sound card carrying receive audio.",
+      "chinese": "承载接收音频的声卡。",
+      "previous": "随身携带的音卡接收音频.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.refresh.action",
+      "english": "Refresh",
+      "chinese": "刷新",
+      "previous": "刷新",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "EqualizationToolsDialog::impl",
+          "chinese": "刷新"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "刷新"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "刷新"
+        }
+      ]
+    },
+    {
+      "id": "settings.audio.refresh.title",
+      "english": "Re-scan audio devices",
+      "chinese": "重新扫描音频设备",
+      "previous": "重新扫描音频设备",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.output.label",
+      "english": "Output Device (TX)",
+      "chinese": "输出设备（发射）",
+      "previous": "输出设备 (TX)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.output.hint",
+      "english": "Sound card feeding the rig (transmit).",
+      "chinese": "向电台提供发射音频的声卡。",
+      "previous": "声音卡充电钻机(发送).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.spectrum.label",
+      "english": "Live input spectrum",
+      "chinese": "实时输入频谱",
+      "previous": "实时输入频谱",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.spectrum.idle",
+      "english": "Flat — no audio on the selected input. Check the device above (radio on? right codec?).",
+      "chinese": "频谱平直，所选输入没有音频。请检查上方设备：电台是否开机、音频设备是否选对？",
+      "previous": "Flat——选定输入上没有音频. 请检查date=中的日期值 (帮助) 正确的解码器?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.spectrum.hint",
+      "english": "What the selected input hears, live — band noise should show as a moving floor. Confirms the RIGHT device before you leave Settings.",
+      "chinese": "实时显示所选输入收到的音频，频段噪声应表现为波动的底噪。离开设置前，可据此确认设备选择正确。",
+      "previous": "被选中的输入所听到的,现场——乐队噪声应该显示为移动地板. 离开设置前确认右侧设备。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.txPower.label",
+      "english": "Tx Power",
+      "chinese": "发射驱动电平",
+      "previous": "Tx 电源",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.txPower.aria",
+      "english": "Transmit drive level",
+      "chinese": "发射驱动电平",
+      "previous": "传输驱动级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.txPower.hint",
+      "english": "The audio <b>drive</b> into the rig — the SAME control as the cockpit <b>Pwr</b> slider (they always match now). Trim down until your rig's ALC is just zero. This is <em>not</em> the rig's RF watts — set those on the radio.",
+      "chinese": "送入电台的音频<b>驱动电平</b>，与操作界面的 <b>Pwr</b> 滑块是同一个控制，数值始终同步。逐步降低，直到电台 ALC 刚好为零。这<em>不是</em>电台的射频输出功率，射频功率请在电台上设置。",
+      "previous": "音频<b>驱动</b>进入钻机——作为驾驶舱的SAME控制<b>缩写</b>滑轮(它们现在总是匹配). 减速,直到你的钻机的ALC只是0。 这是<em>没有</em>这台钻机的RF瓦特 放在无线电上",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.rxLevel.label",
+      "english": "RX Level",
+      "chinese": "接收电平",
+      "previous": "RX 级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.rxLevel.meter",
+      "english": "RX audio level",
+      "chinese": "接收音频电平",
+      "previous": "接收音频电平",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.rxLevel.hint",
+      "english": "A dB scale like WSJT-X — aim for around 30 dB. Anything from ~15–60 dB decodes fine; red means too hot (back off RX Gain or the rig's audio).",
+      "chinese": "采用类似 WSJT-X 的 dB 刻度，建议约 30 dB。约 15–60 dB 通常均可正常解码；红色表示电平过高，请降低接收增益或电台音频输出。",
+      "previous": "类似WSJT-X的dB尺度——瞄准约30dB. 从~15–60 dB解码好的任何东西;红色表示太热(背靠RX Gain或钻机的音频).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.rxGain.label",
+      "english": "RX Gain",
+      "chinese": "接收增益",
+      "previous": "RX 增益",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.rxGain.aria",
+      "english": "RX capture gain",
+      "chinese": "接收采集增益",
+      "previous": "RX 捕获增益",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.rxGain.hint",
+      "english": "Boost a quiet interface until RX Level reads around 30 dB — the meter responds as you release the slider. Leave at ×1.0 unless the meter reads low (under ~15 dB) — FT8 decodes on a small signal, so you rarely need much.",
+      "chinese": "如果接口音频偏低，可增加增益，使接收电平达到约 30 dB；松开滑块后，电平表会更新。除非读数过低（约低于 15 dB），否则请保持 ×1.0。FT8 能解码弱信号，通常无需大幅增加增益。",
+      "previous": "推动一个安静的界面,直到RX Level读取大约30 dB——当您释放滑动器时,计数器响应. 在×1.0时离开,除非计数器读数低(在~15 dB下)——FT8在小信号上解码,所以你很少需要很多.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.audio.multiRadio.levelHint",
+      "english": "<b>Save</b> stores this for <b>{{radio}}</b>, and it takes effect when that radio is in use; the radio in use now does not change.",
+      "chinese": "点击<b>保存</b>后，会为 <b>{{radio}}</b> 存储此设置，使用这台电台时才生效，不改变当前操作电台。",
+      "previous": "<b>保存</b>存储此选项<b>{{radio}}</b>,并且当该收音机在使用时生效;现在使用的收音机没有变化。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.legend",
+      "english": "Receive audio on this computer",
+      "chinese": "在本机收听接收音频",
+      "previous": "在此计算机上接收音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.enable.label",
+      "english": "Play receive audio here",
+      "chinese": "在此播放接收音频",
+      "previous": "在此播放接收音频",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.enable.aria",
+      "english": "Play receive audio on this computer",
+      "chinese": "在本机播放接收音频",
+      "previous": "播放此计算机上的音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.enable.hint",
+      "english": "Plays the RECEIVED audio — exactly what the decoder hears — out of a device on this computer, for level and RFI diagnosis or simply to listen to the band. This is not a transmit monitor: it never plays your own voice back. Off by default; UNVERIFIED on-air until the attended session.",
+      "chinese": "将接收音频，也就是解码器听到的内容，通过本机音频设备播放，可用于检查电平、排查射频干扰或收听频段。此功能不是发射监听，不会回放本台话音。默认关闭，仍待有人现场值守的实际通联验证。",
+      "previous": "从这台电脑上的设备中播放RECEIVED音频——即解码器所听到的——用于级别和RFI诊断,或只是听乐队的声音. 这不是一个传输显示器: 它从不播放你自己的声音。 默认关闭; UNVIFIED 运行到参加的会议。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.device.label",
+      "english": "Headphones or speakers",
+      "chinese": "耳机或扬声器",
+      "previous": "耳机或扬声器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.device.hint",
+      "english": "Your headphones or speakers — must NOT be the rig's TX output device.",
+      "chinese": "请选择耳机或扬声器，绝不能选择电台的发射音频输出设备。",
+      "previous": "您的耳机或扬声器—— 绝不能成为钻机的TX输出设备.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.level.label",
+      "english": "Listening level",
+      "chinese": "收听音量",
+      "previous": "收听级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.level.aria",
+      "english": "Receive listening level",
+      "chinese": "接收音频收听音量",
+      "previous": "接收收听级别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.headphoneMonitor.level.hint",
+      "english": "Headphone listening volume (does not affect TX).",
+      "chinese": "耳机收听音量，不影响 TX。",
+      "previous": "耳机听音量(不影响TX).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.legend",
+      "english": "Satellite Doppler",
+      "chinese": "卫星多普勒补偿",
+      "previous": "多普勒卫星",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.note",
+      "english": "Corrects both legs of a pass: the downlink you listen on and the uplink you transmit on. Nexus tunes only while auto-track is following a pass and you have picked a transponder in the Satellites section. The downlink needs no setup here; the uplink is confirmed once per radio, on the pass itself.",
+      "chinese": "对本次过境的下行接收和上行发射频率进行补偿。仅当自动跟踪正在跟随过境，且已在卫星页面选择转发器时，Nexus 才会自动调频。下行无需在此配置；上行须在过境状态栏中为每台电台分别确认一次。",
+      "previous": "校正传球的两条腿:你听的下行链路和上行链路。 Nexus的曲调只是当自动履带在跟随传球时 你从卫星部分挑选了转发器 下行链路不需要在这里设置;上行链路在每台电台一次确认,在通过本身.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.enable.label",
+      "english": "Doppler correction",
+      "chinese": "多普勒补偿",
+      "previous": "多普勒更正",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.enable.aria",
+      "english": "Enable satellite Doppler correction",
+      "chinese": "开启卫星多普勒补偿",
+      "previous": "启用多普勒卫星校正",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.enable.hint",
+      "english": "Retunes the radio through a pass so you stay on the station you are working. On: the downlink follows the bird as soon as you arm a pass and hold a transponder. Clearing this stops both legs.",
+      "chinese": "过境期间自动调整频率，使本台持续对准正在通联的对方。开启后，启用过境跟踪并选定转发器即可让下行频率随卫星运动补偿。取消勾选会停止上下行两侧的补偿。",
+      "previous": "重新调整收音机 通过一个通道,所以你留在 你工作的电台。 上:下行链路紧跟着鸟儿,当你手持通行证并握住转发器。 清理这两条腿",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.vfoMap.label",
+      "english": "VFO mapping",
+      "chinese": "VFO 上下行分配",
+      "previous": "VFO绘图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.vfoMap.aria",
+      "english": "Satellite VFO mapping",
+      "chinese": "卫星 VFO 上下行分配",
+      "previous": "卫星VFO绘图",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.vfoMap.otherRadio",
+      "english": "The uplink mapping is confirmed per radio, for the radio you are operating. Confirm it for this radio on the pass rail during a pass, or make it the active radio first.",
+      "chinese": "上行分配须按当前操作的电台分别确认。请在过境期间的状态栏中为此电台确认，或先将其设为当前电台。",
+      "previous": "上行线路图是每个无线电都确认的 因为你正在操作的无线电 在路过时确认这台收音机 或者让它成为主动的收音机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.vfoMap.hint",
+      "english": "Which VFO carries your uplink. Match this to how your radio is wired. <b>A wrong mapping transmits on your own downlink</b> — into the satellite's output passband, on top of everyone else working the bird. Picking one applies immediately and confirms it for the radio you are operating; a second radio gets its own confirmation on the pass rail. Every mapping except Uplink only keeps the downlink corrected.",
+      "chinese": "指定哪个 VFO 用于上行，必须与实际接线一致。<b>分配错误会在本台的下行接收频率上发射</b>，也就是在卫星输出通带内干扰其他正在通联的人。选择后立即应用，并为当前操作电台确认；第二台电台须在过境状态栏中单独确认。除“仅上行”外，各项均保持下行频率补偿。",
+      "previous": "哪个VFO带上你的上行链路 把这和你的收音机的收音机一样<b>在您自己的下行链路上发送错误的映射</b>——进入卫星的输出通过带,在所有其他在鸟上工作的人之上. 选一个立即申请,并证实你正在操作的无线电;第二个无线电在通过铁路上得到自己的确认。 除了Uplink之外,每一次映射都只能使下行链路得到纠正.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.minShift.label",
+      "english": "Minimum shift (Hz)",
+      "chinese": "最小频移（Hz）",
+      "previous": "最低班次(Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.minShift.aria",
+      "english": "Minimum Doppler shift before retuning (Hz)",
+      "chinese": "触发调频的最小多普勒频移（Hz）",
+      "previous": "调整前最小的多普勒调值( D)Hz) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.minShift.hint",
+      "english": "Corrections smaller than this are not sent. 20 Hz is inaudible on SSB and keeps the CAT link quiet. 0 sends every update.",
+      "chinese": "小于此值的补偿不发送到电台。20 Hz 在 SSB 中通常听不出差别，可减少 CAT 通信量。设为 0 时发送每次更新。",
+      "previous": "未发送小于此的更正 。 20国Hz无法在SSB上监听,并保留CAT连接安静。 0发送每个更新。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.interval.label",
+      "english": "Update interval (ms)",
+      "chinese": "更新间隔（ms）",
+      "previous": "更新间隔( 毫秒)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.interval.aria",
+      "english": "Doppler update interval (milliseconds)",
+      "chinese": "多普勒更新间隔（毫秒）",
+      "previous": "多普勒更新间隔( 毫秒)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.interval.hint",
+      "english": "Shortest gap between corrections. 1000 ms is what a low-orbit pass needs. Shorter fights your own tuning knob and saturates a serial CAT link.",
+      "chinese": "两次补偿之间的最短间隔。低轨卫星过境使用 1000 ms 即可；过短会与手动调谐旋钮相互干扰，并使串口 CAT 通信饱和。",
+      "previous": "更正之间最短的差距。 1000毫秒是低轨道通过需要的 更短的战斗 自己的调制键 饱和一个序列CAT链接。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.passSounds.label",
+      "english": "Pass alert sounds",
+      "chinese": "过境提示音",
+      "previous": "传出警报",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.passSounds.aria",
+      "english": "Audible tones at pass start and end",
+      "chinese": "过境开始和结束时发出提示音",
+      "previous": "发到发到发到发到发",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.satelliteDoppler.passSounds.hint",
+      "english": "A rising tone the moment an armed pass starts and a falling one when it ends, alongside the popup — hear AOS with your hands on the rotor. On by default; clearing this silences only the tones, never the popups.",
+      "chinese": "已启用跟踪的过境开始时发出升调提示音，结束时发出降调提示音，并同时弹出提示。操作旋转器时也能听到卫星升起（AOS）的提醒。默认开启，取消勾选仅关闭声音，不关闭弹出提示。",
+      "previous": "枪口开始时声调上升,枪口结束时声调下降,弹出时声调上升——听到AOS手放在转子上。 默认情况下; 清除此声调, 而不是弹出 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.legend",
+      "english": "Orbital elements",
+      "chinese": "轨道根数",
+      "previous": "轨道要素",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.update.action",
+      "english": "Update now",
+      "chinese": "现在更新",
+      "previous": "现在更新",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.update.busy",
+      "english": "Updating…",
+      "chinese": "更新...",
+      "previous": "更新...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.import.action",
+      "english": "Import from file",
+      "chinese": "从文件导入",
+      "previous": "从文件导入",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.import.busy",
+      "english": "Importing…",
+      "chinese": "正在导入...",
+      "previous": "正在导入...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.import.title",
+      "english": "Import a downloaded element file (Celestrak TLE, AMSAT keps, a new launch's SupGP set) — the offline-shack escape hatch. Imports persist across refreshes; the newest epoch per satellite wins.",
+      "chinese": "导入已下载的轨道根数文件（Celestrak TLE、AMSAT keps 或新发射卫星的 SupGP 数据），可用于离线电台。导入数据在刷新后仍保留；每颗卫星均采用历元最新的一组根数。",
+      "previous": "导入一个下载的元素文件(Celestrak TLE,AMSAT keps,一个新发射机的SupGP集)——离线-shock逃生舱门. 进口源源不断,每颗卫星都有最新的时代。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.import.ok",
+      "english": "Elements imported — {{imported}} imported, {{total}} total",
+      "chinese": "轨道根数已导入：已导入 {{imported}} 组，共 {{total}} 组",
+      "previous": "进口元素 -{{imported}}进口{{total}}共计",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.import.failed",
+      "english": "Element import failed: {{error}}",
+      "chinese": "轨道根数导入失败：{{error}}",
+      "previous": "元素导入失败 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.status.birds",
+      "english": "{{count}} birds",
+      "chinese": "{{count}} 颗卫星",
+      "previous": "{{count}}鸟类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.status.fetched",
+      "english": "fetched {{date}}",
+      "chinese": "获取于 {{date}}",
+      "previous": "已获取{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.status.neverFetched",
+      "english": "never fetched",
+      "chinese": "从未获取",
+      "previous": "从未获取",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.status.imported",
+      "english": "{{count}} imported",
+      "chinese": "已导入 {{count}} 组",
+      "previous": "{{count}}进口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.status.empty",
+      "english": "Not loaded yet — fetched on first launch, then refreshed every 6 h.",
+      "chinese": "尚未加载，首次启动时获取，此后每 6 小时刷新。",
+      "previous": "尚未加载——在首次发射时获取,然后每6小时刷新一次.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.hint",
+      "english": "Keplerian elements (TLEs) for the amateur satellites — pass times, pointing and Doppler all come from them. Refreshed every 6 h from hamradiotools.io: the bird list comes from the SatNOGS database (CC BY-SA 4.0), the elements from CelesTrak and SatNOGS. Import a file for an offline shack or a just-launched bird.",
+      "chinese": "业余卫星的开普勒轨道根数（TLE），用于计算过境时间、天线指向和多普勒补偿。每 6 小时从 hamradiotools.io 刷新：卫星目录来自 SatNOGS 数据库（CC BY-SA 4.0），轨道根数来自 CelesTrak 和 SatNOGS。离线使用或查找刚发射的卫星时，可导入文件。",
+      "previous": "业余卫星的Keplerian元素(TLEs)——通过时间,指向和多普勒都来自它们. 从hamradiotools.io刷新每6小时:鸟类列表来自SatNOGS数据库(CC BY-SA 4.0),元素来自CelesTrak和SatNOGS. 导入离线小屋或刚发射的鸟类的文件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.orbitalElements.lastRefresh",
+      "english": "Last refresh: {{detail}}",
+      "chinese": "上次刷新：{{detail}}",
+      "previous": "上次刷新 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.legend",
+      "english": "Amplifier",
+      "chinese": "功率放大器",
+      "previous": "功率放大器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.note",
+      "english": "Connect a supported amplifier on its own serial port to see power, SWR, temperature and alarms. Use the cockpit controls for Operate/Standby and band steps. Set automatic band following below.",
+      "chinese": "通过独立串口连接受支持的功率放大器，可查看功率、驻波比、温度和告警。在操作界面中可切换工作／待机状态及逐档切换频段，下方可设置自动跟随电台频段。",
+      "previous": "在自己的串行端口连接一个支持的放大器,以查看功率,SWR,温度和提醒. 使用驾驶舱控制器进行操作/Standby和波段步骤. 下面设置自动带。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.model.label",
+      "english": "Amplifier",
+      "chinese": "功率放大器",
+      "previous": "功率放大器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.model.none",
+      "english": "None",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Astro",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        }
+      ]
+    },
+    {
+      "id": "settings.amplifier.model.hint",
+      "english": "Place the Amplifier pane in Conditions to see the readings. Nothing here changes how the radio transmits.",
+      "chinese": "在传播状况页面放置功放面板，即可查看读数。这里的设置不改变电台的发射方式。",
+      "previous": "在条件中设置放大符框以查看读数。 这里没有什么能改变无线电传输方式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.follow.label",
+      "english": "Follow the radio’s band",
+      "chinese": "跟随电台频段",
+      "previous": "跟着电台的乐队走",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.follow.hint",
+      "english": "Step the amplifier to the band you are on, without being asked. Off by default — this is the one amplifier control that acts on its own. It never moves the amplifier while you are transmitting, and it steps one band at a time, checking where the amplifier actually is after each one rather than assuming it got there. ⚠️ If your amplifier already follows the radio through its own band-data cable, as most SPE installations do, leave this off: the hardware is doing the same job, and two things steering one band is worse than either alone.",
+      "chinese": "自动将功放切换到电台当前频段。默认关闭，这是唯一会自行执行操作的功放控制。发射期间不会切换功放频段；每次只切换一档，并在每一步后读取实际频段确认，不会假定已经切换成功。⚠️ 如果功放已通过自身频段数据线跟随电台，例如多数 SPE 安装方式，请保持关闭，以免硬件和软件同时控制频段而互相干扰。",
+      "previous": "将放大器移到您所在的乐队,而无需询问。 默认情况下——这是一种自行行动的放大器控制. 它从不移动放大器 当你在传输, 它一步一步步地移动一个波段, 检查放大器实际上在哪里 后面每一个,而不是假设它得到了那里。 ⚠️ 如果你的放大器已经通过它自己的波段数据电缆跟随无线电,就像大多数SPE装置一样,就不要这样:硬件正在做同样的工作,而引导一个波段的两件事比单独两个都糟糕.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.port.label",
+      "english": "Amplifier port",
+      "chinese": "功放端口",
+      "previous": "放大器端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.port.hint",
+      "english": "Its own port, not the one CAT uses — a serial port can only be open once, so sharing it stops the radio connecting. The speed is worked out for you.",
+      "chinese": "须使用独立端口，不可与 CAT 共用。串口只能被打开一次，共用会导致电台无法连接。通信速率会自动确定。",
+      "previous": "它自己的港口,不是那个CAT使用——一个串行端口只能打开一次,所以共享它会停止无线电连接. 速度为你定了。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.link.label",
+      "english": "Connection",
+      "chinese": "连接",
+      "previous": "连接",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.link.serial",
+      "english": "USB or serial port",
+      "chinese": "USB 或串口",
+      "previous": "USB 或序列端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.link.network",
+      "english": "Network (KPA1500)",
+      "chinese": "网络(KPA1500)",
+      "previous": "网络(KPA1500)",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.link.hint",
+      "english": "A KPA1500 on your network can be reached by its IP address instead of a cable. The KPA500 has no network port.",
+      "chinese": "同一网络内的 KPA1500 可通过 IP 地址连接，无需串口线。KPA500 没有网络端口。",
+      "previous": "您网络上的 KPA1500 可以通过它的 IP 地址 而不是电缆 到达 。 KPA500没有网络端口.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.host.label",
+      "english": "Amplifier IP address",
+      "chinese": "功放 IP 地址",
+      "previous": "扩展 IP 地址",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.host.hint",
+      "english": "Shown on the KPA1500’s NET IP ADDRESS menu. Nexus talks to the amplifier’s UDP server, which any number of programs can use at once, so Elecraft’s KPA1500 Remote can stay connected beside it.",
+      "chinese": "可在 KPA1500 的 NET IP ADDRESS 菜单查看。Nexus 使用功放的 UDP 服务器，允许多个程序同时连接，因此 Elecraft 的 KPA1500 Remote 可以继续使用。",
+      "previous": "在 KPA1500 的 NET IP APDRESS 菜单上显示 。 Nexus与放大器的 UDP 服务器交谈, 任何程序都可以同时使用, 这样Elecraft 的 KPA1500 远程 就可以保持连接。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.netPort.label",
+      "english": "Port",
+      "chinese": "端口",
+      "previous": "端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.amplifier.netPort.hint",
+      "english": "1500 unless you changed the amplifier’s command port.",
+      "chinese": "默认 1500，除非已更改功放的命令端口。",
+      "previous": "1500 除非您更改放大器的命令端口 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.legend",
+      "english": "Rotator",
+      "chinese": "天线旋转器",
+      "previous": "天线旋转器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.note",
+      "english": "The rotator itself, and its pointing manners. The manners apply to satellite auto-track.",
+      "chinese": "配置天线旋转器及其指向行为，指向行为设置用于卫星自动跟踪。",
+      "previous": "转子本身, 和它的尖端礼仪。 礼仪适用于卫星自动轨道.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.model.label",
+      "english": "Rotator model",
+      "chinese": "旋转器型号",
+      "previous": "旋转器模型",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.model.none",
+      "english": "None",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Astro",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        }
+      ]
+    },
+    {
+      "id": "settings.rotator.model.other",
+      "english": "Other Hamlib model #…",
+      "chinese": "其他 Hamlib 型号编号…",
+      "previous": "其他汉利卜模式#.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.model.number.placeholder",
+      "english": "Hamlib rotator model number (rotctl -l lists them)",
+      "chinese": "Hamlib 旋转器型号编号（可用 rotctl -l 列出）",
+      "previous": "Hamlib转子模型编号(rotctl -l列出它们)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.model.number.aria",
+      "english": "Hamlib rotator model number",
+      "chinese": "Hamlib 旋转器型号编号",
+      "previous": "Hamlib旋转器型号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.model.hint",
+      "english": "Nexus runs the control daemon (rotctld) for you, the same way it does CAT. Then use the Rotor pane in Conditions, ↗ on Needed rows, or the compass anywhere.",
+      "chinese": "Nexus 会自动运行控制服务 rotctld，方式与 CAT 类似。配置后，可使用传播状况页面的旋转器面板、待通联项目行中的 ↗ 或各处的罗盘控制。",
+      "previous": "Nexus为您运行控制守护进程( rotctld), 就像它一样CAT。然后在条件中使用旋转面板,在需要的行上,或者在任何地方使用指南针。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.port.label",
+      "english": "Rotator port & baud",
+      "chinese": "旋转器端口与波特率",
+      "previous": "旋转器端口 & baud",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.port.aria",
+      "english": "Rotator serial port",
+      "chinese": "旋转器串口",
+      "previous": "旋转序列端口",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.baud.aria",
+      "english": "Rotator baud rate",
+      "chinese": "旋转器波特率",
+      "previous": "旋转波率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.baud.title",
+      "english": "Serial baud rate for the rotator controller",
+      "chinese": "旋转器控制器的串口波特率",
+      "previous": "转子控制器的串行包速率",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.baud.hint.any",
+      "english": "Match the rate your controller is set to — Hamlib does not offer one fixed rate for this model.",
+      "chinese": "须与控制器设置的速率一致，Hamlib 未为此型号指定固定速率。",
+      "previous": "匹配您控制器设置的速率 —— Hamlib 不为这个模型提供一个固定的速率 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.baud.hint.fixed",
+      "english": "This controller runs at {{rate}} baud — the rate its Hamlib backend declares. Leave it here.",
+      "chinese": "此控制器使用 {{rate}} 波特，这是其 Hamlib 后端指定的速率，请保持此值。",
+      "previous": "此控制器运行于{{rate}}baud——其Hamlib后端宣布的速率. 留在这里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.baud.hint.wrong",
+      "english": "<b>This controller runs at {{rate}} baud, not {{set}}</b> — at the wrong rate it never answers and reads as broken hardware. Set {{rate}}, or re-pick the model above to fill it in.",
+      "chinese": "<b>此控制器使用 {{rate}} 波特，而非 {{set}}</b>。速率错误时不会响应，容易被误认为硬件故障。请设为 {{rate}}，或重新选择上方型号以自动填入。",
+      "previous": "<b>此控制器运行于{{rate}}鲍德,没有{{set}}</b>——以错误的速度它从不回答,读作破碎的硬件. 设定{{rate}},或者重新选择上面的模型来填写。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.port.hint.pstRotator",
+      "english": "PstRotatorAz: enter {{address}} as the port (its UDP Control Port), and turn on UDP Control in its Setup (the baud is not used). Nexus listens for its replies on that port + 1, {{reply}}, so no other program may use it.",
+      "chinese": "PstRotatorAz：端口填写 {{address}}（其 UDP Control Port），并在 Setup 中开启 UDP Control，不使用波特率设置。Nexus 会在该端口加 1 的 {{reply}} 端口接收回复，因此其他程序不得占用此端口。",
+      "previous": "旋转器Az: 输入{{address}}作为端口(其UDP控制端口),并在其设置中打开UDP控制(baud不使用). Nexus收听它对该端口+1的答复.{{reply}},所以没有其他程序可以使用.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.external.label",
+      "english": "External rotctld (advanced)",
+      "chinese": "外部 rotctld（高级）",
+      "previous": "外部旋转( 高级)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.external.placeholder",
+      "english": "host:port — e.g. {{example}}",
+      "chinese": "主机:端口，例如 {{example}}",
+      "previous": "主机:端口——例如:{{example}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.external.aria",
+      "english": "External rotctld address (advanced)",
+      "chinese": "外部 rotctld 地址（高级）",
+      "previous": "外部 Rotctld 地址( 高级)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.external.hint",
+      "english": "Point Nexus at a rotctld you run yourself (or one on another machine). It OVERRIDES the model and port above and stops the integrated daemon. Needs the port — a bare host name is not an address.",
+      "chinese": "连接自行运行的 rotctld，也可位于另一台电脑。此设置会覆盖上方型号和端口，并停止内置控制服务。必须包含端口，不能只填主机名。",
+      "previous": "将Nexus指向一个旋转点,你自己运行(或者在另一台机器上运行)。 它将模型和端口置于上面,并阻止综合守护进程。 需要端口——空主机名不是地址.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.park.label",
+      "english": "Park position (° az / el)",
+      "chinese": "归位位置（° 方位角／仰角）",
+      "previous": "公园位置( ° az / el)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.park.az.aria",
+      "english": "Park azimuth (degrees)",
+      "chinese": "归位方位角（度）",
+      "previous": "公园方位角( 度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.park.el.aria",
+      "english": "Park elevation (degrees)",
+      "chinese": "归位仰角（度）",
+      "previous": "公园高度(度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.park.hint",
+      "english": "The stow position — wind-safe, or wherever your mast rests. Used only when After a pass is set to Park.",
+      "chinese": "天线收存位置，可设为抗风安全方向或平时停放方向。仅在“过境结束后”选为“归位”时使用。",
+      "previous": "坚固的姿势——风能安全,或者你的桅杆停在什么地方. 只有在到达公园后才使用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.ready.label",
+      "english": "Ready position (° az / el)",
+      "chinese": "待命位置（° 方位角／仰角）",
+      "previous": "准备位置( ° az / el)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.ready.az.aria",
+      "english": "Ready azimuth (degrees)",
+      "chinese": "待命方位角（度）",
+      "previous": "预备方位角( 度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.ready.el.aria",
+      "english": "Ready elevation (degrees)",
+      "chinese": "待命仰角（度）",
+      "previous": "准备高度(度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.ready.hint",
+      "english": "Where the antenna waits for the next pass. Used only when After a pass is set to Ready.",
+      "chinese": "天线等待下次过境时的指向。仅在“过境结束后”选为“待命”时使用。",
+      "previous": "天线在等待下一个通道 只有在通行证准备就绪后才使用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.postPass.label",
+      "english": "After a pass",
+      "chinese": "过境结束后",
+      "previous": "过后",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.postPass.aria",
+      "english": "What the rotator does after a pass",
+      "chinese": "过境结束后旋转器的动作",
+      "previous": "转子经过之后会做什么",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.postPass.stop",
+      "english": "Stop — leave the antenna where the pass ended",
+      "chinese": "停止，保持过境结束时的指向",
+      "previous": "停,把天线留在那里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.postPass.park",
+      "english": "Park — drive to the park position",
+      "chinese": "归位，转至归位位置",
+      "previous": "公园——开车去公园位置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.postPass.ready",
+      "english": "Ready — drive to the ready position",
+      "chinese": "待命，转至待命位置",
+      "previous": "准备 - 开到准备位置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.postPass.hint",
+      "english": "Stop is the default and moves nothing: the antenna stays pointed where the bird set. Park and Ready drive the rotator on their own at LOS, so set those positions above first.",
+      "chinese": "默认停止，不再转动，天线保持卫星落下时的指向。选择归位或待命后，会在卫星落下（LOS）时自动转至相应位置，请先在上方设置这些位置。",
+      "previous": "停止是默认而无动于衷:天线一直指向鸟类的设定位置. 公园和准备驾驶旋转器 在LOS自己, 所以把位置放在上面。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.tolerance.label",
+      "english": "Tolerance (° az / el)",
+      "chinese": "容差（° 方位角／仰角）",
+      "previous": "宽容( ° az / el)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.tolerance.az.aria",
+      "english": "Azimuth tolerance (degrees)",
+      "chinese": "方位角容差（度）",
+      "previous": "最大容忍度(度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.tolerance.el.aria",
+      "english": "Elevation tolerance (degrees)",
+      "chinese": "仰角容差（度）",
+      "previous": "升降力(度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.tolerance.hint",
+      "english": "A new target closer than this is not commanded. Without a deadband the rotator hunts and the relays chatter for the whole pass. 2° is about a G-5500's own resolution.",
+      "chinese": "新目标角度与当前值的差小于此值时，不发送转动指令。没有此死区，旋转器会在整个过境期间反复微调，继电器频繁动作。2° 约为 G-5500 自身的分辨率。",
+      "previous": "一个比这更接近的新目标没有命令. 没有死带,转子猎人 和继电器闲聊整个通道。 2°大约是G-5500自己的分辨率.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.calibration.label",
+      "english": "Calibration trim (° az / el)",
+      "chinese": "校准偏移（° 方位角／仰角）",
+      "previous": "校准修饰( ° az / el)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.calibration.az.aria",
+      "english": "Azimuth calibration trim (degrees)",
+      "chinese": "方位角校准偏移（度）",
+      "previous": "半径校准线( 度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.calibration.el.aria",
+      "english": "Elevation calibration trim (degrees)",
+      "chinese": "仰角校准偏移（度）",
+      "previous": "升降校准调理(度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.calibration.hint",
+      "english": "Added to every command. Use it when the controller reads one heading and the boom points at another.",
+      "chinese": "此偏移会加到每条指令中。控制器读数与天线横杆实际指向不一致时，可用它校正。",
+      "previous": "添加到每个命令中。 当控制器读取一个方向和另一个方向的热点时使用它.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.flip.label",
+      "english": "Allow flip",
+      "chinese": "允许翻转",
+      "previous": "允许翻转",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.flip.aria",
+      "english": "Allow the rotator to flip past 90 degrees elevation",
+      "chinese": "允许旋转器仰角翻转超过 90 度",
+      "previous": "让转子翻过90度高度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.rotator.flip.hint",
+      "english": "Takes a high pass by turning azimuth 180° and running elevation past 90°, instead of swinging the mast around at the top of the pass. Off by default: <b>many rotators cannot mechanically go past 90° elevation</b>. Check your controller before turning this on.",
+      "chinese": "高仰角过境时，将方位角翻转 180°，同时让仰角越过 90°，避免在过境最高点附近大幅旋转天线。默认关闭，<b>许多旋转器机械结构不允许仰角超过 90°</b>。开启前请检查控制器。",
+      "previous": "转角180° 运行高度90° 而不是在顶端摇晃桅杆 默认关闭 :<b>许多旋转器无法机械地通过90°高</b>在打开前检查控制器 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.title",
+      "english": "Setup health",
+      "chinese": "配置状态检查",
+      "previous": "设置保健",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rig.title.link",
+      "english": "CAT not tested yet — open Rig Control",
+      "chinese": "尚未测试 CAT，打开电台控制设置",
+      "previous": "CAT尚未测试——打开 Rig Control",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rig.title.plain",
+      "english": "CAT not tested yet — use Test CAT below",
+      "chinese": "尚未测试 CAT，请使用下方“测试 CAT”",
+      "previous": "CAT尚未测试——使用测试CAT下级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rig.responding",
+      "english": "Rig responding",
+      "chinese": "电台响应正常",
+      "previous": "重度响应",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rig.notAnswering",
+      "english": "Rig not answering",
+      "chinese": "电台无响应",
+      "previous": "硬不接电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rig.untested",
+      "english": "Rig untested",
+      "chinese": "电台尚未测试",
+      "previous": "未测试的重",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rx.title.ok",
+      "english": "Receiving audio",
+      "chinese": "正在接收音频",
+      "previous": "接收音频",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rx.title.link",
+      "english": "No RX audio — open the audio device settings",
+      "chinese": "没有接收音频，打开音频设备设置",
+      "previous": "没有 RX 音频 - 打开音频设备设置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rx.title.plain",
+      "english": "No RX audio — check the audio device below",
+      "chinese": "没有接收音频，请检查下方音频设备",
+      "previous": "没有 RX 音频——检查下面的音频设备",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rx.error",
+      "english": "RX audio error",
+      "chinese": "接收音频错误",
+      "previous": "RX 音频错误",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rx.reading",
+      "english": "RX audio {{db}} dB",
+      "chinese": "接收音频 {{db}} dB",
+      "previous": "RX 音频{{db}}页:1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.rx.none",
+      "english": "RX audio —",
+      "chinese": "接收音频 —",
+      "previous": "RX音频 -",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.tx.title.keying",
+      "english": "Keying a tune carrier — forward power confirms the CAT → PTT → RF path",
+      "chinese": "正在发出调谐载波，正向功率可验证 CAT → PTT → 射频输出链路",
+      "previous": "键入调子载体——前进动力证实CAT→PTT* RF路径",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.tx.title.on",
+      "english": "Transmit is enabled",
+      "chinese": "已允许发射",
+      "previous": "传输已启用",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.tx.title.off",
+      "english": "Transmit is off",
+      "chinese": "发射已禁用",
+      "previous": "传送关机了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.tx.keying.power",
+      "english": "TX keying · {{watts}} W",
+      "chinese": "正在发射 · {{watts}} W",
+      "previous": "TX 键{{watts}}维文",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.tx.keying.waiting",
+      "english": "TX keying…",
+      "chinese": "正在触发发射…",
+      "previous": "TX 键入...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.tx.on",
+      "english": "TX on",
+      "chinese": "发射已启用",
+      "previous": "TX 打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.health.tx.off",
+      "english": "TX off",
+      "chinese": "发射已禁用",
+      "previous": "TX 关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.title",
+      "english": "Set up Nexus",
+      "chinese": "设置 Nexus",
+      "previous": "设置 Nexus",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.steps.station",
+      "english": "Your station",
+      "chinese": "本台资料",
+      "previous": "本台资料",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.steps.rig",
+      "english": "Your rig",
+      "chinese": "电台",
+      "previous": "电台",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.steps.log",
+      "english": "Your log",
+      "chinese": "日志",
+      "previous": "日志",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.steps.finish",
+      "english": "Finish",
+      "chinese": "完成",
+      "previous": "完成",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.steps.aria",
+      "english": "Step {{n}} of {{total}}: {{title}}",
+      "chinese": "第 {{n}} 步，共 {{total}} 步：{{title}}",
+      "previous": "第 {{n}} 步，共 {{total}} 步：{{title}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.station.title",
+      "english": "Who’s on the air?",
+      "chinese": "当前使用哪个呼号？",
+      "previous": "当前使用哪个呼号？",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.station.sub",
+      "english": "Your grid square is the anchor for everything location-based — satellite passes, propagation, the map, and DXpedition windows are all computed from it.",
+      "chinese": "本台网格定位是所有位置相关功能的基准，卫星过境、传播、地图和远征台通联时段均据此计算。",
+      "previous": "您的网格广场是所有定位的锚点——卫星通过,传播,地图,DXpedition窗口都从它计算出来.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.station.callsign.label",
+      "english": "Callsign",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CallsignDialog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "CallsignDialog",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "setup.station.grid.label",
+      "english": "Grid square",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.station.grid.invalid",
+      "english": "Not a Maidenhead locator — 4 or 6 characters, like {{short}} or {{long}}.",
+      "chinese": "Maidenhead 网格定位格式无效。请输入 4 或 6 个字符，例如 {{short}} 或 {{long}}。",
+      "previous": "Maidenhead 网格定位格式无效。请输入 4 或 6 个字符，例如 {{short}} 或 {{long}}。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.station.grid.hint",
+      "english": "Maidenhead locator (qrz.com shows yours). Give all 6 — 4 characters pins you to the middle of a ~100-mile square, and every distance and bearing is measured from there.",
+      "chinese": "Maidenhead 网格定位（可在 qrz.com 查看）。请填写完整的 6 位网格。4 位网格会将位置设为约 100 英里见方区域的中心，所有距离和方位都从该点计算。",
+      "previous": "Maidenhead 网格定位（可在 qrz.com 查看）。请填写完整的 6 位网格。4 位网格会将位置设为约 100 英里见方区域的中心，所有距离和方位都从该点计算。",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "setup.rig.title",
+      "english": "How does the radio connect?",
+      "chinese": "如何连接电台？",
+      "previous": "如何连接电台？",
+      "changed": false,
+      "thirdPartyMatches": []
+    }
+  ]
+}

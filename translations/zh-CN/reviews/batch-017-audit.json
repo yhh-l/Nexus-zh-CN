@@ -1,0 +1,1651 @@
+{
+  "batch": 17,
+  "range": [
+    3201,
+    3400
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 187,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 2,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/SettingsPanel.tsx",
+    "ui/src/features/esmWords.ts"
+  ],
+  "rows": [
+    {
+      "id": "settings.contestStation.check.label",
+      "english": "Check",
+      "chinese": "首次持照年份（后两位）",
+      "previous": "检查",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestStation.check.hint",
+      "english": "The last two digits of the year you were first licensed. Sweepstakes asks for it, and you send the same two digits all contest.",
+      "chinese": "首次取得执照年份的后两位数字。Sweepstakes 要求发送此信息，整场比赛均发送相同的两位数字。",
+      "previous": "你当年最后的两位数是第一个领执照的 斯威普斯要求,你发出相同的两位数 所有比赛。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestStation.cqZone.label",
+      "english": "CQ zone",
+      "chinese": "CQ 分区",
+      "previous": "CQ 区",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestStation.cqZone.hint",
+      "english": "Your CQ zone, 1 to 40. CQ WW asks for it. Leave it at 0 if you do not know it yet.",
+      "chinese": "本台 CQ 分区，范围 1–40，CQ WW 需要此信息。暂不清楚时可保留为 0。",
+      "previous": "你的CQ区,1比40 CQWW要求的. 如果你还不知道的话,就放在0点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestStation.ituZone.label",
+      "english": "ITU zone",
+      "chinese": "ITU 分区",
+      "previous": "国际电联区域",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestStation.ituZone.hint",
+      "english": "Your ITU zone, 1 to 90. IARU asks for it. Leave it at 0 if you do not know it yet.",
+      "chinese": "本台 ITU 分区，范围 1–90，IARU 比赛需要此信息。暂不清楚时可保留为 0。",
+      "previous": "你的电联区域,1比90 IARU要求它。 如果你还不知道的话,就放在0点",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestStation.power.label",
+      "english": "Power sent",
+      "chinese": "交换信息中的功率值",
+      "previous": "发送电源",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestStation.power.hint",
+      "english": "The power you send as part of this contest’s exchange, in the sponsor’s own words (KW, 500, 5). It goes on the air exactly as you type it; the power your log declares is Power category, under Your entry.",
+      "chinese": "按主办方规定的格式填写本次比赛交换信息中的功率值（如 KW、500、5），发射时将按输入内容原样发送。日志申报的功率类别在“参赛信息 ▸ 功率类别”中设置。",
+      "previous": "请按竞赛主办方的格式填写本次交换中发送的功率值（例如 KW、500 或 5）。该值会按输入内容原样发射；日志的功率申报类别填写在“参赛资料”下。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestScore.incomplete",
+      "english": "This score leaves out the bonus points this contest works out from your log — this build does not compute them, so what the sponsor credits you will be higher. Everything the log needs to be accepted is here; the number is not your claimed score.",
+      "chinese": "此分数未包含主办方根据日志计算的加分，本版本尚不计算这些加分，因此主办方认可的成绩会更高。日志已具备被接收所需的信息，但这里的数值不是本台申报总分。",
+      "previous": "这个分数省去了这场比赛的奖金分数 —— 这个积分不计算, 所以赞助商的分数会更高。 所有需要接受的日志都在这里;号码不是您声称的得分.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.unassisted.label",
+      "english": "Unassisted entry",
+      "chinese": "无辅助参赛",
+      "previous": "非协助条目",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.unassisted.aria.declare",
+      "english": "Declare an unassisted contest entry",
+      "chinese": "申报无辅助参赛",
+      "previous": "宣布一个无协助的比赛条目",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.unassisted.aria.end",
+      "english": "End an unassisted contest entry",
+      "chinese": "结束无辅助参赛",
+      "previous": "结束一个无援助的比赛条目",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.unassisted.hint",
+      "english": "Turns off the CW decoder (AI and classic), DX cluster / RBN spots, the PSK Reporter needs feed, Super Check Partial and call history together, and records the change with a timestamp. Takes effect at once. Your own settings for each of those are left alone and come back when you switch this off.",
+      "chinese": "同时停用 CW 解码器（AI 和传统）、DX 集群／RBN 通报、PSK Reporter 待通联数据源、Super Check Partial 呼号匹配及呼号历史资料，并记录更改时间。立即生效。各功能原有设置会保留，关闭此项后恢复。",
+      "previous": "关机CW解码器(AI和经典),DX集群 / RBN斑点,PSK Reporter需要种子,SuperCheck部分并调用历史,并用时间戳记录变化. 立即生效。 关机时,你自己的设置会单独设置,然后回来。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.journal.label",
+      "english": "Assistance record",
+      "chinese": "辅助功能使用记录",
+      "previous": "援助记录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.journal.unassisted",
+      "english": "UNASSISTED",
+      "chinese": "无辅助",
+      "previous": "未经批准",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.journal.assisted",
+      "english": "assisted",
+      "chinese": "有辅助",
+      "previous": "协助",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.journal.noSources",
+      "english": "nothing active",
+      "chinese": "无启用的辅助源",
+      "previous": "无活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestCategory.journal.hint",
+      "english": "Kept in <code>assistance_journal.json</code> beside your settings, so it survives restarts. Newest first.",
+      "chinese": "保存在设置文件旁的 <code>assistance_journal.json</code> 中，重启后仍保留，最新记录在前。",
+      "previous": "固定在<code>帮助 journal.json</code>在您的设置旁, 所以它能继续重新启动 。 最新的第一个。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.legend",
+      "english": "Super Check Partial and call history",
+      "chinese": "Super Check Partial 呼号匹配与呼号历史资料",
+      "previous": "超级检查部分并调用历史",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.scp.label",
+      "english": "Super Check Partial",
+      "chinese": "Super Check Partial 呼号匹配",
+      "previous": "超级检查部分",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.scp.hint",
+      "english": "Lists the calls active in recent contests that match what you type in the contest strip’s Call box. Nexus downloads the list (MASTER.SCP, about 360 KB of callsigns) from supercheckpartial.com, which W9KKN maintains, the first time a contest starts with this on. It is never shipped with Nexus.",
+      "chinese": "根据竞赛录入栏“呼号”框中的输入，列出近期比赛中活跃的匹配呼号。启用后首次开始比赛时，Nexus 从 W9KKN 维护的 supercheckpartial.com 下载列表（MASTER.SCP，约 360 KB 呼号数据）。该列表不随 Nexus 分发。",
+      "previous": "列出在最近比赛中活跃的与您在竞赛条的呼叫框中输入的匹配的呼叫。 Nexus从SupercheckPercific.com下载该列表(MASTER.SCP,约360 KB of callsigns),W9KKN维护该列表,这是比赛第一次从这个开始. 它从来没有与Nexus一起运输。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.auto.label",
+      "english": "Check for a newer list once a day",
+      "chinese": "每天检查一次列表更新",
+      "previous": "一天检查一次更新的列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.auto.hint",
+      "english": "While a contest runs, Nexus asks the site at most once a day whether the list has changed, and downloads it only if it has. Off keeps the list you have; Update now still checks.",
+      "chinese": "比赛运行期间，Nexus 每天最多向网站检查一次列表是否更新，仅在有变化时下载。关闭后继续使用已有列表；“立即更新”仍可手动检查。",
+      "previous": "在一场比赛运行期间,Nexus每天最多询问网站一次名单是否有变化,只有有变化时才会下载. 关闭您拥有的列表; 更新现在仍在检查 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.update.action",
+      "english": "Update now",
+      "chinese": "立即更新",
+      "previous": "现在更新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.update.busy",
+      "english": "Checking…",
+      "chinese": "正在检查…",
+      "previous": "正在检查…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.status.none",
+      "english": "No list yet. It downloads the first time a contest starts.",
+      "chinese": "尚无列表，将在首次开始比赛时下载。",
+      "previous": "还没有名单 它下载比赛第一次开始.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.status.held",
+      "english": "{{count}} calls, downloaded {{date}}.",
+      "chinese": "{{count}} 个呼号，下载日期 {{date}}。",
+      "previous": "{{count}}电话,下载{{date}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.status.failed",
+      "english": "The last check failed: {{error}}. The list you have is still used.",
+      "chinese": "上次检查失败：{{error}}。仍继续使用已有列表。",
+      "previous": "上次检查失败 :{{error}}。您已有的列表仍然被使用。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.unassisted",
+      "english": "Unassisted mode is on, so Super Check Partial and call history are off until it ends.",
+      "chinese": "无辅助模式已开启，Super Check Partial 呼号匹配和呼号历史资料在退出该模式前保持停用。",
+      "previous": "无辅助模式已启动, 因此 SuperCheck 部分并调用历史直到结束 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.label",
+      "english": "Call history",
+      "chinese": "呼号历史资料",
+      "previous": "调用历史",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.hint",
+      "english": "A call-history file you choose, in N1MM’s format. As you type a call that is in it, Nexus fills the exchange boxes it can check (a county, state, section or zone the contest accepts) and marks them; what you type always wins. A file is used only for the contest it was imported for, and never leaves this computer.",
+      "chinese": "由你选择的 N1MM 格式呼号历史文件。输入文件中已有的呼号时，Nexus 会填写可核对且符合比赛规则的交换字段（县、州、分区或区域），并作出标记；手动输入始终优先。文件仅用于导入时指定的比赛，数据不会离开本机。",
+      "previous": "您选择的N1MM格式的调用历史文件 。 当您输入其中的呼叫时, Nexus 将填充它可以检查的交换框(一个县,州,区或赛事所接受的区域),并标记它们;您输入的总是获胜的. 一个文件只用于它所导入的比赛,并且从不离开这个计算机.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.fill.label",
+      "english": "Fill the exchange from call history",
+      "chinese": "从呼号历史资料填写交换信息",
+      "previous": "从调用历史中填充交换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.import.action",
+      "english": "Import a file…",
+      "chinese": "导入文件…",
+      "previous": "导入文件...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.import.busy",
+      "english": "Importing…",
+      "chinese": "正在导入…",
+      "previous": "正在导入...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.import.title",
+      "english": "The file will be used for the contest picked above: {{contest}}.",
+      "chinese": "此文件将用于上方选择的比赛：{{contest}}。",
+      "previous": "文件将用于以上选的比赛:{{contest}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.import.ok",
+      "english": "Imported {{count}} calls for {{contest}}.",
+      "chinese": "已为 {{contest}} 导入 {{count}} 个呼号。",
+      "previous": "已导入{{count}}呼吁{{contest}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.import.failed",
+      "english": "That file could not be imported: {{error}}",
+      "chinese": "无法导入此文件：{{error}}",
+      "previous": "无法导入此文件 :{{error}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.clear.action",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "settings.contestAids.history.none",
+      "english": "No file imported.",
+      "chinese": "尚未导入文件。",
+      "previous": "没有导入文件 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.held",
+      "english": "{{file}}: {{count}} calls, for {{contest}}.",
+      "chinese": "{{file}}：{{count}} 个呼号，用于 {{contest}}。",
+      "previous": "{{file}}数字 :{{count}}呼叫,请{{contest}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestAids.history.otherContest",
+      "english": "This file is for {{contest}}, not the contest picked above, so it is not used now.",
+      "chinese": "此文件用于 {{contest}}，与上方当前选择的比赛不同，因此暂不使用。",
+      "previous": "此文件用于{{contest}}而不是上面选的比赛 所以现在不用了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.legend",
+      "english": "Enter Sends Message",
+      "chinese": "按 Enter 发送报文（ESM）",
+      "previous": "输入发送信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.hint",
+      "english": "With ESM on, Enter in the contest log strip sends the contact’s next message from your F-keys, and the contact logs at its last step. ESM is off until you turn it on, in each cockpit separately. Enter never turns TX on, and nothing is sent by a timer.",
+      "chinese": "启用 ESM 后，在竞赛录入栏按 Enter 会调用 F 键报文，发送当前交信的下一步内容，并在最后一步记录交信。ESM 默认关闭，需在各操作台分别开启。Enter 不会自动开启 TX，也不会由计时器触发发送。",
+      "previous": "Enter in the Contracting log 条会发送您 F 键的下一个消息, 以及最后一步的联系日志。 在开机前,ESM关闭, 在每个驾驶舱分别。 输入时从不打开 TX , 也没有计时器发送 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.remote",
+      "english": "Enter Sends Message is set at the station and works only there, not on this page.",
+      "chinese": "“按 Enter 发送报文”仅在电台本机设置并使用，此页面不提供该功能。",
+      "previous": "Enter Sends Messages被设定在车站,只在那里工作,而不是在本页面工作.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.cw.label",
+      "english": "ESM in the CW cockpit",
+      "chinese": "CW 操作台的 ESM",
+      "previous": "无害环境管理CW驾驶舱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.rtty.label",
+      "english": "ESM in the RTTY cockpit",
+      "chinese": "RTTY 操作台的 ESM",
+      "previous": "无害环境管理RTTY驾驶舱",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.phone.label",
+      "english": "ESM in the Phone cockpit",
+      "chinese": "话音操作台的 ESM",
+      "previous": "电话驾驶舱中的无害环境管理",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.phone.hint",
+      "english": "Enter plays the voice keyer’s recordings. When you are running, you say his call and your exchange yourself: a recording cannot say a callsign.",
+      "chinese": "按 Enter 播放语音键控器的录音。守频呼叫时，需自行说出对方呼号和本台交换信息，因为固定录音无法说出对方呼号。",
+      "previous": "输入播放语音键器的录音 。 当你在跑步时,你会说他的电话和你自己的交换:录音不能说一个呼号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.callOnce.label",
+      "english": "Call once (S&P)",
+      "chinese": "仅呼叫一次（S&P）",
+      "previous": "调用一次( S & P)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.callOnce.hint",
+      "english": "In search and pounce, your call goes once per station. The next Enter asks for a repeat instead of sending your call again.",
+      "chinese": "扫频通联时，对每个电台只发送一次本台呼号。再次按 Enter 会请求对方重复，而不是再次发送本台呼号。",
+      "previous": "在搜索和弹跳中,你的呼叫一次 每个站。 下一个 Enter 请求重复, 而不是再次发送您的电话 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.cw.steps.label",
+      "english": "CW steps: {{profile}}",
+      "chinese": "CW 步骤：{{profile}}",
+      "previous": "CW步骤:{{profile}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.cw.steps.builtIn",
+      "english": "This profile uses the built-in sets, so its steps in a contest are theirs. To map your own keys, customize the profile in Settings ▸ CW.",
+      "chinese": "此配置使用内置报文组，竞赛步骤沿用内置映射。如需自行指定按键，请在“设置 ▸ CW”中自定义此配置。",
+      "previous": "这个简介使用内置的套装,所以它在比赛中的步骤是他们的. 要映射自己的密钥, 请自定义设置中的配置CW。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.cw.steps.own",
+      "english": "Saved with this profile. A step with no key sends nothing, and the strip names it.",
+      "chinese": "随此配置保存。未指定按键的步骤不会发送，录入栏会标明该步骤。",
+      "previous": "随此配置保存 。 没有钥匙的步子什么也没有发出 条形带就把它命名了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.rtty.steps.label",
+      "english": "RTTY steps",
+      "chinese": "RTTY 步骤",
+      "previous": "RTTY步骤",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.rtty.steps.hint",
+      "english": "Each set keeps its own mapping. A key you changed in the cockpit keeps its place, so its step sends your text.",
+      "chinese": "每个报文组分别保存按键映射。在操作台修改按键内容后，其步骤映射不变，因此该步骤会发送你修改后的报文。",
+      "previous": "每一集都保留自己的绘图功能. 你在驾驶舱里换的钥匙 保留着它的位置 所以它的台阶会发出你的短信",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.phone.steps.label",
+      "english": "Voice keyer steps",
+      "chinese": "语音键控器步骤",
+      "previous": "语音按键步骤",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.contestKeys.phone.steps.hint",
+      "english": "Record a slot for each step you want Enter to play. An empty slot plays nothing.",
+      "chinese": "为希望按 Enter 播放的各步骤录制对应槽位。空槽位不会播放任何内容。",
+      "previous": "为您要玩的每个步骤记录一个位置。 一个空位什么的也没有",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.role.inState",
+      "english": "in-state",
+      "chinese": "州内参赛方",
+      "previous": "状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.role.outOfState",
+      "english": "out-of-state",
+      "chinese": "州外参赛方",
+      "previous": "州外地区",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.step.callExch",
+      "english": "His call and your exchange",
+      "chinese": "对方呼号与本台交换信息",
+      "previous": "他的电话和你的交换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.step.myCall",
+      "english": "Your call",
+      "chinese": "本台呼号",
+      "previous": "你决定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.step.exch",
+      "english": "Your S&P exchange",
+      "chinese": "本台 S&P 交换信息",
+      "previous": "您的 S&P 交换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.dupe",
+      "english": "A dupe of your own log: Enter sends nothing and logs nothing.",
+      "chinese": "本台日志中已有此次交信，按 Enter 不会发送或记录。",
+      "previous": "隐藏您自己的日志: 输入不发送, 日志不记录 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.b4Sent",
+      "english": "{{step}} went to this call. Enter logs it as a dupe once his exchange is copied.",
+      "chinese": "已向此呼号发送{{step}}。抄收对方交换信息后，按 Enter 将其记录为重复交信。",
+      "previous": "{{step}}去了这个电话。 复制后输入该日志为哑弹 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.txOff",
+      "english": "TX is off, and Enter never turns it on. Turn TX on yourself, then press Enter.",
+      "chinese": "TX 已关闭，Enter 不会自动开启。请手动开启 TX 后再按 Enter。",
+      "previous": "TX关机了,Enter从不打开. 打开TX,然后按 Enter.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.txLocked",
+      "english": "TX is locked here: the dial is outside your license privileges, or this connection does not allow transmitting.",
+      "chinese": "TX 已锁定：当前频率超出本台执照权限，或此连接不允许发射。",
+      "previous": "TX 锁定在此: 拨号不在您的许可权限之内, 或者此连接不允许传输 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.clockRepair",
+      "english": "A clock repair is holding transmit, so Enter sends nothing.",
+      "chinese": "正在校正时钟，发射暂被阻止，按 Enter 不会发送。",
+      "previous": "一个时钟修复是持有传输,所以 Enter 发送什么。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.recording",
+      "english": "The voice keyer is recording, so Enter plays nothing.",
+      "chinese": "语音键控器正在录音，按 Enter 不会播放。",
+      "previous": "语音键器正在录制,所以Enter没有演奏.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.pttHeld",
+      "english": "You are holding PTT, so Enter plays nothing.",
+      "chinese": "正在按住 PTT，按 Enter 不会播放。",
+      "previous": "你拿着PTT,所以 Enter 不玩任何游戏。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.unmapped",
+      "english": "{{step}}: no key is mapped, so Enter sends nothing and logs nothing at that step.",
+      "chinese": "{{step}}：未指定按键，按 Enter 不会在此步骤发送或记录交信。",
+      "previous": "{{step}}: 没有映射密钥, 因此 Enter 没有发送任何信息, 也没有日志 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.empty",
+      "english": "{{step}}: {{key}} is empty, so Enter sends nothing and logs nothing at that step.",
+      "chinese": "{{step}}：{{key}} 内容为空，按 Enter 不会在此步骤发送或记录交信。",
+      "previous": "{{step}}数字 :{{key}}空的,所以 Enter 发送什么也没有记录。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.refused.oneSlot",
+      "english": "{{step}}: mapped to two recordings, and the keyer plays one per press.",
+      "chinese": "{{step}}：映射到了两段录音，但语音键控器每次按键只能播放一段。",
+      "previous": "{{step}}:映射到两张录音,按键者每张按键播放一张.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.inert.noKeyer",
+      "english": "ESM steps aside while the voice keyer is hidden: Enter logs as it does with ESM off.",
+      "chinese": "语音键控器隐藏时 ESM 暂不介入，按 Enter 将按 ESM 关闭时的方式记录交信。",
+      "previous": "在隐藏语音密钥器时, 将无害环境管理步骤放在一边: 输入与关闭无害环境管理一样的记录 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.inert.auto",
+      "english": "ESM steps aside while the RTTY auto sequence runs: Enter logs as it does with ESM off.",
+      "chinese": "RTTY 自动流程运行时 ESM 暂不介入，按 Enter 将按 ESM 关闭时的方式记录交信。",
+      "previous": "无害环境管理的步骤,而RTTY自动序列运行:输入与关闭无害环境管理有关的日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.inert.continuousTx",
+      "english": "ESM steps aside while Continuous TX is latched: Enter logs as it does with ESM off.",
+      "chinese": "持续发射开关锁定开启时，ESM 暂不介入；按 Enter 将按 ESM 关闭时的方式记录交信。",
+      "previous": "将无害环境管理步骤放在一边,同时将连续TX固定下来:按取消无害环境管理的方式输入日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.inert.noRoles",
+      "english": "This set has no step mapped, so ESM steps aside: Enter logs as it does with ESM off.",
+      "chinese": "此报文组未映射任何步骤，ESM 暂不介入；按 Enter 将按 ESM 关闭时的方式记录交信。",
+      "previous": "本集没有绘制步骤图,因此,无害环境管理步骤搁置一边:输入与无害环境管理有关的日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.picker.builtIn.title",
+      "english": "The built-in set’s key for this step",
+      "chinese": "内置报文组中此步骤对应的按键",
+      "previous": "此步骤的内置设置关键",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.picker.builtIn.none",
+      "english": "none",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.picker.useBuiltIn",
+      "english": "Built in: {{keys}}",
+      "chinese": "内置：{{keys}}",
+      "previous": "内建于:{{keys}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.picker.none",
+      "english": "None",
+      "chinese": "无",
+      "previous": "无",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Astro",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "configuration_dialog",
+          "chinese": "无"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "不保存"
+        }
+      ]
+    },
+    {
+      "id": "contest.esm.picker.key.aria",
+      "english": "Key for {{step}}",
+      "chinese": "{{step}}对应的按键",
+      "previous": "密钥{{step}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.picker.then.aria",
+      "english": "Second key for {{step}}",
+      "chinese": "{{step}}对应的第二个按键",
+      "previous": "第二键{{step}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.picker.thenNone",
+      "english": "Nothing more",
+      "chinese": "不追加其他按键",
+      "previous": "没别的了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.switch.label",
+      "english": "Enter Sends Message",
+      "chinese": "按 Enter 发送报文",
+      "previous": "输入发送信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.switch.title",
+      "english": "Enter Sends Message: with it on, Enter in the contest strip sends the contact’s next message from your F-keys, and logs the contact at its last step. Enter never turns TX on. It is off until you turn it on, in each cockpit separately.",
+      "chinese": "按 Enter 发送报文：启用后，在竞赛录入栏按 Enter 会调用 F 键报文，发送当前交信的下一步内容，并在最后一步记录交信。Enter 不会自动开启 TX。默认关闭，需在各操作台分别开启。",
+      "previous": "输入 发送信件 : 随它打开, 请在竞赛条内发送您 F 键的下一个联系人信件, 并在最后一步登录联系人 。 输入时绝不打开 TX 。 它关闭直到你打开它, 在每一个驾驶舱分别。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.mode.run",
+      "english": "Run",
+      "chinese": "守频呼叫",
+      "previous": "运行",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.mode.sp",
+      "english": "S&P",
+      "chinese": "扫频通联（S&P）",
+      "previous": "标准与标准",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.mode.title",
+      "english": "Running or search and pounce: click to switch. The key that holds your CQ switches to running, and clicking a spot switches to S&P.",
+      "chinese": "守频呼叫或扫频通联，点击切换。按下存有 CQ 报文的键会切换到守频呼叫，点击通报会切换到 S&P。",
+      "previous": "运行或搜索并弹出:单击以切换. 持有 CQ 开关运行的密钥, 并点击点切换到 S&P 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.next",
+      "english": "Enter sends {{keys}}",
+      "chinese": "按 Enter 发送 {{keys}}",
+      "previous": "输入发送{{keys}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.logDupe",
+      "english": "Enter logs the dupe and sends nothing",
+      "chinese": "按 Enter 记录重复交信，不发送任何内容",
+      "previous": "输入记录哑弹并发送任何信息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.logOnly.title",
+      "english": "Alt+Enter logs the contact without sending anything.",
+      "chinese": "按 Alt+Enter 只记录交信，不发送任何内容。",
+      "previous": "备选案文+ 输入登录联系人而不发送任何信息。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.phone.speak",
+      "english": "Say his call and your exchange.",
+      "chinese": "请说出对方呼号及本台交换信息。",
+      "previous": "说他的电话和你的交换。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.notSent",
+      "english": "Nothing was sent, and nothing was logged: {{why}}",
+      "chinese": "未发送，也未记录交信：{{why}}",
+      "previous": "没有发送,也没有记录:{{why}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.stopped.logged",
+      "english": "{{step}} stopped. {{call}} is logged. Ctrl+D twice removes it.",
+      "chinese": "{{step}}已停止。与 {{call}} 的交信已记录，按两次 Ctrl+D 可移除。",
+      "previous": "{{step}}停下来{{call}}已登录。 Ctrl+D 两次将其删除.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.stopped.again",
+      "english": "{{step}} stopped, so it counts as not sent: the next Enter sends it again.",
+      "chinese": "{{step}}已停止，按未发送处理；下次按 Enter 将重新发送。",
+      "previous": "{{step}}已停止, 因此它算作未发送 : 下一个 Enter 再次发送 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "contest.esm.switch.failed",
+      "english": "Enter Sends Message was not saved, so the switch is as it was.",
+      "chinese": "“按 Enter 发送报文”设置未能保存，开关保持原状态。",
+      "previous": "输入“ 发送信件” 没有保存, 所以开关是原样 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.legend",
+      "english": "Field Day",
+      "chinese": "Field Day",
+      "previous": "战地日",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.mode.label",
+      "english": "Contest mode",
+      "chinese": "竞赛模式",
+      "previous": "竞技模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.mode.aria.enable",
+      "english": "Enable Contest mode: {{contest}}",
+      "chinese": "启用竞赛模式：{{contest}}",
+      "previous": "启用竞技模式 :{{contest}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.mode.aria.disable",
+      "english": "Disable Contest mode: {{contest}}",
+      "chinese": "禁用竞赛模式：{{contest}}",
+      "previous": "禁用竞技模式 :{{contest}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.mode.hint",
+      "english": "For {{contest}}, the contest picked above. When it is on, the log strips in every mode, the Contest screen and the exports follow its rules. Off the rest of the year. Save to apply. The same switch is at the top of the Contest screen, where it takes effect at once.",
+      "chinese": "适用于上方选择的 {{contest}}。开启后，各模式的交信录入栏、竞赛页面及导出均遵循其规则；非比赛期间请关闭。保存后生效。竞赛页面顶部也有相同开关，在那里切换会立即生效。",
+      "previous": "对于{{contest}}上面选的比赛 开机时,每个模式的日志条,竞技屏幕和出口都遵循其规则. 余年废. 保存为应用 。 同一开关位于Contest屏幕的顶部,其同时生效.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.needExchange",
+      "english": "<b>Set your Class + Section to start operating.</b> Contest mode is on, but the station won't enter {{contest}} until both are filled in below.",
+      "chinese": "<b>请先填写参赛组别和分区，再开始操作。</b>竞赛模式已开启，但下方两项均填完后，本台才会进入 {{contest}}。",
+      "previous": "<b>设置您的类 + 区域开始运行 。</b>比赛模式开始 但车站不会进入{{contest}}直至下文填写为止。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.class.label",
+      "english": "FD Class",
+      "chinese": "FD 组别",
+      "previous": "FD 类",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.class.hint",
+      "english": "Number of transmitters + class letter: A=club/group portable, B=1–2 person portable, C=mobile, D=home (mains power), E=home (emergency power), F=EOC. E.g. 3A = 3 transmitters, club portable.",
+      "chinese": "发射机数量加组别字母：A＝俱乐部／团体便携台，B＝1–2 人便携台，C＝移动台，D＝家用台（市电），E＝家用台（应急电源），F＝应急指挥中心（EOC）。例如 3A 表示俱乐部便携台，使用 3 台发射机。",
+      "previous": "发射机数量+班级字母: A=俱乐部/组便携式, B=1–2人便携式, C=移动, D=家(主电), E=家(紧急电), F=EOC. E. 例如 3A = 3个发射机,俱乐部便携式.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.category.label",
+      "english": "WFD Class and Category",
+      "chinese": "WFD 发射机数量与类别",
+      "previous": "WFD 类别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.category.hint",
+      "english": "The number of transmitters (your class), then your category letter: H=Home, I=Indoor, O=Outdoor, M=Mobile (e.g. 2O = 2 transmitters, outdoor).",
+      "chinese": "先填写发射机数量，再加类别字母：H＝家用，I＝室内，O＝室外，M＝移动。例如 2O 表示室外操作，使用 2 台发射机。",
+      "previous": "发射机数量(你的班),然后是分类字母:H=Home,I=室内,O=室外,M=Mobile(如2O=2个发射机,室外).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.section.label",
+      "english": "ARRL Section",
+      "chinese": "ARRL 分区",
+      "previous": "ARRL科",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.section.invalid",
+      "english": "“{{section}}” isn't a known ARRL/RAC section — pick one from the list.",
+      "chinese": "“{{section}}”不是有效的 ARRL/RAC 分区，请从列表中选择。",
+      "previous": "“......{{section}}“不是一个已知的ARRL/RAC部分——从清单上选一个。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.section.retired",
+      "english": "“{{section}}” ({{name}}) is no longer an ARRL/RAC section — it was replaced by {{successors}}. Pick the one you operate from.",
+      "chinese": "“{{section}}”（{{name}}）已不再使用，现已由 {{successors}} 取代。请选择本台实际操作地点所属的 ARRL/RAC 分区。",
+      "previous": "“......{{section}}” (中文(简体) ).{{name}})已不再是ARRL/RAC科——改为:{{successors}}选一个你操作的。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.section.hint",
+      "english": "Your ARRL / RAC section (e.g. WI, ENY, ONN). Start typing the code or a state name and pick from the list — validated against all {{count}} sections. Required for the Cabrillo log.",
+      "chinese": "本台 ARRL／RAC 分区，例如 WI、ENY、ONN。输入代码或州名后从列表选择；将根据全部 {{count}} 个分区校验。导出 Cabrillo 日志需要此信息。",
+      "previous": "ARRL/RAC部分(如WI,ENY,ONN). 开始输入代码或状态名称, 从列表中选择 —— 对所有代码进行校验{{count}}页:1 Cabrillo日志需要这个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.label",
+      "english": "Power multiplier",
+      "chinese": "功率系数",
+      "previous": "功率乘数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.aria",
+      "english": "Field Day power multiplier",
+      "chinese": "Field Day 功率系数",
+      "previous": "外地日功率乘数",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.qrp.label",
+      "english": "×5 QRP / battery",
+      "chinese": "×5 QRP／电池供电",
+      "previous": "QRP/电池",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.qrp.hint",
+      "english": "Runs entirely on battery or other natural power, ≤5W output",
+      "chinese": "完全使用电池或其他自然能源，输出功率不超过 5W",
+      "previous": "完全运行在电池或其他自然电源上,% 5W 输出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.hundred.label",
+      "english": "×2 ≤100W",
+      "chinese": "×2 ≤100W",
+      "previous": "*===================================================================================================================================================================================",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.hundred.hint",
+      "english": "100W or less from any power source",
+      "chinese": "任意供电方式，输出功率不超过 100W",
+      "previous": "任何电源100瓦以下",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.high.label",
+      "english": "×1 >100W",
+      "chinese": "×1 >100W",
+      "previous": "×1 > 100W 时",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.high.hint",
+      "english": "Over 100W — commercial/generator power",
+      "chinese": "输出功率超过 100W，使用市电或发电机供电",
+      "previous": "100W以上——商业/发电机",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fieldDay.power.hint",
+      "english": "Multiplies your QSO points. QRP/battery = ×5 (ARRL bonus for going off-grid). Choose before the event.",
+      "chinese": "用于乘算 QSO 分。QRP／电池供电为 ×5，这是 ARRL 对脱离电网供电的加分。请在活动前选择。",
+      "previous": "将您的QSO点。 QRP/电池=×5(ARRL离网奖金)。 在事件之前选择 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.update.action",
+      "english": "Check for rules updates",
+      "chinese": "检查规则更新",
+      "previous": "检查规则更新",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.update.busy",
+      "english": "Checking…",
+      "chinese": "正在检查…",
+      "previous": "正在检查…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.update.done",
+      "english": "Rules data downloaded — applies at next launch (data {{date}}).",
+      "chinese": "规则数据已下载，将在下次启动时生效（数据日期 {{date}}）。",
+      "previous": "规则数据下载——适用于下一次发射(数据){{date}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.update.current",
+      "english": "Rules data is already current (data {{date}}).",
+      "chinese": "规则数据已是最新版本（数据日期 {{date}}）。",
+      "previous": "规则数据已经存在(数据){{date}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.update.failed",
+      "english": "Rules update failed: {{detail}}",
+      "chinese": "规则更新失败：{{detail}}",
+      "previous": "规则更新失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.status",
+      "english": "{{year}} rules · data {{date}}",
+      "chinese": "{{year}} 年规则 · 数据日期 {{date}}",
+      "previous": "{{year}}规则 数据{{date}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.pending",
+      "english": "Update downloaded (data {{date}}) — applies at next launch.",
+      "chinese": "更新已下载（数据日期 {{date}}），将在下次启动时生效。",
+      "previous": "下载更新(数据){{date}})——适用于下一次发射.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.stale",
+      "english": "Rules data is from {{year}} — check for updates before the event.",
+      "chinese": "规则数据来自 {{year}} 年，请在活动前检查更新。",
+      "previous": "规则数据来自{{year}}——检查活动前的最新情况.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.empty",
+      "english": "Built-in rules data active.",
+      "chinese": "当前使用内置规则数据。",
+      "previous": "内建规则数据活跃.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdRules.hint",
+      "english": "Scoring, dates, exchanges and multipliers for every contest in the Contest list above. Checked on demand; a downloaded update applies at the next launch.",
+      "chinese": "涵盖上方竞赛列表中各比赛的计分、日期、交换信息及系数。按需检查更新，下载后将在下次启动时生效。",
+      "previous": "以上参赛名单中每场比赛的分数,日期,交换和乘数. 已按要求检查;下载的更新适用于下一次发射。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.legend",
+      "english": "Who's who at this event",
+      "chinese": "活动中的呼号、席位与操作员",
+      "previous": "谁在这场活动中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.note",
+      "english": "Three names, three different jobs — the club call goes on the air, the position is which tent you are sitting in, and the operator is whoever is at the key right now. Changing one of them here changes it everywhere in Nexus: the callsign and the operator are the same two boxes the Station tab holds.",
+      "chinese": "三项名称各有用途：俱乐部呼号用于实际发射，操作席位表示所在的帐篷等位置，操作员是当前进行通联的人。在此修改任一项，会同步至 Nexus 其他位置；呼号与操作员就是“电台”标签页中的同名字段。",
+      "previous": "三个名字,三个不同的工作——俱乐部的呼叫在播出,位置是您所在的帐篷,接线员就是现在在关键位置的人. 改变其中的一个在Nexus的任何地方都改变:呼号与操作员是站台标签所持的两个盒子。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.call.label",
+      "english": "Callsign on the air",
+      "chinese": "实际发射呼号",
+      "previous": "呼叫广播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.call.hint",
+      "english": "The call that goes on the air and onto every contact you log — at a club event that is the club's call, the same one at every position on site.",
+      "chinese": "实际发射及每条交信记录使用的呼号。俱乐部活动中应填写俱乐部呼号，现场所有席位使用同一呼号。",
+      "previous": "这个电话在广播中和每一个你记录的联络人——在俱乐部的活动中,这是俱乐部的呼声,在现场的每一个位置上都是同样的呼声。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.position.label",
+      "english": "Position name",
+      "chinese": "操作席位名称",
+      "previous": "位置名称",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.position.placeholder",
+      "english": "CW tent",
+      "chinese": "CW 帐篷",
+      "previous": "CW帐篷",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.position.hint",
+      "english": "Which tent, trailer or table this station is — it names you on the club band board so everyone can see which position is on which band, and it never goes on the air.",
+      "chinese": "用于说明本台所在的帐篷、拖车或操作桌。此名称显示在俱乐部频段面板上，便于查看各席位所用频段，不会通过无线电发送。",
+      "previous": "哪个帐篷,拖车或桌子是这个车站——它把你命名在俱乐部的乐队板上,这样大家就可以看到哪个乐队的位置,它从不播出.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.operator.label",
+      "english": "Operator at the key",
+      "chinese": "当前操作员",
+      "previous": "当前操作员",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.operator.placeholder",
+      "english": "blank = the callsign above",
+      "chinese": "留空＝上方呼号",
+      "previous": "空白 = 上面的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdWho.operator.hint",
+      "english": "Whoever is running this position right now — change it every time someone takes the seat, and their contacts are stamped with it (ADIF OPERATOR) so the club can split the log by operator afterwards.",
+      "chinese": "当前操作此席位的人。每次换人时请更新，交信记录会写入该操作员（ADIF OPERATOR），便于俱乐部事后按操作员拆分日志。",
+      "previous": "现在担任这一职务的人——每当有人坐上这个席位时就改变这个职位,他们的联络人就会用这个职位盖上印章(E.ADIF因此俱乐部可以事后由操作员分割日志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.legend",
+      "english": "Field Day Club Sync",
+      "chinese": "Field Day 俱乐部同步",
+      "previous": "战地日俱樂部同步",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.host.label",
+      "english": "Host a club event",
+      "chinese": "创建俱乐部活动",
+      "previous": "主办俱乐部活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.host.hint",
+      "english": "Merges every position's contacts into one club log on this PC — and opens a port on your local network (the only time Nexus listens beyond this computer).",
+      "chinese": "在本机将各席位的交信合并为一份俱乐部日志，并在局域网开放端口；这是 Nexus 唯一监听本机以外连接的情况。",
+      "previous": "将每个位置的联系人合并到这个PC上的一个俱乐部日志中——并在您的本地网络上打开一个端口(这是Nexus唯一一次从这个计算机之外听).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.hint",
+      "english": "A club event uses TCP {{host}} (the Host port), UDP {{search}} (Find club events) and TCP {{board}} (the club TV scoreboard). A firewall that is on must let Nexus in on them.",
+      "chinese": "俱乐部活动使用 TCP {{host}}（主机端口）、UDP {{search}}（查找俱乐部活动）及 TCP {{board}}（俱乐部电视计分板）。启用防火墙时，需允许 Nexus 使用这些端口接收入站连接。",
+      "previous": "俱乐部活动使用 TCP{{host}}(主机端口), UDP{{search}}(寻找俱乐部活动)和TCP{{board}}(俱乐部电视记分牌). 防火墙必须让Nexus进入",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.allow",
+      "english": "Allow Nexus through Windows Firewall",
+      "chinese": "允许 Nexus 通过 Windows 防火墙",
+      "previous": "允许 Nexus 通过 Windows 防火墙",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.nothing",
+      "english": "Nothing to allow",
+      "chinese": "无需添加放行规则",
+      "previous": "没有允许的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.remove",
+      "english": "Remove Nexus's firewall rules",
+      "chinese": "删除 Nexus 的防火墙规则",
+      "previous": "删除 Nexus 的防火墙规则",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.busy",
+      "english": "Waiting for Windows…",
+      "chinese": "正在等待 Windows…",
+      "previous": "正在等待视窗...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.unread",
+      "english": "Nexus could not read Windows Firewall on this laptop.",
+      "chinese": "Nexus 无法读取本机的 Windows 防火墙状态。",
+      "previous": "Nexus无法在此笔记本上读取Windows防火墙.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.off",
+      "english": "Windows Firewall is off on this laptop for Private and Public networks, so there is nothing to allow.",
+      "chinese": "本机专用网络和公用网络的 Windows 防火墙均已关闭，无需添加放行规则。",
+      "previous": "Windows防火墙在私人和公共网络的笔记本电脑上关闭,所以没有任何允许的.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.missing",
+      "english": "Nexus has no club sync rule in Windows Firewall on this laptop yet.",
+      "chinese": "本机 Windows 防火墙中尚无 Nexus 俱乐部同步规则。",
+      "previous": "Nexus还没有在Windows Firewall中 的俱乐部同步规则,在这个笔记本电脑上。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.stale",
+      "english": "Nexus's club sync rules in Windows Firewall are out of date (made for another port, or another copy of Nexus). Press Allow Nexus through Windows Firewall again.",
+      "chinese": "Windows 防火墙中的 Nexus 俱乐部同步规则已过时，可能对应其他端口或另一份 Nexus 程序。请再次点击“允许 Nexus 通过 Windows 防火墙”。",
+      "previous": "Nexus在Windows Firewall中的俱乐部同步规则已经过时(为另一个端口制作,或Nexus的另一副本). 按允许Nexus再次通过Windows防火墙.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.inPlace",
+      "english": "Nexus's club sync rules are in Windows Firewall for Private and Public networks: TCP {{host}}, UDP {{search}} and TCP {{board}}.",
+      "chinese": "已在 Windows 防火墙中为专用网络及公用网络配置 Nexus 俱乐部同步规则：TCP {{host}}、UDP {{search}} 和 TCP {{board}}。",
+      "previous": "Nexus的俱乐部同步规则在Windows Firewall中用于私人和公共网络:TCP{{host}},UDP{{search}}和TCP{{board}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.blocked.private",
+      "english": "Windows also blocks Nexus on Private networks with a rule of its own (what Cancel at its question leaves), and a block wins over every allow. Delete it in Windows Defender Firewall ▸ Advanced settings ▸ Inbound Rules: the Nexus rules with a block sign.",
+      "chinese": "Windows 另有规则阻止 Nexus 在专用网络上通信，通常由防火墙询问时点击“取消”产生。阻止规则优先于所有允许规则。请在“Windows Defender 防火墙 ▸ 高级设置 ▸ 入站规则”中删除带阻止标记的 Nexus 规则。",
+      "previous": "Windows还用自己的规则(What Cances at its question leave)在私人网络上屏蔽Nexus,一个块胜过每个许可. 在Windows Defender Firewall QQ 高级设置中删除它 QQ 输入规则: Nexus 规则带有块标志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.blocked.public",
+      "english": "Windows also blocks Nexus on Public networks with a rule of its own (what Cancel at its question leaves), and a block wins over every allow. Delete it in Windows Defender Firewall ▸ Advanced settings ▸ Inbound Rules: the Nexus rules with a block sign.",
+      "chinese": "Windows 另有规则阻止 Nexus 在公用网络上通信，通常由防火墙询问时点击“取消”产生。阻止规则优先于所有允许规则。请在“Windows Defender 防火墙 ▸ 高级设置 ▸ 入站规则”中删除带阻止标记的 Nexus 规则。",
+      "previous": "Windows还用自己的规则(What Cances at its question leave)屏蔽了公共网络上的Nexus,一个块胜过每个许可. 在Windows Defender Firewall QQ 高级设置中删除它 QQ 输入规则: Nexus 规则带有块标志.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.blocked.both",
+      "english": "Windows also blocks Nexus on Private and Public networks with rules of its own (what Cancel at its question leaves), and a block wins over every allow. Delete them in Windows Defender Firewall ▸ Advanced settings ▸ Inbound Rules: the Nexus rules with a block sign.",
+      "chinese": "Windows 另有规则阻止 Nexus 在专用网络和公用网络上通信，通常由防火墙询问时点击“取消”产生。阻止规则优先于所有允许规则。请在“Windows Defender 防火墙 ▸ 高级设置 ▸ 入站规则”中删除带阻止标记的 Nexus 规则。",
+      "previous": "Windows还用自己的规则屏蔽了私人和公共网络上的Nexus(What Cancel at its question leave),一个块胜过每个许可. 在Windows Defender Firewall QQ 高级设置中删除它们 QQ 输入规则: Nexus规则带有块符号.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.blocksAll.private",
+      "english": "Windows Firewall blocks every incoming connection on Private networks, whatever is allowed. Turn that off under Windows Security ▸ Firewall & network protection ▸ Private network.",
+      "chinese": "Windows 防火墙在专用网络上启用了“阻止所有传入连接”，因此允许规则也不生效。请在“Windows 安全中心 ▸ 防火墙和网络保护 ▸ 专用网络”中关闭该选项。",
+      "previous": "Windows防火墙屏蔽了私人网络上每一个进入的连接,无论允许什么. 在Windows Security QQ防火墙和网络保护QQ私人网络下关闭.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.blocksAll.public",
+      "english": "Windows Firewall blocks every incoming connection on Public networks, whatever is allowed. Turn that off under Windows Security ▸ Firewall & network protection ▸ Public network.",
+      "chinese": "Windows 防火墙在公用网络上启用了“阻止所有传入连接”，因此允许规则也不生效。请在“Windows 安全中心 ▸ 防火墙和网络保护 ▸ 公用网络”中关闭该选项。",
+      "previous": "Windows防火墙屏蔽了公共网络上每一个进入的连接,无论允许什么. 在Windows Security QQ防火墙和网络保护QQ公共网络下关闭.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.blocksAll.both",
+      "english": "Windows Firewall blocks every incoming connection on Private and Public networks, whatever is allowed. Turn that off for each under Windows Security ▸ Firewall & network protection.",
+      "chinese": "Windows 防火墙在专用网络和公用网络上均启用了“阻止所有传入连接”，因此允许规则也不生效。请在“Windows 安全中心 ▸ 防火墙和网络保护”中分别关闭两个网络的该选项。",
+      "previous": "Windows防火墙屏蔽了私人和公共网络上每一个接通的连接,无论允许什么. 在Windows Security QQ防火墙和网络保护下,每个都关掉。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.press.allowFailed",
+      "english": "Windows did not add Nexus's rules: its administrator prompt was declined, or a step failed.",
+      "chinese": "Windows 未添加 Nexus 规则：管理员授权被拒绝，或某个步骤失败。",
+      "previous": "Windows没有添加Nexus的规则:它的管理员提示被拒绝,或者一个步骤失败.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.press.removeFailed",
+      "english": "Windows did not remove Nexus's rules: its administrator prompt was declined, or a step failed.",
+      "chinese": "Windows 未删除 Nexus 规则：管理员授权被拒绝，或某个步骤失败。",
+      "previous": "Windows没有删除 Nexus 的规则:它的管理员提示被拒绝,或者一个步骤失败.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.press.onAir",
+      "english": "Not while transmitting: Windows' administrator prompt takes the whole screen, Stop with it. Press again when the over ends.",
+      "chinese": "发射期间无法操作：Windows 管理员授权提示会占据整个屏幕，同时遮住停止按钮。请在本轮发射结束后再次点击。",
+      "previous": "传输时不要 : Windows 的管理员迅速拿走整个屏幕, 停止它 。 结束再按一次",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.press.running",
+      "english": "Windows is still asking about the last press.",
+      "chinese": "Windows 仍在等待处理上一次点击的授权请求。",
+      "previous": "Windows仍在询问最后的媒体.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.press.path",
+      "english": "Nexus cannot name its own program in a rule from the folder it runs from (a % in its name, or a character Windows' command line would misread). Allow Nexus by hand under Windows Security ▸ Firewall & network protection ▸ Allow an app through firewall, on Private and Public networks.",
+      "chinese": "Nexus 当前运行路径含有 % 或其他会被 Windows 命令行误读的字符，无法在规则中指定本程序。请在“Windows 安全中心 ▸ 防火墙和网络保护 ▸ 允许应用通过防火墙”中手动允许 Nexus 用于专用网络和公用网络。",
+      "previous": "Nexus不能从它运行的文件夹中的规则中命名自己的程序(在它的名称中为%,或者字符Windows的命令行会错误读取). 允许在Windows Security QQ防火墙和网络保护下手动使用Nexus,允许在私人和公共网络上通过防火墙应用.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.press.port",
+      "english": "A rule cannot name port 0: set the Host port and the scoreboard's port first.",
+      "chinese": "防火墙规则不能使用端口 0，请先设置主机端口和计分板端口。",
+      "previous": "一个规则不能命名端口 0:先设置主端口和记分牌端口.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.firewall.press.failed",
+      "english": "Nexus could not ask Windows: {{detail}}",
+      "chinese": "Nexus 无法向 Windows 发出请求：{{detail}}",
+      "previous": "Nexus 无法询问 Windows :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.host.note",
+      "english": "Positions on this network can now find and join this event. There is no join password — a club site LAN is trusted, and anyone on it could add rows to the club log, which you will see. If this PC dies, enable hosting on any other position: everyone re-joins and nothing is lost.",
+      "chinese": "同一网络的操作席位现在可以查找并加入此活动。没有加入密码，功能假定俱乐部现场局域网可信，网内任何人均可能向俱乐部日志添加可见记录。若本机故障，可在任一其他席位开启主机功能，各席位重新加入后记录不会丢失。",
+      "previous": "此网络上的位置现在可以找到并加入此事件 。 没有加入密码——一个俱乐部网站局域网是信任的,其中任何人都可以在俱乐部日志中添加行,你会看到. 如果这个个人电脑死了, 就可以在任何其他位置上进行托管: 每个人都重新加入, 什么都没有丢失。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.host.aria.enable",
+      "english": "Enable club event hosting",
+      "chinese": "启用俱乐部活动主机功能",
+      "previous": "启用俱乐部活动托管",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.host.aria.disable",
+      "english": "Disable club event hosting",
+      "chinese": "禁用俱乐部活动主机功能",
+      "previous": "禁用俱乐部活动托管",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.eventName.label",
+      "english": "Event name",
+      "chinese": "活动名称",
+      "previous": "事件名称",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.eventName.placeholder",
+      "english": "W9ABC Field Day",
+      "chinese": "W9ABC Field Day",
+      "previous": "W9ABC 战地日",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.eventName.hint",
+      "english": "Shown to joining positions and in discovery.",
+      "chinese": "向加入活动的席位显示，也用于活动查找。",
+      "previous": "显示在加入位置和发现。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.hostPort.label",
+      "english": "Host port",
+      "chinese": "主机端口",
+      "previous": "主机端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.hostPort.hint",
+      "english": "TCP port for the club sync (default 42073).",
+      "chinese": "俱乐部同步使用的 TCP 端口，默认为 42073。",
+      "previous": "俱乐部同步的TCP端口(默认为42073).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.join.label",
+      "english": "Join event at",
+      "chinese": "活动加入地址",
+      "previous": "合并活动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.join.hint",
+      "english": "host:port of the club host — use Find club events, or type it from the host's screen.",
+      "chinese": "俱乐部主机的 host:port（主机地址:端口），可使用“查找俱乐部活动”，或填写主机页面显示的地址。",
+      "previous": "主机:俱乐部主机的端口——使用Find俱乐部活动,或从主机屏幕中键入.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.join.hostingHint",
+      "english": "Hosting — this position joins its own event automatically.",
+      "chinese": "本机正在主持活动，此席位会自动加入自己的活动。",
+      "previous": "主机——这个位置自动加入自己的活动.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.discover.action",
+      "english": "Find club events",
+      "chinese": "查找俱乐部活动",
+      "previous": "查找俱乐部活动",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.discover.busy",
+      "english": "Listening…",
+      "chinese": "正在查找…",
+      "previous": "听着...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.discover.empty",
+      "english": "Nothing heard in {{secs}} s. Check that the host has Host a club event on, that both laptops are on the same network (some Wi-Fi keeps laptops apart), and, on Windows, that this laptop's firewall lets Nexus hear the host: press Allow Nexus through Windows Firewall, above. Or type the address the host shows after “Positions join at” into Join event at.",
+      "chinese": "{{secs}} 秒内未收到活动信息。请确认主机已开启“创建俱乐部活动”，两台电脑位于同一网络，且 Wi-Fi 未启用设备隔离。Windows 下还需确认本机防火墙允许 Nexus 接收主机消息，可点击上方“允许 Nexus 通过 Windows 防火墙”。也可将主机“操作席位加入地址”后显示的地址填入“活动加入地址”。",
+      "previous": "没有听到{{secs}}s. 检查主机有Host的俱乐部活动,两台笔记本电脑都在同一网络上(有些Wi-Fi让笔记本电脑分开),在Windows上,这台笔记本电脑的防火墙让Nexus听到主机:通过Windows防火墙按下允许Nexus,上方. 或将主机“ Positions join at” 之后的地址输入“ join at” 活动。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.discover.pick.label",
+      "english": "Join {{event}} — {{host}}",
+      "chinese": "加入 {{event}} — {{host}}",
+      "previous": "联合{{event}}. . . . . . .{{host}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.fdClub.discover.pick.title",
+      "english": "Join the event at {{host}} now. This saves only the join address; other changes here still need Save.",
+      "chinese": "立即加入 {{host}} 的活动。此操作仅保存加入地址，其他修改仍需点击“保存”。",
+      "previous": "加入活动于{{host}}现在 这只保存了连接地址; 这里的其他更改仍然需要保存 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.betaUpdates.legend",
+      "english": "App updates",
+      "chinese": "应用更新",
+      "previous": "应用更新",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.betaUpdates.label",
+      "english": "Receive beta (pre-release) updates",
+      "chinese": "接收 Beta 预发布更新",
+      "previous": "接收 beta( 发布前) 更新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.betaUpdates.hint",
+      "english": "When on, the updater offers pre-release builds — newer features, but less tested. Off keeps you on stable releases only.",
+      "chinese": "开启后，更新器会提供预发布版本，功能较新但测试较少。关闭后仅接收稳定版本。",
+      "previous": "上映时,更新器会提供发行前的构建——较新的功能,但测试较少. Off只让你稳定释放。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.betaUpdates.aria.enable",
+      "english": "Turn on beta updates",
+      "chinese": "开启 Beta 更新",
+      "previous": "打开β更新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.betaUpdates.aria.disable",
+      "english": "Turn off beta updates",
+      "chinese": "关闭 Beta 更新",
+      "previous": "关闭β更新",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.launchAtLogin.legend",
+      "english": "Start at sign-in",
+      "chinese": "登录时启动",
+      "previous": "从登录开始",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.launchAtLogin.label",
+      "english": "Start Nexus when I sign in to this computer",
+      "chinese": "登录本机时启动 Nexus",
+      "previous": "我签到这台电脑就开始Nexus",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.launchAtLogin.hint",
+      "english": "Off by default. Nexus opens as usual, listening only: transmit stays off until you turn it on. Useful with Remote, which comes back on by itself after a restart if it was on when Nexus closed.",
+      "chinese": "默认关闭。Nexus 按正常方式启动，仅接收，发射保持关闭，直至手动开启。适合配合 Remote 使用：如果退出 Nexus 时 Remote 已启用，重启后会自动恢复。",
+      "previous": "默认关闭。 Nexus像往常一样打开,只听: 发送停止,直到打开它. 用遥控器有用,如果在Nexus关闭时打开,它会在重启后自行恢复。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.launchAtLogin.aria.enable",
+      "english": "Turn on start at sign-in",
+      "chinese": "开启登录时启动",
+      "previous": "登录时打开开始",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.launchAtLogin.aria.disable",
+      "english": "Turn off start at sign-in",
+      "chinese": "关闭登录时启动",
+      "previous": "登录时开始关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.launchAtLogin.unsupported",
+      "english": "This computer did not let Nexus change whether it starts at sign-in, so the setting is unchanged.",
+      "chinese": "本机不允许 Nexus 修改登录启动设置，因此设置未改变。",
+      "previous": "这台计算机没有让Nexus更改它是否在登录时开始,所以设置没有改变.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.legend",
+      "english": "Conditions on a TV",
+      "chinese": "在电视上查看传播状况",
+      "previous": "电视上的条件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.label",
+      "english": "Serve Conditions on this network",
+      "chinese": "在本网络提供传播状况页面",
+      "previous": "在此网络上服务条件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.hint",
+      "english": "Serves the full Conditions view — the map with every layer, the panes, live openings — read-only, to any browser on your network: a shack TV, a tablet, a phone. Nothing can be changed from it.",
+      "chinese": "向局域网浏览器提供完整的只读传播状况视图，包括全部地图图层、面板及实时传播开通信息，可在电台室电视、平板或手机上查看。查看端无法更改任何内容。",
+      "previous": "服务于全条件视图——每层的地图,面板,直播开口——只读到,到你网络上的任何浏览器:棚电视,平板电脑,手机. 一切法无所改.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.exposes",
+      "english": "While this is on, anyone on your network can see your callsign, grid square and the propagation picture — including the callsigns of stations heard and spotted. Your log, your needs board and the frequency you are on are never sent.",
+      "chinese": "开启后，局域网中的任何人均可看到本台呼号、网格定位及传播状况，包括收到和被通报的电台呼号。不会发送本台日志、待通联面板或当前操作频率。",
+      "previous": "网络上的任何人都可以看到你的呼号、网格广场和传播图片——包括听到和发现的站点的呼号。 你的日志,你的需要板和你的频率 从来没有发送。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.aria.enable",
+      "english": "Serve Conditions on the local network",
+      "chinese": "在局域网提供传播状况页面",
+      "previous": "当地网络的条件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.aria.disable",
+      "english": "Stop serving Conditions on the local network",
+      "chinese": "停止在局域网提供传播状况页面",
+      "previous": "停止本地网络的条件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.port.label",
+      "english": "Port",
+      "chinese": "端口",
+      "previous": "端口",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "settings.connectWeb.port.hint",
+      "english": "Separate from the Field Day scoreboard, so both can run at once.",
+      "chinese": "与 Field Day 计分板使用不同端口，因此两者可同时运行。",
+      "previous": "与战地日记分牌分开,因此两者可以同时运行.",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

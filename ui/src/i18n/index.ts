@@ -170,6 +170,13 @@ export function initLocale(): void {
     active = os
     return
   }
+  // Respect an explicit script: zh-Hant-CN must not select Simplified Chinese.
+  if (/^zh(?:-|$)/i.test(os)) {
+    const parts = os.toLowerCase().split('-')
+    const simplified = parts.includes('hans') || (!parts.includes('hant') && (parts.includes('cn') || parts.includes('sg')))
+    if (simplified && catalogs.has('zh-CN')) active = 'zh-CN'
+    return
+  }
   const lang = os.split('-')[0]
   if (lang && catalogs.has(lang)) active = lang
 }

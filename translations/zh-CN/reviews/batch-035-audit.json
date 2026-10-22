@@ -1,0 +1,1753 @@
+{
+  "batch": 35,
+  "range": [
+    6801,
+    7000
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 160,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 11,
+  "externalDefinitions": [],
+  "implementation": [
+    "ui/src/components/Js8ComposeActions.tsx",
+    "ui/src/components/Js8ComposeBox.tsx",
+    "ui/src/components/Js8Cockpit.tsx",
+    "ui/src/components/Js8RxPane.tsx",
+    "ui/src/components/js8ListMenus.ts"
+  ],
+  "rows": [
+    {
+      "id": "js8.dock.quick.snr.send",
+      "english": "Put the signal report you hear from {{call}} in the compose box and send the box.",
+      "chinese": "将本台接收 {{call}} 时的信号报告填入报文框，并发送框内的全部内容。",
+      "previous": "发送信号报告{{call}}在写作盒里,发送盒子。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.snr.fill",
+      "english": "Put the signal report you hear from {{call}} in the compose box.",
+      "chinese": "将本台接收 {{call}} 时的信号报告填入报文框。",
+      "previous": "发送信号报告{{call}}在画框。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.info.unset",
+      "english": "Set INFO in Settings ▸ Digital ▸ JS8 to send it.",
+      "chinese": "请先在“设置 ▸ 数字模式 ▸ JS8”中填写 INFO，再发送。",
+      "previous": "在设置中设置 QQ 数字 QQ JS8 送来",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.info.send",
+      "english": "Put your INFO in the compose box and send the box, to the call in the To box or to everyone.",
+      "chinese": "将本台 INFO 填入报文框，并发送框内的全部内容；收件人为“发给”框中的呼号，未填写时发给所有电台。",
+      "previous": "把你的INFO放进画框里,然后把盒子发送到Tobox的呼叫或者给每个人.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.info.fill",
+      "english": "Put your INFO in the compose box.",
+      "chinese": "将本台 INFO 填入报文框。",
+      "previous": "把你的INFO放在画框里。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.status.send",
+      "english": "Put your STATUS in the compose box and send the box, to the call in the To box or to everyone.",
+      "chinese": "将本台 STATUS 填入报文框，并发送框内的全部内容；收件人为“发给”框中的呼号，未填写时发给所有电台。",
+      "previous": "把你的状态放在画框里,然后把盒子, 呼叫在托盒或每个人。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.quick.status.fill",
+      "english": "Put your STATUS in the compose box.",
+      "chinese": "将本台 STATUS 填入报文框。",
+      "previous": "把你的状态放在画框里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.saved.label",
+      "english": "Saved",
+      "chinese": "已保存",
+      "previous": "已保存",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.saved.title.send",
+      "english": "Saved messages. Pick one to put it in the compose box and send the box, to the call in the To box or to everyone.",
+      "chinese": "已保存的报文。选中一条后填入报文框，并发送框内的全部内容；收件人为“发给”框中的呼号，未填写时发给所有电台。",
+      "previous": "已保存信件 。 选一个放在画框里 然后把盒子寄出去 送到To盒子里的电话或者给每个人",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.saved.title.fill",
+      "english": "Saved messages. Pick one to put it in the compose box.",
+      "chinese": "已保存的报文。选中一条即可填入报文框。",
+      "previous": "已保存信件 。 选一个放在画框里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.saved.restore",
+      "english": "Restore previous message",
+      "chinese": "恢复上一条报文",
+      "previous": "还原上一封信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.saved.none",
+      "english": "No saved messages",
+      "chinese": "没有保存的消息",
+      "previous": "没有保存的消息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.saved.edit",
+      "english": "Edit saved messages…",
+      "chinese": "编辑保存的消息...",
+      "previous": "编辑保存的消息...",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.saved.keep",
+      "english": "Save current message",
+      "chinese": "保存当前消息",
+      "previous": "保存当前消息",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.compose.flag.title",
+      "english": "The JS8 dictionary sends this word in pieces. Right-click it for cheaper words.",
+      "chinese": "JS8 词典需要将这个词拆分发送。右键查看更省发送时间的替代词。",
+      "previous": "那个JS8字典将这个单词逐块发送. 右键点击它 便宜的字。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.compose.suggest.aria",
+      "english": "Cheaper words",
+      "chinese": "更省发送时间的替代词",
+      "previous": "便宜的话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.compose.suggest.asking",
+      "english": "Looking it up…",
+      "chinese": "正在查找…",
+      "previous": "查过了...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.compose.suggest.none",
+      "english": "No suggestions",
+      "chinese": "无建议",
+      "previous": "无建议",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.sender",
+      "english": "From {{call}}",
+      "chinese": "来自 {{call}}",
+      "previous": "从{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.recipient",
+      "english": "To {{call}}",
+      "chinese": "发给 {{call}}",
+      "previous": "改为{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.group",
+      "english": "To the group {{group}}",
+      "chinese": "发给群组 {{group}}",
+      "previous": "给小组{{group}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.relay.to",
+      "english": "Relayed to {{to}}",
+      "chinese": "转发给 {{to}}",
+      "previous": "中继到{{to}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.relay.via",
+      "english": "Relayed through {{via}} to {{to}}",
+      "chinese": "经 {{via}} 转发给 {{to}}",
+      "previous": "中继通过{{via}}改为:{{to}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.withArg",
+      "english": "{{what}}: {{arg}}",
+      "chinese": "{{what}}：{{arg}}",
+      "previous": "{{what}}数字 :{{arg}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.toBox",
+      "english": "{{what}}. To {{call}}, the call in the To box.",
+      "chinese": "{{what}}。发给“发给”框中的 {{call}}。",
+      "previous": "{{what}}改为{{call}}托盒子里的电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.arg.call",
+      "english": "station {{call}}",
+      "chinese": "电台 {{call}}",
+      "previous": "车站{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.arg.callMissing",
+      "english": "the callsign is missing",
+      "chinese": "缺少呼号",
+      "previous": "呼号不见了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.arg.id",
+      "english": "message {{id}}",
+      "chinese": "消息 {{id}}",
+      "previous": "消息{{id}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.arg.idMissing",
+      "english": "the message number is missing",
+      "chinese": "缺少消息编号",
+      "previous": "缺少消息编号",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.arg.grid",
+      "english": "locator {{grid}}",
+      "chinese": "网格定位 {{grid}}",
+      "previous": "定位器{{grid}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.arg.gridMissing",
+      "english": "the locator is missing",
+      "chinese": "缺少网格定位",
+      "previous": "定位器不见了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.agnQ",
+      "english": "Asks them to send the last message again",
+      "chinese": "请对方重发上一条报文",
+      "previous": "要求他们再次发送最后的消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.qslQ",
+      "english": "Asks whether they received it",
+      "chinese": "询问对方是否收到",
+      "previous": "问他们有没有收到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.hwCpyQ",
+      "english": "Asks how they copy you",
+      "chinese": "询问对方接收本台信号的情况",
+      "previous": "问他们怎么拷贝你的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.snrQ",
+      "english": "Asks for your signal report",
+      "chinese": "请对方给出本台的信号报告",
+      "previous": "询问您的信号报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.infoQ",
+      "english": "Asks for their station information",
+      "chinese": "查询对方的电台信息",
+      "previous": "询问自己的站点信息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.gridQ",
+      "english": "Asks for their locator",
+      "chinese": "查询对方的网格定位",
+      "previous": "问他们的定位器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.statusQ",
+      "english": "Asks for their status",
+      "chinese": "查询对方的状态",
+      "previous": "问他们的身份",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.queryMsgs",
+      "english": "Asks whether they hold messages for you",
+      "chinese": "查询对方是否为本台代存了消息",
+      "previous": "问他们有没有给你留言",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.hearingQ",
+      "english": "Asks which stations they hear",
+      "chinese": "查询对方收到了哪些电台",
+      "previous": "问他们听哪个站台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.msgTo",
+      "english": "Leaves a message for a station to collect later",
+      "chinese": "为指定电台留言，供其稍后领取",
+      "previous": "留话给一个电台,待会再收",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.heartbeatSnr",
+      "english": "A signal report for a heartbeat",
+      "chinese": "对心跳报文的信号报告",
+      "previous": "一个心跳的信号报告",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.queryCall",
+      "english": "Asks whether they can reach a station",
+      "chinese": "查询对方能否联络到指定电台",
+      "previous": "问他们能否到达车站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.queryMsg",
+      "english": "Asks for a message they hold",
+      "chinese": "请求领取对方代存的消息",
+      "previous": "问他们持有的消息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.query",
+      "english": "A query",
+      "chinese": "查询",
+      "previous": "查询",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.ditDit",
+      "english": "Two dits, a casual goodbye",
+      "chinese": "两个短点，表示非正式告别",
+      "previous": "两个娘娘腔,随便告别",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.status",
+      "english": "Your status",
+      "chinese": "本台状态",
+      "previous": "状态",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.hearing",
+      "english": "The stations you hear",
+      "chinese": "本台收到的电台",
+      "previous": "你听到的电台",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.cmd",
+      "english": "A command",
+      "chinese": "一个命令",
+      "previous": "一个命令",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.msg",
+      "english": "A message, checked on arrival so it is read whole",
+      "chinese": "带完整性校验的消息，收到后检查是否完整",
+      "previous": "一个消息,在到达时检查过 所以它被读了整张",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.nack",
+      "english": "Not received",
+      "chinese": "未接收",
+      "previous": "未接收",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.ack",
+      "english": "Received",
+      "chinese": "已接收",
+      "previous": "已接收",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.snr",
+      "english": "A signal report",
+      "chinese": "信号报告",
+      "previous": "信号报告",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.qsl",
+      "english": "Confirms you received it",
+      "chinese": "确认本台已收到",
+      "previous": "确认收到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.info",
+      "english": "Your station information",
+      "chinese": "本台电台信息",
+      "previous": "您的站点信息",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.grid",
+      "english": "Your locator",
+      "chinese": "本台网格定位",
+      "previous": "你的定位器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.seventyThree",
+      "english": "Best regards, the end of a contact",
+      "chinese": "致以问候，结束本次交信",
+      "previous": "最好的问候,一个联系的结束",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.yes",
+      "english": "Yes",
+      "chinese": "是",
+      "previous": "是",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.no",
+      "english": "No",
+      "chinese": "否",
+      "previous": "否",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.rr",
+      "english": "Roger, received",
+      "chinese": "明白，已收到",
+      "previous": "罗杰,收到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.sk",
+      "english": "Signing off",
+      "chinese": "结束通联",
+      "previous": "签名关闭",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.fb",
+      "english": "Fine business",
+      "chinese": "很好，通联顺利",
+      "previous": "生意不错",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.cq",
+      "english": "A CQ to any station",
+      "chinese": "向所有电台发出 CQ 呼叫",
+      "previous": "一个CQ到任何车站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.cqContest",
+      "english": "A CQ for contest stations",
+      "chinese": "向参赛电台发出 CQ 呼叫",
+      "previous": "比赛站的CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.cqField",
+      "english": "A CQ for Field Day stations",
+      "chinese": "向 Field Day 活动电台发出 CQ 呼叫",
+      "previous": "外地日间站的CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.cqDx",
+      "english": "A CQ for DX stations",
+      "chinese": "向 DX 电台发出 CQ 呼叫",
+      "previous": "DX车站的CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.cqQrp",
+      "english": "A CQ at low power",
+      "chinese": "以低功率发出 CQ 呼叫",
+      "previous": "低功率的CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.hb",
+      "english": "A heartbeat: you are on the air",
+      "chinese": "心跳报文：表明本台正在频率上",
+      "previous": "一个心跳:你正在播出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.pill.cmd.other",
+      "english": "A command",
+      "chinese": "一个命令",
+      "previous": "一个命令",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cqRepeat.title.off",
+      "english": "Repeating CQ is off. Click to call CQ every {{min}} min until someone answers — the button counts down to the next one. It keys only while TX is on, and it is never remembered across launches.",
+      "chinese": "重复 CQ 已关闭。点击后每隔 {{min}} 分钟呼叫一次 CQ，直到有电台应答；按钮显示距下次呼叫的倒计时。仅在 TX 开启时发射，重启软件后不会保留此开关状态。",
+      "previous": "重复CQ关闭. 点击每个 CQ 调用{{min}}直到有人回答——按钮数到下一个。 它只在TX开机时按键,在发射过程中从未被记住.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cqRepeat.title.on",
+      "english": "Repeating CQ is on, but TX is off — nothing keys. Enable TX (the header pill) to let the CQs go out.",
+      "chinese": "重复 CQ 已开启，但 TX 已关闭，不会发射。请开启顶部的 TX 开关，才能发出 CQ。",
+      "previous": "重复CQ开机,但TX关闭——没有键. 启用 TX( 头药丸) 让 CQ 出局 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cqRepeat.title.armed",
+      "english": "Calling CQ every {{min}} min, on your TX offset. Stops on its own when a station answers you, or at the idle watchdog. Click to stop the schedule — a CQ already on the air finishes; Stop TX cuts it.",
+      "chinese": "正在本台发射频偏上每隔 {{min}} 分钟呼叫一次 CQ。有电台应答或空闲超时保护触发时自动停止。点击可停止后续定时呼叫；已在发射的 CQ 会发完，点击“停止发射”才会立即中止。",
+      "previous": "拨打 CQ 每一次{{min}}分钟后,您的TX偏移。 当一个电台回答你的时候,或者在闲置的监视器里,就自己停下来。 点击以停止时间表——一个CQ已经在播出中完成;停止TX切.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cqRepeat.notArmed.unscheduled",
+      "english": "Repeating CQ is on, but no CQ is scheduled: the interval was 0 when the last one went. Turn it off and on to call again.",
+      "chinese": "重复 CQ 已开启，但目前没有待发 CQ：上次发出时，间隔设为 0。关闭后重新开启即可再次呼叫。",
+      "previous": "重复CQ开机,但没有安排CQ:最后一次开机时间隔为0. 关机再打电话",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.repeat.now",
+      "english": "now",
+      "chinese": "现在",
+      "previous": "现在",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.title.off",
+      "english": "Heartbeat schedule is off. Click to send a heartbeat every period’s interval (Settings ▸ Digital ▸ JS8) — it keys only while TX is on, and it is never remembered across launches.",
+      "chinese": "心跳定时发送已关闭。点击后按各时段设定的间隔发送心跳（设置 ▸ 数字模式 ▸ JS8）。仅在 TX 开启时发射，重启软件后不会保留此开关状态。",
+      "previous": "心跳计划取消了 点击以发送每个周期的心跳( 设置 QQ 数字 QQ)JS8)——它只在TX开机时按键,在发射过程中从未被记住.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.title.on",
+      "english": "Heartbeat schedule is on, but TX is off — nothing keys. Enable TX (the header pill) to let heartbeats go out.",
+      "chinese": "心跳定时发送已开启，但 TX 已关闭，不会发射。请开启顶部的 TX 开关，才能发出心跳。",
+      "previous": "心跳时刻表开通了,但TX关闭了——没有钥匙. 启用 TX( 头丸) 来让心跳出局 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.title.armed",
+      "english": "Heartbeats are going out on schedule, on a random free slot between 500 and 1000 Hz. Click to stop the schedule.",
+      "chinese": "正在按计划发送心跳，每次随机选择 500 至 1000 Hz 之间的空闲频偏。点击可停止定时发送。",
+      "previous": "心跳者按期出场,在500到1000之间的随机自由插槽上Hz。单击以停止时间安排。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.notArmed.unscheduled",
+      "english": "HB is on, but no heartbeat of yours is scheduled: with the interval at 0 (Settings ▸ Digital ▸ JS8), HB sends one when it is turned on, and that one has gone. Turn HB off and on, or use Send heartbeat now on its menu, for another.",
+      "chinese": "HB 已开启，但目前没有待发心跳：间隔设为 0 时（设置 ▸ 数字模式 ▸ JS8），开启 HB 只发送一次，该次已发出。关闭后重新开启 HB，或在菜单中选择“立即发送心跳”，即可再发一次。",
+      "previous": "HB开播,但您的心跳没有安排:间隔时间为0(Settings QQ Digital QQ)JS8),HB在打开时发出一个,那个已经消失. 把HB关上 或用Sende心跳在菜单上 换另一个",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.paused",
+      "english": "The heartbeat repeat is paused while a call is in the To box (the QSO pause, Settings ▸ Digital ▸ JS8). Clear the To box and it starts again, its first heartbeat one interval later.",
+      "chinese": "“发给”框中有呼号，心跳重复发送已暂停（QSO 暂停功能，设置 ▸ 数字模式 ▸ JS8）。清空该框后恢复，等待一个设定间隔再发出首次心跳。",
+      "previous": "心跳重复在呼叫时暂停(在To框中) QSO 暂停,设置QQ数字QQ JS8) (中文(简体) ). 清除 To 框,然后它重新开始,它的第一个心跳一个间隔之后。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.menu.aria",
+      "english": "Heartbeat menu",
+      "chinese": "心跳菜单",
+      "previous": "心跳菜单",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.menu.title",
+      "english": "Heartbeat menu: send one now, or start or stop the repeat. Right-clicking HB opens it too.",
+      "chinese": "心跳菜单：立即发送一次，或启动、停止重复发送。右键点击 HB 也可打开此菜单。",
+      "previous": "心跳菜单:现在发送一个,或者开始或停止重复. 右击 HB 打开它 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.menu.start",
+      "english": "Start heartbeat timer",
+      "chinese": "启动心跳计时器",
+      "previous": "启动心跳计时器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.menu.stop",
+      "english": "Stop heartbeat timer",
+      "chinese": "停止心跳计时器",
+      "previous": "停止心跳计时器",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hb.menu.now",
+      "english": "Send heartbeat now",
+      "chinese": "立即发送心跳",
+      "previous": "现在发送心跳",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbNet.title.off",
+      "english": "Heartbeat networking is off, as JS8Call ships it: no HB button, no heartbeats and no heartbeat acknowledgements. Click to turn it on (remembered). It sends nothing by itself.",
+      "chinese": "心跳网络已关闭，与 JS8Call 的默认设置相同：不显示 HB 按钮，不发送心跳，也不应答心跳。点击开启，设置会保留。仅开启此开关不会自行发射。",
+      "previous": "心跳的网络已经关闭, JS8Call 将它:没有HB按钮,没有心跳和心跳确认。 点击可打开( 记得) 。 它本身没有发出任何信号。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbNet.title.on",
+      "english": "Heartbeat networking is on: HB sends your heartbeats, and HB ACK may answer the heartbeats you hear. Click to turn it off (remembered); a running heartbeat repeat stops.",
+      "chinese": "心跳网络已开启：HB 用于发送本台心跳，HB ACK 可应答收到的心跳。点击关闭，设置会保留，同时停止正在运行的心跳重复发送。",
+      "previous": "心跳网络开始:HB发送你的心跳,HB ACK可能会回答你听到的心跳. 点击可关闭( 记得); 运行的心跳重复停止 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbNet.title.speed",
+      "english": "No heartbeats at {{speed}}: JS8Call sends heartbeats and their acknowledgements only at Slow, Normal and Fast. HB is hidden until you change speed, and this switch keeps its setting.",
+      "chinese": "{{speed}} 速度不支持心跳：JS8Call 仅在 Slow、Normal 和 Fast 速度下发送心跳及其应答。切换到支持的速度前隐藏 HB 按钮，此开关仍保留原设置。",
+      "previous": "没有心跳{{speed}}: 联署材料8 呼叫发送心跳和他们的确认 只在慢,正常和快。 HB 隐藏到您改变速度为止, 这个开关会保持它的设置 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.suppressed.speed",
+      "english": "Heartbeat acknowledgements are on, but none goes out at {{speed}}: JS8Call answers heartbeats only at Slow, Normal and Fast.",
+      "chinese": "心跳应答已开启，但在 {{speed}} 速度下不会发送：JS8Call 仅在 Slow、Normal 和 Fast 速度下应答心跳。",
+      "previous": "心跳感应开始,但没有人出去{{speed}}: 联署材料8 只有慢、 正常和快时才能呼叫答覆心跳。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.suppressed.arriving",
+      "english": "Heartbeat acknowledgements are on, but held back now: a message is still arriving, as in JS8Call.",
+      "chinese": "心跳应答已开启，但正在接收一条尚未收完的消息，暂缓应答；此行为与 JS8Call 相同。",
+      "previous": "心跳的承认开始,但现在却被搁置了:如JS8Call中的信息仍在传来.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.suppressed.qsoPause",
+      "english": "Heartbeat acknowledgements are on, but held back now: a call is in the To box (the QSO pause, Settings ▸ Digital ▸ JS8). Clear the To box to answer heartbeats again.",
+      "chinese": "心跳应答已开启，但“发给”框中有呼号，暂缓应答（QSO 暂停功能，设置 ▸ 数字模式 ▸ JS8）。清空该框后恢复心跳应答。",
+      "previous": "心跳的承认已经启动,但现在却被搁置了:一个呼叫在To盒子里。 QSO 暂停,设置QQ数字QQ JS8) (中文(简体) ). 清除 Tobox 再次回答心跳。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.rateBlocked",
+      "english": "Not answering these stations, which heartbeat more often than every 55 minutes: {{calls}}.",
+      "chinese": "以下电台发送心跳的间隔短于 55 分钟，因此不予应答：{{calls}}。",
+      "previous": "超过每55分钟的心跳:{{calls}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.hb.failed",
+      "english": "Heartbeat not sent",
+      "chinese": "心跳没有发送",
+      "previous": "心跳没有发送",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cmd.aria",
+      "english": "Directed command",
+      "chinese": "定向命令",
+      "previous": "指令",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cmd.none",
+      "english": "Message (no command)",
+      "chinese": "普通消息（无命令）",
+      "previous": "信件( 无命令)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.cmd.freetext",
+      "english": "free text",
+      "chinese": "自由文本",
+      "previous": "免费文本",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.estimate::one",
+      "english": "≈ {{count}} frame · ≈ {{secs}} s",
+      "chinese": "约 {{count}} 帧 · 约 {{secs}} 秒",
+      "previous": "≈{{count}}框架 ++++{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.estimate::other",
+      "english": "≈ {{count}} frames · ≈ {{secs}} s",
+      "chinese": "约 {{count}} 帧 · 约 {{secs}} 秒",
+      "previous": "≈{{count}}框架 ++++{{secs}}编号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.estimate.over::one",
+      "english": "≈ {{count}} frame — over the {{max}}-frame airtime cap; shorten it",
+      "chinese": "约 {{count}} 帧，超过发射时长上限（{{max}} 帧）；请缩短报文",
+      "previous": "≈{{count}}框架——在{{max}}- 机身机身;缩短机身",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.estimate.over::other",
+      "english": "≈ {{count}} frames — over the {{max}}-frame airtime cap; shorten it",
+      "chinese": "约 {{count}} 帧，超过发射时长上限（{{max}} 帧）；请缩短报文",
+      "previous": "≈{{count}}框架——在{{max}}- 机身机身;缩短机身",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.estimate.title",
+      "english": "How many periods this takes on the air (one frame per period). An estimate — the engine packs the real frames and refuses anything over ten minutes of airtime.",
+      "chinese": "估算需要占用多少个发射周期，每周期一帧。实际帧数由引擎打包后确定，发射时长超过十分钟的报文会被拒绝。",
+      "previous": "这需要播出多少个时段(每个时段一个帧). 一个估计——发动机将真实的帧装入,并在10分钟的播出时间里拒绝任何东西.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.autoreply.title.off",
+      "english": "Auto-reply is off — an answer to SNR?, GRID?, INFO? or STATUS? to you, an ACK for a MSG or a relay is put in the message box for you to send, as JS8Call does, and nothing keys by itself; QUERY MSGS goes unanswered. Click to turn it on (remembered). It answers only while TX is on.",
+      "chinese": "自动应答已关闭。与 JS8Call 一样，发给本台的 SNR?、GRID?、INFO?、STATUS? 的回复，以及 MSG 或转发消息的 ACK，都会放入报文框，等待手动发送，不会自行发射；QUERY MSGS 不予应答。点击开启，设置会保留。仅在 TX 开启时应答。",
+      "previous": "自动重读是关闭的——对SNR的回答?,GRID?,INFO?还是地位? 给您,一个MSG的ACK或一个中继器被放在信息箱中,您可以发送,就像JS8Call所做的那样,没有键本身;QUERY MSGS没有回复. 点击可打开( 记得) 。 它只在TX开机时才回答.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.autoreply.title.on",
+      "english": "Auto-reply is on, but TX is off — nothing keys; a reply is shown as “would have replied”. Enable TX (the header pill) to let replies go out.",
+      "chinese": "自动应答已开启，但 TX 已关闭，不会发射；回复显示为“原本会回复”。请开启顶部的 TX 开关，才能发出回复。",
+      "previous": "自动重写打开,但TX关闭——没有键;答复显示为“会答复”。 启用 TX( 信头药丸) 以放出回复 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.autoreply.title.armed",
+      "english": "Auto-reply is ARMED: SNR?, GRID?, INFO?, QUERY and MSG addressed to you or a group you joined are answered, each after your Yes when Settings asks for one. Click to turn it off.",
+      "chinese": "自动应答已就绪（ARMED）：会应答发给本台或本台已加入群组的 SNR?、GRID?、INFO?、QUERY 和 MSG；若设置要求确认，每次须点击“是”才会发送。点击关闭。",
+      "previous": "自动备份是ARMED: SNR?, GRID?, INFO?, QUERY和MSG是写给你的还是你加入的团体, 点击关闭它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.relay.title.off",
+      "english": "Relay is off — a > message routed through you is displayed and not passed on. Click to turn it on (remembered). Relaying is third-party traffic; you are responsible for it.",
+      "chinese": "转发已关闭。经本台路由的 > 消息只显示，不继续转发。点击开启，设置会保留。转发属于代他台传递消息，你需对此负责。",
+      "previous": "中继已关闭 —— 显示通过您传送的 > 消息, 而不是传递 。 点击可打开( 记得) 。 中继是第三方交通;由你负责.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.relay.title.on",
+      "english": "Relay is on, but TX is off — nothing keys. Enable TX (the header pill) to relay.",
+      "chinese": "转发已开启，但 TX 已关闭，不会发射。请开启顶部的 TX 开关，才能转发。",
+      "previous": "中继开机,但TX关闭——没有键. 启用 TX( 头丸) 接力 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.relay.title.armed",
+      "english": "Relay is ARMED: a > message routed through you is retransmitted with *DE* your call, and the final hop is acknowledged. With Auto-reply off, it is put in the message box for you to send instead. Click to turn it off.",
+      "chinese": "转发已就绪（ARMED）：经本台路由的 > 消息会加上 *DE* 和本台呼号后重发，并对最后一跳进行确认。若自动应答关闭，消息会放入报文框，等待手动发送。点击关闭。",
+      "previous": "中继是 ARMED: 通过您发送的 > 消息会与 *DE* 您的电话重传, 最后的 hop 被确认 。 自动读取关闭后, 它会被放在信息框中, 供您发送 。 点击关闭它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.relay.notArmed.needsAuto",
+      "english": "Relay is on, but with AUTOREPLY off a relay is put in the message box for you to send, and nothing keys by itself. Turn AUTOREPLY on to relay on the air.",
+      "chinese": "转发已开启，但 AUTOREPLY 已关闭，待转发消息只会放入报文框，等待手动发送，不会自行发射。请开启 AUTOREPLY，才能自动转发。",
+      "previous": "中继开始,但AUTOREPLY关闭了中继器 被放进信息框中,让你发送, 没有键本身。 开启AUTOREPLY的转播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.title.off",
+      "english": "Heartbeat acknowledgements are off (JS8Call’s default). Click to answer heartbeats with HEARTBEAT SNR (remembered). Answers only while TX is on.",
+      "chinese": "心跳应答已关闭（JS8Call 默认设置）。点击后使用 HEARTBEAT SNR 应答心跳，设置会保留。仅在 TX 开启时应答。",
+      "previous": "JS8Call的默认。 点击以 HERTBEAT SNR 回答心跳( 记得) 。 只在TX开机时才能回答.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.title.on",
+      "english": "Heartbeat acknowledgements are on, but TX is off — nothing keys. Enable TX (the header pill).",
+      "chinese": "心跳应答已开启，但 TX 已关闭，不会发射。请开启顶部的 TX 开关。",
+      "previous": "心跳的承认在进行,但TX关闭了——没有钥匙. 启用 TX( 头丸 ) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.title.armed",
+      "english": "Heartbeat acknowledgements are ARMED: each heartbeat heard is answered with HEARTBEAT SNR on a random free slot. Click to turn it off.",
+      "chinese": "心跳应答已就绪（ARMED）：每次收到心跳，会在随机选择的空闲频偏上用 HEARTBEAT SNR 应答。点击关闭。",
+      "previous": "心跳识别是ARMED:每个听到的心跳在随机自由插槽上用HERTBEAT SNR进行回答. 点击关闭它。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.notArmed.needsHb",
+      "english": "Heartbeat acknowledgements are on, but they answer only while heartbeat networking (HB NET) is on, as in JS8Call. HB NET sends nothing by itself.",
+      "chinese": "心跳应答已开启，但与 JS8Call 一样，必须同时开启心跳网络（HB NET）才会应答。仅开启 HB NET 不会自行发射。",
+      "previous": "就像JS8Call一样, 心跳式的确认在开始, HB NET本身没有发送任何信息.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.notArmed.needsAuto",
+      "english": "Heartbeat acknowledgements are on, but they answer only while AUTOREPLY is on, as in JS8Call. Turn AUTOREPLY on.",
+      "chinese": "心跳应答已开启，但与 JS8Call 一样，必须同时开启 AUTOREPLY 才会应答。请开启 AUTOREPLY。",
+      "previous": "心动的承认在进行,但只在AUTOREPLY进行时才回答,如JS8Call。 打开AUTREPLY。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.hbAck.notArmed.needsHbAndAuto",
+      "english": "Heartbeat acknowledgements are on, but they answer only while heartbeat networking (HB NET) and AUTOREPLY are both on, as in JS8Call. HB NET sends nothing by itself.",
+      "chinese": "心跳应答已开启，但与 JS8Call 一样，必须同时开启心跳网络（HB NET）和 AUTOREPLY 才会应答。仅开启 HB NET 不会自行发射。",
+      "previous": "心跳感应开始,但只回答心跳网络(HB NET)和AUTOREPLY(AUTREPLY),如JS8Call。 HB NET本身没有发送任何信息.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.arm.differs",
+      "english": "Two acts, where JS8Call has one: this switch is the second, the header’s TX pill is the first, and the chip reads ARMED only while both are on.",
+      "chinese": "JS8Call 只需一个开关，此处需要两步：先开启顶部的 TX，再开启此开关。两者均开启时才显示 ARMED（已就绪）。",
+      "previous": "JS8Call有两个动作:这个开关是第二个,",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.notArmed.idle",
+      "english": "Not armed: nothing from you for {{min}} min, so the idle watchdog holds it. Your next send, switch, speed choice, or Read or Delete in the Inbox brings it back.",
+      "chinese": "未就绪：已连续 {{min}} 分钟没有操作，空闲超时保护已暂停此功能。下次发送、操作开关、选择速度，或在收件箱中标记已读、删除消息后恢复。",
+      "previous": "没有武器,你什么也没有{{min}}分钟,所以闲置的监视器持有它。 您的下一个发送、 切换、 速度选择, 或读取或删除在收件箱中将其带回 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.pending.txOff",
+      "english": "Would reply to {{to}} — TX is off, nothing keys: {{text}}",
+      "chinese": "原本会回复 {{to}}，但 TX 已关闭，不会发射：{{text}}",
+      "previous": "将答复{{to}}TX关机了,没有钥匙{{text}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.idleTripped",
+      "english": "JS8 idle watchdog: no operator activity for {{min}} min — HB, AUTOREPLY, RELAY, HB ACK and the repeating CQ are off. TX stays as you left it. Your next send, switch, speed choice, or Read or Delete in the Inbox brings back AUTOREPLY, RELAY and HB ACK as Settings has them; HB and the repeating CQ stay off until you switch them on.",
+      "chinese": "JS8 空闲超时保护：连续 {{min}} 分钟没有操作，HB、AUTOREPLY、RELAY、HB ACK 和重复 CQ 已关闭。TX 开关保持原状态。下次发送、操作开关、选择速度，或在收件箱中标记已读、删除消息后，AUTOREPLY、RELAY 和 HB ACK 会按设置恢复；HB 和重复 CQ 须手动重新开启。",
+      "previous": "JS8闲置监视器: 没有操作员活动{{min}}分钟后——HB,AUTOREPLY,RELAY,HB ACK和重复的CQ取消. TX留在你离开的时候 您的下一个发送, 切换, 速度选择, 或读或删除在收件箱中带回 AUTOREPLY, RELAY 和 HB ACK, 如设置一样; HB 和重复的 CQ 关闭, 直到您打开它们 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.confirm",
+      "english": "A transmission is queued for autoreply: {{text}} — would you like to send this transmission?",
+      "chinese": "自动应答已排队，报文为：{{text}}。是否发送？",
+      "previous": "自动复制的传输排队 :{{text}}- 你想发送这个消息吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.confirm.yes.label",
+      "english": "Yes",
+      "chinese": "是",
+      "previous": "是",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.confirm.yes.title",
+      "english": "Send it: it goes out in the next period, through every TX check.",
+      "chinese": "发送：通过全部 TX 检查后，在下一个周期发出。",
+      "previous": "发送:通过每一次TX检查,在接下来的一段时间内输出.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.confirm.no.label",
+      "english": "No ({{secs}})",
+      "chinese": "否（{{secs}}）",
+      "previous": "无({{secs}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.confirm.no.title",
+      "english": "Do not send it. With no answer it is No when the count reaches 0, as in JS8Call.",
+      "chinese": "不发送。与 JS8Call 一样，未作选择时，倒计时到 0 自动按“否”处理。",
+      "previous": "别寄了 如联署材料8Call所述,没有答复,就等于没有答复。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.queue.title",
+      "english": "Queued frames — one leaves per period while TX is on. F/L mark the first and last frame of a message.",
+      "chinese": "待发帧队列：TX 开启时，每个周期发送一帧。F/L 分别标记一条消息的首帧和末帧。",
+      "previous": "排队框——在TX开机时,每期1个叶. F/L 标记信息的第一个和最后一个框.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.queue.drop.label",
+      "english": "Drop queue",
+      "chinese": "清空待发队列",
+      "previous": "丢弃队列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.queue.drop.title",
+      "english": "Drop every queued frame. Not a stop: a frame already on the air finishes — Stop TX cuts it.",
+      "chinese": "移除所有待发帧。已在发射的帧仍会发完；点击“停止发射”才会立即中止。",
+      "previous": "丢弃每个队列框 。 一站不动:一个已经在播出的帧完成——停止TX切.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.origin.operator",
+      "english": "you",
+      "chinese": "本台手动发送",
+      "previous": "老师",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.origin.heartbeat",
+      "english": "heartbeat",
+      "chinese": "心跳",
+      "previous": "心跳动",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.origin.hbAck",
+      "english": "heartbeat ack",
+      "chinese": "心跳应答",
+      "previous": "心跳摇摆",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.origin.autoReply",
+      "english": "auto-reply",
+      "chinese": "自动应答",
+      "previous": "自动复制",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.origin.relay",
+      "english": "relay",
+      "chinese": "转发",
+      "previous": "中继",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.origin.cqRepeat",
+      "english": "repeating CQ",
+      "chinese": "重复 CQ",
+      "previous": "重复 CQ",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.origin.aprsRelay",
+      "english": "APRS relay",
+      "chinese": "APRS 转发",
+      "previous": "APRS中继",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.idle",
+      "english": "Idle {{min}}/{{limit}} min",
+      "chinese": "空闲 {{min}}/{{limit}} 分钟",
+      "previous": "闲置{{min}}页:1{{limit}}分钟",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.idle.off",
+      "english": "Idle watchdog off",
+      "chinese": "空闲超时保护已关闭",
+      "previous": "关闭监视器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.dock.idle.tripped",
+      "english": "Idle watchdog tripped — your next send or switch brings back AUTOREPLY, RELAY and HB ACK; HB and the repeating CQ stay off until you switch them on",
+      "chinese": "空闲超时保护已触发。下次发送或操作开关后恢复 AUTOREPLY、RELAY 和 HB ACK；HB 和重复 CQ 须手动重新开启",
+      "previous": "摇摇晃晃的监视器被绊倒了 — 您的下一个发送或切换会带回 AUTOREPLY, RELAY 和 HB ACK; HB 和重复的 CQ 关闭,直到您打开它们",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.noCallsign",
+      "english": "Set your callsign in Settings before transmitting",
+      "chinese": "发射前请先在设置中填写本台呼号",
+      "previous": "发送前在设置中设置您的呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.savedMessage",
+      "english": "Added to the saved messages: {{text}}",
+      "chinese": "已保存报文：{{text}}",
+      "previous": "添加到保存的消息中 :{{text}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.savedMessage.failed",
+      "english": "The message could not be saved",
+      "chinese": "无法保存消息",
+      "previous": "无法保存信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.txLocked",
+      "english": "TX locked — this frequency is outside your license privileges",
+      "chinese": "TX 已锁定：此频率超出你的执照许可范围",
+      "previous": "TX 锁定—— 此频率不在您的许可权限之内 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.send.failed",
+      "english": "JS8 send refused",
+      "chinese": "JS8发送被拒绝",
+      "previous": "JS8发送被拒绝",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.cq.failed",
+      "english": "JS8 CQ refused",
+      "chinese": "JS8 CQ 呼叫被拒绝",
+      "previous": "JS8拒绝CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.arm.failed",
+      "english": "JS8 switch refused",
+      "chinese": "JS8 开关操作被拒绝",
+      "previous": "JS8拒绝切换",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.command.failed",
+      "english": "JS8 command refused",
+      "chinese": "JS8命令被拒绝",
+      "previous": "JS8命令被拒绝",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.noAddressee",
+      "english": "A command needs a station — put a callsign, @ALLCALL or a group in To",
+      "chinese": "命令需要指定接收方，请在“发给”框中填写呼号、@ALLCALL 或群组",
+      "previous": "命令需要一个站点 — 设置一个呼号, @ ALLCALL 或一个组 in to",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.answer.failed",
+      "english": "Could not answer the question",
+      "chinese": "无法回答问题",
+      "previous": "无法回答问题",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.toast.drop.failed",
+      "english": "Could not drop the queue",
+      "chinese": "无法清空待发队列",
+      "previous": "无法放下队列",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.rx.title",
+      "english": "What JS8Call shows in its RX pane: the traffic on your RX offset and what is addressed to you or your groups, each message on one line as its frames arrive, the end mark after its last frame and the missing-frame mark where one did not come. Every frame of every offset is in Band activity.",
+      "chinese": "与 JS8Call 的 RX 窗格相同：显示本台接收频偏上的通信，以及发给本台或本台群组的消息。每条消息占一行，随接收帧逐步显示；末帧后显示结束标记，缺失的帧以缺帧标记表示。所有频偏上的全部帧均可在“频段活动”中查看。",
+      "previous": "JS8Call在其RX面板中显示的内容:您RX上的流量抵消和给您或您的团体的流量,每条消息的帧到达时在一条线上,最后一帧之后的终点,以及一个没有到来的缺失框标记. 每个抵消的每个框架都是在乐队活动中。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.rx.empty",
+      "english": "Listening… what is sent on your RX offset, and what is addressed to you, prints here",
+      "chinese": "正在监听…本台接收频偏上的报文，以及发给本台的报文，会显示在这里",
+      "previous": "听... 你的RX平面上发送了什么 寄给你什么 指纹在这里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.rx.line.title",
+      "english": "Double-click to write to {{call}}",
+      "chinese": "双击即可给 {{call}} 写报文",
+      "previous": "双击以写入{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.band.title",
+      "english": "One row per frequency offset in the passband, holding the frames heard there with the end mark after each message: its age, SNR, time delta and speed come from the newest. Read it to find a clear offset and to see who is in sync. Columns and order are in ⋯.",
+      "chinese": "通带内每个频偏各占一行，显示该频偏收到的帧，每条消息后带结束标记。距今时间、SNR、时间偏差和速度均取最新接收结果。可据此寻找空闲频偏，并查看各电台的时间同步情况。在 ⋯ 菜单中调整显示列和排序。",
+      "previous": "每段频率中每行一行相抵通过波段,将那里听到的帧与每个消息后的结尾标记保持在一起:它的年代,SNR,时间三角洲和速度来自最新的. 读一下看 找到一个清晰的抵消, 看看谁在同步。 列和顺序在 QQ 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.band.col.text",
+      "english": "Message(s)",
+      "chinese": "消息",
+      "previous": "信件",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.band.rowMenu.aria",
+      "english": "Menu for {{offset}} Hz",
+      "chinese": "{{offset}} Hz 的菜单",
+      "previous": "菜单{{offset}} Hz",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.col.offset",
+      "english": "Offset",
+      "chinese": "频偏",
+      "previous": "偏移",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "偏移"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "偏移"
+        }
+      ]
+    },
+    {
+      "id": "js8.col.age",
+      "english": "Age",
+      "chinese": "距今",
+      "previous": "距今",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "距今"
+        }
+      ]
+    },
+    {
+      "id": "js8.col.snr",
+      "english": "SNR",
+      "chinese": "SNR",
+      "previous": "国家资源评估",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.col.tdrift",
+      "english": "Time delta",
+      "chinese": "时间偏差",
+      "previous": "时间偏差",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.col.speed",
+      "english": "Speed",
+      "chinese": "速度",
+      "previous": "速度",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.mark",
+      "english": "Mark",
+      "chinese": "标记",
+      "previous": "标记",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.callsign::one",
+      "english": "Callsign ({{count}})",
+      "chinese": "呼号（{{count}}）",
+      "previous": "调用( C){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.callsign::other",
+      "english": "Callsigns ({{count}})",
+      "chinese": "呼号（{{count}}）",
+      "previous": "调用( A){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.grid",
+      "english": "Grid",
+      "chinese": "网格定位",
+      "previous": "网格定位",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "网格"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "网格"
+        }
+      ]
+    },
+    {
+      "id": "js8.calls.col.distance",
+      "english": "Distance",
+      "chinese": "距离",
+      "previous": "距离",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "距离"
+        }
+      ]
+    },
+    {
+      "id": "js8.calls.col.azimuth",
+      "english": "°",
+      "chinese": "°",
+      "previous": "°",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.log",
+      "english": "✓",
+      "chinese": "✓",
+      "previous": "✓",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.logName",
+      "english": "Name",
+      "chinese": "姓名",
+      "previous": "姓名",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "姓名"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "姓名"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileSystemModel",
+          "chinese": "姓名"
+        }
+      ]
+    },
+    {
+      "id": "js8.calls.col.logComment",
+      "english": "Comment",
+      "chinese": "附言",
+      "previous": "评注",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.actions",
+      "english": "Quick asks",
+      "chinese": "快捷查询",
+      "previous": "快问",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.col.menu",
+      "english": "Menu",
+      "chinese": "菜单",
+      "previous": "菜单",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "菜单"
+        }
+      ]
+    },
+    {
+      "id": "js8.calls.rowMenu.aria",
+      "english": "Menu for {{call}}",
+      "chinese": "{{call}} 的菜单",
+      "previous": "菜单{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.mark.blocked",
+      "english": "Blocked: messages from this station are hidden in the RX pane (Settings ▸ JS8)",
+      "chinese": "已屏蔽：此电台的消息在 RX 窗格中隐藏（设置 ▸ JS8）",
+      "previous": "屏蔽:本站留言隐藏在RX窗格(Settings QQ)中.JS8) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.mark.ack",
+      "english": "Hearing your station ({{since}} ago)",
+      "chinese": "对方收到本台信号（{{since}}前）",
+      "previous": "听到你的电台{{since}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.mark.cq",
+      "english": "Calling CQ ({{since}} ago)",
+      "chinese": "正在呼叫 CQ（{{since}}前）",
+      "previous": "调用 CQ ({{since}}刚才",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.mark.relay",
+      "english": "Heard through a relay ({{through}})",
+      "chinese": "经 {{through}} 转发收到",
+      "previous": "通过继电器听到的{{through}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.mark.groupMessage",
+      "english": "Unread message for {{group}}, in the Inbox",
+      "chinese": "收件箱中有发给 {{group}} 的未读消息",
+      "previous": "未读信件{{group}},在收件箱中",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.add.title",
+      "english": "Add a station or group",
+      "chinese": "添加电台或群组",
+      "previous": "添加一个站或组",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.add.label",
+      "english": "Station or group callsign",
+      "chinese": "电台或群组呼号",
+      "previous": "站或组呼号",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.add.ok",
+      "english": "Add",
+      "chinese": "添加",
+      "previous": "添加",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "增加"
+        }
+      ]
+    },
+    {
+      "id": "js8.calls.add.cancel",
+      "english": "Cancel",
+      "chinese": "取消",
+      "previous": "取消",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Configuration::impl",
+          "chinese": "取消"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "QFileDialog",
+          "chinese": "取消"
+        }
+      ]
+    },
+    {
+      "id": "js8.calls.add.notCall",
+      "english": "{{name}} is not a valid callsign or group",
+      "chinese": "{{name}} 不是有效的呼号或群组",
+      "previous": "{{name}}无效的调用符号或组",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.calls.add.notGroup",
+      "english": "{{name}} is not a valid group",
+      "chinese": "{{name}} 不是有效的群组",
+      "previous": "{{name}}不是一个有效的组",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.menu.aria",
+      "english": "{{pane}} options",
+      "chinese": "{{pane}} 选项",
+      "previous": "{{pane}}选项",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sortBy",
+      "english": "Sort by",
+      "chinese": "排序依据",
+      "previous": "排序为",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.showColumns",
+      "english": "Show columns",
+      "chinese": "显示列",
+      "previous": "显示列",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.labels",
+      "english": "Show column labels",
+      "chinese": "显示列标签",
+      "previous": "显示列标签",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.showHb",
+      "english": "Show band heartbeats and ACKs",
+      "chinese": "显示频段内的心跳和 ACK 应答",
+      "previous": "显示乐队心跳和ACK",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.offset",
+      "english": "Frequency offset",
+      "chinese": "频偏",
+      "previous": "频率偏移",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "频率偏移"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "频率偏移"
+        }
+      ]
+    },
+    {
+      "id": "js8.view.sort.timestamp",
+      "english": "Last heard (oldest first)",
+      "chinese": "最后收到时间（较早优先）",
+      "previous": "最后一次听到( 最老的第一)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.timestampRecent",
+      "english": "Last heard (recent first)",
+      "chinese": "最后收到时间（最近优先）",
+      "previous": "最后听到(最近为第一)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.snr",
+      "english": "SNR (weakest first)",
+      "chinese": "SNR（较弱优先）",
+      "previous": "SNR( 最弱第一)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.snrStrong",
+      "english": "SNR (strongest first)",
+      "chinese": "SNR（较强优先）",
+      "previous": "SNR( 最强第一)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.submode",
+      "english": "Speed (slowest first)",
+      "chinese": "速度（较慢优先）",
+      "previous": "速度( 最慢先)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.submodeFast",
+      "english": "Speed (fastest first)",
+      "chinese": "速度（较快优先）",
+      "previous": "速度( 最快)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.callsign",
+      "english": "Callsign",
+      "chinese": "呼号",
+      "previous": "呼号",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CallsignDialog",
+          "chinese": "呼号"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "CallsignDialog",
+          "chinese": "呼号"
+        }
+      ]
+    },
+    {
+      "id": "js8.view.sort.ackTimestamp",
+      "english": "Hearing you (recent first)",
+      "chinese": "对方收到本台（最近优先）",
+      "previous": "听得见吗?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.distance",
+      "english": "Distance (closest first)",
+      "chinese": "距离（较近优先）",
+      "previous": "距离( 最先关闭)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.distanceFar",
+      "english": "Distance (farthest first)",
+      "chinese": "距离（较远优先）",
+      "previous": "距离( 最短)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.sort.azimuth",
+      "english": "Azimuth",
+      "chinese": "方位角",
+      "previous": "方位角",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.col.offset",
+      "english": "Frequency offset",
+      "chinese": "频偏",
+      "previous": "频率偏移",
+      "changed": true,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "频率偏移"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "频率偏移"
+        }
+      ]
+    },
+    {
+      "id": "js8.view.col.timestamp",
+      "english": "Last heard",
+      "chinese": "最后收到时间",
+      "previous": "上次听说",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "js8.view.col.snr",
+      "english": "SNR",
+      "chinese": "SNR",
+      "previous": "国家资源评估",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

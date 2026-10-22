@@ -40,6 +40,7 @@ const textIn = (catalog: PartialCatalog) => (key: MessageKey) => {
 
 /** What an operator reaching for a stop would read as one, per language. */
 const REFUSED: Record<string, string[]> = {
+  'zh-CN': ['停止', '停止发射', '取消', '中止', '终止', '结束', '退出'],
   en: ['Stop', 'Stop TX', 'Esc', 'Abort', 'Escape', 'Halt', 'Cancel', 'Cancel TX', '■ STOP', 'ＳＴＯＰ'],
   de: ['Stopp', 'STOPP', 'TX stoppen', 'TX-Stopp', 'Halt', 'Anhalten', 'Abbrechen', 'Abbruch', 'Beenden'],
   es: ['Parar', 'PARAR', 'Parar TX', 'Pare', 'Parada', 'Detener', 'Detén', 'Abortar', 'Anular', 'Cancelar', 'Dejar de emitir'],
@@ -98,7 +99,7 @@ describe('every catalog in the tree, installed as main.tsx installs one', () => 
 
   it('finds every catalog main.tsx installs (control: the search does not come back empty)', () => {
     const main = readFileSync(new URL('../main.tsx', import.meta.url), 'utf8')
-    const installed = [...main.matchAll(/installCatalog\(\s*'([a-z-]+)'/g)].map((m) => m[1])
+    const installed = [...main.matchAll(/installCatalog\(\s*'([A-Za-z-]+)'/g)].map((m) => m[1])
     expect(installed.length, 'control: main.tsx really does install catalogs').toBeGreaterThan(0)
     expect(CATALOGS.map(([locale]) => locale)).toEqual(expect.arrayContaining(['en', ...installed]))
   })

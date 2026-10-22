@@ -1,0 +1,1703 @@
+{
+  "batch": 8,
+  "range": [
+    1401,
+    1600
+  ],
+  "baseline": "ad8d95fa80e2bfa9be8e1719595b058929eb092d",
+  "count": 200,
+  "changed": 170,
+  "independentHumanReview": false,
+  "externalExactMatchRows": 5,
+  "externalDefinitions": [
+    "ADIF 3.1.4：交信确认及奖项认可字段；见 external-sources.json"
+  ],
+  "implementation": [
+    "ui/src/components/AwardsView.tsx",
+    "ui/src/components/NeededPanel.tsx",
+    "ui/src/components/StationList.tsx",
+    "crates/propagation/src/awards.rs"
+  ],
+  "rows": [
+    {
+      "id": "roster.title",
+      "english": "Stations",
+      "chinese": "电台列表",
+      "previous": "电台列表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.band.label",
+      "english": "Band — calling CQ",
+      "chinese": "频段 — 呼叫 CQ",
+      "previous": "乐队——呼叫CQ",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.band.title",
+      "english": "Call CQ and see open broadcasts on the band",
+      "chinese": "呼叫 CQ，并查看当前频段的公开消息",
+      "previous": "拨打CQ,看到乐队的公开广播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.recents.aria",
+      "english": "Recent conversations",
+      "chinese": "最近的对话",
+      "previous": "最近的对话",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.recents.head",
+      "english": "Recent chats",
+      "chinese": "最近的对话",
+      "previous": "最近的对话",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.recents.open",
+      "english": "Open conversation with {{call}}",
+      "chinese": "打开与 {{call}} 的对话",
+      "previous": "打开对话{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.recents.offline",
+      "english": "not heard recently",
+      "chinese": "最近未收到信号",
+      "previous": "最近没听到",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.recents.archive.title",
+      "english": "Delete this conversation",
+      "chinese": "删除这段对话",
+      "previous": "删除此对话框",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.recents.archive.aria",
+      "english": "Delete conversation with {{call}}",
+      "chinese": "删除与 {{call}} 的对话",
+      "previous": "删除对白{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.onBandNow",
+      "english": "On the band now",
+      "chinese": "当前频段上的电台",
+      "previous": "现在在乐队里",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.filter.aria",
+      "english": "Station filter",
+      "chinese": "筛选电台",
+      "previous": "站台过滤器",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.filter.all",
+      "english": "All",
+      "chinese": "全部",
+      "previous": "全部",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "IARURegions",
+          "chinese": "全部"
+        }
+      ]
+    },
+    {
+      "id": "roster.filter.heardNow",
+      "english": "Heard now",
+      "chinese": "当前收到",
+      "previous": "听说了",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.filter.beaconing",
+      "english": "Beaconing",
+      "chinese": "发送信标中",
+      "previous": "灯塔",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.filter.needed",
+      "english": "Needed",
+      "chinese": "待通联",
+      "previous": "待通联",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.empty",
+      "english": "No stations match.",
+      "chinese": "没有符合条件的电台。",
+      "previous": "没有站台匹配。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.countFiltered",
+      "english": "of {{count}}",
+      "chinese": "/ 共 {{count}} 个",
+      "previous": "页:1{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.search.placeholder",
+      "english": "Call or PA*…",
+      "chinese": "呼号或 PA*…",
+      "previous": "打电话或PA*...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.search.label",
+      "english": "Search stations",
+      "chinese": "搜索电台",
+      "previous": "搜索站",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.search.title",
+      "english": "Search by callsign. * and ? are wildcards — PA* finds every PA prefix, ON?AOI fills in one character. Several terms mean \"any of these\": PA* ON4*. Esc clears.",
+      "chinese": "按呼号搜索。* 和 ? 是通配符：PA* 匹配所有以 PA 开头的呼号，ON?AOI 中的 ? 匹配一个字符。输入多个条件可匹配其中任意一个，例如 PA* ON4*。按 Esc 清空。",
+      "previous": "使用调用符号搜索 。 * 和 ? 是通配符—— PA* 找到每个 PA 前缀, ON ? AOI包含一个字符. 几个术语意为\"任何这些\": PA* ON4*. 埃斯克清场.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.search.clear",
+      "english": "Clear search",
+      "chinese": "清除搜索",
+      "previous": "清除搜索",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.doubleClick",
+      "english": "Double-click to work {{call}}",
+      "chinese": "双击与 {{call}} 通联",
+      "previous": "双击工作{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.open",
+      "english": "Open {{call}}",
+      "chinese": "打开 {{call}}",
+      "previous": "打开{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.b4.sameBand",
+      "english": "Worked before on this band",
+      "chinese": "曾在此频段通联",
+      "previous": "以前在这个乐队工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.b4.otherBand",
+      "english": "Worked before (another band)",
+      "chinese": "曾在其他频段通联",
+      "previous": "以前工作过(另一个乐队)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.work.label",
+      "english": "Work",
+      "chinese": "通联",
+      "previous": "工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.work.title",
+      "english": "Work {{call}}",
+      "chinese": "与 {{call}} 通联",
+      "previous": "工作{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.heard.now",
+      "english": "now",
+      "chinese": "现在",
+      "previous": "现在",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.heard.slots::one",
+      "english": "{{count}} slot ago",
+      "chinese": "{{count}} 个时隙前",
+      "previous": "{{count}}档前",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.heard.slots::other",
+      "english": "{{count}} slots ago",
+      "chinese": "{{count}} 个时隙前",
+      "previous": "{{count}}档前",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "roster.card.heard.minutes",
+      "english": "{{count}} min ago",
+      "chinese": "{{count}} 分钟前",
+      "previous": "{{count}}几分钟前",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.title",
+      "english": "Awards",
+      "chinese": "奖项",
+      "previous": "奖状",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.subtitle",
+      "english": "DXCC · computed from your log",
+      "chinese": "DXCC · 根据本台日志统计",
+      "previous": "DXCC从您的日志中计算 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.load.failed.title",
+      "english": "Couldn't load awards",
+      "chinese": "无法加载奖项统计",
+      "previous": "无法装入奖项",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.load.failed.detail",
+      "english": "The award tally failed to compute.",
+      "chinese": "奖项统计计算失败。",
+      "previous": "奖项计数失败计算.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.loading.title",
+      "english": "Tallying awards…",
+      "chinese": "正在统计奖项进度…",
+      "previous": "天才奖...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.loading.detail",
+      "english": "Resolving your log against the DXCC entity list.",
+      "chinese": "正在根据 DXCC 实体列表核对日志。",
+      "previous": "解析您的日志DXCC实体列表。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.empty.title",
+      "english": "No contacts yet",
+      "chinese": "尚无交信记录",
+      "previous": "尚无交信记录",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.empty.detail",
+      "english": "Log contacts or import an ADIF (Logbook → Import ADIF) to start tracking DXCC.",
+      "chinese": "记录交信或导入 ADIF 文件（日志 → 导入 ADIF），即可开始统计 DXCC 进度。",
+      "previous": "日志联系人或导入一个ADIF(日志 导入)ADIF)开始跟踪DXCC。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxcc.note.achieved",
+      "english": "DXCC achieved ✓ · {{confirmed}} entities · {{worked}} worked · {{credited}} credited",
+      "chinese": "已达到 DXCC 要求 ✓ · 已确认 {{confirmed}} 个实体 · 已通联 {{worked}} 个 · 已获认可 {{credited}} 个",
+      "previous": "DXCC·{{confirmed}}* 实体{{worked}}参加工作{{credited}}贷记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxcc.note.toGo",
+      "english": "{{remaining}} confirmed to go · {{worked}} worked · {{credited}} credited",
+      "chinese": "还需确认 {{remaining}} 个实体 · 已通联 {{worked}} 个 · 已获认可 {{credited}} 个",
+      "previous": "{{remaining}}证实去...{{worked}}参加工作{{credited}}贷记",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxcc.note.readyToSubmit",
+      "english": " · {{count}} ready to submit",
+      "chinese": " · {{count}} 个可提交申请",
+      "previous": "* 妇女{{count}}准备提交",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxcc.note.currentTotal",
+      "english": "{{current}} current · {{total}} total, deleted entities included",
+      "chinese": "现存实体 {{current}} 个 · 含已删除实体共 {{total}} 个",
+      "previous": "{{current}}当前 ・{{total}}共计,已删除实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxccDiffer.head",
+      "english": "LoTW counts as another entity ({{count}})",
+      "chinese": "LoTW 将其计入了其他实体（{{count}} 条）",
+      "previous": "LoTW计数为另一个实体({{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxccDiffer.note",
+      "english": "LoTW confirmed these contacts under a different DXCC entity than your log has. The awards count LoTW’s entity; your log is not changed.",
+      "chinese": "这些交信在 LoTW 中确认的 DXCC 实体与本台日志不同。奖项统计采用 LoTW 的实体归属；本台日志不会更改。",
+      "previous": "LoTW证实这些联系人在不同的DXCC实体 比你的日志。 奖励数LoTW实体; 您的日志没有更改 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxccDiffer.row",
+      "english": "Your log: {{logged}} · LoTW: {{lotw}}",
+      "chinese": "本台日志：{{logged}} · LoTW：{{lotw}}",
+      "previous": "您的日志 :{{logged}}* 妇女LoTW数字 :{{lotw}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.dxccDiffer.unknown",
+      "english": "DXCC {{code}}",
+      "chinese": "DXCC {{code}}",
+      "previous": "DXCC {{code}}",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.honorRoll.note.numberOne",
+      "english": "#1 Honor Roll ✓ — all {{total}} entities",
+      "chinese": "已达到荣誉榜榜首要求 ✓ — 全部 {{total}} 个实体",
+      "previous": "#1荣誉卷   所有{{total}}实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.honorRoll.note.achieved",
+      "english": "Honor Roll ✓ · {{needed}} to #1",
+      "chinese": "已达到荣誉榜要求 ✓ · 距榜首还差 {{needed}} 个实体",
+      "previous": "荣誉卷轴{{needed}}改为 # 1",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.honorRoll.note.toGo",
+      "english": "{{needed}} more confirmed needed — Honor Roll entry at {{threshold}}",
+      "chinese": "还需确认 {{needed}} 个实体 — 荣誉榜门槛为 {{threshold}} 个",
+      "previous": "{{needed}}- 需要更多确认的 - 荣誉记录{{threshold}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.challenge.note",
+      "english": "{{worked}} entity×band slots worked",
+      "chinese": "已通联 {{worked}} 个实体×频段组合",
+      "previous": "{{worked}}实体×波段已工作",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.confirmed.label",
+      "english": "Confirmed",
+      "chinese": "已确认",
+      "previous": "已确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.confirmed.note",
+      "english": "{{confirmed}} of {{total}} QSOs confirmed via LoTW or card (eQSL / QRZ matches don’t count toward ARRL awards)",
+      "chinese": "共 {{total}} 条交信，{{confirmed}} 条已通过 LoTW 或纸质卡片确认（eQSL / QRZ 匹配不计入 ARRL 奖项）",
+      "previous": "{{confirmed}} 页:1 {{total}} QSOs 通过  LoTW  或卡片( E) eQSL  /  QRZ  匹配并不计入ARRL奖项。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.fiveBand.note",
+      "english": "weakest of the 5 classic bands (ARRL counts each band on its own) · {{worked}} worked",
+      "chinese": "按五个传统频段中进度最低的频段计算（ARRL 对各频段分别统计）· 已通联 {{worked}} 个实体",
+      "previous": "5个经典乐队中最弱的(ARRL单独计算每个乐队) ^{{worked}}工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.waz.note.achieved",
+      "english": "Worked All Zones ✓ · {{worked}} worked",
+      "chinese": "已达到通联所有 CQ 分区要求 ✓ · 已通联 {{worked}} 个分区",
+      "previous": "● 在所有地区工作{{worked}}工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.waz.note.toGo",
+      "english": "{{remaining}} zones to go · {{worked}} worked",
+      "chinese": "还差 {{remaining}} 个分区 · 已通联 {{worked}} 个",
+      "previous": "{{remaining}}区域要走...{{worked}}工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.was.note.achieved",
+      "english": "Worked All States ✓ · {{worked}} worked · 5BWAS weakest band {{fiveBand}}/50",
+      "chinese": "已达到通联全美各州要求 ✓ · 已通联 {{worked}} 个州 · 5BWAS 进度最低频段 {{fiveBand}}/50",
+      "previous": "在所有国家工作{{worked}}- 5BWAS最弱频段{{fiveBand}}第50条",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.was.note.toGo",
+      "english": "{{remaining}} states to go · {{worked}} worked · 5BWAS weakest band {{fiveBand}}/50",
+      "chinese": "还差 {{remaining}} 个州 · 已通联 {{worked}} 个州 · 5BWAS 进度最低频段 {{fiveBand}}/50",
+      "previous": "{{remaining}}* 国家将采取{{worked}}- 5BWAS最弱频段{{fiveBand}}第50条",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.vucc.note.achieved",
+      "english": "VUCC ✓ {{bands}} · {{confirmed}} grids confirmed on all bands (tracker)",
+      "chinese": "已达到 VUCC 要求 ✓ {{bands}} · 全频段共确认 {{confirmed}} 个网格（统计值）",
+      "previous": "VUCC : 团结与和谐联盟{{bands}}* 妇女{{confirmed}}在所有波段上确认网格(跟踪器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.vucc.note.toGo",
+      "english": "{{remaining}} grids to go on {{band}} · {{confirmed}} grids confirmed on all bands (tracker)",
+      "chinese": "{{band}} 还差 {{remaining}} 个网格 · 全频段共确认 {{confirmed}} 个网格（统计值）",
+      "previous": "{{remaining}}要继续的网格{{band}}* 妇女{{confirmed}}在所有波段上确认网格(跟踪器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.vucc.note.none",
+      "english": "No 6 m-and-up grids yet · {{confirmed}} grids confirmed on all bands (tracker — VUCC itself is 50 MHz and up)",
+      "chinese": "尚未在 6 米及更高频段通联网格 · 全频段共确认 {{confirmed}} 个网格（仅为统计值，VUCC 仅适用于 50 MHz 及以上）",
+      "previous": "还没有6米高的电网...{{confirmed}}所有波段上确认的网格(跟踪器-VUCC本身为50)MHz上页)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.satVucc.note.achieved",
+      "english": "Satellite VUCC ✓ · {{worked}} grids worked · Sat DXCC {{satDxcc}} confirmed",
+      "chinese": "已达到卫星 VUCC 要求 ✓ · 已通联 {{worked}} 个网格 · 卫星 DXCC 已确认 {{satDxcc}} 个实体",
+      "previous": "VUCC号卫星{{worked}}电网工作 ・ 满足DXCC {{satDxcc}}确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.satVucc.note.toGo",
+      "english": "{{remaining}} more to confirm · {{worked}} grids worked · Sat DXCC {{satDxcc}} confirmed",
+      "chinese": "还需确认 {{remaining}} 个网格 · 已通联 {{worked}} 个网格 · 卫星 DXCC 已确认 {{satDxcc}} 个实体",
+      "previous": "{{remaining}}更多可以证实...{{worked}}电网工作 ・ 满足DXCC {{satDxcc}}确认",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.satVucc.note.tagging",
+      "english": "Pass contacts are tagged automatically when logged on the bird’s downlink (ISS excepted — no LoTW designator to derive)",
+      "chinese": "在卫星下行频率上记录过境交信时，会自动添加卫星标签（ISS 除外，因无法推导对应的 LoTW 卫星标识）。",
+      "previous": "在鸟类的下行链路(ISS除外-否)上登录时会自动标记联系人。LoTW编号以获取)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.iota.note.achieved",
+      "english": "IOTA ✓ (card-confirmed) · {{cards}} on cards — IOTA credits cards / Club Log, not LoTW",
+      "chinese": "已达到 IOTA 要求 ✓（纸质卡片确认）· 卡片确认 {{cards}} 个岛组 — IOTA 认可纸质卡片 / Club Log，不认可 LoTW",
+      "previous": "IOTA(已确认){{cards}}卡片上的——IOTA信用卡/俱乐部日志,不LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.iota.note.worked",
+      "english": "{{worked}} worked · {{cards}} on cards — IOTA credits cards / Club Log, not LoTW",
+      "chinese": "已通联 {{worked}} 个岛组 · 卡片确认 {{cards}} 个 — IOTA 认可纸质卡片 / Club Log，不认可 LoTW",
+      "previous": "{{worked}}参加工作{{cards}}卡片上的——IOTA信用卡/俱乐部日志,不LoTW",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bands.head",
+      "english": "DXCC by band",
+      "chinese": "各频段 DXCC 进度",
+      "previous": "DXCC按乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.head",
+      "english": "Needed by band",
+      "chinese": "各频段待通联／待确认项目",
+      "previous": "乐队需要的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.award.label",
+      "english": "Award",
+      "chinese": "奖项",
+      "previous": "获奖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.col.band",
+      "english": "Band",
+      "chinese": "频段",
+      "previous": "频段",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "CabrilloLog",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "FoxLog::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMessageCreator",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "Bands",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "LogQSO",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "StationList::impl",
+          "chinese": "波段"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "波段"
+        }
+      ]
+    },
+    {
+      "id": "awards.bandNeeds.col.unworked",
+      "english": "Never worked",
+      "chinese": "未曾交信",
+      "previous": "未曾交信",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.col.unconfirmed",
+      "english": "Worked, not confirmed",
+      "chinese": "已交信，未确认",
+      "previous": "已交信，未确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.note.dxcc",
+      "english": "Current DXCC entities, on the bands that earn DXCC credit (not 60 m or 4 m). Confirmed by LoTW or a QSL card.",
+      "chinese": "现存 DXCC 实体，仅统计可计入 DXCC 的频段（不含 60 米和 4 米）。以 LoTW 或 QSL 卡片确认为准。",
+      "previous": "当前DXCC实体,在赚取收入的波段上DXCC信贷(不是60米或4米)。 经确认LoTW或一个QSL纸牌。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.note.was",
+      "english": "The 50 states. Confirmed by LoTW or a QSL card.",
+      "chinese": "美国全部 50 个州。以 LoTW 或 QSL 卡片确认为准。",
+      "previous": "50个州。 经确认LoTW或一个QSL纸牌。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.note.waz",
+      "english": "The 40 CQ zones. Confirmed by LoTW, a QSL card or an Authenticity-Guaranteed eQSL.",
+      "chinese": "全部 40 个 CQ 分区。以 LoTW、QSL 卡片或通过真实性认证（AG）的 eQSL 确认为准。",
+      "previous": "40CQ区. 经确认 LoTW页:1 QSL 或认证保证的 eQSL。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.show",
+      "english": "Show the {{count}} on {{band}}",
+      "chinese": "显示 {{band}} 上的 {{count}} 项",
+      "previous": "显示{{count}}打开{{band}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.hide",
+      "english": "Hide the list",
+      "chinese": "隐藏列表",
+      "previous": "隐藏列表",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.list.unworked",
+      "english": "Never worked on {{band}} ({{count}})",
+      "chinese": "{{band}} 上未曾通联（{{count}} 项）",
+      "previous": "从来没有工作过{{band}}(单位:千美元){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bandNeeds.list.unconfirmed",
+      "english": "Worked on {{band}}, not confirmed ({{count}})",
+      "chinese": "{{band}} 上已通联但未确认（{{count}} 项）",
+      "previous": "已着手{{band}},未确认({{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.columns.split.label",
+      "english": "Progress column / chase lists",
+      "chinese": "进度栏／追踪目标列表",
+      "previous": "进度列/ 追逐列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.grids.head",
+      "english": "Grids by band (VUCC)",
+      "chinese": "各频段网格统计（VUCC）",
+      "previous": "按波段排列的网格(VUCC)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.grids.filter.vucc.label",
+      "english": "VUCC bands",
+      "chinese": "VUCC 适用频段",
+      "previous": "VUCC 频带",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.grids.filter.vucc.title",
+      "english": "Show only the bands ARRL awards grids on — 50 MHz and up",
+      "chinese": "仅显示 ARRL 网格奖项适用的频段，即 50 MHz 及以上",
+      "previous": "只显示带 ARRL 授予网格在 - 50 MHz 上调",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.grids.filter.all.label",
+      "english": "All bands",
+      "chinese": "全部频段",
+      "previous": "全部频段",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.grids.filter.all.title",
+      "english": "Show every band you have worked a grid on, HF included — a tracker count, not award progress",
+      "chinese": "显示所有已通联网格所在的频段，包括 HF；这是统计数量，不代表奖项进度。",
+      "previous": "显示您在网格上工作过的每个乐队, HF 包含 —— 追踪器计数, 而不是授予进度",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.grids.noVucc",
+      "english": "No grids on 6 m or up yet — VUCC starts at 50 MHz. Switch to All bands for the full tracker count.",
+      "chinese": "尚未在 6 米及更高频段通联网格；VUCC 从 50 MHz 起算。切换至“全部频段”可查看完整统计。",
+      "previous": "6米或以上没有电网——VUCC开始于50 MHz。切换到全部跟踪计数的所有频段。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.modes.head",
+      "english": "DXCC by mode",
+      "chinese": "各模式 DXCC 进度",
+      "previous": "DXCC按模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bar.title",
+      "english": "{{confirmed}} confirmed / {{worked}} worked",
+      "chinese": "已确认 {{confirmed}} / 已通联 {{worked}}",
+      "previous": "{{confirmed}}确认/{{worked}}工作过",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.bar.titleGrids",
+      "english": "{{confirmed}} confirmed / {{worked}} worked grids",
+      "chinese": "已确认 {{confirmed}} / 已通联 {{worked}} 个网格",
+      "previous": "{{confirmed}}确认/{{worked}}工作网格",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.entities.head",
+      "english": "Confirm for a new one ({{count}})",
+      "chinese": "确认后可增加新实体（{{count}} 项）",
+      "previous": "确认一个新的{{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.entities.empty",
+      "english": "Every worked entity is confirmed. 🎉",
+      "chinese": "所有已通联实体均已确认。🎉",
+      "previous": "每个工作实体都得到确认。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.slots.head",
+      "english": "Confirm for a Challenge slot ({{count}})",
+      "chinese": "确认后可增加 Challenge 项目（{{count}} 项）",
+      "previous": "确认挑战槽( E){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.slots.empty",
+      "english": "No worked-but-unconfirmed band slots.",
+      "chinese": "没有已通联但未确认的实体×频段组合。",
+      "previous": "没有工作但未经确认的乐队插槽。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.bandTargets.head",
+      "english": "Work for a band slot ({{count}})",
+      "chinese": "通联后可补齐频段项目（{{count}} 项）",
+      "previous": "为乐队插槽工作( W){{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.bandTargets.empty",
+      "english": "No almost-complete entities to chase.",
+      "chinese": "没有仅差少数频段即可完成的实体目标。",
+      "previous": "没有几乎完整的实体可以追逐。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.was.head",
+      "english": "WAS — states needed ({{count}})",
+      "chinese": "WAS — 尚需确认的州（{{count}} 个）",
+      "previous": "是——需要国家({{count}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.chase.was.empty",
+      "english": "All 50 states confirmed. 🎉",
+      "chinese": "全美 50 个州均已确认。🎉",
+      "previous": "所有50个州都确认。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.needList.filter.placeholder",
+      "english": "filter entities…",
+      "chinese": "筛选实体…",
+      "previous": "过滤实体...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.needList.filter.label",
+      "english": "Filter entities",
+      "chinese": "筛选实体",
+      "previous": "过滤实体",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.needList.sort.alpha.label",
+      "english": "A–Z",
+      "chinese": "A–Z",
+      "previous": "A-Z 语",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.needList.sort.alpha.title",
+      "english": "Sort A–Z",
+      "chinese": "按 A–Z 排序",
+      "previous": "排序 A - Z",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.needList.sort.bands.label",
+      "english": "# bands",
+      "chinese": "频段数",
+      "previous": "乐队",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.needList.sort.bands.title",
+      "english": "Sort by number of bands needed",
+      "chinese": "按尚缺频段数排序",
+      "previous": "按所需带数排序",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.needList.noMatch",
+      "english": "No entities match “{{query}}”.",
+      "chinese": "没有匹配“{{query}}”的实体。",
+      "previous": "没有任何实体符合“{{query}}“......”。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.head",
+      "english": "Confirmations — why isn't this credited?",
+      "chinese": "交信确认 — 为什么未计入奖项？",
+      "previous": "肯定——为什么这个不记名?",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.oneAway.label",
+      "english": "One fix away:",
+      "chinese": "处理一项即可推进：",
+      "previous": "一条出路:",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.oneAway.newEntity.title",
+      "english": "{{entity}} ({{bands}}): one LoTW upload / data fix puts a NEW DXCC entity in play — the partner's confirmation still decides",
+      "chinese": "{{entity}}（{{bands}}）：完成一次 LoTW 上传或数据修正后，就有机会增加一个新 DXCC 实体；最终仍需对方确认。",
+      "previous": "{{entity}}(单位:千美元){{bands}}: 一个LoTW上传/ 数据修补设置新DXCC——伙伴的确认仍然决定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.oneAway.slots.title::one",
+      "english": "{{entity}} ({{bands}}): one LoTW upload / data fix puts {{count}} Challenge slot in play — the partner's confirmation still decides",
+      "chinese": "{{entity}}（{{bands}}）：完成一次 LoTW 上传或数据修正后，就有机会增加 {{count}} 个 Challenge 项目；最终仍需对方确认。",
+      "previous": "{{entity}}(单位:千美元){{bands}}: 一个LoTW上传/ 数据固定点{{count}}挑战位置——合作伙伴的确认仍然决定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.oneAway.slots.title::other",
+      "english": "{{entity}} ({{bands}}): one LoTW upload / data fix puts {{count}} Challenge slots in play — the partner's confirmation still decides",
+      "chinese": "{{entity}}（{{bands}}）：完成一次 LoTW 上传或数据修正后，就有机会增加 {{count}} 个 Challenge 项目；最终仍需对方确认。",
+      "previous": "{{entity}}(单位:千美元){{bands}}: 一个LoTW上传/ 数据固定点{{count}}比赛中的挑战位置——合作伙伴的确认仍然决定",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.oneAway.more",
+      "english": "+{{count}} more",
+      "chinese": "另有 {{count}} 项",
+      "previous": "+ 键{{count}}更多",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.bucket.upload",
+      "english": "Upload {{count}}",
+      "chinese": "上传 {{count}} 条",
+      "previous": "上传{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.uploading",
+      "english": "Uploading…",
+      "chinese": "正在上传…",
+      "previous": "正在上传…",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.pushing",
+      "english": "Pushing…",
+      "chinese": "正在推送…",
+      "previous": "推着...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.reupload",
+      "english": "Re-upload",
+      "chinese": "重新上传",
+      "previous": "重新装入",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.uploadToLotw",
+      "english": "Upload to LoTW",
+      "chinese": "上传至 LoTW",
+      "previous": "上传至 LoTW",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.push",
+      "english": "Push to {{service}}",
+      "chinese": "推送至 {{service}}",
+      "previous": "推进{{service}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.repush",
+      "english": "Re-push to {{service}}",
+      "chinese": "重新推送至 {{service}}",
+      "previous": "重推为{{service}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.push.title",
+      "english": "Pushes this QSO to your {{service}} logbook — does not count for ARRL DXCC/WAS (LoTW only)",
+      "chinese": "将这条 QSO 推送至你的 {{service}} 日志；此服务的确认不计入 ARRL DXCC/WAS（在线确认仅认可 LoTW）。",
+      "previous": "推这个 QSO 给您的 {{service}} 日志——不计算ARRL DXCC/本来是LoTW 仅限)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.fixCert",
+      "english": "Fix cert in TQSL",
+      "chinese": "在 TQSL 中修正证书问题",
+      "previous": "在 TQSL 中修补证书",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.fixLoginInSettings",
+      "english": "Fix {{service}} login in Settings",
+      "chinese": "在设置中修正 {{service}} 登录信息",
+      "previous": "修补{{service}}在设置中登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.fixLogin",
+      "english": "Fix {{service}} login",
+      "chinese": "修正 {{service}} 登录信息",
+      "previous": "修补{{service}}登录",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.fixLogin.title",
+      "english": "Opens Settings ▸ Confirmations, where the {{service}} login is saved",
+      "chinese": "打开“设置 ▸ 交信确认”，可在此修改已保存的 {{service}} 登录信息。",
+      "previous": "打开设置 QQ 确认, 其中{{service}}登录已保存",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.waitingOn",
+      "english": "Waiting on {{call}}",
+      "chinese": "等待 {{call}} 确认",
+      "previous": "等着{{call}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.reviewDup",
+      "english": "Review dup #{{number}}",
+      "chinese": "核对重复记录 #{{number}}",
+      "previous": "检讨dup #{{number}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.fixField",
+      "english": "Fix {{field}}",
+      "chinese": "修正 {{field}}",
+      "previous": "修补{{field}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.bustedCall",
+      "english": "Was it {{call}}?",
+      "chinese": "呼号是否应为 {{call}}？",
+      "previous": "琌盾{{call}}? 。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.likely",
+      "english": "likely",
+      "chinese": "可能是",
+      "previous": "可能会",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.waitingOnPartner::one",
+      "english": "{{count}} QSO uploaded to LoTW — waiting on the other operator to confirm.",
+      "chinese": "{{count}} 条 QSO 已上传至 LoTW，正在等待对方确认。",
+      "previous": "{{count}} QSO上传到LoTW等待另一个操作员确认。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.waitingOnPartner::other",
+      "english": "{{count}} QSOs uploaded to LoTW — waiting on the other operator to confirm.",
+      "chinese": "{{count}} 条交信已上传至 LoTW，正在等待对方确认。",
+      "previous": "{{count}} QSOs 上传到  LoTW  等待另一个操作员确认。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.pendingLag::one",
+      "english": "{{count}} recently-worked QSO still awaiting a confirmation — not a problem, just give it time.",
+      "chinese": "最近完成的 {{count}} 条 QSO 尚待确认；这属于正常情况，请再等等。",
+      "previous": "{{count}}最近工作过的QSO仍在等待确认——不是问题,只要给它时间。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.conf.pendingLag::other",
+      "english": "{{count}} recently-worked QSOs still awaiting a confirmation — not a problem, just give it time.",
+      "chinese": "最近完成的 {{count}} 条交信尚待确认；这属于正常情况，请再等等。",
+      "previous": "{{count}}最近工作的民间社会组织仍在等待确认——不是问题,只要给它时间。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.pending",
+      "english": "Signed and sent {{count}} to LoTW — awaiting confirmation.",
+      "chinese": "已签名并向 LoTW 发送 {{count}} 条记录，正在等待确认。",
+      "previous": "签署并发送{{count}}改为:LoTW- 等待确认。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.duplicate",
+      "english": "Already on LoTW ({{count}}) — nothing to re-send.",
+      "chinese": "{{count}} 条记录已在 LoTW 中，无需重新发送。",
+      "previous": "已经开始了LoTW(单位:千美元){{count}})——无任何内容可以重新发送.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.rejected",
+      "english": "LoTW rejected the upload.",
+      "chinese": "LoTW 拒绝了此次上传。",
+      "previous": "LoTW拒绝上传 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.rejectedDetail",
+      "english": "LoTW rejected the upload: {{detail}}.",
+      "chinese": "LoTW 拒绝了此次上传：{{detail}}。",
+      "previous": "LoTW拒绝上传 :{{detail}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.authFailed",
+      "english": "LoTW rejected your certificate / Station Location — fix it in TQSL, then retry.",
+      "chinese": "LoTW 未接受你的证书或电台地点配置（Station Location）；请在 TQSL 中修正后重试。",
+      "previous": "LoTW拒绝您的证书 / Station Location —— 在 TQSL 中修复, 然后重试 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.retry",
+      "english": "LoTW was unreachable — your log is unchanged; try again shortly.",
+      "chinese": "无法连接 LoTW；本台日志未更改，请稍后重试。",
+      "previous": "LoTW无法到达, 您的日志没有变化; 很快再试一次 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.none",
+      "english": "Nothing to upload.",
+      "chinese": "没有需要上传的记录。",
+      "previous": "没什么要上传的",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.upload.finished",
+      "english": "Upload finished ({{outcome}}).",
+      "chinese": "上传完成（{{outcome}}）。",
+      "previous": "上传完成( E){{outcome}}) (中文(简体) ).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.noQso",
+      "english": "Could not find that QSO in the log — reload Awards and try again.",
+      "chinese": "在日志中找不到这条 QSO，请重新加载奖项页面后重试。",
+      "previous": "无法找到QSO在日志中——重新装入奖项再试一次.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.qrz.ok",
+      "english": "✓ {{call}} pushed to your QRZ logbook.",
+      "chinese": "✓ 与 {{call}} 的交信已推送至你的 QRZ 日志。",
+      "previous": "✓{{call}}推到你身边QRZ日志。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.qrz.duplicate",
+      "english": "✓ {{call}} already in your QRZ logbook (duplicate) — nothing to re-send.",
+      "chinese": "✓ 与 {{call}} 的交信已在你的 QRZ 日志中（重复记录），无需重新发送。",
+      "previous": "✓ {{call}} 已经在您的 QRZ logbook(复制本)——无重播.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.qrz.rejected",
+      "english": "✗ QRZ rejected {{call}}: {{reason}}",
+      "chinese": "✗ QRZ 拒绝了与 {{call}} 的交信记录：{{reason}}",
+      "previous": "✗QRZ拒绝{{call}}数字 :{{reason}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.clublog.ok",
+      "english": "✓ {{call}} on ClubLog.",
+      "chinese": "✓ 与 {{call}} 的交信已在 ClubLog 中。",
+      "previous": "✓{{call}}在俱乐部Log。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.clublog.duplicate",
+      "english": "✓ {{call}} on ClubLog (already there).",
+      "chinese": "✓ 与 {{call}} 的交信已在 ClubLog 中（记录已存在）。",
+      "previous": "✓{{call}}在 ClubLog (已经在那里) 上。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.clublog.rejected",
+      "english": "✗ ClubLog rejected {{call}}: {{reason}}",
+      "chinese": "✗ ClubLog 拒绝了与 {{call}} 的交信记录：{{reason}}",
+      "previous": "拒绝 ClubLog{{call}}数字 :{{reason}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.eqsl.ok",
+      "english": "✓ {{call}} sent to eQSL.",
+      "chinese": "✓ 与 {{call}} 的交信已发送至 eQSL。",
+      "previous": "✓{{call}}发送到 eQSL 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.eqsl.duplicate",
+      "english": "✓ {{call}} sent to eQSL (already there).",
+      "chinese": "✓ 与 {{call}} 的交信已发送至 eQSL（记录已存在）。",
+      "previous": "✓{{call}}发送到 eQSL (已经存在) 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.eqsl.rejected",
+      "english": "✗ eQSL: {{detail}}",
+      "chinese": "✗ eQSL：{{detail}}",
+      "previous": "QQSL 主题:{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.push.failed",
+      "english": "✗ {{service}} push failed: {{detail}}",
+      "chinese": "✗ 向 {{service}} 推送失败：{{detail}}",
+      "previous": "✗{{service}}驱动失败 :{{detail}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.achievements.head",
+      "english": "Achievements ({{unlocked}}/{{total}})",
+      "chinese": "成就（{{unlocked}}/{{total}}）",
+      "previous": "成绩{{unlocked}}页:1{{total}}) (中文(中国大陆)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.tabs.aria",
+      "english": "Awards and Journey",
+      "chinese": "奖项与历程",
+      "previous": "奖项和旅程",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.tab.journey",
+      "english": "Journey",
+      "chinese": "历程",
+      "previous": "旅程",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "awards.tab.official",
+      "english": "Official Awards",
+      "chinese": "官方奖项",
+      "previous": "官方奖",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.title",
+      "english": "Needed now",
+      "chinese": "当前待通联目标",
+      "previous": "现在需要",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.countFiltered",
+      "english": "of {{count}}",
+      "chinese": "/ 共 {{count}} 项",
+      "previous": "页:1{{count}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.hint",
+      "english": "single-click a row to QSY the radio to that band and listen",
+      "chinese": "单击一行，将电台切换到对应频段收听（QSY）",
+      "previous": "单击一行到QSY 电台到乐队并听",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filters.aria",
+      "english": "Filter needed alerts",
+      "chinese": "筛选待通联提醒",
+      "previous": "过滤需要的提醒",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filters.modes.aria",
+      "english": "Modes shown",
+      "chinese": "显示的模式",
+      "previous": "显示模式",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.toggle.title",
+      "english": "Filter the board by need type, band, or mode",
+      "chinese": "按目标类型、频段或模式筛选面板",
+      "previous": "按需要类型、波段或模式过滤棋盘",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.toggle.active",
+      "english": "Filtered",
+      "chinese": "已筛选",
+      "previous": "已筛选",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.toggle.idle",
+      "english": "Filter",
+      "chinese": "筛选",
+      "previous": "筛选",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "MainWindow",
+          "chinese": "窄 频"
+        }
+      ]
+    },
+    {
+      "id": "needed.filter.clear.label",
+      "english": "Clear",
+      "chinese": "清除",
+      "previous": "清除",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "QSYMonitor",
+          "chinese": "清除"
+        },
+        {
+          "url": "https://raw.githubusercontent.com/jtdx-project/jtdx/2a0e2bea8c66c9ca94d2ea8034cf83a68cfa40eb/translations/jtdx_zh_CN.ts",
+          "context": "configuration_dialog",
+          "chinese": "清除"
+        }
+      ]
+    },
+    {
+      "id": "needed.filter.clear.title",
+      "english": "Clear all filters",
+      "chinese": "清除全部筛选",
+      "previous": "清除全部筛选",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.all",
+      "english": "All",
+      "chinese": "全部",
+      "previous": "全部",
+      "changed": false,
+      "thirdPartyMatches": [
+        {
+          "url": "https://raw.githubusercontent.com/WSJTX/wsjtx/967c85a6119110788b0df3782cf796485b2cee14/translations/wsjtx_zh.ts",
+          "context": "IARURegions",
+          "chinese": "全部"
+        }
+      ]
+    },
+    {
+      "id": "needed.filter.wanted",
+      "english": "Watch list",
+      "chinese": "关注列表",
+      "previous": "观察列表",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.atno",
+      "english": "ATNO",
+      "chinese": "ATNO（全新实体）",
+      "previous": "阿诺",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.newBand",
+      "english": "New band",
+      "chinese": "新频段",
+      "previous": "新频段",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.newMode",
+      "english": "New mode",
+      "chinese": "新模式",
+      "previous": "新模式",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.newZone",
+      "english": "New zone",
+      "chinese": "新分区",
+      "previous": "新分区",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.newGrid",
+      "english": "New grid",
+      "chinese": "新网格",
+      "previous": "新网格",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.newState",
+      "english": "New state",
+      "chinese": "新州",
+      "previous": "新州",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.newPark",
+      "english": "New park",
+      "chinese": "新公园",
+      "previous": "新公园",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.confirm",
+      "english": "Needs confirm",
+      "chinese": "待确认",
+      "previous": "待确认",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.dxped",
+      "english": "DXped",
+      "chinese": "DX 远征",
+      "previous": "DX 远征",
+      "changed": false,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.mode.show.title",
+      "english": "Show {{mode}} needs",
+      "chinese": "显示 {{mode}} 待通联目标",
+      "previous": "显示{{mode}}需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.filter.mode.hide.title",
+      "english": "Hide {{mode}} needs",
+      "chinese": "隐藏 {{mode}} 待通联目标",
+      "previous": "隐藏{{mode}}需求",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.popOut.label",
+      "english": "⧉ Pop out",
+      "chinese": "⧉ 独立窗口",
+      "previous": "弹出",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.popOut.title",
+      "english": "Open this board in its own window (for a second monitor)",
+      "chinese": "在独立窗口中打开此面板（便于放到第二台显示器上）",
+      "previous": "在自己的窗口打开此面板( 为第二个显示器)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.autoPop.label",
+      "english": "open at launch",
+      "chinese": "启动时打开",
+      "previous": "发射时打开",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.autoPop.title",
+      "english": "Open this board in its own window automatically when the app starts",
+      "chinese": "应用启动时，自动在独立窗口中打开此面板",
+      "previous": "当应用程序启动时, 在自己的窗口中自动打开此面板",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.rotator.title",
+      "english": "Antenna rotator — live heading + manual point (via rotctld)",
+      "chinese": "天线旋转器 — 实时方位角与手动转向（通过 rotctld）",
+      "previous": "天线转子——活向+手动点(通过rotctld)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.rotator.azimuth.placeholder",
+      "english": "az",
+      "chinese": "方位角",
+      "previous": "az 数字",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.rotator.azimuth.label",
+      "english": "Rotator azimuth (degrees)",
+      "chinese": "天线旋转器方位角（度）",
+      "previous": "旋转方位角( 度)",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.rotator.go.title",
+      "english": "Turn the rotator to this azimuth",
+      "chinese": "将天线旋转至此方位角",
+      "previous": "转动到这个方位角",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.rotator.pointed",
+      "english": "↗ Rotator → {{deg}}°",
+      "chinese": "↗ 天线旋转器 → {{deg}}°",
+      "previous": "* 旋转器 *{{deg}}°",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.rotator.failed",
+      "english": "Rotator command failed",
+      "chinese": "天线旋转器指令执行失败",
+      "previous": "旋转命令失败",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.live.text",
+      "english": "Phone source: {{host}} · live",
+      "chinese": "话音通报源：{{host}} · 实时",
+      "previous": "电话来源:{{host}}* 现场直播",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.live.title",
+      "english": "SSB/phone spots are flowing from {{host}}.",
+      "chinese": "正在从 {{host}} 接收 SSB／话音通报。",
+      "previous": "SSB/电话信号来自{{host}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.connected.text",
+      "english": "Phone source: {{host}} · connected",
+      "chinese": "话音通报源：{{host}} · 已连接",
+      "previous": "电话来源:{{host}}* 连接",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.connected.title",
+      "english": "Connected to {{host}} — no phone spot yet (an empty Phone board just means nothing you need is on SSB right now).",
+      "chinese": "已连接 {{host}}，尚无话音通报（话音面板为空，只表示当前 SSB 上没有你的待通联目标）。",
+      "previous": "已连接到{{host}}——还没有电话位(空的电话板只是意味着你现在不需要什么在SSB上).",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.connecting.text",
+      "english": "Phone source: {{host}} · connecting…",
+      "chinese": "话音通报源：{{host}} · 正在连接…",
+      "previous": "电话来源:{{host}}连接...",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.connecting.title",
+      "english": "Reaching the SSB cluster node {{host}}.",
+      "chinese": "正在连接 SSB 通报集群节点 {{host}}。",
+      "previous": "到达 SSB 集群节点{{host}}。 。 。",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.down.text",
+      "english": "Phone source: {{host}} · down",
+      "chinese": "话音通报源：{{host}} · 连接中断",
+      "previous": "电话来源:{{host}}降级",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.down.title",
+      "english": "Lost the connection to {{host}} — no SSB/phone needs until it reconnects.",
+      "chinese": "与 {{host}} 的连接已中断，重新连接前无法获取 SSB／话音待通联目标。",
+      "previous": "失去连接到{{host}}——在重新连接之前,SSB/手机不需要.",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.idle.text",
+      "english": "Phone source: {{host}} · idle",
+      "chinese": "话音通报源：{{host}} · 暂无通报",
+      "previous": "电话来源:{{host}}闲置",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.idle.title",
+      "english": "Connected to {{host}} but quiet — a lull in human SSB spots.",
+      "chinese": "已连接 {{host}}，但暂时没有人工上报的 SSB 通报。",
+      "previous": "已连接到{{host}}但安静的 人类SSB位置的平静",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.unknown.text",
+      "english": "Phone source: {{host}} · {{state}}",
+      "chinese": "话音通报源：{{host}} · {{state}}",
+      "previous": "电话来源:{{host}}* 妇女{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.unknown.title",
+      "english": "{{host}}: {{state}}",
+      "chinese": "{{host}}：{{state}}",
+      "previous": "{{host}}数字 :{{state}}",
+      "changed": true,
+      "thirdPartyMatches": []
+    },
+    {
+      "id": "needed.phone.spots::one",
+      "english": " · {{count}} SSB spot",
+      "chinese": " · {{count}} 条 SSB 通报",
+      "previous": "* 妇女{{count}}SSB点",
+      "changed": true,
+      "thirdPartyMatches": []
+    }
+  ]
+}

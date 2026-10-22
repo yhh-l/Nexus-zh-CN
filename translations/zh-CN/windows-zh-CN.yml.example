@@ -1,0 +1,136 @@
+# DRAFT: copy into .github/workflows only after full translation and review.
+# Manual build + artifact only. No tags, no GitHub Release, no deployment.
+name: Chinese Windows test build
+on:
+  workflow_dispatch: {}
+permissions:
+  contents: read
+env:
+  DEEPCW_RELEASE: deepcw-model-v1
+  MODEL_SHA: a7b3b4aa2610d3e88b8c7d4420eceee31be2d0ae595b3413264334f3ffb1eab5
+  MODEL_JSON_SHA: b4342157b90229ee7380e165f3d8036179b80d1e6ae02f2557388b7fcd558c01
+jobs:
+  ui:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Require the full reviewed translation
+        run: node translations/zh-CN/verify.mjs --require-complete
+      - name: Run upstream UI gates
+        run: scripts/gates --job ui --allow-partial
+  windows:
+    name: Windows (NSIS installer)
+    runs-on: ubuntu-24.04
+    needs: ui
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Stamp a local Chinese test version
+        run: |
+          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));c.version=c.version.split('-')[0]+'-zhcn.1';fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
+
+      - name: Stage the DeepCW model (not committed — AGPL-3.0 (c) e04)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          gh release download "$DEEPCW_RELEASE" --repo "kd9taw/Nexus" \
+            --pattern 'model.onnx*' --dir src-tauri/resources/deepcw --clobber
+          echo "$MODEL_SHA  src-tauri/resources/deepcw/model.onnx" | sha256sum -c -
+          echo "$MODEL_JSON_SHA  src-tauri/resources/deepcw/model.onnx.json" | sha256sum -c -
+
+      - name: Install MinGW-w64 cross toolchain + NSIS
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 gfortran-mingw-w64-x86-64 \
+            binutils-mingw-w64-x86-64 \
+            libboost-dev cmake ninja-build build-essential nsis nasm
+
+      - uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de  # master, 2026-09-12
+        with:
+          toolchain: 1.93.1
+          targets: x86_64-pc-windows-gnu
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Cross-build FFTW + libtempo modem exes
+        run: bash scripts/build-windows-cross.sh --no-gui
+
+      - name: Cross-build the NSIS installer
+        run: bash scripts/build-windows-cross.sh
+
+      - name: Verify installer
+        run: |
+          set -euo pipefail
+          exe=$(find src-tauri/target/x86_64-pc-windows-gnu/release/bundle/nsis -name '*-setup.exe' -print -quit)
+          [ -n "$exe" ] || { echo "no NSIS installer produced"; exit 1; }
+          sz=$(stat -c%s "$exe")
+          [ "$sz" -gt 50000000 ] || { echo "installer only $sz bytes — bundling likely failed"; exit 1; }
+          sudo apt-get install -y --no-install-recommends p7zip-full >/dev/null
+          7z l "$exe" | grep -qi 'WebView2.*\.exe' \
+            || { echo "NSIS listing has no WebView2 payload — webviewInstallMode broke"; 7z l "$exe" | tail -40; exit 1; }
+          [ "$sz" -gt 190000000 ] || { echo "installer only $sz bytes — too small to contain the ~150 MB offline WebView2 runtime"; exit 1; }
+          mkdir -p out && cp "$exe" out/
+
+          bin="src-tauri/target/x86_64-pc-windows-gnu/release/Nexus.exe"
+          if [ -f "$bin" ]; then
+            sym="out/$(basename "$exe" -setup.exe).sym.gz"
+            x86_64-w64-mingw32-nm -C --defined-only -n "$bin" | gzip -9 > "$sym"
+            n=$(gzip -dc "$sym" | grep -c ' T ' || true)
+            [ "$n" -gt 1000 ] || { echo "symbol map has only $n text symbols — stripped too far"; exit 1; }
+            echo "symbol map: $n text symbols"
+          else
+            echo "no unpacked Nexus.exe to take symbols from — expected at $bin"; exit 1
+          fi
+          ( cd out && sha256sum ./* )
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nexus-windows
+          path: out/*
+          if-no-files-found: error
+
+  smoke-windows:
+    name: Smoke — install + launch the Windows artifact
+    needs: windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          pattern: nexus-windows
+          merge-multiple: true
+
+      - name: Silent-install the NSIS artifact
+        shell: pwsh
+        run: |
+          $setup = Get-ChildItem dist -Filter '*-setup.exe' | Select-Object -First 1
+          if (-not $setup) { throw 'no *-setup.exe in the nexus-windows artifact' }
+          Write-Host "installing $($setup.Name) silently (per-user, /S)"
+          $p = Start-Process -FilePath $setup.FullName -ArgumentList '/S' -PassThru -Wait
+          if ($p.ExitCode -ne 0) { throw "installer exited $($p.ExitCode)" }
+
+      - name: Launch the installed app and require it to stay alive
+        shell: pwsh
+        run: |
+          $exe = Get-ChildItem "$env:LOCALAPPDATA" -Recurse -Depth 3 -Filter 'Nexus.exe' -ErrorAction SilentlyContinue |
+                 Select-Object -First 1
+          if (-not $exe) { throw "Nexus.exe not found under $env:LOCALAPPDATA after install" }
+          Write-Host "launching $($exe.FullName)"
+          $p = Start-Process -FilePath $exe.FullName -PassThru
+          Start-Sleep -Seconds 45
+          if ($p.HasExited) {
+            throw "app exited during startup (code $($p.ExitCode)) — dead-on-arrival artifact"
+          }
+          Write-Host "alive after 45 s (pid $($p.Id)) — startup smoke passed"
+          Stop-Process -Id $p.Id -Force

@@ -93,8 +93,10 @@ jobs:
       - name: Verify installer
         run: |
           set -euo pipefail
-          exe=$(find src-tauri/target/x86_64-pc-windows-gnu/release/bundle/nsis -name '*-setup.exe' -print -quit)
-          [ -n "$exe" ] || { echo "no NSIS installer produced"; exit 1; }
+          version=$(node -p "JSON.parse(require('fs').readFileSync('src-tauri/tauri.conf.json')).version")
+          # A restored target cache can contain an older installer. Select this exact stamped version.
+          exe="src-tauri/target/x86_64-pc-windows-gnu/release/bundle/nsis/Nexus_${version}_x64-setup.exe"
+          [ -s "$exe" ] || { echo "expected NSIS installer missing: $exe"; exit 1; }
           sz=$(stat -c%s "$exe")
           [ "$sz" -gt 50000000 ] || { echo "installer only $sz bytes — bundling likely failed"; exit 1; }
           sudo apt-get install -y --no-install-recommends p7zip-full >/dev/null

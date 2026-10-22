@@ -1,0 +1,47 @@
+# Diagnose/recheck an existing installer without rebuilding or publishing it.
+name: Check existing Windows Chinese artifact
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Build run containing nexus-windows-zh-cn-x64
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+jobs:
+  check:
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@v4
+        with:
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.run_id }}
+          name: nexus-windows-zh-cn-x64
+          path: dist
+      - name: Install the existing test artifact
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $setup = Get-ChildItem dist -Filter '*-setup.exe' | Select-Object -First 1
+          if (-not $setup) { throw 'No installer in artifact' }
+          $p = Start-Process -FilePath $setup.FullName -ArgumentList '/S' -PassThru -Wait
+          if ($p.ExitCode -ne 0) { throw "installer exited $($p.ExitCode)" }
+      - name: Inspect installed app and collect startup evidence
+        shell: pwsh
+        run: ./translations/zh-CN/windows-installed-check.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-startup-evidence
+          path: smoke-results/*
+          if-no-files-found: error
+          retention-days: 14

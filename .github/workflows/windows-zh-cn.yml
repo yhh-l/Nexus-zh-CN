@@ -156,24 +156,7 @@ jobs:
       - name: Launch and inspect the installed native Chinese UI
         shell: pwsh
         run: |
-          $ErrorActionPreference = 'Stop'
-          $exe = Get-ChildItem "$env:LOCALAPPDATA" -Recurse -Depth 3 -Filter 'Nexus.exe' -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $exe) { throw 'Nexus.exe not found after installation' }
-          $testRoot = Join-Path $env:RUNNER_TEMP 'nexus-zh-smoke'
-          New-Item -ItemType Directory -Force -Path $testRoot | Out-Null
-          $env:WEBVIEW2_USER_DATA_FOLDER = Join-Path $testRoot 'webview'
-          $env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS = '--remote-debugging-port=9222'
-          $env:APPDATA = Join-Path $testRoot 'roaming'
-          New-Item -ItemType Directory -Force -Path $env:APPDATA | Out-Null
-          $p = Start-Process -FilePath $exe.FullName -PassThru
-          try {
-            node translations/zh-CN/windows-smoke.mjs smoke-results
-            if ($LASTEXITCODE -ne 0) { throw 'Installed Windows UI check failed' }
-            $p.Refresh()
-            if ($p.HasExited) { throw "App exited during the check: $($p.ExitCode)" }
-          } finally {
-            if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force }
-          }
+          ./translations/zh-CN/windows-installed-check.ps1
 
       - uses: actions/upload-artifact@v4
         if: always()

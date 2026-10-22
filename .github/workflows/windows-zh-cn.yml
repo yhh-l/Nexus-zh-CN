@@ -1,4 +1,4 @@
-# Local Chinese/English test build for the fixed 1.19.0 baseline.
+# Full-featured Chinese test build for the fixed 1.19.0 baseline.
 # Manual build + artifact only. No tags, no GitHub Release, no deployment.
 name: Chinese Windows x64 test build
 on:
@@ -9,7 +9,6 @@ concurrency:
   group: zh-cn-windows-${{ github.ref }}
   cancel-in-progress: false
 env:
-  VITE_NEXUS_ZH_LITE: "1"
   DEEPCW_RELEASE: deepcw-model-v1
   MODEL_SHA: a7b3b4aa2610d3e88b8c7d4420eceee31be2d0ae595b3413264334f3ffb1eab5
   MODEL_JSON_SHA: b4342157b90229ee7380e165f3d8036179b80d1e6ae02f2557388b7fcd558c01
@@ -28,8 +27,8 @@ jobs:
         run: node translations/zh-CN/integrate.mjs --check
       - name: Run upstream UI gates
         run: scripts/gates --job ui --allow-partial
-      - name: Require the Chinese and English bundle
-        run: node translations/zh-CN/verify-lite-build.mjs
+      - name: Require every offline language catalog
+        run: node translations/zh-CN/verify-language-bundle.mjs
       - name: Install private browser-test dependencies
         run: npm --prefix remote ci
       - name: Probe the hosted UI in real Chrome
@@ -47,7 +46,7 @@ jobs:
 
       - name: Stamp a local Chinese test version
         run: |
-          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));c.version=c.version.split('-')[0]+'-zhcn.1';fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
+          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));c.version=c.version.split('-')[0]+'-zhcn.2';fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
 
       - name: Stage the DeepCW model (not committed — AGPL-3.0 (c) e04)
         env:

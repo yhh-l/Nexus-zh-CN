@@ -123,13 +123,10 @@ void (async () => {
   // Register every shipped language BEFORE initLocale, which only accepts a locale that has a
   // catalog. Static imports, never a fetch: a catalog that arrives over the network is a
   // catalog that is absent in a field-day tent.
-  // A Chinese/English build keeps offline catalogs while dropping unused language data.
-  if (import.meta.env.VITE_NEXUS_ZH_LITE !== '1') {
-    installCatalog('de', DE)
-    installCatalog('es', ES)
-    installCatalog('fr', FR)
-    installCatalog('ja', JA)
-  }
+  installCatalog('de', DE)
+  installCatalog('es', ES)
+  installCatalog('fr', FR)
+  installCatalog('ja', JA)
   installCatalog('zh-CN', ZH_CN)
   initLocale()
   createRoot(document.getElementById('root')!).render(tree)

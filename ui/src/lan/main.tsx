@@ -13,13 +13,10 @@ import '../styles.css'
 
 // Every shipped language, then the one the window was opened in (the app's own, passed in the
 // address), else this page's stored or the OS one.
-// A Chinese/English build keeps offline catalogs while dropping unused language data.
-if (import.meta.env.VITE_NEXUS_ZH_LITE !== '1') {
-  installCatalog('de', DE)
-  installCatalog('es', ES)
-  installCatalog('fr', FR)
-  installCatalog('ja', JA)
-}
+installCatalog('de', DE)
+installCatalog('es', ES)
+installCatalog('fr', FR)
+installCatalog('ja', JA)
 installCatalog('zh-CN', ZH_CN)
 initLocale()
 const asked = new URLSearchParams(location.search).get('lang')

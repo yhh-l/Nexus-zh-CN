@@ -26,5 +26,39 @@
     "noMatchControl": "exit 2 as expected"
   },
   "performanceScope": "Three runs per build, LAN frontend in Chrome on same Mac, 4x CPU throttle; not Windows process or DSP measurements. See startup-*.json.",
-  "windows": "Cloud compile, installation and startup still pending."
+  "windows": "Cloud compile, installation and startup still pending.",
+  "cloudRun": {
+    "id": 39762056571,
+    "url": "https://github.com/yhh-l/Nexus-zh-CN/actions/runs/39762056571",
+    "commit": "dee1197b641b76f50adcf93e555d68c4bb80907a",
+    "status": "in_progress",
+    "confirmed": [
+      "Full translation verification",
+      "Windows FFTW and modem executable cross-build",
+      "Upstream UI gates and real Chrome desktop stream probe"
+    ],
+    "pending": [
+      "Windows NSIS installer",
+      "Windows installation and native UI smoke test"
+    ]
+  },
+  "supersededBuildNote": "Initial cloud run used Chinese/English-only bundle; it is not the final user deliverable. Full language catalogs restored per user request.",
+  "fullFeatureRevision": {
+    "languageReductionRemoved": true,
+    "offlineLanguages": [
+      "en",
+      "zh-CN",
+      "de",
+      "es",
+      "fr",
+      "ja"
+    ],
+    "productionBuildExit": 0,
+    "bundleVerificationExit": 0,
+    "focusedTests": {
+      "files": 4,
+      "passed": 44
+    },
+    "hardwareSpecificDefaults": false
+  }
 }

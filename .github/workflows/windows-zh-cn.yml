@@ -79,7 +79,19 @@ jobs:
         run: |
           # The hosted Azure mirror stalled for 41 minutes on the previous run.
           # Use Ubuntu's official archive and bound individual downloads/retries.
-          sudo sed -i 's/azure.archive.ubuntu.com/archive.ubuntu.com/g' /etc/apt/sources.list.d/ubuntu.sources
+          sudo python3 - <<'PY'
+          from pathlib import Path
+          source_dir = Path('/etc/apt/sources.list.d')
+          paths = [Path('/etc/apt/sources.list'), *source_dir.glob('*.list'), *source_dir.glob('*.sources')]
+          for path in paths:
+              if not path.is_file():
+                  continue
+              before = path.read_text()
+              after = before.replace('http://azure.archive.ubuntu.com', 'https://archive.ubuntu.com').replace('https://azure.archive.ubuntu.com', 'https://archive.ubuntu.com')
+              if before != after:
+                  path.write_text(after)
+                  print(f'Changed Azure mirror in {path}')
+          PY
           sudo apt-get -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Acquire::Retries=2 update
           sudo apt-get -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 -o Acquire::Retries=2 install -y --no-install-recommends \
             gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 gfortran-mingw-w64-x86-64 \

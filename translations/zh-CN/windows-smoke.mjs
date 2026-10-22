@@ -15,7 +15,9 @@ try {
   while (Date.now() < deadline && !socket) {
     try {
       const pages = await (await fetch('http://127.0.0.1:9222/json/list')).json()
-      const page = pages.find(p => p.type === 'page' && p.webSocketDebuggerUrl && !/blank\.html|splashscreen\.html|devtools:/.test(p.url))
+      // WebView2 exposes about:blank before the app navigates. It has an opaque origin,
+      // so choosing it makes the very first localStorage access fail with SecurityError.
+      const page = pages.find(p => p.type === 'page' && p.webSocketDebuggerUrl && /^https?:\/\/tauri\.localhost\/(?:index\.html)?(?:[?#].*)?$/.test(p.url))
       if (page) socket = new WebSocket(page.webSocketDebuggerUrl)
     } catch { /* WebView2 has not opened yet. */ }
     if (!socket) await pause(500)
@@ -41,6 +43,12 @@ try {
     if (r.exceptionDetails) throw new Error(JSON.stringify(r.exceptionDetails))
     return r.result.value
   }
+  let ready = false
+  while (Date.now() < deadline && !ready) {
+    try { ready = await evaluate('document.readyState !== "loading" && !!document.querySelector("#root") && !!window.localStorage') } catch { /* Main-page navigation is still committing. */ }
+    if (!ready) await pause(250)
+  }
+  if (!ready) throw new Error('Installed main page did not become ready for locale verification')
   const snapshots = []
   for (const locale of ['en', 'zh-CN']) {
     await evaluate(`localStorage.setItem('nexus.locale', ${JSON.stringify(locale)})`)

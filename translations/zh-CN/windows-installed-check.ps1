@@ -5,9 +5,20 @@ $exe = Get-ChildItem "$env:LOCALAPPDATA" -Recurse -Depth 3 -Filter 'Nexus.exe' -
 if (-not $exe) { throw 'Nexus.exe not found after installation' }
 $testRoot = Join-Path $env:RUNNER_TEMP 'nexus-zh-smoke'
 New-Item -ItemType Directory -Force -Path $testRoot | Out-Null
-# Use the browser-arguments override alone: the disposable runner already has an isolated profile.
+# WebView2 >=150 ignores environment/HKCU argument overrides for elevated hosts.
+# The hosted runner is elevated: use Microsoft's documented machine policy, scoped to Nexus.exe,
+# only on this disposable test machine, and restore the previous value in finally.
+# https://github.com/MicrosoftEdge/WebView2Feedback/issues/5640
 Remove-Item Env:WEBVIEW2_USER_DATA_FOLDER -ErrorAction SilentlyContinue
-$env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS = '--remote-debugging-port=9222'
+Remove-Item Env:WEBVIEW2_ADDITIONAL_BROWSER_ARGUMENTS -ErrorAction SilentlyContinue
+$policyPath = 'HKLM:\SOFTWARE\Policies\Microsoft\Edge\WebView2\AdditionalBrowserArguments'
+$policyExisted = Test-Path $policyPath
+$oldPolicy = if ($policyExisted) { (Get-Item $policyPath).GetValue('Nexus.exe', $null) } else { $null }
+New-Item -Path $policyPath -Force | Out-Null
+New-ItemProperty -Path $policyPath -Name 'Nexus.exe' -PropertyType String -Value '--remote-debugging-port=9222' -Force | Out-Null
+$identity = [Security.Principal.WindowsIdentity]::GetCurrent()
+$principal = [Security.Principal.WindowsPrincipal]::new($identity)
+@{ elevated=$principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator); policyPath=$policyPath; browserArguments=(Get-Item $policyPath).GetValue('Nexus.exe') } | ConvertTo-Json | Set-Content "$out/debug-launch-policy.json"
 $env:APPDATA = Join-Path $testRoot 'roaming'
 New-Item -ItemType Directory -Force -Path $env:APPDATA | Out-Null
 $started = Get-Date
@@ -61,4 +72,10 @@ try {
     $graphics.Dispose(); $bitmap.Dispose()
   } catch { $_.ToString() | Set-Content "$out/screenshot-error.txt" }
   if (-not $p.HasExited) { Stop-Process -Id $p.Id -Force }
+  if ($null -ne $oldPolicy) {
+    New-ItemProperty -Path $policyPath -Name 'Nexus.exe' -PropertyType String -Value $oldPolicy -Force | Out-Null
+  } else {
+    Remove-ItemProperty -Path $policyPath -Name 'Nexus.exe' -ErrorAction SilentlyContinue
+    if (-not $policyExisted) { Remove-Item $policyPath -ErrorAction SilentlyContinue }
+  }
 }

@@ -91,7 +91,7 @@
     "rootCause": "Startup derived an app URL from the transient about:blank before initial WebView2 navigation committed.",
     "change": "Wait for the configured page after logbook attachment, on the launch thread, with a 30-second bound. Preserve all launch/TX ordering.",
     "tests": "Production startup helper compiled with the same url::Url type re-exported by Tauri: 4 passed, 0 failed. This is not a substitute for native app compilation/startup.",
-    "run": 39779254282,
+    "run": 39780740836,
     "version": "1.19.0-zhcn.3",
     "status": "in_progress",
     "priorRun": 39778841720,
@@ -100,6 +100,9 @@
     "formatExit": 0,
     "unitTestPassed": 4,
     "unitTestFailed": 0,
-    "job": 119826155158
+    "job": 119826155158,
+    "verificationRun": 39779254282,
+    "buildRevision": "6b914604c233a4f5e95e5176b46717c83478a99f",
+    "buildInfrastructure": "Live runner log identified mirror+file:/etc/apt/apt-mirrors.txt, which forwarded to Azure even after editing .list/.sources. Now update that exact mirrorlist as well. Previous provisioning-only runs were cancelled before native compilation."
   }
 }

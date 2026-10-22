@@ -34,7 +34,10 @@ mod tests {
     #[test]
     fn initial_blank_then_configured_waiting_page_reaches_the_app() {
         for (waiting, expected) in [
-            ("http://tauri.localhost/blank.html", "http://tauri.localhost/"),
+            (
+                "http://tauri.localhost/blank.html",
+                "http://tauri.localhost/",
+            ),
             ("tauri://localhost/blank.html", "tauri://localhost/"),
             ("http://localhost:5173/blank.html", "http://localhost:5173/"),
         ] {

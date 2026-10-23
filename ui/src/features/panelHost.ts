@@ -10,10 +10,8 @@
 import type { PanelLayoutApi, PanelState } from './panelState'
 
 // ── The ⊞ menu's reason notes that more than one cockpit needs ─────────────────────────
-// Copy for a menu entry lives with its SUBJECT when the subject renders it too
-// (NO_NATIVE_SCOPE_REASON in waterfall.ts, TX_METERS_WHEN in TxMeters.tsx, which prints it
-// as its own idle hint). These three exist only for the menu and are worded once here so
-// Phone and CW cannot describe the same empty entry two different ways.
+// Copy for a menu entry lives with its SUBJECT when the subject renders it too. These three
+// shared reasons are translated at render time so Phone and CW cannot drift from their panes.
 
 /** DSP function toggles (NB/NR/Notch, plus COMP/VOX on Phone) — capability-gated on what
  *  the rig reports over CAT, exactly as the DSP row itself has always been. */

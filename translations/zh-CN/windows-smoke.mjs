@@ -68,8 +68,39 @@ try {
     await writeFile(join(out, `${locale}.txt`), text)
     snapshots.push({ locale, text })
   }
+  await evaluate(`localStorage.setItem('nexus.features.wizardSeen', '1'); localStorage.setItem('tempo-onboarded', '1'); localStorage.setItem('nexus.view', 'settings')`)
+  await call('Page.reload', { ignoreCache: true })
+  let digitalReady = false
+  for (let attempt = 0; attempt < 120; attempt++) {
+    try {
+      digitalReady = await evaluate(`(() => {
+        const button = [...document.querySelectorAll('button')].find(element => element.getClientRects().length && element.textContent.trim() === 'Digital')
+        if (!button) return false
+        button.click()
+        return true
+      })()`)
+    } catch { digitalReady = false }
+    if (digitalReady) break
+    await pause(500)
+  }
+  if (!digitalReady) throw new Error('Installed Digital settings tab did not become available')
+  const digitalExpected = ['发射与时序', '发射时隙——第一时隙（偶数）', '发射看门狗（分钟）', '发送 73 后关闭发射许可', '双击时自动开启发射', '调谐超时（秒）', '自动 CQ 与呼叫者选择', '屏蔽呼号', '最佳呼叫者（自动 CQ 选择）']
+  let digitalText = ''
+  for (let attempt = 0; attempt < 40; attempt++) {
+    digitalText = await evaluate('document.querySelector("#settings-digital-ft8-ft4")?.innerText ?? ""')
+    if (digitalExpected.every(text => digitalText.includes(text))) break
+    await pause(250)
+  }
+  const missingDigital = digitalExpected.filter(text => !digitalText.includes(text))
+  const oldDigitalEnglish = ['TRANSMIT & SEQUENCING', 'DOUBLE-CLICK ARMS TX', 'AUTO-CQ & CALLER SELECTION'].filter(text => digitalText.toUpperCase().includes(text))
+  if (missingDigital.length || oldDigitalEnglish.length) throw new Error(JSON.stringify({ missingDigital, oldDigitalEnglish }))
+  const radio = await evaluate('(async () => (await window.__TAURI__.core.invoke("get_snapshot")).radio)()')
+  if (radio?.txEnabled !== false || radio?.transmitting !== false || radio?.rigKeyed !== false) throw new Error('Settings inspection did not remain TX-disabled and unkeyed')
+  const digitalScreenshot = await call('Page.captureScreenshot', { format: 'png' })
+  await writeFile(join(out, 'zh-CN-digital.png'), Buffer.from(digitalScreenshot.data, 'base64'))
+  await writeFile(join(out, 'zh-CN-digital.txt'), digitalText)
   const result = { checkedAt: new Date().toISOString(), platform: process.platform,
-    checks: ['Installed Windows executable main WebView2 loaded', 'English and Chinese rendered with different text', 'No visible unresolved interpolation', 'Screenshots captured'],
+    checks: ['Installed Windows executable main WebView2 loaded', 'English and Chinese rendered with different text', 'No visible unresolved interpolation', 'Digital settings Chinese labels verified against installed binary', 'TX disabled and unkeyed during settings inspection', 'Screenshots captured'],
     samples: snapshots.map(({ locale, text }) => ({ locale, characters: text.length })),
     limits: 'No radio connected; no RF, audio, decoding or real operator PC validation.' }
   await writeFile(join(out, 'windows-smoke.json'), JSON.stringify(result, null, 2) + '\n')

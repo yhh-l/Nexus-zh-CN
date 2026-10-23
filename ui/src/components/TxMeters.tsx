@@ -42,11 +42,8 @@ const SWR_UNSCALED = 'SWR?'
  *  the panel does — and the default (unpinned) variant, which renders nothing at all on
  *  receive, stops looking like a checkbox that does nothing.
  *
- *  ⚠️ DELIBERATELY NOT IN THE CATALOG YET, on the batch-21 ruling: the other ⊞ menu notes on
- *  the same menu live in `features/panelHost.ts` and `waterfall.ts`, and the three cockpits
- *  that pass this one in are not this batch's files either — moving one note of five would
- *  leave a single menu speaking two languages. The idle line below interpolates it whole, so
- *  the panel and the menu still cannot drift, and it moves when that menu does. */
+ *  The translated value is read at render time by both the idle line and each cockpit's panel
+ *  menu entry, so switching language cannot leave one surface speaking English. */
 export const TX_METERS_WHEN = 'readings appear on transmit'
 
 /** `unknown` is not a fourth severity — it is the ABSENCE of a severity, for a reading whose
@@ -280,7 +277,7 @@ export function TxMeters({
   if (inline && !keyedOnce.current) {
     return (
       <div className={`ph-txmeters${variant} idle`} role="group" aria-label={t('meters.tx.aria')}>
-        <span className="ph-txmeters-hint">{t('meters.tx.idle', { when: TX_METERS_WHEN })}</span>
+        <span className="ph-txmeters-hint">{t('meters.tx.idle', { when: t('meters.tx.when') })}</span>
       </div>
     )
   }
@@ -322,7 +319,7 @@ export function TxMeters({
           from then on each row answers for itself. The Operate cell shows it alone (above),
           never beside its slots: a line that came and went would move the cell. */}
       {pin && !inline && !everRead.current && (
-        <span className="ph-txmeters-hint">{t('meters.tx.idle', { when: TX_METERS_WHEN })}</span>
+        <span className="ph-txmeters-hint">{t('meters.tx.idle', { when: t('meters.tx.when') })}</span>
       )}
     </div>
   )

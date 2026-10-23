@@ -8025,21 +8025,12 @@ export function SettingsPanel({
           {tab === 'digital' && (
           <fieldset className="settings-section" id="settings-digital-ft8-ft4">
             <legend>{t('settings.digital.legend')}</legend>
-            {/* ⚠️ THE NEXT TWO SUB-GROUPS ARE DELIBERATELY NOT MIGRATED, and stay in English
-                here until the transmit-path batch moves them. "Transmit & Sequencing" and
-                "Auto-CQ & Caller Selection" are the FT-mode TX / timing / QSO-management
-                surface — the T/R period, the TX watchdog, disable-after-73, double-click-arms-
-                TX, the tune timeout, the CQ budget, the blocked-caller list and the best-caller
-                pick. Every label, hint and accessible name in them moves in its own batch with
-                the stop-line sweeps re-run, deliberately, because WSJT-X parity here is a
-                compatibility contract that cannot be checked in CI. Everything BELOW them —
-                Logging Behavior, Decoder, Station Housekeeping — is in the catalog. */}
             <div className="settings-featgroup">
-              <span className="settings-featgroup-title">Transmit &amp; Sequencing</span>
+              <span className="settings-featgroup-title">{t('settings.digital.transmit.title')}</span>
               <div className="settings-grid">
                 <div className="settings-field">
                   <label className="settings-toggle">
-                    <span className="settings-label">Transmit period — Tx 1st (even)</span>
+                    <span className="settings-label">{t('settings.digital.txPeriod.label')}</span>
                     <button disabled={remote}
                       type="button"
                       role="switch"
@@ -8050,14 +8041,11 @@ export function SettingsPanel({
                       <span className="toggle-knob" />
                     </button>
                   </label>
-                  <span className="settings-hint">
-                    On = transmit in the even/1st T/R slots; off = odd/2nd. The two stations in a QSO
-                    must pick <strong>opposite</strong> periods. Also on the top bar (Tx 1st / Tx 2nd).
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.txPeriod.hint')}</span>
                 </div>
 
                 <label className="settings-field">
-                  <span className="settings-label">Tx Watchdog (min)</span>
+                  <span className="settings-label">{t('settings.digital.txWatchdog.label')}</span>
                   <input disabled={locked('txWatchdogMin')} data-setting="txWatchdogMin"
                     className="settings-input"
                     type="number"
@@ -8069,12 +8057,12 @@ export function SettingsPanel({
                     autoComplete="off"
                   />
                   {setAtStation('txWatchdogMin')}
-                  <span className="settings-hint">Auto-halt TX after this many minutes (0 = off).</span>
+                  <span className="settings-hint">{t('settings.digital.txWatchdog.hint')}</span>
                 </label>
 
                 <div className="settings-field">
                   <label className="settings-toggle">
-                    <span className="settings-label">Disable TX after sending 73</span>
+                    <span className="settings-label">{t('settings.digital.disableAfter73.label')}</span>
                     <button disabled={locked('disableTxAfter73')} data-setting="disableTxAfter73"
                       type="button"
                       role="switch"
@@ -8086,15 +8074,12 @@ export function SettingsPanel({
                     </button>
                   </label>
                   {setAtStation('disableTxAfter73')}
-                  <span className="settings-hint">
-                    After your final 73 goes out, Enable TX drops — working the next station is a
-                    deliberate arm (WSJT-X default). A CQ run is unaffected: it returns to CQ.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.disableAfter73.hint')}</span>
                 </div>
 
                 <div className="settings-field">
                   <label className="settings-toggle">
-                    <span className="settings-label">Double-click arms TX</span>
+                    <span className="settings-label">{t('settings.digital.doubleClickTx.label')}</span>
                     <button disabled={remote}
                       type="button"
                       role="switch"
@@ -8105,15 +8090,12 @@ export function SettingsPanel({
                       <span className="toggle-knob" />
                     </button>
                   </label>
-                  <span className="settings-hint">
-                    Double-clicking a station enables TX so the answer goes straight out (WSJT-X
-                    "double-click on call sets Tx enable"). Off = you arm TX yourself each time.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.doubleClickTx.hint')}</span>
                 </div>
 
                 <div className="settings-field">
                   <label>
-                    <span className="settings-label">Tune timeout (s)</span>
+                    <span className="settings-label">{t('settings.digital.tuneTimeout.label')}</span>
                     <input disabled={locked('tuneTimeoutSecs')} data-setting="tuneTimeoutSecs"
                       className="settings-input"
                       type="number"
@@ -8130,10 +8112,7 @@ export function SettingsPanel({
                     />
                     {setAtStation('tuneTimeoutSecs')}
                   </label>
-                  <span className="settings-hint">
-                    Auto-release the tune carrier after this many seconds — never leave a key-down
-                    unattended.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.tuneTimeout.hint')}</span>
                 </div>
 
                 {/* TUNE POWER (#, the MFJ-loop report). The one control in these two sub-groups
@@ -8181,34 +8160,28 @@ export function SettingsPanel({
             </div>
 
             <div className="settings-featgroup">
-              <span className="settings-featgroup-title">Auto-CQ &amp; Caller Selection</span>
+              <span className="settings-featgroup-title">{t('settings.digital.autoCq.title')}</span>
               <div className="settings-grid">
                 <div className="settings-field">
                   <label>
-                    <span className="settings-label">Stop CQ after N calls</span>
+                    <span className="settings-label">{t('settings.digital.cqMaxCalls.label')}</span>
                     <input disabled={locked('cqMaxCalls')} data-setting="cqMaxCalls"
                       className="settings-input"
                       type="number"
                       min={1}
                       max={99}
                       value={form.cqMaxCalls ?? ''}
-                      placeholder="keep calling"
+                      placeholder={t('settings.digital.cqMaxCalls.placeholder')}
                       onChange={(e) => updateNullableNum('cqMaxCalls', e.target.value, 1)}
                     />
                     {setAtStation('cqMaxCalls')}
                   </label>
-                  <span className="settings-hint">
-                    How many unanswered CQs before Nexus pauses. Default 8, then it waits and calls
-                    again — a run that nobody answers stops holding the frequency. Blank = WSJT-X
-                    behaviour: CQ repeats until you stop it, with the TX watchdog as the only
-                    backstop. The Tempo chat CQ run always stops (default 10 unanswered) — this
-                    number overrides that budget too.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.cqMaxCalls.hint')}</span>
                 </div>
 
                 <div className="settings-field">
                   <label>
-                    <span className="settings-label">Wait before calling CQ again</span>
+                    <span className="settings-label">{t('settings.digital.cqPause.label')}</span>
                     <input disabled={locked('cqPauseSecs')} data-setting="cqPauseSecs"
                       className="settings-input"
                       type="number"
@@ -8220,23 +8193,17 @@ export function SettingsPanel({
                     />
                     {setAtStation('cqPauseSecs')}
                   </label>
-                  <span className="settings-hint">
-                    Seconds off the air after an unanswered run, before the next one starts.
-                    Default 180 (three minutes). 0 = do not resume: the run just stops, which is
-                    what happened before this setting existed. You are still LISTENING through the
-                    pause — a station that calls you is worked as normal, and answering anyone
-                    resets the count, so a busy run never pauses at all.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.cqPause.hint')}</span>
                 </div>
 
                 <div className="settings-field">
                   <label>
-                    <span className="settings-label">Blocked callsigns</span>
+                    <span className="settings-label">{t('settings.digital.blockedCalls.label')}</span>
                     <input disabled={remote}
                       className="settings-input"
                       type="text"
                       value={blockedText ?? (form.blockedCalls ?? []).join(' ')}
-                      placeholder="none — e.g. PD2BS K1ABC"
+                      placeholder={t('settings.digital.blockedCalls.placeholder')}
                       onChange={(e) => setBlockedText(e.target.value)}
                       onBlur={() => {
                         if (blockedText == null) return
@@ -8253,18 +8220,12 @@ export function SettingsPanel({
                       }}
                     />
                   </label>
-                  <span className="settings-hint">
-                    Stations your auto-responder must never answer when they reply to your CQ —
-                    they are passed over for the next caller, and shown dimmed (or hidden) in the
-                    roster and Band Activity. Base call matched, so PD2BS also blocks PD2BS/P.
-                    Alt-double-click any decode or roster row does the same thing. Saved as you
-                    leave the field.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.blockedCalls.hint')}</span>
                 </div>
 
                 <div className="settings-field">
                   <label>
-                    <span className="settings-label">Tempo chat: send cycles per message</span>
+                    <span className="settings-label">{t('settings.digital.chatCycles.label')}</span>
                     <input disabled={locked('chatMaxCycles')} data-setting="chatMaxCycles"
                       className="settings-input"
                       type="number"
@@ -8276,10 +8237,7 @@ export function SettingsPanel({
                     />
                     {setAtStation('chatMaxCycles')}
                   </label>
-                  <span className="settings-hint">
-                    A chat message transmits at most this many cycles, then shows "no ack" (tap the
-                    bubble to re-send). Blank = 3 (TempoDeep uses 5). Never affects FT8/FT4.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.chatCycles.hint')}</span>
                 </div>
 
                 <div className="settings-field">
@@ -8289,18 +8247,14 @@ export function SettingsPanel({
                       checked={form.chatImplicitAck ?? true}
                       onChange={(e) => updateBool('chatImplicitAck', e.target.checked)}
                     />
-                    <span className="settings-label">Tempo chat: a reply counts as received</span>
+                    <span className="settings-label">{t('settings.digital.chatReplyAck.label')}</span>
                   </label>
-                  <span className="settings-hint">
-                    When the station you messaged sends a complete message back, stop re-sending and
-                    mark yours "confirmed" (works even when the other side isn't Nexus). A real ACK
-                    still upgrades it to "Delivered ✓".
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.chatReplyAck.hint')}</span>
                 </div>
 
                 <div className="settings-field">
                   <label>
-                    <span className="settings-label">Auto-CQ: drop a silent caller after N overs</span>
+                    <span className="settings-label">{t('settings.digital.cqStall.label')}</span>
                     <input disabled={remote}
                       className="settings-input"
                       type="number"
@@ -8311,39 +8265,33 @@ export function SettingsPanel({
                       onChange={(e) => updateNullableNum('cqStallOvers', e.target.value, 0)}
                     />
                   </label>
-                  <span className="settings-hint">
-                    During an Auto-CQ run, if a station answers then goes silent, abandon it and
-                    return to calling CQ after this many unanswered overs. Blank = 3; 0 = never
-                    abandon (wait for you, like stock WSJT-X).
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.cqStall.hint')}</span>
                 </div>
 
                 <div className="settings-field">
-                  <span className="settings-label">Best caller (auto-CQ pick)</span>
+                  <span className="settings-label">{t('settings.digital.bestCaller.label')}</span>
                   <div className="settings-input-row">
                     <select disabled={remote}
                       className="settings-input"
                       value={form.bestCaller || 'first'}
                       onChange={(e) => update('bestCaller', e.target.value)}
                     >
-                      <option value="first">First to answer (default)</option>
-                      <option value="strongest">Strongest signal</option>
-                      <option value="farthest">Farthest away</option>
-                      <option value="cq_first">Prefer CQ callers</option>
+                      <option value="first">{t('settings.digital.bestCaller.first')}</option>
+                      <option value="strongest">{t('settings.digital.bestCaller.strongest')}</option>
+                      <option value="farthest">{t('settings.digital.bestCaller.farthest')}</option>
+                      <option value="cq_first">{t('settings.digital.bestCaller.cqFirst')}</option>
                     </select>
                     <input disabled={remote}
                       className="settings-input"
                       type="number"
                       inputMode="numeric"
                       value={form.bestCallerMinSnr ?? ''}
-                      placeholder="min SNR dB (optional)"
+                      placeholder={t('settings.digital.bestCaller.minSnr.placeholder')}
                       onChange={(e) => updateNullableNum('bestCallerMinSnr', e.target.value, -30)}
-                      aria-label="Minimum SNR (dB) to consider when picking the best caller"
+                      aria-label={t('settings.digital.bestCaller.minSnr.aria')}
                     />
                   </div>
-                  <span className="settings-hint">
-                    When several stations answer your CQ, which to work first.
-                  </span>
+                  <span className="settings-hint">{t('settings.digital.bestCaller.hint')}</span>
                 </div>
               </div>
             </div>
@@ -11224,21 +11172,13 @@ export function SettingsPanel({
                     file the failing launch may never have reached. The tier that IS
                     switchable is the field underneath. */}
                 <div className="settings-field">
-                  <span className="settings-label">Diagnostic log</span>
+                  <span className="settings-label">{t('settings.diagnostic.label')}</span>
                   <span className="settings-hint">
-                    Always on, and there is no switch for it — by design. The runs worth
-                    diagnosing are the ones that die during startup, before any setting has been
-                    read, so a log you could turn off would be missing on precisely the launch
-                    you needed it for. It is a plain-text record of what Nexus did — startup
-                    steps, the CAT and audio device open, updater checks, and any failure — so a
-                    “it won’t start” or “it stopped decoding” report has something to look at.
-                    Passwords, API keys and tokens are masked before anything is written, so it
-                    is safe to attach to a bug report. Bounded to two files, about 8 MB in total,
-                    so it cannot grow without limit. What you can turn on and off is the extra
-                    detail below; there is no command-line switch for either.
+                    {t('settings.diagnostic.hint')}
                     {diagLogPath && (
                       <>
-                        {' '}Saved at <code>{diagLogPath}</code>.
+                        {' '}
+                        <T k="settings.diagnostic.saved" tags={{ code: <code /> }} vals={{ path: diagLogPath }} />
                       </>
                     )}
                   </span>
@@ -11249,7 +11189,7 @@ export function SettingsPanel({
                       revealDiagLog().catch(() => {})
                     }}
                   >
-                    Reveal in folder
+                    {t('settings.diagnostic.reveal')}
                   </button>
                 </div>
 
@@ -11260,7 +11200,7 @@ export function SettingsPanel({
                     being chased is usually happening right now. */}
                 <div className="settings-field">
                   <label className="settings-toggle">
-                    <span className="settings-label">Extra detail in the diagnostic log</span>
+                    <span className="settings-label">{t('settings.diagnostic.extra.label')}</span>
                     <button disabled={remote}
                       type="button"
                       role="switch"
@@ -11271,12 +11211,7 @@ export function SettingsPanel({
                       <span className="toggle-knob" />
                     </button>
                   </label>
-                  <span className="settings-hint">
-                    Records each transmission, per-period decode counts and CAT traffic. Leave
-                    this OFF for normal operating — it is for a session where something is being
-                    chased, and the extra volume shortens how far back the log reaches. The log
-                    says at the top when it was on.
-                  </span>
+                  <span className="settings-hint">{t('settings.diagnostic.extra.hint')}</span>
                 </div>
 
                 <div className="settings-field">

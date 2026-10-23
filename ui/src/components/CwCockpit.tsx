@@ -12,7 +12,7 @@ import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import type { AppSnapshot, CwTurn, FieldDayStatus, NeedTag, Settings, SpotRow } from '../types'
 import { PhoneScope } from './PhoneScope'
 import { useSmeterDb } from './LiveMeters'
-import { TxMeters, TX_METERS_WHEN } from './TxMeters'
+import { TxMeters } from './TxMeters'
 import { PalettePicker } from './PalettePicker'
 import { BandPicker } from './BandPicker'
 import { BandStrip } from './BandStrip'
@@ -53,12 +53,7 @@ import { PanelsMenu } from './PanelsMenu'
 import { ArrangePanes } from './panes/ArrangePanes'
 import { PaneDropLayer, gridTargets, usePaneDrag, type DropArea } from './panes/PaneDrag'
 import { CockpitBox, boxLabels, foldedRailBoxes, pickForBox, useBoxSelection, type BoxSource } from './panes/CockpitBox'
-import {
-  panelHost,
-  NO_DSP_FUNCS_REASON,
-  NO_DSP_LEVELS_REASON,
-  NOTHING_SENT_REASON,
-} from '../features/panelHost'
+import { panelHost } from '../features/panelHost'
 import { BOX_IDS, CW_PANEL_IDS, CW_PANELS, boxEntries, isBoxId, type BoxId, type CwPanelId, type PanelLayoutApi } from '../features/panelState'
 import { isStockPlacement, regionGroups, type PaneDrop } from '../features/panelPlace'
 import { LogEntry } from './LogEntry'
@@ -115,7 +110,7 @@ import { PASSBAND_LIMITS } from '../spectrum/markers'
 import { scopeSpots } from '../spectrum/scopeSpots'
 import { useRegionCols } from '../useRegionCols'
 import { usePinnedScroll } from '../usePinnedScroll'
-import { cwScopeSideSign, cwScopeWindow, isRfScopeSource, TRACE_HOLD_MS, NO_NATIVE_SCOPE_REASON } from '../waterfall'
+import { cwScopeSideSign, cwScopeWindow, isRfScopeSource, TRACE_HOLD_MS } from '../waterfall'
 import { t } from '../i18n'
 import { T } from '../i18n/T'
 import type { MessageKey } from '../i18n'
@@ -749,11 +744,11 @@ export function CwCockpit({
         main: 'decode',
         labels,
         notes: {
-          scopeCtl: civScope || flexScope ? undefined : NO_NATIVE_SCOPE_REASON,
-          dsp: cwDspFuncs.length > 0 ? undefined : NO_DSP_FUNCS_REASON,
-          rxdsp: canRxDsp || subRowHere ? undefined : NO_DSP_LEVELS_REASON,
-          sent: sent.length > 0 ? undefined : NOTHING_SENT_REASON,
-          txmeters: TX_METERS_WHEN,
+          scopeCtl: civScope || flexScope ? undefined : t('panels.scope.noNativeReason'),
+          dsp: cwDspFuncs.length > 0 ? undefined : t('panels.dsp.noFunctionsReason'),
+          rxdsp: canRxDsp || subRowHere ? undefined : t('panels.dsp.noLevelsReason'),
+          sent: sent.length > 0 ? undefined : t('panels.sent.emptyReason'),
+          txmeters: t('meters.tx.when'),
           turnCue: cueHere ? undefined : t('cw.panel.turnCue.note'),
         },
         // Spots and Needed ship unticked: the stock ⊞ button must not read "2 hidden" (Phone's rule).

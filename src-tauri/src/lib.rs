@@ -34722,6 +34722,13 @@ async fn check_beta_update(
     app: tauri::AppHandle,
     state: tauri::State<'_, BetaUpdateState>,
 ) -> Result<Option<BetaUpdateInfo>, String> {
+    if updates_disabled(app.config().plugins.0.get("updater")) {
+        *state
+            .0
+            .lock()
+            .unwrap_or_else(|poisoned| poisoned.into_inner()) = None;
+        return Ok(None);
+    }
     let body = tauri::async_runtime::spawn_blocking(|| fetch_text(GITHUB_RELEASES_URL))
         .await
         .map_err(|e| e.to_string())??;
@@ -34877,6 +34884,13 @@ fn fetch_text(url: &str) -> Result<String, String> {
         .map_err(|e| e.to_string())
 }
 
+fn updates_disabled(updater: Option<&serde_json::Value>) -> bool {
+    updater
+        .and_then(|config| config.get("endpoints"))
+        .and_then(serde_json::Value::as_array)
+        .is_some_and(Vec::is_empty)
+}
+
 /// Resolve the latest released version: try our own endpoint first (authoritative `latest`), then
 /// fall back to SourceForge's best_release.json. `Ok(None)` = a feed was reachable but carried no
 /// usable version; `Err` = BOTH feeds failed to fetch (treated as offline → the frontend stays
@@ -34899,6 +34913,14 @@ fn fetch_latest_version() -> Result<Option<String>, String> {
 /// offline or on a fetch error — the frontend treats that as a silent no-op (offline honesty).
 #[tauri::command]
 async fn check_for_update(app: tauri::AppHandle) -> Result<UpdateInfo, String> {
+    if updates_disabled(app.config().plugins.0.get("updater")) {
+        return Ok(UpdateInfo {
+            current: app.package_info().version.to_string(),
+            latest: None,
+            update_available: false,
+            download_url: String::new(),
+        });
+    }
     let latest = tauri::async_runtime::spawn_blocking(fetch_latest_version)
         .await
         .map_err(|e| e.to_string())??;

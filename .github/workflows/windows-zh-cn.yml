@@ -63,7 +63,11 @@ jobs:
 
       - name: Stamp a local Chinese test version
         run: |
-          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));c.version=c.version.split('-')[0]+'-zhcn.3';fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
+          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));c.version=c.version.split('-')[0]+'-zhcn.4';fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
+
+      - name: Disable upstream updater for the Chinese test build
+        run: |
+          node -e "const fs=require('fs');const p='src-tauri/tauri.conf.json';const c=JSON.parse(fs.readFileSync(p));if(c.plugins?.updater)c.plugins.updater.endpoints=[];fs.writeFileSync(p,JSON.stringify(c,null,2)+'\n')"
 
       - name: Stage the DeepCW model (not committed — AGPL-3.0 (c) e04)
         env:

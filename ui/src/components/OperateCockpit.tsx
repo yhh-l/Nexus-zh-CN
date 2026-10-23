@@ -63,7 +63,7 @@ import { TX_SPLIT_MAX, TX_SPLIT_MIN } from '../features/paneSeam'
 import { buildHighlightMap, OperateDecodes } from './OperateDecodes'
 import { DecodeHistory, type DecodeSort } from '../decodeHistory'
 import { OperateQsoStrip } from './OperateQsoStrip'
-import { TxMeters, TX_METERS_WHEN } from './TxMeters'
+import { TxMeters } from './TxMeters'
 import { SpotDialog } from './SpotDialog'
 import { DEFAULT_ROSTER_SORT, OperateRoster, type RosterSort } from './OperateRoster'
 import { RecallPanel } from './RecallPanel'
@@ -752,7 +752,7 @@ export function OperateCockpit({
     // The meters read on transmit — here as the pinned strip, which holds the last
     // readings dimmed between overs, so the entry says WHEN it is populated rather than
     // leaving an operator to guess mid-menu (the same words the strip shows when idle).
-    notes: { txmeters: TX_METERS_WHEN },
+    notes: { txmeters: t('meters.tx.when') },
     // The other layout's panes ship hidden here as well: unticked, they are this layout as it shipped.
     shipsHidden: [...(OPERATE_PANELS.defaultRemoved ?? []), ...extra],
     ...(layoutMode === 'classic' ? { columns: classicColumns } : {}),

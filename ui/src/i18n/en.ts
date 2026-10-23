@@ -7694,6 +7694,51 @@ export const EN = {
   // written here as the prose around them is, and re-pointing or grouping one (a decimal
   // comma, a thousands separator) would be an operating fault, not a cosmetic one.
   'settings.digital.legend': 'Digital (FT8/FT4)',
+  'settings.digital.transmit.title': 'Transmit & Sequencing',
+  'settings.digital.txPeriod.label': 'Transmit period — Tx 1st (even)',
+  'settings.digital.txPeriod.hint':
+    'On = transmit in the even/1st T/R slots; off = odd/2nd. The two stations in a QSO must pick opposite periods. Also on the top bar (Tx 1st / Tx 2nd).',
+  'settings.digital.txWatchdog.label': 'Tx Watchdog (min)',
+  'settings.digital.txWatchdog.hint': 'Auto-halt TX after this many minutes (0 = off).',
+  'settings.digital.disableAfter73.label': 'Disable TX after sending 73',
+  'settings.digital.disableAfter73.hint':
+    'After your final 73 goes out, Enable TX drops — working the next station is a deliberate arm (WSJT-X default). A CQ run is unaffected: it returns to CQ.',
+  'settings.digital.doubleClickTx.label': 'Double-click arms TX',
+  'settings.digital.doubleClickTx.hint':
+    'Double-clicking a station enables TX so the answer goes straight out (WSJT-X “double-click on call sets Tx enable”). Off = you arm TX yourself each time.',
+  'settings.digital.tuneTimeout.label': 'Tune timeout (s)',
+  'settings.digital.tuneTimeout.hint':
+    'Auto-release the tune carrier after this many seconds — never leave a key-down unattended.',
+  'settings.digital.autoCq.title': 'Auto-CQ & Caller Selection',
+  'settings.digital.cqMaxCalls.label': 'Stop CQ after N calls',
+  'settings.digital.cqMaxCalls.placeholder': 'keep calling',
+  'settings.digital.cqMaxCalls.hint':
+    'How many unanswered CQs before Nexus pauses. Default 8, then it waits and calls again — a run that nobody answers stops holding the frequency. Blank = WSJT-X behaviour: CQ repeats until you stop it, with the TX watchdog as the only backstop. The Tempo chat CQ run always stops (default 10 unanswered) — this number overrides that budget too.',
+  'settings.digital.cqPause.label': 'Wait before calling CQ again',
+  'settings.digital.cqPause.hint':
+    'Seconds off the air after an unanswered run, before the next one starts. Default 180 (three minutes). 0 = do not resume: the run just stops. You are still listening through the pause; answering anyone resets the count, so a busy run never pauses.',
+  'settings.digital.blockedCalls.label': 'Blocked callsigns',
+  'settings.digital.blockedCalls.placeholder': 'none — e.g. PD2BS K1ABC',
+  'settings.digital.blockedCalls.hint':
+    'Stations your auto-responder must never answer when they reply to your CQ. Base calls are matched, so PD2BS also blocks PD2BS/P. Alt-double-click a decode or roster row to toggle blocking. Saved when you leave the field.',
+  'settings.digital.chatCycles.label': 'Tempo chat: send cycles per message',
+  'settings.digital.chatCycles.hint':
+    'A chat message transmits at most this many cycles, then shows “no ack”. Blank = 3 (TempoDeep uses 5). Never affects FT8/FT4.',
+  'settings.digital.chatReplyAck.label': 'Tempo chat: a reply counts as received',
+  'settings.digital.chatReplyAck.hint':
+    'When the station you messaged sends a complete message back, stop re-sending and mark yours “confirmed”. A real ACK still upgrades it to “Delivered ✓”.',
+  'settings.digital.cqStall.label': 'Auto-CQ: drop a silent caller after N overs',
+  'settings.digital.cqStall.hint':
+    'If a station answers and then goes silent, return to CQ after this many unanswered overs. Blank = 3; 0 = never abandon.',
+  'settings.digital.bestCaller.label': 'Best caller (auto-CQ pick)',
+  'settings.digital.bestCaller.first': 'First to answer (default)',
+  'settings.digital.bestCaller.strongest': 'Strongest signal',
+  'settings.digital.bestCaller.farthest': 'Farthest away',
+  'settings.digital.bestCaller.cqFirst': 'Prefer CQ callers',
+  'settings.digital.bestCaller.minSnr.placeholder': 'min SNR dB (optional)',
+  'settings.digital.bestCaller.minSnr.aria':
+    'Minimum SNR (dB) to consider when picking the best caller',
+  'settings.digital.bestCaller.hint': 'When several stations answer your CQ, which to work first.',
 
   // Logging Behavior. "Prompt me to log QSO" is the WSJT-X checkbox this one mirrors, quoted
   // from that program's interface; RRR / RR73 / 73 are the messages themselves.
@@ -12538,9 +12583,9 @@ export const EN = {
   // `{{label}}` is the meter's own name (the host may pass one) and `{{level}}` its reading.
   'meters.rx.title': '{{label}}: {{level}} (aim ~30 dB, like WSJT-X)',
   'meters.tx.aria': 'Transmit meters',
-  // `{{when}}` is `TX_METERS_WHEN`, the one string the ⊞ Panels menu shows for this panel —
-  // interpolated rather than repeated so the panel and the menu cannot drift. It is still
-  // written in `TxMeters.tsx`; see the note there for why it has not moved yet.
+  'meters.tx.when': 'readings appear on transmit',
+  // `{{when}}` is the translated `meters.tx.when` value shared by the idle line and ⊞ Panels
+  // menu, so switching language cannot leave the two surfaces out of sync.
   'meters.tx.idle': 'TX meters — {{when}}',
   // A meter the radio stayed silent about THROUGH an over — so it is one this radio does not
   // report, as against the blank rows before the first over, which the line above answers.
@@ -12557,6 +12602,8 @@ export const EN = {
   'meters.tx.alc.title': 'ALC — set mic gain so SSB peaks just tickle the zone, never peg it',
   'meters.tx.po.title': 'Actual output power',
   'meters.tx.comp.title': 'Speech compression',
+  'panels.scope.noNativeReason':
+    'your radio is not streaming its own scope — these appear with an Icom CI-V or FlexRadio panadapter, or an FT-710 with SCU-LAN10 enabled in its menu',
 
   // ── The rotator strip and the Rotor pane ────────────────────────────────────────────
   // Both surfaces drive the same mast, so they share the words for the one act they share (the
@@ -13066,4 +13113,16 @@ export const EN = {
   // key that two surfaces want to word differently cannot be split later without orphaning
   // both translations. When in doubt, give the surface its own key.
   'common.dismiss': 'Dismiss',
+  'settings.diagnostic.label': 'Diagnostic log',
+  'settings.diagnostic.hint':
+    'Always on, and there is no switch for it — by design. The runs worth diagnosing are the ones that die during startup, before any setting has been read, so a log you could turn off would be missing on precisely the launch you needed it for. It is a plain-text record of what Nexus did — startup steps, the CAT and audio device open, updater checks, and any failure — so a “it won’t start” or “it stopped decoding” report has something to look at. Passwords, API keys and tokens are masked before anything is written, so it is safe to attach to a bug report. Bounded to two files, about 8 MB in total, so it cannot grow without limit. What you can turn on and off is the extra detail below; there is no command-line switch for either.',
+  'settings.diagnostic.saved': 'Saved at <code>{{path}}</code>.',
+  'settings.diagnostic.reveal': 'Reveal in folder',
+  'settings.diagnostic.extra.label': 'Extra detail in the diagnostic log',
+  'settings.diagnostic.extra.hint':
+    'Records each transmission, per-period decode counts and CAT traffic. Leave this OFF for normal operating — it is for a session where something is being chased, and the extra volume shortens how far back the log reaches. The log says at the top when it was on.',
+  'fieldDay.export.noMode': 'Nothing to export — turn on Contest mode first.',
+  'panels.dsp.noFunctionsReason': 'your radio is not reporting DSP functions over CAT — these appear on a rig that does',
+  'panels.dsp.noLevelsReason': 'your radio is not reporting an NR level or AGC over CAT — these appear on a rig that does',
+  'panels.sent.emptyReason': 'nothing has been sent this session — the echo appears with your first transmission',
 } satisfies Record<string, Message>

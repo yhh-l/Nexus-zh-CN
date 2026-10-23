@@ -27,10 +27,8 @@ mod manifest_gate;
 
 fn main() {
     let manifest = PathBuf::from(env::var("CARGO_MANIFEST_DIR").unwrap());
-    let libtempo_src = manifest
-        .join("../../libtempo")
-        .canonicalize()
-        .expect("locate tempo/libtempo");
+    let libtempo_src =
+        std::path::absolute(manifest.join("../../libtempo")).expect("locate tempo/libtempo");
     check_state_manifest(&libtempo_src);
     let out = PathBuf::from(env::var("OUT_DIR").unwrap());
 

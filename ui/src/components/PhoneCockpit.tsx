@@ -18,7 +18,7 @@ import { panelHost } from '../features/panelHost'
 import { composingText } from '../features/contestExchange'
 import type { AppSnapshot, FieldDayStatus, NeedTag, SpotRow } from '../types'
 import { PhoneScope } from './PhoneScope'
-import { TxMeters, TX_METERS_WHEN } from './TxMeters'
+import { TxMeters } from './TxMeters'
 import { BandStrip } from './BandStrip'
 import { PanelsMenu } from './PanelsMenu'
 import { ArrangePanes } from './panes/ArrangePanes'
@@ -114,7 +114,7 @@ import { MemoryStrip, MemoryStripUnavailable } from './MemoryStrip'
 import type { Memory } from '../features/memories'
 import { setFrequency, openPanelWindow, getSettings } from '../api'
 import { bandLabelForMhz, sidebandForMhz, sidebandForQsy } from '../band'
-import { isRfScopeSource, NO_NATIVE_SCOPE_REASON } from '../waterfall'
+import { isRfScopeSource } from '../waterfall'
 import { useWheelTune } from '../useWheelTune'
 import { useScopePassband, useScopeTune } from '../useScopeTune'
 import { PASSBAND_LIMITS } from '../spectrum/markers'
@@ -1495,8 +1495,8 @@ export function PhoneCockpit({ esmSetting, onResumeContest, active = true, snap,
         main: 'bandActivity',
         labels,
         notes: {
-          rigscope: civScope || flexScope ? undefined : NO_NATIVE_SCOPE_REASON,
-          txmeters: TX_METERS_WHEN,
+          rigscope: civScope || flexScope ? undefined : t('panels.scope.noNativeReason'),
+          txmeters: t('meters.tx.when'),
         },
         // The ONE hide in the app that ends something in flight. In `endsOnHide` rather
         // than `notes` so the pane's own ✕ carries the same sentence the ⊞ entry prints —

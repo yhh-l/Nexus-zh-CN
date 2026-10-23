@@ -3607,7 +3607,8 @@ export function ContestView({
       const path = await saveTextToDownloads(`${base}-${stamp}.${EXT[format]}`, text)
       pushToast(t('fieldDay.export.done', { path }), 'success')
     } catch (err) {
-      setExportError(typeof err === 'string' ? err : err instanceof Error ? err.message : String(err))
+      const message = typeof err === 'string' ? err : err instanceof Error ? err.message : String(err)
+      setExportError(message === 'nothing to export (turn Contest mode on first)' ? t('fieldDay.export.noMode') : message)
     } finally {
       setBusy(null)
     }

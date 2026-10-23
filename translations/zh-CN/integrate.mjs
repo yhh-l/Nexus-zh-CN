@@ -1,6 +1,7 @@
 // Reproduce the application catalog from the reviewed, fixed English baseline.
 import { readFile, writeFile } from 'node:fs/promises'
 import { execFileSync } from 'node:child_process'
+import { fileURLToPath } from 'node:url'
 import { EN } from '../../ui/src/i18n/en.ts'
 
 if (process.argv.slice(2).some(arg => arg !== '--check')) throw new Error('Usage: node integrate.mjs [--check]')
@@ -9,9 +10,9 @@ async function output(url, text) {
     if (await readFile(url, 'utf8') !== text) throw new Error(`Generated output is stale: ${url.pathname}`)
   } else await writeFile(url, text)
 }
-execFileSync(process.execPath, [new URL('verify.mjs', import.meta.url).pathname, '--require-complete'], { stdio: 'inherit' })
+execFileSync(process.execPath, [fileURLToPath(new URL('verify.mjs', import.meta.url)), '--require-complete'], { stdio: 'inherit' })
 const data = JSON.parse(await readFile(new URL('nexus-zh-CN.json', import.meta.url), 'utf8'))
-if (data.meta.commit !== 'ad8d95fa80e2bfa9be8e1719595b058929eb092d' || data.meta.version !== '1.19.0') throw new Error('Unexpected baseline')
+if (data.meta.commit !== 'deef912340bade1a9961a2c0cfb3979cde9b1ee4' || data.meta.version !== '1.19.0') throw new Error('Unexpected baseline')
 const rows = new Map(data.rows.map(row => [row.id, row]))
 const catalog = Object.fromEntries(Object.entries(EN).map(([key, value]) => [key,
   typeof value === 'string' ? rows.get(key).chinese : Object.fromEntries(Object.keys(value).map(form => [form, rows.get(`${key}::${form}`).chinese])),

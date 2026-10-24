@@ -15,6 +15,78 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  ui-mobile:
+    name: Phone navigation + full UI regression suite
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Install the locked UI dependencies
+        run: npm --prefix ui ci
+
+      # Failing-first is also cloud-only: use the actual previous branch revision,
+      # not a synthetic bad stylesheet. Restore both exact files on every exit.
+      - name: Prove the mobile regression detects the previous implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          baseline=0386497e3f162b6c9a84a3348aac033a2cda8ac9
+          git -C "$GITHUB_WORKSPACE" fetch --no-tags --depth=1 origin "$baseline"
+          backup=$(mktemp -d "$RUNNER_TEMP/nexus-nav-baseline.XXXXXX")
+          cp ui/src/components/ModeNav.tsx "$backup/ModeNav.tsx"
+          cp ui/src/styles.css "$backup/styles.css"
+          restore_nav() {
+            cp "$backup/ModeNav.tsx" ui/src/components/ModeNav.tsx
+            cp "$backup/styles.css" ui/src/styles.css
+          }
+          trap restore_nav EXIT
+          git -C "$GITHUB_WORKSPACE" show "$baseline:ui/src/components/ModeNav.tsx" > ui/src/components/ModeNav.tsx
+          git -C "$GITHUB_WORKSPACE" show "$baseline:ui/src/styles.css" > ui/src/styles.css
+          export MOBILE_BASELINE_REPORT="$backup/results.json"
+          set +e
+          npm --prefix ui exec -- vitest run src/components/ModeNav.mobile.test.tsx \
+            --reporter=json --outputFile="$MOBILE_BASELINE_REPORT"
+          status=$?
+          set -e
+          if [[ "$status" == 0 ]]; then
+            echo 'Mobile regression did not detect the old implementation' >&2
+            exit 1
+          fi
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const report = JSON.parse(fs.readFileSync(process.env.MOBILE_BASELINE_REPORT, 'utf8'));
+          const cases = report.testResults.flatMap(suite => suite.assertionResults ?? []);
+          for (const title of [
+            'has one bounded strip and pinned Settings at xs',
+            'reveals an external section change using zoom-correct horizontal movement only',
+          ]) {
+            assert(cases.some(test => test.title === title && test.status === 'failed'),
+              `Baseline did not fail the intended regression: ${title}`);
+          }
+          assert(cases.some(test => test.title === 'preserves the desktop rail and desktop drag-to-reorder'
+            && test.status === 'passed'), 'Baseline positive control did not execute and pass');
+          console.log('Expected baseline failures and desktop positive control verified; restoring fixed sources.');
+          NODE
+
+      - name: Typecheck and build the complete UI
+        run: npm --prefix ui run build
+
+      # Includes the rendered mobile-navigation tests, cascade guards and existing
+      # stop-line sweeps. jsdom passing does not prove actual phone geometry.
+      - name: Run the complete UI suite (including mobile navigation and Stop controls)
+        run: npm --prefix ui test
+
   portable-libraries:
     runs-on: ubuntu-24.04
     timeout-minutes: 25

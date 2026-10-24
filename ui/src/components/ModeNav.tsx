@@ -26,12 +26,13 @@ import {
   Users,
   MessagesSquare,
 } from 'lucide-react'
-import { Fragment, useState, type ButtonHTMLAttributes } from 'react'
+import { Fragment, useEffect, useRef, useState, type ButtonHTMLAttributes } from 'react'
 import { Tooltip, TooltipProvider } from './ui/Tooltip'
 import { t, type MessageKey } from '../i18n'
 import { type FeatureId, type View } from '../features/registry'
 import { orderNav, moveNav, loadNavOrder, saveNavOrder, resetNavOrder } from '../navOrder'
 import { contestBadgeName } from '../fdEvent'
+import { useViewportClass } from '../useViewport'
 
 // ⚠️ THIS FILE IS ON THE MIGRATED LIST (i18n/hardcoded-strings.test.ts). Every button's
 // TOOLTIP is prose and lives in the catalog. Its LABEL is prose only where the section is
@@ -251,6 +252,21 @@ function modeLabel(mode: OpMode, runningContest: string | undefined): string {
   return contestBadgeName(runningContest || 'arrlfd').toUpperCase()
 }
 
+/** Reveal only inside the section strip. Never scroll the cockpit or move focus.
+ * Bounds are screen/zoom pixels; scrollLeft is in the scroller's layout pixels.
+ * No gesture here selects a section, tunes, or keys a transmitter.
+ */
+function revealSection(scroller: HTMLDivElement, button: HTMLElement) {
+  const bounds = scroller.getBoundingClientRect()
+  if (bounds.width <= 0 || scroller.clientWidth <= 0) return
+  const target = button.getBoundingClientRect()
+  if (target.width <= 0) return
+  const delta = target.left < bounds.left
+    ? target.left - bounds.left
+    : target.right > bounds.right ? target.right - bounds.right : 0
+  if (delta !== 0) scroller.scrollLeft += delta * scroller.clientWidth / bounds.width
+}
+
 export function ModeNav({
   view,
   mode,
@@ -272,6 +288,23 @@ export function ModeNav({
   const [order, setOrder] = useState<string[]>(loadNavOrder)
   const [dragId, setDragId] = useState<string | null>(null)
   const [overId, setOverId] = useState<string | null>(null)
+  const viewport = useViewportClass()
+  const horizontal = viewport === 'xs' || viewport === 'sm'
+  const stripRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!horizontal) return
+    const strip = stripRef.current
+    if (!strip) return
+    const active = strip.querySelector<HTMLElement>('[aria-current="page"]')
+    if (!active) return // Settings is pinned outside the scroller.
+    const reveal = () => revealSection(strip, active)
+    reveal()
+    if (typeof ResizeObserver === 'undefined') return
+    const observer = new ResizeObserver(reveal)
+    observer.observe(strip)
+    observer.observe(active)
+    return () => observer.disconnect()
+  }, [horizontal, view, tier])
 
   // Sections show purely by feature-enable now (no workspace/area gating) — the old
   // dx/msg split is gone; FT8/FT4/Tempo live in the Digital group instead. Reorder by the
@@ -326,7 +359,15 @@ export function ModeNav({
   return (
     <TooltipProvider>
       <nav className="mode-nav" aria-label={t('nav.aria')}>
-        <div className="mode-nav-top">
+        <div
+          className="mode-nav-top"
+          ref={stripRef}
+          onFocusCapture={(event) => {
+            if (horizontal && stripRef.current && event.target instanceof HTMLElement) {
+              revealSection(stripRef.current, event.target)
+            }
+          }}
+        >
           {/* Operating group order (operator spec): Phone · CW · Digital group
               (FT + Tempo). The FT8/FT4 pick lives in the top bar's tier pills. */}
           {enabled.phone !== false && navBtn(PHONE)}
@@ -368,8 +409,13 @@ export function ModeNav({
                 }`}
               >
                 {navBtn(it, {
-                  draggable: true,
+                  draggable: !horizontal,
                   onDragStart: (e) => {
+                    // Touch/trackpad swipes scroll the narrow strip; only the desktop rail reorders.
+                    if (horizontal) {
+                      e.preventDefault()
+                      return
+                    }
                     setDragId(it.id)
                     e.dataTransfer.effectAllowed = 'move'
                     // Required by some engines (and harmless elsewhere) for the drag to begin.

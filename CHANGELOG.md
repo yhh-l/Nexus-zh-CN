@@ -5,6 +5,15 @@ All notable changes to Nexus (formerly Tempo) are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Changed
+- **Narrow-window navigation keeps Settings beside the scrolling section strip.** Section names keep
+  their width instead of squeezing together, and a selected or keyboard-focused section scrolls into
+  view without scrolling the cockpit. Swiping the narrow strip does not drag-reorder sections; the
+  desktop rail retains its existing order and drag behavior. No Stop control is moved. NEEDS-BENCH:
+  real phone portrait/landscape, touch and keyboard navigation; the Android APK is not released yet.
+
 ## [1.20.0] — 2026-10-22
 
 ### Added

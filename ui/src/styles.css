@@ -16822,7 +16822,40 @@ button.recall-avatar:focus-visible .recall-avatar-qrz {
   padding: 6px var(--space-2);
   border-right: none;
   border-bottom: 1px solid var(--border);
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+/* The section strip is the only horizontal scroller. Settings stays outside it;
+   neither a long section list nor a keyboard focus scroll can carry it away.
+   The viewport key is zero-specificity where it replaces the old media condition. */
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-nav-top {
+  min-width: 0;
   overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-nav-bottom {
+  margin-top: 0;
+  padding-left: var(--space-2);
+  border-left: 1px solid var(--border-soft);
+  background: var(--bg-elev);
+}
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-nav-top > button,
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-nav-group,
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-nav-drag,
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-nav-reset {
+  flex-shrink: 0;
+}
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-btn {
+  width: auto;
+}
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-btn.sub {
+  width: auto;
+  flex-shrink: 0;
+}
+:where([data-viewport='xs'], [data-viewport='sm']) .mode-nav-drag {
+  cursor: default;
 }
 [data-viewport='sm'] .mode-nav-top,
 [data-viewport='sm'] .mode-nav-bottom,

@@ -225,3 +225,42 @@ test scroll arithmetic, not real browser geometry. The Android workflow now also
 includes the complete UI build/typecheck and full Vitest suite in an independent
 cloud job. A cloud-only failing-first step runs the new navigation tests against the exact previous branch revision, requires the intended failures plus a passing desktop control, and restores the fixed sources before building/testing. These changes are not yet cloud-validated or phone-tested. Safe-area,
 software-keyboard and actual S25 Ultra interaction checks remain open.
+
+## Android host preparation (source only; pending approval/cloud validation)
+
+`src-tauri/tauri.android.conf.json` is an Android-specific RFC 7396 overlay,
+using the merge behavior in the locked Tauri utils 2.9.3 `config/parse.rs`.
+Its window array REPLACES the desktop array: one visible `main`, no second
+OS splash window and no inherited desktop minimum geometry in the config.
+The initial API baseline remains 35. Desktop installer-updater artifacts are
+not requested on Android; existing updater verification/service configuration
+and the desktop configuration file are not changed.
+
+The sole webview initially loads `android-start.html`, an original responsive,
+script-free waiting page with safe-area padding and a reduced-motion style.
+It does not invoke the engine or load the React app before `finish_launch`
+attaches the logbook and navigates the existing main webview to the app. This
+preserves the existing startup ordering rather than starting on `index.html`.
+Runtime behavior and physical phone geometry have not yet been demonstrated.
+
+The resource patch's `resources/hamlib/*: null` REMOVES that map key before
+Tauri deserializes the merged config; it is not a literal null resource path.
+All existing model/data/license mappings remain. Removing Windows Hamlib
+resources does not implement Android Hamlib/CAT and is not permission to ship
+without that functionality. Real Android device/CAT integration remains required.
+
+`scripts/android-host-config.mjs` checks the actual source/config merge and
+rejects desktop splash/minimum geometry, early engine UI, missing models or
+licenses, declared foreign runtimes/sidecars and changed service/security
+configuration. Its cloud report explicitly marks schema validation, generated
+Android host, native compilation, payload inspection, APK and device checks
+as FALSE. Source declarations cannot prove that the eventual APK payload is
+Android-compatible; binary/ZIP/ABI checks are still required. Regression tests
+cover both valid source configuration and counterexamples. The startup-page
+UI tests render the actual HTML and compute its simple styles, but not geometry.
+
+This does not yet add a generated Gradle/Kotlin project or an APK build job.
+Desktop-only Rust plugin/window APIs, the runtime's 900x600 window-size call,
+Android-private early data-directory initialization and lifecycle/device APIs
+still need adaptation and real cloud compilation. No new third-party runtime,
+credential handling or transmit operation is introduced by this preparation.

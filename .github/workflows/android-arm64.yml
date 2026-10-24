@@ -113,6 +113,11 @@ jobs:
       - name: Test real Android native build dispatch (host-only guards)
         run: node --test scripts/android-native.test.mjs
 
+      - name: Check Android host config without claiming a generated project or APK
+        run: |
+          node --test scripts/android-host-config.test.mjs
+          node scripts/android-host-config.mjs
+
       - name: Compile real portable libraries for Android ARM64
         run: node scripts/android-arm64.mjs
 
@@ -124,6 +129,7 @@ jobs:
           retention-days: 14
           path: |
             target/android-arm64/build-report.json
+            target/android-host/config-report.json
             target/android-arm64/aarch64-linux-android/debug/libtempo_base.rlib
             target/android-arm64/aarch64-linux-android/debug/libpropagation.rlib
             target/android-arm64/aarch64-linux-android/debug/libjs8.rlib

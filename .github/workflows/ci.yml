@@ -676,6 +676,9 @@ jobs:
       - name: Test Android ARM64 artifact and coverage guards
         run: node --test scripts/android-arm64.test.mjs
 
+      - name: Test Android host configuration and resource-declaration guards
+        run: node --test scripts/android-host-config.test.mjs
+
       # release.yml keeps every secret out of the jobs that build or run third-party code
       # (FFTW, Hamlib, npm, crates.io, the AppImage tooling), signs the Windows and Linux
       # installers in a job that builds nothing, and pins everything it downloads to build with, as

@@ -1,0 +1,53 @@
+<!doctype html>
+<!-- Android's single main webview waits here until finish_launch attaches the
+     logbook and navigates it to the application. No script, invoke, form or
+     remote content: showing this page must not start engine operations. -->
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark light" />
+    <title>Nexus</title>
+    <style>
+      :root { color-scheme: dark; --bg: #0e151f; --ink: #edf3fa; --muted: #aab8c9; --accent: #66d8c9; }
+      html { height: 100%; background: var(--bg); }
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        min-height: 100%;
+        display: grid;
+        place-items: center;
+        padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right))
+          max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
+        color: var(--ink);
+        font-family: system-ui, sans-serif;
+      }
+      main { box-sizing: border-box; width: 100%; max-width: 24rem; min-width: 0; text-align: center; }
+      .mark {
+        display: grid; place-items: center; width: 72px; height: 72px; margin: 0 auto;
+        border: 1px solid var(--accent); border-radius: 24px; color: var(--accent);
+        font-size: 40px; font-weight: 700;
+      }
+      h1 { margin: 20px 0 8px; font-size: 32px; letter-spacing: 0.04em; }
+      p { margin: 0; color: var(--muted); line-height: 1.6; overflow-wrap: anywhere; }
+      .meter { height: 3px; max-width: 12rem; margin: 28px auto 0; border-radius: 2px; background: var(--muted); }
+      .meter::after {
+        content: ''; display: block; height: 100%; border-radius: inherit;
+        background: var(--accent); animation: waiting 1.5s ease-in-out infinite alternate;
+      }
+      @keyframes waiting { from { opacity: 0.25; } to { opacity: 1; } }
+      @media (prefers-color-scheme: light) {
+        :root { color-scheme: light; --bg: #f3f7fb; --ink: #14202e; --muted: #52647a; --accent: #076f65; }
+      }
+      @media (prefers-reduced-motion: reduce) { .meter::after { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <main role="status" aria-label="Nexus">
+      <div class="mark" aria-hidden="true">N</div>
+      <h1>Nexus</h1>
+      <p><span lang="zh-CN">正在启动</span><span aria-hidden="true"> · </span><span lang="en">Starting</span></p>
+      <div class="meter" aria-hidden="true"></div>
+    </main>
+  </body>
+</html>

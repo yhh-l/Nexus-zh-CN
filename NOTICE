@@ -1853,3 +1853,18 @@ code (GPL-3.0). The **full AGPL-3.0 license text ships with the model** at
 `resources/deepcw/LICENSE.AGPL-3.0.txt` (bundled in the installer), so the
 model's license travels with the binary as AGPLv3 §4 requires; the model's
 corresponding source is the upstream e04/deepcw-engine repository above.
+
+## Experimental Android cross-build toolchain (not a shipped APK)
+
+The Android ARM64 build recipes use LLVM Flang and build Flang-RT 21.1.8
+from the official LLVM source release, with Android NDK C/C++ toolchains.
+Thanks to the LLVM Project contributors. Upstream source and license:
+https://github.com/llvm/llvm-project/tree/llvmorg-21.1.8/flang-rt
+https://github.com/llvm/llvm-project/blob/llvmorg-21.1.8/flang-rt/LICENSE.TXT
+The declared runtime license is Apache-2.0 WITH LLVM-exception. The recipe
+also builds FFTW 3.3.10 from upstream source (already credited above), rather
+than using GNU/Linux ARM64 binaries. No third-party source is vendored by
+these recipes. Cloud evidence artifacts include staged upstream license texts,
+not the linked native modem or an APK. Complete per-file/runtime dependency
+license review and binary notice/source delivery remain prerequisites to
+native binary distribution; this entry does not claim that audit is complete.

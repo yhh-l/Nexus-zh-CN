@@ -1,0 +1,163 @@
+// Host-side tests of the REAL Android dispatch and toolchain configuration. Fixture
+// toolchain inputs below are never used to claim a native build or an Android runtime.
+import test, { before, after } from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+import { modemOutput, inspectSharedObject, neededLibraries } from './android-native-link.mjs';
+
+const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const TEMP = fs.mkdtempSync(path.join(os.tmpdir(), 'nexus-android-native-'));
+const EXT = process.platform === 'win32' ? '.exe' : '';
+const GUARDS = path.join(TEMP, `archive-tests${EXT}`);
+const BUILDER = path.join(TEMP, `modem-build${EXT}`);
+function run(executable, args, options = {}) {
+  const result = spawnSync(executable, args, { cwd: ROOT, encoding: 'utf8', timeout: 120_000, ...options });
+  if (result.error) throw result.error;
+  return { ...result, output: `${result.stdout}${result.stderr}` };
+}
+before(() => {
+  for (const [file, output, flags] of [
+    ['android_build.rs', GUARDS, ['--test']], ['build.rs', BUILDER, []],
+  ]) {
+    const result = run('rustc', ['--edition=2021', ...flags, path.join(ROOT, 'crates', 'tempo-fast-sys', file), '-o', output]);
+    assert.equal(result.status, 0, result.output);
+  }
+});
+after(() => fs.rmSync(TEMP, { recursive: true, force: true }));
+function androidEnv(extra = {}) {
+  const env = { ...process.env, CARGO_MANIFEST_DIR: path.join(ROOT, 'crates', 'tempo-fast-sys'),
+    CARGO_CFG_TARGET_OS: 'android', TARGET: 'aarch64-linux-android', OUT_DIR: TEMP };
+  for (const name of ['ANDROID_NDK_HOME', 'NEXUS_ANDROID_PREFIX', 'NEXUS_ANDROID_FLANG', 'WX']) delete env[name];
+  return { ...env, ...extra };
+}
+
+test('the standalone native archive tests all execute and pass', () => {
+  const result = run(GUARDS, []);
+  assert.equal(result.status, 0, result.output);
+  assert.match(result.output, /8 passed; 0 failed/);
+});
+test('actual Cargo build script admits Android then refuses absent NDK without a host fallback', () => {
+  const result = run(BUILDER, [], { env: androidEnv() });
+  assert.notEqual(result.status, 0);
+  assert.match(result.output, /ANDROID_NDK_HOME is required/);
+  assert.doesNotMatch(result.output, /Configuring done|Built target tempo_static/);
+});
+test('Linux ARM64 does not satisfy the Android target admission', () => {
+  const result = run(BUILDER, [], { env: androidEnv({ TARGET: 'aarch64-unknown-linux-gnu' }) });
+  assert.notEqual(result.status, 0);
+  assert.match(result.output, /currently targets aarch64-linux-android/);
+});
+test('actual Cargo build script rejects a host archive before running CMake', () => {
+  const root = path.join(TEMP, 'foreign-archive');
+  const ndk = path.join(root, 'ndk');
+  const prefix = path.join(root, 'prefix');
+  const flang = path.join(root, 'flang');
+  for (const [name, text] of [
+    [flang, 'not executed'], [path.join(ndk, 'build', 'cmake', 'android.toolchain.cmake'), '# not executed'],
+    [path.join(prefix, 'include', 'fftw3.f03'), '! fixture'], [path.join(prefix, 'include', 'boost', 'crc.hpp'), '// fixture'],
+    [path.join(prefix, 'lib', 'libfftw3f.a'), 'MZdesktop-library'],
+  ]) { fs.mkdirSync(path.dirname(name), { recursive: true }); fs.writeFileSync(name, text); }
+  const result = run(BUILDER, [], { env: androidEnv({ ANDROID_NDK_HOME: ndk, NEXUS_ANDROID_PREFIX: prefix, NEXUS_ANDROID_FLANG: flang }) });
+  assert.notEqual(result.status, 0);
+  assert.match(result.output, /libfftw3f.a: not a regular ar archive/);
+});
+function configureToolchain({ ndkExists = true, compilerExists = true, api = 35 } = {}) {
+  const root = fs.mkdtempSync(path.join(TEMP, 'cmake-'));
+  const ndk = path.join(root, 'ndk');
+  const flang = path.join(root, 'flang');
+  if (ndkExists) {
+    const filename = path.join(ndk, 'build', 'cmake', 'android.toolchain.cmake');
+    fs.mkdirSync(path.dirname(filename), { recursive: true });
+    fs.writeFileSync(filename, 'set(CMAKE_SYSROOT "fixture-sysroot")\n');
+  }
+  if (compilerExists) fs.writeFileSync(flang, 'not executed');
+  const normalize = (filename) => filename.split(path.sep).join('/');
+  const script = path.join(root, 'check.cmake');
+  fs.writeFileSync(script, `
+set(ANDROID_NDK "${normalize(ndk)}")
+set(NEXUS_ANDROID_FLANG "${normalize(flang)}")
+set(ANDROID_PLATFORM "android-${api}")
+include("${normalize(path.join(ROOT, 'libtempo', 'android-arm64.cmake'))}")
+if(NOT ANDROID_ABI STREQUAL "arm64-v8a" OR NOT ANDROID_STL STREQUAL "c++_static")
+  message(FATAL_ERROR "wrong Android ABI or C++ runtime")
+endif()
+if(NOT CMAKE_Fortran_COMPILER_TARGET STREQUAL "aarch64-linux-android35")
+  message(FATAL_ERROR "Fortran target not Android API 35")
+endif()
+if(NOT CMAKE_POSITION_INDEPENDENT_CODE OR NOT CMAKE_TRY_COMPILE_TARGET_TYPE STREQUAL "STATIC_LIBRARY")
+  message(FATAL_ERROR "non-PIC or target executable probe")
+endif()
+if(DEFINED CMAKE_Fortran_COMPILER_WORKS)
+  message(FATAL_ERROR "compiler-success detection must not be forged")
+endif()
+message(STATUS "Android toolchain configuration verified; no code compiled")
+`);
+  return run('cmake', ['-P', script]);
+}
+test('positive control: real toolchain file chooses Android target, PIC and static STL', () => {
+  const result = configureToolchain();
+  assert.equal(result.status, 0, result.output);
+  assert.match(result.output, /configuration verified; no code compiled/);
+});
+for (const [label, options, expected] of [
+  ['missing NDK', { ndkExists: false }, /ANDROID_NDK must name/],
+  ['missing Flang', { compilerExists: false }, /NEXUS_ANDROID_FLANG must name/],
+  ['different API', { api: 34 }, /requires ANDROID_PLATFORM=android-35/],
+]) {
+  test(`toolchain refuses ${label}`, () => {
+    const result = configureToolchain(options);
+    assert.notEqual(result.status, 0);
+    assert.match(result.output, expected);
+  });
+}
+
+function sharedObject(alignment = 16384n, machine = 183) {
+  const bytes = Buffer.alloc(120);
+  bytes.set([0x7f, 0x45, 0x4c, 0x46, 2, 1, 1]);
+  bytes.writeUInt16LE(3, 16); bytes.writeUInt16LE(machine, 18); bytes.writeUInt32LE(1, 20);
+  bytes.writeBigUInt64LE(64n, 32); bytes.writeUInt16LE(64, 52); bytes.writeUInt16LE(56, 54); bytes.writeUInt16LE(1, 56);
+  bytes.writeUInt32LE(1, 64); bytes.writeBigUInt64LE(alignment, 64 + 48);
+  return bytes;
+}
+test('positive control: AArch64 shared library has actual 16 KiB load alignment', () => {
+  assert.deepEqual(inspectSharedObject(sharedObject()), { machine: 'AArch64', bits: 64, loadSegments: 1, minimumPageAlignment: 16384 });
+});
+test('shared-library guard rejects wrong arch, 4 KiB pages and truncated headers', () => {
+  for (const bytes of [sharedObject(4096n), sharedObject(16384n, 62), sharedObject().subarray(0, 90), Buffer.from('MZ')]) {
+    assert.throws(() => inspectSharedObject(bytes));
+  }
+  const noLoads = sharedObject(); noLoads.writeUInt32LE(0, 64);
+  assert.throws(() => inspectSharedObject(noLoads), /no load/);
+});
+test('desktop or unbundled C++ runtimes cannot become Android modem dependencies', () => {
+  assert.deepEqual(neededLibraries('0x01 (NEEDED) Shared library: [libc.so]\n0x01 (NEEDED) Shared library: [libm.so]'), ['libc.so', 'libm.so']);
+  for (const lib of ['libc.so.6', 'libgfortran.so.5', 'libstdc++.so.6', 'libc++_shared.so']) {
+    assert.throws(() => neededLibraries(`0x01 (NEEDED) Shared library: [${lib}]`), /Unexpected/);
+  }
+  assert.throws(() => neededLibraries(''), /No dynamic dependency/);
+});
+test('native linking uses the actual Cargo build-script output, not the first matching file', () => {
+  const out = path.join(ROOT, 'target', 'android-native-cargo', 'aarch64-linux-android', 'debug', 'build', 'tempo-fast-sys-fingerprint', 'out');
+  const records = [{ reason: 'compiler-artifact', manifest_path: path.join(ROOT, 'crates', 'tempo-fast-sys', 'Cargo.toml'),
+    target: { kind: ['custom-build'] }, package_id: 'modem-id' },
+    { reason: 'build-script-executed', package_id: 'modem-id', out_dir: out }];
+  assert.equal(modemOutput(records), path.join(out, 'libtempo.a'));
+  assert.throws(() => modemOutput(records.slice(0, 1)), /Expected one real/);
+  records[1].out_dir = path.join(ROOT, 'target', 'debug', 'host-build', 'out');
+  assert.throws(() => modemOutput(records), /not in the Android/);
+});
+test('native bootstraps pin upstream inputs and never forge a compiler-success result', () => {
+  const bootstrap = fs.readFileSync(path.join(ROOT, 'scripts', 'build-android-native.sh'), 'utf8');
+  assert.match(bootstrap, /4633a23617fa31a3ea51242586ea7fb1da7140e426bd62fc164261fe036aa142/);
+  assert.match(bootstrap, /56c932549852cddcfafdab3820b0200c7742675be92179e59e6215b340e26467/);
+  assert.match(bootstrap, /sha256sum -c -/);
+  assert.match(bootstrap, /--target=aarch64-linux-android35/);
+  assert.doesNotMatch(bootstrap, /CMAKE_Fortran_COMPILER_WORKS|\|\| true|--allow-unauthenticated/);
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'android-arm64.yml'), 'utf8');
+  assert.match(workflow, /--features radio,yaesu-wf/);
+  assert.doesNotMatch(workflow, /NEXUS_ALLOW_MISSING_AICW|--no-default-features/);
+});

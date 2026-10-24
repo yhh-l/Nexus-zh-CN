@@ -31,7 +31,25 @@ set(LIB "${WX}/lib")
 # so instead point at the statically cross-built FFTW3f at FFTW_MINGW_PREFIX and
 # use the host's header-only Boost (crc.hpp is header-only, arch-independent).
 # ---------------------------------------------------------------------------
-if(CMAKE_CROSSCOMPILING AND CMAKE_SYSTEM_NAME STREQUAL "Windows")
+if(CMAKE_SYSTEM_NAME STREQUAL "Android")
+    if(NOT ANDROID_ABI STREQUAL "arm64-v8a")
+        message(FATAL_ERROR "Nexus Android native port currently requires arm64-v8a")
+    endif()
+    if(NOT CMAKE_Fortran_COMPILER_ID STREQUAL "LLVMFlang")
+        message(FATAL_ERROR "Android modem build requires LLVM Flang, not a host gfortran")
+    endif()
+    foreach(input lib/libfftw3f.a include/fftw3.f03 include/boost/crc.hpp)
+        if(NOT EXISTS "${NEXUS_ANDROID_PREFIX}/${input}")
+            message(FATAL_ERROR "Android dependency missing: ${NEXUS_ANDROID_PREFIX}/${input}")
+        endif()
+    endforeach()
+    set(FFTW3F_INCLUDE_DIRS "${NEXUS_ANDROID_PREFIX}/include")
+    set(FFTW3F_LIBRARY_DIRS "${NEXUS_ANDROID_PREFIX}/lib")
+    set(FFTW3F_LIBRARIES "${NEXUS_ANDROID_PREFIX}/lib/libfftw3f.a")
+    add_library(boost_crc_headeronly INTERFACE)
+    target_include_directories(boost_crc_headeronly INTERFACE "${NEXUS_ANDROID_PREFIX}/include")
+    set(BOOST_CRC_TARGET boost_crc_headeronly)
+elseif(CMAKE_CROSSCOMPILING AND CMAKE_SYSTEM_NAME STREQUAL "Windows")
     # Cross build: use the MinGW static FFTW3f from the toolchain file.
     if(NOT DEFINED FFTW_MINGW_PREFIX)
         set(FFTW_MINGW_PREFIX "/tmp/fftw-mingw")
@@ -63,7 +81,11 @@ endif()
 #                              (e.g. four2a equivalence). gfortran 10+ requires
 #                              this to downgrade to a warning.
 # ---------------------------------------------------------------------------
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fallow-argument-mismatch -ffree-line-length-none")
+# Android's LLVM Flang does not accept GNU-only frontend flags. Desktop builds keep
+# their original options; no source or numerical algorithm is rewritten.
+if(NOT CMAKE_SYSTEM_NAME STREQUAL "Android")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -fallow-argument-mismatch -ffree-line-length-none")
+endif()
 
 # Generated .mod files go in a per-target private dir (set below). CMake's
 # built-in Fortran module dependency scanner resolves module `use` ordering
@@ -558,6 +580,9 @@ set_source_files_properties(
 add_library(tempo_static STATIC ${LIBTEMPO_SOURCES})
 add_library(tempo_shared SHARED ${LIBTEMPO_SOURCES})
 set_target_properties(tempo_static PROPERTIES OUTPUT_NAME tempo)
+if(CMAKE_SYSTEM_NAME STREQUAL "Android")
+    set_target_properties(tempo_static tempo_shared PROPERTIES POSITION_INDEPENDENT_CODE ON)
+endif()
 set_target_properties(tempo_shared PROPERTIES OUTPUT_NAME tempo)
 
 foreach(tgt tempo_static tempo_shared)

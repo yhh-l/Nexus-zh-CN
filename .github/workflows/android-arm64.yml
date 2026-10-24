@@ -1,0 +1,113 @@
+# Android ARM64 library + native-backend milestones. No APK/signing/publish/RF claim.
+name: Android ARM64 portability
+
+on:
+  # A new workflow can run on its first approved branch push without changing main.
+  push:
+    branches: [codex/android-arm64]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-arm64-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  portable-libraries:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Set up the pinned Rust Android target
+        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          targets: aarch64-linux-android
+
+      - name: Test archive and artifact guards
+        run: node --test scripts/android-arm64.test.mjs
+
+      - name: Test real Android native build dispatch (host-only guards)
+        run: node --test scripts/android-native.test.mjs
+
+      - name: Compile real portable libraries for Android ARM64
+        run: node scripts/android-arm64.mjs
+
+      - name: Upload portable libraries and the explicit coverage report (NOT an APK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-arm64-portable-libraries
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            target/android-arm64/build-report.json
+            target/android-arm64/aarch64-linux-android/debug/libtempo_base.rlib
+            target/android-arm64/aarch64-linux-android/debug/libpropagation.rlib
+            target/android-arm64/aarch64-linux-android/debug/libjs8.rlib
+
+  native-backend:
+    name: Real Android native modem + full backend check
+    needs: portable-libraries
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Set up the pinned Rust Android target
+        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          targets: aarch64-linux-android
+
+      - name: Install the checked LLVM host compiler
+        run: bash scripts/install-android-flang.sh
+
+      - name: Cross-build Android FFTW and the real Flang runtime
+        run: bash scripts/build-android-native.sh
+
+      - name: Build the complete native modem for Android (no source stubs)
+        run: >
+          cargo build --locked -p tempo-fast-sys --lib
+          --target aarch64-linux-android
+          --target-dir target/android-native-cargo
+          --message-format=json-render-diagnostics
+          > target/android-native-build.jsonl
+
+      - name: Link the whole modem and check Android dependencies and 16 KiB alignment
+        run: node scripts/android-native-link.mjs
+
+      # Native binary distribution waits for the complete runtime NOTICE/source audit.
+      - name: Upload native-link evidence and staged licenses (NOT an APK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-arm64-native-modem-checkpoint
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            target/android-native-linked/link-report.json
+            target/android-native-deps/prefix/licenses/
+
+      - name: Check the full application backend (radio and Yaesu waterfall enabled)
+        run: >
+          cargo check --locked --manifest-path src-tauri/Cargo.toml
+          --target aarch64-linux-android --features radio,yaesu-wf
+          --target-dir target/android-native-cargo

@@ -16,11 +16,18 @@
 //! resulting Windows binary has no MinGW runtime-DLL dependency.
 //!
 //! The native (host == target) path is intentionally left byte-for-byte
-//! unchanged; all cross logic is gated behind `is_cross_to_windows_gnu()`.
+//! unchanged; Windows cross logic is gated behind `is_cross_to_windows_gnu()`.
+
+//!
+//! Android ARM64 uses ndroid_build and the NDK/Flang toolchain; it never
+//! falls back to this host path or links desktop runtime archives.
 
 use std::env;
 use std::path::PathBuf;
 use std::process::Command;
+
+#[path = "android_build.rs"]
+mod android_build;
 
 #[path = "manifest_gate.rs"]
 mod manifest_gate;
@@ -33,6 +40,15 @@ fn main() {
         .expect("locate tempo/libtempo");
     check_state_manifest(&libtempo_src);
     let out = PathBuf::from(env::var("OUT_DIR").unwrap());
+
+    // Android is a distinct libc/toolchain target, even on an ARM64 Linux host.
+    // Never fall through to native gfortran or discover host FFTW via pkg-config.
+    if env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("android") {
+        android_build::build(&libtempo_src, &out, wx_override().as_deref())
+            .unwrap_or_else(|e| panic!("Android native modem build: {e}"));
+        emit_rerun(&libtempo_src);
+        return;
+    }
 
     // Cross-compile branch: Linux (or any non-Windows) host -> Windows GNU target.
     // Everything Windows-cross-specific lives here so the native path is untouched.
@@ -319,7 +335,13 @@ fn emit_rerun(libtempo_src: &std::path::Path) {
             emit_rerun_glob(&p);
         }
     }
-    for rel in ["CMakeLists.txt", "mingw-w64.cmake", "include", "tempodeep"] {
+    for rel in [
+        "CMakeLists.txt",
+        "mingw-w64.cmake",
+        "android-arm64.cmake",
+        "include",
+        "tempodeep",
+    ] {
         emit_rerun_glob(&libtempo_src.join(rel));
     }
 

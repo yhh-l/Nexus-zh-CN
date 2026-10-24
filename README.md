@@ -558,3 +558,12 @@ contributions welcome — see **[CONTRIBUTING.md](CONTRIBUTING.md)** and the
 **[🌐 hamradiotools.io](https://hamradiotools.io)**
 
 </sub></div>
+
+### Experimental Android ARM64 work
+
+The Android port is in development; no installable APK is provided yet.
+See [Android engineering status](docs/android-arm64.md) for the acceptance
+matrix. Compilation and tests for this work run in GitHub Actions only.
+Thanks to the LLVM Project contributors for Flang/Flang-RT and to the FFTW
+contributors for the native Android cross-build dependencies. See `NOTICE`
+for provenance, declared licenses and the pending binary-distribution audit.

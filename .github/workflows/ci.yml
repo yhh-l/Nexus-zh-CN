@@ -124,6 +124,14 @@ jobs:
             ${{ runner.os }}-cargo-
 
 
+      - name: Set up Node for native Android build guards
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Test Android native toolchain and archive guards
+        run: node --test scripts/android-native.test.mjs
+
       - name: cargo fmt --check
         run: cargo fmt --all --check
 
@@ -664,6 +672,9 @@ jobs:
       # derives it and runs it, and the tool ends up gating its own correctness.
       - name: scripts/gates still derives the gate list from this workflow
         run: node --test scripts/gates.test.mjs
+
+      - name: Test Android ARM64 artifact and coverage guards
+        run: node --test scripts/android-arm64.test.mjs
 
       # release.yml keeps every secret out of the jobs that build or run third-party code
       # (FFTW, Hamlib, npm, crates.io, the AppImage tooling), signs the Windows and Linux

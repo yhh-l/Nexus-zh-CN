@@ -4,6 +4,21 @@
 # LLVM source provenance: official llvmorg-21.1.8 release, Apache-2.0 WITH LLVM-exception.
 # FFTW provenance: upstream 3.3.10 tarball, GPL-2.0-or-later (already used by Nexus).
 set -euo pipefail
+# FFTW generates fftw3.f03 in the out-of-tree BUILD directory and make install
+# installs it. The release tarball has api/fftw3.f03.in, not api/fftw3.f03.
+# Validation-only mode lets cloud regression tests exercise this actual guard
+# without downloading or compiling dependencies.
+require_fftw_interface() {
+  [[ -s "$1/include/fftw3.f03" ]] || {
+    echo 'FFTW make install did not produce a nonempty include/fftw3.f03' >&2
+    return 1
+  }
+}
+if [[ "${1:-}" == --check-fftw-interface && "$#" == 2 ]]; then
+  require_fftw_interface "$2"
+  exit 0
+fi
+[[ "$#" == 0 ]] || { echo 'Unexpected bootstrap arguments' >&2; exit 2; }
 [[ "$(uname -s)" == Linux && "$(uname -m)" == x86_64 ]] || {
   echo 'This bootstrap currently requires the Linux x86_64 GitHub runner.' >&2; exit 2;
 }
@@ -77,7 +92,7 @@ mkdir -p "$work/fftw-build"
   make -j2
   make install
 )
-install -m644 "$fftw/api/fftw3.f03" "$NEXUS_ANDROID_PREFIX/include/fftw3.f03"
+require_fftw_interface "$NEXUS_ANDROID_PREFIX"
 cmake -S "$llvm/runtimes" -B "$work/flang-build" -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake" \

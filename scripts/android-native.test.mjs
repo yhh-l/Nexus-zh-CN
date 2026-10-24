@@ -161,3 +161,26 @@ test('native bootstraps pin upstream inputs and never forge a compiler-success r
   assert.match(workflow, /--features radio,yaesu-wf/);
   assert.doesNotMatch(workflow, /NEXUS_ALLOW_MISSING_AICW|--no-default-features/);
 });
+test('FFTW bootstrap validates the installed interface, not an absent source-tree file', () => {
+  const prefix = path.join(TEMP, 'fftw-installed');
+  const include = path.join(prefix, 'include');
+  const script = path.join(ROOT, 'scripts', 'build-android-native.sh');
+  fs.mkdirSync(include, { recursive: true });
+  const check = () => run('bash', [script, '--check-fftw-interface', prefix]);
+  const missing = check();
+  assert.equal(missing.status, 1, missing.output);
+  assert.match(missing.output, /make install did not produce/);
+  // A template beside the real include path cannot satisfy the installed-file guard.
+  fs.writeFileSync(path.join(include, 'fftw3.f03.in'), '! fixture template\n');
+  assert.equal(check().status, 1);
+  const installed = path.join(include, 'fftw3.f03');
+  fs.writeFileSync(installed, '');
+  assert.equal(check().status, 1);
+  // This is a file-existence guard fixture, not Fortran or Android build evidence.
+  fs.writeFileSync(installed, '! synthetic installed interface fixture\n');
+  const present = check();
+  assert.equal(present.status, 0, present.output);
+  const bootstrap = fs.readFileSync(script, 'utf8');
+  assert.doesNotMatch(bootstrap, /install[^\n]*\$fftw\/api\/fftw3\.f03/);
+  assert.match(bootstrap, /require_fftw_interface "\$NEXUS_ANDROID_PREFIX"/);
+});

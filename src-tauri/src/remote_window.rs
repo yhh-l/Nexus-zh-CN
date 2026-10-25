@@ -52,15 +52,25 @@
 //! to the system browser, and this computer's own loopback and app hosts go nowhere. It asks the
 //! Remote service for nothing, so it opens with no internet. Same F11 and browser keys as above.
 
+#[cfg(windows)]
 use std::sync::{Arc, Mutex};
+#[cfg(windows)]
 use std::time::Duration;
 
+#[cfg(windows)]
 use tauri::webview::{NewWindowResponse, PageLoadEvent};
-use tauri::{Manager, Url, WebviewUrl, WebviewWindowBuilder};
+#[cfg(any(windows, test))]
+use tauri::Url;
+#[cfg(windows)]
+use tauri::{Manager, WebviewUrl, WebviewWindowBuilder};
 
+#[cfg(windows)]
 use crate::lan_client::{computer_name, typed_path, Origin, Reach, Stations};
+#[cfg(windows)]
 use crate::remote_service::vault::SystemVault;
+#[cfg(any(windows, test))]
 use crate::remote_service::REMOTE_ORIGIN;
+#[cfg(windows)]
 use crate::window_state;
 
 /// The window's label. In no capability's `windows` list, so it gets nothing even as a local page.
@@ -71,29 +81,37 @@ pub const LAN_LABEL: &str = "lan-stations";
 
 /// The languages the Stations on this network window's page can be opened in: the catalogs it
 /// ships with.
+#[cfg(windows)]
 const LOCALES: [&str; 5] = ["en", "de", "es", "fr", "ja"];
 
 /// Opening size, in logical px: room for the shack's window and the page's own controls.
+#[cfg(windows)]
 const DEFAULT_INNER: (f64, f64) = (1280.0, 800.0);
 
 /// The smallest the window can be dragged to. The page lays itself out down to a phone's width, so
 /// this only keeps the window a window.
+#[cfg(any(windows, test))]
 pub(crate) const MIN_INNER: (f64, f64) = (640.0, 480.0);
 
 /// The Remote service did not answer with a sign-in issuer. Fixed codes, like the station
 /// transport's: an HTTP error's own text can carry a URL.
+#[cfg(windows)]
 const UNREACHABLE: &str = "remoteUnreachable";
 
 /// The service answered, but the window itself could not be made.
+#[cfg(windows)]
 const NOT_OPENED: &str = "remoteWindowFailed";
 
 /// The answer on Linux and macOS, where the window is not offered (see the module header).
+#[cfg(not(windows))]
 const UNAVAILABLE: &str = "remoteWindowUnavailable";
 
 /// The service's public settings are a few hundred bytes; anything past this is not them.
+#[cfg(windows)]
 const CONFIG_LIMIT: usize = 16384;
 
 /// What the window does with an address.
+#[cfg(any(windows, test))]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum Route {
     /// Show it here.
@@ -114,6 +132,7 @@ enum Route {
 ///   steps of a sign-in or sign-out, and ends when it lands back on the Remote page. A host that
 ///   is the app's own (`localhost`, `*.localhost`) never opens here.
 /// - Everything else, a link from the Remote page included: the system browser.
+#[cfg(any(windows, test))]
 fn route(target: &Url, from: Option<&Url>, issuer: &Url) -> Route {
     if !matches!(target.scheme(), "http" | "https") {
         return Route::Refuse;
@@ -134,6 +153,7 @@ fn route(target: &Url, from: Option<&Url>, issuer: &Url) -> Route {
 
 /// Where a request for a NEW window goes (`target="_blank"`, `window.open`): never a window of
 /// this app. A web address goes to the system browser, anything else nowhere.
+#[cfg(any(windows, test))]
 fn route_new_window(target: &Url) -> Route {
     if matches!(target.scheme(), "http" | "https") {
         Route::SystemBrowser
@@ -146,6 +166,7 @@ fn route_new_window(target: &Url) -> Route {
 /// opened at: its own page's origin here; any other web page to the system browser, except this
 /// computer's own hosts (loopback, `localhost`, `*.localhost`), which go nowhere; and everything
 /// that is not a web page nowhere.
+#[cfg(any(windows, test))]
 fn route_lan(target: &Url, page: &Url) -> Route {
     if !matches!(target.scheme(), "http" | "https") {
         return Route::Refuse;
@@ -170,12 +191,14 @@ fn route_lan(target: &Url, page: &Url) -> Route {
 }
 
 /// [`REMOTE_ORIGIN`] as a URL.
+#[cfg(any(windows, test))]
 fn remote_url() -> Url {
     Url::parse(REMOTE_ORIGIN).expect("REMOTE_ORIGIN is a URL")
 }
 
 /// The issuer the service publishes, as the page itself accepts it (`client.ts`): https, with no
 /// credentials, query or fragment. `None` for anything else, and the window then does not open.
+#[cfg(any(windows, test))]
 fn issuer_origin(issuer: &str) -> Option<Url> {
     let url = Url::parse(issuer).ok()?;
     let plain = url.scheme() == "https"
@@ -190,6 +213,7 @@ fn issuer_origin(issuer: &str) -> Option<Url> {
 /// Ask the Remote service for its sign-in issuer (`GET /api/remote/config`, public, no
 /// credentials). Asked at every open, so the service can change its sign-in provider without a
 /// Nexus release.
+#[cfg(windows)]
 async fn sign_in_issuer() -> Result<Url, String> {
     let client = reqwest::Client::builder()
         .https_only(true)
@@ -218,6 +242,7 @@ async fn sign_in_issuer() -> Result<Url, String> {
 
 /// Hand a web address to the operator's default browser. Off this thread: it is called from
 /// inside WebView2's own navigation event, which must not wait on the shell.
+#[cfg(windows)]
 fn open_in_browser(app: &tauri::AppHandle, url: &Url) {
     use tauri_plugin_opener::OpenerExt;
     let (app, url) = (app.clone(), url.to_string());
@@ -233,6 +258,7 @@ fn open_in_browser(app: &tauri::AppHandle, url: &Url) {
 /// nothing. A listener on `document` hears the click first, and the plugin leaves a cancelled click
 /// alone. Same clicks as the plugin's: the main button on a link with `target="_blank"`, or with
 /// Ctrl or Shift held, and no Alt or Meta.
+#[cfg(windows)]
 const NEW_WINDOW_LINKS: &str = r#"(function () {
   document.addEventListener('click', function (e) {
     if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.altKey) return;
@@ -326,12 +352,16 @@ pub async fn open_remote_stations_window(app: tauri::AppHandle) -> Result<(), St
 /// The loopback origin the Stations on this network window's page comes from, while the window is
 /// open.
 #[derive(Default)]
-pub struct LanOrigin(Mutex<Option<Origin>>);
+pub struct LanOrigin {
+    #[cfg(windows)]
+    origin: Mutex<Option<Origin>>,
+}
 
 /// What the window's page can reach: the app's own embedded files (the same the main window
 /// loads, so nothing is read from disk and nothing can differ from the shipped page), this
 /// computer's paired stations in the OS credential store, and the stations Windows' own DNS-SD
 /// finds by name; and signing in with the station's account, through the system browser.
+#[cfg(windows)]
 fn reach(app: &tauri::AppHandle) -> Reach {
     let files = app.clone();
     let stations = Arc::new(
@@ -423,7 +453,7 @@ pub async fn open_lan_stations_window(
             return Ok(());
         }
         let page = {
-            let mut running = origin.0.lock().map_err(|_| NOT_OPENED)?;
+            let mut running = origin.origin.lock().map_err(|_| NOT_OPENED)?;
             if running.is_none() {
                 *running = Some(Origin::start(reach(&app)).map_err(|_| NOT_OPENED)?);
             }
@@ -460,7 +490,7 @@ pub async fn open_lan_stations_window(
         let window = match window {
             Ok(window) => window,
             Err(_) => {
-                if let Ok(mut running) = origin.0.lock() {
+                if let Ok(mut running) = origin.origin.lock() {
                     running.take();
                 }
                 return Err(NOT_OPENED.into());
@@ -472,7 +502,7 @@ pub async fn open_lan_stations_window(
         window.on_window_event(move |event| {
             if matches!(event, tauri::WindowEvent::Destroyed) {
                 if let Some(origin) = closing.try_state::<LanOrigin>() {
-                    if let Ok(mut running) = origin.0.lock() {
+                    if let Ok(mut running) = origin.origin.lock() {
                         running.take();
                     }
                 }

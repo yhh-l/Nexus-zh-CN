@@ -491,6 +491,7 @@ fn remote_path() -> std::path::PathBuf {
 /// The open decision, pure: the record at `path` clamped against the monitors attached now.
 /// `None` on a first open or for a record with no believable box: the caller opens at its
 /// default size, fitted to the work area and centred.
+#[cfg(any(windows, test))]
 fn restore_remote_from(
     path: &std::path::Path,
     monitors: &[WorkArea],
@@ -514,6 +515,7 @@ fn capture_remote_from(
 }
 
 /// What opening the Remote stations window should do, against the monitors attached now.
+#[cfg(windows)]
 pub(crate) fn restore_remote(app: &tauri::AppHandle, min: (f64, f64)) -> Option<geom::Restored> {
     let (all, primary) = monitors(app);
     restore_remote_from(&remote_path(), &all, primary, min)
@@ -539,6 +541,7 @@ pub(crate) fn capture_remote(window: &tauri::WebviewWindow) {
 /// Arm the save-on-close on the Remote stations window, on the window itself
 /// ([`arm_panel_capture`]'s shape). Closing the main window closes this one with `close()`, which
 /// sends `CloseRequested` first, so that close is caught too.
+#[cfg(windows)]
 pub(crate) fn arm_remote_capture(window: &tauri::WebviewWindow) {
     let w = window.clone();
     window.on_window_event(move |event| {

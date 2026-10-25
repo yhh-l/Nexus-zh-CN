@@ -10,6 +10,11 @@ on:
       - src-tauri/src/android_storage.rs
       - src-tauri/src/lib.rs
       - scripts/android-platform.test.mjs
+      - src-tauri/src/client_mode/tests.rs
+      - src-tauri/src/client_mode/station_boundary.rs
+      - src-tauri/src/login_start.rs
+      - src-tauri/src/remote_window.rs
+      - src-tauri/src/window_state.rs
 
 permissions:
   contents: read
@@ -38,6 +43,10 @@ jobs:
           node-version: 24
       - name: Verify startup ordering and source-boundary negative controls
         run: node --test scripts/android-platform.test.mjs
+      - name: Run the actual client-mode station-isolation guards with adapter negative controls
+        run: |
+          rustc --edition=2021 --test src-tauri/src/client_mode/station_boundary.rs --crate-name client_station_boundary -o "$RUNNER_TEMP/client-station-boundary-tests"
+          "$RUNNER_TEMP/client-station-boundary-tests"
       - name: Run actual private-storage filesystem tests (host, not Android execution)
         run: |
           rustc --edition=2021 --test src-tauri/src/android_storage.rs --crate-name android_storage_policy -o "$RUNNER_TEMP/android-storage-tests"

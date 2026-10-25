@@ -111,8 +111,17 @@ const answers: Record<string, () => unknown> = {
   get_propagation: () => null,
   dxcc_entity_locations: () => Object.entries(CENTROIDS).map(([name, [lat, lon]]) => [name, lat, lon]),
 }
+// Native-panel probe commands stop here, at the synthetic IPC boundary. They never reach RF.
+const panelProbe = params.get('androidPanel') === '1'
+const panelCalls: { cmd: string; args: unknown }[] = []
+;(window as unknown as { __androidPanelCalls: typeof panelCalls }).__androidPanelCalls = panelCalls
 window.__TAURI_INTERNALS__ = {
-  invoke: <T,>(cmd: string): Promise<T> => {
+  invoke: <T,>(cmd: string, args?: unknown): Promise<T> => {
+    if (panelProbe) panelCalls.push({ cmd, args })
+    if (panelProbe && (cmd === 'halt_tx' || cmd === 'close_panel_window')) {
+      if (cmd === 'close_panel_window' && params.get('holdClose') === '1') return new Promise<T>(() => {})
+      return Promise.resolve((cmd === 'halt_tx' ? snapshot : undefined) as T)
+    }
     if (cmd in answers) return Promise.resolve(answers[cmd]() as T)
     return Promise.reject(new Error(`${cmd} is not answered in the Spots window probe`))
   },

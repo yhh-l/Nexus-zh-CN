@@ -1,0 +1,61 @@
+# Real product DetachedPanel + Chrome boxes/hit-testing, with synthetic station IPC only.
+# This is NOT Android WebView, Tauri Activity lifecycle, APK, device or RF acceptance.
+name: Android panel shell browser proof
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-panel-browser.yml
+      - ui/probe/android-panel-probe.mjs
+      - ui/probe/spots.html
+      - ui/src/probe/spots.tsx
+      - ui/src/components/AndroidPanelBar*
+      - ui/src/DetachedPanel.tsx
+      - ui/src/cockpit-panes.css
+      - ui/src/styles.css
+      - ui/src/useScale.ts
+      - ui/package*.json
+      - remote/test/browser-runtime.mjs
+      - remote/package*.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-panel-browser-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  native-route-shell:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact branch source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Use cloud Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Install locked UI and existing browser runtime dependencies
+        run: |
+          npm --prefix ui ci
+          npm --prefix remote ci
+      - name: Test actual toolbar behavior, cascade and structural isolation
+        run: npm --prefix ui test -- src/components/AndroidPanelBar.test.tsx src/cockpit-panes.test.ts
+      - name: Typecheck the actual complete UI, including the probe fixture
+        working-directory: ui
+        run: npm exec -- tsc -b
+      - name: Measure and physically click the actual panel toolbar in Chrome
+        run: node ui/probe/android-panel-probe.mjs
+      - name: Preserve real pixel captures and measurements, never an APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-panel-shell-browser-proof
+          path: ui/probe-artifacts/android-panel/
+          if-no-files-found: warn
+          retention-days: 7

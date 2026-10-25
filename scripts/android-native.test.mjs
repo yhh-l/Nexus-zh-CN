@@ -7,7 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
-import { modemOutput, inspectSharedObject, neededLibraries } from './android-native-link.mjs';
+import { modemOutput, inspectSharedObject, neededLibraries, inspectFftwArchive, FFTW_LEGACY_SYMBOLS } from './android-native-link.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TEMP = fs.mkdtempSync(path.join(os.tmpdir(), 'nexus-android-native-'));
@@ -183,4 +183,50 @@ test('FFTW bootstrap validates the installed interface, not an absent source-tre
   const bootstrap = fs.readFileSync(script, 'utf8');
   assert.doesNotMatch(bootstrap, /install[^\n]*\$fftw\/api\/fftw3\.f03/);
   assert.match(bootstrap, /require_fftw_interface "\$NEXUS_ANDROID_PREFIX"/);
+});
+
+// Synthetic ELF headers exercise the refusal/positive-control paths only.
+// They are never build artifacts or evidence of a working Android FFTW library.
+function fftwArchiveFixture(machine = 183) {
+  const object = Buffer.alloc(64);
+  object.set([0x7f, 0x45, 0x4c, 0x46, 2, 1, 1]);
+  object.writeUInt16LE(1, 16);
+  object.writeUInt16LE(machine, 18);
+  object.writeUInt32LE(1, 20);
+  const header = 'fftw.o/'.padEnd(16) + '0'.padEnd(12) + '0'.padEnd(6) +
+    '0'.padEnd(6) + '100644'.padEnd(8) + String(object.length).padEnd(10) + '`\n';
+  return Buffer.concat([Buffer.from('!<arch>\n'), Buffer.from(header), object]);
+}
+function fftwSymbolsFixture() {
+  return FFTW_LEGACY_SYMBOLS.map((name) => `${name} T 0 10`).join('\n');
+}
+test('FFTW ABI positive control requires actual AArch64 members and every legacy definition', () => {
+  const result = inspectFftwArchive(fftwArchiveFixture(), fftwSymbolsFixture());
+  assert.equal(result.elfObjects, 1);
+  assert.deepEqual(result.legacySymbols, [...FFTW_LEGACY_SYMBOLS]);
+});
+test('FFTW ABI guard reports each missing definition instead of waiting for a modem link failure', () => {
+  for (const name of FFTW_LEGACY_SYMBOLS) {
+    for (const replacement of ['', `${name} U`, `${name} t 0 10`, `${name}_ T 0 10`]) {
+      const symbols = fftwSymbolsFixture().replace(`${name} T 0 10`, replacement);
+      assert.throws(() => inspectFftwArchive(fftwArchiveFixture(), symbols), (error) => {
+        assert.match(error.message, /legacy Fortran ABI is incomplete/);
+        assert(error.message.includes(name));
+        assert.match(error.message, /--enable-fortran/);
+        return true;
+      });
+    }
+  }
+  assert.throws(() => inspectFftwArchive(fftwArchiveFixture(), 'fftwf_execute T 0 10'), /sfftw_execute_/);
+});
+test('FFTW ABI guard cannot approve a foreign archive just because its symbol names look correct', () => {
+  assert.throws(() => inspectFftwArchive(fftwArchiveFixture(62), fftwSymbolsFixture()), /other than ELF64/);
+  assert.throws(() => inspectFftwArchive(Buffer.from('MZ'), fftwSymbolsFixture()), /not a regular ar archive/);
+});
+test('Android FFTW bootstrap enables the real wrappers and checks them before building the runtime', () => {
+  const source = fs.readFileSync(path.join(ROOT, 'scripts', 'build-android-native.sh'), 'utf8');
+  assert.match(source, /--enable-neon --enable-fortran/);
+  assert.doesNotMatch(source, /--disable-fortran/);
+  const check = source.indexOf('node "$root/scripts/android-native-link.mjs" --check-fftw');
+  assert(check >= 0 && check < source.indexOf('cmake -S "$llvm/runtimes"'));
 });

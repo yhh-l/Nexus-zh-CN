@@ -264,3 +264,31 @@ Desktop-only Rust plugin/window APIs, the runtime's 900x600 window-size call,
 Android-private early data-directory initialization and lifecycle/device APIs
 still need adaptation and real cloud compilation. No new third-party runtime,
 credential handling or transmit operation is introduced by this preparation.
+
+## Legacy FFTW ABI link failure and source repair (not yet cloud-validated)
+
+Runs `40148958506` and `40149525151` got past the interface installation
+failure and compiled the real modem, but the whole-modem link rejected five
+undefined `sfftw_*` symbols from `four2a.f90`. The dependency bootstrap explicitly
+passed `--disable-fortran`. In upstream FFTW 3.3.10, the legacy Fortran-callable
+entry points are C wrappers; installing `fftw3.f03` does not supply them.
+
+The pending repair selects `--enable-fortran`, retaining the NDK C compiler,
+static single-precision library, PIC and NEON options. Any configure-time F77
+mangling probes are not app/runtime objects. FFTW's real C wrapper implementations
+must be compiled into the NDK archive; no handwritten symbol stubs, host archive
+fallback or relaxed linker checks are introduced.
+
+The bootstrap now inspects every archive member for AArch64 ELF64 and checks
+NDK `llvm-nm` output for all five exact public definitions before building the
+Flang runtime. The whole-modem link repeats the same check, keeps
+`--no-undefined` and the Android dependency/16 KiB checks, and records the FFTW
+ABI evidence in its successful report. An early failure lists missing entry
+points explicitly instead of waiting until the final modem link.
+
+Cloud-wired regression tests cover valid synthetic archive/symbol controls,
+each missing definition, undefined/local/double-underscored substitutes, modern
+C-only symbols and a foreign architecture. Synthetic fixtures are not binary
+build or execution evidence. These new tests and the repaired dependency build
+have not run locally or in GitHub Actions yet. Full backend, APK and S25 Ultra
+runtime/RF acceptance remain unproven.

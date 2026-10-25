@@ -82,17 +82,24 @@ FORTRAN
 "$ndkbin/llvm-readelf" --file-header "$work/frontend-probe.o" > "$work/frontend-probe.txt"
 grep -F AArch64 "$work/frontend-probe.txt" >/dev/null
 
+# The legacy sfftw_* entry points are upstream C wrappers, not Fortran runtime
+# objects. Let configure enable/detect them (or use upstream default mangling).
+# Any F77 detection is configure-only: every shipped FFTW object is built by the
+# NDK C compiler above, and the archive/ABI check below refuses foreign objects.
 mkdir -p "$work/fftw-build"
 (
   cd "$work/fftw-build"
   CC="$CC_aarch64_linux_android" AR="$AR_aarch64_linux_android" RANLIB="$ndkbin/llvm-ranlib" \
     CFLAGS='-O3 -fPIC' "$fftw/configure" --host=aarch64-linux-android \
       --prefix="$NEXUS_ANDROID_PREFIX" --enable-float --enable-static --disable-shared \
-      --with-pic --enable-neon --disable-fortran --disable-doc
+      --with-pic --enable-neon --enable-fortran --disable-doc
   make -j2
   make install
 )
 require_fftw_interface "$NEXUS_ANDROID_PREFIX"
+# Check real definitions before spending time on the runtime/modem build.
+node "$root/scripts/android-native-link.mjs" --check-fftw \
+  "$NEXUS_ANDROID_PREFIX/lib/libfftw3f.a" "$ndkbin/llvm-nm"
 cmake -S "$llvm/runtimes" -B "$work/flang-build" -G Ninja \
   -DCMAKE_BUILD_TYPE=Release \
   -DCMAKE_TOOLCHAIN_FILE="$ANDROID_NDK_HOME/build/cmake/android.toolchain.cmake" \

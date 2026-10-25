@@ -68,6 +68,34 @@ function run(program, args) {
   if (result.status !== 0) throw new Error(`${program} exited ${result.status}\n${result.stdout}${result.stderr}`);
   return result.stdout;
 }
+// These exact legacy symbols are called by the real four2a.f90 modem, unlike
+// the separate FFTW3 ISO_C_BINDING interface installed as fftw3.f03.
+export const FFTW_LEGACY_SYMBOLS = Object.freeze([
+  'sfftw_destroy_plan_', 'sfftw_plan_dft_1d_', 'sfftw_plan_dft_r2c_1d_',
+  'sfftw_execute_', 'sfftw_plan_dft_c2r_1d_',
+]);
+export function inspectFftwArchive(bytes, nmOutput) {
+  const archive = inspectArchive(bytes);
+  // llvm-nm --format=posix --defined-only --extern-only: name type value size.
+  // An undefined, local, double-underscored or similarly named symbol is NOT
+  // an implementation of the ABI our actual Flang-compiled modem requests.
+  const definitions = new Set(nmOutput.split(/\r?\n/).flatMap((line) => {
+    const match = line.trim().match(/^(\S+)\s+T\s+[0-9a-fA-F]+(?:\s|$)/);
+    return match ? [match[1]] : [];
+  }));
+  const missing = FFTW_LEGACY_SYMBOLS.filter((name) => !definitions.has(name));
+  if (missing.length) {
+    throw new Error(`Android FFTW legacy Fortran ABI is incomplete: missing ${missing.join(', ')}. ` +
+      'Rebuild the NDK static FFTW library with --enable-fortran; fftw3.f03 alone is not an implementation. ' +
+      'Do not substitute a desktop library or allow unresolved modem symbols.');
+  }
+  return { ...archive, legacySymbols: [...FFTW_LEGACY_SYMBOLS] };
+}
+export function checkFftwArchive(archive, nm) {
+  return inspectFftwArchive(fs.readFileSync(archive),
+    run(nm, ['--format=posix', '--defined-only', '--extern-only', archive]));
+}
+
 export function linkModem(input = path.join(ROOT, 'target', 'android-native-build.jsonl')) {
   if (process.platform !== 'linux' || process.arch !== 'x64') throw new Error('Native link probe currently requires the Linux x86_64 runner');
   const ndk = process.env.ANDROID_NDK_HOME;
@@ -82,6 +110,7 @@ export function linkModem(input = path.join(ROOT, 'target', 'android-native-buil
   const archive = modemOutput(messages);
   const objects = inspectArchive(fs.readFileSync(archive)).elfObjects;
   const bin = path.join(ndk, 'toolchains', 'llvm', 'prebuilt', 'linux-x86_64', 'bin');
+  const fftw = checkFftwArchive(path.join(prefix, 'lib', 'libfftw3f.a'), path.join(bin, 'llvm-nm'));
   const library = path.join(output, 'libnexus_modem_probe.so');
   run(path.join(bin, 'clang++'), [
     '--target=aarch64-linux-android35', '-shared', '-fPIC', '-static-libstdc++',
@@ -93,7 +122,7 @@ export function linkModem(input = path.join(ROOT, 'target', 'android-native-buil
   const result = {
     schemaVersion: 1, target: TARGET, api: 35, milestone: 'whole-modem-native-link',
     fullApplicationBuilt: false, apkProduced: false, deviceTested: false,
-    sourceArchiveObjects: objects, ...inspectSharedObject(bytes),
+    fftw, sourceArchiveObjects: objects, ...inspectSharedObject(bytes),
     neededLibraries: neededLibraries(run(path.join(bin, 'llvm-readelf'), ['--dynamic-table', library])),
     bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex'),
   };
@@ -102,6 +131,13 @@ export function linkModem(input = path.join(ROOT, 'target', 'android-native-buil
   return result;
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  try { linkModem(process.argv[2]); }
+  try {
+    if (process.argv[2] === '--check-fftw') {
+      if (process.argv.length !== 5) throw new Error('Usage: --check-fftw ARCHIVE LLVM_NM');
+      console.log(JSON.stringify(checkFftwArchive(process.argv[3], process.argv[4]), null, 2));
+    } else {
+      linkModem(process.argv[2]);
+    }
+  }
   catch (error) { console.error(error.message); process.exitCode = 1; }
 }

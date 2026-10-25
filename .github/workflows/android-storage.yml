@@ -8,6 +8,7 @@ on:
     paths:
       - .github/workflows/android-storage.yml
       - src-tauri/src/android_storage.rs
+      - src-tauri/src/android_downloads.rs
       - src-tauri/src/android_folder_picker/**
       - src-tauri/src/android_panels/**
       - src-tauri/gen/android/**
@@ -290,6 +291,39 @@ jobs:
           from pathlib import Path
           import xml.etree.ElementTree as ET
           suite = ET.parse(Path('build/test-results/testDebugUnitTest/TEST-com.kd9taw.tempo.NexusUsbLaunchActivityTest.xml')).getroot()
+          assert int(suite.get('tests', '0')) == 1
+          assert int(suite.get('failures', '0')) == 1 and int(suite.get('errors', '0')) == 0
+          assert suite.find('testcase/failure').get('type') == 'java.lang.AssertionError'
+          PY
+          restore
+      - name: Prove corrupt Downloads readback is refused before publishing
+        working-directory: scripts/android-folder-harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          source="$GITHUB_WORKSPACE/src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusDownloads.kt"
+          backup=$(mktemp "$RUNNER_TEMP/nexus-downloads.XXXXXX")
+          cp "$source" "$backup"
+          restore() { cp "$backup" "$source"; }
+          trap restore EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('../../src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusDownloads.kt')
+          text = source.read_text()
+          needle = '      verify(context, uri, bytes)'
+          assert text.count(needle) == 1, 'Mutation must target actual export readback'
+          source.write_text(text.replace(needle, '      // negative control: readback removed'))
+          PY
+          set +e
+          bash ./gradlew --no-daemon --stacktrace testDebugUnitTest --tests '*NexusDownloadsTest.corruptedReadbackNeverPublishesAndDeletesThePendingDocument' > "$RUNNER_TEMP/downloads-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/downloads-negative.log"
+          test "$status" -ne 0
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          suite = ET.parse(Path('build/test-results/testDebugUnitTest/TEST-com.kd9taw.tempo.NexusDownloadsTest.xml')).getroot()
           assert int(suite.get('tests', '0')) == 1
           assert int(suite.get('failures', '0')) == 1 and int(suite.get('errors', '0')) == 0
           assert suite.find('testcase/failure').get('type') == 'java.lang.AssertionError'

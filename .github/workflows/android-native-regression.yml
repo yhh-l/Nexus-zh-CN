@@ -16,6 +16,7 @@ on:
       - src-tauri/src/lib.rs
       - src-tauri/src/android_panels/**
       - src-tauri/src/android_ft4222.rs
+      - src-tauri/src/android_downloads.rs
       - crates/tempo-audio/src/yaesu_wf.rs
       - crates/tempo-audio/src/yaesu_wf/**
       - src-tauri/src/window_state.rs

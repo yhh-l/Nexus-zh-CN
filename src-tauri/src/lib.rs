@@ -36,6 +36,9 @@ mod account_sign_in;
 /// One alert, made in Rust where it is raised, with its id and a versioned shape: what every window
 /// and a computer driving the station hear.
 mod alert;
+/// Explicit, verified public Downloads exports; no private root or settings changes.
+#[cfg(target_os = "android")]
+mod android_downloads;
 /// Android-native local folder selection; desktop keeps its existing OS dialog.
 #[cfg(target_os = "android")]
 mod android_folder_picker;
@@ -14854,28 +14857,38 @@ async fn export_log_for_activation(
 /// browser trick is unreliable in a WebView2 window (a synchronous URL revoke can abort the write,
 /// and a silent save to an unknown folder gives the operator no confidence it worked). A real Rust
 /// write to a known path, echoed back as a toast, is dependable and visible. `filename` is reduced
-/// to its bare name so it can never escape Downloads.
-#[tauri::command]
+/// to its bare name so it can never escape Downloads on desktop. Android requires a safe bare
+/// name and returns a verified, newly published MediaStore content URI in Download/Nexus.
+/// Disk/provider I/O runs off the UI thread and never takes the station Engine lock.
+#[tauri::command(async)]
 fn save_text_to_downloads(
     app: tauri::AppHandle,
     filename: String,
     text: String,
 ) -> Result<String, String> {
-    use tauri::Manager;
-    let name = std::path::Path::new(&filename)
-        .file_name()
-        .and_then(|n| n.to_str())
-        .filter(|n| !n.is_empty())
-        .ok_or("Invalid file name")?;
-    let dir = app
-        .path()
-        .download_dir()
-        .or_else(|_| app.path().home_dir())
-        .map_err(|e| format!("Could not locate your Downloads folder: {e}"))?;
-    std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-    let path = dir.join(name);
-    std::fs::write(&path, text).map_err(|e| format!("Could not write {}: {e}", path.display()))?;
-    Ok(path.display().to_string())
+    #[cfg(target_os = "android")]
+    {
+        let _ = app;
+        android_downloads::save(&filename, text.as_bytes(), "text/plain")
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        use tauri::Manager;
+        let name = std::path::Path::new(&filename)
+            .file_name()
+            .and_then(|n| n.to_str())
+            .filter(|n| !n.is_empty())
+            .ok_or("Invalid file name")?;
+        let dir = app
+            .path()
+            .download_dir()
+            .or_else(|_| app.path().home_dir())
+            .map_err(|e| format!("Could not locate your Downloads folder: {e}"))?;
+        std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        let path = dir.join(name);
+        std::fs::write(&path, text).map_err(|e| format!("Could not write {}: {e}", path.display()))?;
+        Ok(path.display().to_string())
+    }
 }
 
 /// Binary sibling of [`save_text_to_downloads`] for the Journey share card's PNG: on macOS
@@ -14883,28 +14896,37 @@ fn save_text_to_downloads(
 /// `shouldPerformDownload` → Cancel), so the blob-anchor fallback silently produced no file
 /// while the UI toasted success. The webview sends the PNG as standard base64 (the same
 /// wire shape as the SSTV transmit's RGB) and gets back the FULL saved path for its toast.
-#[tauri::command]
+#[tauri::command(async)]
 fn save_png_to_downloads(
     app: tauri::AppHandle,
     filename: String,
     base64: String,
 ) -> Result<String, String> {
-    use tauri::Manager;
-    let name = std::path::Path::new(&filename)
-        .file_name()
-        .and_then(|n| n.to_str())
-        .filter(|n| !n.is_empty())
-        .ok_or("Invalid file name")?;
-    let bytes = b64_decode(&base64)?;
-    let dir = app
-        .path()
-        .download_dir()
-        .or_else(|_| app.path().home_dir())
-        .map_err(|e| format!("Could not locate your Downloads folder: {e}"))?;
-    std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
-    let path = dir.join(name);
-    std::fs::write(&path, bytes).map_err(|e| format!("Could not write {}: {e}", path.display()))?;
-    Ok(path.display().to_string())
+    #[cfg(target_os = "android")]
+    {
+        let _ = app;
+        let bytes = b64_decode(&base64)?;
+        android_downloads::save(&filename, &bytes, "image/png")
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        use tauri::Manager;
+        let name = std::path::Path::new(&filename)
+            .file_name()
+            .and_then(|n| n.to_str())
+            .filter(|n| !n.is_empty())
+            .ok_or("Invalid file name")?;
+        let bytes = b64_decode(&base64)?;
+        let dir = app
+            .path()
+            .download_dir()
+            .or_else(|_| app.path().home_dir())
+            .map_err(|e| format!("Could not locate your Downloads folder: {e}"))?;
+        std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
+        let path = dir.join(name);
+        std::fs::write(&path, bytes).map_err(|e| format!("Could not write {}: {e}", path.display()))?;
+        Ok(path.display().to_string())
+    }
 }
 
 /// Arm or disarm the native CI-V bus diagnostic log. When enabled, every byte the CI-V

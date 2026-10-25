@@ -39,3 +39,8 @@
     public byte[][] readRaw();
     public void close();
 }
+
+# The explicit background export command resolves this original transport via JNI.
+-keep class com.kd9taw.tempo.NexusDownloads {
+    public static java.lang.String save(android.content.Context, java.lang.String, byte[], java.lang.String);
+}

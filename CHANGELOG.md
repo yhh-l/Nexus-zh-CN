@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android explicit log/text and share-card exports can use public Downloads.** New documents
+  are written and read back in a background worker before publication; a failed export is not
+  reported as saved, and existing files are not overwritten. Private station data and desktop
+  export destinations are unchanged. NEEDS-BENCH: real MediaStore/JNI, device Files visibility,
+  reopening exported bytes and survival after uninstall; not an installable APK announcement.
 - **Android cold launch can ask for FT-710 USB scope access before the station starts.**
   A private native screen requests Android permission only after a device button is pressed,
   rechecks actual OS authority, respects denial and preserves a pending request over rotation.

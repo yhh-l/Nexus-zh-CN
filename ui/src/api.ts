@@ -2237,8 +2237,9 @@ export async function setSkipTx1(enabled: boolean, context?: FtRuntimeGesture): 
   await invoke('set_skip_tx1', { enabled, ...ftRuntimeArgs(context) })
 }
 
-/** Write text to the operator's Downloads folder; returns the full saved path. Reliable in a
- *  WebView2 window where a browser `<a download>` blob may silently fail. */
+/** Write text to Downloads; returns a full desktop path or Android MediaStore content URI.
+ *  Android creates a new Download/Nexus document and verifies bytes before publication.
+ *  Reliable in a WebView2 window where a browser `<a download>` blob may silently fail. */
 export async function saveTextToDownloads(filename: string, text: string): Promise<string> {
   return invoke<string>('save_text_to_downloads', { filename, text })
 }

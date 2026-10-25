@@ -489,3 +489,26 @@ security audit, URI grant/provider-path review, permission-flow proof, signature
 installation, license/source-compliance or S25 Ultra acceptance. Those report
 flags remain false until separately verified. Audit subprocesses have bounded
 timeouts and missing decoder tools are a failure, not a silent skip.
+### Explicit public Downloads export (runtime validation pending)
+
+The existing text/PNG save commands now run off the UI thread. Desktop retains
+its existing filesystem write. Android uses an original MediaStore transport to
+create a new pending document in `Download/Nexus`, close its writer, read back
+and compare every byte (including length), and only then publish the document.
+The return value is the real `content://` URI, never a fabricated filesystem
+path. Existing documents are not opened for overwrite; failures attempt to
+remove the newly created pending row and never return success. Invalid names
+and unknown content types fail before provider access. No storage-wide grant,
+settings/credential change, automatic upload, permission modal or station/TX
+operation is introduced. Private app-data roots remain unchanged.
+
+The cloud framework harness compiles the actual Kotlin exporter and uses a
+test-only MediaStore provider with real temporary file descriptors. It checks
+text/PNG/multi-chunk/empty exports, collision preservation, corrupt/short/long
+readback, create/write/read/publish refusal, name validation and UI-thread refusal.
+A failing-first mutation removes actual readback and must trip the corruption
+test before the original source and full suite are restored. This is not real
+Android MediaStore/JNI/Downloads-app or S25 Ultra evidence. Genuine APK target
+compilation and device export/reopen/uninstall-survival checks remain required.
+SAF document selection/import and complete public backup workflows remain
+separate missing work; this export does not claim to implement them.

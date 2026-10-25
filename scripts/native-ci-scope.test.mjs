@@ -1,5 +1,9 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import { spawnSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
 import { test } from 'node:test';
 import { dependencies, verifySummary } from './native-ci-scope.mjs';
 
@@ -14,15 +18,43 @@ test('native setup is extracted from actual CI, including changes rather than a 
   assert.throws(() => dependencies(workflow.replace(/(  test-tauri:[\s\S]*?)Install libtempo build dependencies/, '$1changed setup')));
 });
 
-const good = `Nexus gates — current workflow
-ran 2  passed 2  failed 0  skipped 0
-SELECTED GATES PASSED — all 2 of them.
-SCOPED to --job test-tauri: other jobs were NOT run.
-every gate that ran:
-  PASS  exit 0  Rust src-tauri + native Remote :: actual test (00-test.log)
-  PASS  exit 0  Rust src-tauri + native Remote :: actual lint (01-lint.log)
-`;
+// Generate the positive control with the actual gate runner. A hand-written summary had
+// one space where the real runner emits two, so it never tested the real wire format.
+function actualPassingSummary() {
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'native-ci-summary-'));
+  const source = path.join(tmp, 'workflow.yml');
+  fs.writeFileSync(source, `name: scoped-positive-control
+on: [push]
+jobs:
+  test-tauri:
+    name: Rust src-tauri + native Remote
+    runs-on: ubuntu-latest
+    steps:
+      - name: actual test
+        run: echo first-control-ran
+      - name: actual lint
+        run: echo second-control-ran
+  unrelated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: not selected
+        run: echo not-selected
+`);
+  const env = { ...process.env, GATES_LOG_DIR: path.join(tmp, 'logs') };
+  delete env.NODE_TEST_CONTEXT;
+  const root = fileURLToPath(new URL('../', import.meta.url));
+  const result = spawnSync(process.execPath,
+    [path.join(root, 'scripts/gates'), '--workflow', source, '--job', 'test-tauri', '--allow-partial'],
+    { cwd: root, env, encoding: 'utf8' });
+  assert.equal(result.status, 0, result.stdout + result.stderr);
+  const summaryPath = result.stdout.match(/^summary: (.+)$/m)?.[1];
+  assert(summaryPath, 'Actual gate runner must produce its named summary');
+  const summary = fs.readFileSync(summaryPath, 'utf8');
+  assert.match(summary, /^ran 2  passed 2  failed 0  skipped 0$/m);
+  return summary;
+}
 test('scope acceptance rejects omitted work, unknown steps, missing dependencies and missing logs', () => {
+  const good = actualPassingSummary();
   verifySummary(good);
   for (const bad of [
     '', good.replace('ran 2  passed 2  failed 0  skipped 0', 'ran 0  passed 0  failed 0  skipped 0'),
@@ -30,7 +62,7 @@ test('scope acceptance rejects omitted work, unknown steps, missing dependencies
     good + '  UNKNOWN  unsupported workflow step\n',
     good + '  UNCONFIRMED DEPENDENCY  rigctld missing\n',
     good + 'PARTIAL — a selected step did not execute\n',
-    good.replace('  PASS  exit 0  Rust src-tauri + native Remote :: actual lint (01-lint.log)\n', ''),
+    good.replace(/^  PASS  exit 0  .+ :: .+  \(.+\.log\)\n/m, ''),
     good.replace('SCOPED to --job test-tauri:', 'SCOPED to --job test:'),
   ]) assert.throws(() => verifySummary(bad));
 });

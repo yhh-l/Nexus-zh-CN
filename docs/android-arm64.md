@@ -340,5 +340,24 @@ non-file `import.meta.url` when reading the startup HTML, and missing jsdom
 use the existing UI-package-relative file-reading convention and a per-test
 browser-API fixture, retaining the dedicated resize callback test and every
 behavior/Stop assertion. A fast mobile/startup test step now precedes, but does
-not replace, the complete UI suite. These latest test fixes remain unverified
-until the next Actions revision runs.
+not replace, the complete UI suite. Run `40152455556` has now passed the
+focused startup/mobile tests and the complete UI build; its full UI suite
+is still running, so whole-suite success is not yet established.
+
+## Cloud-only real-browser layout coverage (prepared, not yet executed)
+
+The Android workflow now also wires the existing `ci.yml` compiled-Chrome
+browser suite into two independent shards. It installs the locked UI/Remote
+packages, builds the hosted UI and bundles the service with the existing
+**dry-run** build command, then runs the unchanged complete browser suite.
+Nothing is deployed and no live account or station is configured. The complete
+jsdom suite, Stop sweeps and native checks remain separate and unchanged.
+Passing and failing screenshots are retained as per-shard cloud artifacts so
+actual boxes, clipping and hit targets can be inspected without another run.
+
+This is shared-UI browser evidence only, not a replacement for the native
+Android host. The suite uses its existing simulated issuer/station fixtures;
+it does not prove Android WebView lifecycle, USB/audio, permissions, real
+credentials, actual RF or S25 Ultra touch geometry. The new job has not run
+yet, locally or in Actions. APK generation and physical acceptance remain
+outstanding.

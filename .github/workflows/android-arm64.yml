@@ -93,6 +93,56 @@ jobs:
       - name: Run the complete UI suite (including mobile navigation and Stop controls)
         run: npm --prefix ui test
 
+  # Same compiled-browser coverage as ci.yml, cloud-only. This tests shared UI
+  # geometry, not an Android host, native engine, real credentials or physical RF.
+  browser-layout:
+    name: Real Chrome layout regression (shard ${{ matrix.shard }})
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Install Remote dependencies
+        run: |
+          npm --prefix ui ci
+          npm --prefix remote ci
+      - name: Build the hosted browser
+        run: npm --prefix ui run build:remote
+      # The browser fixture loads remote/dist/index.js, never unbundled source.
+      - name: Bundle the Cloudflare service (the sweep loads dist/, not src/)
+        env:
+          WRANGLER_SEND_METRICS: "false"
+        run: npm --prefix remote run build
+      # Reuse both full CI shards, not a narrower single-scenario smoke test.
+      - name: Compiled browser sign-in, approval, observation and responsive layouts
+        env:
+          NEXUS_BROWSER_SHARD: ${{ matrix.shard }}
+          NEXUS_BROWSER_SHARDS: "2"   # keep equal to the two shards above and to ci.yml
+          NEXUS_REMOTE_BROWSER_ARTIFACTS: browser-artifacts
+        run: |
+          google-chrome --version
+          npm --prefix remote run test:browser
+      # Keep passing captures too: actual boxes can be inspected without rerunning.
+      # A runner/setup failure with no screenshots must retain its original error.
+      - name: Upload browser layout evidence (NOT Android WebView or device proof)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-browser-layout-shard-${{ matrix.shard }}
+          path: remote/browser-artifacts/
+          if-no-files-found: ignore
+          retention-days: 14
+
   portable-libraries:
     runs-on: ubuntu-24.04
     timeout-minutes: 25

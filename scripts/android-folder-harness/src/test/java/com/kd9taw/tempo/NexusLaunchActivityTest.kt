@@ -36,6 +36,17 @@ class NexusLaunchActivityTest {
   private fun button(page: NexusLaunchActivity, name: String): Button =
     page.window.decorView.findViewWithTag("nexus-microphone-$name")
 
+  private fun requestFromAndroid(page: NexusLaunchActivity) {
+    button(page, "request").performClick()
+    // Android requestPermissions legitimately starts the SYSTEM permission controller.
+    // Distinguish that real request from an early station/MainActivity launch.
+    val permission = shadowOf(page).nextStartedActivity
+    assertNotNull(permission)
+    assertEquals("android.content.pm.action.REQUEST_PERMISSIONS", permission.action)
+    assertNull(permission.component)
+    assertNotEquals(page.packageName, permission.`package`)
+    assertNull(shadowOf(page).nextStartedActivity)
+  }
   private fun assertMain(page: NexusLaunchActivity) {
     val intent = shadowOf(page).nextStartedActivity
     assertNotNull(intent)
@@ -53,7 +64,7 @@ class NexusLaunchActivityTest {
     assertTrue(button(page, "request").isEnabled)
     assertTrue(button(page, "continue").isEnabled)
     assertFalse(NexusLaunchState.mainEntered)
-    button(page, "request").performClick()
+    requestFromAndroid(page)
     val request = shadowOf(page).lastRequestedPermission
     assertNotNull(request)
     assertArrayEquals(arrayOf(Manifest.permission.RECORD_AUDIO), request.requestedPermissions)
@@ -64,7 +75,7 @@ class NexusLaunchActivityTest {
   }
 
   @Test fun deniedOrForgedCallbackDoesNotGrantPermissionOrStartTauri() = withPage { page ->
-    button(page, "request").performClick()
+    requestFromAndroid(page)
     page.onRequestPermissionsResult(NexusLaunchActivity.MICROPHONE_REQUEST,
       arrayOf(Manifest.permission.RECORD_AUDIO), intArrayOf(PackageManager.PERMISSION_GRANTED))
     assertEquals(PackageManager.PERMISSION_DENIED, page.checkSelfPermission(Manifest.permission.RECORD_AUDIO))
@@ -75,7 +86,7 @@ class NexusLaunchActivityTest {
   }
 
   @Test fun actualOsGrantHandsOffToExistingPrivateMainWithoutEnablingAnything() = withPage { page ->
-    button(page, "request").performClick()
+    requestFromAndroid(page)
     shadowOf(RuntimeEnvironment.getApplication()).grantPermissions(Manifest.permission.RECORD_AUDIO)
     page.onRequestPermissionsResult(NexusLaunchActivity.MICROPHONE_REQUEST,
       arrayOf(Manifest.permission.RECORD_AUDIO), intArrayOf(PackageManager.PERMISSION_GRANTED))
@@ -110,7 +121,7 @@ class NexusLaunchActivityTest {
 
   @Test fun rotationRetainsThePendingRequestRatherThanAskingTwice() {
     val original = Robolectric.buildActivity(NexusLaunchActivity::class.java).setup()
-    button(original.get(), "request").performClick()
+    requestFromAndroid(original.get())
     val state = Bundle()
     original.saveInstanceState(state).pause().stop().destroy()
     val restored = Robolectric.buildActivity(NexusLaunchActivity::class.java).create(state).start().resume().visible()

@@ -13,6 +13,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 
 ROOT = Path(__file__).resolve().parent.parent
 PROJECT = ROOT / "src-tauri/gen/android"
@@ -120,8 +121,64 @@ def mutation_controls(project, identifier, minimum):
     print("Actual generated-source positive control and 4 negative controls passed")
 
 
+def verify_export(directory):
+    """Check the actual downloaded artifact, not just the pre-upload directory."""
+    expected_report = (OUTPUT / "report.json").read_bytes()
+    require((directory / "report.json").read_bytes() == expected_report,
+            "Downloaded host provenance differs from the generated report")
+    hashes = json.loads(expected_report)["sourceHashes"]
+    expected = {"report.json"} | {f"project/{name}" for name in hashes}
+    actual = set()
+    for file in directory.rglob("*"):
+        require(not file.is_symlink(), "Downloaded source contains a symbolic link")
+        if file.is_file():
+            actual.add(file.relative_to(directory).as_posix())
+    require(actual == expected, "Downloaded source inventory differs (including hidden files)")
+    for name, digest in hashes.items():
+        require(hashlib.sha256((directory / "project" / name).read_bytes()).hexdigest() == digest,
+                f"Downloaded generated source changed: {name}")
+    return len(hashes)
+
+
+def verify_roundtrip(directory):
+    count = verify_export(directory)
+    # Exercise the same downloaded artifact: absent dotfile, changed bytes, extra payload.
+    file = directory / "project/.editorconfig"
+    original = file.read_bytes()
+    extra = directory / "project/unexpected-payload.dll"
+    require(not extra.exists(), "Never overwrite an existing artifact member")
+    try:
+        for mutation in ("missing", "changed", "extra"):
+            if mutation == "missing":
+                file.unlink()
+            elif mutation == "changed":
+                file.write_bytes(original + b"\n# negative control\n")
+            else:
+                extra.write_bytes(b"MZ-negative-control-not-a-real-library")
+            try:
+                verify_export(directory)
+            except (ValueError, FileNotFoundError):
+                pass
+            else:
+                raise AssertionError(f"Artifact roundtrip accepted {mutation} source")
+            finally:
+                file.write_bytes(original)
+                if extra.exists():
+                    extra.unlink()
+    finally:
+        file.write_bytes(original)
+        if extra.exists():
+            extra.unlink()
+    require(verify_export(directory) == count, "Roundtrip controls did not restore source")
+    print(f"Downloaded artifact: {count} exact source hashes and 3 negative controls passed")
+
+
 def main():
     require(os.environ.get("GITHUB_ACTIONS") == "true", "Generate/validate Android host only on GitHub")
+    if len(sys.argv) == 3 and sys.argv[1] == "--verify-export":
+        verify_roundtrip(Path(sys.argv[2]))
+        return
+    require(len(sys.argv) == 1, "Expected no arguments or --verify-export DIRECTORY")
     base = json.loads((ROOT / "src-tauri/tauri.conf.json").read_text())
     android = json.loads((ROOT / "src-tauri/tauri.android.conf.json").read_text())
     identifier = inherited_identity(base, android)

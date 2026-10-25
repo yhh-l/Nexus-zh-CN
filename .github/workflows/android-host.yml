@@ -84,5 +84,14 @@ jobs:
         with:
           name: nexus-android-generated-host-source
           path: target/android-host-source/
+          # Exporter audits this complete allowlist; upload-artifact otherwise drops dotfiles.
+          include-hidden-files: true
           if-no-files-found: error
           retention-days: 7
+      - name: Download the actual published source artifact for inventory verification
+        uses: actions/download-artifact@v4
+        with:
+          name: nexus-android-generated-host-source
+          path: target/android-host-roundtrip
+      - name: Check every downloaded source hash and actual missing/tampered/extra-file controls
+        run: python3 scripts/android-host-source.py --verify-export target/android-host-roundtrip

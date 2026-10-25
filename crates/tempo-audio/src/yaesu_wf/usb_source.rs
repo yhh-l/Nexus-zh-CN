@@ -72,15 +72,18 @@ mod android_factory {
     static FACTORY: std::sync::OnceLock<Factory> = std::sync::OnceLock::new();
 
     pub fn register(factory: Factory) -> io::Result<()> {
-        FACTORY
-            .set(factory)
-            .map_err(|_| io::Error::new(io::ErrorKind::AlreadyExists, "USB factory already registered"))
+        FACTORY.set(factory).map_err(|_| {
+            io::Error::new(
+                io::ErrorKind::AlreadyExists,
+                "USB factory already registered",
+            )
+        })
     }
 
     pub fn open() -> io::Result<Box<dyn WaterfallSource + Send>> {
-        FACTORY
-            .get()
-            .ok_or_else(|| io::Error::new(io::ErrorKind::NotConnected, "Android USB host not ready"))?()
+        FACTORY.get().ok_or_else(|| {
+            io::Error::new(io::ErrorKind::NotConnected, "Android USB host not ready")
+        })?()
     }
 }
 
@@ -172,7 +175,10 @@ mod tests {
             fail_at: None,
         })
         .unwrap();
-        assert_eq!(source.read_frame().unwrap_err().kind(), io::ErrorKind::UnexpectedEof);
+        assert_eq!(
+            source.read_frame().unwrap_err().kind(),
+            io::ErrorKind::UnexpectedEof
+        );
         assert!(source.acc.is_empty());
     }
     #[test]

@@ -24,10 +24,7 @@ struct Bridge {
 }
 
 impl Bridge {
-    fn call<T>(
-        &self,
-        action: impl FnOnce(&mut jni::JNIEnv<'_>) -> io::Result<T>,
-    ) -> io::Result<T> {
+    fn call<T>(&self, action: impl FnOnce(&mut jni::JNIEnv<'_>) -> io::Result<T>) -> io::Result<T> {
         let mut env = checked(self.vm.attach_current_thread())?;
         let result = action(&mut env);
         // Never leave a pending Java exception attached to a reused worker thread.
@@ -80,7 +77,10 @@ impl UsbTransport for AndroidUsb {
 
     fn control_out(&mut self, request: ControlOut) -> io::Result<()> {
         if request.request_type != 0x40 {
-            return Err(io::Error::new(io::ErrorKind::InvalidInput, "Not vendor OUT"));
+            return Err(io::Error::new(
+                io::ErrorKind::InvalidInput,
+                "Not vendor OUT",
+            ));
         }
         self.bridge.call(|env| {
             checked(env.call_method(
@@ -103,7 +103,10 @@ impl UsbTransport for AndroidUsb {
             let raw = JObjectArray::from(checked(raw.l())?);
             let count = checked(env.get_array_length(&raw))?;
             if count <= 0 || count as usize > READ_BYTES {
-                return Err(io::Error::new(io::ErrorKind::InvalidData, "Invalid USB transfer count"));
+                return Err(io::Error::new(
+                    io::ErrorKind::InvalidData,
+                    "Invalid USB transfer count",
+                ));
             }
             let mut transfers = Vec::with_capacity(count as usize);
             let mut total = 0;
@@ -111,7 +114,10 @@ impl UsbTransport for AndroidUsb {
                 let bytes = JByteArray::from(checked(env.get_object_array_element(&raw, index))?);
                 let length = checked(env.get_array_length(&bytes))?;
                 if !(2..=2048).contains(&length) || total + length as usize > 3 * READ_BYTES {
-                    return Err(io::Error::new(io::ErrorKind::InvalidData, "Invalid raw USB length"));
+                    return Err(io::Error::new(
+                        io::ErrorKind::InvalidData,
+                        "Invalid raw USB length",
+                    ));
                 }
                 total += length as usize;
                 transfers.push(checked(env.convert_byte_array(&bytes))?);
@@ -143,21 +149,41 @@ impl Drop for AndroidUsb {
     }
 }
 pub(crate) fn initialize(app: &tauri::AppHandle) -> Result<(), String> {
-    let window = app.get_webview_window("main").ok_or("Android main WebView unavailable")?;
+    let window = app
+        .get_webview_window("main")
+        .ok_or("Android main WebView unavailable")?;
     window
         .with_webview(|webview| {
             webview.jni_handle().exec(|env, activity, _| {
                 let result = (|| -> jni::errors::Result<()> {
-                    let loader = env.call_method(activity, "getClassLoader", "()Ljava/lang/ClassLoader;", &[])?.l()?;
+                    let loader = env
+                        .call_method(activity, "getClassLoader", "()Ljava/lang/ClassLoader;", &[])?
+                        .l()?;
                     let name = env.new_string("com.kd9taw.tempo.NexusFt4222Usb")?;
-                    let class = env.call_method(loader, "loadClass", "(Ljava/lang/String;)Ljava/lang/Class;", &[JValue::Object(name.as_ref())])?.l()?;
-                    let context = env.call_method(activity, "getApplicationContext", "()Landroid/content/Context;", &[])?.l()?;
+                    let class = env
+                        .call_method(
+                            loader,
+                            "loadClass",
+                            "(Ljava/lang/String;)Ljava/lang/Class;",
+                            &[JValue::Object(name.as_ref())],
+                        )?
+                        .l()?;
+                    let context = env
+                        .call_method(
+                            activity,
+                            "getApplicationContext",
+                            "()Landroid/content/Context;",
+                            &[],
+                        )?
+                        .l()?;
                     let bridge = Arc::new(Bridge {
                         vm: env.get_java_vm()?,
                         class: env.new_global_ref(class)?,
                         context: env.new_global_ref(context)?,
                     });
-                    if let Err(error) = usb_source::register_android(Box::new(move || bridge.open())) {
+                    if let Err(error) =
+                        usb_source::register_android(Box::new(move || bridge.open()))
+                    {
                         eprintln!("Android FT4222 registration failed: {error}");
                     }
                     Ok(())

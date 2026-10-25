@@ -706,7 +706,9 @@ pub fn open_default_source() -> Option<Box<dyn WaterfallSource + Send>> {
         match usb_source::open_android() {
             Ok(source) => Some(source),
             Err(error) => {
-                crate::civ::diag::note(&format!("yaesu waterfall: Android USB open failed: {error}"));
+                crate::civ::diag::note(&format!(
+                    "yaesu waterfall: Android USB open failed: {error}"
+                ));
                 None
             }
         }

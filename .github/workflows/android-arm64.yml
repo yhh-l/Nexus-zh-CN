@@ -1,4 +1,4 @@
-# Android ARM64 library + native-backend milestones. No APK/signing/publish/RF claim.
+# Android ARM64 full native backend and unsigned APK build. No install/publish/RF claim.
 name: Android ARM64 portability
 
 on:
@@ -176,6 +176,9 @@ jobs:
       - name: Test archive and artifact guards
         run: node --test scripts/android-arm64.test.mjs
 
+      - name: Exercise the actual APK container reporter with corrupt and foreign-payload controls
+        run: python3 -m unittest discover -s scripts -p android_apk_report_test.py -v
+
       - name: Test real Android native build dispatch (host-only guards)
         run: node --test scripts/android-native.test.mjs
 
@@ -302,3 +305,45 @@ jobs:
           cargo check --locked --manifest-path src-tauri/Cargo.toml
           --target aarch64-linux-android --features radio,yaesu-wf
           --target-dir target/android-native-cargo
+
+      # Full typecheck is not final code generation, linking, Gradle or an APK.
+      # Continue on the SAME runner so the real NDK/Flang/OpenSSL products are reused.
+      - name: Reuse the exact reviewed mobile CLI
+        uses: actions/cache/restore@v6
+        with:
+          path: ~/.cargo/bin/cargo-tauri
+          key: android-host-tauri-cli-2.11.5-rust-1.93.1-${{ runner.os }}
+      - name: Check or install the pinned CLI only on GitHub
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v cargo-tauri >/dev/null || [[ "$(cargo tauri --version)" != 'tauri-cli 2.11.5' ]]; then
+            cargo install tauri-cli --version '=2.11.5' --locked --force
+          fi
+          test "$(cargo tauri --version)" = 'tauri-cli 2.11.5'
+      - name: Configure the runner Android SDK and Java 17 for actual packaging
+        shell: bash
+        run: |
+          set -euo pipefail
+          sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          java="${JAVA_HOME_17_X64:-${JAVA_HOME:-}}"
+          test -f "$sdk/platforms/android-36/android.jar"
+          test -x "$java/bin/java"
+          printf 'ANDROID_HOME=%s\nANDROID_SDK_ROOT=%s\nNDK_HOME=%s\nJAVA_HOME=%s\n' "$sdk" "$sdk" "$ANDROID_NDK_HOME" "$java" >> "$GITHUB_ENV"
+          printf '%s/bin\n' "$java" >> "$GITHUB_PATH"
+      - name: Install the complete locked UI for the real APK frontend
+        run: npm --prefix ui ci
+      - name: Build the whole native application and an unsigned ARM64 APK (not install acceptance)
+        env:
+          CARGO_BUILD_JOBS: 2
+          CARGO_TARGET_DIR: ${{ github.workspace }}/target/android-native-cargo
+        run: bash scripts/build-android-apk.sh
+      # Runtime notices/source audit, full APK payload/alignment and install/runtime gates
+      # MUST precede binary distribution. This milestone exports JSON only, never an APK.
+      - name: Upload only the real APK build checkpoint report, not the binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-arm64-unsigned-apk-build-report
+          path: target/android-apk/build-report.json
+          if-no-files-found: error
+          retention-days: 14

@@ -302,3 +302,20 @@ test('OpenSSL bootstrap pins source, uses NDK Android API 35 and never permits h
   const backend = workflow.indexOf('- name: Check the full application backend');
   assert(stage >= 0 && stage < backend);
 });
+
+test('real APK code generation follows the full backend gate and cannot distribute a checkpoint as an APK', () => {
+  const build = fs.readFileSync(path.join(ROOT, 'scripts/build-android-apk.sh'), 'utf8');
+  const syntax = run('bash', ['-n', 'scripts/build-android-apk.sh']);
+  assert.equal(syntax.status, 0, syntax.output);
+  assert.match(build, /GITHUB_ACTIONS/);
+  assert.match(build, /cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked/);
+  assert.match(build, /git diff --exit-code -- Cargo.lock src-tauri\/Cargo.lock src-tauri\/gen\/android/);
+  assert.match(build, /gradle-wrapper.jar \| sha256sum -c -/);
+  assert.doesNotMatch(build, /--debug|--no-default-features|NEXUS_ALLOW_MISSING|--ignore-version-mismatches|--no-verify|apksigner|jarsigner|git push/);
+  const stage = workflow.indexOf('run: bash scripts/build-android-apk.sh');
+  const backend = workflow.indexOf('- name: Check the full application backend');
+  assert(stage > backend && backend >= 0);
+  const tail = workflow.slice(stage);
+  assert.match(tail, /path: target\/android-apk\/build-report.json/);
+  assert.doesNotMatch(tail, /path:.*\.(apk|aab)|path:.*outputs/);
+});

@@ -80,7 +80,7 @@ function storageBoundary(source, storage) {
   for (const method of ['config_base', 'local_data_dir']) {
     assert(source.includes(`#[cfg(all(not(test), target_os = "android"))]\nfn ${method}() -> PathBuf {\n    android_storage::${method}()`));
   }
-  assert.match(storage, /main_android_context\(\)/);
+  assert.match(storage, /wait_for_context\(main_android_context,/);
   assert.match(storage, /"getFilesDir"/);
   assert.match(storage, /StorageRoots::open\(&files_dir\)/);
   assert.doesNotMatch(storage, /std::env::(?:var|var_os|set_var)\(/);

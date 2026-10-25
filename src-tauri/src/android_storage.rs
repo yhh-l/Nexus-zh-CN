@@ -61,6 +61,23 @@ fn private_child(root: &Path, name: &str) -> io::Result<PathBuf> {
     Ok(child)
 }
 
+// The process lifecycle can start Rust BEFORE Activity.onCreate publishes its context.
+// Probe only on the Rust startup worker; Android's UI thread must remain free to publish.
+// The caller supplies a bounded wait, so no context means no station startup, not a hang.
+fn wait_for_context<T>(
+    mut probe: impl FnMut() -> Option<T>,
+    mut wait: impl FnMut() -> bool,
+) -> Option<T> {
+    loop {
+        if let Some(context) = probe() {
+            return Some(context);
+        }
+        if !wait() {
+            return None;
+        }
+    }
+}
+
 #[cfg(target_os = "android")]
 static ROOTS: std::sync::OnceLock<Result<StorageRoots, String>> = std::sync::OnceLock::new();
 
@@ -99,9 +116,17 @@ pub(crate) fn local_data_dir() -> PathBuf {
 fn android_files_dir() -> Result<PathBuf, Box<dyn std::error::Error>> {
     use tauri::tao::platform::android::prelude::{jni, main_android_context, JObject, JString};
 
-    let context = main_android_context().ok_or("Android Activity context is unavailable")?;
-    // SAFETY: Tao owns this VM and Activity global reference and publishes them before
-    // the mobile entry point. Attach our startup thread, then take a local reference.
+    let started = std::time::Instant::now();
+    let context = wait_for_context(main_android_context, || {
+        if started.elapsed() >= std::time::Duration::from_secs(5) {
+            return false;
+        }
+        std::thread::sleep(std::time::Duration::from_millis(5));
+        true
+    })
+    .ok_or("Android Activity context did not become available before startup timeout")?;
+    // SAFETY: Tao owns this VM and Activity global reference. We wait above for its
+    // publication. Attach our startup thread, then take a local reference.
     // We neither destroy the VM nor delete/retain Tao's global reference.
     let vm = unsafe { jni::JavaVM::from_raw(context.java_vm.cast()) }?;
     let mut env = vm.attach_current_thread()?;
@@ -159,6 +184,40 @@ mod tests {
         }
     }
 
+    #[test]
+    fn context_publication_race_is_retried_without_starting_the_station() {
+        let mut probes = 0;
+        let mut waits = 0;
+        let result = wait_for_context(
+            || {
+                probes += 1;
+                (probes == 3).then_some("real context")
+            },
+            || {
+                waits += 1;
+                waits <= 3
+            },
+        );
+        assert_eq!(result, Some("real context"));
+        assert_eq!(probes, 3);
+        assert_eq!(waits, 2);
+    }
+
+    #[test]
+    fn missing_context_has_a_bounded_wait_and_no_fallback() {
+        let mut waits = 0;
+        let result = wait_for_context::<()>(
+            || None,
+            || {
+                waits += 1;
+                waits < 3
+            },
+        );
+        assert_eq!(result, None);
+        assert_eq!(waits, 3);
+        let immediate = wait_for_context(|| Some("ready"), || panic!("must not wait"));
+        assert_eq!(immediate, Some("ready"));
+    }
     #[test]
     fn real_private_directories_are_writable_and_survive_reopening() {
         let sandbox = Sandbox::new();

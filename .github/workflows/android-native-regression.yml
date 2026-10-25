@@ -1,0 +1,83 @@
+# Complete native backend gates from ci.yml, scoped to diagnose Android portability changes.
+# This is Linux host evidence, NOT Android target compilation, APK or device acceptance.
+name: Android native backend regression
+
+on:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-native-regression.yml
+      - .github/workflows/ci.yml
+      - scripts/gates
+      - scripts/native-ci-scope*.mjs
+      - src-tauri/src/client_mode.rs
+      - src-tauri/src/lan_client.rs
+      - src-tauri/src/lan_client/**
+      - src-tauri/src/window_state.rs
+      - src-tauri/src/remote_window.rs
+      - src-tauri/src/remote_service/vault.rs
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-native-regression-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  complete-native-job:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      GATES_LOG_DIR: ${{ runner.temp }}/native-ci-gates
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up pinned Rust
+        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          components: clippy, rustfmt
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Test gate derivation and strict scoped acceptance, including negative controls
+        run: node --test scripts/gates.test.mjs scripts/native-ci-scope.test.mjs
+      - name: Install the current native job dependencies from the source workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/native-ci-scope.mjs --dependencies > "$RUNNER_TEMP/native-ci-dependencies.sh"
+          bash -euo pipefail "$RUNNER_TEMP/native-ci-dependencies.sh"
+      - name: Cache the complete native build
+        uses: actions/cache@v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+            src-tauri/target
+          key: ${{ runner.os }}-android-native-regression-${{ hashFiles('Cargo.lock', 'src-tauri/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-android-native-regression-
+            ${{ runner.os }}-cargo-
+      - name: Run every current native CI job gate, not a hand-transcribed subset
+        shell: bash
+        run: |
+          set -euo pipefail
+          node scripts/gates --job test-tauri --allow-partial
+          # Scoping excludes other jobs deliberately. A skip or unknown INSIDE this job
+          # is not allowed: --allow-partial alone would also accept those omissions.
+          node scripts/native-ci-scope.mjs --verify "$GATES_LOG_DIR"
+      - name: Preserve actual gate logs even on failure
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-native-backend-regression-${{ github.run_id }}
+          path: ${{ env.GATES_LOG_DIR }}
+          if-no-files-found: warn
+          retention-days: 14

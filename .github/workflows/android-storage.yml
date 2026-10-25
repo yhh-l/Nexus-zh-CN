@@ -1,0 +1,86 @@
+# Focused cloud-only startup/storage regression. No APK, JNI runtime or RF claim.
+name: Android startup storage policy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-storage.yml
+      - src-tauri/src/android_storage.rs
+      - src-tauri/src/lib.rs
+      - scripts/android-platform.test.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-storage-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  storage-policy:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up pinned Rust
+        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          components: rustfmt
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Verify startup ordering and source-boundary negative controls
+        run: node --test scripts/android-platform.test.mjs
+      - name: Run actual private-storage filesystem tests (host, not Android execution)
+        run: |
+          rustc --edition=2021 --test src-tauri/src/android_storage.rs --crate-name android_storage_policy -o "$RUNNER_TEMP/android-storage-tests"
+          "$RUNNER_TEMP/android-storage-tests"
+      - name: Prove reopening regression catches real data truncation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, pathlib
+          source = pathlib.Path('src-tauri/src/android_storage.rs').read_text()
+          needle = '        std::fs::create_dir_all(&data)?;'
+          assert source.count(needle) == 1
+          mutant = source.replace(needle, needle + '\n        std::fs::write(data.join("ALL.TXT"), b"wrong")?;')
+          pathlib.Path(os.environ['RUNNER_TEMP'], 'android-storage-negative.rs').write_text(mutant)
+          PY
+          rustc --edition=2021 --test "$RUNNER_TEMP/android-storage-negative.rs" --crate-name android_storage_negative -o "$RUNNER_TEMP/android-storage-negative-tests"
+          set +e
+          "$RUNNER_TEMP/android-storage-negative-tests" --exact tests::real_private_directories_are_writable_and_survive_reopening > "$RUNNER_TEMP/storage-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/storage-negative.log"
+          if [[ "$status" != 101 ]]; then
+            echo "Expected an actual Rust assertion failure, got $status" >&2
+            exit 1
+          fi
+          grep -F 'test tests::real_private_directories_are_writable_and_survive_reopening ... FAILED' "$RUNNER_TEMP/storage-negative.log"
+      - name: Check actual pinned shell formatting
+        run: cargo fmt --manifest-path src-tauri/Cargo.toml --check
+      - name: Verify dependency notices against locked upstream packages
+        run: python3 scripts/gen-rust-licenses.py --check
+      - name: Preserve formatter source patch on failure without committing it
+        if: failure()
+        run: |
+          cargo fmt --manifest-path src-tauri/Cargo.toml
+          git diff -- src-tauri/src/android_storage.rs src-tauri/src/lib.rs > "$RUNNER_TEMP/android-storage-format.patch"
+      - name: Upload diagnostics only, never an APK
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-storage-source-diagnostics
+          path: |
+            ${{ runner.temp }}/android-storage-format.patch
+            ${{ runner.temp }}/storage-negative.log
+          if-no-files-found: warn
+          retention-days: 7

@@ -67,3 +67,30 @@ test('both callers apply OS changes before writing preferences and use the share
   const clientOs = local.indexOf('crate::login_start::set(app, on)?;');
   assert(clientOs >= 0 && clientOs < local.indexOf('self.local(Local::LaunchAtLogin'));
 });
+
+function storageBoundary(source, storage) {
+  const start = source.indexOf('\npub fn run() {');
+  assert(start >= 0, 'Actual mobile entry point must exist');
+  const run = source.slice(start);
+  const init = run.indexOf('android_storage::initialize()');
+  for (const marker of ['tempo_core::applog::init(', 'Settings::load(', 'client_mode::requested()']) {
+    assert(init >= 0 && init < run.indexOf(marker), `Private storage must precede ${marker}`);
+  }
+  assert.match(run, /if let Err\(error\) = android_storage::initialize\(\) \{[^}]*\{error\}[^}]*return;/);
+  for (const method of ['config_base', 'local_data_dir']) {
+    assert(source.includes(`#[cfg(all(not(test), target_os = "android"))]\nfn ${method}() -> PathBuf {\n    android_storage::${method}()`));
+  }
+  assert.match(storage, /main_android_context\(\)/);
+  assert.match(storage, /"getFilesDir"/);
+  assert.match(storage, /StorageRoots::open\(&files_dir\)/);
+  assert.doesNotMatch(storage, /std::env::(?:var|var_os|set_var)\(/);
+}
+
+test('Android roots use the real OS private directory before all station startup paths', () => {
+  const storage = read('android_storage.rs');
+  storageBoundary(station, storage);
+  assert.throws(() => storageBoundary(station.replace('android_storage::initialize()', 'late_initialize()'), storage));
+  assert.throws(() => storageBoundary(station.replace('android_storage::config_base()', 'PathBuf::from(".")'), storage));
+  assert.throws(() => storageBoundary(station, storage.replace('StorageRoots::open(&files_dir)', 'StorageRoots::open(Path::new("."))')));
+  assert.throws(() => storageBoundary(station, `${storage}\nstd::env::set_var("HOME", "fake");`));
+});

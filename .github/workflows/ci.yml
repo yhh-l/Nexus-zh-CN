@@ -132,6 +132,14 @@ jobs:
       - name: Test Android native toolchain and archive guards
         run: node --test scripts/android-native.test.mjs
 
+      # Compile the actual storage policy in isolation: no Android JNI/runtime claims.
+      # All writes here are disposable test fixtures on the GitHub runner.
+      - name: Exercise real private-storage filesystem policy on the cloud host
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustc --edition=2021 --test src-tauri/src/android_storage.rs --crate-name android_storage_policy -o "$RUNNER_TEMP/android-storage-tests"
+          "$RUNNER_TEMP/android-storage-tests"
       - name: cargo fmt --check
         run: cargo fmt --all --check
 

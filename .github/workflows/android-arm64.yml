@@ -172,6 +172,14 @@ jobs:
       - name: Check desktop/mobile source boundaries (not runtime proof)
         run: node --test scripts/android-platform.test.mjs
 
+      # Compile the actual storage policy in isolation: no Android JNI/runtime claims.
+      # All writes here are disposable test fixtures on the GitHub runner.
+      - name: Exercise real private-storage filesystem policy on the cloud host
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustc --edition=2021 --test src-tauri/src/android_storage.rs --crate-name android_storage_policy -o "$RUNNER_TEMP/android-storage-tests"
+          "$RUNNER_TEMP/android-storage-tests"
       - name: Check Android host config without claiming a generated project or APK
         run: |
           node --test scripts/android-host-config.test.mjs

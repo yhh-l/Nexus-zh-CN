@@ -36,6 +36,9 @@ mod account_sign_in;
 /// One alert, made in Rust where it is raised, with its id and a versioned shape: what every window
 /// and a computer driving the station hear.
 mod alert;
+/// Early OS-owned storage roots; the desktop/test paths below stay unchanged.
+#[cfg(any(target_os = "android", test))]
+mod android_storage;
 /// Test builds only (the `bench-road-switch` feature): the switch on a computer driving a station
 /// that blocks its command link or its Stop road, one at a time, so each road can be tried alone.
 #[cfg(feature = "bench-road-switch")]
@@ -2064,7 +2067,7 @@ static LAST_XRAY: Mutex<Option<(std::time::Instant, f32, i64)>> = Mutex::new(Non
 
 /// The base config root: `%APPDATA%` on Windows, `$XDG_CONFIG_HOME`/`~/.config` on Unix,
 /// else the CWD. The `tempo[-<profile>]` app directory hangs off this.
-#[cfg(not(test))]
+#[cfg(all(not(test), not(target_os = "android")))]
 fn config_base() -> PathBuf {
     let base = if cfg!(windows) {
         std::env::var_os("APPDATA").map(PathBuf::from)
@@ -2074,6 +2077,11 @@ fn config_base() -> PathBuf {
             .or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".config")))
     };
     base.unwrap_or_else(|| PathBuf::from("."))
+}
+
+#[cfg(all(not(test), target_os = "android"))]
+fn config_base() -> PathBuf {
+    android_storage::config_base()
 }
 
 /// The test twin of `config_base`: the running test's own folder, never the operator's (see
@@ -6056,7 +6064,7 @@ fn parks_cache_path() -> PathBuf {
 /// diagnostic log below can be "beside the crash log" and "in the app data dir" at once, and
 /// it is worth knowing before anyone moves either of them. (Splitting install from data is
 /// real work with a migration behind it; it is not this change.)
-#[cfg(not(test))]
+#[cfg(all(not(test), not(target_os = "android")))]
 fn local_data_dir() -> PathBuf {
     let base = if cfg!(windows) {
         std::env::var_os("LOCALAPPDATA").map(PathBuf::from)
@@ -6066,6 +6074,11 @@ fn local_data_dir() -> PathBuf {
             .or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".local/share")))
     };
     base.unwrap_or_else(|| PathBuf::from(".")).join("Nexus")
+}
+
+#[cfg(all(not(test), target_os = "android"))]
+fn local_data_dir() -> PathBuf {
+    android_storage::local_data_dir()
 }
 
 /// The test twin of `local_data_dir`: inside the running test's own folder, never the
@@ -35671,6 +35684,13 @@ fn install_panic_logger() {
 /// Build and run the Tauri application.
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    // Resolve the OS-owned private root before diagnostics, settings, logbook or radio.
+    // No fallback to CWD/HOME/external storage: a failure cannot open another station.
+    #[cfg(target_os = "android")]
+    if let Err(error) = android_storage::initialize() {
+        eprintln!("Nexus cannot initialize Android private storage: {error}");
+        return;
+    }
     // WebKitGTK's default DMABUF/GBM compositing renderer degrades to a slow software
     // readback path on many Intel-iGPU / hybrid-graphics / newer-Mesa laptops, which
     // makes EVERY webview paint (clicks, scroll, hover) crawl — the "super slow on a

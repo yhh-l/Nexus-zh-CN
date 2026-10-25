@@ -274,38 +274,39 @@ pub async fn open_remote_stations_window(app: tauri::AppHandle) -> Result<(), St
             Some(r) => (r.w, r.h, Some((r.position, r.maximized))),
             None => (DEFAULT_INNER.0, DEFAULT_INNER.1, None),
         };
-        let mut builder = WebviewWindowBuilder::new(&app, LABEL, WebviewUrl::External(remote_url()))
-            .title("Nexus — Remote stations")
-            .inner_size(w, h)
-            .min_inner_size(MIN_INNER.0, MIN_INNER.1)
-            // As in a browser, a drag inside the page is the page's (the main window's reason too).
-            .disable_drag_drop_handler()
-            .initialization_script(NEW_WINDOW_LINKS)
-            .on_page_load(move |_, payload| {
-                if payload.event() == PageLoadEvent::Started {
-                    *showing.lock().unwrap_or_else(|e| e.into_inner()) =
-                        Some(payload.url().clone());
-                }
-            })
-            .on_navigation(move |target| {
-                let from = shown.lock().unwrap_or_else(|e| e.into_inner()).clone();
-                match route(target, from.as_ref(), &issuer) {
-                    Route::InWindow => true,
-                    Route::SystemBrowser => {
-                        open_in_browser(&to_browser, target);
-                        false
+        let mut builder =
+            WebviewWindowBuilder::new(&app, LABEL, WebviewUrl::External(remote_url()))
+                .title("Nexus — Remote stations")
+                .inner_size(w, h)
+                .min_inner_size(MIN_INNER.0, MIN_INNER.1)
+                // As in a browser, a drag inside the page is the page's (the main window's reason too).
+                .disable_drag_drop_handler()
+                .initialization_script(NEW_WINDOW_LINKS)
+                .on_page_load(move |_, payload| {
+                    if payload.event() == PageLoadEvent::Started {
+                        *showing.lock().unwrap_or_else(|e| e.into_inner()) =
+                            Some(payload.url().clone());
                     }
-                    Route::Refuse => false,
-                }
-            })
-            .on_new_window(move |target, _| {
-                if route_new_window(&target) == Route::SystemBrowser {
-                    open_in_browser(&new_to_browser, &target);
-                }
-                NewWindowResponse::Deny
-            })
-            // The outer window, title bar included, fitted to the work area it opens on.
-            .prevent_overflow();
+                })
+                .on_navigation(move |target| {
+                    let from = shown.lock().unwrap_or_else(|e| e.into_inner()).clone();
+                    match route(target, from.as_ref(), &issuer) {
+                        Route::InWindow => true,
+                        Route::SystemBrowser => {
+                            open_in_browser(&to_browser, target);
+                            false
+                        }
+                        Route::Refuse => false,
+                    }
+                })
+                .on_new_window(move |target, _| {
+                    if route_new_window(&target) == Route::SystemBrowser {
+                        open_in_browser(&new_to_browser, &target);
+                    }
+                    NewWindowResponse::Deny
+                })
+                // The outer window, title bar included, fitted to the work area it opens on.
+                .prevent_overflow();
         builder = match place {
             Some((Some((x, y)), _)) => builder.position(x, y),
             // A first open, or a saved place on a monitor that is gone.

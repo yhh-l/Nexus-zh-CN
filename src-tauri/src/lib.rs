@@ -14860,8 +14860,8 @@ async fn export_log_for_activation(
 /// to its bare name so it can never escape Downloads on desktop. Android requires a safe bare
 /// name and returns a verified, newly published MediaStore content URI in Download/Nexus.
 /// Disk/provider I/O runs off the UI thread and never takes the station Engine lock.
-#[tauri::command(async)]
-fn save_text_to_downloads(
+#[tauri::command]
+async fn save_text_to_downloads(
     app: tauri::AppHandle,
     filename: String,
     text: String,
@@ -14869,7 +14869,11 @@ fn save_text_to_downloads(
     #[cfg(target_os = "android")]
     {
         let _ = app;
-        android_downloads::save(&filename, text.as_bytes(), "text/plain")
+        tauri::async_runtime::spawn_blocking(move || {
+            android_downloads::save(&filename, text.as_bytes(), "text/plain")
+        })
+        .await
+        .map_err(|error| format!("Android export worker did not finish: {error}"))?
     }
     #[cfg(not(target_os = "android"))]
     {
@@ -14897,8 +14901,8 @@ fn save_text_to_downloads(
 /// `shouldPerformDownload` → Cancel), so the blob-anchor fallback silently produced no file
 /// while the UI toasted success. The webview sends the PNG as standard base64 (the same
 /// wire shape as the SSTV transmit's RGB) and gets back the FULL saved path for its toast.
-#[tauri::command(async)]
-fn save_png_to_downloads(
+#[tauri::command]
+async fn save_png_to_downloads(
     app: tauri::AppHandle,
     filename: String,
     base64: String,
@@ -14906,8 +14910,12 @@ fn save_png_to_downloads(
     #[cfg(target_os = "android")]
     {
         let _ = app;
-        let bytes = b64_decode(&base64)?;
-        android_downloads::save(&filename, &bytes, "image/png")
+        tauri::async_runtime::spawn_blocking(move || {
+            let bytes = b64_decode(&base64)?;
+            android_downloads::save(&filename, &bytes, "image/png")
+        })
+        .await
+        .map_err(|error| format!("Android export worker did not finish: {error}"))?
     }
     #[cfg(not(target_os = "android"))]
     {

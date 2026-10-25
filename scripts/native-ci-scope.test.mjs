@@ -34,3 +34,14 @@ test('scope acceptance rejects omitted work, unknown steps, missing dependencies
     good.replace('SCOPED to --job test-tauri:', 'SCOPED to --job test:'),
   ]) assert.throws(() => verifySummary(bad));
 });
+
+test('runner.temp is evaluated in step context, never unsupported job env', () => {
+  const source = fs.readFileSync(new URL('../.github/workflows/android-native-regression.yml', import.meta.url), 'utf8');
+  function contextGuard(text) {
+    assert.doesNotMatch(text, /^    env:\n(?:      .+\n)*?      GATES_LOG_DIR:.*runner\.temp/m);
+    assert.match(text, /^        env:\n          GATES_LOG_DIR: \$\{\{ runner\.temp \}\}\/native-ci-gates$/m);
+  }
+  contextGuard(source);
+  assert.throws(() => contextGuard(source.replace(
+    '        env:\n          GATES_LOG_DIR:', '    env:\n      GATES_LOG_DIR:')));
+});

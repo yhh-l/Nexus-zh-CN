@@ -29,8 +29,6 @@ jobs:
   complete-native-job:
     runs-on: ubuntu-24.04
     timeout-minutes: 90
-    env:
-      GATES_LOG_DIR: ${{ runner.temp }}/native-ci-gates
     steps:
       - name: Checkout exact source
         uses: actions/checkout@v7
@@ -66,6 +64,8 @@ jobs:
             ${{ runner.os }}-android-native-regression-
             ${{ runner.os }}-cargo-
       - name: Run every current native CI job gate, not a hand-transcribed subset
+        env:
+          GATES_LOG_DIR: ${{ runner.temp }}/native-ci-gates
         shell: bash
         run: |
           set -euo pipefail
@@ -78,6 +78,6 @@ jobs:
         uses: actions/upload-artifact@v7
         with:
           name: android-native-backend-regression-${{ github.run_id }}
-          path: ${{ env.GATES_LOG_DIR }}
+          path: ${{ runner.temp }}/native-ci-gates
           if-no-files-found: warn
           retention-days: 14

@@ -150,3 +150,26 @@ test('workflow is branch-scoped, read-only, pinned, and uploads libraries rather
   assert.match(workflow, /if-no-files-found: error/);
   for (const name of PACKAGES) assert.ok(workflow.includes(`lib${name.replaceAll('-', '_')}.rlib`));
 });
+
+function independentJobQueues(workflow) {
+  assert.doesNotMatch(workflow, /^concurrency:/m, 'A workflow-wide queue blocks native repairs behind old UI');
+  const jobs = workflow.slice(workflow.indexOf('\njobs:\n') + '\njobs:\n'.length);
+  const starts = [...jobs.matchAll(/^  ([\w-]+):$/gm)];
+  assert.equal(starts.length, 4, 'Inspect every actual Android verification job');
+  for (let index = 0; index < starts.length; index++) {
+    const id = starts[index][1];
+    const body = jobs.slice(starts[index].index, starts[index + 1]?.index ?? jobs.length);
+    const group = body.match(/^      group: (.+)$/m)?.[1];
+    assert.equal(group, `android-arm64-${id}-` + '${{ github.ref }}' +
+      (id === 'browser-layout' ? '-${{ matrix.shard }}' : ''));
+    assert.match(body, /^    concurrency:\n      group: .+\n      cancel-in-progress: false$/m);
+  }
+}
+
+test('each actual Android job preserves evidence without blocking the other job queues', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github/workflows/android-arm64.yml'), 'utf8');
+  independentJobQueues(workflow);
+  assert.throws(() => independentJobQueues('concurrency:\n  group: all\n' + workflow));
+  assert.throws(() => independentJobQueues(workflow.replace('-${{ matrix.shard }}', '')));
+  assert.throws(() => independentJobQueues(workflow.replace('cancel-in-progress: false', 'cancel-in-progress: true')));
+});

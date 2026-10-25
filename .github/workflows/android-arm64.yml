@@ -10,13 +10,14 @@ on:
 permissions:
   contents: read
 
-concurrency:
-  group: android-arm64-${{ github.ref }}
-  # Preserve long-running UI/native evidence; a new approved revision waits its turn.
-  cancel-in-progress: false
-
+# Serialize each kind of evidence independently, not the whole workflow: a long
+# UI suite must not hold a finished native compiler's slot for the next repair.
+# Preserve running jobs; superseded pending jobs follow GitHub's normal queue policy.
 jobs:
   ui-mobile:
+    concurrency:
+      group: android-arm64-ui-mobile-${{ github.ref }}
+      cancel-in-progress: false
     name: Phone navigation + full UI regression suite
     runs-on: ubuntu-24.04
     timeout-minutes: 45
@@ -96,6 +97,9 @@ jobs:
   # Same compiled-browser coverage as ci.yml, cloud-only. This tests shared UI
   # geometry, not an Android host, native engine, real credentials or physical RF.
   browser-layout:
+    concurrency:
+      group: android-arm64-browser-layout-${{ github.ref }}-${{ matrix.shard }}
+      cancel-in-progress: false
     name: Real Chrome layout regression (shard ${{ matrix.shard }})
     runs-on: ubuntu-24.04
     timeout-minutes: 90
@@ -144,6 +148,9 @@ jobs:
           retention-days: 14
 
   portable-libraries:
+    concurrency:
+      group: android-arm64-portable-libraries-${{ github.ref }}
+      cancel-in-progress: false
     runs-on: ubuntu-24.04
     timeout-minutes: 25
     steps:
@@ -202,6 +209,9 @@ jobs:
             target/android-arm64/aarch64-linux-android/debug/libjs8.rlib
 
   native-backend:
+    concurrency:
+      group: android-arm64-native-backend-${{ github.ref }}
+      cancel-in-progress: false
     name: Real Android native modem + full backend check
     needs: portable-libraries
     runs-on: ubuntu-24.04

@@ -467,3 +467,25 @@ runtime USB popup or automatic radio start is added. Cloud framework tests and
 actual-source callback-authority mutation are not physical permission-dialog,
 USB controller, lifecycle/Stop or FT-710 acceptance evidence. APK build and
 S25 Ultra installation/runtime acceptance remain separate, unproven gates.
+
+### Final binary Manifest component exposure gate
+
+The actual produced APK is decoded using the installed Android SDK
+`apkanalyzer manifest print`, with the command-line-tools revision metadata and
+launcher hash recorded. The gate requires the sole native launcher, the private
+main host and USB preflight, and all 17 private panels from the native routing
+contract. Missing/duplicate names, unintended exports/aliases, unresolved export
+values, private-page filters and unexpected launcher filters fail validation.
+The sole reviewed exported maintenance exception is AndroidX's exact
+ProfileInstallReceiver guarded by the platform DUMP permission; no generic
+permission-bearing component exemption is accepted.
+
+Cloud controls exercise both parser fixtures and real aapt2-compiled binary
+Manifests. The negative control changes the actual fixture APK at the same path
+and must be rejected after real SDK decoding. The fixture has no DEX or native
+engine and is not install/runtime evidence. A source Manifest never substitutes
+for the actual final APK. This is component-exposure evidence only, NOT a full
+security audit, URI grant/provider-path review, permission-flow proof, signature,
+installation, license/source-compliance or S25 Ultra acceptance. Those report
+flags remain false until separately verified. Audit subprocesses have bounded
+timeouts and missing decoder tools are a failure, not a silent skip.

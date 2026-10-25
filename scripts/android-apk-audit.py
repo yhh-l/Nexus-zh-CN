@@ -13,6 +13,7 @@ import re
 import subprocess
 import tempfile
 import zipfile
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
 REPORT = ROOT / "target/android-apk/native-audit.json"
@@ -71,8 +72,106 @@ def manifest_core(output):
             "fullComponentSecurityAuditComplete": False}
 
 
+def merged_manifest_components(output):
+    """Only decoded final binary Manifest XML is evidence at the audit call site.
+
+    Component exposure is deliberately narrower than a full security audit:
+    providers' URI/path grants, backup, network policy and runtime remain separate.
+    """
+    namespace = "{http://schemas.android.com/apk/res/android}"
+    package = "com.kd9taw.tempo"
+    root = ET.fromstring(output)
+    applications = root.findall("application")
+    if root.tag != "manifest" or root.get("package") != package or len(applications) != 1:
+        raise ValueError("Missing/ambiguous actual merged manifest identity/application")
+    if root.findall("instrumentation"):
+        raise ValueError("Instrumentation in release APK")
+    application = applications[0]
+    if (application.get(namespace + "debuggable", "false") != "false" or
+            application.get(namespace + "testOnly", "false") != "false" or
+            application.get(namespace + "enabled", "true") != "true" or
+            application.get(namespace + "permission")):
+        raise ValueError("Unexpected release application debugging/test/entry policy")
+    # Derive the trusted panel inventory from its real native routing contract.
+    policy = (ROOT / "src-tauri/src/android_panels/policy.rs").read_text()
+    panels = re.findall(r'\("[^"\n]+", "([A-Za-z0-9]+PanelActivity)"\)', policy)
+    if len(panels) != 17 or len(set(panels)) != 17:
+        raise ValueError("Native panel contract changed: review the APK component gate")
+    private = {package + "." + name for name in ["MainActivity", "NexusUsbLaunchActivity", *panels]}
+    launcher = package + ".NexusLaunchActivity"
+    # Exact AndroidX OS-maintenance entry, not a blanket permission-based exemption.
+    protected = {("receiver", "androidx.profileinstaller.ProfileInstallReceiver"): "android.permission.DUMP"}
+    components = []
+    seen = set()
+    found_private = set()
+    launchers = 0
+    for element in application:
+        if element.tag not in {"activity", "activity-alias", "service", "receiver", "provider"}:
+            continue
+        name = element.get(namespace + "name", "")
+        if name.startswith("."):
+            name = package + name
+        elif "." not in name and name:
+            name = package + "." + name
+        if not re.fullmatch(r"[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)+", name) or name in seen:
+            raise ValueError("Missing/ambiguous merged component name")
+        seen.add(name)
+        filters = element.findall("intent-filter")
+        exported = element.get(namespace + "exported")
+        if exported is None:
+            if filters:
+                raise ValueError(f"Ambiguous exported component with intent filters: {name}")
+            exported = "false"  # minSdk 35: absent provider exported also defaults false.
+        if exported not in {"true", "false"}:
+            raise ValueError(f"Unresolved exported component value: {name}")
+        permission = element.get(namespace + "permission")
+        if name == launcher:
+            if (element.tag != "activity" or exported != "true" or permission or
+                    element.get(namespace + "enabled", "true") != "true" or len(filters) != 1):
+                raise ValueError("Unexpected exported launcher policy")
+            actions = [item.get(namespace + "name") for item in filters[0].findall("action")]
+            categories = [item.get(namespace + "name") for item in filters[0].findall("category")]
+            if (actions != ["android.intent.action.MAIN"] or
+                    set(categories) not in ({"android.intent.category.LAUNCHER"},
+                                           {"android.intent.category.LAUNCHER", "android.intent.category.LEANBACK_LAUNCHER"}) or
+                    len(categories) != len(set(categories)) or filters[0].findall("data")):
+                raise ValueError("Unexpected external launcher intent filter")
+            launchers += 1
+        elif name in private:
+            expected_mode = "singleTask" if name.endswith((".MainActivity", ".NexusUsbLaunchActivity")) else "standard"
+            if (element.tag != "activity" or exported != "false" or filters or
+                    element.get(namespace + "enabled", "true") != "true" or
+                    element.get(namespace + "launchMode", "standard") != expected_mode):
+                raise ValueError(f"Native station/panel component is no longer private: {name}")
+            found_private.add(name)
+        elif exported == "true":
+            required = protected.get((element.tag, name))
+            if required is None or permission != required:
+                raise ValueError(f"Unreviewed exported merged component: {name}")
+        components.append({"kind": element.tag, "name": name, "exported": exported == "true",
+                           "permission": permission})
+    if launchers != 1 or found_private != private:
+        raise ValueError("Missing actual merged launcher or private native station/panel component")
+    return {"components": components, "privateNativeActivityCount": len(private),
+            "mergedManifestComponentExposureVerified": True, "fullComponentSecurityAuditComplete": False}
+
+
 def run(command):
-    return subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=True).stdout
+    return subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=True, timeout=180).stdout
+
+
+def compiled_manifest(apk, sdk):
+    # Read the built APK, not the repository XML or a separately generated manifest.
+    tools = Path(sdk) / "cmdline-tools/latest"
+    analyzer = tools / "bin/apkanalyzer"
+    properties = tools / "source.properties"
+    if not analyzer.is_file() or not properties.is_file():
+        raise ValueError("Actual SDK apkanalyzer and its revision metadata required")
+    result = merged_manifest_components(run([str(analyzer), "manifest", "print", str(apk)]))
+    result["decoder"] = {"tool": "Android SDK apkanalyzer manifest print",
+                         "launcherSha256": hashlib.sha256(analyzer.read_bytes()).hexdigest(),
+                         "sdkSourceProperties": properties.read_text()}
+    return result
 
 
 def audit(apk, ndk, sdk):
@@ -98,6 +197,7 @@ def audit(apk, ndk, sdk):
     if not aapt2.is_file():
         raise ValueError("Actual Android SDK aapt2 is required")
     manifest = manifest_core(run([str(aapt2), "dump", "badging", str(apk)]))
+    components = compiled_manifest(apk, sdk)
     names = checkpoint["nativeLibraries"]
     bundled = {Path(name).name for name in names}
     records = []
@@ -126,6 +226,7 @@ def audit(apk, ndk, sdk):
             records.append({"member": member, "sha256": hashlib.sha256(Path(file).read_bytes()).hexdigest(),
                             "elf": elf, "needed": needed})
     return {"schemaVersion": 1, "apkSha256": checkpoint["sha256"], "nativeLibraries": records, "manifestCore": manifest,
+            "manifestComponents": components,
             "systemLibrarySource": "actual NDK AArch64 Android API 35 sysroot",
             "elfAndZip16KiBVerified": True, "neededLibraryClosureVerified": True,
             "zipalignOutput": alignment, "signatureVerified": False, "installableVerified": False,

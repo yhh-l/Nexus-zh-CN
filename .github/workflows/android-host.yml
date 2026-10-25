@@ -1,0 +1,79 @@
+# Generate the real Android host in the cloud; no app compile/signing/deployment.
+name: Android generated host source
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-host.yml
+      - scripts/android-host-source.py
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-host-source-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  generate-host:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    env:
+      CARGO_BUILD_JOBS: 2
+    steps:
+      - name: Checkout exact approved source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up pinned Rust and Android ARM64 target
+        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          targets: aarch64-linux-android
+      - name: Set up Node for existing config and source guards
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Verify existing Android config contract
+        run: |
+          node --test scripts/android-host-config.test.mjs
+          node scripts/android-host-config.mjs
+      - name: Reuse the same pinned CLI already reviewed by release CI
+        uses: actions/cache@v6
+        with:
+          path: ~/.cargo/bin/cargo-tauri
+          key: android-host-tauri-cli-2.11.5-rust-1.93.1-${{ runner.os }}
+      - name: Install/check the exact CLI only on the GitHub runner
+        shell: bash
+        run: |
+          set -euo pipefail
+          if ! command -v cargo-tauri >/dev/null || [[ "$(cargo tauri --version)" != 'tauri-cli 2.11.5' ]]; then
+            cargo install tauri-cli --version '=2.11.5' --locked --force
+          fi
+          test "$(cargo tauri --version)" = 'tauri-cli 2.11.5'
+      - name: Use the runner Android SDK, NDK and Java (never local.properties in artifacts)
+        shell: bash
+        run: |
+          set -euo pipefail
+          sdk="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-}}"
+          ndk="${ANDROID_NDK_HOME:-${ANDROID_NDK_ROOT:-${ANDROID_NDK_LATEST_HOME:-}}}"
+          java="${JAVA_HOME_17_X64:-${JAVA_HOME:-}}"
+          test -d "$sdk/platforms"
+          test -f "$ndk/source.properties"
+          test -x "$java/bin/java"
+          printf 'ANDROID_HOME=%s\nANDROID_SDK_ROOT=%s\nNDK_HOME=%s\nANDROID_NDK_HOME=%s\nJAVA_HOME=%s\n' "$sdk" "$sdk" "$ndk" "$ndk" "$java" >> "$GITHUB_ENV"
+          printf '%s/bin\n' "$java" >> "$GITHUB_PATH"
+      - name: Generate the real native Android Gradle/Kotlin project, without building an APK
+        working-directory: src-tauri
+        run: cargo tauri android init --ci --skip-targets-install
+      - name: Validate generated identity/minSdk/native host and foreign-payload negative controls
+        run: python3 scripts/android-host-source.py
+      - name: Upload reviewed-source candidate and explicit incomplete-coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-generated-host-source
+          path: target/android-host-source/
+          if-no-files-found: error
+          retention-days: 7

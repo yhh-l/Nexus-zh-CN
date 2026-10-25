@@ -8283,4 +8283,6 @@ export const DE: PartialCatalog = {
   "logEntry.contest.notRunning.aria": "Contest läuft nicht",
   "logEntry.contest.notRunning": "Der Contest-Modus ist an, aber der Contest läuft nicht.",
   "logEntry.contest.resume": "Fortsetzen",
+  'android.panel.back': 'Zurück',
+  'android.panel.closeFailed': 'Das Fenster konnte nicht geschlossen werden',
 }

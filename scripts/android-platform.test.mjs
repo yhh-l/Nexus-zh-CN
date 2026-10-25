@@ -220,3 +220,74 @@ test('Android MainShape delegates both lifecycle directions to the actual Java W
   assert.throws(() => androidShapeBoundary(source.replaceAll('android_shape::restore(&window)', 'ignore_restore(&window)'), adapter));
   assert.throws(() => androidShapeBoundary(source, adapter.replace('"nexusFollowWindowShape"', '"fakeShape"')));
 });
+
+// Actual product boundary, not a mocked replacement panel or a runtime Activity claim.
+function androidPanelBoundary(source, adapter) {
+  const begin = source.indexOf('async fn open_panel_window(');
+  const end = source.indexOf('fn dock_bandmap_window(', begin);
+  assert(begin > 0 && end > begin);
+  const open = source.slice(begin, end);
+  assert(open.indexOf('chains::openable(inst)?') >= 0);
+  assert(open.indexOf('chains::openable(inst)?') < open.indexOf('android_panels::show(&w).await'));
+  assert(open.indexOf('chains::openable(inst)?') < open.indexOf('android_panels::build('));
+  assert.match(open, /#\[cfg\(target_os = "android"\)\]\s*\{\s*return android_panels::show\(&w\)\.await;/);
+  assert.match(open, /#\[cfg\(not\(target_os = "android"\)\)\]\s*\{\s*let is_bandmap/);
+  assert.match(open, /android_panels::build\(&app, &slug, inst, &label, title\)\?/);
+  assert.match(adapter, /chains::openable\(instance\)\?/);
+  assert.match(adapter, /WindowConfig\s*\{/);
+  assert.match(adapter, /activity_name: Some\(component\)/);
+  assert.match(adapter, /created_by_activity_name: Some\("com\.kd9taw\.tempo\.MainActivity"/);
+  assert.match(adapter, /drag_drop_enabled: false/);
+  assert.match(adapter, /index\.html\?panel=\{slug\}&androidPanel=1/);
+  assert.match(adapter, /WebviewWindowBuilder::from_config\(app, &config\)/);
+  assert.match(adapter, /\.jni_handle\(\)\.exec\(/);
+  assert.match(adapter, /tx\.is_closed\(\)/);
+  assert.match(adapter, /exception_clear\(\)/);
+  assert.doesNotMatch(adapter, /https?:|open_url|set_always_on|\.center\(/);
+  const close = source.slice(source.indexOf('async fn close_panel_window('));
+  assert.match(close, /#\[cfg\(target_os = "android"\)\]\s*android_panels::close\(&w\)\.await\?/);
+}
+
+test('native Android pages preserve the original panel renderer, admission and desktop isolation', () => {
+  const adapter = read('android_panels/mod.rs');
+  androidPanelBoundary(station, adapter);
+  assert.throws(() => androidPanelBoundary(station.replace('    chains::openable(inst)?;', '    // admission removed'), adapter));
+  assert.throws(() => androidPanelBoundary(station, adapter.replace('WebviewWindowBuilder::from_config(app, &config)', 'fake_panel(app)')));
+  assert.throws(() => androidPanelBoundary(station, adapter.replace('drag_drop_enabled: false', 'drag_drop_enabled: true')));
+});
+
+function privatePanelComponents(policy, kotlin, manifest) {
+  const pairs = [...policy.matchAll(/\("([A-Za-z]+)", "([A-Za-z]+PanelActivity)"\)/g)];
+  assert.equal(pairs.length, 17);
+  assert.equal(new Set(pairs.map(p => p[1])).size, 17);
+  assert.equal(new Set(pairs.map(p => p[2])).size, 17);
+  const classes = [...kotlin.matchAll(/class (\w+PanelActivity) : NexusPanelActivity\(\)/g)].map(m => m[1]);
+  assert.deepEqual(classes.sort(), pairs.map(p => p[2]).sort());
+  assert.match(kotlin, /open class NexusPanelActivity : TauriActivity\(\)/);
+  assert.match(kotlin, /fun nexusShowPanel\(\) = NexusPanelNavigation.show\(this\)/);
+  assert.match(kotlin, /fun nexusClosePanel\(\) = NexusPanelNavigation.close\(this\)/);
+  for (const [, slug, component] of pairs) {
+    const declaration = manifest.match(new RegExp(`<activity\\s[^>]*android:name="\\.${component}"[^>]*>`))?.[0];
+    assert(declaration, `Missing actual component for ${slug}`);
+    assert.match(declaration, /android:exported="false"/);
+    assert.match(declaration, /android:launchMode="standard"/);
+  }
+}
+
+test('all seventeen trusted panel components are real app-private Tauri Activities', () => {
+  const policy = read('android_panels/policy.rs');
+  const kotlin = fs.readFileSync(path.join(root, 'src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/PanelActivities.kt'), 'utf8');
+  const manifest = fs.readFileSync(path.join(root, 'src-tauri/gen/android/app/src/main/AndroidManifest.xml'), 'utf8');
+  privatePanelComponents(policy, kotlin, manifest);
+  assert.throws(() => privatePanelComponents(policy, kotlin.replace('class NeededPanelActivity : NexusPanelActivity()', ''), manifest));
+  assert.throws(() => privatePanelComponents(policy, kotlin, manifest.replace('android:exported="false"', 'android:exported="true"')));
+});
+
+test('Android edge docking refuses before geometry persistence, with the desktop path retained', () => {
+  const begin = station.indexOf('fn dock_bandmap_window(');
+  const end = station.indexOf('/// Close the main-instance', begin);
+  const command = station.slice(begin, end);
+  assert.match(command, /#\[cfg\(target_os = "android"\)\]\s*\{[\s\S]*?Err\("desktop edge docking is not available on Android"/);
+  assert.match(command, /#\[cfg\(not\(target_os = "android"\)\)\]\s*\{\s*if side/);
+  assert(command.indexOf('not(target_os') < command.indexOf('save_bandmap_window('));
+});

@@ -16,6 +16,7 @@
 // that would fill the board, and the board component never renders in that state.
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
 import { t } from './i18n'
+import { AndroidPanelBar, androidPanelPage } from './components/AndroidPanelBar'
 import { useEscStop } from './useEscStop'
 import { publishBandConditions } from './bandConditions'
 import { confirmDialog, ConfirmHost } from './confirm'
@@ -219,6 +220,7 @@ export function DetachedPanel({ panel }: { panel: string }) {
 function DetachedShell({ className, children }: { className?: string; children?: ReactNode }) {
   return (
     <div className={className ? `app detached ${className}` : 'app detached'}>
+      <AndroidPanelBar />
       {children}
       <Toasts />
     </div>
@@ -633,7 +635,7 @@ function DetachedPanelBody({ panel }: { panel: string }) {
           workedCalls={workedCalls}
           unansweredCalls={unansweredCalls}
           unansweredTitle={workedFailed !== null ? t('logbook.readFailed', { reason: workedFailed }) : t('logbook.reading')}
-          onDock={(side) => void dockBandmapWindow(side)}
+          onDock={androidPanelPage() ? undefined : (side) => void dockBandmapWindow(side)}
           fieldDay={snap.fieldDay ?? null}
           // Tuning from the map (#39). The map is a frequency scale, so it can act as one.
           sideband={snap.radio.sideband || 'USB'}

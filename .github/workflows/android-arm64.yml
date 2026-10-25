@@ -36,6 +36,9 @@ jobs:
       - name: Install the locked UI dependencies
         run: npm --prefix ui ci
 
+      - name: Test native panel shell navigation, Stop and the structural fence
+        run: npm --prefix ui test -- src/components/AndroidPanelBar.test.tsx src/cockpit-panes.test.ts
+
       # Failing-first is also cloud-only: use the actual previous branch revision,
       # not a synthetic bad stylesheet. Restore both exact files on every exit.
       - name: Prove the mobile regression detects the previous implementation

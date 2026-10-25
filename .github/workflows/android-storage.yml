@@ -9,6 +9,7 @@ on:
       - .github/workflows/android-storage.yml
       - src-tauri/src/android_storage.rs
       - src-tauri/src/android_folder_picker/**
+      - src-tauri/src/android_panels/**
       - src-tauri/gen/android/**
       - scripts/android-folder-harness/**
       - src-tauri/src/lib.rs
@@ -106,6 +107,10 @@ jobs:
           cat "$RUNNER_TEMP/folder-request-negative.log"
           test "$status" = 101
           grep -F 'test tests::old_callbacks_and_cancellation_cannot_complete_a_new_request ... FAILED' "$RUNNER_TEMP/folder-request-negative.log"
+      - name: Test actual app-private panel component policy
+        run: |
+          rustc --edition=2021 --test src-tauri/src/android_panels/policy.rs --crate-name android_panel_policy -o "$RUNNER_TEMP/android-panel-tests"
+          "$RUNNER_TEMP/android-panel-tests"
       - name: Check actual pinned shell formatting
         run: cargo fmt --manifest-path src-tauri/Cargo.toml --check
       - name: Verify dependency notices against locked upstream packages

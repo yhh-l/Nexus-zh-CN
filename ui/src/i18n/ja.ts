@@ -8276,4 +8276,6 @@ export const JA: PartialCatalog = {
   "logEntry.contest.notRunning.aria": "コンテスト停止中",
   "logEntry.contest.notRunning": "コンテストモードはオンですが、コンテストは実行されていません。",
   "logEntry.contest.resume": "再開",
+  'android.panel.back': '戻る',
+  'android.panel.closeFailed': 'パネルを閉じられませんでした',
 }

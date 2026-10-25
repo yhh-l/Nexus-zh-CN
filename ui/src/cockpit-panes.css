@@ -864,3 +864,22 @@
   top: 0;
   right: 0;
 }
+
+/* ANDROID PANEL NAVIGATION — shell chrome, never a removable pane.
+   Touch floors compensate for the app's zoom. Not a native-modal Stop guarantee. */
+.android-panel-bar {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+}
+.android-panel-back {
+  min-width: calc(48px / var(--ui-zoom, 1));
+  min-height: calc(48px / var(--ui-zoom, 1));
+}
+.android-panel-stop {
+  min-width: calc(48px / var(--ui-zoom, 1));
+  min-height: calc(48px / var(--ui-zoom, 1));
+}

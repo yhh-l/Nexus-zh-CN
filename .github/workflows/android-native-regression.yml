@@ -13,6 +13,8 @@ on:
       - src-tauri/src/client_mode.rs
       - src-tauri/src/lan_client.rs
       - src-tauri/src/lan_client/**
+      - src-tauri/src/lib.rs
+      - src-tauri/src/android_panels/**
       - src-tauri/src/window_state.rs
       - src-tauri/src/window_state/**
       - src-tauri/src/remote_window.rs

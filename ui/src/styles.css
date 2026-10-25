@@ -32442,3 +32442,8 @@ tr.sel .aprs-sym {
   color: var(--text-dim);
   overflow-wrap: anywhere;
 }
+
+/* Native panel shell chrome. Geometry belongs to cockpit-panes.css. */
+.android-panel-chrome { background: var(--bg); border-bottom: 1px solid var(--border); }
+.android-panel-action { color: var(--text); background: var(--bg-elev-2); }
+.android-panel-critical { color: var(--text); background: var(--bg-elev-2); border: 2px solid var(--state-bad); font-weight: 700; }

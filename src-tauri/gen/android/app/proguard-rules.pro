@@ -28,3 +28,5 @@
     public void cancelNexusDataFolder(long);
     private native void nexusDataFolderResult(long, java.lang.String, java.lang.String);
 }
+# Component names also occur in Rust's trusted panel table; keep them stable for JNI.
+-keep class com.kd9taw.tempo.*PanelActivity { *; }

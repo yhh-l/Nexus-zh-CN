@@ -24,6 +24,93 @@
             </intent-filter>
         </activity>
 
+        <!-- App-private panel pages. Android Back returns to the preserved main WebView. -->
+        <activity
+            android:name=".WaterfallPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".NeededPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".SpotsPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".MemoriesPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".ConnectPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".DxpedPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".PotaPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".SstvviewerPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".SatsPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".FielddayPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".ContestlogPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".ContestscreenPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".FdclubPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".OperatePanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".OperatemapPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".BandmapPhonePanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+        <activity
+            android:name=".BandmapCwPanelActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|smallestScreenSize|screenLayout|uiMode"
+            android:launchMode="standard"
+            android:exported="false" />
+
         <provider
           android:name="androidx.core.content.FileProvider"
           android:authorities="${applicationId}.fileprovider"

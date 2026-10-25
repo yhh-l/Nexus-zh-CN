@@ -13066,4 +13066,6 @@ export const EN = {
   // key that two surfaces want to word differently cannot be split later without orphaning
   // both translations. When in doubt, give the surface its own key.
   'common.dismiss': 'Dismiss',
+  'android.panel.back': 'Back',
+  'android.panel.closeFailed': 'Could not close the panel',
 } satisfies Record<string, Message>

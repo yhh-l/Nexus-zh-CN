@@ -39,6 +39,8 @@ mod alert;
 /// Android-native local folder selection; desktop keeps its existing OS dialog.
 #[cfg(target_os = "android")]
 mod android_folder_picker;
+#[cfg(target_os = "android")]
+mod android_panels;
 /// Early OS-owned storage roots; the desktop/test paths below stay unchanged.
 #[cfg(any(target_os = "android", test))]
 mod android_storage;
@@ -21410,10 +21412,17 @@ async fn open_panel_window(
     // panel are distinct windows). Not one the operator asked to stay behind other windows:
     // focus would move the keyboard to a window drawn underneath the one they are looking at.
     if let Some(w) = app.get_webview_window(&label) {
-        if !window_state::stays_behind(&w) {
-            let _ = w.set_focus();
+        #[cfg(target_os = "android")]
+        {
+            return android_panels::show(&w).await;
         }
-        return Ok(());
+        #[cfg(not(target_os = "android"))]
+        {
+            if !window_state::stays_behind(&w) {
+                let _ = w.set_focus();
+            }
+            return Ok(());
+        }
     }
     // Friendly window title so multi-monitor users can tell torn-off windows apart.
     let title = match slug.as_str() {
@@ -21435,109 +21444,122 @@ async fn open_panel_window(
         "bandmapCw" => "Nexus — Band map (CW)".to_string(),
         other => format!("Nexus — {other}"),
     };
-    let is_bandmap = slug == "bandmapPhone" || slug == "bandmapCw";
-    // The band map reopens where the operator left it (size + position), so a Windows-snapped
-    // vertical strip on the side survives restarts. The Connect dashboard does too, through the
-    // main window's policy (`window_state`), not this dock-aware path. Other pop-outs keep their
-    // fixed defaults.
-    let saved = if is_bandmap {
-        load_bandmap_window(&slug, inst)
-    } else {
-        None
-    };
-    let (min_w, min_h) = panel_min_inner(&slug);
-    let remembered = window_state::restore_panel(&app, &slug, inst, (min_w, min_h));
-    // A docked window re-snaps to the CURRENT monitor work area AFTER build (so a resolution
-    // change since last session can't strand it off-screen); a FREE window's rect is validated
-    // against the live monitor list below. (It used to be replayed verbatim — un-docking was
-    // what removed the only safety net, and a rect saved on a since-unplugged monitor reopened
-    // fully off-screen.)
-    let docked_side = saved
-        .as_ref()
-        .map(|g| g.dock.clone())
-        .filter(|d| d == "left" || d == "right");
-    // FREE rect: keep the position only while its top-left still lands on some monitor's work
-    // area, and cap w/h at that work area. Docked rects skip this — their re-snap is stronger.
-    let free = match (&saved, &docked_side) {
-        (Some(g), None) => Some(sanitize_free_bandmap_rect(&app, g)),
-        _ => None,
-    };
-    let (w, h) = if let Some((w, h, _)) = free {
-        (w, h)
-    } else if let Some(g) = &saved {
-        (g.w, g.h)
-    } else if let Some(r) = remembered.and_then(|p| p.rect) {
-        (r.w, r.h)
-    } else {
-        panel_default_inner(&slug)
-    };
-    // `instance` is a SEPARATE query parameter, never baked into the slug — the slug filter
-    // would strip the separator and alias it. Appended only above `main`, so every window that
-    // is openable today keeps the exact URL it has always had.
-    let url = match inst {
-        Instance::Main => format!("index.html?panel={slug}"),
-        other => format!("index.html?panel={slug}&instance={other}"),
-    };
-    let mut builder =
-        tauri::WebviewWindowBuilder::new(&app, &label, tauri::WebviewUrl::App(url.into()))
-            .title(title)
-            .inner_size(w, h)
-            .min_inner_size(min_w, min_h);
-    if let Some(g) = &saved {
-        if matches!(free, Some((_, _, false))) {
-            // FREE window whose saved top-left no longer lands on any monitor (unplugged or
-            // rearranged since last session): drop the stale position and open centered on
-            // the current monitor instead of replaying a rect nothing displays.
-            builder = builder.center();
+    #[cfg(target_os = "android")]
+    {
+        // Each complete panel lives on the app's own Activity stack. The main WebView
+        // and its drafts survive, with no desktop monitor/z-order calls or URL reload.
+        let _window = android_panels::build(&app, &slug, inst, &label, title)?;
+        if slug == CONTEST_LOGGER_SLUG && matches!(inst, Instance::Main) {
+            engine_lock(&app.state::<SharedEngine>()).contest_entry_share(true);
+        }
+        Ok(())
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        let is_bandmap = slug == "bandmapPhone" || slug == "bandmapCw";
+        // The band map reopens where the operator left it (size + position), so a Windows-snapped
+        // vertical strip on the side survives restarts. The Connect dashboard does too, through the
+        // main window's policy (`window_state`), not this dock-aware path. Other pop-outs keep their
+        // fixed defaults.
+        let saved = if is_bandmap {
+            load_bandmap_window(&slug, inst)
         } else {
-            // Open at the saved position. For a FREE (validated) window that's the exact
-            // restore; for a DOCKED window it lands it on the RIGHT monitor (multi-monitor)
-            // before the re-snap below refines it to THAT monitor's work-area edge — and it's
-            // the fallback if the re-snap can't resolve a monitor.
-            builder = builder.position(g.x, g.y);
-        }
-    }
-    if let Some(p) = remembered {
-        // `prevent_overflow` fits the OUTER window, title bar included, to the work area of the
-        // monitor it opens on: the restore above caps only the content box, and `center` does
-        // not clamp, so a box as tall as the screen would centre with its title bar above it.
-        builder = builder.prevent_overflow();
-        builder = match p.rect.and_then(|r| r.position) {
-            Some((x, y)) => builder.position(x, y),
-            // A first open, or a saved place on a monitor that is gone.
-            None => builder.center(),
+            None
         };
-        if p.rect.is_some_and(|r| r.maximized) {
-            builder = builder.maximized(true);
+        let (min_w, min_h) = panel_min_inner(&slug);
+        let remembered = window_state::restore_panel(&app, &slug, inst, (min_w, min_h));
+        // A docked window re-snaps to the CURRENT monitor work area AFTER build (so a resolution
+        // change since last session can't strand it off-screen); a FREE window's rect is validated
+        // against the live monitor list below. (It used to be replayed verbatim — un-docking was
+        // what removed the only safety net, and a rect saved on a since-unplugged monitor reopened
+        // fully off-screen.)
+        let docked_side = saved
+            .as_ref()
+            .map(|g| g.dock.clone())
+            .filter(|d| d == "left" || d == "right");
+        // FREE rect: keep the position only while its top-left still lands on some monitor's work
+        // area, and cap w/h at that work area. Docked rects skip this — their re-snap is stronger.
+        let free = match (&saved, &docked_side) {
+            (Some(g), None) => Some(sanitize_free_bandmap_rect(&app, g)),
+            _ => None,
+        };
+        let (w, h) = if let Some((w, h, _)) = free {
+            (w, h)
+        } else if let Some(g) = &saved {
+            (g.w, g.h)
+        } else if let Some(r) = remembered.and_then(|p| p.rect) {
+            (r.w, r.h)
+        } else {
+            panel_default_inner(&slug)
+        };
+        // `instance` is a SEPARATE query parameter, never baked into the slug — the slug filter
+        // would strip the separator and alias it. Appended only above `main`, so every window that
+        // is openable today keeps the exact URL it has always had.
+        let url = match inst {
+            Instance::Main => format!("index.html?panel={slug}"),
+            other => format!("index.html?panel={slug}&instance={other}"),
+        };
+        let mut builder =
+            tauri::WebviewWindowBuilder::new(&app, &label, tauri::WebviewUrl::App(url.into()))
+                .title(title)
+                .inner_size(w, h)
+                .min_inner_size(min_w, min_h);
+        if let Some(g) = &saved {
+            if matches!(free, Some((_, _, false))) {
+                // FREE window whose saved top-left no longer lands on any monitor (unplugged or
+                // rearranged since last session): drop the stale position and open centered on
+                // the current monitor instead of replaying a rect nothing displays.
+                builder = builder.center();
+            } else {
+                // Open at the saved position. For a FREE (validated) window that's the exact
+                // restore; for a DOCKED window it lands it on the RIGHT monitor (multi-monitor)
+                // before the re-snap below refines it to THAT monitor's work-area edge — and it's
+                // the fallback if the re-snap can't resolve a monitor.
+                builder = builder.position(g.x, g.y);
+            }
         }
-        if p.behind && window_state::behind_supported() {
-            // Opened behind, it does not take the keyboard either (see the focus note above).
-            builder = builder.always_on_bottom(true).focused(false);
+        if let Some(p) = remembered {
+            // `prevent_overflow` fits the OUTER window, title bar included, to the work area of the
+            // monitor it opens on: the restore above caps only the content box, and `center` does
+            // not clamp, so a box as tall as the screen would centre with its title bar above it.
+            builder = builder.prevent_overflow();
+            builder = match p.rect.and_then(|r| r.position) {
+                Some((x, y)) => builder.position(x, y),
+                // A first open, or a saved place on a monitor that is gone.
+                None => builder.center(),
+            };
+            if p.rect.is_some_and(|r| r.maximized) {
+                builder = builder.maximized(true);
+            }
+            if p.behind && window_state::behind_supported() {
+                // Opened behind, it does not take the keyboard either (see the focus note above).
+                builder = builder.always_on_bottom(true).focused(false);
+            }
+            if p.on_top {
+                // Pinned in front by the operator (`window_state::set_window_on_top`), and it opens so.
+                builder = builder.always_on_top(true);
+            }
         }
-        if p.on_top {
-            // Pinned in front by the operator (`window_state::set_window_on_top`), and it opens so.
-            builder = builder.always_on_top(true);
+        // Pop-outs are ordinary windows — the operator must be able to send them behind the
+        // main UI (a tester couldn't hide the waterfall while it was pinned always-on-top). Only
+        // a window the operator pins with its own Pin button opens in front, above.
+        let win = builder.build().map_err(|e| e.to_string())?;
+        // THE CONTEST LOGGER WINDOW shares the contest strip's contact with the main window for as
+        // long as it exists: from here, once it is built, to its `Destroyed` event (the app's window
+        // handler). Never persisted, so a restart cannot leave it shared.
+        if slug == CONTEST_LOGGER_SLUG && matches!(inst, Instance::Main) {
+            engine_lock(&app.state::<SharedEngine>()).contest_entry_share(true);
         }
+        if let Some(side) = docked_side {
+            // Re-pin to the edge of the current work area (best-effort; ignore if unmapped) so a
+            // resolution change since last session can't strand it off-screen.
+            let _ = snap_bandmap_to_edge(&win, &side);
+        }
+        if remembered.is_some() {
+            window_state::arm_panel_capture(&win);
+        }
+        Ok(())
     }
-    // Pop-outs are ordinary windows — the operator must be able to send them behind the
-    // main UI (a tester couldn't hide the waterfall while it was pinned always-on-top). Only
-    // a window the operator pins with its own Pin button opens in front, above.
-    let win = builder.build().map_err(|e| e.to_string())?;
-    // THE CONTEST LOGGER WINDOW shares the contest strip's contact with the main window for as
-    // long as it exists: from here, once it is built, to its `Destroyed` event (the app's window
-    // handler). Never persisted, so a restart cannot leave it shared.
-    if slug == CONTEST_LOGGER_SLUG && matches!(inst, Instance::Main) {
-        engine_lock(&app.state::<SharedEngine>()).contest_entry_share(true);
-    }
-    if let Some(side) = docked_side {
-        // Re-pin to the edge of the current work area (best-effort; ignore if unmapped) so a
-        // resolution change since last session can't strand it off-screen.
-        let _ = snap_bandmap_to_edge(&win, &side);
-    }
-    if remembered.is_some() {
-        window_state::arm_panel_capture(&win);
-    }
-    Ok(())
 }
 
 /// Snap the calling band-map window to the left/right edge of its monitor as a full-height
@@ -21546,26 +21568,34 @@ async fn open_panel_window(
 /// just persists the current geometry). The dock + geometry persist so it restores on relaunch.
 #[tauri::command]
 fn dock_bandmap_window(window: tauri::WebviewWindow, side: String) -> Result<(), String> {
-    if side == "left" || side == "right" {
-        snap_bandmap_to_edge(&window, &side)?;
-        return Ok(());
+    #[cfg(target_os = "android")]
+    {
+        let _ = (window, side);
+        Err("desktop edge docking is not available on Android".into())
     }
-    // Un-dock: leave the window where it is, just clear the dock flag (per-surface) so a later
-    // open doesn't re-snap it. Persist the current geometry.
-    //
-    // NOTE for a non-persisting surface (`w<n>`): dock rides in the same file as the rect, so
-    // both load and save no-op and the un-dock is in-memory only — the surface re-docks on every
-    // open. That is the accepted price of "never persist a recycled instance" (the alternative,
-    // GC-on-boot, risks a later `w3` inheriting a stranger's rect). Safe either way: the path is
-    // `None` on BOTH sides, so a `w<n>` can never read or clobber `main`'s file. Unreachable
-    // today — `w<n>` windows are refused in `open_panel_window`.
-    capture_bandmap_window(&window);
-    if let Some((slug, inst)) = bandmap_key(&window) {
-        let mut g = load_bandmap_window(slug, inst).unwrap_or_default();
-        g.dock = String::new();
-        save_bandmap_window(slug, inst, &g);
+    #[cfg(not(target_os = "android"))]
+    {
+        if side == "left" || side == "right" {
+            snap_bandmap_to_edge(&window, &side)?;
+            return Ok(());
+        }
+        // Un-dock: leave the window where it is, just clear the dock flag (per-surface) so a later
+        // open doesn't re-snap it. Persist the current geometry.
+        //
+        // NOTE for a non-persisting surface (`w<n>`): dock rides in the same file as the rect, so
+        // both load and save no-op and the un-dock is in-memory only — the surface re-docks on every
+        // open. That is the accepted price of "never persist a recycled instance" (the alternative,
+        // GC-on-boot, risks a later `w3` inheriting a stranger's rect). Safe either way: the path is
+        // `None` on BOTH sides, so a `w<n>` can never read or clobber `main`'s file. Unreachable
+        // today — `w<n>` windows are refused in `open_panel_window`.
+        capture_bandmap_window(&window);
+        if let Some((slug, inst)) = bandmap_key(&window) {
+            let mut g = load_bandmap_window(slug, inst).unwrap_or_default();
+            g.dock = String::new();
+            save_bandmap_window(slug, inst, &g);
+        }
+        Ok(())
     }
-    Ok(())
 }
 
 /// Close the main-instance torn-off window of one panel, if it is open (#263). The waterfall's
@@ -21583,6 +21613,9 @@ async fn close_panel_window(app: tauri::AppHandle, panel: String) -> Result<(), 
         return Err("invalid panel".into());
     }
     if let Some(w) = app.get_webview_window(&panel_label(&slug, Instance::Main)) {
+        #[cfg(target_os = "android")]
+        android_panels::close(&w).await?;
+        #[cfg(not(target_os = "android"))]
         w.close().map_err(|e| e.to_string())?;
     }
     Ok(())

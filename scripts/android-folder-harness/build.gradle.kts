@@ -25,7 +25,7 @@ android {
 
 kotlin.sourceSets.getByName("main").kotlin.apply {
     setSrcDirs(listOf(nativeApp.resolve("java/com/kd9taw/tempo")))
-    include("NexusDataFolderPicker.kt", "NexusWindowShape.kt")
+    include("NexusDataFolderPicker.kt", "NexusWindowShape.kt", "NexusPanelNavigation.kt")
 }
 
 dependencies {

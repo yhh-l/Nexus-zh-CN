@@ -8293,4 +8293,6 @@ export const FR: PartialCatalog = {
   "logEntry.contest.notRunning.aria": "Concours arrêté",
   "logEntry.contest.notRunning": "Le mode concours est activé, mais le concours n'est pas en cours.",
   "logEntry.contest.resume": "Reprendre",
+  'android.panel.back': 'Retour',
+  'android.panel.closeFailed': 'Impossible de fermer le panneau',
 }

@@ -86,7 +86,7 @@ jobs:
           from pathlib import Path
           path = Path('scripts/android-jvm-inventory.gradle')
           source = path.read_text()
-          needle = "            app.configurations.getByName('universalReleaseRuntimeClasspath').buildDependencies"
+          needle = "            runtimeArtifacts.artifactFiles.buildDependencies"
           assert source.count(needle) == 1
           path.write_text(source.replace(needle, '            []'))
           PY
@@ -98,5 +98,32 @@ jobs:
           test "$status" -ne 0
           grep -F 'FAIL: test_project_artifact_producer_runs_before_its_actual_bytes_are_hashed' "$RUNNER_TEMP/producer-negative.log"
           grep -F 'bridge.jar' "$RUNNER_TEMP/producer-negative.log"
+          cp "$backup" "$source"
+          trap - EXIT
+
+      - name: Prove dropping the typed runtime view reproduces project variant ambiguity
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=scripts/android-jvm-inventory.gradle
+          backup=$(mktemp "$RUNNER_TEMP/nexus-jvm-variants.XXXXXX")
+          cp "$source" "$backup"
+          trap 'cp "$backup" "$source"' EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/android-jvm-inventory.gradle')
+          source = path.read_text()
+          needle = '        it.attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, inputArtifactType)\n'
+          assert source.count(needle) == 1
+          path.write_text(source.replace(needle, ''))
+          PY
+          set +e
+          python3 -m unittest discover -s scripts -p android_jvm_inventory_test.py -k typed_view -v > "$RUNNER_TEMP/variants-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/variants-negative.log"
+          test "$status" -ne 0
+          grep -F 'FAIL: test_typed_view_selects_runtime_bytes_and_producer_among_project_metadata_variants' "$RUNNER_TEMP/variants-negative.log"
+          grep -F 'Release runtime input resolution incomplete' "$RUNNER_TEMP/variants-negative.log"
           cp "$backup" "$source"
           trap - EXIT

@@ -675,3 +675,14 @@ this reproduced a real build-script panic before Gradle could run. The values ma
 the tracked host identity and `tempo_lib`, not a substitute or empty plugin graph.
 Source-wiring omission/wrong-value controls run in cloud CI; only the actual Android
 backend and subsequent real Gradle/APK jobs prove generation and integration.
+
+The inventory selects AGP 8.11.0's unprocessed `android-aar-or-jar` artifact view,
+matching its runtime dependency tooling. Raw configuration build dependencies
+cannot select among project-produced runtime classes, AAR metadata and resources.
+Both the producer dependency and byte inventory use the same typed artifact view;
+no repository, dependency version or application task is substituted. The original
+plain Gradle fixture uses the explicit `jar` type and publishes competing runtime
+and metadata variants; cloud controls require the actual runtime producer/hash,
+then remove the real selection attribute and require the named regression to fail.
+This fixture is not AGP/Android proof: the real plugin graph, final APK inventory,
+license/source review and device acceptance remain required independently.

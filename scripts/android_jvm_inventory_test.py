@@ -154,6 +154,46 @@ artifacts { add('default', bundle) }
             self.assertTrue(report["runtimeInputResolutionComplete"])
             self.assertFalse(report["apkPayloadVerified"])
 
+    def test_typed_view_selects_runtime_bytes_and_producer_among_project_metadata_variants(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.fixture(directory)
+            payload = root / "bridge/payload"
+            payload.mkdir()
+            (payload / "fixture.txt").write_text("actual selected runtime fixture, not Android bytecode")
+            (root / "bridge/metadata.txt").write_text("metadata must not replace the runtime artifact")
+            (root / "bridge/build.gradle").write_text("""
+import org.gradle.api.artifacts.type.ArtifactTypeDefinition
+configurations.create('default')
+def bundle = tasks.register('fixtureJar', Zip) {
+    archiveFileName = 'bridge.jar'
+    destinationDirectory = layout.buildDirectory.dir('fixtures')
+    from('payload')
+}
+configurations.default.outgoing.variants {
+    create('runtimeJar') {
+        attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, 'jar')
+        artifact(bundle)
+    }
+    create('aarMetadata') {
+        attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, 'android-aar-metadata')
+        artifact(file('metadata.txt'))
+    }
+}
+""")
+            output = root / "bridge/build/fixtures/bridge.jar"
+            self.assertFalse(output.exists())
+            process, report = self.invoke(root)
+            self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
+            self.assertIsNotNone(report)
+            self.assertTrue(report["runtimeInputResolutionComplete"])
+            self.assertEqual(report["artifactSelection"], "jar")
+            self.assertIn(":bridge:fixtureJar", process.stdout)
+            artifacts = [item for item in report["artifacts"] if item["component"] == "project :bridge"]
+            self.assertEqual(len(artifacts), 1)
+            self.assertEqual(artifacts[0]["name"], "bridge.jar")
+            self.assertEqual(artifacts[0]["sha256"], hashlib.sha256(output.read_bytes()).hexdigest())
+            self.assertFalse(report["distributable"])
+
     def test_inventory_refuses_to_schedule_application_build_tasks(self):
         with tempfile.TemporaryDirectory() as directory:
             root = self.fixture(directory)

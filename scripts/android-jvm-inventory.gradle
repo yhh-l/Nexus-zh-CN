@@ -8,6 +8,7 @@ import org.gradle.api.artifacts.component.ModuleComponentIdentifier
 import org.gradle.api.artifacts.component.ProjectComponentIdentifier
 import org.gradle.api.artifacts.result.ResolvedArtifactResult
 import org.gradle.api.artifacts.result.ResolvedDependencyResult
+import org.gradle.api.artifacts.type.ArtifactTypeDefinition
 import org.gradle.jvm.JvmLibrary
 import org.gradle.language.base.artifact.SourcesArtifact
 import org.gradle.maven.MavenModule
@@ -48,6 +49,17 @@ gradle.projectsEvaluated {
     if (gradle.parent != null) return
     def app = gradle.rootProject.findProject(':app')
     if (app == null) throw new GradleException('Actual :app project required for runtime inventory')
+    def mode = app.providers.gradleProperty('nexusInventoryMode').get()
+    if (!(mode in ['android', 'fixture'])) throw new GradleException('Explicit inventory scope required')
+    def configuration = app.configurations.getByName('universalReleaseRuntimeClasspath')
+    // AGP 8.11.0 uses this same AAR_OR_JAR view for unprocessed runtime inputs.
+    // Raw configuration.buildDependencies is ambiguous across project metadata,
+    // resources and classes variants. Use the SAME typed view for producers/bytes.
+    def inputArtifactType = mode == 'android' ? 'android-aar-or-jar' : 'jar'
+    def runtimeArtifacts = configuration.incoming.artifactView {
+        it.attributes.attribute(ArtifactTypeDefinition.ARTIFACT_TYPE_ATTRIBUTE, inputArtifactType)
+        it.setLenient(true)
+    }.artifacts
     app.tasks.register('nexusAndroidRuntimeInventory') {
         // Resolve project-produced AAR/JAR files only after their real producers.
         // This configuration contains dependency libraries, not the app's Rust/APK tasks.
@@ -55,7 +67,7 @@ gradle.projectsEvaluated {
             if (System.getenv('GITHUB_ACTIONS') != 'true' || gradle.gradleVersion != '8.14.3') {
                 throw new GradleException('Runtime input inventory requires cloud Gradle 8.14.3')
             }
-            app.configurations.getByName('universalReleaseRuntimeClasspath').buildDependencies
+            runtimeArtifacts.artifactFiles.buildDependencies
         }
         doLast {
             if (System.getenv('GITHUB_ACTIONS') != 'true' || gradle.gradleVersion != '8.14.3') {
@@ -63,16 +75,13 @@ gradle.projectsEvaluated {
             }
             def revision = System.getenv('GITHUB_SHA')
             if (!(revision ==~ /[a-f0-9]{40}/)) throw new GradleException('Exact cloud revision required')
-            def mode = app.providers.gradleProperty('nexusInventoryMode').get()
-            if (!(mode in ['android', 'fixture'])) throw new GradleException('Explicit inventory scope required')
-            def configuration = app.configurations.getByName('universalReleaseRuntimeClasspath')
             def resolution = configuration.incoming.resolutionResult
             def components = resolution.allComponents.collect { identity(it.id) }.sort { it.key }
             if (components.collect { it.key }.toSet().size() != components.size()) {
                 throw new GradleException('Ambiguous runtime component identities; inventory refused')
             }
             def modules = resolution.allComponents.collect { it.id }.findAll { it instanceof ModuleComponentIdentifier }
-            def view = configuration.incoming.artifactView { it.setLenient(true) }.artifacts
+            def view = runtimeArtifacts
             def artifacts = view.artifacts.collect { artifact ->
                 [component: identity(artifact.id.componentIdentifier).key, name: artifact.file.name,
                  bytes: artifact.file.length(), sha256: sha256(artifact.file.bytes)]
@@ -123,7 +132,7 @@ gradle.projectsEvaluated {
                 gaps.add('Actual Android appcompat runtime dependency absent')
             }
             def report = [schemaVersion: 1, sourceRevision: revision, gradleVersion: gradle.gradleVersion,
-                configuration: 'universalReleaseRuntimeClasspath', scope: 'resolved build inputs, not final DEX retention',
+                configuration: 'universalReleaseRuntimeClasspath', artifactSelection: inputArtifactType, scope: 'resolved build inputs, not final DEX retention',
                 syntheticFixture: mode == 'fixture', runtimeInputResolutionComplete: resolved,
                 resolutionFailureCount: view.failures.size(), components: components, artifacts: artifacts,
                 dependencyEdges: edges, findings: gaps.sort(), apkPayloadVerified: false,

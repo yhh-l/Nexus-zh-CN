@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android JVM inspection selects runtime archives instead of ambiguous project metadata.**
+  The dependency collector uses AGP's typed AAR/JAR view for both library producer tasks
+  and inspected bytes. A real Gradle multi-variant fixture guards against selecting metadata
+  or losing producer ordering; the complete application graph remains a separate cloud gate.
 - **Android backend preflight supplies the complete Tauri code-generation environment.**
   The existing application identity, native library and generated Kotlin directory now
   accompany the project path, matching the pinned CLI instead of failing during Tauri's

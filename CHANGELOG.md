@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android backend preflight supplies the complete Tauri code-generation environment.**
+  The existing application identity, native library and generated Kotlin directory now
+  accompany the project path, matching the pinned CLI instead of failing during Tauri's
+  build script. Full native features and final APK validation remain mandatory.
 - **Android runtime-input inspection waits for real dependency artifact producers.**
   Project AAR/JAR bytes are hashed only after their library tasks run; a task-graph guard
   refuses application build tasks during inventory. Cloud controls start without the

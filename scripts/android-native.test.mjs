@@ -346,3 +346,43 @@ test('Android retains the full waterfall through real USB JNI rather than deskto
     assert(keep.includes(`${method}(`), `release JNI method must not be renamed: ${method}`);
   }
 });
+
+test('actual backend preflight supplies the complete pinned Tauri Android codegen environment', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github/workflows/android-arm64.yml'), 'utf8');
+  const identifier = JSON.parse(fs.readFileSync(path.join(ROOT, 'src-tauri/tauri.conf.json'), 'utf8')).identifier;
+  const manifest = fs.readFileSync(path.join(ROOT, 'src-tauri/Cargo.toml'), 'utf8');
+  const library = manifest.match(/\[lib\][\s\S]*?^name = "([^"]+)"/m)?.[1];
+  assert.equal(library, 'tempo_lib');
+  // The current package has no Kotlin keywords; future identity changes need
+  // the same escaping review as the official CLI, not an invented fallback.
+  assert.equal(identifier, 'com.kd9taw.tempo');
+  const project = '${{ github.workspace }}/src-tauri/gen/android';
+  const expected = {
+    TAURI_ANDROID_PROJECT_PATH: project,
+    WRY_ANDROID_PACKAGE: identifier,
+    TAURI_ANDROID_PACKAGE_UNESCAPED: identifier,
+    WRY_ANDROID_LIBRARY: library,
+    WRY_ANDROID_KOTLIN_FILES_OUT_DIR: `${project}/app/src/main/java/${identifier.replaceAll('.', '/')}/generated`,
+  };
+  const begin = workflow.indexOf('- name: Check the full application backend');
+  assert(begin >= 0);
+  const step = workflow.slice(begin, workflow.indexOf('\n      - name:', begin));
+  const verify = source => {
+    for (const [key, value] of Object.entries(expected)) {
+      const line = source.split('\n').find(line => line.trimStart().startsWith(`${key}:`));
+      assert.equal(line?.trim().slice(key.length + 1).trim(), value, `${key} must match the actual host`);
+    }
+    const mkdir = source.indexOf('mkdir -p "$WRY_ANDROID_KOTLIN_FILES_OUT_DIR"');
+    assert(mkdir >= 0 && mkdir < source.indexOf('cargo check --locked'), 'Create the actual generated-source directory before codegen');
+    assert(source.includes('--target aarch64-linux-android --features radio,yaesu-wf'));
+    assert(!source.includes('continue-on-error'));
+  };
+  verify(step);
+  // Reproduce omission of each required variable, including the observed
+  // WRY_ANDROID_PACKAGE failure; this guards wiring, not actual Kotlin compilation.
+  for (const key of Object.keys(expected)) {
+    assert.throws(() => verify(step.split('\n').filter(line => !line.trimStart().startsWith(`${key}:`)).join('\n')));
+    assert.throws(() => verify(step.replace(`${key}: ${expected[key]}`, `${key}: wrong-host`)));
+  }
+  assert.throws(() => verify(step.replace('mkdir -p "$WRY_ANDROID_KOTLIN_FILES_OUT_DIR"', ':')));
+});

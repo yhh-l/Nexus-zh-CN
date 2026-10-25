@@ -329,13 +329,21 @@ jobs:
 
       - name: Check the full application backend (radio and Yaesu waterfall enabled)
         env:
-          # Let the official tauri-build generate its real plugin integration here,
-          # before the lightweight Gradle inventory; never synthesize empty plugins.
+          # Match the non-secret Android codegen environment established by pinned
+          # tauri-cli 2.11.5 mobile/android/mod.rs; setting project path alone also
+          # activates tauri's Kotlin/proguard generation and is not sufficient.
           TAURI_ANDROID_PROJECT_PATH: ${{ github.workspace }}/src-tauri/gen/android
-        run: >
-          cargo check --locked --manifest-path src-tauri/Cargo.toml
-          --target aarch64-linux-android --features radio,yaesu-wf
-          --target-dir target/android-native-cargo
+          WRY_ANDROID_PACKAGE: com.kd9taw.tempo
+          TAURI_ANDROID_PACKAGE_UNESCAPED: com.kd9taw.tempo
+          WRY_ANDROID_LIBRARY: tempo_lib
+          WRY_ANDROID_KOTLIN_FILES_OUT_DIR: ${{ github.workspace }}/src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/generated
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$WRY_ANDROID_KOTLIN_FILES_OUT_DIR"
+          cargo check --locked --manifest-path src-tauri/Cargo.toml \
+            --target aarch64-linux-android --features radio,yaesu-wf \
+            --target-dir target/android-native-cargo
 
       # Full typecheck is not final code generation, linking, Gradle or an APK.
       # Continue on the SAME runner so the real NDK/Flang/OpenSSL products are reused.

@@ -666,3 +666,12 @@ dependency must fail. The task graph refuses any additional `:app` build task
 before execution, so this preflight cannot silently start the application's
 native compilation, APK assembly or signing. Library dependency artifacts may be
 built on the GitHub runner; no such binaries are exported as this JSON report.
+
+The direct backend check supplies the pinned CLI's complete non-secret Android
+code-generation environment: project path, Wry package/library, unescaped package
+and Kotlin output directory (created before Cargo). Setting only the project path
+activates Tauri's Kotlin/proguard generation without its required package variable;
+this reproduced a real build-script panic before Gradle could run. The values match
+the tracked host identity and `tempo_lib`, not a substitute or empty plugin graph.
+Source-wiring omission/wrong-value controls run in cloud CI; only the actual Android
+backend and subsequent real Gradle/APK jobs prove generation and integration.

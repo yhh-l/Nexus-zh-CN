@@ -223,7 +223,10 @@ mod tests {
         read.push(&[]).unwrap();
         read.push(&[0x02, 0x00]).unwrap();
         assert_eq!(read.remaining(), READ_BYTES);
-        assert_eq!(read.finish().unwrap_err().kind(), io::ErrorKind::UnexpectedEof);
+        assert_eq!(
+            read.finish().unwrap_err().kind(),
+            io::ErrorKind::UnexpectedEof
+        );
     }
 
     #[test]
@@ -238,11 +241,17 @@ mod tests {
         let mut read = ReadPackets::new(512).unwrap();
         let mut transfer = encode(&[0x7b; 510], 512);
         transfer.push(0x02);
-        assert_eq!(read.push(&transfer).unwrap_err().kind(), io::ErrorKind::InvalidData);
+        assert_eq!(
+            read.push(&transfer).unwrap_err().kind(),
+            io::ErrorKind::InvalidData
+        );
         assert_eq!(read.remaining(), READ_BYTES);
         assert!(read.push(&[0x02]).is_err());
         assert!(read.push(&[0x02, 0x00, 0x7b]).is_err());
-        assert_eq!(read.finish().unwrap_err().kind(), io::ErrorKind::InvalidData);
+        assert_eq!(
+            read.finish().unwrap_err().kind(),
+            io::ErrorKind::InvalidData
+        );
     }
 
     #[test]
@@ -250,7 +259,10 @@ mod tests {
         let mut read = ReadPackets::new(512).unwrap();
         read.push(&encode(&[0x7b; READ_BYTES], 512)).unwrap();
         assert!(read.push(&[0x02, 0x00, 0x17]).is_err());
-        assert_eq!(read.finish().unwrap_err().kind(), io::ErrorKind::InvalidData);
+        assert_eq!(
+            read.finish().unwrap_err().kind(),
+            io::ErrorKind::InvalidData
+        );
     }
 
     #[test]

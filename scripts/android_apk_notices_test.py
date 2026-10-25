@@ -150,6 +150,26 @@ class RustNoticeDelivery(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "no longer matches resolved inputs"):
             notices.inspect_apk(self.apk, self.root, self.revision)
 
+    def test_android_coroutines_review_cannot_silently_follow_changed_sources(self):
+        key = "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0"
+        inputs = json.loads(json.dumps(self.jvm_inputs))
+        # Independent reviewed input: an implementation omitting the Android pin
+        # must still receive this component, so its absence cannot mask the bug.
+        inputs["components"] = [item for item in inputs["components"] if item["key"] != key]
+        inputs["components"].append({"kind": "module", "key": key, "sourcesResolved": True,
+                                     "sourcesSha256": "dd4d70dbc424eb0492126446b4035821d40d255664a8a36091d357f11390bc50"})
+        self.jvm_path.write_text(json.dumps(inputs))
+        self.assertTrue(notices.inspect_apk(self.apk, self.root, self.revision)[
+            "androidJvmSupplementalNoticePayloadVerified"])
+        for change in ({"sourcesSha256": "0" * 64}, {"sourcesResolved": False},
+                       {"key": "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.1"}):
+            changed = json.loads(json.dumps(inputs))
+            changed["components"][-1].update(change)
+            self.jvm_path.write_text(json.dumps(changed))
+            with self.subTest(change=change), self.assertRaisesRegex(
+                    ValueError, "no longer matches resolved inputs"):
+                notices.inspect_apk(self.apk, self.root, self.revision)
+
     def test_matching_tampered_source_and_apk_cannot_replace_reviewed_supplement(self):
         resource, pin = next(iter(notices.SUPPLEMENTAL_NOTICES.items()))
         member = "assets/" + resource

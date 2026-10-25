@@ -180,6 +180,35 @@ jobs:
       - name: Exercise APK container/dependency guards and real SDK alignment controls
         run: python3 -m unittest discover -s scripts -p 'android_apk_*test.py' -v
 
+      - name: Prove the actual Android coroutines source pin cannot be omitted
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=scripts/android-apk-notices.py
+          backup=$(mktemp "$RUNNER_TEMP/nexus-android-notice-pin.XXXXXX")
+          cp "$source" "$backup"
+          trap 'cp "$backup" "$source"' EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/android-apk-notices.py')
+          text = path.read_text()
+          needle = ('    "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0":\n'
+                    '        "dd4d70dbc424eb0492126446b4035821d40d255664a8a36091d357f11390bc50",\n')
+          assert text.count(needle) == 1, 'Android source pin mutation site changed'
+          path.write_text(text.replace(needle, ''))
+          PY
+          set +e
+          python3 -m unittest discover -s scripts -p android_apk_notices_test.py -k android_coroutines_review -v > "$RUNNER_TEMP/android-notice-pin-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/android-notice-pin-negative.log"
+          test "$status" -ne 0
+          grep -F 'FAIL: test_android_coroutines_review_cannot_silently_follow_changed_sources' "$RUNNER_TEMP/android-notice-pin-negative.log"
+          grep -F 'ValueError not raised' "$RUNNER_TEMP/android-notice-pin-negative.log"
+          cp "$backup" "$source"
+          trap - EXIT
+          python3 -m unittest discover -s scripts -p android_apk_notices_test.py -v
+
       - name: Test real Android native build dispatch (host-only guards)
         run: node --test scripts/android-native.test.mjs
 

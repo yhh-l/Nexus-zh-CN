@@ -29,6 +29,8 @@ SUPPLEMENTAL_NOTICES = {
 
 
 SUPPLEMENTAL_COMPONENTS = {
+    "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0":
+        "dd4d70dbc424eb0492126446b4035821d40d255664a8a36091d357f11390bc50",
     "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0":
         "abd6b4a8588f6117f4ed2787c4ec7b2f9c25daa403b3b4bbcf26fa4e0a725398",
     "org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.9.0":

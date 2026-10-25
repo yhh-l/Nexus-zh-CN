@@ -42,7 +42,7 @@ lines found no additional copyright/license grant in these source-file sets;
 ordinary documentation saying "derived from" an interface is not a separate grant.
 The applicable upstream source-distribution license and NOTICE accompany these
 byte-corresponding files. This does not establish final DEX retention or cover
-other modules such as coroutines-android, Kotlin stdlib, other JVM libraries,
+Kotlin stdlib, other JVM libraries,
 generated sources or third-party native code.
 
 ## Delivery boundary
@@ -60,3 +60,27 @@ APK audit can set the scoped supplemental-resource delivery flag. Runtime
 readability, complete per-file dependency review, corresponding source,
 distributability, installation and S25 Ultra acceptance remain separate and
 unproven. No public release or signing approval is implied.
+
+## Android dispatcher source correspondence
+
+The actual Android inventory from run `40213560125`, revision
+`6ed6ac0c420cbd79d07d5accfe6d4805cdbc1bc5`, also resolves
+`org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0`. Its Maven Central source
+JAR is 7,783 bytes, SHA256
+`dd4d70dbc424eb0492126446b4035821d40d255664a8a36091d357f11390bc50`.
+
+Read-only comparison with the same fixed upstream archive above found all nine
+non-manifest files byte-identical to upstream: `AndroidExceptionPreHandler.kt`,
+`HandlerDispatcher.kt`, `module-info.java`, four `coroutines.pro` files and the
+two service-provider declarations. The manifest contains only
+`Manifest-Version: 1.0`; no upstream byte match was established for that generated
+manifest. No source headers were invented or changed. The source and resource
+files were read; this archive contains no separate LICENSE or NOTICE entry.
+
+The existing two original upstream license/notice texts remain the delivered
+materials; this change imports no new implementation or legal text. The APK
+supplemental-resource check now additionally binds this exact Android component
+and source hash, refusing an unresolved, changed or upgraded source rather than
+silently reusing this review. That is a source-correspondence boundary, not full
+per-file licensing approval, final DEX/source correspondence, manifest audit,
+Android execution or permission to distribute a signed APK.

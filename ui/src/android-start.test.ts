@@ -4,9 +4,11 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest'
 import { screen } from '@testing-library/react'
 import { readFileSync } from 'node:fs'
-import { fileURLToPath } from 'node:url'
+import { resolve } from 'node:path'
 
-const source = readFileSync(fileURLToPath(new URL('../public/android-start.html', import.meta.url)), 'utf8')
+// Vite rewrites import.meta.url to an HTTP URL in jsdom. Read the real file
+// relative to the UI package, like cssCascade.testkit, not through URL coercion.
+const source = readFileSync(resolve(process.cwd(), 'public', 'android-start.html'), 'utf8')
 let page: Document
 let styles: HTMLStyleElement[]
 

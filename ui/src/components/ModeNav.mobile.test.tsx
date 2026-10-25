@@ -34,6 +34,14 @@ function geometry(strip: HTMLDivElement, button: HTMLElement) {
 
 beforeAll(() => loadSheets(['styles.css']))
 beforeEach(() => {
+  // jsdom has no ResizeObserver. Keyboard focus opens the real Radix tooltip,
+  // which also uses it, so install the browser-API fixture before every render.
+  // The dedicated resize test overrides this with an observable callback.
+  vi.stubGlobal('ResizeObserver', class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  })
   localStorage.clear()
   document.documentElement.setAttribute('data-viewport', 'xs')
 })

@@ -16079,7 +16079,23 @@ mod rotctld_supervisor_tests {
 
         // The other program lets go: same settings, and the link is up.
         drop(held);
-        assert_eq!(sync_rotctld_owned(&mut owner, &st), RotctldSync::Started);
+        // Reconcile deliberately reports only the first failure in an episode. Keep the
+        // real retry error in the test failure too, rather than guessing which port lost
+        // a race with the other parallel tests. This does not retry or alter the daemon.
+        let mut retry_error = None;
+        let recovered = reconcile_rotctld(&mut owner, &st, |model, target, baud, tcp| {
+            let result = spawn_rotator_daemon(model, target, baud, tcp);
+            if let Err(error) = &result {
+                retry_error = Some(format!("{error:?}"));
+            }
+            result
+        });
+        assert_eq!(
+            recovered,
+            RotctldSync::Started,
+            "same-settings retry failed: TCP {port}, UDP reply {}, error {retry_error:?}",
+            control + 1
+        );
         std::thread::spawn(move || {
             let mut buf = [0u8; 256];
             while let Ok((n, _)) = pst.recv_from(&mut buf) {

@@ -12,7 +12,8 @@ permissions:
 
 concurrency:
   group: android-arm64-${{ github.ref }}
-  cancel-in-progress: true
+  # Preserve long-running UI/native evidence; a new approved revision waits its turn.
+  cancel-in-progress: false
 
 jobs:
   ui-mobile:

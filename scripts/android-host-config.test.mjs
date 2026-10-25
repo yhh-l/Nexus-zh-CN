@@ -24,8 +24,22 @@ test('real Android overlay replaces desktop windows and replaces desktop-only Ha
   assert.deepEqual(base, before, 'Platform merging must never mutate desktop settings');
   assert.deepEqual(Object.keys(merged.bundle.resources).sort(),
     [...Object.keys(base.bundle.resources).filter(key => !['resources/hamlib/*', '../licenses/rust/THIRD-PARTY.txt'].includes(key)),
-      '../target/android-notices/RUST-THIRD-PARTY.txt'].sort());
+      '../target/android-notices/RUST-THIRD-PARTY.txt',
+      '../licenses/android-jvm/kotlinx-coroutines-1.9.0/LICENSE.txt',
+      '../licenses/android-jvm/kotlinx-coroutines-1.9.0/NOTICE.txt'].sort());
 });
+
+for (const file of ['LICENSE.txt', 'NOTICE.txt']) {
+  for (const change of ['missing', 'relocated']) {
+    test(`host contract rejects ${change} supplemental JVM ${file}`, () => {
+      const value = android();
+      const source = `../licenses/android-jvm/kotlinx-coroutines-1.9.0/${file}`;
+      if (change === 'missing') delete value.bundle.resources[source];
+      else value.bundle.resources[source] = 'unreachable.txt';
+      assert.throws(() => verifyHostConfig(base, value), /scoped JVM supplemental notice/);
+    });
+  }
+}
 
 test('merge-patch null deletes keys, arrays replace and prototype-looking keys stay inert data', () => {
   assert.deepEqual(mergePatch({ one: { old: 1, keep: 2 }, list: [1, 2] },

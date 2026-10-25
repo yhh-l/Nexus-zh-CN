@@ -624,6 +624,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   your browser; the watch-and-control workspace it replaced is gone from the page.
 
 ### Fixed
+- **Android host preflight validates supplemental notice resource declarations early.**
+  The exact merged-resource contract includes both reviewed coroutines texts and
+  refuses either missing or relocated declaration, before expensive APK compilation.
+  This is configuration evidence only; actual source-pin and APK-byte checks remain mandatory.
 - **Android coroutines notices retain the reviewed upstream license and attribution.**
   The Android resource map stages the fixed-source 1.9.0 LICENSE and NOTICE.
   Final APK inspection binds these texts to current resolved component source

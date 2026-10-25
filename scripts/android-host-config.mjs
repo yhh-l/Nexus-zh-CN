@@ -56,6 +56,11 @@ export function verifyHostConfig(base, android) {
   requireValue(!Object.hasOwn(resources, '../licenses/rust/THIRD-PARTY.txt') &&
     resources['../target/android-notices/RUST-THIRD-PARTY.txt'] === 'resources/rust/THIRD-PARTY.txt',
     'Android must replace desktop Rust notices with the generated target inventory');
+  for (const file of ['LICENSE.txt', 'NOTICE.txt']) {
+    const source = `../licenses/android-jvm/kotlinx-coroutines-1.9.0/${file}`;
+    requireValue(resources[source] === `resources/android-jvm/kotlinx-coroutines-1.9.0/${file}`,
+      'Android must preserve scoped JVM supplemental notice resources');
+  }
   requireValue(JSON.stringify(android.app.security) === JSON.stringify(base.app.security),
     'Host preparation must not relax existing webview security or asset scopes');
   return {

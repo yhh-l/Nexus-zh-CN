@@ -186,6 +186,22 @@ jobs:
             target/android-native-linked/link-report.json
             target/android-native-deps/prefix/licenses/
 
+      # Reuse the exact model already reviewed/staged by the desktop CI, not a
+      # model-missing override. Public release downloads need no token or key.
+      - name: Stage and verify the real AI CW model and its existing license
+        shell: bash
+        run: |
+          set -euo pipefail
+          directory=src-tauri/resources/deepcw
+          test -s "$directory/LICENSE.AGPL-3.0.txt"
+          for file in model.onnx model.onnx.json; do
+            curl --fail --show-error --location --retry 3 --proto '=https' \
+              "https://github.com/kd9taw/Nexus/releases/download/deepcw-model-v1/$file" \
+              -o "$directory/$file"
+          done
+          echo "a7b3b4aa2610d3e88b8c7d4420eceee31be2d0ae595b3413264334f3ffb1eab5  $directory/model.onnx" | sha256sum -c -
+          echo "b4342157b90229ee7380e165f3d8036179b80d1e6ae02f2557388b7fcd558c01  $directory/model.onnx.json" | sha256sum -c -
+
       - name: Check the full application backend (radio and Yaesu waterfall enabled)
         run: >
           cargo check --locked --manifest-path src-tauri/Cargo.toml

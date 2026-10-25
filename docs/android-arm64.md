@@ -292,3 +292,16 @@ C-only symbols and a foreign architecture. Synthetic fixtures are not binary
 build or execution evidence. These new tests and the repaired dependency build
 have not run locally or in GitHub Actions yet. Full backend, APK and S25 Ultra
 runtime/RF acceptance remain unproven.
+
+## Full-backend AI CW resource staging (source preparation)
+
+The next workflow revision stages the same preprocessed DeepCW model and JSON
+metadata already pinned by the desktop CI, from the existing upstream
+`deepcw-model-v1` release. Both downloads must pass the existing SHA-256 pins,
+and the tracked AGPL-3.0 license must be present before staging. This adds no
+new model variant, dependency, license text, token or missing-model override.
+The public release metadata was checked for matching file sizes/digests; the
+binary has not been downloaded locally. Actual download/hash verification and
+backend compilation belong to GitHub Actions and remain unproven for this edit.
+The workflow source guard is not evidence that an APK contains the model or
+that inference works; payload inspection and real runtime checks are still needed.

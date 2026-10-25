@@ -230,3 +230,25 @@ test('Android FFTW bootstrap enables the real wrappers and checks them before bu
   const check = source.indexOf('node "$root/scripts/android-native-link.mjs" --check-fftw');
   assert(check >= 0 && check < source.indexOf('cmake -S "$llvm/runtimes"'));
 });
+
+test('full Android backend stages the existing hash-pinned AI CW model without a missing-model override', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'android-arm64.yml'), 'utf8');
+  const desktopCi = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'ci.yml'), 'utf8');
+  const modelStep = workflow.indexOf('- name: Stage and verify the real AI CW model');
+  const backendStep = workflow.indexOf('- name: Check the full application backend');
+  assert(modelStep >= 0 && modelStep < backendStep);
+  const staging = workflow.slice(modelStep, backendStep);
+  assert.match(staging, /curl --fail --show-error --location --retry 3 --proto '=https'/);
+  assert.match(staging, /https:\/\/github\.com\/kd9taw\/Nexus\/releases\/download\/deepcw-model-v1/);
+  assert.match(staging, /test -s "\$directory\/LICENSE\.AGPL-3\.0\.txt"/);
+  assert.match(staging, /for file in model\.onnx model\.onnx\.json/);
+  for (const hash of [
+    'a7b3b4aa2610d3e88b8c7d4420eceee31be2d0ae595b3413264334f3ffb1eab5',
+    'b4342157b90229ee7380e165f3d8036179b80d1e6ae02f2557388b7fcd558c01',
+  ]) {
+    assert(staging.includes(hash), 'Android model digest changed');
+    assert(desktopCi.includes(hash), 'Android model differs from the reviewed desktop model');
+  }
+  assert.equal((staging.match(/\| sha256sum -c -/g) ?? []).length, 2);
+  assert.doesNotMatch(workflow, /NEXUS_ALLOW_MISSING_AICW/);
+});

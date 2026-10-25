@@ -368,6 +368,7 @@ jobs:
       # Runtime notices/source audit, full APK payload/alignment and install/runtime gates
       # MUST precede binary distribution. This milestone exports JSON only, never an APK.
       - name: Upload only the real APK build checkpoint report, not the binary
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: nexus-android-arm64-unsigned-apk-build-report

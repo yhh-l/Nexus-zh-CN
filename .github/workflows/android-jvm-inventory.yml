@@ -46,3 +46,30 @@ jobs:
           printf 'NEXUS_TEST_GRADLE=%s\n' "$RUNNER_TEMP/nexus-gradle-controls/gradle-8.14.3/bin/gradle" >> "$GITHUB_ENV"
       - name: Resolve real local Maven/project fixtures and enforce missing-artifact and wrong-graph controls
         run: python3 -m unittest discover -s scripts -p android_jvm_inventory_test.py -v
+
+      - name: Prove the actual nested-build guard prevents the observed buildSrc regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=scripts/android-jvm-inventory.gradle
+          backup=$(mktemp "$RUNNER_TEMP/nexus-jvm-inventory.XXXXXX")
+          cp "$source" "$backup"
+          trap 'cp "$backup" "$source"' EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/android-jvm-inventory.gradle')
+          source = path.read_text()
+          needle = '    if (gradle.parent != null) return\n'
+          assert source.count(needle) == 1
+          path.write_text(source.replace(needle, ''))
+          PY
+          set +e
+          python3 -m unittest discover -s scripts -p android_jvm_inventory_test.py -k buildsrc -v > "$RUNNER_TEMP/inventory-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/inventory-negative.log"
+          test "$status" -ne 0
+          grep -F 'FAIL: test_buildsrc_initialization_cannot_be_mistaken_for_the_application' "$RUNNER_TEMP/inventory-negative.log"
+          grep -F 'Actual :app project required for runtime inventory' "$RUNNER_TEMP/inventory-negative.log"
+          cp "$backup" "$source"
+          trap - EXIT

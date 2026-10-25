@@ -90,6 +90,31 @@ artifacts { add('default', file('bridge.jar')) }
             for flag in ("apkPayloadVerified", "perFileLicenseAuditComplete", "runtimeNoticesAndSourceAuditComplete", "distributable"):
                 self.assertFalse(report[flag])
 
+    def test_buildsrc_initialization_cannot_be_mistaken_for_the_application(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.fixture(directory)
+            (root / "buildSrc").mkdir()
+            (root / "buildSrc/build.gradle").write_text("""
+// Original empty helper build: no application, dependency or compiled fixture.
+file('../buildsrc-evaluated.txt').text = 'actual helper build evaluated'
+""")
+            process, report = self.invoke(root)
+            self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
+            self.assertEqual((root / "buildsrc-evaluated.txt").read_text(), "actual helper build evaluated")
+            self.assertIsNotNone(report)
+            self.assertTrue(report["runtimeInputResolutionComplete"])
+            self.assertTrue(report["syntheticFixture"])
+            self.assertFalse(report["distributable"])
+
+    def test_top_level_without_app_is_still_refused(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "settings.gradle").write_text("rootProject.name = 'missing-application'\n")
+            process, report = self.invoke(root)
+            self.assertNotEqual(process.returncode, 0, process.stdout + process.stderr)
+            self.assertIn("Actual :app project required for runtime inventory", process.stdout + process.stderr)
+            self.assertIsNone(report)
+
     def test_missing_real_runtime_artifact_cannot_claim_resolution_complete(self):
         with tempfile.TemporaryDirectory() as directory:
             process, report = self.invoke(self.fixture(directory, missing=True))

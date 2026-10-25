@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android JVM inventory ignores nested Gradle helper builds, not missing applications.**
+  The top-level application remains mandatory; real Gradle buildSrc and missing-app controls
+  guard this boundary. Existing JSON-only APK diagnostics survive later inventory failure;
+  no APK binary is exported and no signing or distribution checks are bypassed.
 - **Android FT4222 opening cleans up before native ownership is established.** Packet-query
   or JNI global-reference failures attempt Java-session close after clearing a pending
   exception. Worker calls use bounded local-reference frames on early errors as well as

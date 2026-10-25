@@ -43,6 +43,9 @@ List sourceLicenseEntries(File file) {
 }
 
 gradle.projectsEvaluated {
+    // Gradle also applies command-line init scripts to buildSrc/included builds.
+    // Only the top-level invocation owns the requested application inventory.
+    if (gradle.parent != null) return
     def app = gradle.rootProject.findProject(':app')
     if (app == null) throw new GradleException('Actual :app project required for runtime inventory')
     app.tasks.register('nexusAndroidRuntimeInventory') {

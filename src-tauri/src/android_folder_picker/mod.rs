@@ -8,6 +8,7 @@
 //! System-document import/export and external backups are separate, still required work.
 
 mod policy;
+mod requests;
 
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicI64, Ordering};
@@ -19,14 +20,13 @@ use tokio::sync::oneshot;
 
 type Choice = Result<Option<String>, String>;
 struct Pending {
-    id: i64,
     roots: Vec<PathBuf>,
     result: oneshot::Sender<Choice>,
 }
-static PENDING: Mutex<Option<Pending>> = Mutex::new(None);
+static PENDING: Mutex<requests::Requests<Pending>> = Mutex::new(requests::Requests::new());
 static NEXT: AtomicI64 = AtomicI64::new(1);
 
-fn pending() -> std::sync::MutexGuard<'static, Option<Pending>> {
+fn pending() -> std::sync::MutexGuard<'static, requests::Requests<Pending>> {
     PENDING
         .lock()
         .unwrap_or_else(|poisoned| poisoned.into_inner())
@@ -39,11 +39,8 @@ struct Ticket {
 }
 impl Drop for Ticket {
     fn drop(&mut self) {
-        {
-            let mut slot = pending();
-            if slot.as_ref().is_some_and(|item| item.id == self.id) {
-                slot.take();
-            }
+        if pending().take(self.id).is_none() {
+            return;
         }
         let id = self.id;
         if let Some(window) = self.app.get_webview_window("main") {
@@ -103,17 +100,13 @@ fn begin(
         .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |id| id.checked_add(1))
         .map_err(|_| "Android folder request IDs exhausted")?;
     let (tx, rx) = oneshot::channel();
-    {
-        let mut slot = pending();
-        if slot.is_some() {
-            return Err("An Android data-folder chooser is already open".into());
-        }
-        *slot = Some(Pending {
-            id,
-            roots,
-            result: tx,
-        });
-    }
+    let request = Pending {
+        roots,
+        result: tx,
+    };
+    pending()
+        .start(id, request)
+        .map_err(|_| "An Android data-folder chooser is already open")?;
     let ticket = Ticket { id, app };
     let initial = env.new_string(initial).map_err(|e| e.to_string())?;
     env.call_method(
@@ -166,14 +159,7 @@ pub extern "system" fn Java_com_kd9taw_tempo_MainActivity_nexusDataFolderResult(
     path: JString<'_>,
     error: JString<'_>,
 ) {
-    let item = {
-        let mut slot = pending();
-        if !slot.as_ref().is_some_and(|item| item.id == id) {
-            return;
-        }
-        slot.take()
-    };
-    let Some(item) = item else { return };
+    let Some(item) = pending().take(id) else { return };
     let result = (|| {
         if !error.is_null() {
             let error: String = env.get_string(&error).map_err(|e| e.to_string())?.into();

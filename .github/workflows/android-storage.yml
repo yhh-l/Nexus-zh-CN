@@ -81,6 +81,26 @@ jobs:
         run: |
           rustc --edition=2021 --test src-tauri/src/android_folder_picker/policy.rs --crate-name android_folder_policy -o "$RUNNER_TEMP/android-folder-tests"
           "$RUNNER_TEMP/android-folder-tests"
+          rustc --edition=2021 --test src-tauri/src/android_folder_picker/requests.rs --crate-name android_folder_requests -o "$RUNNER_TEMP/android-folder-request-tests"
+          "$RUNNER_TEMP/android-folder-request-tests"
+      - name: Prove stale-callback ownership tests reject a real guard mutation
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import os, pathlib
+          source = pathlib.Path('src-tauri/src/android_folder_picker/requests.rs').read_text()
+          assert source.count('*active == id') == 1
+          pathlib.Path(os.environ['RUNNER_TEMP'], 'folder-request-negative.rs').write_text(source.replace('*active == id', '*active != id'))
+          PY
+          rustc --edition=2021 --test "$RUNNER_TEMP/folder-request-negative.rs" --crate-name folder_request_negative -o "$RUNNER_TEMP/folder-request-negative-tests"
+          set +e
+          "$RUNNER_TEMP/folder-request-negative-tests" --exact tests::old_callbacks_and_cancellation_cannot_complete_a_new_request > "$RUNNER_TEMP/folder-request-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/folder-request-negative.log"
+          test "$status" = 101
+          grep -F 'test tests::old_callbacks_and_cancellation_cannot_complete_a_new_request ... FAILED' "$RUNNER_TEMP/folder-request-negative.log"
       - name: Check actual pinned shell formatting
         run: cargo fmt --manifest-path src-tauri/Cargo.toml --check
       - name: Verify dependency notices against locked upstream packages
@@ -98,6 +118,7 @@ jobs:
           path: |
             ${{ runner.temp }}/android-storage-format.patch
             ${{ runner.temp }}/storage-negative.log
+            ${{ runner.temp }}/folder-request-negative.log
           if-no-files-found: warn
           retention-days: 7
 

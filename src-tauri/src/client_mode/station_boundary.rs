@@ -168,7 +168,10 @@ fn assert_login_adapter_starts_nothing(raw: &str) {
         "std::process::Command",
         "Command::new",
     ]) {
-        assert!(!source.contains(token), "OS-login adapter reaches `{token}`");
+        assert!(
+            !source.contains(token),
+            "OS-login adapter reaches `{token}`"
+        );
     }
 }
 

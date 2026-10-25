@@ -512,3 +512,25 @@ Android MediaStore/JNI/Downloads-app or S25 Ultra evidence. Genuine APK target
 compilation and device export/reopen/uninstall-survival checks remain required.
 SAF document selection/import and complete public backup workflows remain
 separate missing work; this export does not claim to implement them.
+### Existing system document import and provider read failures
+
+The locked Wry 0.55.1 Android source already routes HTML file inputs through
+its actual system file chooser and returns selected URIs to WebView. Nexus's
+existing Logbook reads the resulting browser File and sends its text through
+the original native ADIF/import, confirmation-sync or POTA-stamping route.
+No content URI is converted into a guessed filesystem path. The three inputs
+now include plain-text and generic-binary MIME fallbacks beside the existing
+ADIF extensions, and the File read itself is inside the existing error/toast
+boundary. Unreadable/revoked documents are not submitted as empty logs; chooser
+cancellation stays a no-op and the same file can be reselected for retry.
+
+Cloud rendering tests exercise the actual three Logbook inputs, controlled
+browser File reads, the production error/toast boundary and original command
+selection. A mutation restores extension-only filtering in the actual product
+and must fail before the original source and full positive suite are restored.
+These tests do not launch Android DocumentsUI, test an external/cloud provider,
+prove granted URI access, or establish Stop accessibility under a system picker.
+Those device gates, complete public backup flows and actual end-to-end native
+import evidence remain required. Earlier notes describing system import as
+entirely unimplemented are superseded by this source finding, not by a physical
+acceptance result.

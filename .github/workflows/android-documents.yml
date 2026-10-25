@@ -1,0 +1,87 @@
+# Actual Logbook rendering + File/read error boundary. Not Android OS chooser/RF evidence.
+name: Android logbook document regression
+
+on:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-documents.yml
+      - ui/src/components/Logbook.tsx
+      - ui/src/components/Logbook.documents.test.tsx
+      - ui/src/toast.ts
+      - ui/src/api.ts
+      - ui/src/types.ts
+      - ui/package.json
+      - ui/package-lock.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-logbook-documents-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  real-logbook:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Install the complete locked UI
+        run: npm --prefix ui ci
+      - name: Prove the real input regression rejects extension-only document filtering
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=ui/src/components/Logbook.tsx
+          backup=$(mktemp "$RUNNER_TEMP/nexus-document-input.XXXXXX")
+          cp "$source" "$backup"
+          restore() { cp "$backup" "$source"; }
+          trap restore EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('ui/src/components/Logbook.tsx')
+          text = source.read_text()
+          needle = 'accept=".adi,.adif,.txt,text/plain,application/octet-stream"'
+          assert text.count(needle) == 3, 'Mutate all actual document inputs, not a detached fixture'
+          source.write_text(text.replace(needle, 'accept=".adi,.adif,.txt"'))
+          PY
+          set +e
+          npm --prefix ui test -- src/components/Logbook.documents.test.tsx \
+            -t 'offers generic binary and plain-text ADIF documents' \
+            --reporter=default --reporter=json --outputFile="$RUNNER_TEMP/documents-negative.json"
+          status=$?
+          set -e
+          test "$status" -ne 0
+          node --input-type=module <<'JS'
+          import fs from 'node:fs';
+          import assert from 'node:assert/strict';
+          const report = JSON.parse(fs.readFileSync(`${process.env.RUNNER_TEMP}/documents-negative.json`, 'utf8'));
+          const cases = report.testResults.flatMap(suite => suite.assertionResults ?? []);
+          assert.equal(report.numFailedTests, 1);
+          assert.equal(report.numRuntimeErrorTestSuites, 0);
+          assert(cases.some(test => test.title === 'offers generic binary and plain-text ADIF documents on all three real inputs' && test.status === 'failed'));
+          JS
+          restore
+      - name: Typecheck and build the entire UI
+        run: npm --prefix ui run build
+      - name: Run the real document controls and record their actual results
+        run: >
+          npm --prefix ui test -- src/components/Logbook.documents.test.tsx
+          --reporter=default --reporter=json --outputFile="$RUNNER_TEMP/documents-positive.json"
+      - name: Preserve actual rendered regression evidence, not an APK
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-logbook-document-tests-${{ github.run_id }}
+          path: ${{ runner.temp }}/documents-*.json
+          if-no-files-found: warn
+          retention-days: 7

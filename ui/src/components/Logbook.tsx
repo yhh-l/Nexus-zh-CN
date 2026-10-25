@@ -518,13 +518,15 @@ export function Logbook({
   }, [control])
 
   // Import an external ADIF logbook → real "needs" + B4. Read the file in the
-  // browser/WebView (no fs plugin), hand the text to the engine.
+  // browser/WebView (no fs plugin), hand the text to the engine. Provider/File reads stay
+  // inside the same error boundary as parsing, so a revoked/unreadable document is not
+  // an unhandled rejection or an empty import. MIME fallbacks below keep Android document
+  // providers from hiding ADIF files labeled as plain text or generic binary data.
   const onImportFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0]
     e.target.value = '' // let the same file be re-selected later
     if (!f) return
-    const text = await f.text()
-    const stats = await withErrorToast(() => importAdif(text), t('logbook.import.failed'))
+    const stats = await withErrorToast(async () => importAdif(await f.text()), t('logbook.import.failed'))
     if (stats) {
       // An import of a LoTW/eQSL download adds nothing and updates everything —
       // say so, or the one toast that means "your awards were just repaired"
@@ -547,8 +549,7 @@ export function Logbook({
     const f = e.target.files?.[0]
     e.target.value = ''
     if (!f) return
-    const text = await f.text()
-    const r = await withErrorToast(() => syncLotwReport(text), t('logbook.sync.failed'))
+    const r = await withErrorToast(async () => syncLotwReport(await f.text()), t('logbook.sync.failed'))
     if (r) {
       const vals = { confirmed: r.newlyConfirmed, credited: r.newlyCredited }
       pushToast(
@@ -568,8 +569,7 @@ export function Logbook({
     const f = e.target.files?.[0]
     e.target.value = ''
     if (!f) return
-    const text = await f.text()
-    const r = await withErrorToast(() => importPotaLog(text), t('logbook.pota.failed'))
+    const r = await withErrorToast(async () => importPotaLog(await f.text()), t('logbook.pota.failed'))
     if (r) {
       const skipped = r.unmatched ? t('logbook.pota.unmatched', { count: r.unmatched }) : ''
       const had = r.already ? t('logbook.pota.already', { count: r.already }) : ''
@@ -1792,7 +1792,7 @@ export function Logbook({
           <input
             ref={fileRef}
             type="file"
-            accept=".adi,.adif,.txt"
+            accept=".adi,.adif,.txt,text/plain,application/octet-stream"
             style={{ display: 'none' }}
             onChange={onImportFile}
           />
@@ -1802,7 +1802,7 @@ export function Logbook({
           <input
             ref={syncRef}
             type="file"
-            accept=".adi,.adif,.txt"
+            accept=".adi,.adif,.txt,text/plain,application/octet-stream"
             style={{ display: 'none' }}
             onChange={onSyncFile}
           />
@@ -1817,7 +1817,7 @@ export function Logbook({
           <input
             ref={potaRef}
             type="file"
-            accept=".adi,.adif,.txt"
+            accept=".adi,.adif,.txt,text/plain,application/octet-stream"
             style={{ display: 'none' }}
             onChange={onPotaFile}
           />

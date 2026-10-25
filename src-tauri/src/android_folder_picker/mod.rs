@@ -100,10 +100,7 @@ fn begin(
         .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |id| id.checked_add(1))
         .map_err(|_| "Android folder request IDs exhausted")?;
     let (tx, rx) = oneshot::channel();
-    let request = Pending {
-        roots,
-        result: tx,
-    };
+    let request = Pending { roots, result: tx };
     pending()
         .start(id, request)
         .map_err(|_| "An Android data-folder chooser is already open")?;
@@ -159,7 +156,9 @@ pub extern "system" fn Java_com_kd9taw_tempo_MainActivity_nexusDataFolderResult(
     path: JString<'_>,
     error: JString<'_>,
 ) {
-    let Some(item) = pending().take(id) else { return };
+    let Some(item) = pending().take(id) else {
+        return;
+    };
     let result = (|| {
         if !error.is_null() {
             let error: String = env.get_string(&error).map_err(|e| e.to_string())?.into();

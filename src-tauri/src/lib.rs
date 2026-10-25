@@ -40738,11 +40738,22 @@ mod tests {
             rest[..rest.find("\n}\n").expect("the end of the function")].to_string()
         };
         let open = body("\nasync fn open_panel_window(");
-        let built = open.find("builder.build()").expect("the window is built");
-        let shared = open
-            .find("contest_entry_share(true)")
-            .expect("opening the logger window shares the entry");
-        assert!(built < shared, "only once the window exists");
+        // Both platform branches share only AFTER their own fallible window build. Looking
+        // for the first share in the whole function compared Android's share with desktop's
+        // later builder, and missed ordering regressions in either branch individually.
+        let (android, desktop) = open
+            .split_once("        let is_bandmap =")
+            .expect("the separate desktop panel branch");
+        for (platform, branch, build_call) in [
+            ("Android", android, "android_panels::build("),
+            ("desktop", desktop, "builder.build()"),
+        ] {
+            let built = branch.find(build_call).expect("the window is built");
+            let shared = branch
+                .find("contest_entry_share(true)")
+                .expect("opening the logger window shares the entry");
+            assert!(built < shared, "{platform}: only once the window exists");
+        }
         let build = body("\nfn build_app(");
         let destroyed = build
             .find("WindowEvent::Destroyed")

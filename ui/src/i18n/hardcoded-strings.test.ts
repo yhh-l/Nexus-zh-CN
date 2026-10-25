@@ -840,6 +840,9 @@ const PARTIAL = [
   // tooltips until the transmit-path batch, with the stop-line sweeps re-run. Everything else it
   // draws (the group's name, the TX state, Hold Tx, a remote stop's progress) is catalogued.
   'components/CockpitTxStrip.tsx',
+  // Android's independent panel chrome has translated Back/error prose, but retains the
+  // same written Stop TX safety token as CockpitTxStrip until the transmit-path batch.
+  'components/AndroidPanelBar.tsx',
   'components/TopBar.tsx',
   'components/UtcClock.tsx',
   'components/SetupHealth.tsx',

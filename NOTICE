@@ -1887,3 +1887,19 @@ per-file header review, exact cloud provenance and intentional changes are
 recorded in `licenses/android-host/`. The template's default artwork was not
 imported; the launcher uses Nexus's existing master icon. No wrapper JAR,
 Gradle distribution, native binary or APK is included by this source import.
+
+## FT4222 direct-USB protocol reference (experimental, not a shipped driver)
+
+The original Nexus wire primitives in
+`crates/tempo-audio/src/yaesu_wf/usb_protocol.rs` were written using protocol
+facts checked against SourceArcade/flashprog `ft4222_spi.c`, commit
+610c1aad71bfa118c4f49ac01761f586b8dede69:
+https://github.com/SourceArcade/flashprog/blob/610c1aad71bfa118c4f49ac01761f586b8dede69/ft4222_spi.c
+Thanks to Nico Huber for the direct-USB protocol work. That file's own header
+was reviewed: Copyright (C) 2024 Nico Huber, GNU GPL version 2 OR (at your
+option) any later version, compatible with GPL-3.0-only via the later-version
+option; not GPL-2.0-only. No upstream implementation, license-body text,
+libusb source or FTDI proprietary library is imported by this addition.
+The new code remains original Nexus GPL-3.0-only code. Hardware I/O, the
+Android USB Host bridge and its permissions are not implemented by these
+wire primitives; this is not a complete driver, redistribution audit or APK.

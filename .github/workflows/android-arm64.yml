@@ -172,6 +172,7 @@ jobs:
         with:
           toolchain: 1.93.1
           targets: aarch64-linux-android
+          components: rustfmt
 
       - name: Test archive and artifact guards
         run: node --test scripts/android-arm64.test.mjs
@@ -198,6 +199,29 @@ jobs:
           node --test scripts/android-host-config.test.mjs
           node scripts/android-host-config.mjs
 
+      - name: Test actual FT4222 wire primitives without FTDI binaries (not USB hardware proof)
+        shell: bash
+        run: |
+          set -euo pipefail
+          rustfmt --edition 2021 --check crates/tempo-audio/src/yaesu_wf/usb_protocol.rs
+          rustc --edition=2021 --test crates/tempo-audio/src/yaesu_wf/usb_protocol.rs --crate-name ft4222_usb_protocol -o "$RUNNER_TEMP/ft4222-usb-tests"
+          "$RUNNER_TEMP/ft4222-usb-tests"
+          python3 - <<'PY'
+          import os
+          from pathlib import Path
+          source = Path("crates/tempo-audio/src/yaesu_wf/usb_protocol.rs").read_text()
+          needle = "self.bytes.extend_from_slice(&packet[2..]);"
+          assert source.count(needle) == 1, "actual status-removal mutation site changed"
+          mutant = source.replace(needle, "self.bytes.extend_from_slice(packet);")
+          (Path(os.environ["RUNNER_TEMP"]) / "ft4222-mutant.rs").write_text(mutant)
+          PY
+          rustc --edition=2021 --test "$RUNNER_TEMP/ft4222-mutant.rs" --crate-name ft4222_mutant -o "$RUNNER_TEMP/ft4222-mutant"
+          if "$RUNNER_TEMP/ft4222-mutant" every_packet_status_is_removed_without_touching_payload > "$RUNNER_TEMP/ft4222-negative.log" 2>&1; then
+            cat "$RUNNER_TEMP/ft4222-negative.log"
+            echo 'ERROR: corrupted packet stripping escaped the actual-source negative control'
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/ft4222-negative.log"
       - name: Compile real portable libraries for Android ARM64
         run: node scripts/android-arm64.mjs
 

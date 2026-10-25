@@ -43,6 +43,8 @@
 //! bridge belongs to is answered by [`crate::usbtopo`] — the FT4222 shares its parent hub with
 //! that rig's CAT port and codec, the same evidence that already labels the codec.
 
+pub mod usb_protocol;
+
 /// One SPI read from the bridge. Fixed size; the radio does not frame or delimit.
 pub const FRAME_BYTES: usize = 4096;
 

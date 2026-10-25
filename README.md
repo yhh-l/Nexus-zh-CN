@@ -572,3 +572,6 @@ matrix. Compilation and tests for this work run in GitHub Actions only.
 Thanks to the LLVM Project contributors for Flang/Flang-RT and to the FFTW
 contributors for the native Android cross-build dependencies. See `NOTICE`
 for provenance, declared licenses and the pending binary-distribution audit.
+
+Thanks to Nico Huber and SourceArcade/flashprog for the FT4222 direct-USB
+protocol reference used by the experimental Android port; see `NOTICE`.

@@ -393,3 +393,20 @@ or in Actions yet. Desktop regressions still require the complete normal CI.
 Remaining known native errors include the data-folder picker and desktop
 geometry/pinning/stream-shape calls. They are **not fixed by this first batch**;
 no complete backend, installable APK or device acceptance is claimed.
+
+## FT4222 final-link blocker and direct-USB wire work
+
+The first full APK release native link (run 40166704243, job 121089258778)
+failed because `-lftd2xx` and `-lft4222` are unavailable. Disabling `yaesu-wf`,
+importing desktop binaries or bundling the closed FTDI libraries is not a fix.
+The original `yaesu_wf::usb_protocol` module now encodes the measured FT-710
+interface-A setup and bounded, packet-by-packet removal of FTDI status bytes.
+It preserves 8192-byte SPI reads and does not change the frame/trailer parser.
+Cloud tests cover full/high-speed packets, short-transfer boundaries, status
+only, malformed/oversized data and failed transactions, not real USB hardware.
+
+This module is NOT connected to `WaterfallSource` yet. The native Android USB
+Host permission/endpoint/connection bridge, bounded concurrent read/write,
+zero-length OUT chip-select release, cancellation and hardware acceptance
+remain required. The existing driver is deliberately not stubbed out, so the
+full APK link blocker remains until the genuine transport is integrated.

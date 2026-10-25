@@ -3,6 +3,7 @@ package com.kd9taw.tempo
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Looper
+import android.view.View
 import android.webkit.WebView
 import androidx.activity.enableEdgeToEdge
 
@@ -10,10 +11,12 @@ class MainActivity : TauriActivity() {
   private var folderPicker: NexusDataFolderPicker? = null
   private var folderRequest: Long? = null
   private var windowShape: NexusWindowShape? = null
+  private var contentInsets: NexusWindowInsets? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     enableEdgeToEdge()
     super.onCreate(savedInstanceState)
+    contentInsets = NexusWindowInsets(findViewById<View>(android.R.id.content)) { windowShape?.resize() }
   }
 
   fun nexusDataFolderRoots(): Array<String> =
@@ -67,6 +70,8 @@ class MainActivity : TauriActivity() {
 
   override fun onDestroy() {
     folderPicker?.fail(getString(R.string.nexus_folder_activity_closed))
+    contentInsets?.close()
+    contentInsets = null
     windowShape?.close()
     windowShape = null
     super.onDestroy()

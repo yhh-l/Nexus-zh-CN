@@ -66,3 +66,8 @@ JNI/lifecycle entry points, localized folder-dialog resources, and precise ProGu
 method keeps. It also pins the official Gradle 8.14.3 distribution checksum. These
 are intentional changes from the baseline report, not unmodified upstream files.
 The test-only JUnit/Robolectric harness is not distributed as the application.
+
+The original NexusWindowInsets controller and its Activity lifecycle integration
+apply Android system-bar, cutout and keyboard insets to the existing native content
+parent. No upstream source was imported for this controller. Its framework-modeled
+tests and actual-source mutation control are not physical-device layout evidence.

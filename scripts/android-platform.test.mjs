@@ -291,3 +291,22 @@ test('Android edge docking refuses before geometry persistence, with the desktop
   assert.match(command, /#\[cfg\(not\(target_os = "android"\)\)\]\s*\{\s*if side/);
   assert(command.indexOf('not(target_os') < command.indexOf('save_bandmap_window('));
 });
+
+function nativeInsetOwners(main, panels) {
+  for (const source of [main, panels]) {
+    assert.match(source, /NexusWindowInsets\(findViewById<View>\(android\.R\.id\.content\)\)/);
+    const destroy = source.slice(source.indexOf('override fun onDestroy()'));
+    assert.match(destroy, /contentInsets\?\.close\(\)/);
+    assert(destroy.indexOf('contentInsets?.close()') < destroy.indexOf('super.onDestroy()'));
+  }
+  assert.match(main, /NexusWindowInsets\([^\n]+\{ windowShape\?\.resize\(\) \}/);
+}
+
+test('both actual Activity owners apply native safe content bounds and clean them up', () => {
+  const directory = path.join(root, 'src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo');
+  const main = fs.readFileSync(path.join(directory, 'MainActivity.kt'), 'utf8');
+  const panels = fs.readFileSync(path.join(directory, 'PanelActivities.kt'), 'utf8');
+  nativeInsetOwners(main, panels);
+  assert.throws(() => nativeInsetOwners(main.replace('contentInsets = NexusWindowInsets', 'contentInsets = fakeInsets'), panels));
+  assert.throws(() => nativeInsetOwners(main, panels.replace('    contentInsets?.close()', '    // cleanup removed')));
+});

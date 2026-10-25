@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android content avoids system bars, display cutouts and the on-screen keyboard.** The native
+  main and panel Activities apply the OS insets to their existing content parent, without replacing
+  or reloading the WebView. Repeated updates do not accumulate padding, and overlapping keyboard
+  and navigation insets are not added twice. NEEDS-BENCH: S25 Ultra portrait/landscape, gesture and
+  three-button navigation, keyboard opening/closing and panel Stop reachability; no APK is released.
 - **Narrow-window navigation keeps Settings beside the scrolling section strip.** Section names keep
   their width instead of squeezing together, and a selected or keyboard-focused section scrolls into
   view without scrolling the cockpit. Swiping the narrow strip does not drag-reorder sections; the

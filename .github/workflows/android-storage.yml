@@ -157,6 +157,41 @@ jobs:
           curl --fail --location --retry 3 'https://raw.githubusercontent.com/tauri-apps/tauri/tauri-cli-v2.11.5/crates/tauri-cli/templates/mobile/android/gradle/wrapper/gradle-wrapper.jar' -o scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.jar
           echo 'e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637  scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.jar' | sha256sum --check --strict
           grep -Fx 'distributionSha256Sum=bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531' scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.properties
+      - name: Prove actual native inset tests reject removal of the product padding application
+        working-directory: scripts/android-folder-harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          source="$GITHUB_WORKSPACE/src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusWindowInsets.kt"
+          backup=$(mktemp "$RUNNER_TEMP/nexus-insets.XXXXXX")
+          cp "$source" "$backup"
+          restore() { cp "$backup" "$source"; }
+          trap restore EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('../../src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusWindowInsets.kt')
+          text = source.read_text()
+          needle = '      content.setPadding(left, top, right, bottom)'
+          if text.count(needle) != 1:
+              raise ValueError('Negative control must mutate the actual product inset application')
+          source.write_text(text.replace(needle, '      // negative control: content padding application removed'))
+          PY
+          set +e
+          bash ./gradlew --no-daemon --stacktrace testDebugUnitTest --tests '*NexusWindowInsetsTest' > "$RUNNER_TEMP/insets-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/insets-negative.log"
+          test "$status" -ne 0
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          report = Path('build/test-results/testDebugUnitTest/TEST-com.kd9taw.tempo.NexusWindowInsetsTest.xml')
+          suite = ET.parse(report).getroot()
+          assert int(suite.get('tests', '0')) >= 5, 'The actual inset tests did not execute'
+          assert int(suite.get('failures', '0')) > 0, 'Removed inset application was not detected'
+          assert int(suite.get('errors', '0')) == 0, 'Compilation/framework errors are not a passing negative control'
+          PY
+          restore
       - name: Compile actual product folder/viewport controllers and run native modeled tests
         working-directory: scripts/android-folder-harness
         run: bash ./gradlew --no-daemon --stacktrace testDebugUnitTest

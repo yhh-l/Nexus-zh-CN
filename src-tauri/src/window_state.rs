@@ -738,6 +738,10 @@ pub async fn focus_window(window: tauri::WebviewWindow) -> Result<(), String> {
         window
             .with_webview(move |webview| {
                 webview.jni_handle().exec(move |env, _activity, view| {
+                    // A cancelled/timed-out command must not steal focus later.
+                    if tx.is_closed() {
+                        return;
+                    }
                     let result = (|| {
                         env.call_method(&view, "setVisibility", "(I)V", &[JValue::Int(0)])
                             .map_err(|e| e.to_string())?;

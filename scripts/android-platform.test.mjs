@@ -178,6 +178,8 @@ function androidWindowControls(source) {
   assert.match(mobile, /"requestFocus", "\(\)Z"/);
   assert.match(mobile, /if focused \{\s*Ok\(\(\)\)\s*\} else \{\s*Err\("Android WebView did not accept focus"/);
   assert.match(mobile, /exception_clear\(\)/);
+  assert(mobile.indexOf('tx.is_closed()') < mobile.indexOf('"setVisibility"') && mobile.includes('tx.is_closed()'),
+    'A cancelled focus request must not change the WebView later');
   assert.match(mobile, /tokio::time::timeout\([\s\S]*?rx\)[\s\S]*?\.await/);
   assert.doesNotMatch(mobile, /\.unminimize\(|\.set_always_on|moveTaskToFront/);
 }
@@ -189,6 +191,6 @@ test('Android OS window controls refuse before persistence and focus the actual 
     'Err("pinning above other applications is not available on Android".into())', 'Ok(WindowOnTop { supported: true, on })')));
   const start = source.indexOf('pub fn set_window_behind(');
   assert.throws(() => androidWindowControls(source.slice(0, start) + source.slice(start).replace(
-    '#[cfg(not(target_os = "android"))]', 'if cfg!(not(target_os = "android"))'))));
+    '#[cfg(not(target_os = "android"))]', 'if cfg!(not(target_os = "android"))')));
   assert.throws(() => androidWindowControls(source.replace('"requestFocus", "()Z"', '"fakeFocus", "()Z"')));
 });

@@ -77,6 +77,7 @@ use crate::window_state;
 pub const LABEL: &str = "remote-stations";
 
 /// The Stations on this network window's label, in no capability's `windows` list either.
+#[cfg(any(windows, test))]
 pub const LAN_LABEL: &str = "lan-stations";
 
 /// The languages the Stations on this network window's page can be opened in: the catalogs it

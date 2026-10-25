@@ -211,6 +211,7 @@ fn requested_in(mut args: impl Iterator<Item = String>) -> Option<String> {
 
 /// The arguments that start Nexus driving the station `station`, at the address or host name
 /// `typed` first when the operator typed one.
+#[cfg(any(windows, test))]
 pub(crate) fn operate_args(station: String, typed: Option<Typed>) -> Vec<String> {
     let mut args = vec![ARG.into(), station];
     if let Some(at) = typed {

@@ -105,13 +105,18 @@
 /// Signing in with the station's account: adding a station, linking one paired with a code, and
 /// signing in again before a station stops admitting this computer on its network.
 pub(crate) mod account;
+mod discovery;
 /// The audio road, beside the command link, and this computer's headset (the client core's).
 pub(crate) use tempo_client::audio_road;
 /// The command link, protocol 2, which client mode drives (the client core's).
 pub(crate) use tempo_client::link;
 /// The internet road: adding it to a paired station, and opening it again.
 pub(crate) mod internet;
+// The loopback page and code-pairing entry are reached only by the Windows window.
+// Keep their real implementation in every host test, not an empty portable substitute.
+#[cfg(any(windows, test))]
 mod origin;
+#[cfg(any(windows, test))]
 pub(crate) mod pairing;
 /// The road to a paired station (the client core's).
 pub(crate) use tempo_client::road;
@@ -122,6 +127,7 @@ pub(crate) mod tests;
 
 #[cfg(test)]
 pub(crate) use origin::PREFERRED_PORT;
+#[cfg(any(windows, test))]
 pub(crate) use origin::{Origin, Reach};
 
 use std::collections::BTreeMap;
@@ -130,10 +136,13 @@ use std::path::PathBuf;
 use std::sync::{Arc, Mutex};
 
 use serde::Serialize;
+#[cfg(any(windows, test))]
 use tempo_client::hex;
 /// This computer's key for a station, and a paired station as the page shows it (the client
 /// core's).
-pub(crate) use tempo_client::{ComputerKey, StationView};
+pub(crate) use tempo_client::ComputerKey;
+#[cfg(any(windows, test))]
+pub(crate) use tempo_client::StationView;
 use tempo_stream::lan::Typed;
 use tempo_stream::protocol;
 
@@ -169,6 +178,7 @@ const CREDENTIAL_BYTES: usize = 2560;
 
 /// The code as the operator typed it: sixteen hexadecimal characters, either case, with spaces
 /// anywhere (the shack shows it in groups of four). `None` for anything else.
+#[cfg(any(windows, test))]
 pub(crate) fn code(typed: &str) -> Option<[u8; 8]> {
     let hex: String = typed
         .chars()
@@ -260,12 +270,14 @@ struct Held {
 /// it, and its LAN key's fingerprint (SHA-256 of the key, lowercase hex), as a station on this
 /// network is shown. Never this computer's key.
 #[derive(Clone, Debug, PartialEq, Eq, Serialize)]
+#[cfg(any(windows, test))]
 pub(crate) struct AwayView {
     pub id: String,
     pub name: String,
     pub key: String,
 }
 
+#[cfg(any(windows, test))]
 impl AwayView {
     fn of(record: &AwayStation) -> Option<Self> {
         let spki = protocol::hex_bytes(&record.station_key)?;
@@ -327,6 +339,7 @@ impl Stations {
     }
 
     /// Every paired station the store holds a sound record for, in the order they were paired.
+    #[cfg(any(windows, test))]
     pub(crate) fn list(&self) -> Result<Vec<StationView>, &'static str> {
         let typed = self.typed_file();
         let mut views: Vec<StationView> =
@@ -540,6 +553,7 @@ impl Stations {
     /// Station `id` was paired with a code here: it admits this computer until it is removed there,
     /// whatever a sign-in said before, so its line goes from the signed file, and with it the day
     /// its row names and Operate's launch signing in again for it. No line, nothing written.
+    #[cfg(any(windows, test))]
     pub(crate) fn drop_signed(&self, id: &str) -> Result<(), &'static str> {
         let _writing = self.writing.lock().map_err(|_| "storeUnavailable")?;
         let mut file = self.signed_file();
@@ -637,6 +651,7 @@ impl Stations {
     }
 
     /// The same stations, as the page shows them.
+    #[cfg(any(windows, test))]
     pub(crate) fn list_away(&self) -> Result<Vec<AwayView>, &'static str> {
         Ok(self
             .away_records()?
@@ -779,6 +794,7 @@ impl Stations {
     /// its lines in the typed and signed files. A list that still names it after a failure names a
     /// record that is gone, which reads as no pairing; a line a file would not let go of goes with
     /// its next write.
+    #[cfg(any(windows, test))]
     pub(crate) fn forget(&self, id: &str) -> Result<(), &'static str> {
         let _writing = self.writing.lock().map_err(|_| "storeUnavailable")?;
         if !protocol::identifier(id) {

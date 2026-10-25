@@ -94,8 +94,8 @@ use tempo_stream::lan::{Lookup, Typed};
 use tokio::net::TcpListener;
 use tokio_tungstenite::tungstenite::Message;
 
+use super::discovery::{Find, FIND_FOR};
 use super::internet::{self, Choose};
-use super::origin::{Find, FIND_FOR};
 use super::road::{self, Failed, Opened, Socket};
 use super::{ComputerKey, Stations, AWAY_NAME_CHARS, MAX_STATIONS};
 use crate::account_sign_in::{SIGN_IN_PORT, SIGN_IN_WAIT};

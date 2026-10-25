@@ -256,6 +256,7 @@ pub trait StationVault: Send + Sync {
     fn save_paired_stations(&self, list: &PairedStations) -> Result<(), &'static str>;
     fn paired_station(&self, id: &str) -> Result<Option<PairedStation>, &'static str>;
     fn save_paired_station(&self, station: &PairedStation) -> Result<(), &'static str>;
+    #[cfg(any(windows, test))]
     fn remove_paired_station(&self, id: &str) -> Result<(), &'static str>;
     /// The internet road kept for the station paired here as `id`, if any.
     fn internet_road(&self, id: &str) -> Result<Option<InternetRoad>, &'static str>;
@@ -591,6 +592,7 @@ impl StationVault for SystemVault {
             .set_password(&value)
             .map_err(|_| "credentialStoreUnavailable")
     }
+    #[cfg(any(windows, test))]
     fn remove_paired_station(&self, id: &str) -> Result<(), &'static str> {
         match paired_entry(id)?.delete_credential() {
             Ok(()) | Err(keyring::Error::NoEntry) => Ok(()),

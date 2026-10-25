@@ -94,3 +94,55 @@ test('Android roots use the real OS private directory before all station startup
   assert.throws(() => storageBoundary(station, storage.replace('StorageRoots::open(&files_dir)', 'StorageRoots::open(Path::new("."))')));
   assert.throws(() => storageBoundary(station, `${storage}\nstd::env::set_var("HOME", "fake");`));
 });
+
+// These guards constrain the real module graph. They do not substitute for Linux clippy or
+// Android cargo check: both must still compile the complete backend in GitHub Actions.
+function lanWindowBoundary(source) {
+  for (const declaration of ['mod origin;', 'pub(crate) mod pairing;']) {
+    assert(source.includes(`#[cfg(any(windows, test))]\n${declaration}`),
+      `${declaration} must retain Windows implementation and real host tests`);
+  }
+  for (const name of ['account', 'discovery', 'internet']) {
+    const declaration = new RegExp(String.raw`(?:pub\(crate\) )?mod ${name};`);
+    assert.match(source, declaration);
+    const at = source.search(declaration);
+    const preceding = source.slice(0, at).trimEnd();
+    assert(!/#\[cfg\([^\n]+\)\]$/.test(preceding), `${name} must remain portable`);
+  }
+  assert.match(source, /pub\(crate\) use tempo_client::ComputerKey;/);
+  assert.match(source, /pub\(crate\) use tempo_client::(?:audio_road|link|stop_road);/);
+  for (const name of ['code', 'list', 'drop_signed', 'list_away', 'forget']) {
+    assert(source.includes(`#[cfg(any(windows, test))]\n` +
+      `    pub(crate) fn ${name}(`) || source.includes(
+      `#[cfg(any(windows, test))]\npub(crate) fn ${name}(`), `${name} keeps host tests`);
+  }
+}
+
+test('Windows LAN window helpers retain tests without gating portable account roads', () => {
+  const source = read('lan_client.rs');
+  lanWindowBoundary(source);
+  assert.throws(() => lanWindowBoundary(source.replace(
+    '#[cfg(any(windows, test))]\nmod origin;', '#[cfg(windows)]\nmod origin;')));
+  assert.throws(() => lanWindowBoundary(source.replace(
+    'pub(crate) mod account;', '#[cfg(windows)]\npub(crate) mod account;')));
+  assert.throws(() => lanWindowBoundary(source.replace(
+    '#[cfg(any(windows, test))]\n    pub(crate) fn forget(', '    pub(crate) fn forget(')));
+});
+
+function portableDiscovery(account, origin, discovery) {
+  assert.match(account, /use super::discovery::\{Find, FIND_FOR\};/);
+  assert.doesNotMatch(account, /use super::origin::/);
+  assert.match(origin, /pub\(crate\) use super::discovery::\{Find, FIND_FOR\};/);
+  assert.match(discovery, /const FIND_FOR: Duration = Duration::from_secs\(3\);/);
+  assert.match(discovery, /type Find = Arc<dyn Fn\(Duration\) -> Result<Vec<Found>, Unavailable> \+ Send \+ Sync>;/);
+  assert.doesNotMatch(discovery, /#\[cfg\(/);
+}
+
+test('portable account discovery shares the unchanged callback and timeout outside Windows origin', () => {
+  const account = read('lan_client/account.rs');
+  const origin = read('lan_client/origin.rs');
+  const discovery = read('lan_client/discovery.rs');
+  portableDiscovery(account, origin, discovery);
+  assert.throws(() => portableDiscovery(account.replace('super::discovery::', 'super::origin::'), origin, discovery));
+  assert.throws(() => portableDiscovery(account, origin, discovery.replace('from_secs(3)', 'from_secs(30)')));
+});

@@ -74,6 +74,7 @@ pub(crate) struct Choice {
 }
 
 /// How long the operator has to pick the station, as for the sign-in.
+#[cfg(any(windows, test))]
 pub(crate) const CHOOSE_WAIT: Duration = crate::account_sign_in::SIGN_IN_WAIT;
 
 /// The longest station name offered, in characters: the service's bound for a name (`label`).
@@ -83,6 +84,7 @@ const MOST_CHOICES: usize = 16;
 
 /// Forgetting a station's internet road at the service, as Forget on this computer does: the
 /// device's approval ended there, or why the service was not told.
+#[cfg(any(windows, test))]
 pub(crate) type ForgetInternet = Arc<
     dyn Fn(InternetRoad) -> Pin<Box<dyn Future<Output = Result<(), &'static str>> + Send>>
         + Send

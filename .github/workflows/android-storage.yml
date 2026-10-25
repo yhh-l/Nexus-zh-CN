@@ -13,6 +13,10 @@ on:
       - scripts/android-folder-harness/**
       - src-tauri/src/lib.rs
       - scripts/android-platform.test.mjs
+      - src-tauri/src/lan_client.rs
+      - src-tauri/src/lan_client/**
+      - src-tauri/src/client_mode.rs
+      - src-tauri/src/remote_service/vault.rs
       - src-tauri/src/client_mode/tests.rs
       - src-tauri/src/client_mode/station_boundary.rs
       - src-tauri/src/login_start.rs

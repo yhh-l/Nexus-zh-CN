@@ -71,6 +71,7 @@ use tokio_tungstenite::tungstenite::Message;
 use tokio_tungstenite::WebSocketStream;
 
 use super::account::{Ask, Signed};
+pub(crate) use super::discovery::{Find, FIND_FOR};
 use super::internet::{Choice, Choose, CHOOSE_WAIT};
 use super::road::{self, Road, ToPage};
 use super::{code, hex, pairing, StationView, Stations, MAX_STATIONS};
@@ -90,8 +91,6 @@ const HEAD_WITHIN: Duration = Duration::from_secs(5);
 const CONNECTIONS: usize = 32;
 /// The largest message the page may send: an offer is the largest, at the stream's own bound.
 const FROM_PAGE_BYTES: usize = 16 * 1024;
-/// How long a look for stations by name listens for their answers.
-pub(crate) const FIND_FOR: Duration = Duration::from_secs(3);
 /// The longest advertised name the page is shown, in UTF-16 units as the page counts them: a
 /// station's own is "Nexus" and eight characters of its key.
 const FOUND_NAME_UNITS: usize = 64;
@@ -107,10 +106,6 @@ fn policy(port: u16) -> String {
 
 /// The page's own files, by path (`lan.html`, `assets/…`): the bytes and their media type.
 pub(crate) type Assets = Arc<dyn Fn(&str) -> Option<(Vec<u8>, String)> + Send + Sync>;
-
-/// The stations that answer by name within a wait (`tempo_stream::lan::dnssd::find`). It blocks
-/// for that long, so it is only called on a thread that may wait.
-pub(crate) type Find = Arc<dyn Fn(Duration) -> Result<Vec<Found>, Unavailable> + Send + Sync>;
 
 /// All the page can reach through the origin: its own files, this computer's paired stations and
 /// the stations found by name. No engine, no command and no other file.

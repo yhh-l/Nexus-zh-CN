@@ -31,7 +31,7 @@ dependencies {
 """)
         (root / "bridge").mkdir()
         (root / "bridge/build.gradle").write_text("""
-configurations { default }
+configurations.create('default')
 artifacts { add('default', file('bridge.jar')) }
 """)
         with zipfile.ZipFile(root / "bridge/bridge.jar", "w") as archive:

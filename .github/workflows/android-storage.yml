@@ -82,7 +82,7 @@ jobs:
         if: failure()
         run: |
           cargo fmt --manifest-path src-tauri/Cargo.toml
-          git diff -- src-tauri/src/android_storage.rs src-tauri/src/lib.rs > "$RUNNER_TEMP/android-storage-format.patch"
+          git diff -- src-tauri/src > "$RUNNER_TEMP/android-storage-format.patch"
       - name: Upload diagnostics only, never an APK
         if: failure()
         uses: actions/upload-artifact@v4

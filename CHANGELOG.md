@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android JVM inventory selects the actual universal release variant and runs earlier.**
+  The official backend build helper supplies real plugin integration before the Gradle
+  preflight, so dependency-graph defects need not wait for final APK code generation.
+  Unflavored-release substitution is refused; the final whole-APK inventory remains required.
 - **Android JVM inventory ignores nested Gradle helper builds, not missing applications.**
   The top-level application remains mandatory; real Gradle buildSrc and missing-app controls
   guard this boundary. Existing JSON-only APK diagnostics survive later inventory failure;

@@ -598,7 +598,7 @@ false, and only reports/texts, not APK binaries, are exported by these workflows
 
 `scripts/android-jvm-inventory.gradle` is original report-only Gradle 8.14.3 code.
 After the full real APK build/audit, the same generated Android project resolves
-its actual `:app:releaseRuntimeClasspath`. The collector records component and
+its actual `:app:universalReleaseRuntimeClasspath`. The collector records component and
 project identities, transitive edges and the actual selected artifact hashes.
 No repository, dependency, build task, signing or credential policy is changed.
 POM hashes/license-name hints and available sources-archive hashes/license-named
@@ -640,3 +640,20 @@ resource regressions. This is real JNI/lifetime testing with a controlled Java
 object, NOT Android USB device I/O, OOM recovery proof, physical disconnect testing,
 Android runtime execution or a complete working-radio/device acceptance claim.
 No production dependency, signature/key, permission or transmitter policy changes.
+
+### Fast actual JVM input preflight
+
+The full Android workflow also resolves the real configured
+`universalReleaseRuntimeClasspath` before final APK code generation. Its existing
+backend check sets `TAURI_ANDROID_PROJECT_PATH`, allowing the official tauri-build
+helper to generate the actual plugin integration. CLI initialization alone does
+not generate these plugin files; empty substitutes would omit runtime inputs and
+are not permitted. The early Gradle step reuses this actual checked backend's
+integration, without building an APK. The universal flavor comes from the tracked
+Rust Gradle plugin; an unflavored
+release configuration must not substitute for the actual APK variant. Nested
+buildSrc initialization is ignored, but the top-level `:app` remains mandatory.
+The fixture suite includes both boundaries and removes the actual nested-build
+guard to reproduce the original failure. The same collector still runs after the
+whole APK audit. A preflight JSON is configured-input evidence only, not final
+DEX contents, legal approval, signing, installation or device verification.

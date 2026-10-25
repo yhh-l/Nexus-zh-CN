@@ -23,10 +23,10 @@ class GradleRuntimeInventory(unittest.TestCase):
         (root / "app").mkdir()
         (root / "app/build.gradle").write_text("""
 repositories { maven { url = uri(rootProject.file('repo')) } }
-configurations { releaseRuntimeClasspath }
+configurations { universalReleaseRuntimeClasspath }
 dependencies {
-    releaseRuntimeClasspath 'fixture:alpha:1.0'
-    releaseRuntimeClasspath project(':bridge')
+    universalReleaseRuntimeClasspath 'fixture:alpha:1.0'
+    universalReleaseRuntimeClasspath project(':bridge')
 }
 """)
         (root / "bridge").mkdir()
@@ -74,6 +74,7 @@ artifacts { add('default', file('bridge.jar')) }
             self.assertTrue(report["syntheticFixture"])
             self.assertTrue(report["runtimeInputResolutionComplete"])
             self.assertEqual(report["gradleVersion"], "8.14.3")
+            self.assertEqual(report["configuration"], "universalReleaseRuntimeClasspath")
             self.assertEqual(report["sourceRevision"], os.environ["GITHUB_SHA"])
             components = {component["key"]: component for component in report["components"]}
             self.assertIn("project :bridge", components)
@@ -113,6 +114,16 @@ file('../buildsrc-evaluated.txt').text = 'actual helper build evaluated'
             process, report = self.invoke(root)
             self.assertNotEqual(process.returncode, 0, process.stdout + process.stderr)
             self.assertIn("Actual :app project required for runtime inventory", process.stdout + process.stderr)
+            self.assertIsNone(report)
+
+    def test_unflavored_release_cannot_replace_the_actual_universal_variant(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.fixture(directory)
+            build = root / "app/build.gradle"
+            build.write_text(build.read_text().replace("universalReleaseRuntimeClasspath", "releaseRuntimeClasspath"))
+            process, report = self.invoke(root)
+            self.assertNotEqual(process.returncode, 0, process.stdout + process.stderr)
+            self.assertIn("universalReleaseRuntimeClasspath", process.stdout + process.stderr)
             self.assertIsNone(report)
 
     def test_missing_real_runtime_artifact_cannot_claim_resolution_complete(self):

@@ -57,7 +57,7 @@ gradle.projectsEvaluated {
             if (!(revision ==~ /[a-f0-9]{40}/)) throw new GradleException('Exact cloud revision required')
             def mode = app.providers.gradleProperty('nexusInventoryMode').get()
             if (!(mode in ['android', 'fixture'])) throw new GradleException('Explicit inventory scope required')
-            def configuration = app.configurations.getByName('releaseRuntimeClasspath')
+            def configuration = app.configurations.getByName('universalReleaseRuntimeClasspath')
             def resolution = configuration.incoming.resolutionResult
             def components = resolution.allComponents.collect { identity(it.id) }.sort { it.key }
             if (components.collect { it.key }.toSet().size() != components.size()) {
@@ -115,7 +115,7 @@ gradle.projectsEvaluated {
                 gaps.add('Actual Android appcompat runtime dependency absent')
             }
             def report = [schemaVersion: 1, sourceRevision: revision, gradleVersion: gradle.gradleVersion,
-                configuration: 'releaseRuntimeClasspath', scope: 'resolved build inputs, not final DEX retention',
+                configuration: 'universalReleaseRuntimeClasspath', scope: 'resolved build inputs, not final DEX retention',
                 syntheticFixture: mode == 'fixture', runtimeInputResolutionComplete: resolved,
                 resolutionFailureCount: view.failures.size(), components: components, artifacts: artifacts,
                 dependencyEdges: edges, findings: gaps.sort(), apkPayloadVerified: false,

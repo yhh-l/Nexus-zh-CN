@@ -328,6 +328,10 @@ jobs:
         run: python3 scripts/android-rust-notices.py
 
       - name: Check the full application backend (radio and Yaesu waterfall enabled)
+        env:
+          # Let the official tauri-build generate its real plugin integration here,
+          # before the lightweight Gradle inventory; never synthesize empty plugins.
+          TAURI_ANDROID_PROJECT_PATH: ${{ github.workspace }}/src-tauri/gen/android
         run: >
           cargo check --locked --manifest-path src-tauri/Cargo.toml
           --target aarch64-linux-android --features radio,yaesu-wf
@@ -358,6 +362,22 @@ jobs:
           test -x "$java/bin/java"
           printf 'ANDROID_HOME=%s\nANDROID_SDK_ROOT=%s\nNDK_HOME=%s\nJAVA_HOME=%s\n' "$sdk" "$sdk" "$ANDROID_NDK_HOME" "$java" >> "$GITHUB_ENV"
           printf '%s/bin\n' "$java" >> "$GITHUB_PATH"
+      - name: Prepare official Gradle tooling before the early actual JVM inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          (cd src-tauri && cargo tauri android init --ci --skip-targets-install)
+          git diff --exit-code -- src-tauri/gen/android Cargo.lock src-tauri/Cargo.lock
+          printf '%s  %s\n' e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637 src-tauri/gen/android/gradle/wrapper/gradle-wrapper.jar | sha256sum -c -
+          grep -Fx 'distributionSha256Sum=bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531' src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties
+          test -s src-tauri/gen/android/tauri.settings.gradle
+          test -s src-tauri/gen/android/app/tauri.build.gradle.kts
+      - name: Inventory actual universal release JVM inputs before expensive APK code generation
+        working-directory: src-tauri/gen/android
+        run: >
+          ./gradlew --no-daemon --console=plain --max-workers=2
+          --init-script ../../../scripts/android-jvm-inventory.gradle :app:nexusAndroidRuntimeInventory
+          -PnexusInventoryMode=android -PnexusInventoryReport=../../../target/android-jvm/runtime-inventory.json
       - name: Install the complete locked UI for the real APK frontend
         run: npm --prefix ui ci
       - name: Build the whole native application and an unsigned ARM64 APK (not install acceptance)

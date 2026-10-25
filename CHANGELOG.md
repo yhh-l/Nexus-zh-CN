@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android FT4222 opening cleans up before native ownership is established.** Packet-query
+  or JNI global-reference failures attempt Java-session close after clearing a pending
+  exception. Worker calls use bounded local-reference frames on early errors as well as
+  success. This does not change USB protocol, CAT/PTT, transmit timing or permissions.
 - **Android cloud builds inventory their configured release JVM inputs.** Runtime component
   edges, artifact hashes, POM license-name hints and available source-archive notice hashes
   expose missing review material. This is input provenance, not final DEX retention, accepted

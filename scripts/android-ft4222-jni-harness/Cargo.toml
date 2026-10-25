@@ -1,0 +1,12 @@
+[package]
+name = "nexus-ft4222-jni-ownership-tests"
+version = "0.0.0"
+edition = "2021"
+publish = false
+license = "GPL-3.0-only"
+
+[workspace]
+
+[dependencies]
+# Same JNI API as Wry's bridge. Invocation is test-only, not a shipped feature.
+jni = { version = "=0.21.1", features = ["invocation"] }

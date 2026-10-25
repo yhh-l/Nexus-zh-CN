@@ -337,6 +337,8 @@ test('Android retains the full waterfall through real USB JNI rather than deskto
   assert.match(bridge, /register_android\(Box::new\(move \|\| bridge.open\(\)\)\)/);
   assert.match(bridge, /UsbWaterfall::open\(transport\)/);
   assert.match(bridge, /attach_current_thread\(\)/);
+  assert.match(bridge, /ownership::local_call\(&mut env, action\)/);
+  assert.match(bridge, /ownership::finish_open\(env, &session\)/);
   assert.match(bridge, /delete_local_ref\(bytes\)/);
   assert.match(bridge, /"readRaw",\s*"\(\)\[\[B"/);
   assert.doesNotMatch(bridge, /FT_Open|FT4222_SPIMaster|unsafe impl|transmute|requestPermission/);

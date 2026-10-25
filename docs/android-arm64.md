@@ -617,3 +617,26 @@ All execution stays in GitHub Actions; no Gradle/Java installation or test runs
 are performed locally. The full application runner must still produce and pass
 its actual inventory before that real runtime-input evidence can be claimed.
 All full license, APK-payload, signing, installation and device flags stay false.
+
+### FT4222 partial-open JNI ownership
+
+`android_ft4222/ownership.rs` is the actual product's shared JNI boundary, not a
+replacement transport. Before an `AndroidUsb` owner exists, packet-query or global
+reference promotion failure explicitly attempts Java-session close, with the
+original pending exception cleared first. Cleanup exceptions are cleared without
+replacing the opening error. Successful promotion transfers the same global ref
+to the existing `AndroidUsb`/`UsbWaterfall` owners and does not close early.
+Every bridge worker call uses a bounded JNI local frame, so malformed read/early
+error paths also release temporary local references on an already attached thread.
+USB setup, packet parsing, queue timing, permission routing and CAT/PTT are unchanged.
+
+The cloud-only `android-ft4222-jni-harness` imports the exact product ownership file
+and invokes it on a real Java 17 JVM using JNI 0.21.1 (the Wry bridge's existing API).
+Its original Java fixture counts close attempts and throws controlled exceptions.
+Tests cover success, real packet-getter exception, injected promotion failure with
+a pending Java exception, throwing cleanup, null session and a reused clean worker.
+A mutation removes the actual failure-cleanup branch and must fail the named
+resource regressions. This is real JNI/lifetime testing with a controlled Java
+object, NOT Android USB device I/O, OOM recovery proof, physical disconnect testing,
+Android runtime execution or a complete working-radio/device acceptance claim.
+No production dependency, signature/key, permission or transmitter policy changes.

@@ -13,9 +13,8 @@ use tempo_audio::yaesu_wf::usb_protocol::{ControlOut, READ_BYTES};
 use tempo_audio::yaesu_wf::usb_source::{self, UsbTransport, UsbWaterfall};
 use tempo_audio::yaesu_wf::WaterfallSource;
 
-fn checked<T>(result: jni::errors::Result<T>) -> io::Result<T> {
-    result.map_err(|error| io::Error::other(error.to_string()))
-}
+mod ownership;
+use ownership::checked;
 
 struct Bridge {
     vm: jni::JavaVM,
@@ -26,16 +25,7 @@ struct Bridge {
 impl Bridge {
     fn call<T>(&self, action: impl FnOnce(&mut jni::JNIEnv<'_>) -> io::Result<T>) -> io::Result<T> {
         let mut env = checked(self.vm.attach_current_thread())?;
-        let result = action(&mut env);
-        // Never leave a pending Java exception attached to a reused worker thread.
-        if env.exception_check().unwrap_or(true) {
-            let _ = env.exception_clear();
-            return Err(io::Error::other(format!(
-                "Android FT4222 permission/USB operation failed: {}",
-                result.err().map(|e| e.to_string()).unwrap_or_default()
-            )));
-        }
-        result
+        ownership::local_call(&mut env, action)
     }
 
     fn open(self: &Arc<Self>) -> io::Result<Box<dyn WaterfallSource + Send>> {
@@ -49,9 +39,7 @@ impl Bridge {
                 &[JValue::Object(self.context.as_obj())],
             ))?;
             let session = checked(session.l())?;
-            let packet = checked(env.call_method(&session, "packetBytes", "()I", &[]))?;
-            let packet = checked(packet.i())?;
-            Ok((checked(env.new_global_ref(session))?, packet as usize))
+            ownership::finish_open(env, &session)
         })?;
         let transport = AndroidUsb {
             bridge: self.clone(),

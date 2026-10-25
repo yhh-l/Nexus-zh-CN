@@ -1,0 +1,92 @@
+# Actual JNI ownership code on a real host JVM; not Android OS/USB/device proof.
+name: Android FT4222 JNI ownership
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-ft4222-jni.yml
+      - scripts/android-ft4222-jni-harness/**
+      - scripts/android-native.test.mjs
+      - src-tauri/src/android_ft4222.rs
+      - src-tauri/src/android_ft4222/**
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-ft4222-jni-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  ownership:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          components: rustfmt
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Check the actual product still calls the tested ownership boundary
+        run: node --test --test-name-pattern='Android retains the full waterfall' scripts/android-native.test.mjs
+      - name: Compile the original Java failure fixture using the runner Java 17
+        shell: bash
+        run: |
+          set -euo pipefail
+          java="${JAVA_HOME_17_X64:?Runner Java 17 required}"
+          classes="$RUNNER_TEMP/nexus-ft4222-jni-classes"
+          mkdir -p "$classes"
+          "$java/bin/javac" -d "$classes" scripts/android-ft4222-jni-harness/java/nexus/fixture/FixtureUsb.java
+          printf 'JAVA_HOME=%s\nNEXUS_JNI_FIXTURE_CLASSES=%s\n' "$java" "$classes" >> "$GITHUB_ENV"
+          printf '%s/bin\n' "$java" >> "$GITHUB_PATH"
+      - name: Exercise actual ownership code against real JNI success and exception paths
+        run: cargo test --manifest-path scripts/android-ft4222-jni-harness/Cargo.toml -- --test-threads=1
+      - name: Prove removing actual partial-open cleanup fails the resource-ownership regression
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=src-tauri/src/android_ft4222/ownership.rs
+          backup=$(mktemp "$RUNNER_TEMP/nexus-jni-owner.XXXXXX")
+          cp "$source" "$backup"
+          trap 'cp "$backup" "$source"' EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('src-tauri/src/android_ft4222/ownership.rs')
+          source = path.read_text()
+          needle = 'if result.is_err() {'
+          assert source.count(needle) == 1
+          path.write_text(source.replace(needle, 'if false {'))
+          PY
+          set +e
+          cargo test --manifest-path scripts/android-ft4222-jni-harness/Cargo.toml -- --test-threads=1 > "$RUNNER_TEMP/jni-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/jni-negative.log"
+          test "$status" -ne 0
+          grep -F 'packet_getter_exception_closes_partial_session_and_clears_worker_exception ... FAILED' "$RUNNER_TEMP/jni-negative.log"
+          grep -F 'promotion_failure_with_pending_java_exception_still_closes_exactly_once ... FAILED' "$RUNNER_TEMP/jni-negative.log"
+          cp "$backup" "$source"
+          trap - EXIT
+      - name: Check formatting only on the edited Rust source and retain an exact cloud formatting patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p target/android-ft4222-jni
+          rustfmt --edition 2021 src-tauri/src/android_ft4222.rs src-tauri/src/android_ft4222/ownership.rs scripts/android-ft4222-jni-harness/src/lib.rs
+          git diff -- src-tauri/src/android_ft4222.rs src-tauri/src/android_ft4222/ownership.rs scripts/android-ft4222-jni-harness/src/lib.rs > target/android-ft4222-jni/format.patch
+          git diff --exit-code -- src-tauri/src/android_ft4222.rs src-tauri/src/android_ft4222/ownership.rs scripts/android-ft4222-jni-harness/src/lib.rs
+      - name: Preserve cloud formatting diagnostics, never a JVM or Android binary
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-ft4222-jni-format-${{ github.run_id }}
+          path: target/android-ft4222-jni/format.patch
+          if-no-files-found: ignore
+          retention-days: 7

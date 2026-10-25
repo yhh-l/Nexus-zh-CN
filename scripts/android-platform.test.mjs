@@ -146,3 +146,49 @@ test('portable account discovery shares the unchanged callback and timeout outsi
   assert.throws(() => portableDiscovery(account.replace('super::discovery::', 'super::origin::'), origin, discovery));
   assert.throws(() => portableDiscovery(account, origin, discovery.replace('from_secs(3)', 'from_secs(30)')));
 });
+
+function androidWindowControls(source) {
+  for (const [name, end, reason, operation] of [
+    ['set_window_behind', '/// The record with stay-behind', 'staying behind other windows is not available on Android', 'set_always_on_bottom'],
+    ['set_window_on_top', '/// Bring the calling window', 'pinning above other applications is not available on Android', 'set_always_on_top'],
+  ]) {
+    const start = source.indexOf(`pub fn ${name}(`);
+    const stop = source.indexOf(end, start);
+    assert(start >= 0 && stop > start);
+    const command = source.slice(start, stop);
+    const android = command.indexOf('#[cfg(target_os = "android")]');
+    const desktop = command.indexOf('#[cfg(not(target_os = "android"))]');
+    assert(android >= 0 && desktop > android, 'Unsupported OS operations need a compile-time boundary');
+    const mobile = command.slice(android, desktop);
+    assert(mobile.includes(`Err("${reason}".into())`));
+    assert.doesNotMatch(mobile, /save_panel|set_always_on|Ok\(/);
+    assert(command.indexOf('save_panel') > desktop, 'Never persist a refused mobile OS operation');
+    assert(command.indexOf(operation) > desktop, 'Desktop operations must remain implemented');
+  }
+  assert.match(source, /cfg!\(not\(target_os = "android"\)\) && slug == crate::CONTEST_LOGGER_SLUG/);
+  const start = source.indexOf('pub async fn focus_window(');
+  const stop = source.indexOf('\n#[cfg(test)]\nmod tests', start);
+  assert(start >= 0 && stop > start);
+  const focus = source.slice(start, stop);
+  const android = focus.indexOf('#[cfg(target_os = "android")]');
+  assert(android > focus.indexOf('window.unminimize()'), 'Desktop restore stays outside Android');
+  const mobile = focus.slice(android);
+  assert.match(mobile, /\.with_webview\([\s\S]*?\.jni_handle\(\)\.exec\(/);
+  assert.match(mobile, /"setVisibility", "\(I\)V", &\[JValue::Int\(0\)\]/);
+  assert.match(mobile, /"requestFocus", "\(\)Z"/);
+  assert.match(mobile, /if focused \{\s*Ok\(\(\)\)\s*\} else \{\s*Err\("Android WebView did not accept focus"/);
+  assert.match(mobile, /exception_clear\(\)/);
+  assert.match(mobile, /tokio::time::timeout\([\s\S]*?rx\)[\s\S]*?\.await/);
+  assert.doesNotMatch(mobile, /\.unminimize\(|\.set_always_on|moveTaskToFront/);
+}
+
+test('Android OS window controls refuse before persistence and focus the actual WebView', () => {
+  const source = read('window_state.rs');
+  androidWindowControls(source);
+  assert.throws(() => androidWindowControls(source.replace(
+    'Err("pinning above other applications is not available on Android".into())', 'Ok(WindowOnTop { supported: true, on })')));
+  const start = source.indexOf('pub fn set_window_behind(');
+  assert.throws(() => androidWindowControls(source.slice(0, start) + source.slice(start).replace(
+    '#[cfg(not(target_os = "android"))]', 'if cfg!(not(target_os = "android"))'))));
+  assert.throws(() => androidWindowControls(source.replace('"requestFocus", "()Z"', '"fakeFocus", "()Z"')));
+});

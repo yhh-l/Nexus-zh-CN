@@ -596,28 +596,37 @@ pub fn get_window_behind(window: tauri::WebviewWindow) -> WindowBehind {
 /// is left as it was — only a close writes that.
 #[tauri::command]
 pub fn set_window_behind(window: tauri::WebviewWindow, on: bool) -> Result<WindowBehind, String> {
-    if !behind_supported() {
-        return Err("staying behind other windows is not available on this platform".into());
+    #[cfg(target_os = "android")]
+    {
+        let _ = (window, on);
+        Err("staying behind other windows is not available on Android".into())
     }
-    let path = record_of(&window)
-        .ok_or_else(|| "only the Connect window can stay behind other windows".to_string())?;
-    // The record first: a write that fails then changes nothing, and the toggle stays true to
-    // both the window and what the next open will do.
-    let prev = load_panel(&path).unwrap_or_default();
-    let rec = kept_behind(prev, on);
-    save_panel(&path, &rec).map_err(|e| e.to_string())?;
-    if prev.on_top && !rec.on_top {
-        window.set_always_on_top(false).map_err(|e| e.to_string())?;
+    #[cfg(not(target_os = "android"))]
+    {
+        if !behind_supported() {
+            return Err("staying behind other windows is not available on this platform".into());
+        }
+        let path = record_of(&window)
+            .ok_or_else(|| "only the Connect window can stay behind other windows".to_string())?;
+        // The record first: a write that fails then changes nothing, and the toggle stays true to
+        // both the window and what the next open will do.
+        let prev = load_panel(&path).unwrap_or_default();
+        let rec = kept_behind(prev, on);
+        save_panel(&path, &rec).map_err(|e| e.to_string())?;
+        if prev.on_top && !rec.on_top {
+            window.set_always_on_top(false).map_err(|e| e.to_string())?;
+        }
+        window.set_always_on_bottom(on).map_err(|e| e.to_string())?;
+        Ok(WindowBehind {
+            supported: true,
+            on,
+        })
     }
-    window.set_always_on_bottom(on).map_err(|e| e.to_string())?;
-    Ok(WindowBehind {
-        supported: true,
-        on,
-    })
 }
 
 /// The record with stay-behind set or cleared, pure. A window kept behind is not also pinned in
 /// front, so keeping it behind takes the pin off.
+#[cfg(any(not(target_os = "android"), test))]
 fn kept_behind(rec: PanelRecord, on: bool) -> PanelRecord {
     PanelRecord {
         behind: on,
@@ -632,11 +641,12 @@ fn kept_behind(rec: PanelRecord, on: bool) -> PanelRecord {
 /// corner of a screen and keeps in front while working in something else (the operator's ask from
 /// a contest tester). Only a remembered pop-out can offer it, since the record is where it lives.
 pub(crate) fn pins(slug: &str) -> bool {
-    slug == crate::CONTEST_LOGGER_SLUG && remembers(slug)
+    cfg!(not(target_os = "android")) && slug == crate::CONTEST_LOGGER_SLUG && remembers(slug)
 }
 
 /// The record with the pin set or cleared, pure. A window pinned in front is not also behind, so
 /// pinning it takes stay-behind off. The box is left as it was: only a close writes that.
+#[cfg(any(not(target_os = "android"), test))]
 fn pinned(rec: PanelRecord, on: bool) -> PanelRecord {
     PanelRecord {
         on_top: on,
@@ -677,35 +687,82 @@ pub fn get_window_on_top(window: tauri::WebviewWindow) -> WindowOnTop {
 /// opens that way next time.
 #[tauri::command]
 pub fn set_window_on_top(window: tauri::WebviewWindow, on: bool) -> Result<WindowOnTop, String> {
-    let path = pin_record_of(&window)
-        .ok_or_else(|| "only the contest logger window can be pinned in front".to_string())?;
-    // The record first, as `set_window_behind` does: a write that fails changes nothing.
-    let prev = load_panel(&path).unwrap_or_default();
-    let rec = pinned(prev, on);
-    save_panel(&path, &rec).map_err(|e| e.to_string())?;
-    if prev.behind && !rec.behind && behind_supported() {
-        window
-            .set_always_on_bottom(false)
-            .map_err(|e| e.to_string())?;
+    #[cfg(target_os = "android")]
+    {
+        let _ = (window, on);
+        Err("pinning above other applications is not available on Android".into())
     }
-    window.set_always_on_top(on).map_err(|e| e.to_string())?;
-    Ok(WindowOnTop {
-        supported: true,
-        on,
-    })
+    #[cfg(not(target_os = "android"))]
+    {
+        let path = pin_record_of(&window)
+            .ok_or_else(|| "only the contest logger window can be pinned in front".to_string())?;
+        // The record first, as `set_window_behind` does: a write that fails changes nothing.
+        let prev = load_panel(&path).unwrap_or_default();
+        let rec = pinned(prev, on);
+        save_panel(&path, &rec).map_err(|e| e.to_string())?;
+        if prev.behind && !rec.behind && behind_supported() {
+            window
+                .set_always_on_bottom(false)
+                .map_err(|e| e.to_string())?;
+        }
+        window.set_always_on_top(on).map_err(|e| e.to_string())?;
+        Ok(WindowOnTop {
+            supported: true,
+            on,
+        })
+    }
 }
 
 /// Bring the calling window to the front and give it the keyboard: un-minimised, shown and focused.
 /// The main window asks this for itself when a contest window sends the operator to a cockpit in it
 /// ("Work this contest in CW"): the screen they asked for is then the one in front of them, not one
-/// left behind the contest window. Nothing at the radio; only this window's place on the desktop.
+/// left behind the contest window. On Android the OS owns Activity foregrounding: this focuses
+/// the actual visible WebView on Java's UI thread and reports rejection instead of moving tasks.
+/// Nothing at the radio.
 #[tauri::command]
-pub fn focus_window(window: tauri::WebviewWindow) -> Result<(), String> {
-    if window.is_minimized().unwrap_or(false) {
-        window.unminimize().map_err(|e| e.to_string())?;
+pub async fn focus_window(window: tauri::WebviewWindow) -> Result<(), String> {
+    #[cfg(not(target_os = "android"))]
+    {
+        if window.is_minimized().unwrap_or(false) {
+            window.unminimize().map_err(|e| e.to_string())?;
+        }
+        window.show().map_err(|e| e.to_string())?;
+        window.set_focus().map_err(|e| e.to_string())
     }
-    window.show().map_err(|e| e.to_string())?;
-    window.set_focus().map_err(|e| e.to_string())
+    #[cfg(target_os = "android")]
+    {
+        // Android owns the Activity's foreground lifecycle. Focus its actual WebView on
+        // Java's UI queue rather than invoking desktop window operations or reordering tasks.
+        use tauri::tao::platform::android::prelude::jni::objects::JValue;
+        let (tx, rx) = tokio::sync::oneshot::channel();
+        window
+            .with_webview(move |webview| {
+                webview.jni_handle().exec(move |env, _activity, view| {
+                    let result = (|| {
+                        env.call_method(&view, "setVisibility", "(I)V", &[JValue::Int(0)])
+                            .map_err(|e| e.to_string())?;
+                        let focused = env
+                            .call_method(&view, "requestFocus", "()Z", &[])
+                            .and_then(|value| value.z())
+                            .map_err(|e| e.to_string())?;
+                        if focused {
+                            Ok(())
+                        } else {
+                            Err("Android WebView did not accept focus".to_string())
+                        }
+                    })();
+                    if result.is_err() && env.exception_check().unwrap_or(false) {
+                        let _ = env.exception_clear();
+                    }
+                    let _ = tx.send(result);
+                });
+            })
+            .map_err(|e| format!("Cannot schedule Android focus: {e}"))?;
+        tokio::time::timeout(std::time::Duration::from_secs(10), rx)
+            .await
+            .map_err(|_| "Android focus did not reach its UI thread".to_string())?
+            .map_err(|_| "Android focus ended without a result".to_string())?
+    }
 }
 
 #[cfg(test)]
@@ -980,7 +1037,10 @@ mod tests {
 
     #[test]
     fn the_contest_logger_is_the_window_that_offers_the_pin() {
-        assert!(pins(crate::CONTEST_LOGGER_SLUG));
+        assert_eq!(
+            pins(crate::CONTEST_LOGGER_SLUG),
+            cfg!(not(target_os = "android"))
+        );
         for other in [
             "connect",
             "contestscreen",

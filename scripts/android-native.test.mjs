@@ -6,6 +6,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { modemOutput, inspectSharedObject, neededLibraries, inspectFftwArchive, FFTW_LEGACY_SYMBOLS } from './android-native-link.mjs';
 
@@ -385,4 +386,77 @@ test('actual backend preflight supplies the complete pinned Tauri Android codege
     assert.throws(() => verify(step.replace(`${key}: ${expected[key]}`, `${key}: wrong-host`)));
   }
   assert.throws(() => verify(step.replace('mkdir -p "$WRY_ANDROID_KOTLIN_FILES_OUT_DIR"', ':')));
+});
+
+test('pristine host source audit precedes Gradle and APK build rechecks its exact source hashes', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github/workflows/android-arm64.yml'), 'utf8');
+  const build = fs.readFileSync(path.join(ROOT, 'scripts/build-android-apk.sh'), 'utf8');
+  const verify = source => {
+    const audit = source.indexOf('python3 scripts/android-host-source.py');
+    const inventory = source.indexOf('- name: Inventory actual universal release JVM inputs');
+    assert(audit >= 0 && inventory > audit, 'Pristine source gate must precede actual Gradle compilation');
+  };
+  verify(workflow);
+  assert.throws(() => verify(workflow.replace('python3 scripts/android-host-source.py', ':')));
+  assert.throws(() => verify(workflow.replace('python3 scripts/android-host-source.py', ':') + '\npython3 scripts/android-host-source.py'));
+  // The actual source scanner stays strict. Only its sequencing changes, not
+  // the rule refusing .class/foreign libraries in a source-only checkpoint.
+  assert(!build.includes('python3 scripts/android-host-source.py'));
+  assert(build.includes("report['sourceCommit'] != os.environ['GITHUB_SHA']"));
+  assert(build.includes("for name, digest in report['sourceHashes'].items():"));
+  assert(build.includes('hashlib.sha256(source.read_bytes()).hexdigest() != digest'));
+  assert(build.includes('not source.resolve().is_relative_to(project) or source.is_symlink()'));
+  const check = build.indexOf('Exact pre-Gradle audited host source revision and bytes preserved');
+  assert(check >= 0 && check < build.indexOf('cargo tauri android build --ci'));
+});
+
+test('actual APK prebuild Python checks audited bytes while allowing later compiler outputs', () => {
+  const build = fs.readFileSync(path.join(ROOT, 'scripts/build-android-apk.sh'), 'utf8');
+  const code = build.match(/python3 - <<'PY'\n([\s\S]*?)\nPY/)?.[1];
+  assert(code, 'Execute the real product guard, not a fixture reimplementation');
+  const directory = fs.mkdtempSync(path.join(TEMP, 'audited-host-'));
+  const project = path.join(directory, 'src-tauri/gen/android');
+  const name = 'app/src/main/java/example/Activity.kt';
+  const source = path.join(project, name);
+  const original = '// Original source fixture, not Android runtime evidence.\n';
+  const digest = createHash('sha256').update(original).digest('hex');
+  fs.mkdirSync(path.dirname(source), { recursive: true });
+  fs.writeFileSync(source, original);
+  const compiled = path.join(project, 'buildSrc/build/classes/Fixture.class');
+  fs.mkdirSync(path.dirname(compiled), { recursive: true });
+  fs.writeFileSync(compiled, 'expected later compiler-output fixture, not a real class');
+  const reportFile = path.join(directory, 'target/android-host-source/report.json');
+  fs.mkdirSync(path.dirname(reportFile), { recursive: true });
+  const report = { sourceCommit: 'a'.repeat(40), hostSourceGenerated: true, sourceHashes: { [name]: digest } };
+  const write = value => fs.writeFileSync(reportFile, JSON.stringify(value));
+  const invoke = () => run('python3', ['-c', code], { cwd: directory, env: { ...process.env, GITHUB_SHA: report.sourceCommit } });
+  write(report);
+  let result = invoke();
+  assert.equal(result.status, 0, result.output);
+  assert.match(result.output, /audited host source revision and bytes preserved/);
+  write({ ...report, sourceCommit: 'b'.repeat(40) });
+  assert.notEqual(invoke().status, 0, 'Refuse a previous revision audit');
+  write({ ...report, sourceHashes: {} });
+  assert.notEqual(invoke().status, 0, 'Refuse empty source evidence');
+  write({ ...report, hostSourceGenerated: false });
+  assert.notEqual(invoke().status, 0, 'Refuse unsuccessful source evidence');
+  write(report);
+  fs.writeFileSync(source, original + '// changed\n');
+  result = invoke();
+  assert.notEqual(result.status, 0, result.output);
+  assert.match(result.output, /Audited host source changed/);
+  fs.writeFileSync(source, original);
+  write({ ...report, sourceHashes: { '../outside.kt': digest } });
+  assert.match(invoke().output, /Invalid audited host source path/);
+  write(report);
+  if (process.platform !== 'win32') {
+    const link = path.join(project, 'source-link.kt');
+    fs.symlinkSync(source, link);
+    write({ ...report, sourceHashes: { 'source-link.kt': digest } });
+    assert.match(invoke().output, /Invalid audited host source path/);
+    fs.unlinkSync(link);
+  }
+  write(report);
+  result = invoke();
+  assert.equal(result.status, 0, result.output);
 });

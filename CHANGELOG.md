@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android source-only inspection runs before Gradle creates compiled helper outputs.**
+  APK preparation rechecks the audited revision and exact source hashes afterward, instead
+  of mistaking legitimate buildSrc `.class` files for payloads in a pristine-source export.
+  The source scanner's binary refusal and final APK audit remain unchanged.
 - **Android JVM reports refuse silently omitted project archives.**
   Every non-root runtime project must have selected artifact bytes, even when a lenient
   Gradle view reports no resolution failure. Cloud controls reject an incompatible published

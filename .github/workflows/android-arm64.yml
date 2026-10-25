@@ -380,6 +380,8 @@ jobs:
           grep -Fx 'distributionSha256Sum=bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531' src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties
           test -s src-tauri/gen/android/tauri.settings.gradle
           test -s src-tauri/gen/android/app/tauri.build.gradle.kts
+          # Inspect/export source BEFORE Gradle creates legitimate buildSrc .class files.
+          python3 scripts/android-host-source.py
       - name: Inventory actual universal release JVM inputs before expensive APK code generation
         working-directory: src-tauri/gen/android
         run: >

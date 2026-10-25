@@ -19,7 +19,29 @@ python3 scripts/android-rust-notices.py
 git diff --exit-code -- src-tauri/gen/android
 printf '%s  %s\n' e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637 src-tauri/gen/android/gradle/wrapper/gradle-wrapper.jar | sha256sum -c -
 grep -Fx 'distributionSha256Sum=bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531' src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties
-python3 scripts/android-host-source.py
+# The mandatory workflow source audit runs before early Gradle inventory, which
+# legitimately compiles buildSrc. Do not weaken its compiled-payload refusal or
+# scan that now-built project as a pristine source tree. Recheck the exact audited
+# source bytes/revision here; final APK payload inspection is still mandatory.
+python3 - <<'PY'
+import hashlib
+import json
+import os
+from pathlib import Path
+report = json.loads(Path('target/android-host-source/report.json').read_text())
+if report['sourceCommit'] != os.environ['GITHUB_SHA'] or not report['hostSourceGenerated']:
+    raise SystemExit('Current cloud source audit required before APK build')
+project = Path('src-tauri/gen/android').resolve()
+for name, digest in report['sourceHashes'].items():
+    source = project / name
+    if not source.resolve().is_relative_to(project) or source.is_symlink():
+        raise SystemExit('Invalid audited host source path')
+    if hashlib.sha256(source.read_bytes()).hexdigest() != digest:
+        raise SystemExit(f'Audited host source changed before APK build: {name}')
+if not report['sourceHashes']:
+    raise SystemExit('Empty host source audit refused')
+print('Exact pre-Gradle audited host source revision and bytes preserved')
+PY
 # Release profile, with no signingConfig/keystore added: this is NOT an installable handoff.
 # Both features stay on; neither missing-model nor missing-library overrides are used.
 # The final Rust cdylib, not only the separate modem probe, must support 16 KiB

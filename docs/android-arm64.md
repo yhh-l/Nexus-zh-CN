@@ -694,3 +694,11 @@ The archive-producing control explicitly publishes JAR type: Gradle otherwise
 infers ZIP from its original Zip task even when its filename ends in `.jar`.
 An incompatible-type project control must fail rather than producing a partial
 green inventory. No real dependency or app feature is removed to satisfy a fixture.
+
+Pristine host-source inspection/export runs after official integration generation
+but before the early Gradle inventory compiles helper projects. Its compiled-file
+refusal is unchanged. Final APK preparation requires that same cloud revision's
+nonempty source audit and rehashes every recorded original source path, rejecting
+changed bytes, symlinks and paths outside the host. It does not rerun a pristine
+source scan over Gradle's legitimate buildSrc `.class` outputs. This ordering is
+not final payload approval: the full APK binary audit remains mandatory afterward.

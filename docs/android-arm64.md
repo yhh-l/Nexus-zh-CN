@@ -565,3 +565,31 @@ See `licenses/rust/ANDROID-REVIEW.md`. New cloud tests cover collisions, real
 Apache election, illegal alternatives, tampered hashes and VCS mismatches.
 Generation, packaging, Java/AAR/native source coverage and physical validation
 remain separate gates; source preparation alone proves none of them.
+
+### Target Rust notices: delivery gate, not complete APK legal acceptance
+
+Android build preparation generates the actual locked target graph before Tauri
+resource preparation. `tauri.android.conf.json` replaces only the desktop Rust
+notice source with `target/android-notices/RUST-THIRD-PARTY.txt` at the existing
+`resources/rust/THIRD-PARTY.txt` destination; all other non-desktop resources stay.
+The desktop generator, its notice file, and normal desktop Vite behavior remain.
+
+The cloud APK builder explicitly selects `NEXUS_ANDROID_RUST_NOTICES=1` for its
+existing complete frontend build. The real Vite emitter reads that exact generated
+text only after validating source revision, target, features, completion, length
+and SHA256. It never falls back to desktop text after Android selection. The
+existing Settings > Licenses dialog and its relative asset path are unchanged.
+
+`scripts/android-apk-notices.py` compares both the actual emitted frontend file
+and the original final APK's `assets/resources/rust/THIRD-PARTY.txt` with the
+validated target inventory. The mandatory native APK audit includes the result.
+Its `--frontend-only` CLI records frontend emission only, never APK inspection.
+Cloud controls reject stale/wrong-graph reports, substitutions, missing/duplicate
+ZIP resources and changed generated texts. A focused workflow builds the real
+frontend; the expensive whole-application workflow is still required to prove
+actual APK byte delivery. Source edits or fixture tests alone do not prove it.
+
+This still does not establish Android runtime rendering, JVM/AAR/transitive-native
+license/source completeness, corresponding-source delivery, signature, install,
+physical-device functionality or redistribution eligibility. Those flags remain
+false, and only reports/texts, not APK binaries, are exported by these workflows.

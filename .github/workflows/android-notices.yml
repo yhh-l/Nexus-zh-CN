@@ -10,6 +10,13 @@ on:
       - scripts/android-rust-notices.py
       - scripts/android_rust_notices_test.py
       - scripts/gen-rust-licenses.py
+      - scripts/android-apk-notices.py
+      - scripts/android_apk_notices_test.py
+      - scripts/android-host-config*
+      - src-tauri/tauri.android.conf.json
+      - ui/rust-license-source*
+      - ui/vite.config.ts
+      - ui/package*.json
       - licenses/rust/**
       - deny.toml
       - src-tauri/Cargo.toml
@@ -38,6 +45,24 @@ jobs:
       - name: Generate notices from the actual locked Android graph and published package texts
         run: |
           python3 scripts/android-rust-notices.py
+          git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock licenses/rust
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - name: Exercise target resource declarations and exact notice-delivery refusal controls
+        run: |
+          node --test scripts/android-host-config.test.mjs
+          python3 -m unittest discover -s scripts -p android_apk_notices_test.py -v
+      - name: Install the locked UI for real notice asset emission
+        run: npm --prefix ui ci
+      - name: Test real notice emitter source selection and the existing desktop plugin
+        run: npm --prefix ui test -- rust-license-source.test.ts desktop-license-texts.test.ts
+      - name: Build the complete frontend with the actual Android Rust inventory
+        env:
+          NEXUS_ANDROID_RUST_NOTICES: '1'
+        run: |
+          npm --prefix ui run build
+          python3 scripts/android-apk-notices.py --frontend-only
           git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock licenses/rust
       - name: Preserve scoped text and unresolved provenance findings, never an APK
         if: always()

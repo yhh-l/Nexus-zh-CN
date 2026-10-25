@@ -7,6 +7,7 @@ import { execSync } from 'node:child_process'
 import { readFileSync } from 'node:fs'
 import { failuresReporter } from './vitest-failures-reporter'
 import { bundledLicenses } from './remote-licenses'
+import { rustLicenseText } from './rust-license-source'
 
 // A build stamp (commit hash + build time) baked in at build time, so the app can SHOW which
 // build is running — the product version string is always "0.2.0", which made it impossible
@@ -65,6 +66,8 @@ export default defineConfig({
     // job keeps current with src-tauri's Cargo.lock; the dialog shows both. The repository's NOTICE
     // goes beside them as NOTICE.txt, as it is, and the dialog shows it first; the installers
     // carry the same file as resources/NOTICE (src-tauri/tauri.conf.json).
+    // Android selects the validated target inventory through rustLicenseText;
+    // it must match the APK resource, without changing desktop notice inputs.
     name: 'desktop-license-texts',
     generateBundle(_options, bundle) {
       const modules = new Set(Object.values(bundle).flatMap(chunk => chunk.type === 'chunk' ? Object.keys(chunk.modules) : []))
@@ -77,7 +80,7 @@ export default defineConfig({
         'CQ zone boundaries (cqzones.geojson), from HB9HIL hamradio-zones-geojson\n' +
         readFileSync(new URL('./src/data/cqzones.LICENSE.txt', import.meta.url), 'utf8') + '\n' + bundledLicenses(modules) })
       this.emitFile({ type: 'asset', fileName: 'rust/THIRD-PARTY.txt',
-        source: readFileSync(new URL('../licenses/rust/THIRD-PARTY.txt', import.meta.url), 'utf8') })
+        source: rustLicenseText(new URL('../', import.meta.url)) })
       this.emitFile({ type: 'asset', fileName: 'NOTICE.txt',
         source: readFileSync(new URL('../NOTICE', import.meta.url), 'utf8') })
     },

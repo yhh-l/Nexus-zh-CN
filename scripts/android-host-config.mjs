@@ -50,9 +50,12 @@ export function verifyHostConfig(base, android) {
       'Desktop Hamlib or foreign runtime resource declarations are forbidden on Android');
   }
   for (const [source, destination] of Object.entries(base.bundle.resources)) {
-    if (source === 'resources/hamlib/*') continue;
+    if (source === 'resources/hamlib/*' || source === '../licenses/rust/THIRD-PARTY.txt') continue;
     requireValue(resources[source] === destination, 'Android must preserve existing model, data and license resources');
   }
+  requireValue(!Object.hasOwn(resources, '../licenses/rust/THIRD-PARTY.txt') &&
+    resources['../target/android-notices/RUST-THIRD-PARTY.txt'] === 'resources/rust/THIRD-PARTY.txt',
+    'Android must replace desktop Rust notices with the generated target inventory');
   requireValue(JSON.stringify(android.app.security) === JSON.stringify(base.app.security),
     'Host preparation must not relax existing webview security or asset scopes');
   return {

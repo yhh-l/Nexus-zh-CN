@@ -324,6 +324,9 @@ jobs:
             target/android-openssl/link-report.json
             target/android-native-deps/prefix/licenses/OpenSSL-LICENSE.txt
 
+      - name: Generate the real target Rust notices before Android resource preparation
+        run: python3 scripts/android-rust-notices.py
+
       - name: Check the full application backend (radio and Yaesu waterfall enabled)
         run: >
           cargo check --locked --manifest-path src-tauri/Cargo.toml

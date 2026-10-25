@@ -12,6 +12,8 @@ cd "$root"
 test -s src-tauri/resources/deepcw/model.onnx
 printf '%s  %s\n' a7b3b4aa2610d3e88b8c7d4420eceee31be2d0ae595b3413264334f3ffb1eab5 src-tauri/resources/deepcw/model.onnx | sha256sum -c -
 test "$(cargo tauri --version)" = 'tauri-cli 2.11.5'
+# Generate the exact target notices on this same runner; never package desktop Rust notices.
+python3 scripts/android-rust-notices.py
 # Generate only missing official integration files; never overwrite reviewed host source.
 (cd src-tauri && cargo tauri android init --ci --skip-targets-install)
 git diff --exit-code -- src-tauri/gen/android
@@ -31,7 +33,7 @@ python3 scripts/android-host-source.py
 }
 android_rustflags='-Clink-arg=-landroid -Clink-arg=-llog -Clink-arg=-lOpenSLES -Clink-arg=-Wl,-z,max-page-size=16384'
 # Exact CLI source passes trailing args into the Cargo mobile builder, not Gradle options.
-(cd src-tauri && RUSTFLAGS="$android_rustflags" cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked)
+(cd src-tauri && NEXUS_ANDROID_RUST_NOTICES=1 RUSTFLAGS="$android_rustflags" cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked)
 git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock src-tauri/gen/android
 python3 scripts/android-apk-report.py
 python3 scripts/android-apk-audit.py

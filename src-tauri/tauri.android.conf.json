@@ -17,7 +17,9 @@
       "minSdkVersion": 35
     },
     "resources": {
-      "resources/hamlib/*": null
+      "resources/hamlib/*": null,
+      "../licenses/rust/THIRD-PARTY.txt": null,
+      "../target/android-notices/RUST-THIRD-PARTY.txt": "resources/rust/THIRD-PARTY.txt"
     }
   }
 }

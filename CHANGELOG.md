@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android builds select their own Rust notice inventory in both delivery paths.** The
+  frontend license asset and packaged resource must match the exact cloud revision's generated
+  target notices. Missing, stale or substituted desktop text stops inspection; this does not
+  certify Java/native/source coverage, signing, installation or runtime license display.
 - **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
   package-version pins are isolated from desktop notices; the actual Tao release's Apache
   alternative is retained instead of assuming an MIT body. Hash and provenance checks remain

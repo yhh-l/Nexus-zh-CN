@@ -8,7 +8,7 @@ const base = JSON.parse(fs.readFileSync(path.join(ROOT, 'src-tauri', 'tauri.conf
 const patch = JSON.parse(fs.readFileSync(path.join(ROOT, 'src-tauri', 'tauri.android.conf.json'), 'utf8'));
 const android = () => mergePatch(base, patch);
 
-test('real Android overlay replaces desktop windows and removes only the desktop Hamlib resource', () => {
+test('real Android overlay replaces desktop windows and replaces desktop-only Hamlib and Rust notice inputs', () => {
   const before = structuredClone(base);
   const merged = android();
   const report = inspectHostConfig();
@@ -23,7 +23,8 @@ test('real Android overlay replaces desktop windows and removes only the desktop
   assert.equal(Object.hasOwn(merged.bundle.resources, 'resources/hamlib/*'), false);
   assert.deepEqual(base, before, 'Platform merging must never mutate desktop settings');
   assert.deepEqual(Object.keys(merged.bundle.resources).sort(),
-    Object.keys(base.bundle.resources).filter(key => key !== 'resources/hamlib/*').sort());
+    [...Object.keys(base.bundle.resources).filter(key => !['resources/hamlib/*', '../licenses/rust/THIRD-PARTY.txt'].includes(key)),
+      '../target/android-notices/RUST-THIRD-PARTY.txt'].sort());
 });
 
 test('merge-patch null deletes keys, arrays replace and prototype-looking keys stay inert data', () => {
@@ -50,6 +51,9 @@ for (const [name, mutate, message] of [
   ['desktop sidecar', value => { value.bundle.externalBin = ['rigctld.exe']; }, /desktop sidecar/],
   ['dropped AI CW model', value => { delete value.bundle.resources['resources/deepcw/*']; }, /model, data and license/],
   ['dropped license', value => { delete value.bundle.resources['../COPYING']; }, /model, data and license/],
+  ['missing target Rust notice', value => { delete value.bundle.resources['../target/android-notices/RUST-THIRD-PARTY.txt']; }, /generated target inventory/],
+  ['desktop Rust notice restored', value => { value.bundle.resources['../licenses/rust/THIRD-PARTY.txt'] = 'resources/rust/THIRD-PARTY.txt'; }, /generated target inventory/],
+  ['wrong target notice location', value => { value.bundle.resources['../target/android-notices/RUST-THIRD-PARTY.txt'] = 'unreachable.txt'; }, /generated target inventory/],
   ['different application ID', value => { value.identifier += '.other'; }, /application identifier/],
   ['changed service config', value => { value.plugins = {}; }, /credential or updater-key/],
   ['relaxed webview security', value => { value.app.security = {}; }, /webview security/],

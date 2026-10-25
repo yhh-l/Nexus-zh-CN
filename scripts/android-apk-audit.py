@@ -22,6 +22,11 @@ container = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(container)
 
 
+notice_spec = importlib.util.spec_from_file_location('apk_notices', ROOT / 'scripts/android-apk-notices.py')
+notices = importlib.util.module_from_spec(notice_spec)
+notice_spec.loader.exec_module(notices)
+
+
 def dynamic_dependencies(output, name, bundled, system):
     if "Dynamic section at offset" not in output:
         raise ValueError(f"No actual dynamic section evidence: {name}")
@@ -186,6 +191,7 @@ def compiled_manifest(apk, sdk):
 def audit(apk, ndk, sdk):
     # Reinspect actual bytes; never trust a previously generated checkpoint alone.
     checkpoint = container.inspect(apk)
+    rust_notices = notices.inspect_apk(apk, ROOT, os.environ["GITHUB_SHA"])
     ndk = Path(ndk)
     sdk = Path(sdk)
     toolchain = ndk / "toolchains/llvm/prebuilt/linux-x86_64"
@@ -235,7 +241,7 @@ def audit(apk, ndk, sdk):
             records.append({"member": member, "sha256": hashlib.sha256(Path(file).read_bytes()).hexdigest(),
                             "elf": elf, "needed": needed})
     return {"schemaVersion": 1, "apkSha256": checkpoint["sha256"], "nativeLibraries": records, "manifestCore": manifest,
-            "manifestComponents": components,
+            "manifestComponents": components, "rustNoticeDelivery": rust_notices,
             "systemLibrarySource": "actual NDK AArch64 Android API 35 sysroot",
             "elfAndZip16KiBVerified": True, "neededLibraryClosureVerified": True,
             "zipalignOutput": alignment, "signatureVerified": False, "installableVerified": False,

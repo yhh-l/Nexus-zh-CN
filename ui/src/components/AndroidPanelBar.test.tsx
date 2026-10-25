@@ -3,6 +3,7 @@
 import { afterEach, beforeAll, beforeEach, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { AndroidPanelBar } from './AndroidPanelBar'
 import { StationControlContext } from '../stationAccess'
 import { closePanelWindow, haltTx } from '../api'
@@ -80,7 +81,7 @@ it('computes the actual non-shrinking shell bar and zoom-aware touch floors', ()
   expect(css(bar, 'display')).toBe('flex')
   expect(css(bar, 'flex')).toBe('0 0 auto')
   expect(css(bar, 'overflow-y')).toBe('auto')
-  expect(css(bar, 'min-height')).toBe('0')
+  expect(parseFloat(css(bar, 'min-height') ?? 'NaN')).toBe(0)
   expect(bar.querySelectorAll('button').length).toBe(2)
   expect(bar.querySelector('.pane-frame')).toBeNull()
   for (const button of bar.querySelectorAll('button')) {
@@ -90,7 +91,7 @@ it('computes the actual non-shrinking shell bar and zoom-aware touch floors', ()
 })
 
 it('every detached renderer gets this bar inside the zoomed shell, before removable content', () => {
-  const source = readFileSync(new URL('../DetachedPanel.tsx', import.meta.url), 'utf8')
+  const source = readFileSync(resolve(process.cwd(), 'src/DetachedPanel.tsx'), 'utf8')
   const shell = source.slice(source.indexOf('function DetachedShell('), source.indexOf('const CONTEST_ESC_STOP_PANELS'))
   expect(shell.indexOf('<AndroidPanelBar />')).toBeGreaterThan(shell.indexOf('<div className='))
   expect(shell.indexOf('<AndroidPanelBar />')).toBeLessThan(shell.indexOf('{children}'))

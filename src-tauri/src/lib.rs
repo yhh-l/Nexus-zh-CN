@@ -87,6 +87,8 @@ mod log_folds;
 /// The UI's log questions answered by the engine — pages, places, a call's history, an entity's
 /// slots (SPEC-2 v3 C17a).
 mod log_queries;
+/// Platform boundary for the operating system's login entry, not a radio boot service.
+mod login_start;
 /// Parsec presence mode's watcher thread: stop latched transmissions when the operator's Parsec
 /// session drops (off by default; started on Windows only).
 mod parsec_presence;
@@ -21170,14 +21172,7 @@ fn set_launch_at_login(
     state: State<'_, SharedEngine>,
     on: bool,
 ) -> Result<AppSnapshot, String> {
-    use tauri_plugin_autostart::ManagerExt;
-    let launcher = app.autolaunch();
-    let changed = if on {
-        launcher.enable()
-    } else {
-        launcher.disable()
-    };
-    changed.map_err(|_| "launchAtLoginUnsupported".to_string())?;
+    login_start::set(&app, on)?;
     let mut eng = engine_lock(&state);
     let s = eng.set_launch_at_login(on);
     persist_settings(s.clone(), |e| {
@@ -38588,12 +38583,10 @@ fn build_app(d: BuildDeps) -> tauri::Result<tauri::App> {
     let remote_publisher = remote_monitor::Publisher::default();
     // The launch's second half gets the whole bundle: the builder chain below moves its fields.
     let launch = d.clone();
-    tauri::Builder::default()
+    login_start::install(tauri::Builder::default())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_notification::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
-        // Start at sign-in. Driven from Rust only (`set_launch_at_login`); no capability entry.
-        .plugin(tauri_plugin_autostart::Builder::new().build())
         // The data-folder picker (#289). Driven from Rust only (`pick_data_folder`); no
         // capability entry, so the webview cannot open a dialog of its own.
         .plugin(tauri_plugin_dialog::init())

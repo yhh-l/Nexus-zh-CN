@@ -1374,17 +1374,10 @@ impl Client {
         app: &tauri::AppHandle<R>,
         args: &Value,
     ) -> Result<Value, String> {
-        use tauri_plugin_autostart::ManagerExt;
         let on = args["on"]
             .as_bool()
             .ok_or_else(|| word(Refusal::BadArguments.code()))?;
-        let launcher = app.autolaunch();
-        let changed = if on {
-            launcher.enable()
-        } else {
-            launcher.disable()
-        };
-        changed.map_err(|_| "launchAtLoginUnsupported".to_string())?;
+        crate::login_start::set(app, on)?;
         self.local(Local::LaunchAtLogin, args, "")
     }
 
@@ -2464,11 +2457,10 @@ pub(crate) fn run(station: String) {
     let local = crate::app_commands();
     let routed = Arc::clone(&client);
     let driving = Arc::clone(&client);
-    let built = tauri::Builder::default()
+    let built = crate::login_start::install(tauri::Builder::default())
         .plugin(tauri_plugin_opener::init())
         .plugin(tauri_plugin_notification::init())
         .plugin(tauri_plugin_updater::Builder::new().build())
-        .plugin(tauri_plugin_autostart::Builder::new().build())
         .plugin(tauri_plugin_dialog::init())
         // WebView2's browser keys off in every window here too, as in the station's own app.
         .plugin(crate::browser_keys::init())

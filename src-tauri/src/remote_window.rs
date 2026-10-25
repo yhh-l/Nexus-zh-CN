@@ -251,67 +251,75 @@ const NEW_WINDOW_LINKS: &str = r#"(function () {
 /// call it (or anything else). Async, as every window-making command must be on Windows.
 #[tauri::command]
 pub async fn open_remote_stations_window(app: tauri::AppHandle) -> Result<(), String> {
-    if !cfg!(windows) {
-        return Err(UNAVAILABLE.into());
+    // Runtime cfg! still type-checks desktop-only Tauri APIs on Android.
+    // Keep the existing Windows-only contract, but enforce it at compile time.
+    #[cfg(not(windows))]
+    {
+        let _ = app;
+        Err(UNAVAILABLE.into())
     }
-    if let Some(window) = app.get_webview_window(LABEL) {
-        let _ = window.unminimize();
-        let _ = window.set_focus();
-        return Ok(());
-    }
-    let issuer = sign_in_issuer().await?;
-    // The page the window shows now, for `route`: set as each page starts to load.
-    let shown: Arc<Mutex<Option<Url>>> = Arc::default();
-    let showing = shown.clone();
-    let (to_browser, new_to_browser) = (app.clone(), app.clone());
-    let (w, h, place) = match window_state::restore_remote(&app, MIN_INNER) {
-        Some(r) => (r.w, r.h, Some((r.position, r.maximized))),
-        None => (DEFAULT_INNER.0, DEFAULT_INNER.1, None),
-    };
-    let mut builder = WebviewWindowBuilder::new(&app, LABEL, WebviewUrl::External(remote_url()))
-        .title("Nexus — Remote stations")
-        .inner_size(w, h)
-        .min_inner_size(MIN_INNER.0, MIN_INNER.1)
-        // As in a browser, a drag inside the page is the page's (the main window's reason too).
-        .disable_drag_drop_handler()
-        .initialization_script(NEW_WINDOW_LINKS)
-        .on_page_load(move |_, payload| {
-            if payload.event() == PageLoadEvent::Started {
-                *showing.lock().unwrap_or_else(|e| e.into_inner()) = Some(payload.url().clone());
-            }
-        })
-        .on_navigation(move |target| {
-            let from = shown.lock().unwrap_or_else(|e| e.into_inner()).clone();
-            match route(target, from.as_ref(), &issuer) {
-                Route::InWindow => true,
-                Route::SystemBrowser => {
-                    open_in_browser(&to_browser, target);
-                    false
-                }
-                Route::Refuse => false,
-            }
-        })
-        .on_new_window(move |target, _| {
-            if route_new_window(&target) == Route::SystemBrowser {
-                open_in_browser(&new_to_browser, &target);
-            }
-            NewWindowResponse::Deny
-        })
-        // The outer window, title bar included, fitted to the work area it opens on.
-        .prevent_overflow();
-    builder = match place {
-        Some((Some((x, y)), _)) => builder.position(x, y),
-        // A first open, or a saved place on a monitor that is gone.
-        _ => builder.center(),
-    };
-    if matches!(place, Some((_, true))) {
-        builder = builder.maximized(true);
-    }
-    let window = builder.build().map_err(|_| NOT_OPENED)?;
-    window_state::arm_remote_capture(&window);
     #[cfg(windows)]
-    f11_full_screen(&window);
-    Ok(())
+    {
+        if let Some(window) = app.get_webview_window(LABEL) {
+            let _ = window.unminimize();
+            let _ = window.set_focus();
+            return Ok(());
+        }
+        let issuer = sign_in_issuer().await?;
+        // The page the window shows now, for `route`: set as each page starts to load.
+        let shown: Arc<Mutex<Option<Url>>> = Arc::default();
+        let showing = shown.clone();
+        let (to_browser, new_to_browser) = (app.clone(), app.clone());
+        let (w, h, place) = match window_state::restore_remote(&app, MIN_INNER) {
+            Some(r) => (r.w, r.h, Some((r.position, r.maximized))),
+            None => (DEFAULT_INNER.0, DEFAULT_INNER.1, None),
+        };
+        let mut builder = WebviewWindowBuilder::new(&app, LABEL, WebviewUrl::External(remote_url()))
+            .title("Nexus — Remote stations")
+            .inner_size(w, h)
+            .min_inner_size(MIN_INNER.0, MIN_INNER.1)
+            // As in a browser, a drag inside the page is the page's (the main window's reason too).
+            .disable_drag_drop_handler()
+            .initialization_script(NEW_WINDOW_LINKS)
+            .on_page_load(move |_, payload| {
+                if payload.event() == PageLoadEvent::Started {
+                    *showing.lock().unwrap_or_else(|e| e.into_inner()) =
+                        Some(payload.url().clone());
+                }
+            })
+            .on_navigation(move |target| {
+                let from = shown.lock().unwrap_or_else(|e| e.into_inner()).clone();
+                match route(target, from.as_ref(), &issuer) {
+                    Route::InWindow => true,
+                    Route::SystemBrowser => {
+                        open_in_browser(&to_browser, target);
+                        false
+                    }
+                    Route::Refuse => false,
+                }
+            })
+            .on_new_window(move |target, _| {
+                if route_new_window(&target) == Route::SystemBrowser {
+                    open_in_browser(&new_to_browser, &target);
+                }
+                NewWindowResponse::Deny
+            })
+            // The outer window, title bar included, fitted to the work area it opens on.
+            .prevent_overflow();
+        builder = match place {
+            Some((Some((x, y)), _)) => builder.position(x, y),
+            // A first open, or a saved place on a monitor that is gone.
+            _ => builder.center(),
+        };
+        if matches!(place, Some((_, true))) {
+            builder = builder.maximized(true);
+        }
+        let window = builder.build().map_err(|_| NOT_OPENED)?;
+        window_state::arm_remote_capture(&window);
+        #[cfg(windows)]
+        f11_full_screen(&window);
+        Ok(())
+    }
 }
 
 /// The loopback origin the Stations on this network window's page comes from, while the window is
@@ -399,73 +407,80 @@ pub async fn open_lan_stations_window(
     origin: tauri::State<'_, LanOrigin>,
     locale: Option<String>,
 ) -> Result<(), String> {
-    if !cfg!(windows) {
-        return Err(UNAVAILABLE.into());
+    // Runtime cfg! still type-checks desktop-only Tauri APIs on Android.
+    // Keep the existing Windows-only contract, but enforce it at compile time.
+    #[cfg(not(windows))]
+    {
+        let _ = (app, origin, locale);
+        Err(UNAVAILABLE.into())
     }
-    if let Some(window) = app.get_webview_window(LAN_LABEL) {
-        let _ = window.unminimize();
-        let _ = window.set_focus();
-        return Ok(());
-    }
-    let page = {
-        let mut running = origin.0.lock().map_err(|_| NOT_OPENED)?;
-        if running.is_none() {
-            *running = Some(Origin::start(reach(&app)).map_err(|_| NOT_OPENED)?);
+    #[cfg(windows)]
+    {
+        if let Some(window) = app.get_webview_window(LAN_LABEL) {
+            let _ = window.unminimize();
+            let _ = window.set_focus();
+            return Ok(());
         }
-        running.as_ref().map(Origin::page).ok_or(NOT_OPENED)?
-    };
-    let mut page = Url::parse(&page).map_err(|_| NOT_OPENED)?;
-    if let Some(locale) = locale.filter(|l| LOCALES.contains(&l.as_str())) {
-        page.query_pairs_mut().append_pair("lang", &locale);
-    }
-    let (here, here_too) = (page.clone(), page.clone());
-    let (to_browser, new_to_browser) = (app.clone(), app.clone());
-    let window = WebviewWindowBuilder::new(&app, LAN_LABEL, WebviewUrl::External(page))
-        .title("Nexus — Stations on this network")
-        .inner_size(DEFAULT_INNER.0, DEFAULT_INNER.1)
-        .min_inner_size(MIN_INNER.0, MIN_INNER.1)
-        .disable_drag_drop_handler()
-        .on_navigation(move |target| match route_lan(target, &here) {
-            Route::InWindow => true,
-            Route::SystemBrowser => {
-                open_in_browser(&to_browser, target);
-                false
+        let page = {
+            let mut running = origin.0.lock().map_err(|_| NOT_OPENED)?;
+            if running.is_none() {
+                *running = Some(Origin::start(reach(&app)).map_err(|_| NOT_OPENED)?);
             }
-            Route::Refuse => false,
-        })
-        .on_new_window(move |target, _| {
-            if route_lan(&target, &here_too) == Route::SystemBrowser {
-                open_in_browser(&new_to_browser, &target);
-            }
-            NewWindowResponse::Deny
-        })
-        .prevent_overflow()
-        .center()
-        .build();
-    let window = match window {
-        Ok(window) => window,
-        Err(_) => {
-            if let Ok(mut running) = origin.0.lock() {
-                running.take();
-            }
-            return Err(NOT_OPENED.into());
+            running.as_ref().map(Origin::page).ok_or(NOT_OPENED)?
+        };
+        let mut page = Url::parse(&page).map_err(|_| NOT_OPENED)?;
+        if let Some(locale) = locale.filter(|l| LOCALES.contains(&l.as_str())) {
+            page.query_pairs_mut().append_pair("lang", &locale);
         }
-    };
-    // The origin lives as long as the window: closing it ends the page's session, and any road
-    // to a station with it, which ends that computer's stream and lease at the station.
-    let closing = app.clone();
-    window.on_window_event(move |event| {
-        if matches!(event, tauri::WindowEvent::Destroyed) {
-            if let Some(origin) = closing.try_state::<LanOrigin>() {
+        let (here, here_too) = (page.clone(), page.clone());
+        let (to_browser, new_to_browser) = (app.clone(), app.clone());
+        let window = WebviewWindowBuilder::new(&app, LAN_LABEL, WebviewUrl::External(page))
+            .title("Nexus — Stations on this network")
+            .inner_size(DEFAULT_INNER.0, DEFAULT_INNER.1)
+            .min_inner_size(MIN_INNER.0, MIN_INNER.1)
+            .disable_drag_drop_handler()
+            .on_navigation(move |target| match route_lan(target, &here) {
+                Route::InWindow => true,
+                Route::SystemBrowser => {
+                    open_in_browser(&to_browser, target);
+                    false
+                }
+                Route::Refuse => false,
+            })
+            .on_new_window(move |target, _| {
+                if route_lan(&target, &here_too) == Route::SystemBrowser {
+                    open_in_browser(&new_to_browser, &target);
+                }
+                NewWindowResponse::Deny
+            })
+            .prevent_overflow()
+            .center()
+            .build();
+        let window = match window {
+            Ok(window) => window,
+            Err(_) => {
                 if let Ok(mut running) = origin.0.lock() {
                     running.take();
                 }
+                return Err(NOT_OPENED.into());
             }
-        }
-    });
-    #[cfg(windows)]
-    f11_full_screen(&window);
-    Ok(())
+        };
+        // The origin lives as long as the window: closing it ends the page's session, and any road
+        // to a station with it, which ends that computer's stream and lease at the station.
+        let closing = app.clone();
+        window.on_window_event(move |event| {
+            if matches!(event, tauri::WindowEvent::Destroyed) {
+                if let Some(origin) = closing.try_state::<LanOrigin>() {
+                    if let Ok(mut running) = origin.0.lock() {
+                        running.take();
+                    }
+                }
+            }
+        });
+        #[cfg(windows)]
+        f11_full_screen(&window);
+        Ok(())
+    }
 }
 
 /// F11 for the window's own full screen. (WebView2's browser accelerators are off in every Nexus

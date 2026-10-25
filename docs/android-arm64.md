@@ -361,3 +361,35 @@ it does not prove Android WebView lifecycle, USB/audio, permissions, real
 credentials, actual RF or S25 Ultra touch geometry. The new job has not run
 yet, locally or in Actions. APK generation and physical acceptance remain
 outstanding.
+
+## Full-backend platform errors and first boundary repair
+
+Run `40152455556` passed the whole native-modem link again, the actual AI CW
+model downloads/digest checks, and the new NDK OpenSSL source build plus strict
+whole-library link/alignment checks. The complete application then reached its
+own Rust shell and failed with 40 diagnostics, many cascading from unavailable
+desktop APIs. This is no longer the missing OpenSSL blocker. The full UI suite
+is independently running; it is not evidence of a native backend or an APK.
+
+The first source repair addresses two causes without removing an existing
+Android business capability:
+
+- The Remote/LAN embedded station windows were already explicitly Windows-only
+  and returned `UNAVAILABLE` elsewhere. Their `if !cfg!(windows)` checks did not
+  stop Rust from type-checking the unreachable Windows calls on Android. Actual
+  conditional compilation now preserves the Windows implementation and the
+  same non-Windows refusal. Routing, page isolation and navigation checks remain.
+  This does **not** implement an Android Remote/LAN host or count it as complete.
+- Station and client login entries use one platform adapter. Desktop keeps the
+  actual plugin and enable/disable calls. Mobile does not register a nonexistent
+  desktop plugin and returns the existing explicit unsupported error before
+  preferences are written. There is no fake success, boot receiver or automatic
+  radio start. Android background/lifecycle operation remains to be implemented.
+
+Cloud-wired source guards carry refusal/negative controls; they do not execute
+Android APIs. The cloud native job also checks standalone-shell formatting
+before expensive compilation. These new changes have not been tested locally
+or in Actions yet. Desktop regressions still require the complete normal CI.
+Remaining known native errors include the data-folder picker and desktop
+geometry/pinning/stream-shape calls. They are **not fixed by this first batch**;
+no complete backend, installable APK or device acceptance is claimed.

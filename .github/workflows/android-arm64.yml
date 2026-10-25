@@ -169,6 +169,9 @@ jobs:
       - name: Test real Android native build dispatch (host-only guards)
         run: node --test scripts/android-native.test.mjs
 
+      - name: Check desktop/mobile source boundaries (not runtime proof)
+        run: node --test scripts/android-platform.test.mjs
+
       - name: Check Android host config without claiming a generated project or APK
         run: |
           node --test scripts/android-host-config.test.mjs
@@ -211,6 +214,10 @@ jobs:
         with:
           toolchain: 1.93.1
           targets: aarch64-linux-android
+          components: rustfmt
+
+      - name: Check standalone shell formatting before expensive native compilation
+        run: cargo fmt --manifest-path src-tauri/Cargo.toml --check
 
       - name: Install the checked LLVM host compiler
         run: bash scripts/install-android-flang.sh

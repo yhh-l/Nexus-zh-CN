@@ -139,10 +139,14 @@ def merged_manifest_components(output):
             launchers += 1
         elif name in private:
             expected_mode = "singleTask" if name.endswith((".MainActivity", ".NexusUsbLaunchActivity")) else "standard"
+            # SDK XML decoding may emit the compiled ActivityInfo enum, not its source label.
+            mode = element.get(namespace + "launchMode", "standard")
+            mode = {"0": "standard", "2": "singleTask"}.get(mode, mode)
             if (element.tag != "activity" or exported != "false" or filters or
                     element.get(namespace + "enabled", "true") != "true" or
-                    element.get(namespace + "launchMode", "standard") != expected_mode):
-                raise ValueError(f"Native station/panel component is no longer private: {name}")
+                    mode != expected_mode):
+                raise ValueError(f"Native station/panel component is no longer private: {name}; "
+                                 f"exported={exported}, mode={mode}, filters={len(filters)}")
             found_private.add(name)
         elif exported == "true":
             required = protected.get((element.tag, name))

@@ -138,6 +138,7 @@ class MergedManifestPolicy(unittest.TestCase):
         self.assertEqual(len(result["components"]), 20)
         self.assertTrue(result["mergedManifestComponentExposureVerified"])
         self.assertFalse(result["fullComponentSecurityAuditComplete"])
+        audit.merged_manifest_components(self.fixture().replace('android:launchMode="singleTask"', 'android:launchMode="2"'))
         protected = ('<receiver android:name="androidx.profileinstaller.ProfileInstallReceiver" '
                      'android:exported="true" android:permission="android.permission.DUMP" />')
         audit.merged_manifest_components(self.fixture().replace('</application>', protected + '</application>'))
@@ -197,6 +198,8 @@ class MergedManifestPolicy(unittest.TestCase):
             source.write_text(self.fixture())
             audit.run(command)
             original = apk.read_bytes()
+            decoded = audit.run([str(sdk / "cmdline-tools/latest/bin/apkanalyzer"), "manifest", "print", str(apk)])
+            print("Actual SDK-decoded nonexecuting binary Manifest fixture:", decoded)
             result = audit.compiled_manifest(apk, sdk)
             self.assertEqual(result['privateNativeActivityCount'], 19)
             self.assertTrue(result['decoder']['sdkSourceProperties'])

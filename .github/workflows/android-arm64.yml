@@ -54,8 +54,8 @@ jobs:
           git -C "$GITHUB_WORKSPACE" show "$baseline:ui/src/styles.css" > ui/src/styles.css
           export MOBILE_BASELINE_REPORT="$backup/results.json"
           set +e
-          npm --prefix ui exec -- vitest run src/components/ModeNav.mobile.test.tsx \
-            --reporter=json --outputFile="$MOBILE_BASELINE_REPORT"
+          npm --prefix ui test -- src/components/ModeNav.mobile.test.tsx \
+            --reporter=default --reporter=json --outputFile="$MOBILE_BASELINE_REPORT"
           status=$?
           set -e
           if [[ "$status" == 0 ]]; then
@@ -67,6 +67,7 @@ jobs:
           import assert from 'node:assert/strict';
           const report = JSON.parse(fs.readFileSync(process.env.MOBILE_BASELINE_REPORT, 'utf8'));
           const cases = report.testResults.flatMap(suite => suite.assertionResults ?? []);
+          console.log('Baseline results:', cases.map(test => ({ title: test.title, status: test.status })));
           for (const title of [
             'has one bounded strip and pinned Settings at xs',
             'reveals an external section change using zoom-correct horizontal movement only',

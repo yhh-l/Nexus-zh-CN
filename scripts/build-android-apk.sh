@@ -24,3 +24,4 @@ python3 scripts/android-host-source.py
 (cd src-tauri && cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked)
 git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock src-tauri/gen/android
 python3 scripts/android-apk-report.py
+python3 scripts/android-apk-audit.py

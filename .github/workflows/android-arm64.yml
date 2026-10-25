@@ -176,8 +176,8 @@ jobs:
       - name: Test archive and artifact guards
         run: node --test scripts/android-arm64.test.mjs
 
-      - name: Exercise the actual APK container reporter with corrupt and foreign-payload controls
-        run: python3 -m unittest discover -s scripts -p android_apk_report_test.py -v
+      - name: Exercise APK container/dependency guards and real SDK alignment controls
+        run: python3 -m unittest discover -s scripts -p 'android_apk_*test.py' -v
 
       - name: Test real Android native build dispatch (host-only guards)
         run: node --test scripts/android-native.test.mjs
@@ -344,6 +344,8 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: nexus-android-arm64-unsigned-apk-build-report
-          path: target/android-apk/build-report.json
+          path: |
+            target/android-apk/build-report.json
+            target/android-apk/native-audit.json
           if-no-files-found: error
           retention-days: 14

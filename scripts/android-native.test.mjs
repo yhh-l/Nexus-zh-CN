@@ -317,6 +317,9 @@ test('real APK code generation follows the full backend gate and cannot distribu
   const backend = workflow.indexOf('- name: Check the full application backend');
   assert(stage > backend && backend >= 0);
   const tail = workflow.slice(stage);
-  assert.match(tail, /path: target\/android-apk\/build-report.json/);
+  assert.match(tail, /target\/android-apk\/build-report\.json/);
+  assert.match(tail, /target\/android-apk\/native-audit\.json/);
+  assert.match(build, /^python3 scripts\/android-apk-report\.py\r?$/m);
+  assert.match(build, /^python3 scripts\/android-apk-audit\.py\r?$/m);
   assert.doesNotMatch(tail, /path:.*\.(apk|aab)|path:.*outputs/);
 });

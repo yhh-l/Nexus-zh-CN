@@ -59,6 +59,29 @@ class SourceEvidence(unittest.TestCase):
             self.assertFalse(report["sourceFileLicensingApproved"])
             self.assertEqual(len(report["entries"]), 3)
 
+    def test_component_prefixed_notices_preserve_full_text_without_accepting_grants(self):
+        names = ["META-INF/fixture-core-LICENSE", "META-INF/fixture-core-NOTICE",
+                 "META-INF/fixture.COPYING.txt", "META-INF/fixture_copyright"]
+        text = "Original synthetic fixture notice, not a license grant.\nSecond notice line.\n"
+        data = archive([(name, text) for name in names] +
+                       [("example/LicenseHelper.java", "package example;\n"),
+                        ("example/MyNotice.kt", "package example\n")])
+        entries = {item["entry"]: item for item in evidence.inspect_sources(data, evidence.digest(data))}
+        for name in names:
+            with self.subTest(name=name):
+                self.assertTrue(entries[name]["namedNoticeEntry"])
+                self.assertEqual(entries[name]["leadingComment"], text)
+                self.assertEqual(entries[name]["commentSha256"], evidence.digest(text.encode()))
+        for name in ("example/LicenseHelper.java", "example/MyNotice.kt"):
+            self.assertFalse(entries[name]["namedNoticeEntry"])
+            self.assertEqual(entries[name]["leadingComment"], "")
+        with tempfile.TemporaryDirectory() as directory:
+            summary = evidence.collect(self.inventory(data, evidence.digest(data)), Path(directory),
+                                       lambda _: (data, "original-fixture"))
+            self.assertTrue(summary["advertisedSourceMaterialsCollected"])
+            self.assertFalse(summary["perFileLicenseAuditComplete"])
+            self.assertFalse(summary["distributable"])
+
     def test_exact_inventory_bytes_revision_and_actual_scope_are_required(self):
         data, digest = self.fixture()
         report = self.inventory(data, digest)

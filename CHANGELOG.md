@@ -624,6 +624,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   your browser; the watch-and-control workspace it replaced is gone from the page.
 
 ### Fixed
+- **Android JVM source review preserves component-prefixed license and notice files.**
+  Archive names such as `fixture-core-LICENSE` and `fixture-core-NOTICE` now retain
+  bounded full text instead of being treated as source files with no leading comment.
+  Original fixtures check exact text hashes and reject incidental source-class names;
+  material collection still does not approve licensing or APK distribution.
 - **FT8: a period with almost no receive audio is not decoded, as in WSJT-X.** When a whole period's receive audio
   is under half a bit (0.5 LSB rms), as with the rig's audio muted, the input turned right down or the cable pulled,
   WSJT-X does not decode it at all. Nexus did, and after a busy period its a7 decoder could "hear" that period's

@@ -131,7 +131,7 @@ def inspect_sources(data, expected_hash):
             except UnicodeDecodeError:
                 item.update(textReadable=False, leadingComment="", textWindowTruncated=len(payload) > MAX_HEADER)
             else:
-                named = bool(re.fullmatch(r"(?i)(licen[cs]e|notice|copying|copyright)([._-].*)?", PurePosixPath(name).name))
+                named = bool(re.fullmatch(r"(?i)(?:.*[._-])?(licen[cs]e|notice|copying|copyright)([._-].*)?", PurePosixPath(name).name))
                 header = text if named else leading_comments(text)
                 item.update(textReadable=True, namedNoticeEntry=named, leadingComment=header,
                             commentSha256=digest(header.encode()), textWindowTruncated=len(payload) > MAX_HEADER,

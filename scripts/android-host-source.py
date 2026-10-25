@@ -64,6 +64,14 @@ def inspect(project, identifier, minimum):
     permissions = {node.get(android + "name") for node in manifest.findall("uses-permission")}
     require({"android.permission.INTERNET", "android.permission.RECORD_AUDIO"}.issubset(permissions),
             "Native Android network/audio permissions are missing")
+    usb = next((node for node in app.findall("activity")
+                if node.get(android + "name") == ".NexusUsbLaunchActivity"), None)
+    require(usb is not None and usb.get(android + "exported") == "false"
+            and usb.get(android + "launchMode") == "singleTask" and not usb.findall("intent-filter"),
+            "USB preflight must be a private single-instance native component")
+    usb_source = project / f"app/src/main/java/{identifier.replace('.', '/')}/NexusUsbLaunchActivity.kt"
+    require(usb_source.is_file() and "class NexusUsbLaunchActivity : Activity()" in usb_source.read_text(),
+            "USB preflight is not the actual native Activity")
     launch_source = project / f"app/src/main/java/{identifier.replace('.', '/')}/NexusLaunchActivity.kt"
     require(launch_source.is_file() and "class NexusLaunchActivity : Activity()" in launch_source.read_text(),
             "Preflight is not the actual native Activity")
@@ -122,7 +130,7 @@ def mutation_controls(project, identifier, minimum):
     file = project / "app/src/main/AndroidManifest.xml"
     original = file.read_bytes()
     android = "{http://schemas.android.com/apk/res/android}"
-    for mutation in ("main-exported", "audio-permission", "launcher-private"):
+    for mutation in ("main-exported", "audio-permission", "launcher-private", "usb-preflight-exported"):
         tree = ET.fromstring(original)
         app = tree.find("application")
         if mutation == "audio-permission":
@@ -130,9 +138,10 @@ def mutation_controls(project, identifier, minimum):
                               if node.get(android + "name") == "android.permission.RECORD_AUDIO")
             tree.remove(permission)
         else:
-            name = ".MainActivity" if mutation == "main-exported" else ".NexusLaunchActivity"
+            name = {"main-exported": ".MainActivity", "launcher-private": ".NexusLaunchActivity",
+                    "usb-preflight-exported": ".NexusUsbLaunchActivity"}[mutation]
             node = next(node for node in app.findall("activity") if node.get(android + "name") == name)
-            node.set(android + "exported", "true" if mutation == "main-exported" else "false")
+            node.set(android + "exported", "false" if mutation == "launcher-private" else "true")
         try:
             file.write_bytes(ET.tostring(tree, encoding="utf-8"))
             try:
@@ -179,7 +188,7 @@ def mutation_controls(project, identifier, minimum):
             raise AssertionError("Generated-source guard accepted changed launcher artwork")
     finally:
         icon.write_bytes(original_icon)
-    print("Actual generated-source positive control and 5 negative controls passed")
+    print("Actual generated-source positive and all mutation controls passed")
 
 
 def verify_export(directory):

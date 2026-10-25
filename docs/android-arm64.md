@@ -445,3 +445,25 @@ real refusal, not an invented spectrum or first-device guess. The explicit
 cold-start USB selection/permission UI remains required to make that grant
 available to the application. This integration is not proof of a successful
 APK link, hardware use or installability; read the actual cloud outcome.
+
+### Cold-start USB grant and explicit bridge selection
+
+The microphone preflight now routes an attached, ungranted or ambiguous FT4222
+selection to a private native USB preflight before MainActivity. No bridge, a
+single already-granted bridge or a warm station needs no new permission UI.
+The permission request follows only a user device-button click, uses an
+immutable package-scoped PendingIntent and a non-exported dynamic receiver,
+and trusts neither callback permission bits nor callback device objects.
+Selection rechecks the connected device and actual UsbManager authority.
+Rotation preserves the request action/target without requesting again; focus
+return and resume recheck missed grant/denial/detach outcomes. Selected bridge
+routing is process-local and revalidated on every actual native open; multiple
+already-granted bridges no longer force a first-device guess or a dead end.
+
+Buttons live in an inset-aware native ScrollView with EN/zh strings. The real
+Tauri host, decoder and transmit safety remain untouched. Changes to bridge
+attachment/selection after station startup still require an app restart; no
+runtime USB popup or automatic radio start is added. Cloud framework tests and
+actual-source callback-authority mutation are not physical permission-dialog,
+USB controller, lifecycle/Stop or FT-710 acceptance evidence. APK build and
+S25 Ultra installation/runtime acceptance remain separate, unproven gates.

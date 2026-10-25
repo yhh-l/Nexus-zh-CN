@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android cold launch can ask for FT-710 USB scope access before the station starts.**
+  A private native screen requests Android permission only after a device button is pressed,
+  rechecks actual OS authority, respects denial and preserves a pending request over rotation.
+  Multiple bridges require an explicit session selection. Warm entry does not request a USB
+  dialog over the existing host. NEEDS-BENCH: FT-710/S25 Ultra grant/deny, detach/reconnect,
+  process recreation and Stop reachability; this is not an installable APK announcement.
 - **Android asks for local receive-audio permission before starting the native station.** A native
   first-launch page explains microphone/USB capture permission and respects denial; continuing
   without permission does not fake capture or grant access. An already-entered host is returned to

@@ -1,0 +1,8 @@
+<resources>
+    <string name="nexus_usb_title">FT-710 USB scope</string>
+    <string name="nexus_usb_reason">Choose the connected FT4222 bridge for this session. Android USB permission is required for the scope. This does not open CAT or audio, start the station, or enable transmission. Connect the bridge before launch; changes after startup require a restart for now.</string>
+    <string name="nexus_usb_use">Use FT4222 — %1$s</string>
+    <string name="nexus_usb_continue">Continue to Nexus</string>
+    <string name="nexus_usb_waiting">Waiting for your Android USB permission choice…</string>
+    <string name="nexus_usb_denied">The bridge is not authorized or has disconnected. You can retry or continue. Nexus does not change a denied permission.</string>
+</resources>

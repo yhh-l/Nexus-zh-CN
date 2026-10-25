@@ -262,6 +262,39 @@ jobs:
           assert suite.find('testcase/failure').get('type') == 'java.lang.AssertionError'
           PY
           restore
+      - name: Prove actual USB permission callback cannot bypass Android authority
+        working-directory: scripts/android-folder-harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          source="$GITHUB_WORKSPACE/src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusUsbLaunchActivity.kt"
+          backup=$(mktemp "$RUNNER_TEMP/nexus-usb-callback.XXXXXX")
+          cp "$source" "$backup"
+          restore() { cp "$backup" "$source"; }
+          trap restore EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('../../src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusUsbLaunchActivity.kt')
+          text = source.read_text()
+          needle = '    if (NexusUsbSelection.choose(manager, name)) openMain()\n    else { denied = true; render() }'
+          assert text.count(needle) == 1, 'Mutation must target the actual callback authority check'
+          source.write_text(text.replace(needle, '    if (true) openMain()\n    else { denied = true; render() }'))
+          PY
+          set +e
+          bash ./gradlew --no-daemon --stacktrace testDebugUnitTest --tests '*NexusUsbLaunchActivityTest.forgedGrantCallbackCannotAuthorizeOrEnterTheStation' > "$RUNNER_TEMP/usb-callback-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/usb-callback-negative.log"
+          test "$status" -ne 0
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          suite = ET.parse(Path('build/test-results/testDebugUnitTest/TEST-com.kd9taw.tempo.NexusUsbLaunchActivityTest.xml')).getroot()
+          assert int(suite.get('tests', '0')) == 1
+          assert int(suite.get('failures', '0')) == 1 and int(suite.get('errors', '0')) == 0
+          assert suite.find('testcase/failure').get('type') == 'java.lang.AssertionError'
+          PY
+          restore
       - name: Compile actual product folder/viewport controllers and run native modeled tests
         working-directory: scripts/android-folder-harness
         run: bash ./gradlew --no-daemon --stacktrace testDebugUnitTest

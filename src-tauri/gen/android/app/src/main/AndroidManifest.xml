@@ -29,6 +29,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".NexusUsbLaunchActivity" android:exported="false" android:launchMode="singleTask" />
+
         <!-- App-private panel pages. Android Back returns to the preserved main WebView. -->
         <activity
             android:name=".WaterfallPanelActivity"

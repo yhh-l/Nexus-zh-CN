@@ -1,0 +1,8 @@
+<resources>
+    <string name="nexus_usb_title">FT-710 USB 频谱</string>
+    <string name="nexus_usb_reason">请选择本次会话使用的 FT4222 桥接器。频谱接收需要 Android USB 授权。此操作不会打开 CAT 或音频、启动电台引擎或允许发射。请在启动前连接；目前启动后更换桥接器需要重启应用。</string>
+    <string name="nexus_usb_use">使用 FT4222 — %1$s</string>
+    <string name="nexus_usb_continue">继续进入 Nexus</string>
+    <string name="nexus_usb_waiting">正在等待您的 Android USB 授权选择…</string>
+    <string name="nexus_usb_denied">桥接器尚未获得授权或已断开连接。您可以重试或继续。Nexus 不会更改被拒绝的权限。</string>
+</resources>

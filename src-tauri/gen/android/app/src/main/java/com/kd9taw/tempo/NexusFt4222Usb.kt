@@ -158,6 +158,7 @@ class NexusFt4222Usb private constructor(
      */
     @JvmStatic fun openOnlyGranted(context: Context): NexusFt4222Usb {
       val manager = context.getSystemService(Context.USB_SERVICE) as UsbManager
+      NexusUsbSelection.deviceName?.let { return openGranted(manager, it) }
       val devices = manager.deviceList.values.filter {
         it.vendorId == 0x0403 && it.productId == 0x601c && manager.hasPermission(it)
       }

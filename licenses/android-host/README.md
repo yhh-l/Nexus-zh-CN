@@ -96,3 +96,11 @@ It uses JNI already re-exported by the locked Tauri/Tao stack; no additional
 package, upstream implementation or native binary is introduced. ProGuard
 keeps match these real JNI entry points. USB grant UI and hardware proof
 remain separate requirements.
+
+The original NexusUsbLaunchActivity is an app-private, single-instance native
+USB permission preflight. It uses Android USB Host and existing framework APIs,
+not a vendor driver or a replacement station. The immutable package-scoped
+permission intent is not authority; selection rechecks the current OS grant.
+No upstream source/dependency is imported by its code, EN/zh strings, modeled
+tests or shared descriptor fixtures. Physical Android and station acceptance
+remain outstanding.

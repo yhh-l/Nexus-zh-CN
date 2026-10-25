@@ -1,5 +1,7 @@
 package com.kd9taw.tempo
 
+import com.kd9taw.tempo.Ft4222Descriptors.device
+import com.kd9taw.tempo.Ft4222Descriptors.endpoint
 import android.content.Context
 import android.hardware.usb.*
 import android.os.Binder
@@ -34,41 +36,7 @@ class NexusFt4222UsbTest {
   @Before fun reset() {
     manager = RuntimeEnvironment.getApplication().getSystemService(Context.USB_SERVICE) as UsbManager
     Ft4222Wire.reset()
-  }
-
-  private fun <T> parcelled(creator: Parcelable.Creator<T>, fill: (Parcel) -> Unit): T {
-    val parcel = Parcel.obtain()
-    try {
-      fill(parcel)
-      parcel.setDataPosition(0)
-      return creator.createFromParcel(parcel)
-    } finally { parcel.recycle() }
-  }
-
-  private fun endpoint(address: Int, type: Int = 2, packet: Int = 512): UsbEndpoint =
-    parcelled(UsbEndpoint.CREATOR) { p ->
-      p.writeInt(address); p.writeInt(type); p.writeInt(packet); p.writeInt(0)
-    }
-
-  private fun device(product: Int = 0x601c, endpoints: Array<UsbEndpoint> = arrayOf(endpoint(0x81), endpoint(0x02)), name: String = "/dev/bus/usb/001/002"): UsbDevice {
-    val face = parcelled(UsbInterface.CREATOR) { p ->
-      p.writeInt(0); p.writeInt(0); p.writeString("A")
-      p.writeInt(255); p.writeInt(0); p.writeInt(0)
-      p.writeParcelableArray(endpoints, 0)
-    }
-    val configuration = parcelled(UsbConfiguration.CREATOR) { p ->
-      p.writeInt(1); p.writeString("test"); p.writeInt(0x80); p.writeInt(50)
-      p.writeParcelableArray(arrayOf(face), 0)
-    }
-    return parcelled(UsbDevice.CREATOR) { p ->
-      p.writeString(name); p.writeInt(0x0403); p.writeInt(product)
-      p.writeInt(0); p.writeInt(0); p.writeInt(0)
-      p.writeString("test"); p.writeString("FT4222"); p.writeString("1.0")
-      // Test-only serial-reader binder; no PII or serial-number query is made.
-      p.writeStrongBinder(Binder())
-      p.writeParcelableArray(arrayOf(configuration), 0)
-      repeat(5) { p.writeInt(0) }
-    }
+    NexusUsbSelection::class.java.getDeclaredField("deviceName").apply { isAccessible = true }.set(null, null)
   }
 
   private fun grant(device: UsbDevice = device(), permission: Boolean = true): UsbDevice {
@@ -124,6 +92,17 @@ class NexusFt4222UsbTest {
     expectIo { NexusFt4222Usb.openOnlyGranted(context).close() }
     assertEquals(1, Ft4222Wire.claims.get())
   }
+  @Test fun explicitPreflightSelectionRoutesTheFactoryWithoutFirstDeviceGuessing() {
+    NexusLaunchState::class.java.getDeclaredField("mainEntered").apply { isAccessible = true }.setBoolean(null, false)
+    grant()
+    val second = grant(device(name = "/dev/bus/usb/001/003"))
+    assertTrue(NexusUsbSelection.choose(manager, second.deviceName))
+    NexusFt4222Usb.openOnlyGranted(RuntimeEnvironment.getApplication()).close()
+    assertEquals(1, Ft4222Wire.claims.get())
+    shadowOf(manager).addOrUpdateUsbDevice(second, false)
+    expectIo { NexusFt4222Usb.openOnlyGranted(RuntimeEnvironment.getApplication()).close() }
+    assertEquals(1, Ft4222Wire.claims.get()) // Never falls back to the other granted device.
+  }
   @Test fun busyInterfaceClosesWithoutForcingOffAnyKernelDriver() {
     val device = grant()
     Ft4222Wire.claimOk = false
@@ -168,6 +147,7 @@ class NexusFt4222UsbTest {
   @Test fun disconnectOrStatusOnlyStreamNeverReturnsFabricatedSpectrum() {
     for (statusOnly in listOf(false, true)) {
       Ft4222Wire.reset()
+    NexusUsbSelection::class.java.getDeclaredField("deviceName").apply { isAccessible = true }.set(null, null)
       val device = grant()
       if (statusOnly) repeat(65) { Ft4222Wire.input.add(byteArrayOf(2, 0)) }
       val usb = NexusFt4222Usb.openGranted(manager, device.deviceName)
@@ -243,4 +223,43 @@ class Ft4222Wire {
       lastControl = emptyList()
     }
   }
+}
+
+/** Original serialized Android descriptors shared by modeled USB tests. */
+object Ft4222Descriptors {
+  private fun <T> parcelled(creator: Parcelable.Creator<T>, fill: (Parcel) -> Unit): T {
+    val parcel = Parcel.obtain()
+    try {
+      fill(parcel)
+      parcel.setDataPosition(0)
+      return creator.createFromParcel(parcel)
+    } finally { parcel.recycle() }
+  }
+
+  fun endpoint(address: Int, type: Int = 2, packet: Int = 512): UsbEndpoint =
+    parcelled(UsbEndpoint.CREATOR) { p ->
+      p.writeInt(address); p.writeInt(type); p.writeInt(packet); p.writeInt(0)
+    }
+
+  fun device(product: Int = 0x601c, endpoints: Array<UsbEndpoint> = arrayOf(endpoint(0x81), endpoint(0x02)), name: String = "/dev/bus/usb/001/002"): UsbDevice {
+    val face = parcelled(UsbInterface.CREATOR) { p ->
+      p.writeInt(0); p.writeInt(0); p.writeString("A")
+      p.writeInt(255); p.writeInt(0); p.writeInt(0)
+      p.writeParcelableArray(endpoints, 0)
+    }
+    val configuration = parcelled(UsbConfiguration.CREATOR) { p ->
+      p.writeInt(1); p.writeString("test"); p.writeInt(0x80); p.writeInt(50)
+      p.writeParcelableArray(arrayOf(face), 0)
+    }
+    return parcelled(UsbDevice.CREATOR) { p ->
+      p.writeString(name); p.writeInt(0x0403); p.writeInt(product)
+      p.writeInt(0); p.writeInt(0); p.writeInt(0)
+      p.writeString("test"); p.writeString("FT4222"); p.writeString("1.0")
+      // Test-only serial-reader binder; no PII or serial-number query is made.
+      p.writeStrongBinder(Binder())
+      p.writeParcelableArray(arrayOf(configuration), 0)
+      repeat(5) { p.writeInt(0) }
+    }
+  }
+
 }

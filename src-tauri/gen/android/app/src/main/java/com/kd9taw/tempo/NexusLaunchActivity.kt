@@ -125,7 +125,8 @@ class NexusLaunchActivity : Activity() {
   private fun openMain() {
     if (handedOff || isFinishing || isDestroyed) return
     handedOff = true
-    startActivity(Intent().setClassName(this, "$packageName.MainActivity")
+    val target = NexusUsbLaunchActivity.destination(this)
+    startActivity(Intent().setClassName(this, "$packageName.$target")
       .addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT or Intent.FLAG_ACTIVITY_SINGLE_TOP))
     finish()
   }

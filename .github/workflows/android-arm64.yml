@@ -84,6 +84,10 @@ jobs:
       - name: Typecheck and build the complete UI
         run: npm --prefix ui run build
 
+      # Fail quickly on the new mobile tests, but retain the ENTIRE suite below.
+      - name: Run startup-page and mobile-navigation regressions first
+        run: npm --prefix ui test -- src/android-start.test.ts src/components/ModeNav.mobile.test.tsx
+
       # Includes the rendered mobile-navigation tests, cascade guards and existing
       # stop-line sweeps. jsdom passing does not prove actual phone geometry.
       - name: Run the complete UI suite (including mobile navigation and Stop controls)
@@ -201,6 +205,19 @@ jobs:
           done
           echo "a7b3b4aa2610d3e88b8c7d4420eceee31be2d0ae595b3413264334f3ffb1eab5  $directory/model.onnx" | sha256sum -c -
           echo "b4342157b90229ee7380e165f3d8036179b80d1e6ae02f2557388b7fcd558c01  $directory/model.onnx.json" | sha256sum -c -
+
+      - name: Cross-build and validate real Android OpenSSL (never host libssl)
+        run: bash scripts/build-android-openssl.sh
+
+      - name: Upload target OpenSSL link evidence and license (NOT an APK)
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-arm64-openssl-checkpoint
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            target/android-openssl/link-report.json
+            target/android-native-deps/prefix/licenses/OpenSSL-LICENSE.txt
 
       - name: Check the full application backend (radio and Yaesu waterfall enabled)
         run: >

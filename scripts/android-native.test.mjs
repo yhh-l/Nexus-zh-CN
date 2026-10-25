@@ -9,6 +9,8 @@ import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { modemOutput, inspectSharedObject, neededLibraries, inspectFftwArchive, FFTW_LEGACY_SYMBOLS } from './android-native-link.mjs';
 
+import { OPENSSL_SOURCE, opensslTargetEnvironment, opensslLinkArguments } from './android-openssl.mjs';
+
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const TEMP = fs.mkdtempSync(path.join(os.tmpdir(), 'nexus-android-native-'));
 const EXT = process.platform === 'win32' ? '.exe' : '';
@@ -251,4 +253,45 @@ test('full Android backend stages the existing hash-pinned AI CW model without a
   }
   assert.equal((staging.match(/\| sha256sum -c -/g) ?? []).length, 2);
   assert.doesNotMatch(workflow, /NEXUS_ALLOW_MISSING_AICW/);
+});
+
+test('OpenSSL discovery is target-scoped and cannot redirect host build dependencies', () => {
+  const prefix = path.join(TEMP, 'android-openssl-prefix');
+  assert.deepEqual(opensslTargetEnvironment(prefix), {
+    AARCH64_LINUX_ANDROID_OPENSSL_DIR: prefix,
+    AARCH64_LINUX_ANDROID_OPENSSL_STATIC: '1',
+  });
+  assert.throws(() => opensslTargetEnvironment('relative-prefix'), /absolute single-line/);
+  assert.throws(() => opensslTargetEnvironment(`${prefix}\nOPENSSL_DIR=host`), /absolute single-line/);
+});
+test('OpenSSL link probe covers both whole target archives and refuses unresolved symbols', () => {
+  const prefix = path.join(TEMP, 'openssl');
+  const output = path.join(TEMP, 'probe.so');
+  const args = opensslLinkArguments(prefix, output);
+  assert.equal(args[0], '--target=aarch64-linux-android35');
+  assert(args.includes('-Wl,--no-undefined'));
+  assert(args.includes('-Wl,-z,max-page-size=16384'));
+  assert(args.includes('-Wl,-z,common-page-size=16384'));
+  const start = args.indexOf('-Wl,--whole-archive');
+  const end = args.indexOf('-Wl,--no-whole-archive');
+  assert.deepEqual(args.slice(start + 1, end), [path.join(prefix, 'lib', 'libssl.a'), path.join(prefix, 'lib', 'libcrypto.a')]);
+  assert.deepEqual(args.slice(-2), ['-o', output]);
+  assert(!args.some(arg => /allow-shlib-undefined|unresolved-symbols=ignore|libssl\.so|libcrypto\.so/.test(arg)));
+});
+test('OpenSSL bootstrap pins source, uses NDK Android API 35 and never permits host pkg-config fallback', () => {
+  const source = fs.readFileSync(path.join(ROOT, 'scripts', 'build-android-openssl.sh'), 'utf8');
+  const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'android-arm64.yml'), 'utf8');
+  assert(source.includes(`openssl-${OPENSSL_SOURCE.version}.tar.gz`));
+  assert(source.includes(OPENSSL_SOURCE.sha256));
+  assert.match(source, /sha256sum -c -/);
+  assert.match(source, /export ANDROID_NDK_ROOT="\$ANDROID_NDK_HOME"/);
+  assert.match(source, /CC=clang AR=llvm-ar RANLIB=llvm-ranlib/);
+  assert.match(source, /android-arm64 -D__ANDROID_API__=35 -fPIC no-shared/);
+  assert.match(source, /make -j2 build_libs/);
+  assert.match(source, /make install_dev/);
+  assert.match(source, /node "\$root\/scripts\/android-openssl\.mjs"/);
+  assert.doesNotMatch(source, /PKG_CONFIG_ALLOW_CROSS=|apt-get.*libssl-dev|--cross-compile-prefix=/);
+  const stage = workflow.indexOf('run: bash scripts/build-android-openssl.sh');
+  const backend = workflow.indexOf('- name: Check the full application backend');
+  assert(stage >= 0 && stage < backend);
 });

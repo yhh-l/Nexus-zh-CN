@@ -305,3 +305,40 @@ binary has not been downloaded locally. Actual download/hash verification and
 backend compilation belong to GitHub Actions and remain unproven for this edit.
 The workflow source guard is not evidence that an APK contains the model or
 that inference works; payload inspection and real runtime checks are still needed.
+
+## Verified native checkpoint; next backend dependency repair
+
+Run `40150753477`, head `17ae8d617`, passed the real whole-modem Android link.
+Its uploaded report (artifact `12581769622`) records 618 AArch64 FFTW archive
+objects, 189 modem archive objects, all five legacy FFTW definitions, four ELF
+load segments with at least 16 KiB alignment, and only Android `libm.so`,
+`libdl.so` and `libc.so` dependencies. The probe library is 18,786,696 bytes;
+SHA-256 `e4a6ebbeae6a8a8de0bee74f6bbd8d435955c22caf5d7ff29c2af99f65cf645a`.
+The full application check then failed because `openssl-sys 0.9.117` could not
+find Android-target OpenSSL. This is a different blocker, not a modem regression.
+
+The source repair builds upstream OpenSSL 3.5.9 for `android-arm64`, API 35,
+static PIC, using the real NDK. The official release asset's SHA-256 is pinned
+and checked before extraction and again by the evidence tool. No Ubuntu
+`libssl-dev`, permissive cross-pkg-config fallback, TLS-backend switch, cipher,
+certificate, credential or key change is used. Only Android-prefixed OpenSSL
+Cargo discovery variables are exported, after successful target validation;
+host build dependencies retain their own discovery environment.
+
+The new check inspects every archive member, links the WHOLE `libssl.a` and
+`libcrypto.a` with unresolved symbols forbidden, and checks actual resulting
+ELF alignment/dependencies. Cloud artifacts contain only the evidence report
+and upstream license, not a purported APK. The new build/tests have not run
+locally or in Actions yet. The report keeps TLS handshake, Android trust-store,
+full-app, APK and device-test claims false. OpenSSL's license and representative
+compiled-source headers were reviewed; full redistribution/source inventory
+and runtime trust-store acceptance still belong to the final APK audit.
+
+The earlier full UI run exposed two test-harness errors: a Vite-rewritten
+non-file `import.meta.url` when reading the startup HTML, and missing jsdom
+`ResizeObserver` when Radix opens a keyboard-focused tooltip. The source fixes
+use the existing UI-package-relative file-reading convention and a per-test
+browser-API fixture, retaining the dedicated resize callback test and every
+behavior/Stop assertion. A fast mobile/startup test step now precedes, but does
+not replace, the complete UI suite. These latest test fixes remain unverified
+until the next Actions revision runs.

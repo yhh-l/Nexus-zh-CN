@@ -765,7 +765,7 @@ License: **Boost Software License 1.0** (SPDX: `BSL-1.0`). Only the
 **header-only** `<boost/crc.hpp>` is used, by `libtempo`'s `crc14.cpp`. No
 compiled Boost library is linked.
 
-### OpenSSL (Linux only — HRDLog.net uploads)
+### OpenSSL (Linux and Android — HRDLog.net uploads)
 License: **Apache License 2.0** (OpenSSL 3.x, © The OpenSSL Project Authors).
 <https://www.openssl.org/>
 
@@ -781,6 +781,13 @@ dependencies*). On Linux that stack is OpenSSL: the Nexus binary links
   **bundled inside the AppImage**, so Nexus redistributes OpenSSL there. OpenSSL's
   Apache-2.0 license text (`licenses/openssl/LICENSE.txt`, taken from the OpenSSL
   source distribution) travels in every installer as `resources/openssl/LICENSE.txt`.
+- **Android ARM64 port (build validation, not a released APK):** OpenSSL 3.5.9 is
+  built from the pinned upstream source tarball using Android NDK/API 35, as static
+  PIC libraries. No Linux OpenSSL binary is reused. The source archive SHA-256 is
+  `603f5602e2eef00d77fbd429d34dcd5822bb301757a1bc9cdb24c670f1eb859a`.
+  The upstream `LICENSE.txt` is staged with native build evidence; the existing
+  `licenses/openssl/LICENSE.txt` resource mapping is retained. This does not
+  establish Android certificate-store or live TLS handshake compatibility.
 - **Windows and macOS:** no OpenSSL. The same connection uses SChannel (Windows)
   or Security.framework (macOS), operating-system components Nexus does not ship.
 
@@ -1300,7 +1307,7 @@ principal third-party components, not a substitute for that gate:
   into the tree; all MIT or MIT/Apache-2.0, all already on deny.toml's allow-list.
 - **native-tls** (the HRDLog.net upload connection only — `crates/propagation/src/live/hrdlog.rs`;
   every other HTTPS client stays on reqwest + rustls, and CI fails if reqwest ever gains
-  native-tls) — MIT OR Apache-2.0. Its platform backends arrive with it: on Linux **openssl** —
+  native-tls) — MIT OR Apache-2.0. Its platform backends arrive with it: on Linux/Android **openssl** —
   Apache-2.0, **openssl-sys** — MIT, **openssl-macros**, **foreign-types** and
   **foreign-types-shared** — MIT/Apache-2.0, **openssl-probe** — MIT OR Apache-2.0, and
   **vcpkg** (openssl-sys's build script; used only on MSVC targets) — MIT/Apache-2.0; on

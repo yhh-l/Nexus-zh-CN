@@ -579,3 +579,8 @@ protocol reference used by the experimental Android port; see `NOTICE`.
 Thanks also to the Android Rust dependency authors listed in `NOTICE`; exact
 missing-license-text provenance and scope limitations are recorded in
 [licenses/rust/ANDROID-REVIEW.md](licenses/rust/ANDROID-REVIEW.md).
+
+Thanks to Drifty Co. and the Ionic Capacitor contributors for the code origin
+identified by two Tauri Android helpers. Their fixed-commit MIT terms are
+preserved in `NOTICE`; scoped per-file review is recorded in
+[licenses/android-host](licenses/android-host/README.md).

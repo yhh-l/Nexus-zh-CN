@@ -624,6 +624,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   your browser; the watch-and-control workspace it replaced is gone from the page.
 
 ### Fixed
+- **Android runtime attribution retains Capacitor's original MIT notice.**
+  Read-only review of the locked Tauri Android source traced two helpers to
+  their fixed upstream Capacitor commit. The original Drifty copyright and
+  permission text now accompany the project NOTICE. Final APK inspection
+  requires that exact NOTICE resource, rejecting missing, duplicate or stale
+  bytes; this does not grant full runtime compliance or installation approval.
 - **Android Gradle dependency inventories also retain component-prefixed notice entries.**
   The source-archive inventory now recognizes the same delimiter-bounded LICENSE,
   NOTICE, COPYING and COPYRIGHT names as the source reviewer. A cloud-only real-Gradle

@@ -15,6 +15,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parent.parent
 FEATURES = ["radio", "yaesu-wf", "tauri/custom-protocol"]
 MEMBER = "assets/resources/rust/THIRD-PARTY.txt"
+PROJECT_NOTICE_MEMBER = "assets/NOTICE"
 
 
 def inventory(root, revision):
@@ -40,7 +41,8 @@ def inspect_frontend(root, revision):
         raise ValueError("Actual frontend Rust notice asset differs from target inventory")
     return {"schemaVersion": 1, "sourceRevision": revision, "noticeBytes": len(text),
             "noticeSha256": hashlib.sha256(text).hexdigest(), "frontendRustNoticeEmissionVerified": True,
-            "androidRustResourcePayloadVerified": False, "runtimeDisplayVerified": False,
+            "androidRustResourcePayloadVerified": False, "androidProjectNoticePayloadVerified": False,
+            "runtimeDisplayVerified": False,
             "runtimeNoticesAndSourceAuditComplete": False, "distributable": False}
 
 
@@ -53,7 +55,18 @@ def inspect_apk(apk, root, revision):
         entry = archive.getinfo(MEMBER)
         if entry.file_size != len(text) or archive.read(entry) != text:
             raise ValueError("Actual APK Rust notice bytes differ from target inventory")
-    result.update({"androidRustResourcePayloadVerified": True, "resourceMember": MEMBER})
+        project_notice = (Path(root) / "NOTICE").read_bytes()
+        if not project_notice:
+            raise ValueError("Empty project NOTICE input")
+        if archive.namelist().count(PROJECT_NOTICE_MEMBER) != 1:
+            raise ValueError("Missing or duplicate APK project NOTICE resource")
+        project_entry = archive.getinfo(PROJECT_NOTICE_MEMBER)
+        if project_entry.file_size != len(project_notice) or archive.read(project_entry) != project_notice:
+            raise ValueError("Actual APK project NOTICE bytes differ from source")
+    result.update({"androidRustResourcePayloadVerified": True, "resourceMember": MEMBER,
+                   "androidProjectNoticePayloadVerified": True,
+                   "projectNoticeMember": PROJECT_NOTICE_MEMBER, "projectNoticeBytes": len(project_notice),
+                   "projectNoticeSha256": hashlib.sha256(project_notice).hexdigest()})
     return result
 
 

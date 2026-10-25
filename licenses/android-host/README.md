@@ -104,3 +104,49 @@ permission intent is not authority; selection rechecks the current OS grant.
 No upstream source/dependency is imported by its code, EN/zh strings, modeled
 tests or shared descriptor fixtures. Physical Android and station acceptance
 remain outstanding.
+
+## Locked Android runtime source follow-up (2026-10-26)
+
+Read-only source review, not APK/device or complete Java/AAR approval. The four
+published crate archives were compared to the exact checksums in
+`src-tauri/Cargo.lock` before reading their Android source files:
+
+| Archive | SHA256 |
+| --- | --- |
+| tauri 2.11.2 | 437404997acf375d85f1177afa7e11bb971f274ed6a7b83a2a3e339015f4cc28 |
+| tauri-plugin-dialog 2.7.3 | 61854a36651aa48381e5e209f69a01273b77f3f9f91f0c430b1b98d33bd47229 |
+| tauri-plugin-notification 2.3.3 | 01fc2c5ff41105bd1f7242d8201fdf3efd70749b82fa013a17f2126357d194cc |
+| tauri-plugin-opener 2.5.4 | 17e1bea14edce6b793a04e2417e3fd924b9bc4faae83cdee7d714156cceeed29 |
+
+Each of Tauri's 23 main Kotlin files under `mobile/android/src/main/java/`
+and the plugins' 2, 8 and 1 main Kotlin files respectively was inspected for
+its own copyright/license header and further source-origin markers. All bear
+Tauri Programme copyright and Apache-2.0/MIT identifiers. Their XML manifests
+and the notification drawable do not have independent headers; that absence
+is not represented as a separately marked grant. Generated sources and actual
+Gradle source-to-artifact mapping still need their own accounting.
+
+Two Tauri files additionally cite Capacitor commit
+`6658bca41e78239347e458175b14ca8bd5c1d6e8`: `Logger.kt` and `PermissionHelper.kt`.
+The original Java files and the complete repository MIT grant were read at
+that commit, not inferred from Tauri's headers or package metadata:
+
+| Upstream file | Exact raw SHA256 |
+| --- | --- |
+| LICENSE | fa8725a0baf2a84788bd5e34f99ae64b7ea256a5c037ff37761180e0c5ece28a |
+| android/capacitor/src/main/java/com/getcapacitor/Logger.java | a08b6e97f01147ee17294d57f19ed6714ed7b4b8be159439a6262a10eb3773e2 |
+| android/capacitor/src/main/java/com/getcapacitor/util/PermissionHelper.java | b5507e171df5d2f2fb7c56d960ac3abc0e87d1cc89a80e862f2322d1bb03c17b |
+
+The source comment for PermissionHelper omits the upstream `util/` path;
+the file actually reviewed is the one specified above. The original grant
+requires retaining the Drifty copyright and MIT permission text, compatible
+with GPL-3.0-only. That complete text now appears in `NOTICE`, with upstream
+attribution. No third-party implementation is imported or modified.
+
+The final APK notice inspector additionally requires exactly one
+`assets/NOTICE` with bytes identical to the current repository `NOTICE`,
+beside the separate target-Rust notice check. Cloud unit controls distinguish
+missing, stale, duplicate and empty notice inputs. Only inspecting the actual
+new APK can prove that resource is delivered; fixtures and inherited Tauri
+resource configuration are not delivery evidence. Runtime display, all other
+JVM dependencies, generated files and corresponding source remain unapproved.

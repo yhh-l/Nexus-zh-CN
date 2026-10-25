@@ -20,6 +20,8 @@ class RustNoticeDelivery(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.revision = "a" * 40
         self.text = "Target notice fixture — non-ASCII bytes\n".encode()
+        self.project_notice = "Original project NOTICE fixture — not a third-party grant.\n".encode()
+        (self.root / "NOTICE").write_bytes(self.project_notice)
         self.directory = self.root / "target/android-notices"
         self.directory.mkdir(parents=True)
         self.frontend = self.root / "ui/dist/rust/THIRD-PARTY.txt"
@@ -34,6 +36,7 @@ class RustNoticeDelivery(unittest.TestCase):
         self.apk = self.root / "fixture-not-real-app.apk"
         with zipfile.ZipFile(self.apk, "w") as archive:
             archive.writestr(notices.MEMBER, self.text)
+            archive.writestr(notices.PROJECT_NOTICE_MEMBER, self.project_notice)
 
     def save(self):
         (self.directory / "rust-report.json").write_text(json.dumps(self.report))
@@ -42,8 +45,11 @@ class RustNoticeDelivery(unittest.TestCase):
         result = notices.inspect_frontend(self.root, self.revision)
         self.assertTrue(result["frontendRustNoticeEmissionVerified"])
         self.assertFalse(result["androidRustResourcePayloadVerified"])
+        self.assertFalse(result["androidProjectNoticePayloadVerified"])
         result = notices.inspect_apk(self.apk, self.root, self.revision)
         self.assertTrue(result["androidRustResourcePayloadVerified"])
+        self.assertTrue(result["androidProjectNoticePayloadVerified"])
+        self.assertEqual(result["projectNoticeSha256"], hashlib.sha256(self.project_notice).hexdigest())
         for flag in ("runtimeDisplayVerified", "runtimeNoticesAndSourceAuditComplete", "distributable"):
             self.assertFalse(result[flag])
 
@@ -73,6 +79,25 @@ class RustNoticeDelivery(unittest.TestCase):
                     archive.writestr(name, text)
             with self.subTest(count=len(entries)), self.assertRaises(ValueError):
                 notices.inspect_apk(self.apk, self.root, self.revision)
+
+    def test_project_notice_missing_substituted_duplicate_and_empty_are_refused(self):
+        for entries in ([], [(notices.PROJECT_NOTICE_MEMBER, b"old notice\n")],
+                        [(notices.PROJECT_NOTICE_MEMBER, self.project_notice)] * 2):
+            with warnings.catch_warnings(), zipfile.ZipFile(self.apk, "w") as archive:
+                warnings.simplefilter("ignore", UserWarning)
+                archive.writestr(notices.MEMBER, self.text)
+                for name, payload in entries:
+                    archive.writestr(name, payload)
+            with self.subTest(entries=entries), self.assertRaisesRegex(ValueError, "project NOTICE"):
+                notices.inspect_apk(self.apk, self.root, self.revision)
+        (self.root / "NOTICE").write_bytes(b"")
+        with self.assertRaisesRegex(ValueError, "Empty project NOTICE input"):
+            notices.inspect_apk(self.apk, self.root, self.revision)
+
+    def test_changed_project_notice_requires_the_actual_apk_to_match(self):
+        (self.root / "NOTICE").write_bytes(self.project_notice + b"New original attribution.\n")
+        with self.assertRaisesRegex(ValueError, "project NOTICE bytes differ"):
+            notices.inspect_apk(self.apk, self.root, self.revision)
 
     def test_changed_generated_notice_still_rejected_even_with_matching_deliveries(self):
         (self.directory / "RUST-THIRD-PARTY.txt").write_bytes(b"changed\n")

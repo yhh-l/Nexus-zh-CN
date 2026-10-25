@@ -24,6 +24,13 @@ def require(ok, message):
         raise ValueError(message)
 
 
+def inherited_identity(base, patch):
+    # RFC 7396: a missing platform member retains the base value; explicit null
+    # is different from absence and cannot silently replace application identity.
+    identifier = patch.get("identifier", base["identifier"])
+    require(identifier == base["identifier"], "Android changed the existing application identity")
+    return identifier
+
 def inspect(project, identifier, minimum):
     required = ["build.gradle.kts", "settings.gradle", "gradlew",
                 "gradle/wrapper/gradle-wrapper.properties", "app/build.gradle.kts",
@@ -117,21 +124,29 @@ def main():
     require(os.environ.get("GITHUB_ACTIONS") == "true", "Generate/validate Android host only on GitHub")
     base = json.loads((ROOT / "src-tauri/tauri.conf.json").read_text())
     android = json.loads((ROOT / "src-tauri/tauri.android.conf.json").read_text())
-    require(android["identifier"] == base["identifier"], "Android changed the existing application identity")
+    identifier = inherited_identity(base, android)
+    require(inherited_identity(base, {}) == identifier, "Absent override must inherit base identity")
+    for bad in [{"identifier": "invalid.identity"}, {"identifier": None}]:
+        try:
+            inherited_identity(base, bad)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("Invalid explicit identity override was accepted")
     minimum = android["bundle"]["android"]["minSdkVersion"]
     require(minimum == 35, "Unexpected initial Android API baseline")
-    files, omitted = inspect(PROJECT, base["identifier"], minimum)
-    mutation_controls(PROJECT, base["identifier"], minimum)
-    require((files, omitted) == inspect(PROJECT, base["identifier"], minimum),
+    files, omitted = inspect(PROJECT, identifier, minimum)
+    mutation_controls(PROJECT, identifier, minimum)
+    require((files, omitted) == inspect(PROJECT, identifier, minimum),
             "Negative controls did not restore exact generated source")
     for name in files:
         dest = OUTPUT / "project" / name
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(PROJECT / name, dest)
     report = dict(sourceCommit=subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(),
-                  generator="tauri-cli 2.11.5", applicationId=base["identifier"], minSdkVersion=minimum,
+                  generator="tauri-cli 2.11.5", applicationId=identifier, minSdkVersion=minimum,
                   intendedTarget="aarch64-linux-android", sourceHashes=files, omittedMachineOrBinaryTools=omitted,
-                  hostSourceGenerated=True, schemaParsedByTauri=True, sourceNegativeControls=4,
+                  hostSourceGenerated=True, schemaParsedByTauri=True, sourceNegativeControls=4, configNegativeControls=2,
                   gradleConfigured=False, nativeBackendCompiled=False, apkProduced=False,
                   installed=False, deviceTested=False)
     OUTPUT.mkdir(parents=True, exist_ok=True)

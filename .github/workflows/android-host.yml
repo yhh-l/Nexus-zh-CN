@@ -41,7 +41,8 @@ jobs:
           node --test scripts/android-host-config.test.mjs
           node scripts/android-host-config.mjs
       - name: Reuse the same pinned CLI already reviewed by release CI
-        uses: actions/cache@v6
+        id: cli-cache
+        uses: actions/cache/restore@v6
         with:
           path: ~/.cargo/bin/cargo-tauri
           key: android-host-tauri-cli-2.11.5-rust-1.93.1-${{ runner.os }}
@@ -53,6 +54,14 @@ jobs:
             cargo install tauri-cli --version '=2.11.5' --locked --force
           fi
           test "$(cargo tauri --version)" = 'tauri-cli 2.11.5'
+      # Preserve a verified compiler tool even if later source validation fails;
+      # never cache the project's executable, credentials or generated local paths.
+      - name: Cache only the exact validated CLI before project generation
+        if: steps.cli-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: ~/.cargo/bin/cargo-tauri
+          key: android-host-tauri-cli-2.11.5-rust-1.93.1-${{ runner.os }}
       - name: Use the runner Android SDK, NDK and Java (never local.properties in artifacts)
         shell: bash
         run: |

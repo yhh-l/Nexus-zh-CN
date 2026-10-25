@@ -8,6 +8,11 @@ on:
     paths:
       - .github/workflows/android-host.yml
       - scripts/android-host-source.py
+      - src-tauri/.gitignore
+      - src-tauri/tauri*.conf.json
+      - src-tauri/gen/android/**
+      - src-tauri/icons/icon-source.png
+      - licenses/android-host/**
 
 permissions:
   contents: read
@@ -77,6 +82,8 @@ jobs:
       - name: Generate the real native Android Gradle/Kotlin project, without building an APK
         working-directory: src-tauri
         run: cargo tauri android init --ci --skip-targets-install
+      - name: Refuse generator overwrites of the reviewed tracked host
+        run: git diff --exit-code -- src-tauri/gen/android
       - name: Validate generated identity/minSdk/native host and foreign-payload negative controls
         run: python3 scripts/android-host-source.py
       - name: Upload reviewed-source candidate and explicit incomplete-coverage report

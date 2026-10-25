@@ -1875,3 +1875,15 @@ these recipes. Cloud evidence artifacts include staged upstream license texts,
 not the linked native modem or an APK. Complete per-file/runtime dependency
 license review and binary notice/source delivery remain prerequisites to
 native binary distribution; this entry does not claim that audit is complete.
+
+## Experimental native Android host source (not a shipped APK)
+
+The reviewed Gradle/Kotlin host under `src-tauri/gen/android` comes from
+Tauri CLI 2.11.5, copyright Tauri Apps Contributors, under MIT OR Apache-2.0
+(MIT selected for the template files). The Gradle wrapper scripts have their
+own Apache-2.0 headers, copyright 2015 the original author or authors; those
+headers remain intact. Thanks to Tauri and Gradle contributors. Full texts,
+per-file header review, exact cloud provenance and intentional changes are
+recorded in `licenses/android-host/`. The template's default artwork was not
+imported; the launcher uses Nexus's existing master icon. No wrapper JAR,
+Gradle distribution, native binary or APK is included by this source import.

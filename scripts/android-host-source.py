@@ -14,6 +14,7 @@ import re
 import shutil
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parent.parent
 PROJECT = ROOT / "src-tauri/gen/android"
@@ -46,9 +47,22 @@ def inspect(project, identifier, minimum):
     activity = (project / required[-1]).read_text()
     require(f"package {identifier}" in activity, "Generated Kotlin package differs")
     require("class MainActivity : TauriActivity()" in activity, "Not a native Tauri host activity")
-    manifest = (project / "app/src/main/AndroidManifest.xml").read_text()
-    require('android:name=".MainActivity"' in manifest, "Launcher activity is not wired")
-    require('android.intent.action.MAIN' in manifest, "Launcher intent is missing")
+    manifest = ET.parse(project / "app/src/main/AndroidManifest.xml").getroot()
+    android = "{http://schemas.android.com/apk/res/android}"
+    app = manifest.find("application")
+    require(app is not None and app.get(android + "icon") == "@drawable/nexus_launcher",
+            "Launcher must use reviewed Nexus artwork, not template artwork")
+    activity = next((node for node in app.findall("activity")
+                     if node.get(android + "name") == ".MainActivity"), None)
+    require(activity is not None and activity.get(android + "exported") == "true",
+            "Launcher activity is not wired")
+    require(any(
+        any(node.get(android + "name") == "android.intent.action.MAIN" for node in intent.findall("action"))
+        and any(node.get(android + "name") == "android.intent.category.LAUNCHER" for node in intent.findall("category"))
+        for intent in activity.findall("intent-filter")), "Launcher intent is missing")
+    icon = project / "app/src/main/res/drawable-nodpi/nexus_launcher.png"
+    require(icon.read_bytes() == (ROOT / "src-tauri/icons/icon-source.png").read_bytes(),
+            "Android launcher must preserve the existing Nexus master artwork")
     files = {}
     omitted = {}
     tooling = "gradle/wrapper/gradle-wrapper.jar"
@@ -118,7 +132,19 @@ def mutation_controls(project, identifier, minimum):
             raise AssertionError("Generated-source guard accepted disguised native code")
     finally:
         disguised.unlink()
-    print("Actual generated-source positive control and 4 negative controls passed")
+    icon = project / "app/src/main/res/drawable-nodpi/nexus_launcher.png"
+    original_icon = icon.read_bytes()
+    try:
+        icon.write_bytes(original_icon + b"negative-control")
+        try:
+            inspect(project, identifier, minimum)
+        except ValueError:
+            pass
+        else:
+            raise AssertionError("Generated-source guard accepted changed launcher artwork")
+    finally:
+        icon.write_bytes(original_icon)
+    print("Actual generated-source positive control and 5 negative controls passed")
 
 
 def verify_export(directory):
@@ -203,7 +229,7 @@ def main():
     report = dict(sourceCommit=subprocess.check_output(["git", "-C", str(ROOT), "rev-parse", "HEAD"], text=True).strip(),
                   generator="tauri-cli 2.11.5", applicationId=identifier, minSdkVersion=minimum,
                   intendedTarget="aarch64-linux-android", sourceHashes=files, omittedMachineOrBinaryTools=omitted,
-                  hostSourceGenerated=True, schemaParsedByTauri=True, sourceNegativeControls=4, configNegativeControls=2,
+                  hostSourceGenerated=True, schemaParsedByTauri=True, sourceNegativeControls=5, configNegativeControls=2,
                   gradleConfigured=False, nativeBackendCompiled=False, apkProduced=False,
                   installed=False, deviceTested=False)
     OUTPUT.mkdir(parents=True, exist_ok=True)

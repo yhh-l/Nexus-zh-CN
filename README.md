@@ -533,7 +533,12 @@ Nexus is **free software under the [GNU GPL v3](COPYING)** (GPL-3.0-only).
   uploads on Linux (and the Android ARM64 source port), through the [`native-tls`](https://github.com/sfackler/rust-native-tls) crate
   (SChannel on Windows, Security.framework on macOS); bundled in the AppImage (see
   **[NOTICE](NOTICE)**).
-- **[FFTW](https://www.fftw.org/)** (GPL), **[Tauri](https://tauri.app/)**, React,
+- **[Tauri](https://tauri.app/)** contributors (MIT OR Apache-2.0) and **Gradle**
+  contributors (Apache-2.0 wrapper scripts) — the experimental native Android
+  Gradle/Kotlin host. Per-file review, upstream license texts and cloud source
+  provenance are in **[licenses/android-host](licenses/android-host/)**; this is
+  source preparation, not a released or device-verified APK.
+- **[FFTW](https://www.fftw.org/)** (GPL), React,
   [cpal](https://github.com/RustAudio/cpal),
   [alsa-rs](https://github.com/diwic/alsa-rs) (Linux device names),
   Natural Earth basemap (public domain), NASA Earth Observatory's Blue Marble and Black Marble

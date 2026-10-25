@@ -1,5 +1,6 @@
 """Graph admission controls only; real package texts are generated separately in Actions."""
 import copy
+import hashlib
 import importlib.util
 import json
 import tempfile
@@ -42,6 +43,13 @@ class AndroidPins(unittest.TestCase):
         desktop = json.loads(Path(notices.policy.UPSTREAM).read_text())
         android = json.loads((notices.ROOT / "licenses/rust/android-upstream.json").read_text())
         return notices.merge_android_pins(desktop, android), android
+
+    def test_every_android_text_hash_matches_generator_normalization(self):
+        _, android = self.inventories()
+        for file, expected in android["sha256"].items():
+            with self.subTest(file=file):
+                text = notices.policy.read(Path(notices.policy.UPSTREAM_TEXTS) / file)
+                self.assertEqual(hashlib.sha256(text.encode()).hexdigest(), expected)
 
     def test_scoped_pins_never_replace_desktop_records(self):
         upstream, android = self.inventories()

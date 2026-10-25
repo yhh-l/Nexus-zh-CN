@@ -808,6 +808,18 @@ describe('panes are sized by the grid, never by themselves', () => {
         // viewport-capped floor is paired with computed overflow guards in
         // cockpit-shells.test.ts and real compiled-browser reachability tests.
         if (r.selector === '.remote-cockpit-lower' && v === 'min(18em, calc(0.35 * var(--vh-eff)))') continue
+        // Native page TOUCH BUTTONS, not pane frames: their floor yields to the real
+        // viewport and their own non-shrinking bar has a bounded scrolling valve.
+        // Never grant this exception to a pane/column or accept a fixed 48px floor.
+        // AndroidPanelBar.test renders these exact buttons; the Chrome probe also
+        // rejects actual clipping/coverage in the product document.
+        if (['.android-panel-back', '.android-panel-stop'].includes(r.selector) &&
+            v === 'min(calc(48px / var(--ui-zoom, 1)), var(--vh-eff, 48px))') {
+          expect(classWinner('android-panel-bar', blockOverflowY)?.value).toBe('auto')
+          expect(classWinner('android-panel-bar', blockDecl('max-height'))?.value).toBe('var(--vh-eff, 100%)')
+          expect(classWinner('android-panel-bar', blockDecl('min-height'))?.value).toBe('0')
+          continue
+        }
         offenders.push(`${r.selector} { min-height: ${v} }`)
       }
     }

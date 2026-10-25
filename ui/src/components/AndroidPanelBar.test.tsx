@@ -1,3 +1,4 @@
+// @vitest-environment jsdom
 // Actual shell control rendering and command wiring, not Android lifecycle/RF or pixel proof.
 import { afterEach, beforeAll, beforeEach, expect, it, vi } from 'vitest'
 import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
@@ -78,6 +79,10 @@ it('computes the actual non-shrinking shell bar and zoom-aware touch floors', ()
   const bar = container.firstElementChild!
   expect(css(bar, 'display')).toBe('flex')
   expect(css(bar, 'flex')).toBe('0 0 auto')
+  expect(css(bar, 'overflow-y')).toBe('auto')
+  expect(css(bar, 'min-height')).toBe('0')
+  expect(bar.querySelectorAll('button').length).toBe(2)
+  expect(bar.querySelector('.pane-frame')).toBeNull()
   for (const button of bar.querySelectorAll('button')) {
     expect(css(button, 'min-height')).toContain('48px')
     expect(css(button, 'min-width')).toContain('48px')

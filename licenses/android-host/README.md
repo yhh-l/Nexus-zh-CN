@@ -77,3 +77,15 @@ permission only before the station host is entered. MainActivity is now app-priv
 its original Tauri identity and engine remain intact. Permission denial is not an
 audio implementation or a grant. The seven framework-modeled tests never replace
 or execute TauriActivity. These additions import no upstream implementation.
+
+The original NexusFt4222Usb class uses Android's USB Host API to claim only an
+already-authorized, named FT4222 interface A without force-detaching a driver.
+It performs bounded concurrent full-duplex bulk I/O, preserving actual raw
+transfer boundaries, and ends chip select with a zero-length OUT. It imports
+no upstream implementation or new dependency. Its test-only syscall shadow
+is original Nexus code; existing Robolectric remains the same dependency.
+Descriptor fixture serialization was checked against the public Android 15
+UsbDevice/UsbInterface/UsbConfiguration/UsbEndpoint parcel contracts, not
+copied from an implementation. This source is not yet connected to the Rust
+WaterfallSource, and it does not add a USB permission prompt or claim hardware
+acceptance. No D2XX/LibFT4222 binary or third-party USB driver is included.

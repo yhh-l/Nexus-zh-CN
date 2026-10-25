@@ -228,6 +228,40 @@ jobs:
           assert suite.find('testcase/failure').get('type') == 'java.lang.AssertionError'
           PY
           restore
+      - name: Prove actual USB transport refuses a missing Android grant
+        working-directory: scripts/android-folder-harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          source="$GITHUB_WORKSPACE/src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusFt4222Usb.kt"
+          backup=$(mktemp "$RUNNER_TEMP/nexus-usb.XXXXXX")
+          cp "$source" "$backup"
+          restore() { cp "$backup" "$source"; }
+          trap restore EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('../../src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusFt4222Usb.kt')
+          text = source.read_text()
+          needle = 'if (!manager.hasPermission(device))'
+          assert text.count(needle) == 1, 'Actual USB grant check must be the mutation target'
+          source.write_text(text.replace(needle, 'if (false)'))
+          PY
+          set +e
+          bash ./gradlew --no-daemon --stacktrace testDebugUnitTest --tests '*NexusFt4222UsbTest.deniedUsbAuthorityNeverOpensOrClaimsTheDevice' > "$RUNNER_TEMP/usb-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/usb-negative.log"
+          test "$status" -ne 0
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          report = Path('build/test-results/testDebugUnitTest/TEST-com.kd9taw.tempo.NexusFt4222UsbTest.xml')
+          suite = ET.parse(report).getroot()
+          assert int(suite.get('tests', '0')) == 1, 'Actual USB grant test did not execute'
+          assert int(suite.get('failures', '0')) == 1 and int(suite.get('errors', '0')) == 0
+          assert suite.find('testcase/failure').get('type') == 'java.lang.AssertionError'
+          PY
+          restore
       - name: Compile actual product folder/viewport controllers and run native modeled tests
         working-directory: scripts/android-folder-harness
         run: bash ./gradlew --no-daemon --stacktrace testDebugUnitTest

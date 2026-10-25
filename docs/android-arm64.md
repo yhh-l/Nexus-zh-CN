@@ -410,3 +410,20 @@ Host permission/endpoint/connection bridge, bounded concurrent read/write,
 zero-length OUT chip-select release, cancellation and hardware acceptance
 remain required. The existing driver is deliberately not stubbed out, so the
 full APK link blocker remains until the genuine transport is integrated.
+
+### Native Android USB Host connection source
+
+`NexusFt4222Usb.kt` now implements an actual Android USB Host connection for
+an already-granted FT4222. It selects interface A and valid bulk descriptors,
+claims without force, clocks exactly 8192 dummy bytes concurrently with IN,
+preserves each actual-length raw transfer, requires zero-length OUT CS release,
+and closes on any I/O failure. One monotonic deadline bounds each transaction;
+close can cancel a blocked read without waiting on the UI thread. It never
+requests USB permission over the running station and claims no CAT/audio port.
+
+The existing cloud native-controller harness now compiles this actual class
+and tests it using Android descriptors plus a test-only hardware syscall shadow.
+That is framework-modeled evidence, not a real host controller or FT-710.
+USB permission UI, JNI factory registration, integration with WaterfallSource,
+physical detach/reconnect/lifecycle/Stop checks and the full APK link remain
+outstanding. The class does not resolve the FTDI final-link blocker on its own.

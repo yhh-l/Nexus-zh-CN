@@ -36,12 +36,12 @@ mod account_sign_in;
 /// One alert, made in Rust where it is raised, with its id and a versioned shape: what every window
 /// and a computer driving the station hear.
 mod alert;
-/// Early OS-owned storage roots; the desktop/test paths below stay unchanged.
-#[cfg(any(target_os = "android", test))]
-mod android_storage;
 /// Android-native local folder selection; desktop keeps its existing OS dialog.
 #[cfg(target_os = "android")]
 mod android_folder_picker;
+/// Early OS-owned storage roots; the desktop/test paths below stay unchanged.
+#[cfg(any(target_os = "android", test))]
+mod android_storage;
 /// Test builds only (the `bench-road-switch` feature): the switch on a computer driving a station
 /// that blocks its command link or its Stop road, one at a time, so each road can be tried alone.
 #[cfg(feature = "bench-road-switch")]

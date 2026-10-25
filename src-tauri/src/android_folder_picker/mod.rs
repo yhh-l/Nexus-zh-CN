@@ -12,9 +12,9 @@ mod policy;
 use std::path::PathBuf;
 use std::sync::atomic::{AtomicI64, Ordering};
 use std::sync::Mutex;
+use tauri::tao::platform::android::prelude::jni::objects::{JObjectArray, JValue};
 use tauri::tao::platform::android::prelude::{jni, JObject, JString};
 use tauri::Manager;
-use tauri::tao::platform::android::prelude::jni::objects::{JObjectArray, JValue};
 use tokio::sync::oneshot;
 
 type Choice = Result<Option<String>, String>;
@@ -27,7 +27,9 @@ static PENDING: Mutex<Option<Pending>> = Mutex::new(None);
 static NEXT: AtomicI64 = AtomicI64::new(1);
 
 fn pending() -> std::sync::MutexGuard<'static, Option<Pending>> {
-    PENDING.lock().unwrap_or_else(|poisoned| poisoned.into_inner())
+    PENDING
+        .lock()
+        .unwrap_or_else(|poisoned| poisoned.into_inner())
 }
 
 /// Owns cancellation as well as completion. Never wait for Android while holding PENDING.
@@ -47,7 +49,12 @@ impl Drop for Ticket {
         if let Some(window) = self.app.get_webview_window("main") {
             let _ = window.with_webview(move |webview| {
                 webview.jni_handle().exec(move |env, activity, _| {
-                    let result = env.call_method(activity, "cancelNexusDataFolder", "(J)V", &[JValue::Long(id)]);
+                    let result = env.call_method(
+                        activity,
+                        "cancelNexusDataFolder",
+                        "(J)V",
+                        &[JValue::Long(id)],
+                    );
                     if result.is_err() && env.exception_check().unwrap_or(false) {
                         let _ = env.exception_clear();
                     }
@@ -63,39 +70,60 @@ fn begin(
     activity: &JObject<'_>,
     initial: &str,
 ) -> Result<(Ticket, oneshot::Receiver<Choice>), String> {
-        let array = env.call_method(activity, "nexusDataFolderRoots", "()[Ljava/lang/String;", &[])
-            .and_then(|value| value.l()).map_err(|e| e.to_string())?;
-        let array = JObjectArray::from(array);
-        let count = env.get_array_length(&array).map_err(|e| e.to_string())?;
-        let mut roots = Vec::new();
-        for index in 0..count {
-            let path = env.get_object_array_element(&array, index).map_err(|e| e.to_string())?;
-            let path = JString::from(path);
-            let path: String = env.get_string(&path).map_err(|e| e.to_string())?.into();
-            let root = PathBuf::from(path).canonicalize().map_err(|e| e.to_string())?;
-            if !root.is_dir() {
-                return Err("Android app storage root is not a directory".into());
-            }
-            roots.push(root);
+    let array = env
+        .call_method(
+            activity,
+            "nexusDataFolderRoots",
+            "()[Ljava/lang/String;",
+            &[],
+        )
+        .and_then(|value| value.l())
+        .map_err(|e| e.to_string())?;
+    let array = JObjectArray::from(array);
+    let count = env.get_array_length(&array).map_err(|e| e.to_string())?;
+    let mut roots = Vec::new();
+    for index in 0..count {
+        let path = env
+            .get_object_array_element(&array, index)
+            .map_err(|e| e.to_string())?;
+        let path = JString::from(path);
+        let path: String = env.get_string(&path).map_err(|e| e.to_string())?.into();
+        let root = PathBuf::from(path)
+            .canonicalize()
+            .map_err(|e| e.to_string())?;
+        if !root.is_dir() {
+            return Err("Android app storage root is not a directory".into());
         }
-        if roots.is_empty() {
-            return Err("Android supplied no accessible app storage roots".into());
+        roots.push(root);
+    }
+    if roots.is_empty() {
+        return Err("Android supplied no accessible app storage roots".into());
+    }
+    let id = NEXT
+        .fetch_update(Ordering::Relaxed, Ordering::Relaxed, |id| id.checked_add(1))
+        .map_err(|_| "Android folder request IDs exhausted")?;
+    let (tx, rx) = oneshot::channel();
+    {
+        let mut slot = pending();
+        if slot.is_some() {
+            return Err("An Android data-folder chooser is already open".into());
         }
-        let id = NEXT.fetch_update(Ordering::Relaxed, Ordering::Relaxed, |id| id.checked_add(1))
-            .map_err(|_| "Android folder request IDs exhausted")?;
-        let (tx, rx) = oneshot::channel();
-        {
-            let mut slot = pending();
-            if slot.is_some() {
-                return Err("An Android data-folder chooser is already open".into());
-            }
-            *slot = Some(Pending { id, roots, result: tx });
-        }
-        let ticket = Ticket { id, app };
-        let initial = env.new_string(initial).map_err(|e| e.to_string())?;
-        env.call_method(activity, "showNexusDataFolder", "(JLjava/lang/String;)V",
-            &[JValue::Long(id), JValue::Object(initial.as_ref())]).map_err(|e| e.to_string())?;
-        Ok((ticket, rx))
+        *slot = Some(Pending {
+            id,
+            roots,
+            result: tx,
+        });
+    }
+    let ticket = Ticket { id, app };
+    let initial = env.new_string(initial).map_err(|e| e.to_string())?;
+    env.call_method(
+        activity,
+        "showNexusDataFolder",
+        "(JLjava/lang/String;)V",
+        &[JValue::Long(id), JValue::Object(initial.as_ref())],
+    )
+    .map_err(|e| e.to_string())?;
+    Ok((ticket, rx))
 }
 
 pub(crate) async fn pick(app: tauri::AppHandle, initial: PathBuf) -> Choice {
@@ -103,22 +131,29 @@ pub(crate) async fn pick(app: tauri::AppHandle, initial: PathBuf) -> Choice {
     // cancels a dialog created concurrently on the UI thread, without retaining a waiter.
     let (tx, rx) = oneshot::channel();
     let ui_app = app.clone();
-    let window = app.get_webview_window("main").ok_or("Android main WebView is unavailable")?;
+    let window = app
+        .get_webview_window("main")
+        .ok_or("Android main WebView is unavailable")?;
     // Tao's Rust event-loop thread is not necessarily the Java UI thread. Wry's
     // actual WebView JNI queue is the locked platform API that guarantees it.
-    window.with_webview(move |webview| {
-        webview.jni_handle().exec(move |env, activity, _| {
-            let result = begin(ui_app, env, activity, &initial.to_string_lossy());
-            if result.is_err() && env.exception_check().unwrap_or(false) {
-                let _ = env.exception_clear();
-            }
-            let _ = tx.send(result);
-        });
-    }).map_err(|e| format!("Cannot schedule Android folder chooser: {e}"))?;
+    window
+        .with_webview(move |webview| {
+            webview.jni_handle().exec(move |env, activity, _| {
+                let result = begin(ui_app, env, activity, &initial.to_string_lossy());
+                if result.is_err() && env.exception_check().unwrap_or(false) {
+                    let _ = env.exception_clear();
+                }
+                let _ = tx.send(result);
+            });
+        })
+        .map_err(|e| format!("Cannot schedule Android folder chooser: {e}"))?;
     let (_ticket, answer) = tokio::time::timeout(std::time::Duration::from_secs(10), rx)
-        .await.map_err(|_| "Android folder chooser did not reach its UI thread")?
+        .await
+        .map_err(|_| "Android folder chooser did not reach its UI thread")?
         .map_err(|_| "Android folder chooser did not start")??;
-    answer.await.map_err(|_| "Android folder chooser ended without a result")?
+    answer
+        .await
+        .map_err(|_| "Android folder chooser ended without a result")?
 }
 
 /// MainActivity's native callback. No Java exception or panic is intentionally raised.

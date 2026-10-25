@@ -7,7 +7,9 @@ pub(crate) fn selected(roots: &[PathBuf], path: &Path) -> Result<PathBuf, String
     if !path.is_absolute() || path.to_string_lossy().contains("://") {
         return Err("The data folder must be a local Android filesystem directory".into());
     }
-    let selected = path.canonicalize().map_err(|e| format!("Cannot resolve data folder: {e}"))?;
+    let selected = path
+        .canonicalize()
+        .map_err(|e| format!("Cannot resolve data folder: {e}"))?;
     if !selected.is_dir() {
         return Err("The selected data folder is not a directory".into());
     }
@@ -26,15 +28,26 @@ mod tests {
     impl Sandbox {
         fn new() -> Self {
             static NEXT: AtomicU64 = AtomicU64::new(0);
-            let dir = std::env::temp_dir().join(format!("nexus-folder-policy-{}-{}", std::process::id(), NEXT.fetch_add(1, Ordering::Relaxed)));
+            let dir = std::env::temp_dir().join(format!(
+                "nexus-folder-policy-{}-{}",
+                std::process::id(),
+                NEXT.fetch_add(1, Ordering::Relaxed)
+            ));
             std::fs::create_dir(&dir).unwrap();
             Self(dir.canonicalize().unwrap())
         }
     }
     impl Drop for Sandbox {
         fn drop(&mut self) {
-            assert!(self.0.starts_with(std::env::temp_dir().canonicalize().unwrap()));
-            assert!(self.0.file_name().unwrap().to_string_lossy().starts_with("nexus-folder-policy-"));
+            assert!(self
+                .0
+                .starts_with(std::env::temp_dir().canonicalize().unwrap()));
+            assert!(self
+                .0
+                .file_name()
+                .unwrap()
+                .to_string_lossy()
+                .starts_with("nexus-folder-policy-"));
             std::fs::remove_dir_all(&self.0).unwrap();
         }
     }
@@ -46,13 +59,20 @@ mod tests {
         std::fs::create_dir(&data).unwrap();
         std::fs::write(data.join("log.adi"), b"existing contacts").unwrap();
         assert_eq!(selected(&[root.0.clone()], &data.join(".")).unwrap(), data);
-        assert_eq!(std::fs::read(data.join("log.adi")).unwrap(), b"existing contacts");
+        assert_eq!(
+            std::fs::read(data.join("log.adi")).unwrap(),
+            b"existing contacts"
+        );
     }
 
     #[test]
     fn document_uris_and_relative_paths_are_not_filesystem_folders() {
         let root = Sandbox::new();
-        for bad in ["content://documents/tree/primary%3ANexus", "data/Nexus", "file://storage/data"] {
+        for bad in [
+            "content://documents/tree/primary%3ANexus",
+            "data/Nexus",
+            "file://storage/data",
+        ] {
             assert!(selected(&[root.0.clone()], Path::new(bad)).is_err());
         }
     }

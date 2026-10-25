@@ -555,3 +555,13 @@ APK remain mandatory separate work. The report always leaves whole-runtime
 notice/source compliance, APK payload verification and distributability false.
 All graph resolution, text generation and tests run in GitHub Actions; local
 work remains source editing and reading cloud evidence only.
+
+### Android Rust missing-text follow-up
+
+The first target notice run (40187645097) found nine missing license bodies.
+Android-only reviewed pins now retain exact immutable sources, hashes and the
+actual tao-macros Apache alternative. Desktop pins/elections remain unchanged.
+See `licenses/rust/ANDROID-REVIEW.md`. New cloud tests cover collisions, real
+Apache election, illegal alternatives, tampered hashes and VCS mismatches.
+Generation, packaging, Java/AAR/native source coverage and physical validation
+remain separate gates; source preparation alone proves none of them.

@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 - **The final Android application explicitly requests 16 KiB ELF page alignment.** The build
   retains the pinned mobile toolchain's Android system-library flags, and final APK inspection
   still rejects incompatible native segments. Audit failures now show the actual tool error.
@@ -459,6 +463,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   can also import a copy into the Logbook like any ADIF file.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 - **Nexus Remote: inviting someone to operate says what that gives them.** Under Settings ▸ Station ▸ Remote access ▸
   People, with **Operate** chosen, the form now says that someone invited to operate can do all you can from another
   computer: transmit under your callsign, edit, export or delete your log, upload with your saved logins (LoTW signed
@@ -1507,6 +1515,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   browser shows the country but cannot change it.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **JS8: the TX offset stays put while a message is going out, as in JS8Call.** Moving the TX
   offset between two frames of a message used to send the rest of the message on the new offset, so
@@ -2647,6 +2659,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   Flex native client offers no ATU button, as before. NEEDS-BENCH on a FLEX radio.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The CW cockpit's contest and Field Day F-keys now follow N1MM's layout, so F3 is now TU, and the
   exchange keys send your report.** In every contest, F1 is your CQ, F2 sends his call and your
@@ -3860,6 +3876,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   you will not see the mark yet; it appears once the Sub's frequency is read from the radio.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The map: sharp coastlines, borders and terrain at every zoom, on the flat map and the 3D globe
   alike.** The map is now drawn from Natural Earth's detailed geography at three levels of detail,
@@ -4704,6 +4724,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     is planned for 1.16.1.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The transmit buttons are in one place on every screen: FT's strip, under the scope.** TX On/Off,
   Tune, ATU and Stop TX now sit in one row under the scope or waterfall on Phone, CW, RTTY, PSK, JS8
@@ -5566,6 +5590,10 @@ A released section is history and is not rewritten, so a credit it overstated is
   than when it was queued. The repeat count does not limit CQ: an unanswered CQ still repeats
   until you stop it. (#304)
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The Needed board now puts every station on your watch list at the top whenever it is heard.**
   By call, prefix, country or grid, worked or not, as the WATCH tile already does on the Call
@@ -6658,6 +6686,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   same check runs in CI against a scripted station on 100 ms and 400 ms links.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Duplicate contacts are now kept in the log for the contests that cross-check, and still
   refused in Field Day.** Work a station you have already worked in **CQ WW (CW, SSB or RTTY),
@@ -7409,6 +7441,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
 
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **A release can no longer be published from a commit whose tests never passed.** The release
   pipeline now refuses to publish unless the exact commit being released has a completed,
@@ -8176,6 +8212,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   steps down to its own line when the field gets tight.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The clock chip says what Nexus is doing, instead of telling you to go and fix it.** Nexus has
   been correcting the PC-clock offset itself since June; the top bar had not caught up, and painted
@@ -8857,6 +8897,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   as WSJT-X ships it. Asked for by KD9TAW.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The TV page is now the real Connect view, not a summary.** 1.10.0's "Connect on a
   TV" served a plain digest — a band table and some numbers. It now serves Connect
@@ -8975,6 +9019,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   is worse than either alone.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Click a previous contact to see that station's log.** The callsign card lists every earlier
   contact with the station in front of you. Those rows are now clickable: one takes you to the
@@ -9580,6 +9628,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   the same drift has cost a keying port, a Flex address and an OmniRig slot before this.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **A station that is only receiving no longer opens your sound card's playback side at all.** You
   will see this if you look — the playback stream simply is not there until the first time you
@@ -10732,6 +10784,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   entitlement ships in the bundle now.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The Xiegu and FlexRadio setup pages say what the app actually does.** The Xiegu page
   promised that Detect auto-matches an X6100/X6200 — it never could, because those radios
@@ -10983,6 +11039,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   ping red with FT8's clock-skew colouring.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **HF is grid-quiet by default.** The rare-grid (💎) alerts now scope to VHF and up like the
   plain grid alerts — on HF nearly every decode is an unworked grid, so even the rare tier
@@ -11321,6 +11381,10 @@ A released section is history and is not rewritten, so two credits it got wrong 
   its Hamlib model number.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The connector dots tell you whether your contacts are actually getting out.** Settings ▸
   Connections painted every dot from "is a password saved?", which is not the question anyone
@@ -11886,6 +11950,10 @@ difference below is chased to the award's actual rules:**
   too, and the button creates the folder if it does not exist yet rather than doing nothing.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **When an audio device will not open, Nexus now says what it actually found.** The old message
   claimed the device was "missing, or in use by another application" without having established
@@ -16269,6 +16337,10 @@ Rounds out the APRS feature after a completeness review, and cuts a minor releas
   third-party / I-gated traffic (`}`) now decode to the real originating station.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Messages are threaded, not collapsed.** Received messages get their own chronological list
   instead of being folded into the sender's position row, so a multi-line exchange all shows
@@ -16313,6 +16385,10 @@ hardware** — for testers with a Flex):
   (turn it back off if decodes stop).
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The APRS list is a station roster now.** Instead of a firehose of repeated packets, it shows
   one row per station (latest position), newest first, with a distance + bearing column from your
@@ -16343,6 +16419,10 @@ hardware** — for testers with a Flex):
   decoder to that mode. The Digital filter chip still governs all of them.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The Spots panel has ONE mode filter now.** It used to show two overlapping rows with
   opposite behavior (one hid a class, the other showed only a submode, and they duplicated
@@ -16380,6 +16460,10 @@ hardware** — for testers with a Flex):
   alternate way to read band activity at a glance. (Ported, with attribution, from AetherSDR.)
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The waterfall renders from data now, not pixels.** Switching palettes recolors the WHOLE
   visible waterfall instantly (not just new lines), zooming and resizing re-render without
@@ -16404,6 +16488,10 @@ hardware** — for testers with a Flex):
 ## [0.15.16] — 2026-07-23 — Tempo chats like a chat app now
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Tempo stops "sending and sending."** A chat message now transmits a bounded number of
   cycles (default 3; Settings ▸ Auto-CQ) with a real 16-second listening gap after each burst,
@@ -16434,6 +16522,10 @@ hardware** — for testers with a Flex):
   It now readies the RST field without moving your scroll.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Memories are grouped by band — HF, then VHF/UHF.** The channel list (on the main Memories
   screen and inside each pack) now organizes into clean HF (< 30 MHz) and VHF/UHF sections.
@@ -16473,6 +16565,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
   build you're running.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The FT waterfall defaults to the familiar 0–3 kHz view** (the WSJT-X span), with the full-width
   view still one click away.
@@ -16512,6 +16608,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
   mode, and UTC time, so a contact made on a rig Nexus isn't driving can be logged correctly.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The Logbook map is the 3-D globe only.** The 2-D flat map was removed — the globe is the map.
 - **The Needed board is band- and privilege-aware.** A grid or entity worked on 20 m reads as new
@@ -16828,6 +16928,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
   hasn't been dismissed via Download.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Update checks now read the app's own endpoint** (`hamradiotools.io/nexus/version.json`),
   falling back to SourceForge's `best_release.json` if it's unreachable — so update
@@ -16922,6 +17026,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
     real 2m openings this month, and did I catch them?"
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **RX audio level meter now reads in dB, like WSJT-X.** It was a linear 0–1 bar whose
   "good" zone (0.45–0.9) was a voice-style target too hot for FT8, so a perfectly good
@@ -16973,6 +17081,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
   registers Nexus immediately.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **The Program section (radio programming) is now on by default.** It works on open hearham.com
   repeater data with no setup, so it no longer waits behind an opt-in toggle. (If you'd previously
@@ -17039,6 +17151,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
 ## [0.9.6] — 2026-07-16 — Fits any window or screen size + Program (radio programming)
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Nexus now fits any window size and screen resolution, not just 1080p.** The whole
   interface auto-scales to the window so the full cockpit stays visible instead of getting
@@ -17119,6 +17235,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
 ## [0.9.5] — 2026-07-16 — one shared cockpit header across every mode + FT8 layout cleanup
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Every operating mode now shares one cockpit header.** Phone, CW, FT8/FT4, and Tempo show the same
   base rig controls — frequency readout, band, mode, power, and CAT status — in the same position, so
@@ -17204,6 +17324,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
   default, so silencing HF grid chatter keeps the gems. "My call" and "CQ" alerts are unchanged.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Settings reorganized to match how you operate.** The tabs now mirror the app's Phone · Digital ·
   CW layout instead of being grouped by subsystem. New **Phone**, **Digital (FT8/FT4)**, and **CW**
@@ -17320,6 +17444,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
   already fixed.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Selecting a Xiegu (G90 / X6100 / X6200 / X5105 / X108G) now sets CAT to 19200 automatically.**
   These rigs run CI-V at 19200 and have no baud menu on the radio, so the previous 38400 default left
@@ -17436,6 +17564,10 @@ _A batched release consolidating the work since 0.15.1 (0.15.2–0.15.11)._
   not persisted, and free when off (the engine only taps the wire while it's armed).
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **FT8 Call Roster now leads with the callsign, then the Need column.** Callsign is the first thing
   operators scan, so it moves to the front; the Need column (need chips + rarity pill) follows it,
@@ -17634,6 +17766,10 @@ value used in the debug period-WAV filename. Bumped `anyhow` to clear an advisor
   one click away and your choice sticks.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Light theme is much easier to read** — stronger surface hierarchy (panels lift off the page),
   softer off-white surfaces instead of harsh pure white, and clearer tables, chips, and status
@@ -17819,6 +17955,10 @@ frequency readout, dial latency, logbook scale) plus the start of true dual-radi
   (PTT, tune carrier, and CW keying). Restored — these were missing from the voice/CW cockpits.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Fast dial tracking** — the rig's frequency is now polled on a short (~180 ms) sub-cadence,
   separate from the slower S-meter/mode/power reads, with transport-aware read deadlines, so the
@@ -17861,6 +18001,10 @@ Field-test fixes and polish for voice/CW operating, park activations, and rig tu
   RIT/XIT, and A/B VFO select (a Win4-style rig-control panel).
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **De-FT8'd Phone & CW cockpits** — the top bar no longer shows FT8/digital furniture in voice/CW;
   each mode keeps its own controls. Sortable logbook columns; clearer hunt-chip visibility;
@@ -17905,6 +18049,10 @@ Field-test fixes and polish for voice/CW operating, park activations, and rig tu
   download page, never downloads or runs anything.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - The redundant top-bar band dropdown (fed by the digital band plan, so a wrong-dial control on
   voice/CW) is hidden on Phone and CW; each cockpit keeps its own band picker.
@@ -17977,6 +18125,10 @@ as the FT1/DX1 chat layer inside it. Builds now ship as
   validated feature registry, detached panel windows, NTP slot-grid steering.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **App renamed Tempo → Nexus**; repository moved to `kd9taw/nexus`.
 - FT8/FT4 is now the production tier; FT1/DX1 remain beta pending on-air
@@ -18083,6 +18235,10 @@ decode-rate-vs-SNR remains the open gate.
   **editable quick-reply macros**.
 
 ### Changed
+- **Android Rust notice preparation records missing license texts at reviewed sources.** Nine
+  package-version pins are isolated from desktop notices; the actual Tao release's Apache
+  alternative is retained instead of assuming an MIT body. Hash and provenance checks remain
+  mandatory. This is not complete APK licensing, installation or redistribution approval.
 
 - **Starts passive (hunt-and-pounce).** Tempo no longer auto-calls CQ on startup;
   the presence beacon is an opt-in setting (default off), so the app listens and

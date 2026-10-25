@@ -1,0 +1,100 @@
+{
+  "sha256": {
+    "android-cesu8-COPYRIGHT-header": "ea3f05436af1f162690ad863c867e0eb2c73a3ba6e3a9c8edf3789e896ebd757",
+    "android-jni-rs-jni-5ae9458-LICENSE-MIT": "fea1d5bf3dd71605ce5d7d2ff695c1837e914c77195e523a86b5391716477960",
+    "android-jni-rs-macros-33045a1-LICENSE-MIT": "fea1d5bf3dd71605ce5d7d2ff695c1837e914c77195e523a86b5391716477960",
+    "android-jni-sys-macros-64d77b7-LICENSE-MIT": "1d85bd754b04ceec93e98e890edd1fa3c6a22e81bcb32135806beeccefa51cd1",
+    "android-ndk-49bbbba-LICENSE-MIT": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+    "android-ndk-context-10f2ba3-LICENSE-MIT": "508a77d2e7b51d98adeed32648ad124b7b30241a8e70b2e72c99f92d8e5874d1",
+    "android-rust-2014-LICENSE-MIT": "6485b8ed310d3f0340bf1ad1f47645069ce4069dcc6bb46c7d5c6faf41de1fdb",
+    "android-rustls-da3d9c3-LICENSE-MIT": "1c7cf76689c837a68ed8d704994e52a0f2940c087958f860d17f3186afbdcc0c",
+    "android-tao-macros-340684d-LICENSE": "a8ad31b1c3f40dca5a84119351b8fa8ddc868edd77fad8a8ebf6d8f2d16fa4ae"
+  },
+  "crates": {
+    "cesu8 1.1.0": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-rust-2014-LICENSE-MIT",
+          "https://raw.githubusercontent.com/rust-lang/rust/ba4081a5a8573875fed17545846f6f6902c8ba8d/LICENSE-MIT"
+        ],
+        [
+          "android-cesu8-COPYRIGHT-header",
+          "https://raw.githubusercontent.com/emk/cesu8-rs/f18962a9de5189f21600b7ff2898845157df4447/src/lib.rs"
+        ]
+      ]
+    },
+    "jni 0.22.4": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-jni-rs-jni-5ae9458-LICENSE-MIT",
+          "https://raw.githubusercontent.com/jni-rs/jni-rs/5ae9458a4ec44c5318f37ddc7569c1d4ae8a69e7/LICENSE-MIT"
+        ]
+      ]
+    },
+    "jni-macros 0.22.4": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-jni-rs-macros-33045a1-LICENSE-MIT",
+          "https://raw.githubusercontent.com/jni-rs/jni-rs/33045a124105c939d1e2cbdcb5a39e5d868ffa03/LICENSE-MIT"
+        ]
+      ]
+    },
+    "jni-sys-macros 0.4.1": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-jni-sys-macros-64d77b7-LICENSE-MIT",
+          "https://raw.githubusercontent.com/jni-rs/jni-sys/64d77b7a5f119d7b55b4e2c169a4668067ff59e6/LICENSE-MIT"
+        ]
+      ]
+    },
+    "ndk 0.9.0": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-ndk-49bbbba-LICENSE-MIT",
+          "https://raw.githubusercontent.com/rust-mobile/ndk/49bbbba16c58ff63cb8a0ad0eca5a9fb7ecaec25/LICENSE-MIT"
+        ]
+      ]
+    },
+    "ndk-context 0.1.1": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-ndk-context-10f2ba3-LICENSE-MIT",
+          "https://raw.githubusercontent.com/rust-windowing/android-ndk-rs/10f2ba388fca20f7349996ebae26ccda7a6fda5c/LICENSE-MIT"
+        ]
+      ]
+    },
+    "ndk-sys 0.6.0+11769913": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-ndk-49bbbba-LICENSE-MIT",
+          "https://raw.githubusercontent.com/rust-mobile/ndk/49bbbba16c58ff63cb8a0ad0eca5a9fb7ecaec25/LICENSE-MIT"
+        ]
+      ]
+    },
+    "rustls-platform-verifier-android 0.1.1": {
+      "license": "MIT",
+      "texts": [
+        [
+          "android-rustls-da3d9c3-LICENSE-MIT",
+          "https://raw.githubusercontent.com/rustls/rustls-platform-verifier/da3d9c36f48fb9f8f97e94f132fdab67ab0fc75b/LICENSE-MIT"
+        ]
+      ]
+    },
+    "tao-macros 0.1.3": {
+      "license": "Apache-2.0",
+      "texts": [
+        [
+          "android-tao-macros-340684d-LICENSE",
+          "https://raw.githubusercontent.com/tauri-apps/tao/340684d932b6126bed449fc1f4edca81776ad592/LICENSE"
+        ]
+      ]
+    }
+  }
+}

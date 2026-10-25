@@ -575,3 +575,7 @@ for provenance, declared licenses and the pending binary-distribution audit.
 
 Thanks to Nico Huber and SourceArcade/flashprog for the FT4222 direct-USB
 protocol reference used by the experimental Android port; see `NOTICE`.
+
+Thanks also to the Android Rust dependency authors listed in `NOTICE`; exact
+missing-license-text provenance and scope limitations are recorded in
+[licenses/rust/ANDROID-REVIEW.md](licenses/rust/ANDROID-REVIEW.md).

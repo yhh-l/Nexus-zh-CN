@@ -1903,3 +1903,16 @@ libusb source or FTDI proprietary library is imported by this addition.
 The new code remains original Nexus GPL-3.0-only code. Hardware I/O, the
 Android USB Host bridge and its permissions are not implemented by these
 wire primitives; this is not a complete driver, redistribution audit or APK.
+
+## Android Rust notice-text provenance (experimental, not binary release approval)
+
+Thanks to the Rust Project Developers, Eric Kidd, Prevoty and jni-rs contributors,
+the rust-jni-sys Developers, Rust Android NDK contributors, 1Password and the
+Tauri Programme in the Commons Conservancy. Android-only missing Rust license
+texts and exact source URLs are recorded in licenses/rust/android-upstream.json;
+per-file body/excerpt review is in licenses/rust/ANDROID-REVIEW.md. MIT is selected
+where available; tao-macros 0.1.3 uses its declared Apache-2.0 alternative because
+its release repository supplies that body, not MIT. These texts supplement only
+the Android generator; desktop license choices are unchanged. This is not a
+complete per-file/runtime/source audit, Java/AAR coverage or APK redistribution
+approval. Binary distribution remains gated on those separate prerequisites.

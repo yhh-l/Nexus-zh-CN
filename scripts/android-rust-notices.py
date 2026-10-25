@@ -45,6 +45,31 @@ def selected_packages(metadata, tree):
     return sorted(third_party, key=lambda p: (p["name"], policy.version_key(p["version"])))
 
 
+def merge_android_pins(desktop, android):
+    """Keep desktop policy unchanged; refuse accidental replacement of reviewed pins."""
+    merged = {}
+    for section in ("sha256", "crates"):
+        if desktop[section].keys() & android[section].keys():
+            raise ValueError(f"Android pins collide with desktop {section}")
+        merged[section] = {**desktop[section], **android[section]}
+    return merged
+
+
+def package_entry(package, allowed, rank, upstream, android, used):
+    key = f"{package['name']} {package['version']}"
+    selected_rank = rank
+    if key in android["crates"]:
+        elected = frozenset(android["crates"][key]["license"].split(" AND "))
+        if not elected <= allowed or elected not in policy.alternatives(package["license"]):
+            raise policy.Stop(f"{key}: reviewed Android election is not an allowed package alternative")
+        # tao-macros publishes no license body; the exact release repository has
+        # Apache-2.0, not MIT. Select that declared alternative, never invent MIT.
+        selected_rank = {license: priority + 1 for license, priority in rank.items()}
+        for license in elected:
+            selected_rank[license] = 0
+    return policy.entry(package, allowed, selected_rank, upstream, used)
+
+
 def main():
     if os.environ.get("GITHUB_ACTIONS") != "true":
         raise ValueError("Android notice generation is GitHub-only")
@@ -69,12 +94,14 @@ def main():
             allowed = tomllib.load(handle)["licenses"]["allow"]
         rank = {license: i for i, license in enumerate(
             policy.PREFERENCE + [a for a in allowed if a not in policy.PREFERENCE])}
-        upstream = json.loads(Path(policy.UPSTREAM).read_text())
+        desktop = json.loads(Path(policy.UPSTREAM).read_text())
+        android = json.loads((ROOT / "licenses/rust/android-upstream.json").read_text())
+        upstream = merge_android_pins(desktop, android)
         used, entries = set(), []
         for package in packages:
             item = {key: package.get(key) for key in ("name", "version", "source", "license", "repository")}
             try:
-                text = policy.entry(package, set(allowed), rank, upstream, used)
+                text = package_entry(package, set(allowed), rank, upstream, android, used)
                 item["noticeSha256"] = hashlib.sha256(text.encode()).hexdigest()
                 entries.append(text)
             except policy.Stop as error:
@@ -84,6 +111,10 @@ def main():
         # Desktop-only pins are intentionally not required by this target subset.
         # Every pin actually used still goes through the existing hash/provenance check.
         report["reviewedPinsUsed"] = sorted(used)
+        report["reviewedAndroidPinsUsed"] = sorted(used & android["crates"].keys())
+        unused = android["crates"].keys() - used
+        if unused:
+            report["problems"].append(f"Android pins no longer used: {sorted(unused)}")
         if not report["problems"]:
             header = ("Nexus Android ARM64 - Rust dependency notices\n\n"
                       "Locked radio/yaesu-wf/custom-protocol normal-edge Rust graph only.\n"

@@ -8,6 +8,9 @@ on:
     paths:
       - .github/workflows/android-storage.yml
       - src-tauri/src/android_storage.rs
+      - src-tauri/src/android_folder_picker/**
+      - src-tauri/gen/android/**
+      - scripts/android-folder-harness/**
       - src-tauri/src/lib.rs
       - scripts/android-platform.test.mjs
       - src-tauri/src/client_mode/tests.rs
@@ -74,6 +77,10 @@ jobs:
             exit 1
           fi
           grep -F 'test tests::real_private_directories_are_writable_and_survive_reopening ... FAILED' "$RUNNER_TEMP/storage-negative.log"
+      - name: Test the actual selected-directory policy without opening a station
+        run: |
+          rustc --edition=2021 --test src-tauri/src/android_folder_picker/policy.rs --crate-name android_folder_policy -o "$RUNNER_TEMP/android-folder-tests"
+          "$RUNNER_TEMP/android-folder-tests"
       - name: Check actual pinned shell formatting
         run: cargo fmt --manifest-path src-tauri/Cargo.toml --check
       - name: Verify dependency notices against locked upstream packages
@@ -91,5 +98,44 @@ jobs:
           path: |
             ${{ runner.temp }}/android-storage-format.patch
             ${{ runner.temp }}/storage-negative.log
+          if-no-files-found: warn
+          retention-days: 7
+
+  native-folder-ui:
+    name: Actual native folder Kotlin + Android framework-modeled tests (not APK)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Use Java 17 only on the GitHub runner
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: 17
+      - name: Bootstrap only the pinned cloud Gradle tool, with both wrapper and distribution checksums
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "$ANDROID_HOME/platforms/android-36/android.jar"
+          mkdir -p scripts/android-folder-harness/gradle/wrapper
+          cp src-tauri/gen/android/gradlew scripts/android-folder-harness/gradlew
+          cp src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties scripts/android-folder-harness/gradle/wrapper/
+          curl --fail --location --retry 3 'https://raw.githubusercontent.com/tauri-apps/tauri/tauri-cli-v2.11.5/crates/tauri-cli/templates/mobile/android/gradle/wrapper/gradle-wrapper.jar' -o scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.jar
+          echo 'e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637  scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.jar' | sha256sum --check --strict
+          grep -Fx 'distributionSha256Sum=bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531' scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.properties
+      - name: Compile the actual product picker and run native modeled lifecycle/data-preservation tests
+        working-directory: scripts/android-folder-harness
+        run: bash ./gradlew --no-daemon --stacktrace testDebugUnitTest
+      - name: Preserve actual native test reports, never a candidate APK
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-native-folder-test-reports
+          path: |
+            scripts/android-folder-harness/build/reports/tests/
+            scripts/android-folder-harness/build/test-results/
           if-no-files-found: warn
           retention-days: 7

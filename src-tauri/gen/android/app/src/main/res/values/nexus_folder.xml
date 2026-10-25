@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nexus_folder_title">Choose Nexus data folder</string>
+    <string name="nexus_folder_scope">Use internal or external app storage for the live database. These folders are deleted on uninstall; export backups separately. Document import/export uses the system document picker.</string>
+    <string name="nexus_folder_internal">Internal app storage</string>
+    <string name="nexus_folder_external">External app storage %1$d</string>
+    <string name="nexus_folder_roots">Storage locations</string>
+    <string name="nexus_folder_select">Use this folder</string>
+    <string name="nexus_folder_create">New folder</string>
+    <string name="nexus_folder_invalid_name">Enter a folder name without slashes or control characters.</string>
+    <string name="nexus_folder_create_failed">Could not create that folder. Existing folders are not overwritten.</string>
+    <string name="nexus_folder_unavailable">The selected app storage is no longer accessible.</string>
+    <string name="nexus_folder_activity_closed">The Android screen closed before folder selection finished.</string>
+</resources>

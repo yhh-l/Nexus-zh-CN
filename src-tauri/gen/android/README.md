@@ -33,3 +33,17 @@ The source-generation workflow may recreate unused template resources in its
 throwaway GitHub checkout. It must not overwrite any reviewed tracked host file.
 Only an explicitly selected ARM64 build can become the intended APK; the
 upstream plugin's other desktop/emulator ABI variants are not acceptance evidence.
+
+## Native data-directory chooser
+
+The host now implements a real native browser for the OS-supplied internal and
+mounted external app directories. Rust calls it asynchronously on the Activity
+UI thread and revalidates the selected filesystem directory. Cancel, destruction
+and aborted commands release their own request; stale callbacks cannot complete
+a newer request. Selection does not adopt a folder: verified copying and the
+write-pointer-last restart policy remain in the existing backend.
+
+No broad-storage permission or SAF URI-to-path workaround is used. Public document
+import/export/backups, native-modal Stop access, full JNI/Gradle integration and
+physical-device lifecycle checks are still required before this is a usable APK.
+The focused library harness is only a modeled test of the actual picker class.

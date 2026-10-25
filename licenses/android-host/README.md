@@ -60,3 +60,9 @@ to these files; no source is claimed as newly authored Nexus code.
 - No Gradle distribution, wrapper JAR, plugin native code, signing material,
   machine path or compiled foreign library is vendored here. Binary dependency
   license/notice delivery remains a separate prerequisite before an APK ships.
+
+Further original Nexus integration adds the app-scoped folder browser, MainActivity
+JNI/lifecycle entry points, localized folder-dialog resources, and precise ProGuard
+method keeps. It also pins the official Gradle 8.14.3 distribution checksum. These
+are intentional changes from the baseline report, not unmodified upstream files.
+The test-only JUnit/Robolectric harness is not distributed as the application.

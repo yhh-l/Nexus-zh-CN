@@ -19,3 +19,10 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+# Rust invokes these on the real Activity via JNI; do not rename them in release builds.
+-keepclassmembers class com.kd9taw.tempo.MainActivity {
+    public java.lang.String[] nexusDataFolderRoots();
+    public void showNexusDataFolder(long, java.lang.String);
+    public void cancelNexusDataFolder(long);
+    private native void nexusDataFolderResult(long, java.lang.String, java.lang.String);
+}

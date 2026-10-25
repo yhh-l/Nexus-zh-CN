@@ -39,6 +39,9 @@ mod alert;
 /// Early OS-owned storage roots; the desktop/test paths below stay unchanged.
 #[cfg(any(target_os = "android", test))]
 mod android_storage;
+/// Android-native local folder selection; desktop keeps its existing OS dialog.
+#[cfg(target_os = "android")]
+mod android_folder_picker;
 /// Test builds only (the `bench-road-switch` feature): the switch on a computer driving a station
 /// that blocks its command link or its Stop road, one at a time, so each road can be tried alone.
 #[cfg(feature = "bench-road-switch")]
@@ -2904,7 +2907,8 @@ fn clear_data_folder() -> Result<(), String> {
 
 /// The OS folder picker for #289, so the operator does not have to type a filesystem path.
 /// `None` means the dialog was cancelled — never an error, and never a change: this command
-/// only READS a path back. Adopting it is still `set_data_folder`, with the same copy /
+/// never adopts data or writes a preference (Android can explicitly create a new directory).
+/// Adopting it is still `set_data_folder`, with the same copy /
 /// no-copy choice and the same refusals.
 ///
 /// Driven from Rust like the notification and autostart plugins, so the webview needs no
@@ -2915,23 +2919,32 @@ fn clear_data_folder() -> Result<(), String> {
 /// The callback form, not `blocking_pick_folder`: the blocking one deadlocks on the main
 /// thread, and nothing here guarantees which thread a command body runs on. The oneshot ends
 /// with the callback, and a dropped sender resolves to `None` — a cancelled dialog and a
-/// vanished one both leave the typed path alone.
+/// vanished one both leave the typed path alone. Android instead reports lifecycle/JNI errors
+/// separately from an actual user cancellation, using its native app-directory browser.
 #[tauri::command(async)]
-async fn pick_data_folder(app: tauri::AppHandle) -> Option<String> {
-    use tauri_plugin_dialog::DialogExt;
-    let (tx, rx) = tokio::sync::oneshot::channel();
-    app.dialog()
-        .file()
-        // Open where the operator's data already is, not in the home directory.
-        .set_directory(shared_data_dir())
-        .pick_folder(move |picked| {
-            let _ = tx.send(picked);
-        });
-    rx.await
-        .ok()
-        .flatten()
-        .and_then(|p| p.into_path().ok())
-        .map(|p| p.to_string_lossy().into_owned())
+async fn pick_data_folder(app: tauri::AppHandle) -> Result<Option<String>, String> {
+    #[cfg(target_os = "android")]
+    {
+        android_folder_picker::pick(app, shared_data_dir()).await
+    }
+    #[cfg(not(target_os = "android"))]
+    {
+        use tauri_plugin_dialog::DialogExt;
+        let (tx, rx) = tokio::sync::oneshot::channel();
+        app.dialog()
+            .file()
+            // Open where the operator's data already is, not in the home directory.
+            .set_directory(shared_data_dir())
+            .pick_folder(move |picked| {
+                let _ = tx.send(picked);
+            });
+        Ok(rx
+            .await
+            .ok()
+            .flatten()
+            .and_then(|p| p.into_path().ok())
+            .map(|p| p.to_string_lossy().into_owned()))
+    }
 }
 
 /// The journals' own thread, from the shell's side: the exit path waits for it, and an

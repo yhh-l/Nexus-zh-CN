@@ -192,6 +192,42 @@ jobs:
           assert int(suite.get('errors', '0')) == 0, 'Compilation/framework errors are not a passing negative control'
           PY
           restore
+      - name: Prove the native permission test rejects bypassing actual Android authority
+        working-directory: scripts/android-folder-harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          source="$GITHUB_WORKSPACE/src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusLaunchActivity.kt"
+          backup=$(mktemp "$RUNNER_TEMP/nexus-permission.XXXXXX")
+          cp "$source" "$backup"
+          restore() { cp "$backup" "$source"; }
+          trap restore EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('../../src-tauri/gen/android/app/src/main/java/com/kd9taw/tempo/NexusLaunchActivity.kt')
+          text = source.read_text()
+          needle = '    if (hasMicrophone()) openMain()'
+          if text.count(needle) != 1:
+              raise ValueError('Negative control must mutate actual OS permission recheck')
+          source.write_text(text.replace(needle, '    if (true) openMain()'))
+          PY
+          set +e
+          bash ./gradlew --no-daemon --stacktrace testDebugUnitTest --tests '*NexusLaunchActivityTest.deniedOrForgedCallbackDoesNotGrantPermissionOrStartTauri' > "$RUNNER_TEMP/permission-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/permission-negative.log"
+          test "$status" -ne 0
+          python3 - <<'PY'
+          from pathlib import Path
+          import xml.etree.ElementTree as ET
+          report = Path('build/test-results/testDebugUnitTest/TEST-com.kd9taw.tempo.NexusLaunchActivityTest.xml')
+          suite = ET.parse(report).getroot()
+          assert int(suite.get('tests', '0')) == 1, 'Actual permission test did not execute'
+          assert int(suite.get('failures', '0')) == 1, 'OS permission bypass was not detected'
+          assert int(suite.get('errors', '0')) == 0, 'Framework errors do not prove permission enforcement'
+          assert suite.find('testcase/failure').get('type') == 'java.lang.AssertionError'
+          PY
+          restore
       - name: Compile actual product folder/viewport controllers and run native modeled tests
         working-directory: scripts/android-folder-harness
         run: bash ./gradlew --no-daemon --stacktrace testDebugUnitTest

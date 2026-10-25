@@ -8,6 +8,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android asks for local receive-audio permission before starting the native station.** A native
+  first-launch page explains microphone/USB capture permission and respects denial; continuing
+  without permission does not fake capture or grant access. An already-entered host is returned to
+  without a permission prompt over its Stop controls. The same private Tauri host, native decoder
+  and transmit safeguards remain in use. NEEDS-BENCH: real Android grant/deny/revoke, USB audio,
+  process recreation and launcher return; this is not an installable APK announcement.
 - **Android content avoids system bars, display cutouts and the on-screen keyboard.** The native
   main and panel Activities apply the OS insets to their existing content parent, without replacing
   or reloading the WebView. Repeated updates do not accumulate padding, and overlapping keyboard

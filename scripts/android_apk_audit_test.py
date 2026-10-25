@@ -79,7 +79,8 @@ class ManifestPolicy(unittest.TestCase):
         "package: name='com.kd9taw.tempo' versionCode='1' versionName='1.20.0'\n"
         "sdkVersion:'35'\ntargetSdkVersion:'36'\n"
         "uses-permission: name='android.permission.INTERNET'\n"
-        "launchable-activity: name='com.kd9taw.tempo.MainActivity' label='Nexus' icon=''\n"
+        "uses-permission: name='android.permission.RECORD_AUDIO'\n"
+        "launchable-activity: name='com.kd9taw.tempo.NexusLaunchActivity' label='Nexus' icon=''\n"
         "native-code: 'arm64-v8a'\n"
     )
 
@@ -96,7 +97,7 @@ class ManifestPolicy(unittest.TestCase):
         for before, after in [("name='com.kd9taw.tempo'", "name='foreign.app'"),
                               ("sdkVersion:'35'", "sdkVersion:'24'"),
                               ("targetSdkVersion:'36'", "targetSdkVersion:'35'"),
-                              (".MainActivity'", ".ForeignActivity'"),
+                              (".NexusLaunchActivity'", ".ForeignActivity'"),
                               ("native-code: 'arm64-v8a'", "native-code: 'arm64-v8a' 'x86_64'"),
                               ("android.permission.INTERNET", "android.permission.FOREIGN")]:
             with self.subTest(before=before):

@@ -14,6 +14,7 @@ class MainActivity : TauriActivity() {
   private var contentInsets: NexusWindowInsets? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
+    NexusLaunchState.enterMain()
     enableEdgeToEdge()
     super.onCreate(savedInstanceState)
     contentInsets = NexusWindowInsets(findViewById<View>(android.R.id.content)) { windowShape?.resize() }

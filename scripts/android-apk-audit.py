@@ -58,13 +58,13 @@ def manifest_core(output):
     launcher = exactly(r"^launchable-activity:\s+name='([^']+)'", "launcher")
     abis = re.findall(r"'([^']+)'", exactly(r"^native-code:(.*)$", "native ABI"))
     if (package != "com.kd9taw.tempo" or minimum != "35" or target != "36" or
-            launcher != package + ".MainActivity" or abis != ["arm64-v8a"]):
+            launcher != package + ".NexusLaunchActivity" or abis != ["arm64-v8a"]):
         raise ValueError("Actual APK identity/SDK/launcher/ABI differs from the reviewed Android host")
     if re.search(r"^application-debuggable(?:\s|:|$)", output, re.MULTILINE):
         raise ValueError("Expected the actual non-debuggable release-profile APK")
     permissions = re.findall(r"^uses-permission(?:-sdk-23)?:\s*(?:name=)?'([^']+)'", output, re.MULTILINE)
-    if "android.permission.INTERNET" not in permissions:
-        raise ValueError("Actual APK lost the existing network permission")
+    if not {"android.permission.INTERNET", "android.permission.RECORD_AUDIO"}.issubset(permissions):
+        raise ValueError("Actual APK lost network or native audio-capture permission")
     return {"package": package, "minSdk": int(minimum), "targetSdk": int(target),
             "launcher": launcher, "abis": abis, "debuggable": False,
             "declaredPermissions": sorted(set(permissions)), "coreFieldsVerified": True,

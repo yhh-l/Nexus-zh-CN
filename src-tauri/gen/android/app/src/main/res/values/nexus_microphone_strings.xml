@@ -1,0 +1,8 @@
+<resources>
+    <string name="nexus_microphone_title">Receive audio permission</string>
+    <string name="nexus_microphone_reason">Nexus needs Android microphone permission to capture local receive audio, including USB audio, for decoding. Granting permission does not enable transmission. Network audio and logbook features do not require local capture permission.</string>
+    <string name="nexus_microphone_request">Allow receive audio capture</string>
+    <string name="nexus_microphone_continue">Continue without local capture</string>
+    <string name="nexus_microphone_waiting">Waiting for your Android permission choice…</string>
+    <string name="nexus_microphone_denied">Local audio capture is not authorized. You can continue without it. Your permission choice is not changed by Nexus.</string>
+</resources>

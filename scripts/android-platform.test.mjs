@@ -280,7 +280,7 @@ test('all seventeen trusted panel components are real app-private Tauri Activiti
   const manifest = fs.readFileSync(path.join(root, 'src-tauri/gen/android/app/src/main/AndroidManifest.xml'), 'utf8');
   privatePanelComponents(policy, kotlin, manifest);
   assert.throws(() => privatePanelComponents(policy, kotlin.replace('class NeededPanelActivity : NexusPanelActivity()', ''), manifest));
-  assert.throws(() => privatePanelComponents(policy, kotlin, manifest.replace('android:exported="false"', 'android:exported="true"')));
+  assert.throws(() => privatePanelComponents(policy, kotlin, manifest.replace(/(android:name="\.WaterfallPanelActivity"[\s\S]*?)android:exported="false"/, '$1android:exported="true"')));
 });
 
 test('Android edge docking refuses before geometry persistence, with the desktop path retained', () => {
@@ -309,4 +309,31 @@ test('both actual Activity owners apply native safe content bounds and clean the
   nativeInsetOwners(main, panels);
   assert.throws(() => nativeInsetOwners(main.replace('contentInsets = NexusWindowInsets', 'contentInsets = fakeInsets'), panels));
   assert.throws(() => nativeInsetOwners(main, panels.replace('    contentInsets?.close()', '    // cleanup removed')));
+});
+
+function nativeMicrophonePreflight(main, launch, manifest) {
+  assert.match(launch, /class NexusLaunchActivity : Activity\(\)/);
+  assert.doesNotMatch(launch, /System\.loadLibrary|external fun|WebView\(/);
+  const create = launch.slice(launch.indexOf('override fun onCreate('), launch.indexOf('override fun onResume('));
+  assert.match(create, /if \(NexusLaunchState.mainEntered \|\| hasMicrophone\(\)\)/);
+  assert.match(launch, /requestPermissions\(arrayOf\(Manifest.permission.RECORD_AUDIO\), MICROPHONE_REQUEST\)/);
+  assert.match(launch, /checkSelfPermission\(Manifest.permission.RECORD_AUDIO\) == PackageManager.PERMISSION_GRANTED/);
+  assert.match(launch, /if \(hasMicrophone\(\)\) openMain\(\)/);
+  assert.match(launch, /if \(pending \|\| handedOff \|\| isFinishing \|\| isDestroyed\) return/);
+  assert.match(manifest, /android:name="\.MainActivity"\s+android:exported="false"/);
+  assert.match(manifest, /android:name="\.NexusLaunchActivity" android:exported="true"/);
+  assert.match(manifest, /<uses-permission android:name="android.permission.RECORD_AUDIO"/);
+  assert(main.indexOf('NexusLaunchState.enterMain()') >= 0);
+  assert(main.indexOf('NexusLaunchState.enterMain()') < main.indexOf('super.onCreate('));
+}
+
+test('native first-run microphone permission precedes station startup and never bypasses OS authority', () => {
+  const directory = path.join(root, 'src-tauri/gen/android/app/src/main');
+  const main = fs.readFileSync(path.join(directory, 'java/com/kd9taw/tempo/MainActivity.kt'), 'utf8');
+  const launch = fs.readFileSync(path.join(directory, 'java/com/kd9taw/tempo/NexusLaunchActivity.kt'), 'utf8');
+  const manifest = fs.readFileSync(path.join(directory, 'AndroidManifest.xml'), 'utf8');
+  nativeMicrophonePreflight(main, launch, manifest);
+  assert.throws(() => nativeMicrophonePreflight(main, launch.replace('if (hasMicrophone()) openMain()', 'if (true) openMain()'), manifest));
+  assert.throws(() => nativeMicrophonePreflight(main, launch.replace('if (NexusLaunchState.mainEntered || hasMicrophone())', 'if (false)'), manifest));
+  assert.throws(() => nativeMicrophonePreflight(main, launch, manifest.replace(/(android:name="\.MainActivity"\s+)android:exported="false"/, '$1android:exported="true"')));
 });

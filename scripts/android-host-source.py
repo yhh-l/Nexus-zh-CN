@@ -54,12 +54,23 @@ def inspect(project, identifier, minimum):
             "Launcher must use reviewed Nexus artwork, not template artwork")
     activity = next((node for node in app.findall("activity")
                      if node.get(android + "name") == ".MainActivity"), None)
-    require(activity is not None and activity.get(android + "exported") == "true",
-            "Launcher activity is not wired")
+    require(activity is not None and activity.get(android + "exported") == "false",
+            "The native main host must be app-private behind preflight")
+    launch = next((node for node in app.findall("activity")
+                   if node.get(android + "name") == ".NexusLaunchActivity"), None)
+    require(launch is not None and launch.get(android + "exported") == "true",
+            "Actual native permission preflight launcher is missing")
+    require(not activity.findall("intent-filter"), "MainActivity must not bypass the preflight launcher")
+    permissions = {node.get(android + "name") for node in manifest.findall("uses-permission")}
+    require({"android.permission.INTERNET", "android.permission.RECORD_AUDIO"}.issubset(permissions),
+            "Native Android network/audio permissions are missing")
+    launch_source = project / f"app/src/main/java/{identifier.replace('.', '/')}/NexusLaunchActivity.kt"
+    require(launch_source.is_file() and "class NexusLaunchActivity : Activity()" in launch_source.read_text(),
+            "Preflight is not the actual native Activity")
     require(any(
         any(node.get(android + "name") == "android.intent.action.MAIN" for node in intent.findall("action"))
         and any(node.get(android + "name") == "android.intent.category.LAUNCHER" for node in intent.findall("category"))
-        for intent in activity.findall("intent-filter")), "Launcher intent is missing")
+        for intent in launch.findall("intent-filter")), "Launcher intent is missing")
     icon = project / "app/src/main/res/drawable-nodpi/nexus_launcher.png"
     require(icon.read_bytes() == (ROOT / "src-tauri/icons/icon-source.png").read_bytes(),
             "Android launcher must preserve the existing Nexus master artwork")
@@ -106,6 +117,30 @@ def mutation_controls(project, identifier, minimum):
                 pass
             else:
                 raise AssertionError("Generated-source guard accepted an invalid host")
+        finally:
+            file.write_bytes(original)
+    file = project / "app/src/main/AndroidManifest.xml"
+    original = file.read_bytes()
+    android = "{http://schemas.android.com/apk/res/android}"
+    for mutation in ("main-exported", "audio-permission", "launcher-private"):
+        tree = ET.fromstring(original)
+        app = tree.find("application")
+        if mutation == "audio-permission":
+            permission = next(node for node in tree.findall("uses-permission")
+                              if node.get(android + "name") == "android.permission.RECORD_AUDIO")
+            tree.remove(permission)
+        else:
+            name = ".MainActivity" if mutation == "main-exported" else ".NexusLaunchActivity"
+            node = next(node for node in app.findall("activity") if node.get(android + "name") == name)
+            node.set(android + "exported", "true" if mutation == "main-exported" else "false")
+        try:
+            file.write_bytes(ET.tostring(tree, encoding="utf-8"))
+            try:
+                inspect(project, identifier, minimum)
+            except ValueError:
+                pass
+            else:
+                raise AssertionError(f"Generated-source guard accepted broken native preflight: {mutation}")
         finally:
             file.write_bytes(original)
     foreign = project / "foreign-fixture.dll"

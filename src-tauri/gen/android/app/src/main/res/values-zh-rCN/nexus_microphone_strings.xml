@@ -1,0 +1,8 @@
+<resources>
+    <string name="nexus_microphone_title">接收音频权限</string>
+    <string name="nexus_microphone_reason">Nexus 需要 Android 麦克风权限，才能采集本机或 USB 接收音频用于解码。允许采音不会启用发射。网络音频和日志功能不需要本机采音权限。</string>
+    <string name="nexus_microphone_request">允许采集接收音频</string>
+    <string name="nexus_microphone_continue">暂不使用本机采音，继续</string>
+    <string name="nexus_microphone_waiting">正在等待你在 Android 权限窗口中选择…</string>
+    <string name="nexus_microphone_denied">尚未获得本机采音权限，你仍可继续使用其他功能。Nexus 不会更改你的授权选择。</string>
+</resources>

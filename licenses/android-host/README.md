@@ -71,3 +71,9 @@ The original NexusWindowInsets controller and its Activity lifecycle integration
 apply Android system-bar, cutout and keyboard insets to the existing native content
 parent. No upstream source was imported for this controller. Its framework-modeled
 tests and actual-source mutation control are not physical-device layout evidence.
+
+The original native NexusLaunchActivity preflight asks for local receive-audio
+permission only before the station host is entered. MainActivity is now app-private;
+its original Tauri identity and engine remain intact. Permission denial is not an
+audio implementation or a grant. The seven framework-modeled tests never replace
+or execute TauriActivity. These additions import no upstream implementation.

@@ -59,3 +59,7 @@ crates/tempo-audio/tests/fixtures/rigctld/** -text
 *.ico     binary
 *.icns    binary
 *.onnx    binary
+
+# Reviewed Android JVM notice texts: preserve the exact published source bytes.
+licenses/android-jvm/kotlinx-coroutines-1.9.0/LICENSE.txt -text
+licenses/android-jvm/kotlinx-coroutines-1.9.0/NOTICE.txt -text

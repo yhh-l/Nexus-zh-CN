@@ -1954,3 +1954,17 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+## kotlinx.coroutines source-distribution notices for Android (scoped)
+
+Thanks to JetBrains s.r.o., the Kotlin Programming Language contributors and
+kotlinx.coroutines contributors. The actual Android JVM graph includes
+kotlinx-coroutines-core and kotlinx-coroutines-core-jvm 1.9.0. The upstream
+source-distribution Apache-2.0 license and separate NOTICE are preserved
+unchanged in licenses/android-jvm/kotlinx-coroutines-1.9.0/, with exact-commit,
+per-file correspondence and scope notes in that directory's README.md.
+The Android resource map stages both texts under resources/android-jvm/;
+the final APK gate verifies exact current-input and notice bytes rather than
+assuming configuration means delivery. No implementation source is imported
+by these texts. This scoped attribution is not complete JVM/native/source
+compliance, an installability claim or binary redistribution approval.

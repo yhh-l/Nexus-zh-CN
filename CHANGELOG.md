@@ -624,6 +624,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   your browser; the watch-and-control workspace it replaced is gone from the page.
 
 ### Fixed
+- **Android coroutines notices retain the reviewed upstream license and attribution.**
+  The Android resource map stages the fixed-source 1.9.0 LICENSE and NOTICE.
+  Final APK inspection binds these texts to current resolved component source
+  hashes, checks their own pins and refuses missing, duplicate or changed APK
+  bytes. Negative fixtures preserve unrelated notices so one failure cannot
+  mask another. This is scoped delivery, not complete JVM or device approval.
 - **Android runtime attribution retains Capacitor's original MIT notice.**
   Read-only review of the locked Tauri Android source traced two helpers to
   their fixed upstream Capacitor commit. The original Drifty copyright and

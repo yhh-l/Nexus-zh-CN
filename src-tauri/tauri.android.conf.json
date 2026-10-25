@@ -19,7 +19,9 @@
     "resources": {
       "resources/hamlib/*": null,
       "../licenses/rust/THIRD-PARTY.txt": null,
-      "../target/android-notices/RUST-THIRD-PARTY.txt": "resources/rust/THIRD-PARTY.txt"
+      "../target/android-notices/RUST-THIRD-PARTY.txt": "resources/rust/THIRD-PARTY.txt",
+      "../licenses/android-jvm/kotlinx-coroutines-1.9.0/LICENSE.txt": "resources/android-jvm/kotlinx-coroutines-1.9.0/LICENSE.txt",
+      "../licenses/android-jvm/kotlinx-coroutines-1.9.0/NOTICE.txt": "resources/android-jvm/kotlinx-coroutines-1.9.0/NOTICE.txt"
     }
   }
 }

@@ -584,3 +584,7 @@ Thanks to Drifty Co. and the Ionic Capacitor contributors for the code origin
 identified by two Tauri Android helpers. Their fixed-commit MIT terms are
 preserved in `NOTICE`; scoped per-file review is recorded in
 [licenses/android-host](licenses/android-host/README.md).
+
+Thanks also to JetBrains and the kotlinx.coroutines contributors. Scoped Android
+source-license provenance and preserved upstream notices are in
+[licenses/android-jvm/kotlinx-coroutines-1.9.0](licenses/android-jvm/kotlinx-coroutines-1.9.0/README.md).

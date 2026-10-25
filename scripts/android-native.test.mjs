@@ -304,6 +304,7 @@ test('OpenSSL bootstrap pins source, uses NDK Android API 35 and never permits h
 });
 
 test('real APK code generation follows the full backend gate and cannot distribute a checkpoint as an APK', () => {
+  const workflow = fs.readFileSync(path.join(ROOT, '.github/workflows/android-arm64.yml'), 'utf8');
   const build = fs.readFileSync(path.join(ROOT, 'scripts/build-android-apk.sh'), 'utf8');
   const syntax = run('bash', ['-n', 'scripts/build-android-apk.sh']);
   assert.equal(syntax.status, 0, syntax.output);

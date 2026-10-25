@@ -1,0 +1,95 @@
+# Cloud-only source lock repair. No compile/test, repository write or deployment.
+name: Android dependency security lock repair
+
+on:
+  workflow_dispatch:
+  # Register/run the diagnostic on this branch's first approved workflow push.
+  # Applying its lock patch does NOT match this path and cannot create a loop.
+  push:
+    branches: [codex/android-arm64]
+    paths: [.github/workflows/android-lock-repair.yml]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-lock-repair-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  prepare-lock-patch:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout the exact approved source revision
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up the existing pinned Rust toolchain
+        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          components: rustfmt
+
+      - name: Set up the Remote service Node toolchain
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Resolve patched Undici using the existing scoped Miniflare override
+        run: |
+          npm --prefix remote pkg set overrides.miniflare.undici=7.30.1
+          npm --prefix remote install --package-lock-only --ignore-scripts
+
+      - name: Verify the shell formatting repair on the cloud compiler toolchain
+        run: cargo fmt --manifest-path src-tauri/Cargo.toml --check
+
+      # RUSTSEC-2026-0386: 1.52.3 is affected; 1.53.3 is a patched version.
+      # Never add an advisory ignore or select packages by editing checksums.
+      - name: Resolve patched Tokio in BOTH independent lockfiles on GitHub
+        run: |
+          cargo update --manifest-path Cargo.toml -p tokio --precise 1.53.3
+          cargo update --manifest-path src-tauri/Cargo.toml -p tokio --precise 1.53.3
+          cargo metadata --locked --no-deps --format-version 1 > /dev/null
+          cargo metadata --locked --no-deps --format-version 1 --manifest-path src-tauri/Cargo.toml > /dev/null
+
+      - name: Keep the exact source patch and its provenance (not build evidence)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p target/android-lock-repair
+          python3 - <<'PY'
+          import json, pathlib, subprocess, tomllib
+          locks = ['Cargo.lock', 'src-tauri/Cargo.lock']
+          files = locks + ['remote/package.json', 'remote/package-lock.json']
+          for file in locks:
+              packages = tomllib.loads(pathlib.Path(file).read_text())['package']
+              versions = [p['version'] for p in packages if p['name'] == 'tokio']
+              assert versions == ['1.53.3'], (file, versions)
+          manifest = json.loads(pathlib.Path('remote/package.json').read_text())
+          lock = json.loads(pathlib.Path('remote/package-lock.json').read_text())
+          assert manifest['overrides']['miniflare']['undici'] == '7.30.1'
+          undici = [p['version'] for name, p in lock['packages'].items()
+                    if name.endswith('node_modules/undici')]
+          assert undici and set(undici) == {'7.30.1'}, undici
+          changes = subprocess.check_output(['git', 'diff', '--name-only'], text=True).splitlines()
+          assert set(changes).issubset(files), changes
+          report = dict(sourceCommit=subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip(),
+                        advisory='RUSTSEC-2026-0386', tokioVersion='1.53.3', undiciVersion='7.30.1', sourceFiles=files,
+                        resolutionOnly=True, compilationTested=False, auditPassed=False,
+                        apkProduced=False, deviceTested=False)
+          pathlib.Path('target/android-lock-repair/report.json').write_text(json.dumps(report, indent=2) + '\n')
+          PY
+          git diff --binary -- Cargo.lock src-tauri/Cargo.lock remote/package.json remote/package-lock.json > target/android-lock-repair/dependency-locks.patch
+          sha256sum Cargo.lock src-tauri/Cargo.lock remote/package.json remote/package-lock.json > target/android-lock-repair/SHA256SUMS
+          cp Cargo.lock target/android-lock-repair/workspace-Cargo.lock
+          cp src-tauri/Cargo.lock target/android-lock-repair/shell-Cargo.lock
+
+      - name: Upload source locks and review patch only (never commit or push)
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-dependency-lock-repair
+          path: target/android-lock-repair/
+          if-no-files-found: error
+          retention-days: 7

@@ -54,7 +54,7 @@ def manifest_core(output):
         return values[0]
 
     package = exactly(r"^package: name='([^']+)'", "identity")
-    minimum = exactly(r"^sdkVersion:'([0-9]+)'", "minimum SDK")
+    minimum = exactly(r"^(?:minSdkVersion|sdkVersion):'([0-9]+)'$", "minimum SDK")
     target = exactly(r"^targetSdkVersion:'([0-9]+)'", "target SDK")
     launcher = exactly(r"^launchable-activity:\s+name='([^']+)'", "launcher")
     abis = re.findall(r"'([^']+)'", exactly(r"^native-code:(.*)$", "native ABI"))

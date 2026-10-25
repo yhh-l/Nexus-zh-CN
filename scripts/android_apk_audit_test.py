@@ -93,6 +93,58 @@ class ManifestPolicy(unittest.TestCase):
         self.assertFalse(result["debuggable"])
         self.assertFalse(result["fullComponentSecurityAuditComplete"])
 
+    def test_accept_current_and_legacy_minimum_labels_but_reject_mixed_evidence(self):
+        current = self.BADGING.replace("sdkVersion:'35'", "minSdkVersion:'35'")
+        self.assertEqual(audit.manifest_core(current)["minSdk"], 35)
+        for output in [current + "sdkVersion:'35'\n", current + "minSdkVersion:'35'\n",
+                       current.replace("minSdkVersion:'35'", "minSdkVersion:'34'"),
+                       current.replace("minSdkVersion:'35'", "minSdkVersion:'35'junk")]:
+            with self.subTest(output=output), self.assertRaises(ValueError):
+                audit.manifest_core(output)
+
+    def test_actual_sdk_badging_of_compiled_binary_manifest_including_sdk_mutation(self):
+        # No executable DEX/native code: this tests the pinned SDK output contract,
+        # not installation or runtime. Use the SAME compiled APK path for corruption.
+        sdk = Path(os.environ["ANDROID_HOME"])
+        aapt = sdk / "build-tools/36.0.0/aapt2"
+        framework = sdk / "platforms/android-36/android.jar"
+        self.assertTrue(aapt.is_file(), "Actual pinned aapt2 required")
+        self.assertTrue(framework.is_file(), "Actual API 36 resources required")
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "AndroidManifest.xml"
+            apk = Path(directory) / "nonexecuting-badging-fixture.apk"
+            source.write_text(
+                '<manifest xmlns:android="http://schemas.android.com/apk/res/android" '
+                'package="com.kd9taw.tempo">'
+                '<uses-permission android:name="android.permission.INTERNET" />'
+                '<uses-permission android:name="android.permission.RECORD_AUDIO" />'
+                '<application android:label="Nexus">'
+                '<activity android:name=".NexusLaunchActivity" android:exported="true">'
+                '<intent-filter><action android:name="android.intent.action.MAIN" />'
+                '<category android:name="android.intent.category.LAUNCHER" />'
+                '</intent-filter></activity></application></manifest>')
+
+            def compile_badging(minimum):
+                if apk.exists():
+                    apk.unlink()
+                audit.run([str(aapt), "link", "-I", str(framework), "--manifest", str(source),
+                           "--min-sdk-version", minimum, "--target-sdk-version", "36", "-o", str(apk)])
+                with zipfile.ZipFile(apk, "a") as archive:
+                    archive.writestr("lib/arm64-v8a/fixture.so", b"nonexecuting-ABI-marker")
+                output = audit.run([str(aapt), "dump", "badging", str(apk)])
+                print("Actual pinned SDK badging of compiled fixture:", output)
+                return output
+
+            good = compile_badging("35")
+            # Demonstrate the exact old parser's blind spot, using actual SDK bytes.
+            self.assertEqual(audit.re.findall(r"^sdkVersion:'([0-9]+)'", good, audit.re.MULTILINE), [])
+            self.assertEqual(audit.manifest_core(good)["minSdk"], 35)
+            original = apk.read_bytes()
+            bad = compile_badging("34")
+            self.assertNotEqual(apk.read_bytes(), original)
+            with self.assertRaisesRegex(ValueError, "differs from the reviewed Android host"):
+                audit.manifest_core(bad)
+
     def test_reject_changed_package_sdk_launcher_abi_or_network_permission(self):
         for before, after in [("name='com.kd9taw.tempo'", "name='foreign.app'"),
                               ("sdkVersion:'35'", "sdkVersion:'24'"),

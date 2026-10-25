@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android APK inspection understands the current SDK's minimum-version label.** The audit
+  accepts current and legacy tool labels while still requiring Android 15 and rejecting missing,
+  duplicate or conflicting evidence. Real SDK-compiled manifest controls cover the mismatch;
+  signing, installation and device acceptance remain separate requirements.
 - **Logbook document imports handle unreadable files without silent failure.** ADIF import,
   confirmation sync and POTA stamping now surface file-read errors before making any log change.
   Their pickers also accept plain-text and generic binary MIME labels used by Android providers;

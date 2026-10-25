@@ -21,7 +21,10 @@ pub(super) fn local_call<T>(
         let _ = env.exception_clear();
         return Err(io::Error::other(format!(
             "Android FT4222 permission/USB operation failed: {}",
-            result.err().map(|error| error.to_string()).unwrap_or_default()
+            result
+                .err()
+                .map(|error| error.to_string())
+                .unwrap_or_default()
         )));
     }
     result
@@ -31,7 +34,9 @@ pub(super) fn finish_open(
     env: &mut jni::JNIEnv<'_>,
     session: &JObject<'_>,
 ) -> io::Result<(GlobalRef, usize)> {
-    finish_open_with(env, session, |env, session| checked(env.new_global_ref(session)))
+    finish_open_with(env, session, |env, session| {
+        checked(env.new_global_ref(session))
+    })
 }
 
 pub(super) fn finish_open_with(

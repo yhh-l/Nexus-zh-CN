@@ -1,0 +1,104 @@
+# Source evidence only. No APK, secret/signing, dependency mutation or legal approval.
+name: Android JVM source evidence
+
+on:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-jvm-source-evidence.yml
+      - scripts/android-jvm-source-evidence.py
+      - scripts/android_jvm_source_evidence_test.py
+  workflow_dispatch:
+    inputs:
+      inventory_run:
+        description: Completed actual Android build run containing the JVM JSON artifact
+        required: true
+        default: '40203694867'
+      inventory_revision:
+        description: Exact source revision inside that actual inventory
+        required: true
+        default: c9345b85c7ae99785f96440986e3c8e389cc31b1
+      inventory_sha256:
+        description: Exact downloaded runtime-inventory.json SHA256 (not ZIP digest)
+        required: true
+        default: 33edc29a31b5a696c59a7bfe5703b8d79695d2a4965e30d417754d905c03002b
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: android-jvm-source-evidence-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Test actual source reader hash, scope, comment and archive refusal boundaries
+        run: python3 -m unittest discover -s scripts -p android_jvm_source_evidence_test.py -v
+
+      - name: Prove source hash refusal is exercised on the actual reader
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=scripts/android-jvm-source-evidence.py
+          backup=$(mktemp "$RUNNER_TEMP/nexus-source-hash.XXXXXX")
+          cp "$source" "$backup"
+          trap 'cp "$backup" "$source"' EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/android-jvm-source-evidence.py')
+          source = path.read_text()
+          needle = 'len(data) <= MAX_ARCHIVE and digest(data) == expected_hash'
+          assert source.count(needle) == 1
+          path.write_text(source.replace(needle, 'len(data) <= MAX_ARCHIVE'))
+          PY
+          set +e
+          python3 -m unittest discover -s scripts -p android_jvm_source_evidence_test.py -k wrong_source_bytes -v > "$RUNNER_TEMP/source-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/source-negative.log"
+          test "$status" -ne 0
+          grep -F 'FAIL: test_wrong_source_bytes_or_recorded_length_cannot_produce_complete_materials' "$RUNNER_TEMP/source-negative.log"
+          grep -F 'ValueError not raised' "$RUNNER_TEMP/source-negative.log"
+          cp "$backup" "$source"
+          trap - EXIT
+
+  actual-source-materials:
+    if: github.event_name == 'workflow_dispatch'
+    needs: controls
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Download the existing actual JVM input inventory, not a synthetic graph
+        uses: actions/download-artifact@v4
+        with:
+          name: nexus-android-jvm-runtime-inventory
+          path: target/android-jvm-input
+          run-id: ${{ inputs.inventory_run }}
+          github-token: ${{ github.token }}
+      - name: Verify exact inventory and collect its hash-pinned published source comments
+        env:
+          INVENTORY_REVISION: ${{ inputs.inventory_revision }}
+          INVENTORY_SHA256: ${{ inputs.inventory_sha256 }}
+        run: >
+          python3 scripts/android-jvm-source-evidence.py
+          --inventory target/android-jvm-input/runtime-inventory.json
+          --expected-revision "$INVENTORY_REVISION" --expected-sha256 "$INVENTORY_SHA256"
+          --output target/android-jvm-source-evidence
+      - name: Preserve original source-review evidence and explicit missing-material findings
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-jvm-source-evidence
+          path: target/android-jvm-source-evidence/*.json
+          if-no-files-found: error
+          retention-days: 14

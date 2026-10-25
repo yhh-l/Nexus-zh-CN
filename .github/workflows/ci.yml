@@ -712,6 +712,9 @@ jobs:
       - name: scripts/gates still derives the gate list from this workflow
         run: node --test scripts/gates.test.mjs
 
+      - name: Test Android JVM source evidence and refusal boundaries
+        run: python3 -m unittest discover -s scripts -p android_jvm_source_evidence_test.py -v
+
       - name: Test Android ARM64 artifact and coverage guards
         run: node --test scripts/android-arm64.test.mjs
 

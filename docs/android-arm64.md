@@ -702,3 +702,30 @@ nonempty source audit and rehashes every recorded original source path, rejectin
 changed bytes, symlinks and paths outside the host. It does not rerun a pristine
 source scan over Gradle's legitimate buildSrc `.class` outputs. This ordering is
 not final payload approval: the full APK binary audit remains mandatory afterward.
+
+### Hash-bound JVM source comment evidence
+
+The complete unsigned c9345b85c build passed its native APK audit and real final
+JVM input collection in run 40203694867. This still left 53 source/notice review
+findings. Absence of a root LICENSE filename is not proof of an incompatible
+license, and a POM license name is not proof of every source file's grant.
+
+`scripts/android-jvm-source-evidence.py` consumes that actual inventory only after
+checking its exact downloaded JSON SHA256, source revision, non-fixture scope and
+typed Android resolution result. It downloads advertised sources from fixed public
+Google Maven/Maven Central origins and verifies their recorded lengths/hashes.
+Archives are never extracted or executed. Bounded per-file hashes, leading comment
+text, SPDX/copyright hints and named-notice entries are exported for actual review.
+Missing original sources and project-source audits remain explicit findings.
+
+The reviewer revision and original inventory revision are separate: reviewing an
+older completed APK's source inputs does not prove a new application build. The
+focused workflow accepts an explicit completed run/revision/JSON digest, downloads
+its existing report with read-only Actions access, and exports JSON evidence only.
+It neither exports the APK nor modifies signing, dependencies, certificate policy,
+credentials or transmitter operation. Unit controls run in canonical CI as well.
+A cloud mutation removes the real source-hash check and must fail its named test.
+
+Source comments are evidence, not automatic license elections. All full per-file
+license approval, runtime notices/source closure, final DEX retention, distributable
+and physical-device acceptance claims remain false or explicitly out of scope.

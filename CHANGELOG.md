@@ -8,6 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android JVM dependency review can inspect exact published source-file notices.**
+  A cloud-only reader binds source archives to the already resolved inventory's hashes,
+  records per-file hashes and leading comments, and refuses wrong graphs, tampered bytes
+  and unsafe archives. Evidence remains separate from legal approval and APK distribution;
+  no signature, dependency version, runtime feature or secret handling is changed.
 - **Android source-only inspection runs before Gradle creates compiled helper outputs.**
   APK preparation rechecks the audited revision and exact source hashes afterward, instead
   of mistaking legitimate buildSrc `.class` files for payloads in a pristine-source export.

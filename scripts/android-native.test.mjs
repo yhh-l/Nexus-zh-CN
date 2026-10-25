@@ -236,6 +236,13 @@ test('Android FFTW bootstrap enables the real wrappers and checks them before bu
 test('full Android backend stages the existing hash-pinned AI CW model without a missing-model override', () => {
   const workflow = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'android-arm64.yml'), 'utf8');
   const desktopCi = fs.readFileSync(path.join(ROOT, '.github', 'workflows', 'ci.yml'), 'utf8');
+  // The reviewed model lives upstream, not on every fork's Releases page.
+  const requireModelOrigin = source => assert.match(source,
+    /gh release download deepcw-model-v1 --repo kd9taw\/Nexus/);
+  requireModelOrigin(desktopCi);
+  assert.throws(() => requireModelOrigin(desktopCi.replace(
+    'deepcw-model-v1 --repo kd9taw/Nexus',
+    'deepcw-model-v1 --repo "${{ github.repository }}"')));
   const modelStep = workflow.indexOf('- name: Stage and verify the real AI CW model');
   const backendStep = workflow.indexOf('- name: Check the full application backend');
   assert(modelStep >= 0 && modelStep < backendStep);

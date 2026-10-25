@@ -1234,7 +1234,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          gh release download deepcw-model-v1 --repo "${{ github.repository }}" \
+          gh release download deepcw-model-v1 --repo kd9taw/Nexus \
             --pattern 'model.onnx*' --dir src-tauri/resources/deepcw --clobber
           # Pin by digest: a silently-swapped model would change decode behaviour with no
           # other visible signal.

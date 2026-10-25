@@ -14886,7 +14886,8 @@ fn save_text_to_downloads(
             .map_err(|e| format!("Could not locate your Downloads folder: {e}"))?;
         std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
         let path = dir.join(name);
-        std::fs::write(&path, text).map_err(|e| format!("Could not write {}: {e}", path.display()))?;
+        std::fs::write(&path, text)
+            .map_err(|e| format!("Could not write {}: {e}", path.display()))?;
         Ok(path.display().to_string())
     }
 }
@@ -14924,7 +14925,8 @@ fn save_png_to_downloads(
             .map_err(|e| format!("Could not locate your Downloads folder: {e}"))?;
         std::fs::create_dir_all(&dir).map_err(|e| e.to_string())?;
         let path = dir.join(name);
-        std::fs::write(&path, bytes).map_err(|e| format!("Could not write {}: {e}", path.display()))?;
+        std::fs::write(&path, bytes)
+            .map_err(|e| format!("Could not write {}: {e}", path.display()))?;
         Ok(path.display().to_string())
     }
 }

@@ -67,7 +67,12 @@ jobs:
           const report = JSON.parse(fs.readFileSync(`${process.env.RUNNER_TEMP}/documents-negative.json`, 'utf8'));
           const cases = report.testResults.flatMap(suite => suite.assertionResults ?? []);
           assert.equal(report.numFailedTests, 1);
-          assert.equal(report.numRuntimeErrorTestSuites, 0);
+          assert.equal(report.numTotalTests, 8);
+          assert.equal(report.numPendingTests, 7);
+          assert.equal(report.numPassedTests, 0);
+          const failed = cases.filter(test => test.status === 'failed');
+          assert.equal(failed.length, 1);
+          assert(failed[0].failureMessages.some(message => message.startsWith('AssertionError:')));
           assert(cases.some(test => test.title === 'offers generic binary and plain-text ADIF documents on all three real inputs' && test.status === 'failed'));
           JS
           restore

@@ -61,6 +61,37 @@ jobs:
   # yields an identical command set before and after this split. Re-run that diff if
   # you move a step between these jobs.
 
+  # This independent workspace imports the actual Android ownership module.
+  # Root cargo --workspace does not cover it. Host JNI is not Android device proof.
+  android-ft4222-jni:
+    name: Android FT4222 ownership on real host JNI
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up pinned Rust and rustfmt
+        uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+          components: rustfmt
+      - name: Compile the original Java failure fixture using runner Java 17
+        shell: bash
+        run: |
+          set -euo pipefail
+          java="${JAVA_HOME_17_X64:?Runner Java 17 required}"
+          classes="$RUNNER_TEMP/nexus-ft4222-jni-classes"
+          mkdir -p "$classes"
+          "$java/bin/javac" -d "$classes" scripts/android-ft4222-jni-harness/java/nexus/fixture/FixtureUsb.java
+          printf 'JAVA_HOME=%s\nNEXUS_JNI_FIXTURE_CLASSES=%s\n' "$java" "$classes" >> "$GITHUB_ENV"
+          printf '%s/bin\n' "$java" >> "$GITHUB_PATH"
+      - name: Test actual Android ownership success and exception paths on real JNI
+        run: cargo test --manifest-path scripts/android-ft4222-jni-harness/Cargo.toml -- --test-threads=1
+      - name: Check formatting across the independent JNI workspace
+        run: cargo fmt --manifest-path scripts/android-ft4222-jni-harness/Cargo.toml --all --check
+
   test:
     name: Rust tests + clippy
     runs-on: ubuntu-24.04

@@ -427,3 +427,21 @@ That is framework-modeled evidence, not a real host controller or FT-710.
 USB permission UI, JNI factory registration, integration with WaterfallSource,
 physical detach/reconnect/lifecycle/Stop checks and the full APK link remain
 outstanding. The class does not resolve the FTDI final-link blocker on its own.
+
+### Genuine USB WaterfallSource integration (cloud validation pending)
+
+Android's `yaesu-wf` now selects the actual USB Host/JNI transport rather than
+linking the desktop FTDI libraries. Desktop keeps its existing implementation.
+The main WebView JNI queue captures only global class/application references;
+USB opening, all controls and bulk reads run on the existing scope worker.
+JNI arrays are length-bounded and local references released as they are read.
+The real source executes all 18 setup requests, strips packet status bytes,
+requires a complete 8192-byte transaction and uses the existing measured frame
+trailer with the same three-frame accumulator limit. Partial setup closes the
+connection. Exact release JNI names are retained by ProGuard.
+
+Only a single actually OS-authorized FT4222 is accepted; none or multiple is a
+real refusal, not an invented spectrum or first-device guess. The explicit
+cold-start USB selection/permission UI remains required to make that grant
+available to the application. This integration is not proof of a successful
+APK link, hardware use or installability; read the actual cloud outcome.

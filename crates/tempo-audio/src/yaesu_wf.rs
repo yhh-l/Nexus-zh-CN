@@ -44,6 +44,7 @@
 //! that rig's CAT port and codec, the same evidence that already labels the codec.
 
 pub mod usb_protocol;
+pub mod usb_source;
 
 /// One SPI read from the bridge. Fixed size; the radio does not frame or delimit.
 pub const FRAME_BYTES: usize = 4096;
@@ -690,12 +691,22 @@ pub const YAESU_WF_NO_LIBRARY: &str = "The FT-710 scope needs FTDI's LibFT4222, 
 /// transport compiled in at all, and with it the device is absent until SCU-LAN10 is enabled. The
 /// caller turns `None` into the operator-facing instruction.
 pub fn open_default_source() -> Option<Box<dyn WaterfallSource + Send>> {
-    #[cfg(feature = "yaesu-wf")]
+    #[cfg(all(feature = "yaesu-wf", not(target_os = "android")))]
     {
         match ft4222::Ft4222Waterfall::open(0) {
             Ok(src) => Some(Box::new(src) as Box<dyn WaterfallSource + Send>),
             Err(e) => {
                 crate::civ::diag::note(&format!("yaesu waterfall: FT4222 open failed: {e}"));
+                None
+            }
+        }
+    }
+    #[cfg(all(feature = "yaesu-wf", target_os = "android"))]
+    {
+        match usb_source::open_android() {
+            Ok(source) => Some(source),
+            Err(error) => {
+                crate::civ::diag::note(&format!("yaesu waterfall: Android USB open failed: {error}"));
                 None
             }
         }
@@ -803,7 +814,7 @@ impl Drop for YaesuWaterfall {
 /// `ft4222` Python wrapper that was proven against the radio on 2026-08-17, because a wrong CPOL
 /// or clock divider yields plausible-looking garbage rather than an error — the worst failure mode
 /// available here.
-#[cfg(feature = "yaesu-wf")]
+#[cfg(all(feature = "yaesu-wf", not(target_os = "android")))]
 pub mod ft4222 {
     use super::{WaterfallSource, FRAME_BYTES};
     use std::os::raw::{c_int, c_void};

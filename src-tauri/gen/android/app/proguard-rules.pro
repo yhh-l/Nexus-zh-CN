@@ -30,3 +30,12 @@
 }
 # Component names also occur in Rust's trusted panel table; keep them stable for JNI.
 -keep class com.kd9taw.tempo.*PanelActivity { *; }
+
+# Native scope worker calls the genuine USB Host transport by these exact JNI names.
+-keep class com.kd9taw.tempo.NexusFt4222Usb {
+    public static com.kd9taw.tempo.NexusFt4222Usb openOnlyGranted(android.content.Context);
+    public int packetBytes();
+    public void controlOut(int, int, int);
+    public byte[][] readRaw();
+    public void close();
+}

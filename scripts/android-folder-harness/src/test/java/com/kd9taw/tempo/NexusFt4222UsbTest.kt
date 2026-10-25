@@ -50,7 +50,7 @@ class NexusFt4222UsbTest {
       p.writeInt(address); p.writeInt(type); p.writeInt(packet); p.writeInt(0)
     }
 
-  private fun device(product: Int = 0x601c, endpoints: Array<UsbEndpoint> = arrayOf(endpoint(0x81), endpoint(0x02))): UsbDevice {
+  private fun device(product: Int = 0x601c, endpoints: Array<UsbEndpoint> = arrayOf(endpoint(0x81), endpoint(0x02)), name: String = "/dev/bus/usb/001/002"): UsbDevice {
     val face = parcelled(UsbInterface.CREATOR) { p ->
       p.writeInt(0); p.writeInt(0); p.writeString("A")
       p.writeInt(255); p.writeInt(0); p.writeInt(0)
@@ -61,7 +61,7 @@ class NexusFt4222UsbTest {
       p.writeParcelableArray(arrayOf(face), 0)
     }
     return parcelled(UsbDevice.CREATOR) { p ->
-      p.writeString("/dev/bus/usb/001/002"); p.writeInt(0x0403); p.writeInt(product)
+      p.writeString(name); p.writeInt(0x0403); p.writeInt(product)
       p.writeInt(0); p.writeInt(0); p.writeInt(0)
       p.writeString("test"); p.writeString("FT4222"); p.writeString("1.0")
       // Test-only serial-reader binder; no PII or serial-number query is made.
@@ -112,6 +112,18 @@ class NexusFt4222UsbTest {
     assertEquals(0, Ft4222Wire.claims.get())
   }
 
+  @Test fun nativeFactoryAcceptsOnlyOneActuallyGrantedBridge() {
+    val context = RuntimeEnvironment.getApplication()
+    expectIo { NexusFt4222Usb.openOnlyGranted(context).close() }
+    grant(permission = false)
+    expectIo { NexusFt4222Usb.openOnlyGranted(context).close() }
+    grant()
+    NexusFt4222Usb.openOnlyGranted(context).close()
+    assertEquals(1, Ft4222Wire.claims.get())
+    grant(device(name = "/dev/bus/usb/001/003"))
+    expectIo { NexusFt4222Usb.openOnlyGranted(context).close() }
+    assertEquals(1, Ft4222Wire.claims.get())
+  }
   @Test fun busyInterfaceClosesWithoutForcingOffAnyKernelDriver() {
     val device = grant()
     Ft4222Wire.claimOk = false

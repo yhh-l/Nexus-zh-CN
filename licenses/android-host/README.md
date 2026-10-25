@@ -89,3 +89,10 @@ UsbDevice/UsbInterface/UsbConfiguration/UsbEndpoint parcel contracts, not
 copied from an implementation. This source is not yet connected to the Rust
 WaterfallSource, and it does not add a USB permission prompt or claim hardware
 acceptance. No D2XX/LibFT4222 binary or third-party USB driver is included.
+
+The original Rust Android FT4222 adapter now captures application/class JNI
+references and calls the original USB Host transport on the scope worker.
+It uses JNI already re-exported by the locked Tauri/Tao stack; no additional
+package, upstream implementation or native binary is introduced. ProGuard
+keeps match these real JNI entry points. USB grant UI and hardware proof
+remain separate requirements.

@@ -15,6 +15,9 @@ on:
       - src-tauri/src/lan_client/**
       - src-tauri/src/lib.rs
       - src-tauri/src/android_panels/**
+      - src-tauri/src/android_ft4222.rs
+      - crates/tempo-audio/src/yaesu_wf.rs
+      - crates/tempo-audio/src/yaesu_wf/**
       - src-tauri/src/window_state.rs
       - src-tauri/src/window_state/**
       - src-tauri/src/remote_window.rs
@@ -66,6 +69,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-android-native-regression-
             ${{ runner.os }}-cargo-
+      - name: Check workspace formatting including the actual USB source
+        run: cargo fmt --all --check
+      - name: Test actual USB WaterfallSource configuration, framing and failure cleanup
+        run: cargo test --locked -p tempo-audio --lib yaesu_wf::usb_source::tests
       - name: Run every current native CI job gate, not a hand-transcribed subset
         env:
           GATES_LOG_DIR: ${{ runner.temp }}/native-ci-gates
@@ -76,6 +83,13 @@ jobs:
           # Scoping excludes other jobs deliberately. A skip or unknown INSIDE this job
           # is not allowed: --allow-partial alone would also accept those omissions.
           node scripts/native-ci-scope.mjs --verify "$GATES_LOG_DIR"
+      - name: Preserve cloud-generated formatter patch without committing it
+        if: failure()
+        run: |
+          mkdir -p "$RUNNER_TEMP/native-ci-gates"
+          cargo fmt --all
+          cargo fmt --manifest-path src-tauri/Cargo.toml
+          git diff -- crates/tempo-audio/src/yaesu_wf.rs crates/tempo-audio/src/yaesu_wf src-tauri/src > "$RUNNER_TEMP/native-ci-gates/android-usb-format.patch"
       - name: Preserve actual gate logs even on failure
         if: always()
         uses: actions/upload-artifact@v7

@@ -39,6 +39,8 @@ mod alert;
 /// Android-native local folder selection; desktop keeps its existing OS dialog.
 #[cfg(target_os = "android")]
 mod android_folder_picker;
+#[cfg(all(target_os = "android", feature = "radio", feature = "yaesu-wf"))]
+mod android_ft4222;
 #[cfg(target_os = "android")]
 mod android_panels;
 /// Early OS-owned storage roots; the desktop/test paths below stay unchanged.
@@ -38701,6 +38703,10 @@ fn build_app(d: BuildDeps) -> tauri::Result<tauri::App> {
             // (`finish_launch`), which swaps the splash for the main window once the logbook is
             // attached.
             use tauri::Manager;
+            #[cfg(all(target_os = "android", feature = "radio", feature = "yaesu-wf"))]
+            if let Err(error) = android_ft4222::initialize(app.handle()) {
+                eprintln!("Android FT4222 setup failed: {error}");
+            }
             // Capture the bundled-resource dir FIRST: it is the only handle-derived path
             // the TLE seed loader can use, and the first satellite/Now-Bar poll may arrive
             // the moment setup returns. See RESOURCE_DIR / `tle_seed_path`.

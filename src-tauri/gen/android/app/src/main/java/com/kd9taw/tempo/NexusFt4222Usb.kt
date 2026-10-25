@@ -1,5 +1,6 @@
 package com.kd9taw.tempo
 
+import android.content.Context
 import android.hardware.usb.UsbConstants
 import android.hardware.usb.UsbDeviceConnection
 import android.hardware.usb.UsbEndpoint
@@ -14,8 +15,8 @@ import java.util.concurrent.atomic.AtomicReference
 
 /** Original Nexus USB Host transport, no D2XX, libusb binary or desktop library.
  * Opens ONLY a named, already OS-granted FT4222 interface A; never requests a grant
- * or takes a sibling CAT/audio interface away from its driver. NOT yet connected to
- * the native WaterfallSource: that JNI/factory integration is a separate step.
+ * or takes a sibling CAT/audio interface away from its driver. The native scope
+ * worker owns this connection through JNI and the existing WaterfallSource.
  *
  * SPI is full duplex: blocking on all 8192 OUT bytes before draining IN can deadlock
  * the USB FIFOs. One owned writer runs beside the caller's reads, under the SAME
@@ -152,6 +153,17 @@ class NexusFt4222Usb private constructor(
   companion object {
     private const val READ_BYTES = 8192
 
+    /** Called by the native scope worker; no Android dialog or Activity launch here.
+     * Multiple authorized bridges require explicit radio selection, never first-device wins.
+     */
+    @JvmStatic fun openOnlyGranted(context: Context): NexusFt4222Usb {
+      val manager = context.getSystemService(Context.USB_SERVICE) as UsbManager
+      val devices = manager.deviceList.values.filter {
+        it.vendorId == 0x0403 && it.productId == 0x601c && manager.hasPermission(it)
+      }
+      if (devices.size != 1) throw IOException("Connect and authorize exactly one FT4222 before starting the scope")
+      return openGranted(manager, devices.single().deviceName)
+    }
     @JvmStatic fun openGranted(manager: UsbManager, deviceName: String): NexusFt4222Usb {
       val device = manager.deviceList[deviceName] ?: throw IOException("FT4222 disconnected")
       if (device.vendorId != 0x0403 || device.productId != 0x601c) {

@@ -323,3 +323,24 @@ test('real APK code generation follows the full backend gate and cannot distribu
   assert.match(build, /^python3 scripts\/android-apk-audit\.py\r?$/m);
   assert.doesNotMatch(tail, /path:.*\.(apk|aab)|path:.*outputs/);
 });
+
+test('Android retains the full waterfall through real USB JNI rather than desktop FFI or a stub', () => {
+  const parent = fs.readFileSync(path.join(ROOT, 'crates/tempo-audio/src/yaesu_wf.rs'), 'utf8');
+  const bridge = fs.readFileSync(path.join(ROOT, 'src-tauri/src/android_ft4222.rs'), 'utf8');
+  const shell = fs.readFileSync(path.join(ROOT, 'src-tauri/src/lib.rs'), 'utf8');
+  const keep = fs.readFileSync(path.join(ROOT, 'src-tauri/gen/android/app/proguard-rules.pro'), 'utf8');
+  assert.match(parent, /#\[cfg\(all\(feature = "yaesu-wf", not\(target_os = "android"\)\)\)\]\s*pub mod ft4222/);
+  const open = parent.split('pub fn open_default_source()')[1].split('/// A running reader:')[0];
+  assert.match(open, /usb_source::open_android\(\)/);
+  assert.match(open, /ft4222::Ft4222Waterfall::open\(0\)/);
+  assert.match(shell, /android_ft4222::initialize\(app.handle\(\)\)/);
+  assert.match(bridge, /register_android\(Box::new\(move \|\| bridge.open\(\)\)\)/);
+  assert.match(bridge, /UsbWaterfall::open\(transport\)/);
+  assert.match(bridge, /attach_current_thread\(\)/);
+  assert.match(bridge, /delete_local_ref\(bytes\)/);
+  assert.match(bridge, /"readRaw",\s*"\(\)\[\[B"/);
+  assert.doesNotMatch(bridge, /FT_Open|FT4222_SPIMaster|unsafe impl|transmute|requestPermission/);
+  for (const method of ['openOnlyGranted', 'packetBytes', 'controlOut', 'readRaw', 'close']) {
+    assert(keep.includes(`${method}(`), `release JNI method must not be renamed: ${method}`);
+  }
+});

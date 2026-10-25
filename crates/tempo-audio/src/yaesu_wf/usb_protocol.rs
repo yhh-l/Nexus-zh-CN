@@ -6,7 +6,8 @@
 //! The FT-710 settings come from this parent's measured, existing working driver,
 //! NOT flash-programmer defaults: idle HIGH, trailing edge, 48 MHz / 16, SS0.
 //!
-//! This is NOT an Android USB Host connection or a replacement WaterfallSource yet.
+//! This module does not open devices: usb_source consumes it through the real
+//! Android USB Host/JNI connection. Tests here alone are not hardware proof.
 //! That bridge must own a user-granted interface A, validate its bulk endpoints,
 //! submit bounded full-duplex I/O (8192 dummy bytes and a zero-length OUT to end CS),
 //! and feed each completed IN transfer's ACTUAL bytes here. Never join USB transfers

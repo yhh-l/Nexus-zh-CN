@@ -535,3 +535,23 @@ Those device gates, complete public backup flows and actual end-to-end native
 import evidence remain required. Earlier notes describing system import as
 entirely unimplemented are superseded by this source finding, not by a physical
 acceptance result.
+### Android-target Rust notice preparation (not whole-APK compliance)
+
+`scripts/android-rust-notices.py` derives the locked `aarch64-linux-android`
+normal-edge graph for `radio,yaesu-wf,tauri/custom-protocol`. The last dependency
+feature is added by the pinned Tauri CLI's actual mobile release build path.
+It reuses the existing desktop notice generator's reviewed per-package text,
+license-choice and pinned-source hash checks, but not its desktop target list.
+Unknown graph entries, ambiguous package identities, missing Android JNI/root
+provenance or unavailable reviewed license texts fail explicitly. Desktop-only
+pins need not be used by this target subset; every used pin is still verified.
+
+The focused GitHub workflow produces a scoped Rust notice text only when every
+selected package is accounted for, and preserves an unresolved-findings report
+on failure. Neither output is automatically inserted into an APK or described
+as legal sign-off. Java/Kotlin dependencies, native FFTW/Flang/NDK/OpenSSL inputs,
+model terms, corresponding-source delivery and comparison with the actual final
+APK remain mandatory separate work. The report always leaves whole-runtime
+notice/source compliance, APK payload verification and distributability false.
+All graph resolution, text generation and tests run in GitHub Actions; local
+work remains source editing and reading cloud evidence only.

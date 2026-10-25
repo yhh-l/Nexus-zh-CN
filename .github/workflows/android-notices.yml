@@ -1,0 +1,49 @@
+# Text/provenance generation only: no APK, signature, upload of binaries or RF operation.
+name: Android Rust notice inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-notices.yml
+      - scripts/android-rust-notices.py
+      - scripts/android_rust_notices_test.py
+      - scripts/gen-rust-licenses.py
+      - licenses/rust/**
+      - deny.toml
+      - src-tauri/Cargo.toml
+      - src-tauri/Cargo.lock
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-rust-notices-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  rust-notices:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@02cb101ec7c40f2c49e1d9714d64511d8e1b74de
+        with:
+          toolchain: 1.93.1
+      - name: Exercise graph admission positive and refusal controls
+        run: python3 -m unittest discover -s scripts -p android_rust_notices_test.py -v
+      - name: Generate notices from the actual locked Android graph and published package texts
+        run: |
+          python3 scripts/android-rust-notices.py
+          git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock licenses/rust
+      - name: Preserve scoped text and unresolved provenance findings, never an APK
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: android-rust-notices-${{ github.run_id }}
+          path: target/android-notices/
+          if-no-files-found: error
+          retention-days: 14

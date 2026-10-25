@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **The final Android application explicitly requests 16 KiB ELF page alignment.** The build
+  retains the pinned mobile toolchain's Android system-library flags, and final APK inspection
+  still rejects incompatible native segments. Audit failures now show the actual tool error.
+  This does not establish signing, installation or physical-device compatibility.
 - **Android APK inspection understands the current SDK's minimum-version label.** The audit
   accepts current and legacy tool labels while still requiring Android 15 and rejecting missing,
   duplicate or conflicting evidence. Real SDK-compiled manifest controls cover the mismatch;

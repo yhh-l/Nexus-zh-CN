@@ -3,6 +3,7 @@ import importlib.util
 import os
 from pathlib import Path
 import subprocess
+import sys
 import tempfile
 import unittest
 import zipfile
@@ -72,6 +73,42 @@ class NativePolicy(unittest.TestCase):
             # The original must remain rejected, not silently rewritten by validation.
             self.assertNotEqual(subprocess.run([*command, str(original)], capture_output=True).returncode, 0)
 
+
+class ActualToolPolicy(unittest.TestCase):
+    def test_real_subprocess_failures_keep_stdout_stderr_and_exit_status(self):
+        self.assertEqual(audit.run([sys.executable, "-c", "print('real-positive')"]), "real-positive\n")
+        with self.assertRaisesRegex(RuntimeError, "exit 7") as failure:
+            audit.run([sys.executable, "-c",
+                       "import sys; print('real-output'); print('real-validator-cause', file=sys.stderr); sys.exit(7)"])
+        self.assertIn("real-output", str(failure.exception))
+        self.assertIn("real-validator-cause", str(failure.exception))
+
+    def test_real_ndk_link_layout_and_same_file_four_kib_corruption(self):
+        # A real Android-targeted ELF, never a substitute for the application's native library.
+        ndk = (os.environ.get("ANDROID_NDK_HOME") or os.environ.get("ANDROID_NDK_ROOT") or
+               os.environ["ANDROID_NDK_LATEST_HOME"])
+        clang = Path(ndk) / "toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android35-clang"
+        self.assertTrue(clang.is_file(), "Actual Android NDK is required")
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "layout.c"
+            library = Path(directory) / "liblayout.so"
+            source.write_text("int nexus_layout_probe(void) { return 7; }\n")
+            program = ("import fs from 'node:fs'; "
+                       "import {inspectSharedObject} from './scripts/android-native-link.mjs'; "
+                       "console.log(JSON.stringify(inspectSharedObject(fs.readFileSync(process.argv[1]))));")
+
+            def link(alignment):
+                audit.run([str(clang), "-shared", "-fPIC", "-nostdlib", str(source),
+                           f"-Wl,-z,max-page-size={alignment}", "-o", str(library)])
+
+            link(16384)
+            result = audit.run(["node", "--input-type=module", "-e", program, str(library)])
+            self.assertIn('"minimumPageAlignment":16384', result)
+            original = library.read_bytes()
+            link(4096)
+            self.assertNotEqual(library.read_bytes(), original)
+            with self.assertRaisesRegex(RuntimeError, "not 16 KiB load-segment aligned"):
+                audit.run(["node", "--input-type=module", "-e", program, str(library)])
 
 class ManifestPolicy(unittest.TestCase):
     # Parser fixtures are not compiled manifests or an installable app.

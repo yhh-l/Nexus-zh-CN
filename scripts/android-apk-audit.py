@@ -161,7 +161,12 @@ def merged_manifest_components(output):
 
 
 def run(command):
-    return subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=True, timeout=180).stdout
+    try:
+        return subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=True, timeout=180).stdout
+    except subprocess.CalledProcessError as error:
+        # Preserve the real validator's reason, not just its nonzero exit status.
+        raise RuntimeError(f"APK audit tool failed (exit {error.returncode}): {command[0]}\n"
+                           f"{error.stdout or ''}{error.stderr or ''}") from error
 
 
 def compiled_manifest(apk, sdk):

@@ -20,8 +20,18 @@ grep -Fx 'distributionSha256Sum=bd71102213493060956ec229d946beee57158dbd89d0e62b
 python3 scripts/android-host-source.py
 # Release profile, with no signingConfig/keystore added: this is NOT an installable handoff.
 # Both features stay on; neither missing-model nor missing-library overrides are used.
+# The final Rust cdylib, not only the separate modem probe, must support 16 KiB
+# Android pages. NDK r27's compiler driver must not choose the ELF layout implicitly.
+# Tauri CLI 2.11.5 configure_cargo overwrites target-specific RUSTFLAGS. Use
+# process-scoped generic flags, preserving ALL three defaults from its locked
+# cargo-mobile2 0.22.4 src/android/target.rs, plus the final-link layout requirement.
+# Never replace flags supplied by the caller without review; no desktop build is changed.
+[[ -z "${RUSTFLAGS:-}" && -z "${CARGO_ENCODED_RUSTFLAGS:-}" ]] || {
+  echo 'Unreviewed generic Rust flags override the Android 16 KiB link contract' >&2; exit 1;
+}
+android_rustflags='-Clink-arg=-landroid -Clink-arg=-llog -Clink-arg=-lOpenSLES -Clink-arg=-Wl,-z,max-page-size=16384'
 # Exact CLI source passes trailing args into the Cargo mobile builder, not Gradle options.
-(cd src-tauri && cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked)
+(cd src-tauri && RUSTFLAGS="$android_rustflags" cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked)
 git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock src-tauri/gen/android
 python3 scripts/android-apk-report.py
 python3 scripts/android-apk-audit.py

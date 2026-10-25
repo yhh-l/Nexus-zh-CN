@@ -37,3 +37,9 @@ android_rustflags='-Clink-arg=-landroid -Clink-arg=-llog -Clink-arg=-lOpenSLES -
 git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock src-tauri/gen/android
 python3 scripts/android-apk-report.py
 python3 scripts/android-apk-audit.py
+
+# Inspect the exact configured release JVM inputs after the real APK has been built.
+# This resolves metadata/sources for review; it never declares full license acceptance.
+(cd src-tauri/gen/android && ./gradlew --no-daemon --console=plain --max-workers=2 \
+  --init-script ../../../scripts/android-jvm-inventory.gradle :app:nexusAndroidRuntimeInventory \
+  -PnexusInventoryMode=android -PnexusInventoryReport=../../../target/android-jvm/runtime-inventory.json)

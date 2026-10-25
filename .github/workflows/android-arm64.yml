@@ -376,3 +376,12 @@ jobs:
             target/android-apk/native-audit.json
           if-no-files-found: error
           retention-days: 14
+
+      - name: Preserve resolved JVM input findings even when later validation fails
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-jvm-runtime-inventory
+          path: target/android-jvm/runtime-inventory.json
+          if-no-files-found: ignore
+          retention-days: 14

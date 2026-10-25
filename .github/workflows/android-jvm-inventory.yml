@@ -1,0 +1,48 @@
+# Resolver controls only. No Nexus native build, signing, binary upload or legal pass.
+name: Android JVM runtime inventory controls
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/android-arm64]
+    paths:
+      - .github/workflows/android-jvm-inventory.yml
+      - scripts/android-jvm-inventory.gradle
+      - scripts/android_jvm_inventory_test.py
+      - src-tauri/gen/android/gradle/wrapper/gradle-wrapper.properties
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-jvm-inventory-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  resolver-controls:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Use the runner Java 17, without changing any local environment
+        shell: bash
+        run: |
+          set -euo pipefail
+          java="${JAVA_HOME_17_X64:?Runner Java 17 required}"
+          test -x "$java/bin/java"
+          printf 'JAVA_HOME=%s\n' "$java" >> "$GITHUB_ENV"
+          printf '%s/bin\n' "$java" >> "$GITHUB_PATH"
+      - name: Stage the exact official Gradle distribution already pinned by the Android host
+        shell: bash
+        run: |
+          set -euo pipefail
+          file="$RUNNER_TEMP/gradle-8.14.3-bin.zip"
+          curl --fail --show-error --location --retry 3 --proto '=https' \
+            https://services.gradle.org/distributions/gradle-8.14.3-bin.zip -o "$file"
+          printf '%s  %s\n' bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531 "$file" | sha256sum -c -
+          unzip -q "$file" -d "$RUNNER_TEMP/nexus-gradle-controls"
+          printf 'NEXUS_TEST_GRADLE=%s\n' "$RUNNER_TEMP/nexus-gradle-controls/gradle-8.14.3/bin/gradle" >> "$GITHUB_ENV"
+      - name: Resolve real local Maven/project fixtures and enforce missing-artifact and wrong-graph controls
+        run: python3 -m unittest discover -s scripts -p android_jvm_inventory_test.py -v

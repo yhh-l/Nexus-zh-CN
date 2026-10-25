@@ -593,3 +593,27 @@ This still does not establish Android runtime rendering, JVM/AAR/transitive-nati
 license/source completeness, corresponding-source delivery, signature, install,
 physical-device functionality or redistribution eligibility. Those flags remain
 false, and only reports/texts, not APK binaries, are exported by these workflows.
+
+### Resolved Android JVM inputs (not final APK retention or legal sign-off)
+
+`scripts/android-jvm-inventory.gradle` is original report-only Gradle 8.14.3 code.
+After the full real APK build/audit, the same generated Android project resolves
+its actual `:app:releaseRuntimeClasspath`. The collector records component and
+project identities, transitive edges and the actual selected artifact hashes.
+No repository, dependency, build task, signing or credential policy is changed.
+POM hashes/license-name hints and available sources-archive hashes/license-named
+entry hashes are collected for review. Names are NOT proof of grants, per-file
+licensing, corresponding-source completeness or final shrinker/DEX retention.
+Project-source audits and absent POM/source materials remain explicit findings.
+Only JSON is exported, including on resolver failure when a report is available.
+
+The separate `Android JVM runtime inventory controls` workflow downloads the
+exact official distribution already pinned by the host, verifies its SHA256,
+and executes real Gradle against original local Maven/project fixtures. It tests
+transitive/module/project records, actual artifact hashes, POM/sources/missing
+source evidence, refusal of a missing runtime artifact and refusal of that fixture
+as an actual Android runtime. These controls neither build nor prove the app.
+All execution stays in GitHub Actions; no Gradle/Java installation or test runs
+are performed locally. The full application runner must still produce and pass
+its actual inventory before that real runtime-input evidence can be claimed.
+All full license, APK-payload, signing, installation and device flags stay false.

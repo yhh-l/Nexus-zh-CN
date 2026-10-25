@@ -1,0 +1,127 @@
+// Original report-only Gradle 8.14.3 collector; no repository/dependency mutation,
+// compilation, signing, credentials, source publication or legal approval.
+import groovy.json.JsonOutput
+import groovy.xml.XmlSlurper
+import java.security.MessageDigest
+import java.util.zip.ZipFile
+import org.gradle.api.artifacts.component.ModuleComponentIdentifier
+import org.gradle.api.artifacts.component.ProjectComponentIdentifier
+import org.gradle.api.artifacts.result.ResolvedArtifactResult
+import org.gradle.api.artifacts.result.ResolvedDependencyResult
+import org.gradle.jvm.JvmLibrary
+import org.gradle.language.base.artifact.SourcesArtifact
+import org.gradle.maven.MavenModule
+import org.gradle.maven.MavenPomArtifact
+
+String sha256(byte[] bytes) { MessageDigest.getInstance('SHA-256').digest(bytes).encodeHex().toString() }
+Map identity(id) {
+    if (id instanceof ModuleComponentIdentifier) {
+        return [kind: 'module', key: "${id.group}:${id.module}:${id.version}".toString(),
+                group: id.group, module: id.module, version: id.version]
+    }
+    if (id instanceof ProjectComponentIdentifier) {
+        return [kind: 'project', key: "project ${id.projectPath}".toString(), projectPath: id.projectPath]
+    }
+    throw new GradleException('Unreviewed release runtime component identifier type')
+}
+List sourceLicenseEntries(File file) {
+    def records = []
+    new ZipFile(file).withCloseable { archive ->
+        archive.entries().each { entry ->
+            if (!entry.directory && entry.name ==~ /(?i)(.*\/)?(licen[cs]e|copying|notice|copyright)([._-].*)?/) {
+                def item = [entry: entry.name, bytes: entry.size, textHashed: false]
+                if (entry.size >= 0 && entry.size <= 1024 * 1024) {
+                    byte[] text = archive.getInputStream(entry).withCloseable { it.readAllBytes() }
+                    item.sha256 = sha256(text)
+                    item.textHashed = true
+                }
+                records.add(item)
+            }
+        }
+    }
+    return records.sort { it.entry }
+}
+
+gradle.projectsEvaluated {
+    def app = gradle.rootProject.findProject(':app')
+    if (app == null) throw new GradleException('Actual :app project required for runtime inventory')
+    app.tasks.register('nexusAndroidRuntimeInventory') {
+        doLast {
+            if (System.getenv('GITHUB_ACTIONS') != 'true' || gradle.gradleVersion != '8.14.3') {
+                throw new GradleException('Runtime input inventory requires cloud Gradle 8.14.3')
+            }
+            def revision = System.getenv('GITHUB_SHA')
+            if (!(revision ==~ /[a-f0-9]{40}/)) throw new GradleException('Exact cloud revision required')
+            def mode = app.providers.gradleProperty('nexusInventoryMode').get()
+            if (!(mode in ['android', 'fixture'])) throw new GradleException('Explicit inventory scope required')
+            def configuration = app.configurations.getByName('releaseRuntimeClasspath')
+            def resolution = configuration.incoming.resolutionResult
+            def components = resolution.allComponents.collect { identity(it.id) }.sort { it.key }
+            if (components.collect { it.key }.toSet().size() != components.size()) {
+                throw new GradleException('Ambiguous runtime component identities; inventory refused')
+            }
+            def modules = resolution.allComponents.collect { it.id }.findAll { it instanceof ModuleComponentIdentifier }
+            def view = configuration.incoming.artifactView { it.setLenient(true) }.artifacts
+            def artifacts = view.artifacts.collect { artifact ->
+                [component: identity(artifact.id.componentIdentifier).key, name: artifact.file.name,
+                 bytes: artifact.file.length(), sha256: sha256(artifact.file.bytes)]
+            }.sort { a, b -> (a.component <=> b.component) ?: (a.name <=> b.name) }
+            def edges = resolution.allDependencies.findAll { it instanceof ResolvedDependencyResult }.collect {
+                [from: identity(it.from.id).key, to: identity(it.selected.id).key]
+            }.unique().sort { a, b -> (a.from <=> b.from) ?: (a.to <=> b.to) }
+            def metadata = modules.collectEntries { [(identity(it).key): [pomResolved: false, sourcesResolved: false]] }
+            def poms = app.dependencies.createArtifactResolutionQuery().forComponents(modules)
+                    .withArtifacts(MavenModule, MavenPomArtifact).execute()
+            poms.resolvedComponents.each { component ->
+                component.getArtifacts(MavenPomArtifact).findAll { it instanceof ResolvedArtifactResult }.each { artifact ->
+                    def parser = new XmlSlurper(false, false)
+                    parser.setFeature('http://apache.org/xml/features/disallow-doctype-decl', true)
+                    def pom = parser.parse(artifact.file)
+                    def item = metadata[identity(component.id).key]
+                    item.pomResolved = true
+                    item.pomSha256 = sha256(artifact.file.bytes)
+                    // Names are metadata hints, NOT accepted licenses or per-file grants.
+                    item.declaredLicenseNames = pom.licenses.license.collect { it.name.text().trim() }.findAll { it }
+                }
+            }
+            def sources = app.dependencies.createArtifactResolutionQuery().forComponents(modules)
+                    .withArtifacts(JvmLibrary, SourcesArtifact).execute()
+            sources.resolvedComponents.each { component ->
+                component.getArtifacts(SourcesArtifact).findAll { it instanceof ResolvedArtifactResult }.each { artifact ->
+                    def item = metadata[identity(component.id).key]
+                    item.sourcesResolved = true
+                    item.sourcesBytes = artifact.file.length()
+                    item.sourcesSha256 = sha256(artifact.file.bytes)
+                    item.licenseNamedSourceEntries = sourceLicenseEntries(artifact.file)
+                }
+            }
+            components.each { component ->
+                if (component.kind == 'module') component.putAll(metadata[component.key])
+            }
+            def gaps = components.collectMany { component ->
+                if (component.kind == 'project') return ["${component.key}: source-file audit not established".toString()]
+                def missing = []
+                if (!component.pomResolved) missing.add("${component.key}: POM unavailable".toString())
+                if (!component.sourcesResolved) missing.add("${component.key}: source artifact unavailable".toString())
+                else if (!component.licenseNamedSourceEntries) missing.add("${component.key}: source archive has no named license entry".toString())
+                return missing
+            }
+            boolean resolved = view.failures.empty && modules && artifacts
+            if (mode == 'android' && !components.any { it.key.startsWith('androidx.appcompat:appcompat:') }) {
+                resolved = false
+                gaps.add('Actual Android appcompat runtime dependency absent')
+            }
+            def report = [schemaVersion: 1, sourceRevision: revision, gradleVersion: gradle.gradleVersion,
+                configuration: 'releaseRuntimeClasspath', scope: 'resolved build inputs, not final DEX retention',
+                syntheticFixture: mode == 'fixture', runtimeInputResolutionComplete: resolved,
+                resolutionFailureCount: view.failures.size(), components: components, artifacts: artifacts,
+                dependencyEdges: edges, findings: gaps.sort(), apkPayloadVerified: false,
+                perFileLicenseAuditComplete: false, runtimeNoticesAndSourceAuditComplete: false, distributable: false]
+            def output = gradle.rootProject.file(app.providers.gradleProperty('nexusInventoryReport').get())
+            output.parentFile.mkdirs()
+            output.setText(JsonOutput.prettyPrint(JsonOutput.toJson(report)) + '\n', 'UTF-8')
+            println "Runtime input inventory: ${components.size()} components, ${artifacts.size()} artifacts; ${gaps.size()} unresolved review findings"
+            if (!resolved) throw new GradleException('Release runtime input resolution incomplete; report retained')
+        }
+    }
+}

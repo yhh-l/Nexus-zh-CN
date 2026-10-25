@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android cloud builds inventory their configured release JVM inputs.** Runtime component
+  edges, artifact hashes, POM license-name hints and available source-archive notice hashes
+  expose missing review material. This is input provenance, not final DEX retention, accepted
+  licenses, complete source coverage, signing or binary-distribution approval.
 - **Android builds select their own Rust notice inventory in both delivery paths.** The
   frontend license asset and packaged resource must match the exact cloud revision's generated
   target notices. Missing, stale or substituted desktop text stops inspection; this does not

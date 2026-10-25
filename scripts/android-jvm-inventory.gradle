@@ -29,7 +29,7 @@ List sourceLicenseEntries(File file) {
     def records = []
     new ZipFile(file).withCloseable { archive ->
         archive.entries().each { entry ->
-            if (!entry.directory && entry.name ==~ /(?i)(.*\/)?(licen[cs]e|copying|notice|copyright)([._-].*)?/) {
+            if (!entry.directory && entry.name ==~ /(?i)(.*\/)?([^\/]*[._-])?(licen[cs]e|copying|notice|copyright)([._-].*)?/) {
                 def item = [entry: entry.name, bytes: entry.size, textHashed: false]
                 if (entry.size >= 0 && entry.size <= 1024 * 1024) {
                     byte[] text = archive.getInputStream(entry).withCloseable { it.readAllBytes() }

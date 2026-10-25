@@ -624,6 +624,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   your browser; the watch-and-control workspace it replaced is gone from the page.
 
 ### Fixed
+- **Android Gradle dependency inventories also retain component-prefixed notice entries.**
+  The source-archive inventory now recognizes the same delimiter-bounded LICENSE,
+  NOTICE, COPYING and COPYRIGHT names as the source reviewer. A cloud-only real-Gradle
+  fixture checks exact entry and archive hashes, ignores incidental source-class names,
+  and keeps licensing and distributability claims false.
 - **Android JVM source review preserves component-prefixed license and notice files.**
   Archive names such as `fixture-core-LICENSE` and `fixture-core-NOTICE` now retain
   bounded full text instead of being treated as source files with no leading comment.

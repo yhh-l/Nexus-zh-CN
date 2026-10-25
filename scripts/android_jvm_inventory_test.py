@@ -65,6 +65,33 @@ artifacts { add('default', file('bridge.jar')) }
         report = root / "report/runtime-inventory.json"
         return process, json.loads(report.read_text()) if report.exists() else None
 
+    def test_component_prefixed_notice_entries_are_hashed_by_actual_gradle(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.fixture(directory)
+            entries = {"META-INF/fixture-core-LICENSE": b"Original synthetic license-name fixture.\n",
+                       "META-INF/fixture-core-NOTICE": b"Original synthetic notice-name fixture.\n",
+                       "META-INF/fixture.COPYING.txt": b"Original synthetic copying-name fixture.\n",
+                       "META-INF/fixture_copyright": b"Original synthetic copyright-name fixture.\n"}
+            sources = root / "repo/fixture/alpha/1.0/alpha-1.0-sources.jar"
+            with zipfile.ZipFile(sources, "w") as archive:
+                for name, payload in entries.items():
+                    archive.writestr(name, payload)
+                archive.writestr("example/LicenseHelper.java", "package example;\n")
+                archive.writestr("example/MyNotice.kt", "package example\n")
+            process, report = self.invoke(root)
+            self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
+            component = next(item for item in report["components"] if item["key"] == "fixture:alpha:1.0")
+            records = {item["entry"]: item for item in component["licenseNamedSourceEntries"]}
+            self.assertEqual(set(records), set(entries))
+            for name, payload in entries.items():
+                self.assertTrue(records[name]["textHashed"])
+                self.assertEqual(records[name]["bytes"], len(payload))
+                self.assertEqual(records[name]["sha256"], hashlib.sha256(payload).hexdigest())
+            self.assertEqual(component["sourcesSha256"], hashlib.sha256(sources.read_bytes()).hexdigest())
+            self.assertFalse(any(item.startswith("fixture:alpha:1.0:") for item in report["findings"]))
+            self.assertFalse(report["perFileLicenseAuditComplete"])
+            self.assertFalse(report["distributable"])
+
     def test_actual_pinned_gradle_records_transitive_project_pom_sources_and_explicit_gaps(self):
         with tempfile.TemporaryDirectory() as directory:
             root = self.fixture(directory)

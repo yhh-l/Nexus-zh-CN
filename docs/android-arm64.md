@@ -600,7 +600,7 @@ false, and only reports/texts, not APK binaries, are exported by these workflows
 After the full real APK build/audit, the same generated Android project resolves
 its actual `:app:universalReleaseRuntimeClasspath`. The collector records component and
 project identities, transitive edges and the actual selected artifact hashes.
-No repository, dependency, build task, signing or credential policy is changed.
+No repository, dependency, application-build, signing or credential policy is changed.
 POM hashes/license-name hints and available sources-archive hashes/license-named
 entry hashes are collected for review. Names are NOT proof of grants, per-file
 licensing, corresponding-source completeness or final shrinker/DEX retention.
@@ -657,3 +657,12 @@ The fixture suite includes both boundaries and removes the actual nested-build
 guard to reproduce the original failure. The same collector still runs after the
 whole APK audit. A preflight JSON is configured-input evidence only, not final
 DEX contents, legal approval, signing, installation or device verification.
+
+The inventory task also waits for dependency-project artifact producers before
+hashing their actual AAR/JAR bytes. Already-created fixtures alone cannot prove
+that ordering. An original Gradle archive-producing fixture starts without its
+output and requires the producer's actual bytes/hash; removing the real producer
+dependency must fail. The task graph refuses any additional `:app` build task
+before execution, so this preflight cannot silently start the application's
+native compilation, APK assembly or signing. Library dependency artifacts may be
+built on the GitHub runner; no such binaries are exported as this JSON report.

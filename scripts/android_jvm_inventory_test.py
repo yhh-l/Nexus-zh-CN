@@ -55,12 +55,12 @@ artifacts { add('default', file('bridge.jar')) }
                     archive.writestr("fixture/Example.java", "// Synthetic fixture; no production implementation.\n")
         return root
 
-    def invoke(self, root, mode="fixture"):
+    def invoke(self, root, mode="fixture", extra_tasks=()):
         process = subprocess.run([
             os.environ["NEXUS_TEST_GRADLE"], "--offline", "--no-daemon", "--console=plain", "--max-workers=2",
             "--gradle-user-home", str(root / "gradle-cache"), "--init-script", str(COLLECTOR),
             ":app:nexusAndroidRuntimeInventory", f"-PnexusInventoryMode={mode}",
-            "-PnexusInventoryReport=report/runtime-inventory.json"],
+            "-PnexusInventoryReport=report/runtime-inventory.json", *extra_tasks],
             cwd=root, capture_output=True, text=True, timeout=240)
         report = root / "report/runtime-inventory.json"
         return process, json.loads(report.read_text()) if report.exists() else None
@@ -124,6 +124,49 @@ file('../buildsrc-evaluated.txt').text = 'actual helper build evaluated'
             process, report = self.invoke(root)
             self.assertNotEqual(process.returncode, 0, process.stdout + process.stderr)
             self.assertIn("universalReleaseRuntimeClasspath", process.stdout + process.stderr)
+            self.assertIsNone(report)
+
+    def test_project_artifact_producer_runs_before_its_actual_bytes_are_hashed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.fixture(directory)
+            payload = root / "bridge/payload"
+            payload.mkdir()
+            (payload / "fixture.txt").write_text("original task-produced fixture, not compiled Android code")
+            (root / "bridge/build.gradle").write_text("""
+configurations.create('default')
+def bundle = tasks.register('fixtureJar', Zip) {
+    archiveFileName = 'bridge.jar'
+    destinationDirectory = layout.buildDirectory.dir('fixtures')
+    from('payload')
+}
+artifacts { add('default', bundle) }
+""")
+            output = root / "bridge/build/fixtures/bridge.jar"
+            self.assertFalse(output.exists())
+            process, report = self.invoke(root)
+            self.assertEqual(process.returncode, 0, process.stdout + process.stderr)
+            self.assertIsNotNone(report)
+            self.assertTrue(output.is_file())
+            self.assertIn(":bridge:fixtureJar", process.stdout)
+            artifacts = [item for item in report["artifacts"] if item["component"] == "project :bridge"]
+            self.assertEqual(len(artifacts), 1)
+            self.assertEqual(artifacts[0]["sha256"], hashlib.sha256(output.read_bytes()).hexdigest())
+            self.assertTrue(report["runtimeInputResolutionComplete"])
+            self.assertFalse(report["apkPayloadVerified"])
+
+    def test_inventory_refuses_to_schedule_application_build_tasks(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.fixture(directory)
+            build = root / "app/build.gradle"
+            build.write_text(build.read_text() + """
+tasks.register('forbiddenAppBuild') {
+    doLast { file('forbidden-app-task.txt').text = 'this task must not run' }
+}
+""")
+            process, report = self.invoke(root, extra_tasks=(":app:forbiddenAppBuild",))
+            self.assertNotEqual(process.returncode, 0, process.stdout + process.stderr)
+            self.assertIn("Runtime input inventory must not schedule application build tasks", process.stdout + process.stderr)
+            self.assertFalse((root / "app/forbidden-app-task.txt").exists())
             self.assertIsNone(report)
 
     def test_missing_real_runtime_artifact_cannot_claim_resolution_complete(self):

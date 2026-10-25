@@ -73,3 +73,30 @@ jobs:
           grep -F 'Actual :app project required for runtime inventory' "$RUNNER_TEMP/inventory-negative.log"
           cp "$backup" "$source"
           trap - EXIT
+
+      - name: Prove omitting real project artifact producers breaks byte-level inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=scripts/android-jvm-inventory.gradle
+          backup=$(mktemp "$RUNNER_TEMP/nexus-jvm-producer.XXXXXX")
+          cp "$source" "$backup"
+          trap 'cp "$backup" "$source"' EXIT
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('scripts/android-jvm-inventory.gradle')
+          source = path.read_text()
+          needle = "            app.configurations.getByName('universalReleaseRuntimeClasspath').buildDependencies"
+          assert source.count(needle) == 1
+          path.write_text(source.replace(needle, '            []'))
+          PY
+          set +e
+          python3 -m unittest discover -s scripts -p android_jvm_inventory_test.py -k project_artifact_producer -v > "$RUNNER_TEMP/producer-negative.log" 2>&1
+          status=$?
+          set -e
+          cat "$RUNNER_TEMP/producer-negative.log"
+          test "$status" -ne 0
+          grep -F 'FAIL: test_project_artifact_producer_runs_before_its_actual_bytes_are_hashed' "$RUNNER_TEMP/producer-negative.log"
+          grep -F 'bridge.jar' "$RUNNER_TEMP/producer-negative.log"
+          cp "$backup" "$source"
+          trap - EXIT

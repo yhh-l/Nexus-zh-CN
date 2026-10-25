@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android runtime-input inspection waits for real dependency artifact producers.**
+  Project AAR/JAR bytes are hashed only after their library tasks run; a task-graph guard
+  refuses application build tasks during inventory. Cloud controls start without the
+  produced archive and prove removing that dependency breaks the byte-level report.
 - **Android JVM inventory selects the actual universal release variant and runs earlier.**
   The official backend build helper supplies real plugin integration before the Gradle
   preflight, so dependency-graph defects need not wait for final APK code generation.

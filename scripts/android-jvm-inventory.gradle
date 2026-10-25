@@ -1,5 +1,5 @@
 // Original report-only Gradle 8.14.3 collector; no repository/dependency mutation,
-// compilation, signing, credentials, source publication or legal approval.
+// Nexus native/APK compilation, signing, credentials, source publication or legal approval.
 import groovy.json.JsonOutput
 import groovy.xml.XmlSlurper
 import java.security.MessageDigest
@@ -49,6 +49,14 @@ gradle.projectsEvaluated {
     def app = gradle.rootProject.findProject(':app')
     if (app == null) throw new GradleException('Actual :app project required for runtime inventory')
     app.tasks.register('nexusAndroidRuntimeInventory') {
+        // Resolve project-produced AAR/JAR files only after their real producers.
+        // This configuration contains dependency libraries, not the app's Rust/APK tasks.
+        dependsOn {
+            if (System.getenv('GITHUB_ACTIONS') != 'true' || gradle.gradleVersion != '8.14.3') {
+                throw new GradleException('Runtime input inventory requires cloud Gradle 8.14.3')
+            }
+            app.configurations.getByName('universalReleaseRuntimeClasspath').buildDependencies
+        }
         doLast {
             if (System.getenv('GITHUB_ACTIONS') != 'true' || gradle.gradleVersion != '8.14.3') {
                 throw new GradleException('Runtime input inventory requires cloud Gradle 8.14.3')
@@ -125,6 +133,12 @@ gradle.projectsEvaluated {
             output.setText(JsonOutput.prettyPrint(JsonOutput.toJson(report)) + '\n', 'UTF-8')
             println "Runtime input inventory: ${components.size()} components, ${artifacts.size()} artifacts; ${gaps.size()} unresolved review findings"
             if (!resolved) throw new GradleException('Release runtime input resolution incomplete; report retained')
+        }
+    }
+    gradle.taskGraph.whenReady { graph ->
+        def ownsInventory = graph.allTasks.any { it.project == app && it.name == 'nexusAndroidRuntimeInventory' }
+        if (ownsInventory && graph.allTasks.any { it.project == app && it.name != 'nexusAndroidRuntimeInventory' }) {
+            throw new GradleException('Runtime input inventory must not schedule application build tasks')
         }
     }
 }

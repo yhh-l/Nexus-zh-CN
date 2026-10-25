@@ -1789,10 +1789,10 @@ export function Logbook({
           <span className="log-sub">{control ? t('logbook.subtitle') : t('remote.collectionObserver')}</span>
         </div>
         {control && <div className="log-actions">
+          {/* Leave all three unfiltered: Android provider MIME labels vary; GTK cannot widen MIME filters. */}
           <input
             ref={fileRef}
             type="file"
-            accept=".adi,.adif,.txt,text/plain,application/octet-stream"
             style={{ display: 'none' }}
             onChange={onImportFile}
           />
@@ -1802,7 +1802,6 @@ export function Logbook({
           <input
             ref={syncRef}
             type="file"
-            accept=".adi,.adif,.txt,text/plain,application/octet-stream"
             style={{ display: 'none' }}
             onChange={onSyncFile}
           />
@@ -1817,7 +1816,6 @@ export function Logbook({
           <input
             ref={potaRef}
             type="file"
-            accept=".adi,.adif,.txt,text/plain,application/octet-stream"
             style={{ display: 'none' }}
             onChange={onPotaFile}
           />

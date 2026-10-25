@@ -57,12 +57,13 @@ function document(read: () => Promise<string>) {
   return file
 }
 
-it('offers generic binary and plain-text ADIF documents on all three real inputs', () => {
+it('keeps all three document inputs unfiltered across provider MIME labels', () => {
   const pickers = inputs()
   expect(pickers).toHaveLength(3)
   for (const input of pickers) {
-    const accepted = input.accept.split(',')
-    expect(accepted).toEqual(expect.arrayContaining(['.adi', '.adif', '.txt', 'text/plain', 'application/octet-stream']))
+    expect(input.hasAttribute('accept')).toBe(false)
+    expect(input.accept).toBe('')
+    expect(input.disabled).toBe(false)
   }
 })
 

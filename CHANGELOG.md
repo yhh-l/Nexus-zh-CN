@@ -14,8 +14,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   signing, installation and device acceptance remain separate requirements.
 - **Logbook document imports handle unreadable files without silent failure.** ADIF import,
   confirmation sync and POTA stamping now surface file-read errors before making any log change.
-  Their pickers also accept plain-text and generic binary MIME labels used by Android providers;
-  original native parsing, confirmation rules and deduplication remain unchanged. NEEDS-BENCH:
+  Their pickers are unfiltered so Android provider MIME labels cannot hide logs and Linux's
+  non-widenable MIME filter is not reintroduced. Original native parsing, confirmation rules
+  and deduplication remain unchanged. NEEDS-BENCH:
   real Android chooser selection/cancellation, revoked cloud documents and Stop reachability.
 - **Android explicit log/text and share-card exports can use public Downloads.** New documents
   are written and read back in a background worker before publication; a failed export is not

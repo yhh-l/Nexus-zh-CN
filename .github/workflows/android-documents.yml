@@ -8,6 +8,7 @@ on:
       - .github/workflows/android-documents.yml
       - ui/src/components/Logbook.tsx
       - ui/src/components/Logbook.documents.test.tsx
+      - ui/src/file-accept.test.ts
       - ui/src/toast.ts
       - ui/src/api.ts
       - ui/src/types.ts
@@ -50,13 +51,13 @@ jobs:
           from pathlib import Path
           source = Path('ui/src/components/Logbook.tsx')
           text = source.read_text()
-          needle = 'accept=".adi,.adif,.txt,text/plain,application/octet-stream"'
+          needle = 'type="file"'
           assert text.count(needle) == 3, 'Mutate all actual document inputs, not a detached fixture'
-          source.write_text(text.replace(needle, 'accept=".adi,.adif,.txt"'))
+          source.write_text(text.replace(needle, 'type="file" accept=".adi,.adif,.txt"'))
           PY
           set +e
           npm --prefix ui test -- src/components/Logbook.documents.test.tsx \
-            -t 'offers generic binary and plain-text ADIF documents' \
+            -t 'keeps all three document inputs unfiltered' \
             --reporter=default --reporter=json --outputFile="$RUNNER_TEMP/documents-negative.json"
           status=$?
           set -e
@@ -73,14 +74,14 @@ jobs:
           const failed = cases.filter(test => test.status === 'failed');
           assert.equal(failed.length, 1);
           assert(failed[0].failureMessages.some(message => message.startsWith('AssertionError:')));
-          assert(cases.some(test => test.title === 'offers generic binary and plain-text ADIF documents on all three real inputs' && test.status === 'failed'));
+          assert(cases.some(test => test.title === 'keeps all three document inputs unfiltered across provider MIME labels' && test.status === 'failed'));
           JS
           restore
       - name: Typecheck and build the entire UI
         run: npm --prefix ui run build
       - name: Run the real document controls and record their actual results
         run: >
-          npm --prefix ui test -- src/components/Logbook.documents.test.tsx
+          npm --prefix ui test -- src/components/Logbook.documents.test.tsx src/file-accept.test.ts
           --reporter=default --reporter=json --outputFile="$RUNNER_TEMP/documents-positive.json"
       - name: Preserve actual rendered regression evidence, not an APK
         if: always()

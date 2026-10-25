@@ -8,6 +8,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- **Android JVM reports refuse silently omitted project archives.**
+  Every non-root runtime project must have selected artifact bytes, even when a lenient
+  Gradle view reports no resolution failure. Cloud controls reject an incompatible published
+  archive type and explicitly publish the producer fixture as JAR rather than Gradle's ZIP default.
 - **Android JVM inspection selects runtime archives instead of ambiguous project metadata.**
   The dependency collector uses AGP's typed AAR/JAR view for both library producer tasks
   and inspected bytes. A real Gradle multi-variant fixture guards against selecting metadata

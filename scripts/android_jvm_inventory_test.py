@@ -139,7 +139,7 @@ def bundle = tasks.register('fixtureJar', Zip) {
     destinationDirectory = layout.buildDirectory.dir('fixtures')
     from('payload')
 }
-artifacts { add('default', bundle) }
+artifacts { add('default', bundle) { type = 'jar' } }
 """)
             output = root / "bridge/build/fixtures/bridge.jar"
             self.assertFalse(output.exists())
@@ -192,6 +192,21 @@ configurations.default.outgoing.variants {
             self.assertEqual(len(artifacts), 1)
             self.assertEqual(artifacts[0]["name"], "bridge.jar")
             self.assertEqual(artifacts[0]["sha256"], hashlib.sha256(output.read_bytes()).hexdigest())
+            self.assertFalse(report["distributable"])
+
+    def test_project_without_matching_runtime_archive_cannot_claim_resolution_complete(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.fixture(directory)
+            # A neutral filename must not mask an incompatible published type.
+            (root / "bridge/build.gradle").write_text("""
+configurations.create('default')
+artifacts { add('default', file('bridge.jar')) { type = 'zip' } }
+""")
+            process, report = self.invoke(root)
+            self.assertNotEqual(process.returncode, 0, process.stdout + process.stderr)
+            self.assertIsNotNone(report)
+            self.assertFalse(report["runtimeInputResolutionComplete"])
+            self.assertIn("project :bridge: selected runtime artifact absent", report["findings"])
             self.assertFalse(report["distributable"])
 
     def test_inventory_refuses_to_schedule_application_build_tasks(self):

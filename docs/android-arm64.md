@@ -686,3 +686,11 @@ and metadata variants; cloud controls require the actual runtime producer/hash,
 then remove the real selection attribute and require the named regression to fail.
 This fixture is not AGP/Android proof: the real plugin graph, final APK inventory,
 license/source review and device acceptance remain required independently.
+
+A lenient typed view may omit an incompatible project artifact without recording
+an artifact-resolution failure. The collector therefore also requires bytes for
+every non-root runtime project and preserves explicit missing-project findings.
+The archive-producing control explicitly publishes JAR type: Gradle otherwise
+infers ZIP from its original Zip task even when its filename ends in `.jar`.
+An incompatible-type project control must fail rather than producing a partial
+green inventory. No real dependency or app feature is removed to satisfy a fixture.

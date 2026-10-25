@@ -126,7 +126,13 @@ gradle.projectsEvaluated {
                 else if (!component.licenseNamedSourceEntries) missing.add("${component.key}: source archive has no named license entry".toString())
                 return missing
             }
-            boolean resolved = view.failures.empty && modules && artifacts
+            def rootIdentity = identity(resolution.rootComponent.get().id).key
+            def missingProjects = components.findAll { component ->
+                component.kind == 'project' && component.key != rootIdentity &&
+                    !artifacts.any { it.component == component.key }
+            }
+            gaps.addAll(missingProjects.collect { "${it.key}: selected runtime artifact absent".toString() })
+            boolean resolved = view.failures.empty && modules && artifacts && missingProjects.empty
             if (mode == 'android' && !components.any { it.key.startsWith('androidx.appcompat:appcompat:') }) {
                 resolved = false
                 gaps.add('Actual Android appcompat runtime dependency absent')

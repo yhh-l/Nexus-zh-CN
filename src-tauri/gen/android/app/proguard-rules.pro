@@ -21,6 +21,8 @@
 #-renamesourcefileattribute SourceFile
 # Rust invokes these on the real Activity via JNI; do not rename them in release builds.
 -keepclassmembers class com.kd9taw.tempo.MainActivity {
+    public boolean nexusFollowWindowShape(android.webkit.WebView, int, int);
+    public void nexusRestoreWindowShape(android.webkit.WebView);
     public java.lang.String[] nexusDataFolderRoots();
     public void showNexusDataFolder(long, java.lang.String);
     public void cancelNexusDataFolder(long);

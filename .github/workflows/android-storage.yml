@@ -22,6 +22,7 @@ on:
       - src-tauri/src/login_start.rs
       - src-tauri/src/remote_window.rs
       - src-tauri/src/window_state.rs
+      - src-tauri/src/window_state/**
 
 permissions:
   contents: read
@@ -127,7 +128,7 @@ jobs:
           retention-days: 7
 
   native-folder-ui:
-    name: Actual native folder Kotlin + Android framework-modeled tests (not APK)
+    name: Actual native folder + viewport Kotlin framework-modeled tests (not APK)
     runs-on: ubuntu-24.04
     timeout-minutes: 30
     steps:
@@ -151,7 +152,7 @@ jobs:
           curl --fail --location --retry 3 'https://raw.githubusercontent.com/tauri-apps/tauri/tauri-cli-v2.11.5/crates/tauri-cli/templates/mobile/android/gradle/wrapper/gradle-wrapper.jar' -o scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.jar
           echo 'e996d452d2645e70c01c11143ca2d3742734a28da2bf61f25c82bdc288c9e637  scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.jar' | sha256sum --check --strict
           grep -Fx 'distributionSha256Sum=bd71102213493060956ec229d946beee57158dbd89d0e62b91bca0fa2c5f3531' scripts/android-folder-harness/gradle/wrapper/gradle-wrapper.properties
-      - name: Compile the actual product picker and run native modeled lifecycle/data-preservation tests
+      - name: Compile actual product folder/viewport controllers and run native modeled tests
         working-directory: scripts/android-folder-harness
         run: bash ./gradlew --no-daemon --stacktrace testDebugUnitTest
       - name: Preserve actual native test reports, never a candidate APK

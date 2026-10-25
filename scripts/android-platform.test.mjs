@@ -194,3 +194,29 @@ test('Android OS window controls refuse before persistence and focus the actual 
     '#[cfg(not(target_os = "android"))]', 'if cfg!(not(target_os = "android"))')));
   assert.throws(() => androidWindowControls(source.replace('"requestFocus", "()Z"', '"fakeFocus", "()Z"')));
 });
+
+function androidShapeBoundary(source, adapter) {
+  assert.match(source, /#\[cfg\(not\(target_os = "android"\)\)\]\s*impl crate::remote_service::stream::ShapeWindow for MainShape/);
+  const start = source.indexOf('#[cfg(target_os = "android")]\nimpl crate::remote_service::stream::ShapeWindow for MainShape');
+  const end = source.indexOf('// ---- The Connect dashboard pop-out', start);
+  assert(start >= 0 && end > start);
+  const shape = source.slice(start, end);
+  assert.match(shape, /android_shape::follow\(&window, view\)/);
+  assert.match(shape, /android_shape::restore\(&window\)/);
+  assert.match(adapter, /\.jni_handle\(\)\.exec\(/);
+  assert.match(adapter, /"nexusFollowWindowShape",\s*"\(Landroid\/webkit\/WebView;II\)Z"/);
+  assert.match(adapter, /"nexusRestoreWindowShape",\s*"\(Landroid\/webkit\/WebView;\)V"/);
+  assert.match(adapter, /i32::try_from\(view\.0\)/);
+  assert.match(adapter, /if accepted \{\s*Ok\(\(\)\)\s*\} else \{\s*Err\(/);
+  assert.match(adapter, /exception_clear\(\)/);
+  assert.doesNotMatch(shape + adapter, /\.maximize\(|\.minimize\(|\.set_fullscreen\(|\.set_position\(/);
+}
+
+test('Android MainShape delegates both lifecycle directions to the actual Java WebView adapter', () => {
+  const source = read('window_state.rs');
+  const adapter = read('window_state/android_shape.rs');
+  androidShapeBoundary(source, adapter);
+  assert.throws(() => androidShapeBoundary(source.replace('android_shape::follow(&window, view)', 'ignore_view(view)'), adapter));
+  assert.throws(() => androidShapeBoundary(source.replaceAll('android_shape::restore(&window)', 'ignore_restore(&window)'), adapter));
+  assert.throws(() => androidShapeBoundary(source, adapter.replace('"nexusFollowWindowShape"', '"fakeShape"')));
+});

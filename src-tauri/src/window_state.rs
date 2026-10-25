@@ -34,6 +34,9 @@
 //! left where it is. Its record adds one thing the main window has no use for: whether the
 //! operator asked it to stay behind other windows ([`PanelRecord::behind`]).
 
+#[cfg(target_os = "android")]
+mod android_shape;
+
 use crate::chains::{panel_key, Instance};
 use tauri::{Manager, WindowEvent};
 use tempo_app::window_geometry::{self as geom, WindowGeometry, WorkArea};
@@ -41,6 +44,7 @@ use tempo_app::window_geometry::{self as geom, WindowGeometry, WorkArea};
 /// Where the record lives: `<config_dir>/window-main.json`, a sibling of `settings.json`
 /// and so automatically PER-PROFILE — a window bound to a second radio remembers its own
 /// box instead of fighting the first one's. Same shape as `bandmap_window_path`.
+#[cfg(any(not(target_os = "android"), test))]
 fn geometry_path() -> std::path::PathBuf {
     crate::settings_path().with_file_name("window-main.json")
 }
@@ -112,6 +116,7 @@ fn live_geometry(window: &tauri::WebviewWindow) -> Option<WindowGeometry> {
 /// `tauri.conf.json` — the box is in place before the operator ever sees the window, so
 /// there is no open-then-jump. (That hidden window is also why the size is applied before
 /// `center()`: centring the default box and *then* resizing would leave it off-centre.)
+#[cfg(not(target_os = "android"))]
 fn restore(app: &tauri::AppHandle, window: &tauri::WebviewWindow) {
     let (all, primary) = monitors(app);
     let Some(r) = geom::restore(geom::load(&geometry_path()), &all, primary, geom::MIN_INNER)
@@ -140,6 +145,19 @@ fn restore(app: &tauri::AppHandle, window: &tauri::WebviewWindow) {
     }
 }
 
+// Android restores its OS content layout, never desktop coordinates or monitor geometry.
+// Activity configuration/insets remain Android's responsibility, and no desktop geometry
+// record is overwritten. This also releases a temporary streamed viewport on close/quit.
+#[cfg(target_os = "android")]
+fn restore(_app: &tauri::AppHandle, window: &tauri::WebviewWindow) {
+    android_shape::restore(window);
+}
+
+#[cfg(target_os = "android")]
+fn capture(window: &tauri::WebviewWindow) {
+    android_shape::restore(window);
+}
+
 /// Snapshot the window on close so the next launch reopens where it was.
 ///
 /// On close, not on every `Resized`/`Moved`: one write per session instead of one per
@@ -147,6 +165,7 @@ fn restore(app: &tauri::AppHandle, window: &tauri::WebviewWindow) {
 /// to write — a minimised window (Windows parks it near -32000,-32000) and a maximised
 /// one (whose `inner_size` is the maximised box, not the restore rect) — are decided in
 /// [`geom::capture`], with the previous record read back here as its fallback.
+#[cfg(not(target_os = "android"))]
 fn capture(window: &tauri::WebviewWindow) {
     // A window in a streamed page's shape records the box it will go back to, not that shape.
     let Some(cur) = followed_from().or_else(|| live_geometry(window)) else {
@@ -202,6 +221,7 @@ pub fn capture_now(app: &tauri::AppHandle) {
 // ---- The main window in a streamed page's shape --------------------------------------------
 
 /// What the main window was before it took a streamed page's shape, to go back to.
+#[cfg(not(target_os = "android"))]
 struct Before {
     /// The box [`capture`] records while the window is in the page's shape.
     geometry: Option<WindowGeometry>,
@@ -217,14 +237,17 @@ struct Before {
 
 /// Set from the first shape a stream gives the window until it goes back. Process-wide, because
 /// the close path's [`capture`] reads it as well as the stream's thread.
+#[cfg(not(target_os = "android"))]
 static FOLLOWED: std::sync::Mutex<Option<Before>> = std::sync::Mutex::new(None);
 
+#[cfg(not(target_os = "android"))]
 fn followed() -> std::sync::MutexGuard<'static, Option<Before>> {
     FOLLOWED
         .lock()
         .unwrap_or_else(|poisoned| poisoned.into_inner())
 }
 
+#[cfg(not(target_os = "android"))]
 fn followed_from() -> Option<WindowGeometry> {
     followed().as_ref().and_then(|before| before.geometry)
 }
@@ -233,6 +256,7 @@ fn followed_from() -> Option<WindowGeometry> {
 /// come from the stream's own thread; each window call is carried to the event loop in order.
 pub(crate) struct MainShape(pub tauri::AppHandle);
 
+#[cfg(not(target_os = "android"))]
 impl crate::remote_service::stream::ShapeWindow for MainShape {
     fn follow(&self, view: (u32, u32)) {
         let Some(window) = self.0.get_webview_window("main") else {
@@ -313,6 +337,21 @@ impl crate::remote_service::stream::ShapeWindow for MainShape {
         }
         if minimized {
             let _ = window.minimize();
+        }
+    }
+}
+
+#[cfg(target_os = "android")]
+impl crate::remote_service::stream::ShapeWindow for MainShape {
+    fn follow(&self, view: (u32, u32)) {
+        if let Some(window) = self.0.get_webview_window("main") {
+            android_shape::follow(&window, view);
+        }
+    }
+
+    fn restore(&self) {
+        if let Some(window) = self.0.get_webview_window("main") {
+            android_shape::restore(&window);
         }
     }
 }

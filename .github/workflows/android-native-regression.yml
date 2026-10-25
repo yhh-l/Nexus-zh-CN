@@ -14,6 +14,7 @@ on:
       - src-tauri/src/lan_client.rs
       - src-tauri/src/lan_client/**
       - src-tauri/src/window_state.rs
+      - src-tauri/src/window_state/**
       - src-tauri/src/remote_window.rs
       - src-tauri/src/remote_service/vault.rs
   workflow_dispatch:

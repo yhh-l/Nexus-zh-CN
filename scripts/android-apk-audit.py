@@ -40,6 +40,37 @@ def dynamic_dependencies(output, name, bundled, system):
     return needed
 
 
+def manifest_core(output):
+    """Read actual aapt2 badging, not the source XML or Gradle defaults.
+
+    Format: Android SDK aapt2 dump badging (AOSP DumpManifest.cpp).
+    Core identity/SDK/launcher/ABI only, NOT a complete component/security audit.
+    """
+    def exactly(pattern, label):
+        values = re.findall(pattern, output, re.MULTILINE)
+        if len(values) != 1:
+            raise ValueError(f"Missing/ambiguous APK manifest {label}")
+        return values[0]
+
+    package = exactly(r"^package: name='([^']+)'", "identity")
+    minimum = exactly(r"^sdkVersion:'([0-9]+)'", "minimum SDK")
+    target = exactly(r"^targetSdkVersion:'([0-9]+)'", "target SDK")
+    launcher = exactly(r"^launchable-activity:\s+name='([^']+)'", "launcher")
+    abis = re.findall(r"'([^']+)'", exactly(r"^native-code:(.*)$", "native ABI"))
+    if (package != "com.kd9taw.tempo" or minimum != "35" or target != "36" or
+            launcher != package + ".MainActivity" or abis != ["arm64-v8a"]):
+        raise ValueError("Actual APK identity/SDK/launcher/ABI differs from the reviewed Android host")
+    if re.search(r"^application-debuggable(?:\s|:|$)", output, re.MULTILINE):
+        raise ValueError("Expected the actual non-debuggable release-profile APK")
+    permissions = re.findall(r"^uses-permission(?:-sdk-23)?:\s*(?:name=)?'([^']+)'", output, re.MULTILINE)
+    if "android.permission.INTERNET" not in permissions:
+        raise ValueError("Actual APK lost the existing network permission")
+    return {"package": package, "minSdk": int(minimum), "targetSdk": int(target),
+            "launcher": launcher, "abis": abis, "debuggable": False,
+            "declaredPermissions": sorted(set(permissions)), "coreFieldsVerified": True,
+            "fullComponentSecurityAuditComplete": False}
+
+
 def run(command):
     return subprocess.run(command, cwd=ROOT, text=True, capture_output=True, check=True).stdout
 
@@ -63,6 +94,10 @@ def audit(apk, ndk, sdk):
         raise ValueError("Android SDK build-tools 36.0.0 zipalign required")
     # Checks the ORIGINAL APK. Never rezip/realign it behind the build's back.
     alignment = run([str(zipalign), "-c", "-P", "16", "-v", "4", str(apk)])
+    aapt2 = sdk / "build-tools/36.0.0/aapt2"
+    if not aapt2.is_file():
+        raise ValueError("Actual Android SDK aapt2 is required")
+    manifest = manifest_core(run([str(aapt2), "dump", "badging", str(apk)]))
     names = checkpoint["nativeLibraries"]
     bundled = {Path(name).name for name in names}
     records = []
@@ -90,7 +125,7 @@ def audit(apk, ndk, sdk):
                 raise ValueError(f"GNU/Linux GLIBC dependency in Android APK: {name}")
             records.append({"member": member, "sha256": hashlib.sha256(Path(file).read_bytes()).hexdigest(),
                             "elf": elf, "needed": needed})
-    return {"schemaVersion": 1, "apkSha256": checkpoint["sha256"], "nativeLibraries": records,
+    return {"schemaVersion": 1, "apkSha256": checkpoint["sha256"], "nativeLibraries": records, "manifestCore": manifest,
             "systemLibrarySource": "actual NDK AArch64 Android API 35 sysroot",
             "elfAndZip16KiBVerified": True, "neededLibraryClosureVerified": True,
             "zipalignOutput": alignment, "signatureVerified": False, "installableVerified": False,

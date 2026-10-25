@@ -73,5 +73,46 @@ class NativePolicy(unittest.TestCase):
             self.assertNotEqual(subprocess.run([*command, str(original)], capture_output=True).returncode, 0)
 
 
+class ManifestPolicy(unittest.TestCase):
+    # Parser fixtures are not compiled manifests or an installable app.
+    BADGING = (
+        "package: name='com.kd9taw.tempo' versionCode='1' versionName='1.20.0'\n"
+        "sdkVersion:'35'\ntargetSdkVersion:'36'\n"
+        "uses-permission: name='android.permission.INTERNET'\n"
+        "launchable-activity: name='com.kd9taw.tempo.MainActivity' label='Nexus' icon=''\n"
+        "native-code: 'arm64-v8a'\n"
+    )
+
+    def test_accept_expected_native_host_core_without_claiming_full_manifest_audit(self):
+        result = audit.manifest_core(self.BADGING)
+        self.assertEqual(result["package"], "com.kd9taw.tempo")
+        self.assertEqual(result["minSdk"], 35)
+        self.assertEqual(result["targetSdk"], 36)
+        self.assertEqual(result["abis"], ["arm64-v8a"])
+        self.assertFalse(result["debuggable"])
+        self.assertFalse(result["fullComponentSecurityAuditComplete"])
+
+    def test_reject_changed_package_sdk_launcher_abi_or_network_permission(self):
+        for before, after in [("name='com.kd9taw.tempo'", "name='foreign.app'"),
+                              ("sdkVersion:'35'", "sdkVersion:'24'"),
+                              ("targetSdkVersion:'36'", "targetSdkVersion:'35'"),
+                              (".MainActivity'", ".ForeignActivity'"),
+                              ("native-code: 'arm64-v8a'", "native-code: 'arm64-v8a' 'x86_64'"),
+                              ("android.permission.INTERNET", "android.permission.FOREIGN")]:
+            with self.subTest(before=before):
+                with self.assertRaises(ValueError):
+                    audit.manifest_core(self.BADGING.replace(before, after))
+        with self.assertRaises(ValueError):
+            audit.manifest_core(self.BADGING + "application-debuggable\n")
+
+    def test_reject_missing_or_duplicate_manifest_evidence(self):
+        for line in self.BADGING.splitlines(keepends=True):
+            with self.subTest(line=line):
+                with self.assertRaises(ValueError):
+                    audit.manifest_core(self.BADGING.replace(line, ""))
+                if not line.startswith("uses-permission:"):
+                    with self.assertRaises(ValueError):
+                        audit.manifest_core(self.BADGING + line)
+
 if __name__ == "__main__":
     unittest.main()

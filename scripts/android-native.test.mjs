@@ -310,7 +310,7 @@ test('real APK code generation follows the full backend gate and cannot distribu
   const syntax = run('bash', ['-n', 'scripts/build-android-apk.sh']);
   assert.equal(syntax.status, 0, syntax.output);
   assert.match(build, /GITHUB_ACTIONS/);
-  assert.match(build, /cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked/);
+  assert.match(build, /cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf "\$\{test_config_args\[@\]\}" -- --locked/);
   assert.match(build, /git diff --exit-code -- Cargo.lock src-tauri\/Cargo.lock src-tauri\/gen\/android/);
   assert.match(build, /gradle-wrapper.jar \| sha256sum -c -/);
   assert.doesNotMatch(build, /--debug|--no-default-features|NEXUS_ALLOW_MISSING|--ignore-version-mismatches|--no-verify|apksigner|jarsigner|git push/);
@@ -322,7 +322,10 @@ test('real APK code generation follows the full backend gate and cannot distribu
   assert.match(tail, /target\/android-apk\/native-audit\.json/);
   assert.match(build, /^python3 scripts\/android-apk-report\.py\r?$/m);
   assert.match(build, /^python3 scripts\/android-apk-audit\.py\r?$/m);
-  assert.doesNotMatch(tail, /path:.*\.(apk|aab)|path:.*outputs/);
+  const ordinary = tail.slice(0, tail.indexOf('- name: Sign and freshly audit'));
+  assert.doesNotMatch(ordinary, /path:.*\.(apk|aab)|path:.*outputs/);
+  assert.match(tail, /if: github.event_name == 'workflow_dispatch' && inputs.test_apk/);
+  assert.match(tail, /target\/android-test-apk\/Nexus-Android-ARM64-test\.apk/);
 });
 
 test('Android retains the full waterfall through real USB JNI rather than desktop FFI or a stub', () => {

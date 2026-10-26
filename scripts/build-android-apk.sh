@@ -54,8 +54,15 @@ PY
   echo 'Unreviewed generic Rust flags override the Android 16 KiB link contract' >&2; exit 1;
 }
 android_rustflags='-Clink-arg=-landroid -Clink-arg=-llog -Clink-arg=-lOpenSLES -Clink-arg=-Wl,-z,max-page-size=16384'
+# Only the separately approved manual test route gets a prerelease version overlay.
+# This script still never handles signing keys or uploads any APK.
+test_config_args=()
+if [[ "${NEXUS_ANDROID_TEST_APK:-false}" == true ]]; then
+  python3 scripts/android-test-apk.py --prepare-version
+  test_config_args=(--config "$RUNNER_TEMP/nexus-android-test-version.json")
+fi
 # Exact CLI source passes trailing args into the Cargo mobile builder, not Gradle options.
-(cd src-tauri && NEXUS_ANDROID_RUST_NOTICES=1 RUSTFLAGS="$android_rustflags" cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf -- --locked)
+(cd src-tauri && NEXUS_ANDROID_RUST_NOTICES=1 RUSTFLAGS="$android_rustflags" cargo tauri android build --ci --target aarch64 --apk --features radio,yaesu-wf "${test_config_args[@]}" -- --locked)
 git diff --exit-code -- Cargo.lock src-tauri/Cargo.lock src-tauri/gen/android
 python3 scripts/android-apk-report.py
 python3 scripts/android-apk-audit.py

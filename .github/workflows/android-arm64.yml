@@ -6,6 +6,12 @@ on:
   push:
     branches: [codex/android-arm64]
   workflow_dispatch:
+    inputs:
+      test_apk:
+        description: 'Explicit approval: ephemeral test key and signed INTERNAL TEST APK; no public release'
+        type: boolean
+        required: false
+        default: false
 
 permissions:
   contents: read
@@ -209,6 +215,9 @@ jobs:
           trap - EXIT
           python3 -m unittest discover -s scripts -p android_apk_notices_test.py -v
 
+      - name: Exercise manual approval guards and REAL SDK test signing with key cleanup
+        run: python3 -m unittest discover -s scripts -p android_test_signing_test.py -v
+
       - name: Test real Android native build dispatch (host-only guards)
         run: node --test scripts/android-native.test.mjs
 
@@ -272,7 +281,7 @@ jobs:
       group: android-arm64-native-backend-${{ github.ref }}
       cancel-in-progress: false
     name: Real Android native modem + full backend check
-    needs: portable-libraries
+    needs: [portable-libraries, ui-mobile, browser-layout]
     runs-on: ubuntu-24.04
     timeout-minutes: 90
     steps:
@@ -423,9 +432,10 @@ jobs:
         env:
           CARGO_BUILD_JOBS: 2
           CARGO_TARGET_DIR: ${{ github.workspace }}/target/android-native-cargo
+          NEXUS_ANDROID_TEST_APK: ${{ github.event_name == 'workflow_dispatch' && inputs.test_apk && 'true' || 'false' }}
         run: bash scripts/build-android-apk.sh
-      # Runtime notices/source audit, full APK payload/alignment and install/runtime gates
-      # MUST precede binary distribution. This milestone exports JSON only, never an APK.
+      # Ordinary builds still export JSON only. The separate, explicitly approved
+      # manual INTERNAL TEST route below is not a release or full acceptance claim.
       - name: Upload only the real APK build checkpoint report, not the binary
         if: always()
         uses: actions/upload-artifact@v4
@@ -445,3 +455,23 @@ jobs:
           path: target/android-jvm/runtime-inventory.json
           if-no-files-found: ignore
           retention-days: 14
+
+      - name: Sign and freshly audit the explicitly approved INTERNAL TEST APK
+        if: github.event_name == 'workflow_dispatch' && inputs.test_apk
+        env:
+          NEXUS_ANDROID_TEST_APK: 'true'
+        run: python3 scripts/android-test-apk.py
+
+      # Exact allowlist: never upload RUNNER_TEMP, keystores, passwords or whole build trees.
+      - name: Upload signed INTERNAL TEST APK and public verification evidence only
+        if: github.event_name == 'workflow_dispatch' && inputs.test_apk
+        uses: actions/upload-artifact@v4
+        with:
+          name: nexus-android-arm64-signed-TEST-${{ github.run_id }}
+          path: |
+            target/android-test-apk/Nexus-Android-ARM64-test.apk
+            target/android-test-apk/test-signing-report.json
+            target/android-test-apk/SHA256SUMS.txt
+            target/android-test-apk/READ-ME-FIRST.txt
+          if-no-files-found: error
+          retention-days: 7

@@ -277,6 +277,10 @@ jobs:
             target/android-arm64/aarch64-linux-android/debug/libjs8.rlib
 
   native-backend:
+    # Signing-setup-only commits get their full native validation in the one
+    # explicit manual test run, not an identical unsigned build ahead of it.
+    # This does not skip any check in that authoritative manual handoff run.
+    if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[manual-test-apk]')
     concurrency:
       group: android-arm64-native-backend-${{ github.ref }}
       cancel-in-progress: false

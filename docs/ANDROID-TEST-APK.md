@@ -43,3 +43,9 @@ known unsupported platform feature. Audio, USB/CAT, decoding, logging, file acce
 background/resume, panel lifecycle and always-available Stop need device evidence.
 Do not use actual RF transmission as a first-start smoke test; TX remains OFF by
 default and no transmit permissions, timing, sequencing or watchdog is changed.
+
+Signing-setup-only commits may use the explicit `[manual-test-apk]` marker to
+leave the ordinary unsigned native job unqueued. Their authoritative manual test
+run still performs every full native check; this avoids building the same native
+application twice ahead of the requested handoff. The successful manual run, not
+a setup push with a skipped native job, is the handoff evidence.

@@ -83,7 +83,12 @@ def sign_apk(unsigned, signed, sdk, java, temp_root):
                          "--v1-signing-enabled", "false", "--v2-signing-enabled", "true",
                          "--v3-signing-enabled", "true", "--v4-signing-enabled", "false",
                          "--out", signed, unsigned], env)
-            output = run_private([apksigner, "verify", "--verbose", "--print-certs", signed], env)
+            # First use the APK's REAL minSdk (35). Additionally verify from API 24
+            # so apksig exercises v2 as well as v3, rather than skipping an older
+            # scheme which Android 15 itself does not need. Do not change minSdk.
+            run_private([apksigner, "verify", "--verbose", "--print-certs", signed], env)
+            output = run_private([apksigner, "verify", "--min-sdk-version", "24",
+                                  "--verbose", "--print-certs", signed], env)
             return signature_evidence(output)
         finally:
             env.pop("NEXUS_TEST_STOREPASS", None)

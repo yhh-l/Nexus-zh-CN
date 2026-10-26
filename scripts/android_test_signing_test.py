@@ -28,6 +28,7 @@ class Policy(unittest.TestCase):
     def test_actual_workflow_exports_only_explicit_manual_test_outputs(self):
         workflow = (signer.ROOT / ".github/workflows/android-arm64.yml").read_text()
         self.assertIn("        default: false", workflow)
+        self.assertIn("if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[manual-test-apk]')", workflow)
         gate = "if: github.event_name == 'workflow_dispatch' && inputs.test_apk"
         self.assertEqual(workflow.count(gate), 2)
         self.assertIn("    needs: [portable-libraries, ui-mobile, browser-layout]", workflow)
